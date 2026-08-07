@@ -1,0 +1,262 @@
+---
+/**
+ * Products Listing Page — /products
+ * Shows all products organized by category
+ * No price, no buy button — B2B inquiry model
+ */
+import Layout from "@layouts/Layout.astro";
+import ProductCard from "@components/ProductCard.astro";
+import ProductGrid from "@components/ProductGrid.astro";
+import CTAButton from "@components/CTAButton.astro";
+import { productCategories, allProducts } from "@data/products";
+
+const totalProducts = allProducts.length;
+
+// Breadcrumb structured data
+const breadcrumbData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://nixiafabric.com/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Products",
+      item: "https://nixiafabric.com/products",
+    },
+  ],
+};
+
+// ItemList structured data
+const itemListData = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Nixia Fabric Products",
+  numberOfItems: totalProducts,
+  itemListElement: allProducts.map((p, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: p.name,
+    url: `https://nixiafabric.com/products/${p.slug}`,
+  })),
+};
+---
+
+<Layout
+  title="Products — Glitter Fabric & Foil Fabric"
+  description="Explore Nixia Fabric's complete product catalog: glitter fabric (elastic, PU, non-woven, Oxford) and foil fabric (metallic, gold, silver) for shoes, handbags, and fashion accessories."
+  keywords="glitter fabric, foil fabric, elastic glitter fabric, PU glitter fabric, non-woven glitter fabric, oxford glitter fabric, metallic foil fabric, gold foil fabric, silver foil fabric"
+  structuredData={[breadcrumbData, itemListData]}
+>
+  <!-- Page Header -->
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb__sep">/</span>
+        <span class="breadcrumb__current">Products</span>
+      </nav>
+      <span class="eyebrow">Product Catalog</span>
+      <h1>Glitter Fabric & Foil Fabric</h1>
+      <p class="page-hero__desc">
+        Explore our complete range of decorative fabrics manufactured at the Nixia Fabric
+        factory. All products are available for custom color development and OEM production.
+      </p>
+      <div class="page-hero__stats">
+        <div class="page-hero__stat">
+          <span class="page-hero__stat-num">{totalProducts}</span>
+          <span class="page-hero__stat-label">Products</span>
+        </div>
+        <div class="page-hero__stat">
+          <span class="page-hero__stat-num">{productCategories.length}</span>
+          <span class="page-hero__stat-label">Categories</span>
+        </div>
+        <div class="page-hero__stat">
+          <span class="page-hero__stat-num">OEM</span>
+          <span class="page-hero__stat-label">Custom Production</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Categories -->
+  {productCategories.map((category) => (
+    <section class="section section--alt category-section">
+      <div class="container">
+        <div class="category-section__header">
+          <div>
+            <span class="eyebrow">{category.seoKeywords[0]}</span>
+            <h2>{category.name}</h2>
+          </div>
+          <p class="category-section__desc">{category.description}</p>
+        </div>
+
+        <ProductGrid>
+          {category.products.map((product) => (
+            <ProductCard product={product} />
+          ))}
+        </ProductGrid>
+
+        <div class="category-section__footer">
+          <div class="category-section__apps">
+            <span class="category-section__apps-label">Applications:</span>
+            {category.applications.map((app) => (
+              <span class="badge">{app}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- CTA Section -->
+  <section class="section section--dark">
+    <div class="container text-center">
+      <span class="eyebrow">Custom Development</span>
+      <h2>Need a Custom Fabric Solution?</h2>
+      <p style="max-width: 600px; margin: var(--space-lg) auto var(--space-2xl);">
+        We offer custom color development, OEM production, and fabric customization.
+        Request a swatch or get a custom quote for your specific requirements.
+      </p>
+      <div class="btn-group" style="justify-content: center;">
+        <CTAButton href="/#contact" variant="primary" size="lg">Request Swatch</CTAButton>
+        <CTAButton href="/#contact" variant="secondary" size="lg">Get Custom Quote</CTAButton>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: var(--color-white);
+    padding-block: var(--space-3xl) var(--space-4xl);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 20% 50%, rgba(196, 160, 53, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 30%, rgba(42, 65, 112, 0.4) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .page-hero .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-hero .breadcrumb {
+    margin-bottom: var(--space-lg);
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .page-hero .breadcrumb a:hover {
+    color: var(--color-accent-light);
+  }
+
+  .breadcrumb__sep {
+    margin-inline: var(--space-xs);
+    opacity: 0.5;
+  }
+
+  .breadcrumb__current {
+    color: var(--color-white);
+  }
+
+  .page-hero .eyebrow {
+    color: var(--color-accent-light);
+  }
+
+  .page-hero h1 {
+    color: var(--color-white);
+    margin-bottom: var(--space-md);
+  }
+
+  .page-hero__desc {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: var(--text-lg);
+    max-width: 640px;
+  }
+
+  .page-hero__stats {
+    display: flex;
+    gap: var(--space-2xl);
+    margin-top: var(--space-2xl);
+  }
+
+  .page-hero__stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-hero__stat-num {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-accent);
+  }
+
+  .page-hero__stat-label {
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .category-section__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .category-section__desc {
+    max-width: 480px;
+    font-size: var(--text-base);
+  }
+
+  .category-section__footer {
+    margin-top: var(--space-2xl);
+  }
+
+  .category-section__apps {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .category-section__apps-label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    margin-right: var(--space-xs);
+  }
+
+  @media (max-width: 768px) {
+    .category-section__header {
+      flex-direction: column;
+    }
+
+    .page-hero__stats {
+      gap: var(--space-xl);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .page-hero__stats {
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+  }
+</style>
