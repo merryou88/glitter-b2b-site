@@ -1,0 +1,35 @@
+---
+/**
+ * CTAButton.astro — Reusable call-to-action button
+ * Variants: primary, secondary, outline, dark
+ */
+export interface Props {
+  href: string;
+  variant?: "primary" | "secondary" | "outline" | "dark";
+  size?: "default" | "lg";
+  block?: boolean;
+  class?: string;
+}
+
+const {
+  href,
+  variant = "primary",
+  size = "default",
+  block = false,
+  class: className = "",
+} = Astro.props;
+
+const classes = [
+  "btn",
+  `btn--${variant}`,
+  size === "lg" && "btn--lg",
+  block && "btn--block",
+  className,
+]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<a href={href} class={classes}>
+  <slot />
+</a>
