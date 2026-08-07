@@ -1,0 +1,348 @@
+---
+/**
+ * Header.astro — Site navigation header
+ * Sticky, responsive with mobile menu
+ */
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "Products", href: "/products" },
+  { label: "Factory", href: "/factory" },
+  { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
+];
+
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) => {
+  if (href === "/") return currentPath === "/";
+  return currentPath.startsWith(href);
+};
+---
+
+<header class="header" id="site-header">
+  <div class="container header__inner">
+    <!-- Logo -->
+    <a href="/" class="header__logo" aria-label="Nixia Fabric — Home">
+      <span class="header__logo-mark">NF</span>
+      <span class="header__logo-text">
+        Nixia<span class="header__logo-accent">Fabric</span>
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="header__nav" aria-label="Main navigation">
+      <ul class="header__nav-list">
+        {navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class:list={["header__nav-link", { "is-active": isActive(item.href) }]}
+              aria-current={isActive(item.href) ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Desktop CTA -->
+    <div class="header__actions">
+      <a href="/contact?inquiry=swatch" class="btn btn--outline header__btn">
+        Request Swatch
+      </a>
+      <a href="/contact?inquiry=quote" class="btn btn--dark header__btn">
+        Get Custom Quote
+      </a>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button
+      class="header__toggle"
+      id="menu-toggle"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+    >
+      <span class="header__toggle-bar"></span>
+      <span class="header__toggle-bar"></span>
+      <span class="header__toggle-bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div class="header__mobile" id="mobile-nav" aria-hidden="true">
+    <nav aria-label="Mobile navigation">
+      <ul class="header__mobile-list">
+        {navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class:list={["header__mobile-link", { "is-active": isActive(item.href) }]}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div class="header__mobile-actions">
+      <a href="/contact?inquiry=swatch" class="btn btn--outline btn--block">
+        Request Swatch
+      </a>
+      <a href="/contact?inquiry=quote" class="btn btn--dark btn--block">
+        Get Custom Quote
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-header);
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+    transition: box-shadow var(--transition-base);
+  }
+
+  .header.is-scrolled {
+    box-shadow: var(--shadow-md);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-height);
+    gap: var(--space-xl);
+  }
+
+  /* Logo */
+  .header__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    flex-shrink: 0;
+  }
+
+  .header__logo-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    color: var(--color-white);
+    font-size: var(--text-sm);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    border-radius: var(--radius-sm);
+  }
+
+  .header__logo-text {
+    font-size: var(--text-xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.03em;
+  }
+
+  .header__logo-accent {
+    color: var(--color-accent);
+    margin-left: 2px;
+  }
+
+  /* Desktop Nav */
+  .header__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .header__nav-list {
+    display: flex;
+    gap: var(--space-xl);
+  }
+
+  .header__nav-link {
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--color-text);
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color var(--transition-fast);
+  }
+
+  .header__nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: width var(--transition-base);
+  }
+
+  .header__nav-link:hover {
+    color: var(--color-primary);
+  }
+
+  .header__nav-link:hover::after,
+  .header__nav-link.is-active::after {
+    width: 100%;
+  }
+
+  .header__nav-link.is-active {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  /* Desktop CTA */
+  .header__actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-shrink: 0;
+  }
+
+  .header__btn {
+    padding: 0.5rem 1.25rem;
+    font-size: var(--text-sm);
+  }
+
+  /* Mobile Toggle */
+  .header__toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .header__toggle-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+    transition: all var(--transition-base);
+  }
+
+  .header__toggle.is-open .header__toggle-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .header__toggle.is-open .header__toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .header__toggle.is-open .header__toggle-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile Nav */
+  .header__mobile {
+    display: none;
+    flex-direction: column;
+    gap: var(--space-lg);
+    padding: var(--space-lg) var(--space-md) var(--space-xl);
+    background-color: var(--color-white);
+    border-top: 1px solid var(--color-border);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-slow), padding var(--transition-slow);
+  }
+
+  .header__mobile.is-open {
+    max-height: 500px;
+    padding: var(--space-lg) var(--space-md) var(--space-xl);
+    box-shadow: var(--shadow-md);
+  }
+
+  .header__mobile-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .header__mobile-link {
+    display: block;
+    padding: 0.75rem 0;
+    font-size: var(--text-lg);
+    font-weight: 500;
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
+    transition: color var(--transition-fast);
+  }
+
+  .header__mobile-link.is-active {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .header__mobile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    .header__nav,
+    .header__actions {
+      display: none;
+    }
+
+    .header__toggle {
+      display: flex;
+    }
+
+    .header__mobile {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  // Mobile menu toggle
+  const toggle = document.getElementById("menu-toggle");
+  const mobileNav = document.getElementById("mobile-nav");
+  const header = document.getElementById("site-header");
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = toggle.classList.toggle("is-open");
+    mobileNav?.classList.toggle("is-open", isOpen);
+    toggle.setAttribute("aria-expanded", String(isOpen));
+    mobileNav?.setAttribute("aria-hidden", String(!isOpen));
+  });
+
+  // Sticky header shadow on scroll
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        header?.classList.toggle("is-scrolled", window.scrollY > 8);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  // Close mobile menu on link click
+  mobileNav?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      toggle?.classList.remove("is-open");
+      mobileNav?.classList.remove("is-open");
+      toggle?.setAttribute("aria-expanded", "false");
+      mobileNav?.setAttribute("aria-hidden", "true");
+    });
+  });
+</script>

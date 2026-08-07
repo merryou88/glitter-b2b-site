@@ -1,0 +1,146 @@
+---
+/**
+ * index.astro — Home page (Step 1 placeholder)
+ * Full homepage will be developed in Step 2
+ */
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout
+  title=""
+  description="Nixia Fabric is a China glitter fabric manufacturer specializing in glitter fabric and foil fabric for shoes, handbags, and fashion accessories. OEM production and custom color development."
+  keywords="glitter fabric manufacturer, foil fabric manufacturer, glitter fabric factory china, metallic fabric factory, OEM fabric production, custom fabric development"
+>
+  <!-- Step 1 Placeholder — Home page will be developed in Step 2 -->
+
+  <!-- Hero Section (placeholder) -->
+  <section class="section section--dark hero-placeholder">
+    <div class="container">
+      <span class="eyebrow">China Glitter Fabric Manufacturer</span>
+      <h1>Nixia Fabric</h1>
+      <p class="hero-placeholder__subtitle">
+        Specializing in glitter fabric and foil fabric for shoes, handbags
+        and fashion accessories.
+      </p>
+      <div class="btn-group">
+        <a href="/contact?inquiry=swatch" class="btn btn--primary btn--lg">
+          Request Swatch
+        </a>
+        <a href="/contact?inquiry=quote" class="btn btn--secondary btn--lg">
+          Get Custom Quote
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Status Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Project Status</span>
+        <h2>Step 1 Complete — Project Foundation</h2>
+        <p>
+          Astro project structure, Layout, Header, Footer, and Global CSS
+          are ready. The next step is developing the full Home page.
+        </p>
+      </div>
+
+      <div class="grid grid--3">
+        <div class="card">
+          <div class="card__body">
+            <span class="badge badge--accent">Done</span>
+            <h3 style="margin-top: 0.75rem;">Project Structure</h3>
+            <p>
+              Astro + TypeScript project initialized with strict type
+              checking, path aliases, and Cloudflare Pages deployment config.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__body">
+            <span class="badge badge--accent">Done</span>
+            <h3 style="margin-top: 0.75rem;">Layout & SEO</h3>
+            <p>
+              Base Layout with meta tags, Open Graph, Twitter Cards, JSON-LD
+              structured data, and Inter font loading.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__body">
+            <span class="badge badge--accent">Done</span>
+            <h3 style="margin-top: 0.75rem;">Header & Footer</h3>
+            <p>
+              Sticky responsive header with mobile menu. Footer with brand
+              info, navigation columns, and dual CTA bar.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__body">
+            <span class="badge badge--accent">Done</span>
+            <h3 style="margin-top: 0.75rem;">Design System</h3>
+            <p>
+              CSS variables for colors, typography, spacing, shadows. Mobile-
+              first responsive grid and utility classes.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__body">
+            <span class="badge badge--accent">Done</span>
+            <h3 style="margin-top: 0.75rem;">Product Data Model</h3>
+            <p>
+              TypeScript interfaces for products and categories. Pre-loaded
+              with Glitter Fabric and Foil Fabric catalog data.
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__body">
+            <span class="badge">Next</span>
+            <h3 style="margin-top: 0.75rem;">Step 2: Home Page</h3>
+            <p>
+              Full homepage with Hero, Product Categories, Factory Capability,
+              Applications, Why Choose Us, and Final CTA sections.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-placeholder {
+    text-align: center;
+    padding-block: var(--space-5xl);
+    background: linear-gradient(
+      135deg,
+      var(--color-primary-dark) 0%,
+      var(--color-primary) 100%
+    );
+  }
+
+  .hero-placeholder h1 {
+    color: var(--color-white);
+    font-size: var(--text-6xl);
+    margin-bottom: var(--space-md);
+  }
+
+  .hero-placeholder__subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--text-xl);
+    max-width: 600px;
+    margin: 0 auto var(--space-2xl);
+  }
+
+  .hero-placeholder .btn-group {
+    justify-content: center;
+  }
+</style>

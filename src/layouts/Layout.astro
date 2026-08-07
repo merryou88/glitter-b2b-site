@@ -1,0 +1,135 @@
+---
+/**
+ * Layout.astro — Base layout for all pages
+ * Handles SEO meta, structured data, header/footer
+ */
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import "../styles/global.css";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  image?: string;
+  canonical?: string;
+  /** Additional JSON-LD structured data */
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+  title,
+  description = "Nixia Fabric is a China glitter fabric manufacturer specializing in glitter fabric and foil fabric for shoes, handbags, and fashion accessories. OEM production and custom color development.",
+  keywords = "glitter fabric manufacturer, foil fabric manufacturer, glitter fabric factory china, metallic fabric factory, OEM fabric production",
+  image = "/images/og-default.jpg",
+  canonical,
+  structuredData,
+} = Astro.props;
+
+const siteName = "Nixia Fabric";
+const pageTitle = title ? `${title} | ${siteName}` : `${siteName} — China Glitter Fabric Manufacturer`;
+const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).toString();
+
+// Organization structured data
+const orgStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Nixia Fabric",
+  description: "China glitter fabric manufacturer specializing in glitter fabric and foil fabric for shoes, handbags, and fashion accessories.",
+  url: "https://nixiafabric.com",
+  logo: "https://nixiafabric.com/images/logo.png",
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "CN",
+  },
+  sameAs: [],
+};
+
+// Merge structured data
+const allStructuredData = structuredData
+  ? Array.isArray(structuredData)
+    ? [orgStructuredData, ...structuredData]
+    : [orgStructuredData, structuredData]
+  : [orgStructuredData];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta Tags -->
+    <title>{pageTitle}</title>
+    <meta name="title" content={pageTitle} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Nixia Fabric" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site).toString()} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.site).toString()} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Structured Data -->
+    {allStructuredData.map((data) => (
+      <script type="application/ld+json" set:html={JSON.stringify(data)} />
+    ))}
+
+    <!-- Astro view transitions (optional) -->
+    <meta name="view-transition" content="same-origin" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <style>
+      .skip-link {
+        position: absolute;
+        top: -100px;
+        left: 0;
+        padding: 0.75rem 1.5rem;
+        background-color: var(--color-primary);
+        color: var(--color-white);
+        z-index: var(--z-modal);
+        border-radius: 0 0 var(--radius-sm) 0;
+        transition: top var(--transition-fast);
+      }
+
+      .skip-link:focus {
+        top: 0;
+      }
+    </style>
+  </body>
+</html>
