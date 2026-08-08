@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://nixiafabric.com',
   output: 'static',
-  trailingSlash: 'ignore',
+  trailingSlash: 'always',
   build: {
     inlineStylesheets: 'auto',
   },
