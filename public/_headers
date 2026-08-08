@@ -1,0 +1,37 @@
+# Cloudflare Pages _headers file
+# Cache static assets aggressively for fast loading
+
+# Font files - cache for 1 year
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+# CSS files - cache for 1 year with hash-based filenames
+/_astro/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+# JS files - cache for 1 year with hash-based filenames
+/_astro/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# SVG images - cache for 30 days
+/*.svg
+  Cache-Control: public, max-age=2592000
+
+# Favicon - cache for 7 days
+/favicon.svg
+  Cache-Control: public, max-age=604800
+
+# Robots.txt - cache for 1 day
+/robots.txt
+  Cache-Control: public, max-age=86400
+
+# Sitemap - cache for 1 day
+/sitemap-index.xml
+  Cache-Control: public, max-age=86400
+
+# Security headers for all pages
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()

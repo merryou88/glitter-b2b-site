@@ -1,0 +1,10 @@
+# Nixia Fabric - robots.txt
+# China Glitter Fabric Manufacturer
+
+User-agent: *
+Allow: /
+
+# Block nothing - all pages are public and SEO-friendly
+
+# Sitemap
+Sitemap: https://nixiafabric.com/sitemap-index.xml

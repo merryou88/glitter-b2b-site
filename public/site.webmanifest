@@ -1,0 +1,16 @@
+{
+  "name": "Nixia Fabric",
+  "short_name": "Nixia Fabric",
+  "description": "China Glitter Fabric Manufacturer — glitter fabric and foil fabric for shoes, handbags, and fashion accessories.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#16294d",
+  "theme_color": "#16294d",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

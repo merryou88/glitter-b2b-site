@@ -87,6 +87,7 @@ const productStructuredData = {
   name: product.name,
   description: product.description,
   category: product.category,
+  url: `https://nixiafabric.com/products/${product.slug}`,
   brand: {
     "@type": "Brand",
     name: "Nixia Fabric",
@@ -94,6 +95,7 @@ const productStructuredData = {
   manufacturer: {
     "@type": "Organization",
     name: "Nixia Fabric",
+    url: "https://nixiafabric.com",
   },
   material: product.specifications.composition,
   additionalProperty: [
@@ -111,6 +113,11 @@ const productStructuredData = {
       "@type": "PropertyValue",
       name: "Backing",
       value: product.specifications.backing,
+    },
+    {
+      "@type": "PropertyValue",
+      name: "Applications",
+      value: product.applications.join(", "),
     },
   ],
 };

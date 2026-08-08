@@ -1,0 +1,728 @@
+---
+/**
+ * About Page — /about
+ * Sections: Brand Story, Nixia Fabric Background,
+ *           Industry Experience, Focus on Decorative Fabric, Global Market Service
+ */
+import Layout from "@layouts/Layout.astro";
+import CTAButton from "@components/CTAButton.astro";
+
+const breadcrumbData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://nixiafabric.com/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "About",
+      item: "https://nixiafabric.com/about",
+    },
+  ],
+};
+
+const aboutPageData = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "About Nixia Fabric",
+  description: "Learn about Nixia Fabric — a China-based manufacturer specializing in glitter fabric and foil fabric for shoes, handbags, and fashion accessories.",
+  url: "https://nixiafabric.com/about",
+  mainEntity: {
+    "@type": "Organization",
+    name: "Nixia Fabric",
+    foundingLocation: {
+      "@type": "Place",
+      addressCountry: "CN",
+    },
+    knowsAbout: [
+      "Glitter Fabric Manufacturing",
+      "Foil Fabric Manufacturing",
+      "Custom Color Development",
+      "OEM Fabric Production",
+      "Decorative Fabric",
+    ],
+  },
+};
+
+const milestones = [
+  {
+    year: "Early Years",
+    title: "Focus on Fabric",
+    desc: "Started with a focus on decorative fabric production — glitter and metallic finishes for fashion and accessories applications.",
+  },
+  {
+    year: "Growth",
+    title: "Product Line Expansion",
+    desc: "Expanded the product line from a single glitter fabric type to elastic, PU, non-woven, and Oxford backing options, plus foil fabric.",
+  },
+  {
+    year: "Today",
+    title: "Global B2B Manufacturing",
+    desc: "Serve international clients across multiple markets — shoe manufacturers, bag brands, fashion accessory companies, and OEM clients.",
+  },
+  {
+    year: "Future",
+    title: "Custom Development Focus",
+    desc: "Investing in custom color development capability and OEM production flexibility to serve clients who need specific fabric solutions.",
+  },
+];
+
+const globalMarkets = [
+  {
+    region: "North America",
+    desc: "Shoe brands, handbag manufacturers, and fashion accessory companies.",
+  },
+  {
+    region: "Europe",
+    desc: "Fashion houses, decorative fabric buyers, and OEM production clients.",
+  },
+  {
+    region: "Asia Pacific",
+    desc: "Shoe manufacturers, bag producers, and regional fabric distributors.",
+  },
+  {
+    region: "Middle East & Africa",
+    desc: "Fashion accessory producers and decorative fabric buyers.",
+  },
+];
+
+const brandValues = [
+  {
+    title: "Manufacturer First",
+    desc: "We are a manufacturer — not a trading company. You deal directly with the people who make your fabric.",
+    icon: "factory",
+  },
+  {
+    title: "Custom Development",
+    desc: "We invest in color development and OEM production capability. If you need a specific fabric, we can develop it.",
+    icon: "palette",
+  },
+  {
+    title: "Quality Over Volume",
+    desc: "We prioritize consistency and quality in every production batch — from raw material to final inspection.",
+    icon: "shield",
+  },
+  {
+    title: "Direct Communication",
+    desc: "No middleman, no layers. You talk to our production team directly about your specifications.",
+    icon: "chat",
+  },
+];
+---
+
+<Layout
+  title="About — Brand Story"
+  description="Learn about Nixia Fabric — a China-based manufacturer specializing in glitter fabric and foil fabric. Our background, industry experience, and commitment to decorative fabric manufacturing."
+  keywords="nixia fabric, glitter fabric manufacturer, fabric manufacturer china, decorative fabric, OEM fabric production, custom fabric development"
+  structuredData={[breadcrumbData, aboutPageData]}
+>
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-bar">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb__sep">/</span>
+        <span class="breadcrumb__current">About</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- About Hero -->
+  <section class="about-hero">
+    <div class="container">
+      <span class="eyebrow">About Nixia Fabric</span>
+      <h1>We Manufacture Decorative Fabric</h1>
+      <p class="about-hero__desc">
+        Nixia Fabric is a China-based manufacturer specializing in glitter fabric and
+        foil fabric for shoes, handbags, and fashion accessories. We are not a trading company
+        — we are the factory that produces your fabric.
+      </p>
+    </div>
+  </section>
+
+  <!-- Brand Story -->
+  <section class="section">
+    <div class="container">
+      <div class="brand-story">
+        <div class="brand-story__left">
+          <span class="eyebrow">Brand Story</span>
+          <h2>From Fabric Production to a Specialized Manufacturer</h2>
+          <p>
+            Nixia Fabric was founded with a clear focus: to manufacture decorative fabrics
+            that combine visual impact with production reliability.
+          </p>
+          <p>
+            We saw that many fabric suppliers were trading companies — sourcing from multiple
+            factories without consistent quality control. Buyers couldn't get direct answers
+            about production processes, couldn't get custom colors developed, and couldn't
+            trace quality issues back to the source.
+          </p>
+          <p>
+            We built Nixia Fabric differently. We produce in-house. We develop custom colors.
+            We control quality at every stage. And we deal directly with our clients —
+            from the initial inquiry to the production specification to the final delivery.
+          </p>
+          <p>
+            Today, we produce two main product lines — Glitter Fabric and Foil Fabric —
+            with multiple backing options, custom colors, and OEM production capabilities.
+            Our focus remains the same: be the manufacturer our clients can rely on.
+          </p>
+        </div>
+        <div class="brand-story__right">
+          <div class="brand-story__card">
+            <div class="brand-story__card-item">
+              <span class="brand-story__card-num">100%</span>
+              <span class="brand-story__card-label">In-house Production</span>
+            </div>
+            <div class="brand-story__card-item">
+              <span class="brand-story__card-num">2</span>
+              <span class="brand-story__card-label">Product Lines</span>
+            </div>
+            <div class="brand-story__card-item">
+              <span class="brand-story__card-num">7+</span>
+              <span class="brand-story__card-label">Fabric Variations</span>
+            </div>
+            <div class="brand-story__card-item">
+              <span class="brand-story__card-num">OEM</span>
+              <span class="brand-story__card-label">Custom Capability</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industry Experience Timeline -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Industry Experience</span>
+        <h2>Our Journey in Decorative Fabric</h2>
+        <p>
+          From early focus on fabric production to specialized manufacturing of glitter
+          and foil fabrics for the global market.
+        </p>
+      </div>
+
+      <div class="milestone-timeline">
+        {milestones.map((m, i) => (
+          <div class={`milestone ${i === milestones.length - 1 ? "milestone--last" : ""}`}>
+            <div class="milestone__dot"></div>
+            <div class="milestone__content">
+              <span class="milestone__year">{m.year}</span>
+              <h3 class="milestone__title">{m.title}</h3>
+              <p class="milestone__desc">{m.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Focus on Decorative Fabric -->
+  <section class="section">
+    <div class="container">
+      <div class="focus-section">
+        <div class="focus-section__left">
+          <span class="eyebrow">Our Focus</span>
+          <h2>Specialized in Decorative Fabric</h2>
+          <p>
+            We don't try to be everything. Our expertise is in decorative fabrics —
+            fabrics with visual impact: glitter surfaces and metallic foil finishes.
+          </p>
+          <p>
+            This focus means we understand the specific challenges of glitter bonding,
+            foil lamination, and color consistency for fashion and accessory applications.
+            We know how the fabric needs to perform — in terms of adhesion, durability,
+            and appearance — for shoes, handbags, bags, and fashion accessories.
+          </p>
+          <ul class="focus-section__list">
+            <li>
+              <strong>Glitter Fabric</strong> — Elastic, PU, Non-woven, and Oxford backing
+              options for diverse applications
+            </li>
+            <li>
+              <strong>Foil Fabric</strong> — Gold, silver, and custom metallic finishes
+              with high-shine reflective properties
+            </li>
+            <li>
+              <strong>Custom Development</strong> — Custom colors, GSM, width, and
+              backing materials tailored to client specifications
+            </li>
+          </ul>
+        </div>
+        <div class="focus-section__right">
+          <div class="focus-section__products">
+            <div class="focus-section__product">
+              <span class="focus-section__product-name">Glitter Fabric</span>
+              <span class="focus-section__product-types">4 Variations</span>
+            </div>
+            <div class="focus-section__product">
+              <span class="focus-section__product-name">Foil Fabric</span>
+              <span class="focus-section__product-types">3 Variations</span>
+            </div>
+            <div class="focus-section__product">
+              <span class="focus-section__product-name">Custom Colors</span>
+              <span class="focus-section__product-types">Unlimited Options</span>
+            </div>
+            <div class="focus-section__product">
+              <span class="focus-section__product-name">OEM Production</span>
+              <span class="focus-section__product-types">Full Customization</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand Values -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">What Drives Us</span>
+        <h2>Our Values</h2>
+        <p>
+          Four principles that define how we operate as a manufacturer.
+        </p>
+      </div>
+
+      <div class="values-grid">
+        {brandValues.map((val) => (
+          <div class="value-card">
+            <div class="value-card__icon">
+              {val.icon === "factory" && (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 20h20V8l-6 4V8l-6 4V4H2v16z" /><path d="M6 16h2M10 16h2M14 16h2" />
+                </svg>
+              )}
+              {val.icon === "palette" && (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" /><circle cx="17.5" cy="10.5" r=".5" fill="currentColor" /><circle cx="8.5" cy="7.5" r=".5" fill="currentColor" /><circle cx="6.5" cy="12.5" r=".5" fill="currentColor" /><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z" />
+                </svg>
+              )}
+              {val.icon === "shield" && (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              )}
+              {val.icon === "chat" && (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+              )}
+            </div>
+            <h3 class="value-card__title">{val.title}</h3>
+            <p class="value-card__desc">{val.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Market Service -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Global Market Service</span>
+        <h2>Serving Clients Worldwide</h2>
+        <p>
+          Our decorative fabrics are used by manufacturers and brands across multiple regions.
+          We understand the requirements of different markets — from quality standards
+          to packaging specifications.
+        </p>
+      </div>
+
+      <div class="markets-grid">
+        {globalMarkets.map((market) => (
+          <div class="market-card">
+            <div class="market-card__icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg>
+            </div>
+            <h3 class="market-card__region">{market.region}</h3>
+            <p class="market-card__desc">{market.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--dark">
+    <div class="container text-center">
+      <span class="eyebrow">Let's Build Together</span>
+      <h2>Partner With a Manufacturer</h2>
+      <p style="max-width: 600px; margin: var(--space-lg) auto var(--space-2xl);">
+        Whether you need standard glitter fabric, custom color development, or full OEM
+        production — we're the factory that can make it happen.
+      </p>
+      <div class="btn-group" style="justify-content: center;">
+        <CTAButton href="/#contact" variant="primary" size="lg">Request Swatch</CTAButton>
+        <CTAButton href="/#contact" variant="secondary" size="lg">Get Custom Quote</CTAButton>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .breadcrumb-bar {
+    background-color: var(--color-bg-alt);
+    padding-block: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  .breadcrumb a:hover {
+    color: var(--color-accent-dark);
+  }
+
+  .breadcrumb__sep {
+    color: var(--color-text-light);
+  }
+
+  .breadcrumb__current {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  /* About Hero */
+  .about-hero {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: var(--color-white);
+    padding-block: var(--space-3xl) var(--space-4xl);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(196, 160, 53, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 30%, rgba(42, 65, 112, 0.4) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .about-hero .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-hero .eyebrow {
+    color: var(--color-accent-light);
+  }
+
+  .about-hero h1 {
+    color: var(--color-white);
+    margin-bottom: var(--space-md);
+  }
+
+  .about-hero__desc {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: var(--text-lg);
+    max-width: 680px;
+  }
+
+  /* Brand Story */
+  .brand-story {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--space-4xl);
+    align-items: start;
+  }
+
+  .brand-story__left p {
+    margin-bottom: var(--space-md);
+    font-size: var(--text-base);
+    line-height: 1.8;
+  }
+
+  .brand-story__card {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--space-3xl) var(--space-2xl);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .brand-story__card-item {
+    text-align: center;
+  }
+
+  .brand-story__card-num {
+    display: block;
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    color: var(--color-accent);
+    line-height: 1;
+    margin-bottom: var(--space-sm);
+  }
+
+  .brand-story__card-label {
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Milestone Timeline */
+  .milestone-timeline {
+    position: relative;
+    max-width: 800px;
+    margin-inline: auto;
+    padding-left: 40px;
+  }
+
+  .milestone-timeline::before {
+    content: "";
+    position: absolute;
+    left: 12px;
+    top: 8px;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--color-accent), var(--color-border));
+  }
+
+  .milestone {
+    position: relative;
+    margin-bottom: var(--space-3xl);
+  }
+
+  .milestone--last {
+    margin-bottom: 0;
+  }
+
+  .milestone__dot {
+    position: absolute;
+    left: -40px;
+    top: 6px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    border: 3px solid var(--color-accent);
+  }
+
+  .milestone__year {
+    display: inline-block;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent-dark);
+    background-color: rgba(196, 160, 53, 0.12);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-sm);
+  }
+
+  .milestone__title {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-sm);
+  }
+
+  .milestone__desc {
+    font-size: var(--text-sm);
+    line-height: 1.7;
+  }
+
+  /* Focus Section */
+  .focus-section {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--space-4xl);
+    align-items: start;
+  }
+
+  .focus-section__left p {
+    margin-bottom: var(--space-md);
+    font-size: var(--text-base);
+    line-height: 1.8;
+  }
+
+  .focus-section__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+
+  .focus-section__list li {
+    padding: var(--space-md);
+    background-color: var(--color-bg-alt);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--color-accent);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .focus-section__list li strong {
+    color: var(--color-primary);
+  }
+
+  .focus-section__products {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .focus-section__product {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-lg) var(--space-xl);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+  }
+
+  .focus-section__product:hover {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-sm);
+    transform: translateX(4px);
+  }
+
+  .focus-section__product-name {
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: var(--text-base);
+  }
+
+  .focus-section__product-types {
+    font-size: var(--text-xs);
+    color: var(--color-accent-dark);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  /* Values Grid */
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .value-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+    transition: all var(--transition-base);
+  }
+
+  .value-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+    border-color: var(--color-accent-light);
+  }
+
+  .value-card__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-md);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    margin-bottom: var(--space-lg);
+  }
+
+  .value-card__title {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-sm);
+  }
+
+  .value-card__desc {
+    font-size: var(--text-sm);
+    line-height: 1.7;
+  }
+
+  /* Markets Grid */
+  .markets-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .market-card {
+    background-color: var(--color-bg-alt);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+    text-align: center;
+    transition: all var(--transition-base);
+  }
+
+  .market-card:hover {
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+  }
+
+  .market-card__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    margin: 0 auto var(--space-lg);
+  }
+
+  .market-card__region {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-sm);
+  }
+
+  .market-card__desc {
+    font-size: var(--text-xs);
+    line-height: 1.6;
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    .brand-story,
+    .focus-section {
+      grid-template-columns: 1fr;
+    }
+
+    .markets-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .brand-story__card {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .markets-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

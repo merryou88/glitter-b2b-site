@@ -32,6 +32,15 @@ const breadcrumbData = {
   ],
 };
 
+// CollectionPage structured data
+const collectionPageData = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Nixia Fabric Products — Glitter Fabric & Foil Fabric",
+  description: "Explore Nixia Fabric's complete product catalog: glitter fabric and foil fabric for shoes, handbags, and fashion accessories.",
+  url: "https://nixiafabric.com/products",
+};
+
 // ItemList structured data
 const itemListData = {
   "@context": "https://schema.org",
@@ -51,7 +60,7 @@ const itemListData = {
   title="Products — Glitter Fabric & Foil Fabric"
   description="Explore Nixia Fabric's complete product catalog: glitter fabric (elastic, PU, non-woven, Oxford) and foil fabric (metallic, gold, silver) for shoes, handbags, and fashion accessories."
   keywords="glitter fabric, foil fabric, elastic glitter fabric, PU glitter fabric, non-woven glitter fabric, oxford glitter fabric, metallic foil fabric, gold foil fabric, silver foil fabric"
-  structuredData={[breadcrumbData, itemListData]}
+  structuredData={[breadcrumbData, collectionPageData, itemListData]}
 >
   <!-- Page Header -->
   <section class="page-hero">

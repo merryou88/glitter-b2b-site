@@ -21,6 +21,54 @@ const webPageData = {
   url: "https://nixiafabric.com",
 };
 
+// FAQPage structured data for rich snippets
+const faqData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What does Nixia Fabric manufacture?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Nixia Fabric manufactures glitter fabric and foil fabric for shoes, handbags, bags accessories, and fashion applications. We produce elastic glitter fabric, PU glitter fabric, non-woven glitter fabric, Oxford glitter fabric, and metallic foil fabric including gold and silver foil.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Is Nixia Fabric a manufacturer or a trading company?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Nixia Fabric is a manufacturer — not a trading company or sourcing agent. We produce all fabrics in-house with direct control over quality, custom color development, and OEM production.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can I get custom colors developed?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. We offer full custom color development including Pantone color matching, metallic tone development, and batch-to-batch color consistency. Our in-house color lab ensures your custom colors are matched accurately.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you offer OEM production?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, we provide full OEM production services including custom GSM, width, backing material, glitter density, and special finishes tailored to your specifications.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How can I get fabric swatches?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "You can request free fabric swatches by contacting us through our website. We ship swatches worldwide so you can see and feel the quality before placing an order.",
+      },
+    },
+  ],
+};
+
 const factoryCapabilities = [
   {
     title: "Manufacturing Experience",
@@ -99,7 +147,7 @@ const whyChooseUs = [
   title=""
   description="Nixia Fabric is a China glitter fabric manufacturer specializing in glitter fabric and foil fabric for shoes, handbags, and fashion accessories. OEM production and custom color development."
   keywords="glitter fabric manufacturer, foil fabric manufacturer, glitter fabric factory china, metallic fabric factory, OEM fabric production, custom fabric development, glitter fabric for shoes, foil fabric for handbags"
-  structuredData={webPageData}
+  structuredData={[webPageData, faqData]}
 >
   <!-- ==================== 1. HERO ==================== -->
   <Hero />

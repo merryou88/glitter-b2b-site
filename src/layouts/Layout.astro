@@ -2,6 +2,16 @@
 /**
  * Layout.astro — Base layout for all pages
  * Handles SEO meta, structured data, header/footer
+ *
+ * SEO features:
+ * - Primary meta tags (title, description, keywords)
+ * - Canonical URL
+ * - Open Graph + Twitter Cards
+ * - JSON-LD structured data (Organization + WebSite + page-specific)
+ * - Robots meta
+ * - Theme color
+ * - Font preconnect + preload
+ * - Skip link for accessibility
  */
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
@@ -13,44 +23,91 @@ export interface Props {
   keywords?: string;
   image?: string;
   canonical?: string;
+  /** Page type for OG: "website" (default) or "article" */
+  ogType?: "website" | "article";
   /** Additional JSON-LD structured data */
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  /** Robots meta: default "index, follow" */
+  robots?: string;
 }
 
 const {
   title,
   description = "Nixia Fabric is a China glitter fabric manufacturer specializing in glitter fabric and foil fabric for shoes, handbags, and fashion accessories. OEM production and custom color development.",
-  keywords = "glitter fabric manufacturer, foil fabric manufacturer, glitter fabric factory china, metallic fabric factory, OEM fabric production",
-  image = "/images/og-default.jpg",
+  keywords = "glitter fabric manufacturer, foil fabric manufacturer, glitter fabric factory china, metallic fabric factory, OEM fabric production, custom fabric development",
+  image = "/og-image.svg",
   canonical,
+  ogType = "website",
   structuredData,
+  robots = "index, follow",
 } = Astro.props;
 
 const siteName = "Nixia Fabric";
+const siteUrl = "https://nixiafabric.com";
 const pageTitle = title ? `${title} | ${siteName}` : `${siteName} — China Glitter Fabric Manufacturer`;
 const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).toString();
+const ogImageUrl = new URL(image, Astro.site).toString();
 
 // Organization structured data
 const orgStructuredData = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Nixia Fabric",
-  description: "China glitter fabric manufacturer specializing in glitter fabric and foil fabric for shoes, handbags, and fashion accessories.",
-  url: "https://nixiafabric.com",
-  logo: "https://nixiafabric.com/images/logo.png",
+  alternateName: "Nixia Fabric Manufacturer",
+  description: "China glitter fabric manufacturer specializing in glitter fabric and foil fabric for shoes, handbags, and fashion accessories. OEM production and custom color development.",
+  url: siteUrl,
+  logo: `${siteUrl}/favicon.svg`,
   address: {
     "@type": "PostalAddress",
     addressCountry: "CN",
   },
-  sameAs: [],
+  areaServed: ["Worldwide"],
+  knowsAbout: [
+    "Glitter Fabric",
+    "Foil Fabric",
+    "Metallic Fabric",
+    "OEM Fabric Production",
+    "Custom Color Development",
+    "Decorative Fabric Manufacturing",
+  ],
+  makesOffer: [
+    {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Product",
+        name: "Glitter Fabric",
+        category: "Decorative Fabric",
+      },
+    },
+    {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Product",
+        name: "Foil Fabric",
+        category: "Decorative Fabric",
+      },
+    },
+  ],
 };
 
-// Merge structured data
+// WebSite structured data (enables sitelinks search box)
+const websiteStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Nixia Fabric",
+  url: siteUrl,
+  publisher: {
+    "@type": "Organization",
+    name: "Nixia Fabric",
+  },
+};
+
+// Merge all structured data
 const allStructuredData = structuredData
   ? Array.isArray(structuredData)
-    ? [orgStructuredData, ...structuredData]
-    : [orgStructuredData, structuredData]
-  : [orgStructuredData];
+    ? [orgStructuredData, websiteStructuredData, ...structuredData]
+    : [orgStructuredData, websiteStructuredData, structuredData]
+  : [orgStructuredData, websiteStructuredData];
 ---
 
 <!doctype html>
@@ -68,15 +125,24 @@ const allStructuredData = structuredData
     <link rel="canonical" href={canonicalUrl} />
 
     <!-- Robots -->
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={robots} />
     <meta name="author" content="Nixia Fabric" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+
+    <!-- Mobile / PWA -->
+    <meta name="theme-color" content="#16294d" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Nixia Fabric" />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.site).toString()} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content={`${siteName} — Decorative Fabric Manufacturer`} />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:locale" content="en_US" />
 
@@ -84,15 +150,19 @@ const allStructuredData = structuredData
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(image, Astro.site).toString()} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={`${siteName} — Decorative Fabric Manufacturer`} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Fonts: Inter -->
+    <!-- Performance: Preconnect & DNS Prefetch -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
+    <!-- Fonts: Inter -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
