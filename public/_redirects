@@ -6,3 +6,5 @@
 /factory/ /factory 301
 /about/ /about 301
 /blog/ /blog 301
+# 适配Astro静态输出：访问 /about 映射到 /about.html
+/* $1.html 200
