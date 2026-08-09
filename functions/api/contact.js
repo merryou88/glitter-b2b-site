@@ -40,40 +40,61 @@ export async function onRequestPost({ request, env }) {
     return new Response(null, { status: 204, headers: corsHeaders });
   }
 
+  // ---- Parse JSON body ----
+  let body;
   try {
-    const body = await request.json();
+    body = await request.json();
+  } catch (parseErr) {
+    console.error("JSON parse error:", parseErr.message);
+    return jsonResponse(
+      { success: false, error: "Invalid request format. Please refresh the page and try again." },
+      400,
+      corsHeaders
+    );
+  }
 
-    const { name, company, email, subject, message, "cf-turnstile-response": turnstileToken } = body;
+  const { name, company, email, subject, message, "cf-turnstile-response": turnstileToken } = body;
 
-    // ---- Validate required fields ----
-    if (!name || !email || !subject || !message) {
-      return jsonResponse(
-        { success: false, error: "Missing required fields. Please fill in all required fields." },
-        400,
-        corsHeaders
-      );
-    }
+  // ---- Validate required fields ----
+  if (!name || !email || !subject || !message) {
+    return jsonResponse(
+      { success: false, error: "Missing required fields. Please fill in all required fields." },
+      400,
+      corsHeaders
+    );
+  }
 
-    // Basic email format check
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return jsonResponse(
-        { success: false, error: "Please provide a valid email address." },
-        400,
-        corsHeaders
-      );
-    }
+  // Basic email format check
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return jsonResponse(
+      { success: false, error: "Please provide a valid email address." },
+      400,
+      corsHeaders
+    );
+  }
 
-    // ---- Verify Cloudflare Turnstile token ----
-    const turnstileSecret = env.TURNSTILE_SECRET;
-    if (!turnstileToken) {
-      return jsonResponse(
-        { success: false, error: "Anti-bot verification is required. Please complete the verification." },
-        400,
-        corsHeaders
-      );
-    }
+  // ---- Verify Cloudflare Turnstile token ----
+  if (!turnstileToken) {
+    return jsonResponse(
+      { success: false, error: "Anti-bot verification is required. Please complete the verification." },
+      400,
+      corsHeaders
+    );
+  }
 
+  const turnstileSecret = env.TURNSTILE_SECRET;
+  if (!turnstileSecret) {
+    console.error("TURNSTILE_SECRET environment variable is not set.");
+    return jsonResponse(
+      { success: false, error: "Server configuration error (TURNSTILE_SECRET). Please contact us at info@nixiafabric.com." },
+      500,
+      corsHeaders
+    );
+  }
+
+  let turnstileData;
+  try {
     const turnstileRes = await fetch(TURNSTILE_VERIFY_URL, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -84,36 +105,48 @@ export async function onRequestPost({ request, env }) {
       }),
     });
 
-    const turnstileData = await turnstileRes.json();
+    turnstileData = await turnstileRes.json();
+  } catch (turnstileErr) {
+    console.error("Turnstile verification request failed:", turnstileErr.message);
+    return jsonResponse(
+      { success: false, error: "Anti-bot verification service is temporarily unavailable. Please try again in a moment." },
+      502,
+      corsHeaders
+    );
+  }
 
-    if (!turnstileData.success) {
-      return jsonResponse(
-        { success: false, error: "Anti-bot verification failed. Please try again." },
-        403,
-        corsHeaders
-      );
-    }
+  if (!turnstileData.success) {
+    const errorCodes = turnstileData["error-codes"] || [];
+    console.error("Turnstile verification failed:", errorCodes.join(", "));
+    return jsonResponse(
+      { success: false, error: "Anti-bot verification failed. Please refresh the page and try again." },
+      403,
+      corsHeaders
+    );
+  }
 
-    // ---- Assemble email content ----
-    const toEmail = env.MAIL_TO || "info@nixiafabric.com";
-    const fromEmail = env.MAIL_FROM || "no-reply@nixiafabric.com";
+  // ---- Assemble email content ----
+  const toEmail = env.MAIL_TO || "info@nixiafabric.com";
+  const fromEmail = env.MAIL_FROM || "no-reply@nixiafabric.com";
 
-    const emailSubject = `[Website Inquiry] ${subject}`;
-    const emailHtml = buildEmailHtml({ name, company, email, subject, message });
-    const emailText = buildEmailText({ name, company, email, subject, message });
+  const emailSubject = `[Website Inquiry] ${subject}`;
+  const emailHtml = buildEmailHtml({ name, company, email, subject, message });
+  const emailText = buildEmailText({ name, company, email, subject, message });
 
-    // ---- Send email via Resend API ----
-    const resendKey = env.RESEND_API_KEY;
-    if (!resendKey) {
-      console.error("RESEND_API_KEY environment variable is not set.");
-      return jsonResponse(
-        { success: false, error: "Email service is not configured. Please contact us at info@nixiafabric.com." },
-        500,
-        corsHeaders
-      );
-    }
+  // ---- Send email via Resend API ----
+  const resendKey = env.RESEND_API_KEY;
+  if (!resendKey) {
+    console.error("RESEND_API_KEY environment variable is not set.");
+    return jsonResponse(
+      { success: false, error: "Email service is not configured. Please contact us at info@nixiafabric.com." },
+      500,
+      corsHeaders
+    );
+  }
 
-    const sendRes = await fetch(RESEND_API_URL, {
+  let sendRes;
+  try {
+    sendRes = await fetch(RESEND_API_URL, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${resendKey}`,
@@ -128,30 +161,36 @@ export async function onRequestPost({ request, env }) {
         text: emailText,
       }),
     });
-
-    if (!sendRes.ok) {
-      const errBody = await sendRes.text();
-      console.error("Resend API error:", sendRes.status, errBody);
-      return jsonResponse(
-        { success: false, error: "Failed to send your inquiry. Please try again or contact us at info@nixiafabric.com." },
-        502,
-        corsHeaders
-      );
-    }
-
+  } catch (sendErr) {
+    console.error("Resend API request failed:", sendErr.message);
     return jsonResponse(
-      { success: true, message: "Your inquiry has been sent. We will get back to you within 24 hours." },
-      200,
-      corsHeaders
-    );
-  } catch (err) {
-    console.error("Contact form error:", err);
-    return jsonResponse(
-      { success: false, error: "An unexpected error occurred. Please try again or contact us at info@nixiafabric.com." },
-      500,
+      { success: false, error: "Email delivery service is temporarily unavailable. Please try again or contact us at info@nixiafabric.com." },
+      502,
       corsHeaders
     );
   }
+
+  if (!sendRes.ok) {
+    let errDetail = "";
+    try {
+      const errBody = await sendRes.json();
+      errDetail = errBody.message || JSON.stringify(errBody);
+    } catch {
+      errDetail = await sendRes.text().catch(() => `HTTP ${sendRes.status}`);
+    }
+    console.error("Resend API error:", sendRes.status, errDetail);
+    return jsonResponse(
+      { success: false, error: "Failed to send your inquiry. Our team has been notified. Please try again or contact us at info@nixiafabric.com." },
+      502,
+      corsHeaders
+    );
+  }
+
+  return jsonResponse(
+    { success: true, message: "Your inquiry has been sent. We will get back to you within 24 hours." },
+    200,
+    corsHeaders
+  );
 }
 
 // Handle non-POST requests

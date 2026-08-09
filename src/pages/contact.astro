@@ -352,15 +352,22 @@ const contactPageData = {
         }),
       });
 
-      const data = await res.json();
+      // Try to parse JSON, but handle non-JSON responses gracefully
+      let data: { success?: boolean; error?: string };
+      try {
+        data = await res.json();
+      } catch {
+        showError("The server returned an unexpected response. Please try again or contact us at info@nixiafabric.com.");
+        return;
+      }
 
       if (res.ok && data.success) {
         window.location.href = "/thank-you/";
       } else {
-        showError(data.error || "Failed to send your inquiry. Please try again.");
+        showError(data.error || "Failed to send your inquiry. Please try again or contact us at info@nixiafabric.com.");
       }
     } catch (err) {
-      showError("Network error. Please check your connection and try again, or contact us at info@nixiafabric.com.");
+      showError("Unable to reach the server. Please check your internet connection and try again, or contact us at info@nixiafabric.com.");
     } finally {
       setLoading(false);
     }
