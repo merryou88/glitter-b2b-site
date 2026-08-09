@@ -64,6 +64,18 @@ const contactPageData = {
             Fields marked with * are required. Keep it brief — we'll follow up for details.
           </p>
 
+          <!-- [修改3] 顶部双 CTA 按钮 -->
+          <div class="contact-cta-row">
+            <a href="/sample-policy/" class="contact-cta contact-cta--sample">
+              Request Free Sample
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="#contact-form" class="contact-cta contact-cta--quote">
+              Get Custom Quotation
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+
           <!-- Error banner (hidden by default) -->
           <div class="form-error" id="form-error" role="alert" hidden>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -75,6 +87,7 @@ const contactPageData = {
           </div>
 
           <form class="contact-form" id="contact-form" novalidate>
+            <!-- [修改2] Row 1: Name + Company 两列 -->
             <div class="form-row">
               <div class="form-field">
                 <label for="name" class="form-field__label">Name *</label>
@@ -102,29 +115,31 @@ const contactPageData = {
               </div>
             </div>
 
-            <div class="form-field">
-              <label for="email" class="form-field__label">Email *</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                class="form-field__input"
-                placeholder="you@company.com"
-                autocomplete="email"
-              />
-            </div>
-
-            <div class="form-field">
-              <label for="subject" class="form-field__label">Subject *</label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                required
-                class="form-field__input"
-                placeholder="e.g. Request free sample — glitter synthetic leather for shoes"
-              />
+            <!-- [修改2] Row 2: Email + Subject 两列 -->
+            <div class="form-row">
+              <div class="form-field">
+                <label for="email" class="form-field__label">Email *</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="form-field__input"
+                  placeholder="you@company.com"
+                  autocomplete="email"
+                />
+              </div>
+              <div class="form-field">
+                <label for="subject" class="form-field__label">Subject *</label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  required
+                  class="form-field__input"
+                  placeholder="e.g. Request free sample — glitter synthetic leather for shoes"
+                />
+              </div>
             </div>
 
             <div class="form-field">
@@ -461,6 +476,51 @@ const contactPageData = {
     font-size: var(--text-sm);
     color: var(--color-text-muted);
     margin-bottom: var(--space-xl);
+  }
+
+  /* [修改4] CTA 按钮行 */
+  .contact-cta-row {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+    flex-wrap: wrap;
+  }
+
+  .contact-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: 0.75rem var(--space-lg);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+  }
+
+  .contact-cta--sample {
+    background: var(--color-accent);
+    color: var(--color-white);
+  }
+
+  .contact-cta--sample:hover {
+    background: var(--color-accent-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .contact-cta--quote {
+    background: var(--color-white);
+    color: var(--color-accent);
+    border: 2px solid var(--color-accent);
+  }
+
+  .contact-cta--quote:hover {
+    background: var(--color-accent);
+    color: var(--color-white);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
   }
 
   .form-row {
