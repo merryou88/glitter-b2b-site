@@ -8,9 +8,9 @@
  * Required environment variables (set in Cloudflare Pages dashboard >
  * Settings > Environment variables):
  *   - TURNSTILE_SECRET       : Cloudflare Turnstile secret key
- *   - RESEND_API_KEY        : Resend.com API key
- *   - CONTACT_TO_EMAIL      : Business email to receive inquiries (e.g. info@nixiafabric.com)
- *   - CONTACT_FROM_EMAIL    : Verified sender email (e.g. noreply@nixiafabric.com)
+ *   - RESEND_API_KEY         : Resend.com API key
+ *   - MAIL_TO                : Business email to receive inquiries (info@nixiafabric.com)
+ *   - MAIL_FROM              : Verified sender address (no-reply@nixiafabric.com)
  *
  * Local dev note: This function only runs on Cloudflare Pages deployment.
  * `npm run dev` will return 404 for /api/contact — that is expected.
@@ -95,8 +95,8 @@ export async function onRequestPost({ request, env }) {
     }
 
     // ---- Assemble email content ----
-    const toEmail = env.CONTACT_TO_EMAIL || "info@nixiafabric.com";
-    const fromEmail = env.CONTACT_FROM_EMAIL || "noreply@nixiafabric.com";
+    const toEmail = env.MAIL_TO || "info@nixiafabric.com";
+    const fromEmail = env.MAIL_FROM || "no-reply@nixiafabric.com";
 
     const emailSubject = `[Website Inquiry] ${subject}`;
     const emailHtml = buildEmailHtml({ name, company, email, subject, message });
@@ -107,7 +107,7 @@ export async function onRequestPost({ request, env }) {
     if (!resendKey) {
       console.error("RESEND_API_KEY environment variable is not set.");
       return jsonResponse(
-        { success: false, error: "Email service is not configured. Please contact us directly at info@nixiafabric.com." },
+        { success: false, error: "Email service is not configured. Please contact us at info@nixiafabric.com." },
         500,
         corsHeaders
       );
