@@ -26,12 +26,13 @@
 - 博客公司背景描述统一使用指定段落，禁止出现其他版本
 
 ## 技术架构要点
-- `src/data/products.ts` 是唯一数据源，含 craft / backingCategory / endUse 三维分类
-- `[slug].astro` 双路由：产品详情 + end-use 场景列表（getStaticPaths 条件渲染）
-- 产品列表页双筛选：Filter by End-Use + Filter by Craft（底材筛选已移除，下沉至详情页）
-- 筛选器 URL 参数通过 JS 动态注入 noindex meta
+- `src/data/products.json` 是产品数据源（80KB，40产品），含实际图片路径。`src/data/products.ts` 保留但已过时。
+- `src/pages/products.astro` 产品列表页（/products），3列响应式网格
+- `src/pages/products/[id].astro` 产品详情页（/products/glitter-fabric-NNN），图片画廊+SKU网格+视频+样品政策
+- 产品图片路径规范：`/public/images/products/{id}/main/xxx.jpg`，子文件夹 main/sku/detail/video
+- 产品 ID 格式：glitter-fabric-001 ~ glitter-fabric-040
 - JSON-LD 结构化数据覆盖 Organization / WebSite / BreadcrumbList / Product / FAQPage / CollectionPage / ItemList / Blog / AboutPage / ContactPage
-- 全站 20 页：首页/产品列表/7产品详情/4场景列表/工厂/关于/博客/Sample Policy/Certifications/Contact/Thank-You
+- 全站 49 页（2026-08-09）：首页/产品列表/40产品详情/工厂/关于/博客/Sample Policy/Certifications/Contact/Thank-You
 - CTA 路由规范：Request Free Sample → /sample-policy；Get Custom Quotation → /contact
 - 全站按钮统一金色（btn--primary/dark/secondary/outline 均为金色系）
 - 悬浮联系按钮（FloatingContact）例外：WhatsApp 绿 #25D366 / WeChat 绿 #07C160，不使用金色

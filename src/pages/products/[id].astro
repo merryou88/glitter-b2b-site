@@ -1,0 +1,679 @@
+---
+/**
+ * Product Detail Page — /products/[id]
+ * Dynamic page for each glitter synthetic leather product
+ */
+import Layout from "@layouts/Layout.astro";
+import products from "@data/products.json";
+
+export interface Product {
+  id: string;
+  title: string;
+  category: string;
+  shortDesc: string;
+  fullDescription: string;
+  mainImage: string;
+  skuImages: string[];
+  detailImages: string[];
+  videoLocal: string;
+  videoYoutubeUrl: string;
+  tags: string[];
+}
+
+export function getStaticPaths() {
+  return (products as Product[]).map((p) => ({
+    params: { id: p.id },
+  }));
+}
+
+const { id } = Astro.params;
+const product = (products as Product[]).find((p) => p.id === id);
+
+if (!product) {
+  return new Response(null, {
+    status: 302,
+    headers: { Location: "/products/" },
+  });
+}
+
+// Gather all main images for gallery (from the main folder via scan)
+const baseMainPath = `/images/products/${product.id}/main/`;
+const skuBasePath = `/images/products/${product.id}/sku/`;
+
+const breadcrumbData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://nixiafabric.com/" },
+    { "@type": "ListItem", position: 2, name: "Products", item: "https://nixiafabric.com/products" },
+    { "@type": "ListItem", position: 3, name: product.title, item: `https://nixiafabric.com/products/${product.id}` },
+  ],
+};
+
+const productData = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: product.title,
+  description: product.shortDesc,
+  category: product.category,
+  image: product.mainImage ? `https://nixiafabric.com${product.mainImage}` : undefined,
+  brand: { "@type": "Brand", name: "Nixia Fabric" },
+  manufacturer: { "@type": "Organization", name: "Nixia Fabric" },
+  offers: {
+    "@type": "Offer",
+    availability: "https://schema.org/InStock",
+    itemCondition: "https://schema.org/NewCondition",
+  },
+};
+
+// Build main image gallery: use mainImage as hero, then all sku images
+const mainImages = product.mainImage ? [product.mainImage] : [];
+const galleryImages = [...mainImages, ...product.skuImages];
+
+// SEO title & description
+const seoTitle = `${product.title} — Glitter Synthetic Leather | Nixia Fabric`;
+const seoDesc = product.shortDesc;
+---
+
+<Layout
+  title={seoTitle}
+  description={seoDesc}
+  keywords={product.tags.join(", ")}
+  image={product.mainImage ? `https://nixiafabric.com${product.mainImage}` : undefined}
+  canonical={`https://nixiafabric.com/products/${product.id}`}
+  structuredData={[breadcrumbData, productData]}
+>
+  <!-- Hero Section -->
+  <section class="detail-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb__sep">/</span>
+        <a href="/products/">Products</a>
+        <span class="breadcrumb__sep">/</span>
+        <span class="breadcrumb__current">{product.title}</span>
+      </nav>
+
+      <div class="detail-layout">
+        <!-- Image Gallery -->
+        <div class="detail-gallery">
+          <!-- Main Image -->
+          <div class="detail-gallery__main">
+            {
+              product.mainImage ? (
+                <img
+                  id="main-image"
+                  src={product.mainImage}
+                  alt={product.title}
+                  class="detail-gallery__hero"
+                  width="600"
+                  height="600"
+                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                />
+              ) : null
+            }
+            <div
+              class="detail-gallery__hero-placeholder"
+              style={product.mainImage ? "display:none" : "display:flex"}
+            >
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <polyline points="21 15 16 10 5 21"/>
+              </svg>
+              <span>Image coming soon</span>
+            </div>
+          </div>
+
+          <!-- Gallery Thumbnails -->
+          {
+            galleryImages.length > 1 && (
+              <div class="detail-gallery__thumbs">
+                {galleryImages.map((img: string, i: number) => (
+                  <button
+                    class={`detail-gallery__thumb ${i === 0 ? "detail-gallery__thumb--active" : ""}`}
+                    onclick={`document.getElementById('main-image').src='${img}';document.querySelectorAll('.detail-gallery__thumb').forEach(b=>b.classList.remove('detail-gallery__thumb--active'));this.classList.add('detail-gallery__thumb--active')`}
+                    aria-label={`View image ${i + 1}`}
+                  >
+                    <img
+                      src={img}
+                      alt={`${product.title} thumbnail ${i + 1}`}
+                      loading="lazy"
+                      width="80"
+                      height="80"
+                      onerror="this.style.display='none'"
+                    />
+                  </button>
+                ))}
+              </div>
+            )
+          }
+        </div>
+
+        <!-- Product Info -->
+        <div class="detail-info">
+          <span class="badge badge--accent">{product.category}</span>
+          <h1 class="detail-info__title">{product.title}</h1>
+          <p class="detail-info__desc">{product.shortDesc}</p>
+
+          <!-- CTA Buttons -->
+          <div class="detail-cta">
+            <a href="/sample-policy/" class="btn btn--primary btn--lg">
+              Request Free Sample
+            </a>
+            <a href="/contact/" class="btn btn--outline btn--lg">
+              Get Custom Quotation
+            </a>
+          </div>
+
+          <!-- Quick Specs -->
+          <div class="detail-specs">
+            <div class="detail-specs__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span>SGS Certified</span>
+            </div>
+            <div class="detail-specs__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span>REACH Compliant</span>
+            </div>
+            <div class="detail-specs__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span>Custom Color Matching</span>
+            </div>
+            <div class="detail-specs__item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span>{product.skuImages.length > 0 ? `${product.skuImages.length} Color Options` : "Multi-Color Available"}</span>
+            </div>
+          </div>
+
+          <!-- Tags -->
+          <div class="detail-tags">
+            {product.tags.map((tag: string) => (
+              <span class="detail-tags__item">{tag.replace(/-/g, " ")}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full Description -->
+  <section class="section">
+    <div class="container">
+      <div class="detail-body">
+        <!-- Description -->
+        <div class="detail-body__text">
+          <h2>Product Description</h2>
+          {product.fullDescription.split("\n\n").map((para: string) => (
+            <p>{para}</p>
+          ))}
+        </div>
+
+        <!-- SKU Color Gallery -->
+        {product.skuImages.length > 0 && (
+          <div class="detail-body__section" id="sku-colors">
+            <h2>Color Options ({product.skuImages.length})</h2>
+            <div class="sku-grid">
+              {product.skuImages.map((img: string) => (
+                <div class="sku-item">
+                  <img
+                    src={img}
+                    alt="Color variant"
+                    loading="lazy"
+                    width="200"
+                    height="200"
+                    onerror="this.style.display='none';this.parentElement.querySelector('.sku-item__placeholder').style.display='flex'"
+                  />
+                  <div class="sku-item__placeholder" style="display:none">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/>
+                      <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- Detail Images -->
+        {product.detailImages.length > 0 && (
+          <div class="detail-body__section">
+            <h2>Product Details</h2>
+            <div class="detail-images-grid">
+              {product.detailImages.map((img: string) => (
+                <img
+                  src={img}
+                  alt={`${product.title} detail`}
+                  loading="lazy"
+                  width="400"
+                  height="400"
+                  class="detail-image"
+                  onerror="this.style.display='none'"
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- Video -->
+        {product.videoLocal && (
+          <div class="detail-body__section">
+            <h2>Product Video</h2>
+            <div class="detail-video">
+              <video
+                controls
+                preload="metadata"
+                poster={product.mainImage}
+                class="detail-video__player"
+              >
+                <source src={product.videoLocal} type="video/mp4" />
+                Your browser does not support the video element.
+              </video>
+            </div>
+          </div>
+        )}
+
+        <!-- Sample Policy -->
+        <div class="detail-body__section detail-sample-policy">
+          <h2>Sample Policy</h2>
+          <div class="sample-policy-content">
+            <p>
+              <strong>Free sample available</strong> — customer bears international shipping cost.
+              The shipping cost will be <strong>deducted from your bulk order</strong>.
+            </p>
+            <p>
+              <strong>SGS</strong> and <strong>REACH</strong> test reports available upon request.
+              Custom color matching and backing options are also available for bulk orders.
+            </p>
+          </div>
+          <div class="detail-cta detail-cta--bottom">
+            <a href="/sample-policy/" class="btn btn--primary btn--lg">
+              Request Free Sample
+            </a>
+            <a href="/contact/" class="btn btn--outline btn--lg">
+              Get Custom Quotation
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ===== Hero ===== */
+  .detail-hero {
+    padding-top: var(--space-2xl);
+    padding-bottom: var(--space-3xl);
+  }
+
+  .breadcrumb {
+    margin-bottom: var(--space-xl);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  .breadcrumb a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--color-accent-dark);
+  }
+
+  .breadcrumb__sep {
+    margin-inline: var(--space-xs);
+    opacity: 0.5;
+  }
+
+  .breadcrumb__current {
+    color: var(--color-text-secondary);
+    font-weight: 600;
+  }
+
+  .detail-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: start;
+  }
+
+  /* ===== Gallery ===== */
+  .detail-gallery {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-xl));
+  }
+
+  .detail-gallery__main {
+    aspect-ratio: 1 / 1;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .detail-gallery__hero {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .detail-gallery__hero-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    width: 100%;
+    height: 100%;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .detail-gallery__thumbs {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+    overflow-x: auto;
+    padding-bottom: var(--space-xs);
+  }
+
+  .detail-gallery__thumb {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    cursor: pointer;
+    padding: 0;
+    background: none;
+    transition: border-color var(--transition-fast);
+  }
+
+  .detail-gallery__thumb:hover {
+    border-color: var(--color-accent);
+  }
+
+  .detail-gallery__thumb--active {
+    border-color: var(--color-accent);
+  }
+
+  .detail-gallery__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ===== Product Info ===== */
+  .detail-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .detail-info__title {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .detail-info__desc {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .detail-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-top: var(--space-sm);
+  }
+
+  .detail-cta--bottom {
+    margin-top: var(--space-xl);
+  }
+
+  /* Quick Specs */
+  .detail-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+    padding: var(--space-md);
+    background: var(--color-bg);
+    border-radius: var(--radius-sm);
+  }
+
+  .detail-specs__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+  }
+
+  .detail-specs__item svg {
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  /* Tags */
+  .detail-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin-top: var(--space-sm);
+  }
+
+  .detail-tags__item {
+    display: inline-block;
+    padding: 0.25rem 0.625rem;
+    font-size: var(--text-xs);
+    color: var(--color-accent-dark);
+    background: rgba(196, 160, 53, 0.08);
+    border-radius: var(--radius-sm);
+    text-transform: capitalize;
+  }
+
+  /* ===== Detail Body ===== */
+  .detail-body {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .detail-body__text {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .detail-body__text h2 {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 2px solid var(--color-accent);
+    display: inline-block;
+  }
+
+  .detail-body__text p {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+  }
+
+  .detail-body__section {
+    margin-bottom: var(--space-3xl);
+  }
+
+  .detail-body__section h2 {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-sm);
+    border-bottom: 2px solid var(--color-accent);
+    display: inline-block;
+  }
+
+  /* SKU Grid */
+  .sku-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+  }
+
+  .sku-item {
+    aspect-ratio: 1 / 1;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .sku-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .sku-item__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: var(--color-text-muted);
+  }
+
+  /* Detail Images */
+  .detail-images-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  .detail-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+  }
+
+  /* Video */
+  .detail-video {
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .detail-video__player {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* Sample Policy */
+  .detail-sample-policy {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+  }
+
+  .sample-policy-content p {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-sm);
+  }
+
+  .sample-policy-content strong {
+    color: var(--color-primary);
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 968px) {
+    .detail-layout {
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+    }
+
+    .detail-gallery {
+      position: static;
+    }
+
+    .detail-info__title {
+      font-size: var(--text-2xl);
+    }
+
+    .sku-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .detail-images-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .detail-hero {
+      padding-top: var(--space-lg);
+    }
+
+    .detail-specs {
+      grid-template-columns: 1fr;
+    }
+
+    .detail-cta {
+      flex-direction: column;
+    }
+
+    .detail-cta .btn {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .sku-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .detail-images-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .detail-gallery__thumbs {
+      gap: var(--space-xs);
+    }
+
+    .detail-gallery__thumb {
+      width: 56px;
+      height: 56px;
+    }
+  }
+</style>
