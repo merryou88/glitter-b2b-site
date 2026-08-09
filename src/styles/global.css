@@ -1,6 +1,6 @@
 /* ============================================
    Nixia Fabric — Global Design System
-   China Glitter Fabric Manufacturer
+   Glitter & Foil-Printed Synthetic Leather Manufacturer
    ============================================ */
 
 /* ---------- CSS Reset ---------- */
@@ -293,36 +293,37 @@ p {
 
 .btn--secondary {
   background-color: transparent;
-  color: var(--color-white);
-  border-color: rgba(255, 255, 255, 0.4);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 .btn--secondary:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-white);
 }
 
 .btn--outline {
   background-color: transparent;
-  color: var(--color-primary);
-  border-color: var(--color-border-dark);
+  color: var(--color-accent-dark);
+  border-color: var(--color-accent);
 }
 
 .btn--outline:hover {
-  border-color: var(--color-primary);
-  background-color: var(--color-primary);
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
   color: var(--color-white);
 }
 
 .btn--dark {
-  background-color: var(--color-primary);
+  background-color: var(--color-accent);
   color: var(--color-white);
-  border-color: var(--color-primary);
+  border-color: var(--color-accent);
 }
 
 .btn--dark:hover {
-  background-color: var(--color-primary-dark);
-  border-color: var(--color-primary-dark);
+  background-color: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }

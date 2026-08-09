@@ -1,21 +1,27 @@
 ---
 /**
- * All Products Listing Page — /products
- * Left sidebar: Filter by End-Use + Filter by Craft
- * Shows all products in a flat grid
- * Filtered URLs (?craft=xxx&enduse=xxx) get noindex via JS
+ * EndUseListing.astro — End-use category listing page
+ *
+ * Renders a category page (e.g. /products/fabric-for-shoes) with:
+ * - Independent meta title/description/H1 (includes glitter + foil keywords)
+ * - Left sidebar: Filter by Craft + Filter by Backing
+ * - Product grid filtered by end-use tag
+ * - noindex for filtered URLs (?craft=xxx) via JS-injected meta tag
+ * - Canonical pointing to the clean URL
  */
 import Layout from "@layouts/Layout.astro";
 import ProductCard from "@components/ProductCard.astro";
 import CTAButton from "@components/CTAButton.astro";
-import { allProducts, craftOptions, endUseCategories } from "@data/products";
+import { craftOptions, backingOptions, endUseCategories } from "@data/products";
+import type { EndUseCategory, Product } from "@data/products";
 
-const totalProducts = allProducts.length;
+interface Props {
+  category: EndUseCategory;
+  products: Product[];
+}
 
-// End-use filter options (only Shoes / Handbags / Accessories per spec)
-const endUseFilters = endUseCategories
-  .filter((c) => c.slug !== "fabric-for-fashion-trims")
-  .map((c) => ({ label: c.shortName, value: c.slug.replace("fabric-for-", "") }));
+const { category, products } = Astro.props;
+const totalProducts = products.length;
 
 // Breadcrumb structured data
 const breadcrumbData = {
@@ -24,36 +30,42 @@ const breadcrumbData = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://nixiafabric.com/" },
     { "@type": "ListItem", position: 2, name: "Products", item: "https://nixiafabric.com/products" },
+    { "@type": "ListItem", position: 3, name: category.name, item: `https://nixiafabric.com/products/${category.slug}` },
   ],
 };
 
+// CollectionPage structured data
 const collectionPageData = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: "Nixia Fabric Products — Chunky Glitter Synthetic Leather & Foil-Printed Synthetic Leather",
-  description: "Explore Nixia Fabric's complete product catalog: Chunky Glitter Synthetic Leather and Foil-Printed Synthetic Leather for shoes, handbags, and fashion accessories.",
-  url: "https://nixiafabric.com/products",
+  name: category.name,
+  description: category.metaDescription,
+  url: `https://nixiafabric.com/products/${category.slug}`,
 };
 
+// ItemList structured data
 const itemListData = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Nixia Fabric Products",
+  name: category.name,
   numberOfItems: totalProducts,
-  itemListElement: allProducts.map((p, i) => ({
+  itemListElement: products.map((p, i) => ({
     "@type": "ListItem",
     position: i + 1,
     name: p.name,
     url: `https://nixiafabric.com/products/${p.slug}`,
   })),
 };
+
+// Other end-use categories for cross-linking
+const otherCategories = endUseCategories.filter((c) => c.slug !== category.slug);
 ---
 
 <Layout
-  title="All Products — Chunky Glitter Synthetic Leather & Foil-Printed Synthetic Leather"
-  description="Explore Nixia Fabric's complete product catalog: Chunky Glitter Synthetic Leather and Foil-Printed Synthetic Leather for shoes, handbags, and fashion accessories. Filter by end-use and craft type."
-  keywords="chunky glitter synthetic leather, foil-printed synthetic leather, glitter fabric, foil fabric, fabric manufacturer, Custom Color Matching"
-  canonical="https://nixiafabric.com/products"
+  title={category.metaTitle}
+  description={category.metaDescription}
+  keywords={`${category.name.toLowerCase()}, chunky glitter synthetic leather, foil-printed synthetic leather, ${category.shortName.toLowerCase()} fabric, fabric manufacturer, fabric for ${category.shortName.toLowerCase()}`}
+  canonical={`https://nixiafabric.com/products/${category.slug}`}
   structuredData={[breadcrumbData, collectionPageData, itemListData]}
 >
   <!-- Page Header -->
@@ -62,24 +74,26 @@ const itemListData = {
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a>
         <span class="breadcrumb__sep">/</span>
-        <span class="breadcrumb__current">Products</span>
+        <a href="/products">Products</a>
+        <span class="breadcrumb__sep">/</span>
+        <span class="breadcrumb__current">{category.shortName}</span>
       </nav>
-      <span class="eyebrow">Product Catalog</span>
-      <h1>Chunky Glitter Synthetic Leather &amp; Foil-Printed Synthetic Leather</h1>
-      <p class="page-hero__desc">
-        We supply professional-grade glitter synthetic leather and foil-printed PU
-        materials for shoes, handbags and accessories. Backed by our own factory and
-        cooperative material manufacturers, we support various customization on color,
-        backing and technical parameters for bulk production.
-      </p>
-
-      <!-- Quick links to end-use categories -->
-      <div class="page-hero__categories">
-        {endUseCategories.map((cat) => (
-          <a href={`/products/${cat.slug}`} class="page-hero__category-chip">
-            {cat.shortName}
-          </a>
-        ))}
+      <span class="eyebrow">Application Category</span>
+      <h1>{category.h1}</h1>
+      <p class="page-hero__desc">{category.description}</p>
+      <div class="page-hero__stats">
+        <div class="page-hero__stat">
+          <span class="page-hero__stat-num">{totalProducts}</span>
+          <span class="page-hero__stat-label">Matching Fabrics</span>
+        </div>
+        <div class="page-hero__stat">
+          <span class="page-hero__stat-num">{craftOptions.length}</span>
+          <span class="page-hero__stat-label">Craft Types</span>
+        </div>
+        <div class="page-hero__stat">
+          <span class="page-hero__stat-num">{backingOptions.length}</span>
+          <span class="page-hero__stat-label">Backing Options</span>
+        </div>
       </div>
     </div>
   </section>
@@ -105,7 +119,7 @@ const itemListData = {
                 <span class="filter-option__count">{totalProducts}</span>
               </label>
               {craftOptions.map((craft) => {
-                const count = allProducts.filter((p) => p.craft === craft).length;
+                const count = products.filter((p) => p.craft === craft).length;
                 return (
                   <label class="filter-option">
                     <input type="radio" name="craft" value={craft} class="filter-option__input" data-filter-type="craft" />
@@ -117,21 +131,21 @@ const itemListData = {
             </div>
           </div>
 
-          <!-- Filter by End-Use -->
+          <!-- Filter by Backing -->
           <div class="filter-section">
-            <h3 class="filter-section__title">Filter by End-Use</h3>
-            <div class="filter-section__options" role="group" aria-label="Filter by end-use">
+            <h3 class="filter-section__title">Filter by Backing</h3>
+            <div class="filter-section__options" role="group" aria-label="Filter by backing">
               <label class="filter-option">
-                <input type="radio" name="enduse" value="all" checked class="filter-option__input" data-filter-type="enduse" />
-                <span class="filter-option__label">All End-Uses</span>
+                <input type="radio" name="backing" value="all" checked class="filter-option__input" data-filter-type="backing" />
+                <span class="filter-option__label">All Backings</span>
                 <span class="filter-option__count">{totalProducts}</span>
               </label>
-              {endUseFilters.map((eu) => {
-                const count = allProducts.filter((p) => p.endUse.includes(eu.value)).length;
+              {backingOptions.map((backing) => {
+                const count = products.filter((p) => p.backingCategory === backing).length;
                 return (
                   <label class="filter-option">
-                    <input type="radio" name="enduse" value={eu.value} class="filter-option__input" data-filter-type="enduse" />
-                    <span class="filter-option__label">{eu.label}</span>
+                    <input type="radio" name="backing" value={backing} class="filter-option__input" data-filter-type="backing" />
+                    <span class="filter-option__label">{backing}</span>
                     <span class="filter-option__count">{count}</span>
                   </label>
                 );
@@ -157,11 +171,11 @@ const itemListData = {
           </div>
 
           <div class="product-grid" id="product-grid">
-            {allProducts.map((product) => (
+            {products.map((product) => (
               <div
                 class="product-grid__item"
                 data-craft={product.craft}
-                data-enduse={product.endUse.join(",")}
+                data-backing={product.backingCategory}
               >
                 <ProductCard product={product} />
               </div>
@@ -178,14 +192,39 @@ const itemListData = {
     </div>
   </section>
 
+  <!-- Cross-link to other categories -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Other Applications</span>
+        <h2>Browse by End-Use</h2>
+      </div>
+      <div class="cross-link-grid">
+        {otherCategories.map((cat) => (
+          <a href={`/products/${cat.slug}`} class="cross-link-card">
+            <div class="cross-link-card__visual">
+              <img src={cat.image} alt={cat.alt} width="1200" height="675" loading="lazy" />
+            </div>
+            <div class="cross-link-card__body">
+              <h3>{cat.shortName}</h3>
+              <p>{cat.description}</p>
+              <span class="cross-link-card__cta">View Fabrics →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- CTA Section -->
   <section class="section section--dark">
     <div class="container text-center">
-      <span class="eyebrow">Custom Color Matching</span>
-      <h2>Need a Custom Fabric Solution?</h2>
+      <span class="eyebrow">Need Help Choosing?</span>
+      <h2>Not Sure Which Fabric Fits Your {category.shortName}?</h2>
       <p style="max-width: 600px; margin: var(--space-lg) auto var(--space-2xl);">
-        We offer Custom Color Matching, Factory Direct Supply, and fabric customization.
-        Request a sample or get a custom quotation for your specific requirements.
+        Request free samples and our team will help you select the right Chunky
+        Glitter Synthetic Leather or Foil-Printed Synthetic Leather for your project.
+        Custom Color Matching and Custom Backing Options available.
       </p>
       <div class="btn-group" style="justify-content: center;">
         <CTAButton href="/sample-policy" variant="primary" size="lg">Request Free Sample</CTAButton>
@@ -252,31 +291,28 @@ const itemListData = {
     max-width: 640px;
   }
 
-  .page-hero__categories {
+  .page-hero__stats {
     display: flex;
-    gap: var(--space-sm);
-    margin-top: var(--space-xl);
-    flex-wrap: wrap;
+    gap: var(--space-2xl);
+    margin-top: var(--space-2xl);
   }
 
-  .page-hero__category-chip {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 1.125rem;
+  .page-hero__stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-hero__stat-num {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-accent);
+  }
+
+  .page-hero__stat-label {
     font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--color-white);
-    background-color: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: var(--radius-full);
-    text-decoration: none;
-    transition: all var(--transition-fast);
-  }
-
-  .page-hero__category-chip:hover {
-    background-color: var(--color-accent);
-    border-color: var(--color-accent);
-    color: var(--color-white);
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   /* ==================== Listing Layout ==================== */
@@ -435,10 +471,78 @@ const itemListData = {
     margin-bottom: var(--space-lg);
   }
 
+  /* ==================== Cross-link ==================== */
+  .cross-link-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .cross-link-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    transition: all var(--transition-base);
+  }
+
+  .cross-link-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+
+  .cross-link-card__visual {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+
+  .cross-link-card__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .cross-link-card:hover .cross-link-card__visual img {
+    transform: scale(1.05);
+  }
+
+  .cross-link-card__body {
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .cross-link-card__body h3 {
+    font-size: var(--text-lg);
+    margin-bottom: 0.25rem;
+  }
+
+  .cross-link-card__body p {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-sm);
+  }
+
+  .cross-link-card__cta {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-accent-dark);
+  }
+
   /* ==================== Responsive ==================== */
   @media (max-width: 968px) {
     .product-grid {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cross-link-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .page-hero__stats {
+      gap: var(--space-xl);
     }
   }
 
@@ -468,6 +572,11 @@ const itemListData = {
       margin-bottom: var(--space-md);
     }
 
+    .filter-sidebar__mobile-toggle.is-open + .filter-section,
+    .filter-sidebar__mobile-toggle.is-open ~ .filter-section {
+      display: block;
+    }
+
     .filter-section {
       display: none;
     }
@@ -480,6 +589,15 @@ const itemListData = {
   @media (max-width: 640px) {
     .product-grid {
       grid-template-columns: 1fr;
+    }
+
+    .cross-link-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .page-hero__stats {
+      flex-direction: column;
+      gap: var(--space-lg);
     }
   }
 </style>
@@ -495,7 +613,7 @@ const itemListData = {
   const mobileToggle = document.getElementById("mobile-filter-toggle");
 
   let activeCraft = "all";
-  let activeEndUse = "all";
+  let activeBacking = "all";
 
   // Mobile filter toggle
   mobileToggle?.addEventListener("click", () => {
@@ -507,12 +625,12 @@ const itemListData = {
 
     items.forEach((item) => {
       const craft = item.dataset.craft || "";
-      const endUseList = (item.dataset.enduse || "").split(",");
+      const backing = item.dataset.backing || "";
 
       const craftMatch = activeCraft === "all" || craft === activeCraft;
-      const endUseMatch = activeEndUse === "all" || endUseList.includes(activeEndUse);
+      const backingMatch = activeBacking === "all" || backing === activeBacking;
 
-      if (craftMatch && endUseMatch) {
+      if (craftMatch && backingMatch) {
         item.classList.remove("is-hidden");
         visibleCount++;
       } else {
@@ -528,13 +646,17 @@ const itemListData = {
       noResults.style.display = visibleCount === 0 ? "block" : "none";
     }
 
-    const hasActiveFilter = activeCraft !== "all" || activeEndUse !== "all";
+    const hasActiveFilter = activeCraft !== "all" || activeBacking !== "all";
     if (resetBtn) {
       resetBtn.style.display = hasActiveFilter ? "inline-block" : "none";
     }
 
-    // SEO: noindex for filtered URLs
+    // ==================== SEO: noindex for filtered URLs ====================
+    // When filters are active, add noindex meta tag to prevent Google from
+    // indexing ?craft=xxx parameter URLs
     updateRobotsMeta(hasActiveFilter);
+
+    // Update URL params (without triggering navigation)
     updateUrlParams();
   }
 
@@ -545,13 +667,14 @@ const itemListData = {
       meta.setAttribute("name", "robots");
       document.head.appendChild(meta);
     }
+    // Base page is index,follow. Filtered views are noindex,follow.
     meta.setAttribute("content", hasFilter ? "noindex, follow" : "index, follow");
   }
 
   function updateUrlParams() {
     const params = new URLSearchParams();
     if (activeCraft !== "all") params.set("craft", activeCraft);
-    if (activeEndUse !== "all") params.set("enduse", activeEndUse);
+    if (activeBacking !== "all") params.set("backing", activeBacking);
 
     const queryString = params.toString();
     const newUrl = queryString
@@ -561,10 +684,11 @@ const itemListData = {
     window.history.replaceState({}, "", newUrl);
   }
 
+  // Restore filters from URL params on page load
   function restoreFromUrl() {
     const params = new URLSearchParams(window.location.search);
     const craftParam = params.get("craft");
-    const endUseParam = params.get("enduse");
+    const backingParam = params.get("backing");
 
     if (craftParam) {
       const radio = document.querySelector(`input[name="craft"][value="${craftParam}"]`) as HTMLInputElement | null;
@@ -574,19 +698,20 @@ const itemListData = {
       }
     }
 
-    if (endUseParam) {
-      const radio = document.querySelector(`input[name="enduse"][value="${endUseParam}"]`) as HTMLInputElement | null;
+    if (backingParam) {
+      const radio = document.querySelector(`input[name="backing"][value="${backingParam}"]`) as HTMLInputElement | null;
       if (radio) {
         radio.checked = true;
-        activeEndUse = endUseParam;
+        activeBacking = backingParam;
       }
     }
 
-    if (activeCraft !== "all" || activeEndUse !== "all") {
+    if (activeCraft !== "all" || activeBacking !== "all") {
       applyFilters();
     }
   }
 
+  // Listen for filter changes
   document.querySelectorAll<HTMLInputElement>(".filter-option__input").forEach((input) => {
     input.addEventListener("change", () => {
       const type = input.dataset.filterType;
@@ -594,27 +719,30 @@ const itemListData = {
 
       if (type === "craft") {
         activeCraft = value;
-      } else if (type === "enduse") {
-        activeEndUse = value;
+      } else if (type === "backing") {
+        activeBacking = value;
       }
 
       applyFilters();
     });
   });
 
+  // Reset button
   resetBtn?.addEventListener("click", () => {
     activeCraft = "all";
-    activeEndUse = "all";
+    activeBacking = "all";
     document.querySelectorAll<HTMLInputElement>(".filter-option__input").forEach((input) => {
       input.checked = input.value === "all";
     });
     applyFilters();
   });
 
+  // No results reset button
   noResults?.querySelector('[data-action="reset"]')?.addEventListener("click", (e) => {
     e.preventDefault();
     resetBtn?.click();
   });
 
+  // Initialize from URL
   restoreFromUrl();
 </script>

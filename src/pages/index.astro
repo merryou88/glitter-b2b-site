@@ -1,23 +1,22 @@
 ---
 /**
  * index.astro — Nixia Fabric Home Page
- * China Glitter Fabric Manufacturer
+ * Solution-oriented narrative (inspired by ecowoodplate.com)
  *
- * Sections: Hero → Product Categories → Factory Capability →
- *           Applications → Why Choose Us → Final CTA
+ * Module order: Hero → Applications → Advantages → Featured Products →
+ *               Factory Trust → FAQ → Final CTA
  */
 import Layout from "@layouts/Layout.astro";
-import Hero from "@components/Hero.astro";
+import HeroCarousel from "@components/HeroCarousel.astro";
 import CTAButton from "@components/CTAButton.astro";
-import { productCategories } from "@data/products";
 
 // WebPage structured data for SEO
 const webPageData = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Nixia Fabric — China Glitter Fabric Manufacturer",
+  name: "Nixia Fabric — Glitter & Foil-Printed Synthetic Leather Manufacturer",
   description:
-    "China glitter fabric manufacturer specializing in glitter fabric and foil fabric for shoes, handbags, and fashion accessories. OEM production and custom color development.",
+    "China manufacturer specializing in Chunky Glitter Synthetic Leather and Foil-Printed Synthetic Leather for shoes, handbags, and fashion accessories. Factory Direct Supply and Custom Color Matching.",
   url: "https://nixiafabric.com",
 };
 
@@ -28,10 +27,26 @@ const faqData = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "What does Nixia Fabric manufacture?",
+      name: "Do you offer free samples?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Nixia Fabric manufactures glitter fabric and foil fabric for shoes, handbags, bags accessories, and fashion applications. We produce elastic glitter fabric, PU glitter fabric, non-woven glitter fabric, Oxford glitter fabric, and metallic foil fabric including gold and silver foil.",
+        text: "Yes, we provide free fabric samples. The buyer only covers international shipping cost. Contact us to request samples for your project.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can I get custom colors and custom backing?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. We offer Custom Color Matching including Pantone matching, and Custom Backing Options including elastic, PU, non-woven, and Oxford.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Are your fabrics SGS Certified and REACH Compliant?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Our fabrics are SGS Certified and REACH Compliant. Test reports are available upon request.",
       },
     },
     {
@@ -39,192 +54,195 @@ const faqData = {
       name: "Is Nixia Fabric a manufacturer or a trading company?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Nixia Fabric is a manufacturer — not a trading company or sourcing agent. We produce all fabrics in-house with direct control over quality, custom color development, and OEM production.",
+        text: "Nixia Fabric is a manufacturer — not a trading company. We own our in-house factory for glitter and foil-printed PU materials, with stable partnerships with other qualified material manufacturers.",
       },
     },
     {
       "@type": "Question",
-      name: "Can I get custom colors developed?",
+      name: "What products do you manufacture?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. We offer full custom color development including Pantone color matching, metallic tone development, and batch-to-batch color consistency. Our in-house color lab ensures your custom colors are matched accurately.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Do you offer OEM production?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes, we provide full OEM production services including custom GSM, width, backing material, glitter density, and special finishes tailored to your specifications.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How can I get fabric swatches?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "You can request free fabric swatches by contacting us through our website. We ship swatches worldwide so you can see and feel the quality before placing an order.",
+        text: "We manufacture glitter synthetic leather and foil-printed PU materials for shoes, handbags, and accessories. Multiple backing options and custom colors available.",
       },
     },
   ],
 };
 
-const factoryCapabilities = [
-  {
-    title: "Manufacturing Experience",
-    description:
-      "Years of specialized experience in decorative fabric production, serving global brands and manufacturers across the footwear and fashion accessories industry.",
-    icon: "factory",
-  },
-  {
-    title: "Custom Color Development",
-    description:
-      "In-house color matching and development capability. We develop custom glitter and metallic colors to meet your specific design requirements and brand standards.",
-    icon: "palette",
-  },
-  {
-    title: "OEM Production",
-    description:
-      "Full OEM production service from material selection to finished fabric. We manufacture to your specifications with consistent quality across production runs.",
-    icon: "production",
-  },
-  {
-    title: "Quality Control",
-    description:
-      "Systematic quality inspection at every production stage — from raw material testing to finished fabric QC. Adhesion, color fastness, and GSM verification on every batch.",
-    icon: "quality",
-  },
-];
-
+// ③ Applications — 4 scenario cards (clickable, link to end-use pages)
 const applications = [
   {
     title: "Shoes",
     description: "Shoe uppers, trims, and decorative panels",
-    gradient: "linear-gradient(135deg, #d4af37 0%, #c4a035 50%, #b89530 100%)",
+    image: "/image/home/Shoes.png",
+    alt: "Chunky Glitter Synthetic Leather shoe upper with metallic foil accent",
+    href: "/products/fabric-for-shoes",
   },
   {
     title: "Handbags",
     description: "Bag bodies, flaps, and accent panels",
-    gradient: "linear-gradient(135deg, #e8e8e8 0%, #c0c0c0 50%, #a8a8a8 100%)",
+    image: "/image/home/Handbags.png",
+    alt: "Chunky Glitter Synthetic Leather handbag",
+    href: "/products/fabric-for-handbags",
   },
   {
     title: "Accessories",
     description: "Belts, wallets, and small leather goods",
-    gradient: "linear-gradient(135deg, #e8c4a0 0%, #d4a070 50%, #c09060 100%)",
+    image: "/image/home/Accessories.png",
+    alt: "Chunky Glitter Synthetic Leather belt and wallet accessories",
+    href: "/products/fabric-for-accessories",
   },
   {
     title: "Fashion",
-    description: "Garment trims, decorative elements, and more",
-    gradient: "linear-gradient(135deg, #2a3a6a 0%, #1a2b4d 50%, #0d1b33 100%)",
+    description: "Fashion trims and decorative accents",
+    image: "/image/home/Fashion.png",
+    alt: "Chunky Glitter Synthetic Leather fashion trims",
+    href: "/products/fabric-for-fashion-trims",
   },
 ];
 
-const whyChooseUs = [
+// ④ Advantages — 4 B2B benefit icons
+const advantages = [
   {
-    title: "Professional Fabric Manufacturing",
-    description:
-      "We are a manufacturer, not a trading company. Our production lines are optimized for decorative fabric — glitter, foil, and metallic finishes.",
+    title: "Request Free Sample",
+    desc: "Customer bears shipping cost",
+    icon: "sample",
   },
   {
-    title: "Custom Development Capability",
-    description:
-      "From custom colors to custom backing materials, we develop fabric solutions tailored to your product requirements and performance standards.",
+    title: "Custom Color & Backing",
+    desc: "Pantone color-matching & multiple backing options",
+    icon: "palette",
   },
   {
-    title: "Wide Color Selection",
-    description:
-      "An extensive range of standard colors plus full custom color matching. Gold, silver, rose gold, champagne, black, and unlimited custom tones.",
+    title: "SGS Certified, REACH Compliant",
+    desc: "Test reports available upon request",
+    icon: "shield",
   },
   {
-    title: "Quality Management",
-    description:
-      "Every production batch undergoes systematic QC — composition verification, GSM checking, adhesion testing, and color fastness inspection.",
+    title: "Factory Direct Supply",
+    desc: "Original manufacturer, not a trading company",
+    icon: "factory",
   },
+];
+
+// ⑤ Core collections preview — 2 cards only
+const coreCollections = [
+  {
+    label: "Foil-Printed Synthetic Leather",
+    title: "Foil-Printed Synthetic Leather",
+    description:
+      "Foil-printed synthetic leather delivers smooth metallic luster via thermal transfer. Multiple metallic tones available. Backing material can be customized per project requirements.",
+    image: "/images/preview_hotstamping_foil.jpg",
+    alt: "Foil-printed synthetic leather for footwear and bags",
+    href: "/products/metallic-foil-fabric",
+  },
+  {
+    label: "Chunky Glitter Synthetic Leather",
+    title: "Chunky Glitter Synthetic Leather",
+    description:
+      "Sparkling glitter synthetic leather for shoes, bags and accessories. Customizable colors and backing options to match your end-product needs.",
+    image: "/images/preview_chunky_glitter.jpg",
+    alt: "Chunky glitter synthetic leather for shoes and handbags",
+    href: "/products/elastic-glitter-fabric",
+  },
+];
+
+// ⑥ Factory trust badges
+const trustBadges = [
+  { label: "SGS Certified" },
+  { label: "REACH Compliant" },
+  { label: "Factory Direct Supply" },
+  { label: "Custom Color Matching" },
 ];
 ---
 
 <Layout
   title=""
-  description="Nixia Fabric is a China glitter fabric manufacturer specializing in glitter fabric and foil fabric for shoes, handbags, and fashion accessories. OEM production and custom color development."
-  keywords="glitter fabric manufacturer, foil fabric manufacturer, glitter fabric factory china, metallic fabric factory, OEM fabric production, custom fabric development, glitter fabric for shoes, foil fabric for handbags"
+  description="Nixia Fabric is a China manufacturer specializing in Chunky Glitter Synthetic Leather and Foil-Printed Synthetic Leather for shoes, handbags, and fashion accessories. Factory Direct Supply and Custom Color Matching."
+  keywords="chunky glitter synthetic leather, foil-printed synthetic leather, glitter fabric manufacturer, foil fabric manufacturer, fabric factory china, metallic fabric factory, Custom Color Matching, glitter fabric for shoes, foil fabric for handbags"
   structuredData={[webPageData, faqData]}
 >
-  <!-- ==================== 1. HERO ==================== -->
-  <Hero />
+  <!-- ==================== ② HERO CAROUSEL ==================== -->
+  <HeroCarousel />
 
-  <!-- ==================== 2. PRODUCT CATEGORIES ==================== -->
-  <section class="section" id="products-section">
+  <!-- ==================== ②b HERO TRUST BAR ==================== -->
+  <section class="hero-trust" aria-label="Business advantages">
+    <div class="container">
+      <div class="hero-trust__grid">
+        <div class="hero-trust__item">
+          <span class="hero-trust__value">24h</span>
+          <span class="hero-trust__label">RFQ Response</span>
+        </div>
+        <div class="hero-trust__item">
+          <span class="hero-trust__value">3-7d</span>
+          <span class="hero-trust__label">Sample Plan</span>
+        </div>
+        <div class="hero-trust__item">
+          <span class="hero-trust__value">Factory Direct</span>
+          <span class="hero-trust__label">Custom Projects</span>
+        </div>
+        <div class="hero-trust__item">
+          <span class="hero-trust__value">FOB/CIF</span>
+          <span class="hero-trust__label">Export Support</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ③ APPLICATIONS (4 scenario cards) ==================== -->
+  <section class="section" id="applications">
     <div class="container">
       <div class="section-header">
-        <span class="eyebrow">Product Range</span>
-        <h2>Fabric Categories</h2>
-        <p>
-          Two specialized fabric lines designed for footwear, handbags, bags
-          accessories, and fashion applications. Available in multiple backing
-          options with full custom color development.
-        </p>
+        <span class="eyebrow">Applications</span>
+        <h2>Where Our Fabrics Are Used</h2>
+        <p>From shoe uppers to handbag panels — see how our glitter and foil fabrics bring products to life.</p>
       </div>
 
-      <div class="grid grid--2 categories-grid">
-        {productCategories.map((category) => (
-          <article class="category-card">
-            <div class="category-card__visual" style={`background: ${category.slug === "glitter-fabric"
-              ? "linear-gradient(135deg, #d4af37 0%, #c4a035 40%, #b89530 100%)"
-              : "linear-gradient(135deg, #e8e8e8 0%, #c0c0c0 40%, #a8a8a8 100%)"};`}>
-              <div class="category-card__visual-overlay"></div>
-              <div class="category-card__visual-content">
-                <span class="category-card__badge">{category.products.length} Products</span>
+      <div class="grid grid--4 applications-grid">
+        {applications.map((app) => (
+          <a href={app.href} class="app-card">
+            <div class="app-card__visual">
+              <img
+                src={app.image}
+                alt={app.alt}
+                width="1200"
+                height="675"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="app-card__overlay">
+                <span class="app-card__cta">View Fabrics →</span>
               </div>
             </div>
-            <div class="category-card__body">
-              <h3>{category.name}</h3>
-              <p>{category.description}</p>
-              <div class="category-card__sub-products">
-                {category.products.map((product) => (
-                  <a href={`/products/${product.slug}`} class="category-card__sub-link">
-                    {product.name}
-                  </a>
-                ))}
-              </div>
-              <div class="category-card__actions">
-                <CTAButton href={`/products?category=${category.slug}`} variant="dark">
-                  View {category.name}
-                </CTAButton>
-                <CTAButton href="/contact?inquiry=swatch" variant="outline">
-                  Request Swatch
-                </CTAButton>
-              </div>
+            <div class="app-card__body">
+              <h3>{app.title}</h3>
+              <p>{app.description}</p>
             </div>
-          </article>
+          </a>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- ==================== 3. FACTORY CAPABILITY ==================== -->
-  <section class="section section--alt" id="factory-capability">
+  <!-- ==================== ④ ADVANTAGES (4 B2B icons) ==================== -->
+  <section class="section section--alt" id="advantages">
     <div class="container">
       <div class="section-header">
-        <span class="eyebrow">Factory Capability</span>
-        <h2>What We Manufacture</h2>
-        <p>
-          Our manufacturing capability covers the full decorative fabric
-          production chain — from custom color development to OEM production
-          and quality-controlled delivery.
-        </p>
+        <span class="eyebrow">WHY US</span>
+        <h2>Your Reliable Manufacturing Partner</h2>
+        <p>From raw material to finished synthetic leather — full-service textile manufacturing with documented quality control.</p>
       </div>
 
-      <div class="grid grid--4 capability-grid">
-        {factoryCapabilities.map((item) => (
-          <div class="capability-card">
-            <div class="capability-card__icon">
-              {item.icon === "factory" && (
+      <div class="grid grid--4 advantage-grid">
+        {advantages.map((item) => (
+          <div class="advantage-card">
+            <div class="advantage-card__icon">
+              {item.icon === "sample" && (
                 <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M6 42V20L18 26V20L30 26V20L42 26V42H6Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-                  <rect x="12" y="32" width="4" height="6" fill="currentColor"/>
-                  <rect x="22" y="32" width="4" height="6" fill="currentColor"/>
-                  <rect x="32" y="32" width="4" height="6" fill="currentColor"/>
-                  <path d="M6 16L10 10H16L18 16" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                  <path d="M8 20L24 10L40 20V38C40 39.1 39.1 40 38 40H10C8.9 40 8 39.1 8 38V20Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                  <path d="M8 20H40" stroke="currentColor" stroke-width="2.5"/>
+                  <path d="M18 40V28H30V40" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                  <path d="M24 10V6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M20 8C20 6.9 21.8 6 24 6C26.2 6 28 6.9 28 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
                 </svg>
               )}
               {item.icon === "palette" && (
@@ -235,127 +253,162 @@ const whyChooseUs = [
                   <circle cx="31" cy="17" r="3" fill="currentColor"/>
                 </svg>
               )}
-              {item.icon === "production" && (
-                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8 38V24L16 28V24L24 28V24L32 28V20H40V38H8Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-                  <path d="M8 38H40" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                  <circle cx="14" cy="33" r="2" fill="currentColor"/>
-                  <circle cx="22" cy="33" r="2" fill="currentColor"/>
-                  <circle cx="30" cy="33" r="2" fill="currentColor"/>
-                </svg>
-              )}
-              {item.icon === "quality" && (
+              {item.icon === "shield" && (
                 <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M24 6L38 12V22C38 31 32 38 24 42C16 38 10 31 10 22V12L24 6Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
                   <path d="M18 24L22 28L30 20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               )}
+              {item.icon === "factory" && (
+                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 42V20L18 26V20L30 26V20L42 26V42H6Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                  <rect x="12" y="32" width="4" height="6" fill="currentColor"/>
+                  <rect x="22" y="32" width="4" height="6" fill="currentColor"/>
+                  <rect x="32" y="32" width="4" height="6" fill="currentColor"/>
+                </svg>
+              )}
             </div>
-            <h3 class="capability-card__title">{item.title}</h3>
-            <p class="capability-card__desc">{item.description}</p>
+            <h3 class="advantage-card__title">{item.title}</h3>
+            <p class="advantage-card__desc">{item.desc}</p>
           </div>
         ))}
       </div>
+    </div>
+  </section>
 
-      <div class="capability-cta">
-        <CTAButton href="/factory" variant="dark" size="lg">
-          Explore Our Factory
+  <!-- ==================== ⑤ CORE COLLECTIONS PREVIEW ==================== -->
+  <section class="section" id="core-collections">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Product Preview</span>
+        <h2>Core Collections</h2>
+        <p>Explore our core synthetic-leather collections for footwear &amp; accessories.</p>
+      </div>
+
+      <div class="grid grid--2 collections-grid">
+        {coreCollections.map((item) => (
+          <a href={item.href} class="collection-card">
+            <div class="collection-card__visual">
+              <img
+                src={item.image}
+                alt={item.alt}
+                width="800"
+                height="800"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="collection-card__body">
+              <span class="collection-card__badge">{item.label}</span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+              <span class="collection-card__cta">Learn More →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="featured-cta">
+        <CTAButton href="/products" variant="dark" size="lg">
+          Discover Fabrics
         </CTAButton>
       </div>
     </div>
   </section>
 
-  <!-- ==================== 4. APPLICATIONS ==================== -->
-  <section class="section" id="applications">
+  <!-- ==================== ⑥ FACTORY TRUST ==================== -->
+  <section class="section section--dark" id="factory-trust">
     <div class="container">
+      <div class="trust-layout">
+        <!-- Left: content -->
+        <div class="trust-layout__left">
+          <span class="eyebrow">Factory & Certification</span>
+          <h2>Factory Direct, Quality Assured</h2>
+          <p>
+            Specialized in synthetic leather since 2013. With our own production facility
+            and solid partnerships with qualified material factories, we deliver reliable
+            glitter & foil-printed fabrics for global footwear and bag manufacturers.
+          </p>
+
+          <div class="trust-badges">
+            {trustBadges.map((badge) => (
+              <div class="trust-badge">
+                <svg class="trust-badge__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span class="trust-badge__label">{badge.label}</span>
+              </div>
+            ))}
+          </div>
+
+          <div class="trust-actions">
+            <CTAButton href="/factory" variant="primary" size="lg">
+              Explore Our Factory
+            </CTAButton>
+            <CTAButton href="/sample-policy" variant="secondary" size="lg">
+              Request Free Sample
+            </CTAButton>
+          </div>
+        </div>
+
+        <!-- Right: factory image -->
+        <div class="trust-layout__right">
+          <div class="trust-image">
+            <img
+              src="/image/home/slide3.png"
+              alt="In-house quality control inspection at Nixia Fabric factory"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ⑦ FAQ ==================== -->
+  <section class="section" id="faq">
+    <div class="container container--narrow">
       <div class="section-header">
-        <span class="eyebrow">Applications</span>
-        <h2>Where Our Fabrics Are Used</h2>
-        <p>
-          Nixia Fabric products are used across footwear, handbags, bags
-          accessories, and fashion — anywhere decorative glitter and metallic
-          surfaces add value.
-        </p>
+        <span class="eyebrow">FAQ</span>
+        <h2>Frequently Asked Questions</h2>
       </div>
 
-      <div class="grid grid--4 applications-grid">
-        {applications.map((app) => (
-          <div class="app-card">
-            <div class="app-card__visual" style={`background: ${app.gradient};`}>
-              <div class="app-card__visual-shine"></div>
+      <div class="faq-list">
+        {faqData.mainEntity.map((item, idx) => (
+          <details class="faq-item" open={idx === 0}>
+            <summary class="faq-item__question">
+              <span>{item.name}</span>
+              <svg class="faq-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </summary>
+            <div class="faq-item__answer">
+              <p>{item.acceptedAnswer.text}</p>
             </div>
-            <div class="app-card__body">
-              <h3>{app.title}</h3>
-              <p>{app.description}</p>
-            </div>
-          </div>
+          </details>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- ==================== 5. WHY CHOOSE NIXIA FABRIC ==================== -->
-  <section class="section section--dark" id="why-choose">
-    <div class="container">
-      <div class="why-layout">
-        <!-- Left: Heading -->
-        <div class="why-layout__header">
-          <span class="eyebrow">Why Choose Nixia Fabric</span>
-          <h2>Manufacturer, Not Middleman</h2>
-          <p>
-            We are a fabric manufacturer — not a supplier, trading company, or
-            sourcing agent. That means direct control over quality, faster
-            custom development, and transparent communication from production
-            floor to your door.
-          </p>
-          <div class="why-layout__badges">
-            <span class="why-badge">Manufacturer</span>
-            <span class="why-badge">Factory</span>
-            <span class="why-badge">OEM</span>
-            <span class="why-badge">Custom Manufacturing</span>
-          </div>
-          <div class="why-layout__actions">
-            <CTAButton href="/about" variant="secondary" size="lg">
-              About Nixia Fabric
-            </CTAButton>
-          </div>
-        </div>
-
-        <!-- Right: Feature list -->
-        <div class="why-layout__features">
-          {whyChooseUs.map((feature, idx) => (
-            <div class="why-feature">
-              <div class="why-feature__num">{String(idx + 1).padStart(2, "0")}</div>
-              <div class="why-feature__content">
-                <h3>{feature.title}</h3>
-                <p>{feature.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== 6. FINAL CTA ==================== -->
+  <!-- ==================== ⑧ FINAL CTA ==================== -->
   <section class="final-cta" id="final-cta">
     <div class="container">
       <div class="final-cta__inner">
         <span class="eyebrow final-cta__eyebrow">Get Started</span>
         <h2 class="final-cta__title">
-          Request Free Swatches for Your Project
+          Request Free Samples for Your Project
         </h2>
         <p class="final-cta__text">
-          See and feel the quality before you commit. We send free fabric
-          swatches worldwide. For custom color development, our team will work
-          with you from concept to production.
+          See and feel the quality before you commit. Free samples — you only
+          cover shipping.
         </p>
         <div class="final-cta__actions">
-          <CTAButton href="/contact?inquiry=swatch" variant="primary" size="lg">
-            Request Swatch
+          <CTAButton href="/sample-policy" variant="primary" size="lg">
+            Request Free Sample
           </CTAButton>
-          <CTAButton href="/contact?inquiry=quote" variant="outline" size="lg">
-            Get Custom Quote
+          <CTAButton href="/contact" variant="secondary" size="lg">
+            Get Custom Quotation
           </CTAButton>
         </div>
       </div>
@@ -364,174 +417,15 @@ const whyChooseUs = [
 </Layout>
 
 <style>
-  /* ==================== Product Categories ==================== */
-  .categories-grid {
-    gap: var(--space-2xl);
-  }
-
-  .category-card {
-    background-color: var(--color-white);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    transition: all var(--transition-base);
-    display: flex;
-    flex-direction: column;
-  }
-
-  .category-card:hover {
-    box-shadow: var(--shadow-xl);
-    transform: translateY(-4px);
-  }
-
-  .category-card__visual {
-    aspect-ratio: 16 / 7;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .category-card__visual::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(circle at 25% 35%, rgba(255, 255, 255, 0.3) 0%, transparent 40%),
-      radial-gradient(circle at 75% 65%, rgba(255, 255, 255, 0.15) 0%, transparent 30%);
-  }
-
-  .category-card__visual-overlay {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
-
-  .category-card__visual-content {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-    padding: var(--space-md);
-  }
-
-  .category-card__badge {
-    padding: 0.375rem 0.875rem;
-    font-size: var(--text-xs);
-    font-weight: 600;
-    color: var(--color-primary);
-    background-color: rgba(255, 255, 255, 0.95);
-    border-radius: var(--radius-full);
-    backdrop-filter: blur(4px);
-  }
-
-  .category-card__body {
-    padding: var(--space-xl);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-    flex: 1;
-  }
-
-  .category-card__body h3 {
-    font-size: var(--text-2xl);
-  }
-
-  .category-card__body > p {
-    font-size: var(--text-sm);
-    line-height: 1.6;
-  }
-
-  .category-card__sub-products {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
-    padding-block: var(--space-sm);
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .category-card__sub-link {
-    font-size: var(--text-xs);
-    font-weight: 500;
-    color: var(--color-text-secondary);
-    padding: 0.25rem 0.625rem;
-    background-color: var(--color-bg-alt);
-    border-radius: var(--radius-sm);
-    transition: all var(--transition-fast);
-  }
-
-  .category-card__sub-link:hover {
-    color: var(--color-white);
-    background-color: var(--color-primary);
-  }
-
-  .category-card__actions {
-    display: flex;
-    gap: var(--space-sm);
-    margin-top: auto;
-  }
-
-  /* ==================== Factory Capability ==================== */
-  .capability-grid {
-    gap: var(--space-xl);
-  }
-
-  .capability-card {
-    background-color: var(--color-white);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: var(--space-xl);
-    text-align: center;
-    transition: all var(--transition-base);
-  }
-
-  .capability-card:hover {
-    box-shadow: var(--shadow-lg);
-    border-color: var(--color-accent);
-    transform: translateY(-4px);
-  }
-
-  .capability-card__icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 56px;
-    height: 56px;
-    background-color: rgba(196, 160, 53, 0.1);
-    border-radius: var(--radius-md);
-    margin-bottom: var(--space-md);
-    color: var(--color-accent);
-  }
-
-  .capability-card__icon svg {
-    width: 32px;
-    height: 32px;
-  }
-
-  .capability-card__title {
-    font-size: var(--text-lg);
-    margin-bottom: var(--space-sm);
-  }
-
-  .capability-card__desc {
-    font-size: var(--text-sm);
-    line-height: 1.6;
-  }
-
-  .capability-cta {
-    text-align: center;
-    margin-top: var(--space-2xl);
-  }
-
   /* ==================== Applications ==================== */
   .applications-grid {
     gap: var(--space-lg);
   }
 
   .app-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
     border-radius: var(--radius-md);
     overflow: hidden;
     background-color: var(--color-white);
@@ -545,19 +439,45 @@ const whyChooseUs = [
   }
 
   .app-card__visual {
-    aspect-ratio: 1;
+    aspect-ratio: 16 / 9;
     position: relative;
     overflow: hidden;
   }
 
-  .app-card__visual-shine {
+  .app-card__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .app-card:hover .app-card__visual img {
+    transform: scale(1.05);
+  }
+
+  .app-card__overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-      circle at 30% 30%,
-      rgba(255, 255, 255, 0.35) 0%,
-      transparent 50%
-    );
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: var(--space-md);
+    background: linear-gradient(to top, rgba(22, 41, 77, 0.7) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+
+  .app-card:hover .app-card__overlay {
+    opacity: 1;
+  }
+
+  .app-card__cta {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-white);
+    background-color: var(--color-accent);
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius-full);
   }
 
   .app-card__body {
@@ -575,75 +495,266 @@ const whyChooseUs = [
     color: var(--color-text-muted);
   }
 
-  /* ==================== Why Choose Us ==================== */
-  .why-layout {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: var(--space-4xl);
-    align-items: start;
+  /* ==================== Advantages ==================== */
+  .advantage-grid {
+    gap: var(--space-xl);
   }
 
-  .why-layout__header h2 {
+  .advantage-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+    text-align: center;
+    transition: all var(--transition-base);
+  }
+
+  .advantage-card:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-accent-light);
+    transform: translateY(-4px);
+  }
+
+  .advantage-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background-color: rgba(196, 160, 53, 0.1);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-md);
+    color: var(--color-accent);
+  }
+
+  .advantage-card__icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .advantage-card__title {
+    font-size: var(--text-base);
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+    color: var(--color-primary);
+  }
+
+  .advantage-card__desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  /* ==================== Core Collections ==================== */
+  .collections-grid {
+    gap: var(--space-2xl);
+  }
+
+  .collection-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all var(--transition-base);
+  }
+
+  .collection-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+
+  .collection-card__visual {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+
+  .collection-card__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .collection-card:hover .collection-card__visual img {
+    transform: scale(1.04);
+  }
+
+  .collection-card__body {
+    padding: var(--space-xl);
+  }
+
+  .collection-card__badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-accent);
+    background-color: rgba(196, 160, 53, 0.08);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-sm);
+  }
+
+  .collection-card__body h3 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-sm);
+    color: var(--color-primary);
+  }
+
+  .collection-card__body p {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+  }
+
+  .collection-card__cta {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+
+  .collection-card:hover .collection-card__cta {
+    text-decoration: underline;
+  }
+
+  .featured-cta {
+    text-align: center;
+    margin-top: var(--space-3xl);
+  }
+
+  /* ==================== Factory Trust ==================== */
+  .trust-layout {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: var(--space-4xl);
+    align-items: center;
+  }
+
+  .trust-layout__left h2 {
     color: var(--color-white);
     margin-bottom: var(--space-md);
   }
 
-  .why-layout__header > p {
+  .trust-layout__left > p {
     color: rgba(255, 255, 255, 0.7);
     font-size: var(--text-lg);
     line-height: 1.7;
     margin-bottom: var(--space-xl);
   }
 
-  .why-layout__badges {
+  .trust-badges {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-sm);
     margin-bottom: var(--space-xl);
   }
 
-  .why-badge {
-    display: inline-block;
-    padding: 0.375rem 1rem;
-    font-size: var(--text-xs);
-    font-weight: 600;
-    color: var(--color-accent);
+  .trust-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: 0.5rem 1rem;
     border: 1px solid rgba(196, 160, 53, 0.3);
     border-radius: var(--radius-full);
+    background: rgba(196, 160, 53, 0.05);
   }
 
-  .why-layout__features {
+  .trust-badge__check {
+    width: 16px;
+    height: 16px;
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .trust-badge__label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .trust-actions {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .trust-layout__right {
+    position: relative;
+  }
+
+  .trust-image {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    box-shadow: var(--shadow-xl);
+  }
+
+  .trust-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ==================== FAQ ==================== */
+  .faq-list {
     display: flex;
     flex-direction: column;
-    gap: var(--space-xl);
+    gap: var(--space-sm);
   }
 
-  .why-feature {
+  .faq-item {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: border-color var(--transition-base);
+  }
+
+  .faq-item[open] {
+    border-color: var(--color-accent-light);
+  }
+
+  .faq-item__question {
     display: flex;
-    gap: var(--space-lg);
-    align-items: flex-start;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: var(--space-lg) var(--space-xl);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
   }
 
-  .why-feature__num {
-    font-size: var(--text-2xl);
-    font-weight: 800;
+  .faq-item__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item__icon {
+    width: 20px;
+    height: 20px;
     color: var(--color-accent);
-    opacity: 0.5;
     flex-shrink: 0;
-    width: 48px;
-    line-height: 1;
+    transition: transform var(--transition-base);
   }
 
-  .why-feature__content h3 {
-    color: var(--color-white);
-    font-size: var(--text-lg);
-    margin-bottom: var(--space-xs);
+  .faq-item[open] .faq-item__icon {
+    transform: rotate(180deg);
   }
 
-  .why-feature__content p {
-    color: rgba(255, 255, 255, 0.65);
+  .faq-item__answer {
+    padding: 0 var(--space-xl) var(--space-lg);
+  }
+
+  .faq-item__answer p {
     font-size: var(--text-sm);
-    line-height: 1.6;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
   }
 
   /* ==================== Final CTA ==================== */
@@ -696,17 +807,49 @@ const whyChooseUs = [
     flex-wrap: wrap;
   }
 
+  /* ==================== Hero Trust Bar ==================== */
+  .hero-trust {
+    background-color: var(--color-primary-dark);
+    padding-block: var(--space-2xl);
+    border-bottom: 1px solid rgba(196, 160, 53, 0.1);
+  }
+
+  .hero-trust__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+    text-align: center;
+  }
+
+  .hero-trust__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .hero-trust__value {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-accent);
+    line-height: 1.2;
+  }
+
+  .hero-trust__label {
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.65);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
   /* ==================== Responsive ==================== */
   @media (max-width: 968px) {
-    .why-layout {
+    .trust-layout {
       grid-template-columns: 1fr;
       gap: var(--space-2xl);
     }
 
-    .grid--4.capability-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
+    .grid--4.advantage-grid,
     .grid--4.applications-grid {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -717,13 +860,15 @@ const whyChooseUs = [
   }
 
   @media (max-width: 640px) {
-    .grid--4.capability-grid,
-    .grid--4.applications-grid {
-      grid-template-columns: 1fr;
+    .hero-trust__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-xl) var(--space-lg);
     }
 
-    .category-card__actions {
-      flex-direction: column;
+    .grid--4.advantage-grid,
+    .grid--4.applications-grid,
+    .grid--4.featured-grid {
+      grid-template-columns: 1fr;
     }
 
     .final-cta__title {
@@ -731,6 +876,10 @@ const whyChooseUs = [
     }
 
     .final-cta__actions {
+      flex-direction: column;
+    }
+
+    .trust-actions {
       flex-direction: column;
     }
   }

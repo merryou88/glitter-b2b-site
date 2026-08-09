@@ -1,15 +1,23 @@
 ---
 /**
  * Product Detail Page — /products/[slug]
- * Template: Product Name, Images, Description, Applications,
- *           Specifications, Available Colors, Customization Options,
- *           Sample Policy, CTA
+ * Also handles end-use category pages (fabric-for-shoes, etc.)
+ *
+ * If slug matches an end-use category, renders EndUseListing.
+ * Otherwise renders the product detail template.
  */
 import Layout from "@layouts/Layout.astro";
 import CTAButton from "@components/CTAButton.astro";
 import SpecificationTable from "@components/SpecificationTable.astro";
-import { allProducts, getProductBySlug } from "@data/products";
-import type { Product } from "@data/products";
+import EndUseListing from "@components/EndUseListing.astro";
+import {
+  allProducts,
+  getProductBySlug,
+  endUseCategories,
+  getProductsByEndUse,
+  getEndUseLabel,
+} from "@data/products";
+import type { Product, EndUseCategory } from "@data/products";
 
 // Color swatch mapping for visual placeholders
 const colorSwatchMap: Record<string, string> = {
@@ -33,106 +41,111 @@ const colorSwatchMap: Record<string, string> = {
 };
 
 export function getStaticPaths() {
-  return allProducts.map((product) => ({
+  // Product detail paths
+  const productPaths = allProducts.map((product) => ({
     params: { slug: product.slug },
-    props: { product },
+    props: { type: "product" as const, product },
   }));
+
+  // End-use category paths
+  const endUsePaths = endUseCategories.map((cat) => {
+    const products = getProductsByEndUse(cat.slug);
+    return {
+      params: { slug: cat.slug },
+      props: { type: "endUse" as const, category: cat, products },
+    };
+  });
+
+  return [...productPaths, ...endUsePaths];
 }
 
 interface Props {
-  product: Product;
+  type: "product" | "endUse";
+  product?: Product;
+  category?: EndUseCategory;
+  products?: Product[];
 }
 
-const { product } = Astro.props;
+const { type, product, category, products } = Astro.props;
 
-// Find related products (same category, different slug)
-const relatedProducts = allProducts
-  .filter((p) => p.category === product.category && p.slug !== product.slug)
-  .slice(0, 3);
+// ==================== Product Detail Page ====================
+const p = product as Product | undefined;
+const isProduct = type === "product" && !!p;
+const isEndUse = type === "endUse" && !!category && !!products;
 
-// Get category info
-const categorySlug =
-  product.category === "Glitter Fabric" ? "glitter-fabric" : "foil-fabric";
+// Guard all product-specific computations for end-use pages
+const relatedProducts = p
+  ? allProducts.filter((rp) => rp.category === p.category && rp.slug !== p.slug).slice(0, 3)
+  : [];
 
-// Breadcrumb structured data
-const breadcrumbData = {
+const endUseLabels = p ? p.endUse.map((tag) => getEndUseLabel(tag)) : [];
+
+const breadcrumbData = p ? {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: "https://nixiafabric.com/",
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Products",
-      item: "https://nixiafabric.com/products",
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      name: product.name,
-      item: `https://nixiafabric.com/products/${product.slug}`,
-    },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://nixiafabric.com/" },
+    { "@type": "ListItem", position: 2, name: "Products", item: "https://nixiafabric.com/products" },
+    { "@type": "ListItem", position: 3, name: p.name, item: `https://nixiafabric.com/products/${p.slug}` },
   ],
-};
+} : {};
 
-// Product structured data
-const productStructuredData = {
+const productStructuredData = p ? {
   "@context": "https://schema.org",
   "@type": "Product",
-  name: product.name,
-  description: product.description,
-  category: product.category,
-  url: `https://nixiafabric.com/products/${product.slug}`,
-  brand: {
-    "@type": "Brand",
-    name: "Nixia Fabric",
-  },
-  manufacturer: {
-    "@type": "Organization",
-    name: "Nixia Fabric",
-    url: "https://nixiafabric.com",
-  },
-  material: product.specifications.composition,
+  name: p.name,
+  description: p.description,
+  category: p.category,
+  url: `https://nixiafabric.com/products/${p.slug}`,
+  brand: { "@type": "Brand", name: "Nixia Fabric" },
+  manufacturer: { "@type": "Organization", name: "Nixia Fabric", url: "https://nixiafabric.com" },
+  material: p.specifications.composition,
   additionalProperty: [
-    {
-      "@type": "PropertyValue",
-      name: "GSM",
-      value: product.specifications.gsm,
-    },
-    {
-      "@type": "PropertyValue",
-      name: "Width",
-      value: product.specifications.width,
-    },
-    {
-      "@type": "PropertyValue",
-      name: "Backing",
-      value: product.specifications.backing,
-    },
-    {
-      "@type": "PropertyValue",
-      name: "Applications",
-      value: product.applications.join(", "),
-    },
+    { "@type": "PropertyValue", name: "GSM", value: p.specifications.gsm },
+    { "@type": "PropertyValue", name: "Width", value: p.specifications.width },
+    { "@type": "PropertyValue", name: "Backing", value: p.specifications.backing },
+    { "@type": "PropertyValue", name: "Craft", value: p.craft },
+    { "@type": "PropertyValue", name: "Applications", value: endUseLabels.join(", ") },
   ],
-};
+} : {};
 
-// Get swatch colors
-const swatchColors = product.colors
-  .filter((c) => !c.includes("Custom"))
-  .map((c) => ({ name: c, color: colorSwatchMap[c] || "#ccc" }));
-const hasCustomColors = product.colors.some((c) => c.includes("Custom"));
+const swatchColors = p
+  ? p.colors.filter((c) => !c.includes("Custom")).map((c) => ({ name: c, color: colorSwatchMap[c] || "#ccc" }))
+  : [];
+const hasCustomColors = p ? p.colors.some((c) => c.includes("Custom")) : false;
+
+// Determine main detail image based on product category
+const detailMainImage = p
+  ? p.category === "Hot-Stamping Foil Finish"
+    ? "/images/detail_hotstamping_main.jpg"
+    : "/images/detail_glitter_main.jpg"
+  : "";
+
+// Customization parameters for detail page
+const backingOptions = [
+  {
+    name: "Elastic Knitted",
+    image: "/images/backing_elastic_knit.jpg",
+    alt: "Elastic knitted backing material for synthetic leather",
+    desc: "Flexible, stretchable backing for applications requiring elasticity",
+  },
+  {
+    name: "PU Coated",
+    image: "/images/backing_pu_coated.jpg",
+    alt: "PU coated backing material for synthetic leather",
+    desc: "Durable, water-resistant backing for structured applications",
+  },
+];
 ---
 
-<Layout
-  title={product.name}
-  description={product.description}
-  keywords={`${product.name}, ${product.category}, ${product.name.toLowerCase()}, ${product.specifications.composition.toLowerCase()}, fabric manufacturer`}
+{isEndUse && category && products ? (
+  <EndUseListing category={category} products={products} />
+) : isProduct ? (
+  <Layout
+  title={p.name}
+  description={p.description}
+  keywords={`${p.name}, ${p.category}, ${p.craft}, ${p.name.toLowerCase()}, ${p.specifications.composition.toLowerCase()}, fabric manufacturer`}
+  canonical={`https://nixiafabric.com/products/${p.slug}`}
   structuredData={[breadcrumbData, productStructuredData]}
 >
   <!-- Breadcrumb -->
@@ -143,7 +156,7 @@ const hasCustomColors = product.colors.some((c) => c.includes("Custom"));
         <span class="breadcrumb__sep">/</span>
         <a href="/products">Products</a>
         <span class="breadcrumb__sep">/</span>
-        <span class="breadcrumb__current">{product.name}</span>
+        <span class="breadcrumb__current">{p.name}</span>
       </nav>
     </div>
   </div>
@@ -155,28 +168,24 @@ const hasCustomColors = product.colors.some((c) => c.includes("Custom"));
         <!-- Image Gallery -->
         <div class="product-gallery">
           <div class="product-gallery__main">
-            <div class="product-gallery__main-inner">
-              <div class="product-gallery__swatches">
-                {swatchColors.map((sw) => (
-                  <div
-                    class="product-gallery__swatch-large"
-                    style={`background:${sw.color}`}
-                    title={sw.name}
-                  ></div>
-                ))}
-              </div>
-            </div>
-            <div class="product-gallery__label">
-              <span>{product.name}</span>
-            </div>
+            <img
+              src={detailMainImage}
+              alt={`${p.name} — ${p.category} synthetic leather fabric`}
+              width="1200"
+              height="1200"
+              loading="eager"
+              decoding="async"
+              class="product-gallery__main-img"
+            />
           </div>
           <div class="product-gallery__thumbs">
-            {product.images.map((_, i) => (
-              <div class="product-gallery__thumb">
-                <div
+            {swatchColors.slice(0, 5).map((sw, i) => (
+              <div class={`product-gallery__thumb${i === 0 ? " is-active" : ""}`}>
+                <span
                   class="product-gallery__thumb-swatch"
-                  style={`background:${swatchColors[i % swatchColors.length]?.color || "#ccc"}`}
-                ></div>
+                  style={`background:${sw.color}`}
+                  title={sw.name}
+                ></span>
               </div>
             ))}
           </div>
@@ -187,37 +196,54 @@ const hasCustomColors = product.colors.some((c) => c.includes("Custom"));
 
         <!-- Product Info -->
         <div class="product-info">
-          <span class="badge badge--accent">{product.category}</span>
-          <h1>{product.name}</h1>
-          <p class="product-info__desc">{product.description}</p>
+          <div class="product-info__badges">
+            <span class="badge badge--accent">{p.category}</span>
+            <span class="badge badge--craft">{p.craft}</span>
+          </div>
+          <h1>{p.name}</h1>
+          <p class="product-info__desc">{p.description}</p>
+
+          <!-- Suitable for (end-use tags) -->
+          {endUseLabels.length > 0 && (
+            <div class="product-info__suitable">
+              <span class="product-info__suitable-label">Suitable for:</span>
+              <div class="product-info__suitable-tags">
+                {endUseLabels.map((label) => (
+                  <a href={`/products/fabric-for-${label.toLowerCase().replace(/\s+/g, "-")}`} class="product-info__suitable-tag">
+                    {label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
 
           <!-- Quick Specs -->
           <div class="product-info__quick-specs">
             <div class="quick-spec">
               <span class="quick-spec__label">Composition</span>
-              <span class="quick-spec__value">{product.specifications.composition}</span>
+              <span class="quick-spec__value">{p.specifications.composition}</span>
             </div>
             <div class="quick-spec">
               <span class="quick-spec__label">Width</span>
-              <span class="quick-spec__value">{product.specifications.width}</span>
+              <span class="quick-spec__value">{p.specifications.width}</span>
             </div>
             <div class="quick-spec">
               <span class="quick-spec__label">GSM</span>
-              <span class="quick-spec__value">{product.specifications.gsm}</span>
+              <span class="quick-spec__value">{p.specifications.gsm}</span>
             </div>
           </div>
 
           <!-- CTA -->
           <div class="product-info__cta">
-            <CTAButton href="/#contact" variant="dark" size="lg" block>
-              Request Swatch
+            <CTAButton href="/sample-policy" variant="dark" size="lg" block>
+              Request Free Sample
             </CTAButton>
-            <CTAButton href="/#contact" variant="outline" size="lg" block>
-              Get Custom Quote
+            <CTAButton href="/contact" variant="outline" size="lg" block>
+              Get Custom Quotation
             </CTAButton>
           </div>
           <p class="product-info__note">
-            Minimum order quantity applies. Contact us for sample policy and custom development details.
+            Minimum order quantity applies. Contact us for sample policy and Custom Color Matching details.
           </p>
         </div>
       </div>
@@ -231,7 +257,7 @@ const hasCustomColors = product.colors.some((c) => c.includes("Custom"));
         <!-- Specifications -->
         <div class="product-details__col">
           <h2 class="product-details__heading">Specifications</h2>
-          <SpecificationTable specs={product.specifications} />
+          <SpecificationTable specs={p.specifications} />
         </div>
 
         <!-- Available Colors -->
@@ -256,46 +282,86 @@ const hasCustomColors = product.colors.some((c) => c.includes("Custom"));
     </div>
   </section>
 
-  <!-- Applications & Customization -->
+  <!-- Customization Parameters -->
   <section class="section">
     <div class="container">
-      <div class="product-details__grid product-details__grid--2">
-        <!-- Applications -->
-        <div class="product-details__col">
-          <span class="eyebrow">Applications</span>
-          <h2 class="product-details__heading">Where It's Used</h2>
-          <div class="application-list">
-            {product.applications.map((app) => (
-              <div class="application-list__item">
-                <span class="application-list__icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 11l3 3L22 4" />
-                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+      <div class="section-header section-header--center">
+        <span class="eyebrow">Customization Options</span>
+        <h2>Customize Your {p.category}</h2>
+        <p>Backing material, colors, thickness, and width — all tailored to your project requirements.</p>
+      </div>
+
+      <div class="custom-params">
+        <!-- Backing Options -->
+        <div class="custom-params__block">
+          <h3 class="custom-params__title">Backing Material</h3>
+          <div class="custom-params__backing-grid">
+            {backingOptions.map((opt, i) => (
+              <div class={`backing-option${i === 0 ? " is-selected" : ""}`}>
+                <div class="backing-option__image">
+                  <img
+                    src={opt.image}
+                    alt={opt.alt}
+                    width="800"
+                    height="800"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="backing-option__body">
+                  <span class="backing-option__name">{opt.name}</span>
+                  <p class="backing-option__desc">{opt.desc}</p>
+                </div>
+                <span class="backing-option__check">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6L9 17l-5-5" />
                   </svg>
                 </span>
-                <span class="application-list__name">{app}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <!-- Customization Options -->
-        <div class="product-details__col">
-          <span class="eyebrow">Customization</span>
-          <h2 class="product-details__heading">OEM & Custom Development</h2>
-          <div class="customization-list">
-            {product.customizationOptions?.map((option) => (
-              <div class="customization-list__item">
-                <span class="customization-list__icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-                  </svg>
-                </span>
-                <span>{option}</span>
+        <!-- Color Selection -->
+        <div class="custom-params__block">
+          <h3 class="custom-params__title">Color Selection</h3>
+          <div class="custom-params__color-grid">
+            {swatchColors.map((sw, i) => (
+              <div class={`color-swatch${i === 0 ? " is-selected" : ""}`}>
+                <span class="color-swatch__circle" style={`background:${sw.color}`}></span>
+                <span class="color-swatch__name">{sw.name}</span>
               </div>
             ))}
+            {hasCustomColors && (
+              <div class="color-swatch color-swatch--custom">
+                <span class="color-swatch__circle color-swatch__circle--custom">+</span>
+                <span class="color-swatch__name">Custom Color Matching</span>
+              </div>
+            )}
           </div>
         </div>
+
+        <!-- Thickness & Width -->
+        <div class="custom-params__block">
+          <h3 class="custom-params__title">Thickness &amp; Width</h3>
+          <div class="custom-params__specs">
+            <div class="custom-params__spec">
+              <span class="custom-params__spec-label">Standard Thickness</span>
+              <span class="custom-params__spec-value">{p.specifications.gsm}</span>
+              <span class="custom-params__spec-note">Custom thickness available upon request</span>
+            </div>
+            <div class="custom-params__spec">
+              <span class="custom-params__spec-label">Standard Width</span>
+              <span class="custom-params__spec-value">{p.specifications.width}</span>
+              <span class="custom-params__spec-note">Custom width available upon request</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="custom-params__cta">
+        <CTAButton href="/contact" variant="primary" size="lg">Get Custom Quotation</CTAButton>
+        <CTAButton href="/sample-policy" variant="outline" size="lg">Request Free Sample</CTAButton>
       </div>
     </div>
   </section>
@@ -305,8 +371,8 @@ const hasCustomColors = product.colors.some((c) => c.includes("Custom"));
     <div class="container">
       <div class="sample-policy">
         <span class="eyebrow">Sample Policy</span>
-        <h2>Request Swatch Samples</h2>
-        <p class="sample-policy__text">{product.samplePolicy}</p>
+        <h2>Request Free Sample</h2>
+        <p class="sample-policy__text">{p.samplePolicy}</p>
         <div class="sample-policy__features">
           <div class="sample-policy__feature">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -330,10 +396,10 @@ const hasCustomColors = product.colors.some((c) => c.includes("Custom"));
               <path d="M2 7l10 5 10-5" />
               <path d="M12 12v10" />
             </svg>
-            <span>Custom development available</span>
+            <span>Custom Color Matching available</span>
           </div>
         </div>
-        <CTAButton href="/#contact" variant="primary" size="lg">Request Swatch Now</CTAButton>
+        <CTAButton href="/sample-policy" variant="primary" size="lg">Request Free Sample</CTAButton>
       </div>
     </div>
   </section>
@@ -345,10 +411,10 @@ const hasCustomColors = product.colors.some((c) => c.includes("Custom"));
         <div class="related-header">
           <div>
             <span class="eyebrow">More Products</span>
-            <h2>Related {product.category}</h2>
+            <h2>Related {p.category}</h2>
           </div>
           <a href="/products" class="related-header__link">
-            View All Products →
+            Discover Fabrics →
           </a>
         </div>
         <div class="related-grid">
@@ -381,18 +447,19 @@ const hasCustomColors = product.colors.some((c) => c.includes("Custom"));
   <section class="section section--dark">
     <div class="container text-center">
       <span class="eyebrow">Ready to Start?</span>
-      <h2>Get Your Custom {product.name}</h2>
+      <h2>Get Your Custom {p.name}</h2>
       <p style="max-width: 600px; margin: var(--space-lg) auto var(--space-2xl);">
-        Contact Nixia Fabric for OEM production, custom color development, and fabric customization.
+        Contact Nixia Fabric for Factory Direct Supply, Custom Color Matching, and fabric customization.
         We manufacture at our factory — no trading company, no middleman.
       </p>
       <div class="btn-group" style="justify-content: center;">
-        <CTAButton href="/#contact" variant="primary" size="lg">Request Swatch</CTAButton>
-        <CTAButton href="/#contact" variant="secondary" size="lg">Get Custom Quote</CTAButton>
+        <CTAButton href="/sample-policy" variant="primary" size="lg">Request Free Sample</CTAButton>
+        <CTAButton href="/contact" variant="secondary" size="lg">Get Custom Quotation</CTAButton>
       </div>
     </div>
   </section>
 </Layout>
+) : null}
 
 <style>
   /* Breadcrumb Bar */
@@ -437,57 +504,23 @@ const hasCustomColors = product.colors.some((c) => c.includes("Custom"));
 
   /* Gallery */
   .product-gallery__main {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1 / 1;
     border-radius: var(--radius-lg);
-    background: linear-gradient(135deg, #f0f2f6 0%, #e4e7ec 100%);
+    background: var(--color-bg-alt);
     position: relative;
     overflow: hidden;
     border: 1px solid var(--color-border);
   }
 
-  .product-gallery__main-inner {
+  .product-gallery__main-img {
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    object-fit: cover;
+    display: block;
   }
 
-  .product-gallery__swatches {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: var(--space-2xl);
-  }
-
-  .product-gallery__swatch-large {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 0 0 3px rgba(255, 255, 255, 0.3);
-    position: relative;
-  }
-
-  .product-gallery__swatch-large::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 50%, rgba(0,0,0,0.15) 100%);
-  }
-
-  .product-gallery__label {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: var(--space-md) var(--space-lg);
-    background: linear-gradient(to top, rgba(22, 41, 77, 0.85) 0%, transparent 100%);
-    color: var(--color-white);
-    font-weight: 600;
-    font-size: var(--text-sm);
-    text-align: center;
+  .product-gallery__thumb.is-active {
+    border-color: var(--color-accent);
   }
 
   .product-gallery__thumbs {
@@ -528,6 +561,58 @@ const hasCustomColors = product.colors.some((c) => c.includes("Custom"));
   }
 
   /* Product Info */
+  .product-info__badges {
+    display: flex;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+  }
+
+  .badge--craft {
+    background-color: rgba(196, 160, 53, 0.12);
+    color: var(--color-accent-dark);
+    border: 1px solid rgba(196, 160, 53, 0.3);
+  }
+
+  .product-info__suitable {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .product-info__suitable-label {
+    display: block;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-xs);
+  }
+
+  .product-info__suitable-tags {
+    display: flex;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+  }
+
+  .product-info__suitable-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 0.875rem;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-primary);
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+
+  .product-info__suitable-tag:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent-dark);
+    background-color: rgba(196, 160, 53, 0.06);
+  }
+
   .product-info h1 {
     margin-top: var(--space-sm);
     margin-bottom: var(--space-md);
@@ -680,35 +765,205 @@ const hasCustomColors = product.colors.some((c) => c.includes("Custom"));
     color: var(--color-primary);
   }
 
-  /* Customization List */
-  .customization-list {
+  /* Section Header Centered */
+  .section-header--center {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+  }
+
+  .section-header--center p {
+    color: var(--color-text-muted);
+    font-size: var(--text-lg);
+    max-width: 640px;
+    margin: var(--space-sm) auto 0;
+  }
+
+  /* Customization Parameters */
+  .custom-params {
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
+    gap: var(--space-3xl);
   }
 
-  .customization-list__item {
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
+  .custom-params__block {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+  }
+
+  .custom-params__title {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  /* Backing Options */
+  .custom-params__backing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .backing-option {
+    position: relative;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color var(--transition-fast);
+  }
+
+  .backing-option.is-selected {
+    border-color: var(--color-accent);
+  }
+
+  .backing-option__image {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+
+  .backing-option__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .backing-option__body {
     padding: var(--space-md);
-    border-radius: var(--radius-sm);
-    background-color: rgba(196, 160, 53, 0.06);
-    border: 1px solid rgba(196, 160, 53, 0.2);
-    color: var(--color-text-secondary);
-    font-size: var(--text-sm);
   }
 
-  .customization-list__icon {
+  .backing-option__name {
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .backing-option__desc {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  .backing-option__check {
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-sm);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    color: var(--color-white);
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+  }
+
+  .backing-option.is-selected .backing-option__check {
+    opacity: 1;
+  }
+
+  /* Color Selection */
+  .custom-params__color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .color-swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-md);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: border-color var(--transition-fast);
+  }
+
+  .color-swatch.is-selected {
+    border-color: var(--color-accent);
+  }
+
+  .color-swatch:hover {
+    border-color: var(--color-accent-light);
+  }
+
+  .color-swatch__circle {
     width: 40px;
     height: 40px;
-    border-radius: var(--radius-sm);
-    background-color: var(--color-accent);
-    color: var(--color-white);
-    flex-shrink: 0;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), inset 0 0 0 2px rgba(255, 255, 255, 0.3);
+  }
+
+  .color-swatch__circle--custom {
+    background: linear-gradient(135deg, #e4e7ec, #c9cdd6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-text-muted);
+  }
+
+  .color-swatch__name {
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+    text-align: center;
+    font-weight: 500;
+  }
+
+  /* Thickness & Width Specs */
+  .custom-params__specs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .custom-params__spec {
+    padding: var(--space-lg);
+    background-color: var(--color-bg-alt);
+    border-radius: var(--radius-md);
+    text-align: center;
+  }
+
+  .custom-params__spec-label {
+    display: block;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-xs);
+  }
+
+  .custom-params__spec-value {
+    display: block;
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--space-xs);
+  }
+
+  .custom-params__spec-note {
+    display: block;
+    font-size: var(--text-xs);
+    color: var(--color-text-light);
+  }
+
+  .custom-params__cta {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-top: var(--space-2xl);
   }
 
   /* Sample Policy */
@@ -838,15 +1093,25 @@ const hasCustomColors = product.colors.some((c) => c.includes("Custom"));
     }
   }
 
-  @media (max-width: 640px) {
-    .product-gallery__swatch-large {
-      width: 60px;
-      height: 60px;
+  @media (max-width: 768px) {
+    .custom-params__backing-grid,
+    .custom-params__specs {
+      grid-template-columns: 1fr;
     }
 
+    .custom-params__cta {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 640px) {
     .sample-policy__features {
       flex-direction: column;
       gap: var(--space-lg);
+    }
+
+    .custom-params__color-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>

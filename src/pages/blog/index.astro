@@ -10,48 +10,48 @@ import CTAButton from "@components/CTAButton.astro";
 // Sample article data (for future SEO content)
 const articles = [
   {
-    title: "What is Glitter Fabric?",
+    title: "What is Chunky Glitter Synthetic Leather?",
     slug: "what-is-glitter-fabric",
-    category: "Basics",
+    tags: ["Glitter-Leather", "Material-Guide"],
     excerpt:
-      "A comprehensive introduction to glitter fabric — what it is, how it's made, what types are available, and where it's used in shoes, handbags, and fashion accessories.",
+      "A comprehensive introduction to Chunky Glitter Synthetic Leather — what it is, how it's made, and where it's used in shoes, handbags, and fashion accessories. See our Chunky Glitter Synthetic Leather products for color and backing options.",
     date: "Coming Soon",
     readTime: "— min read",
     status: "upcoming",
   },
   {
-    title: "How to Choose Glitter Fabric for Shoes?",
-    slug: "how-to-choose-glitter-fabric-for-shoes",
-    category: "Guide",
+    title: "Foil-Printed Synthetic Leather: Manufacturing & Applications",
+    slug: "hot-stamping-foil-finish-guide",
+    tags: ["Hot-Stamping-Foil", "Material-Guide"],
     excerpt:
-      "Selecting the right glitter fabric for shoe applications — understanding backing types, GSM, stretchability, and adhesion requirements for different shoe styles.",
+      "Understanding foil-printed synthetic leather — the thermal transfer process, metallic tone options, and applications for footwear and bags. Explore our Foil-Printed Synthetic Leather collection.",
     date: "Coming Soon",
     readTime: "— min read",
     status: "upcoming",
   },
   {
-    title: "Glitter Fabric Manufacturing Process",
-    slug: "glitter-fabric-manufacturing-process",
-    category: "Manufacturing",
+    title: "SGS Certified & REACH Compliant: What Buyers Need to Know",
+    slug: "sgs-reach-compliance-guide",
+    tags: ["Compliance", "Material-Guide"],
     excerpt:
-      "A behind-the-scenes look at how glitter fabric is manufactured — from raw material preparation to glitter bonding, color development, and final inspection.",
+      "A guide to SGS Certified and REACH Compliant textile standards — what the certifications mean, how to request test reports, and why they matter for European market import.",
     date: "Coming Soon",
     readTime: "— min read",
     status: "upcoming",
   },
   {
-    title: "Custom Fabric Development Guide",
-    slug: "custom-fabric-development-guide",
-    category: "Guide",
+    title: "Glitter vs Foil-Printed: Which Fabric for Your Project?",
+    slug: "glitter-vs-foil-comparison",
+    tags: ["Glitter-Leather", "Hot-Stamping-Foil", "Material-Guide"],
     excerpt:
-      "A guide to custom fabric development — how to specify colors, GSM, width, and backing materials when working with a fabric manufacturer for OEM production.",
+      "Comparing Chunky Glitter Synthetic Leather and Foil-Printed Synthetic Leather — visual effect, durability, backing options, and best-use scenarios to help you choose the right fabric.",
     date: "Coming Soon",
     readTime: "— min read",
     status: "upcoming",
   },
 ];
 
-const categories = ["All", "Basics", "Guide", "Manufacturing"];
+const categories = ["All", "Glitter-Leather", "Hot-Stamping-Foil", "Material-Guide", "Compliance"];
 
 const breadcrumbData = {
   "@context": "https://schema.org",
@@ -76,15 +76,15 @@ const blogData = {
   "@context": "https://schema.org",
   "@type": "Blog",
   name: "Nixia Fabric Blog",
-  description: "Articles and guides about glitter fabric, foil fabric, and custom fabric development.",
+  description: "Articles and guides about Chunky Glitter Synthetic Leather, Foil-Printed Synthetic Leather, and Custom Color Matching.",
   url: "https://nixiafabric.com/blog",
 };
 ---
 
 <Layout
   title="Blog — Fabric Knowledge & Manufacturing Guides"
-  description="Articles and guides about glitter fabric, foil fabric, manufacturing processes, and custom fabric development. Learn about decorative fabrics from Nixia Fabric."
-  keywords="glitter fabric guide, foil fabric guide, fabric manufacturing process, custom fabric development, fabric knowledge"
+  description="Articles and guides about Chunky Glitter Synthetic Leather, Foil-Printed Synthetic Leather, manufacturing processes, and Custom Color Matching. Learn about synthetic leather from Nixia Fabric."
+  keywords="chunky glitter synthetic leather guide, foil-printed synthetic leather guide, fabric manufacturing process, Custom Color Matching, fabric knowledge"
   structuredData={[breadcrumbData, blogData]}
 >
   <!-- Breadcrumb -->
@@ -104,8 +104,9 @@ const blogData = {
       <span class="eyebrow">Knowledge Center</span>
       <h1>Fabric Knowledge & Guides</h1>
       <p class="blog-hero__desc">
-        Learn about glitter fabric, foil fabric, manufacturing processes, and custom
-        development. Practical guides for designers, sourcing managers, and fabric buyers.
+        We are a synthetic leather manufacturer since 2013, with in-house production for
+        glitter and foil-printed PU, together with partnerships with other qualified
+        material factories. Practical guides for footwear, handbag and accessory manufacturers.
       </p>
     </div>
   </section>
@@ -134,23 +135,32 @@ const blogData = {
           <article class="article-card">
             <div class="article-card__image">
               <div class="article-card__pattern">
-                {article.category === "Basics" && (
-                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><line x1="12" y1="17" x2="12.01" y2="17" />
-                  </svg>
-                )}
-                {article.category === "Guide" && (
+                {article.tags.includes("Material-Guide") && (
                   <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
                   </svg>
                 )}
-                {article.category === "Manufacturing" && (
+                {article.tags.includes("Compliance") && (
+                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                )}
+                {article.tags.includes("Glitter-Leather") && !article.tags.includes("Material-Guide") && (
+                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><line x1="12" y1="17" x2="12.01" y2="17" />
+                  </svg>
+                )}
+                {article.tags.includes("Hot-Stamping-Foil") && !article.tags.includes("Material-Guide") && (
                   <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M2 20h20V8l-6 4V8l-6 4V4H2v16z" /><path d="M6 16h2M10 16h2M14 16h2" />
                   </svg>
                 )}
               </div>
-              <span class="badge badge--accent article-card__badge">{article.category}</span>
+              <div class="article-card__tags">
+                {article.tags.map((tag) => (
+                  <span class="badge badge--accent article-card__badge">{tag}</span>
+                ))}
+              </div>
               <span class="article-card__status">Coming Soon</span>
             </div>
             <div class="article-card__body">
@@ -176,9 +186,10 @@ const blogData = {
         <div class="blog-notice__content">
           <h3>Articles Coming Soon</h3>
           <p>
-            We're preparing in-depth articles about glitter fabric, foil fabric, and custom
-            development. These guides will help you make informed decisions about fabric
-            selection and manufacturing. Subscribe or check back soon.
+            We're preparing in-depth articles about Chunky Glitter Synthetic Leather,
+            Foil-Printed Synthetic Leather, and Custom Color Matching. These guides will help
+            you make informed decisions about fabric selection and manufacturing.
+            Subscribe or check back soon.
           </p>
         </div>
       </div>
@@ -195,8 +206,8 @@ const blogData = {
         production team. Contact us with your fabric questions or project requirements.
       </p>
       <div class="btn-group" style="justify-content: center;">
-        <CTAButton href="/#contact" variant="primary" size="lg">Request Swatch</CTAButton>
-        <CTAButton href="/#contact" variant="secondary" size="lg">Get Custom Quote</CTAButton>
+        <CTAButton href="/sample-policy" variant="primary" size="lg">Request Free Sample</CTAButton>
+        <CTAButton href="/contact" variant="secondary" size="lg">Get Custom Quotation</CTAButton>
       </div>
     </div>
   </section>
@@ -348,10 +359,17 @@ const blogData = {
     color: var(--color-accent);
   }
 
-  .article-card__badge {
+  .article-card__tags {
     position: absolute;
     top: var(--space-md);
     left: var(--space-md);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .article-card__badge {
+    position: static;
   }
 
   .article-card__status {
