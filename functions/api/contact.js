@@ -7,7 +7,7 @@
  *
  * Required environment variables (set in Cloudflare Pages dashboard >
  * Settings > Environment variables):
- *   - TURNSTILE_SECRET_KEY  : Cloudflare Turnstile secret key
+ *   - TURNSTILE_SECRET       : Cloudflare Turnstile secret key
  *   - RESEND_API_KEY        : Resend.com API key
  *   - CONTACT_TO_EMAIL      : Business email to receive inquiries (e.g. info@nixiafabric.com)
  *   - CONTACT_FROM_EMAIL    : Verified sender email (e.g. noreply@nixiafabric.com)
@@ -65,7 +65,7 @@ export async function onRequestPost({ request, env }) {
     }
 
     // ---- Verify Cloudflare Turnstile token ----
-    const turnstileSecret = env.TURNSTILE_SECRET_KEY;
+    const turnstileSecret = env.TURNSTILE_SECRET;
     if (!turnstileToken) {
       return jsonResponse(
         { success: false, error: "Anti-bot verification is required. Please complete the verification." },
