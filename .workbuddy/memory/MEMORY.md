@@ -43,8 +43,10 @@
 - 反机器人：Cloudflare Turnstile（前端 widget + 后端 siteverify）
 - 邮件投递：Resend API（环境变量 RESEND_API_KEY），发至业务邮箱 info@nixiafabric.com
 - 提交成功 → 跳转 /thank-you；失败 → 页内红色错误横幅
-- 需配置 4 个环境变量：TURNSTILE_SECRET_KEY / RESEND_API_KEY / CONTACT_TO_EMAIL / CONTACT_FROM_EMAIL
-- Turnstile sitekey 需替换为真实值（当前 contact.astro 中为占位值）
+- 需配置 4 个环境变量：TURNSTILE_SECRET / RESEND_API_KEY / MAIL_TO / MAIL_FROM
+- Turnstile sitekey 已替换为真实值 0x4AAAAAAELEzQZ7IoC5bk_j
+- 前端提交按钮默认 disabled，Turnstile 验证通过后启用；未验证时显示 "Please complete the anti-bot verification." 提示
+- 邮件环境变量缺失时返回 "Email service is not configured. Please contact us at info@nixiafabric.com."
 - 本地 dev 提交表单会报错（/api/contact 返回 404），部署到 Cloudflare Pages 后才完整可用
 
 ## 页面架构（对标 solamni.com 三层浅目录）
