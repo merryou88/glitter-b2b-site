@@ -116,6 +116,18 @@ async function handle(context) {
     return errResp({ success: false, error: "Email service not configured (missing RESEND_API_KEY).", code: "NO_RESEND_KEY" }, 500);
   }
 
+  // ---- S4a: test outbound fetch (diagnostic) ----
+  if (step === "fetch-test") {
+    try {
+      var testRes = await fetch("https://httpbin.org/get");
+      var testText = "";
+      try { testText = await testRes.text(); } catch (_) {}
+      return okResp({ ok: true, step: "fetch-test", status: testRes.status, preview: testText.slice(0, 80) });
+    } catch (e) {
+      return errResp({ success: false, error: "fetch-test failed: " + (e.message || "?"), code: "FETCH_TEST_FAIL" }, 502);
+    }
+  }
+
   var toEmail   = "";
   var fromEmail = "";
   try {
