@@ -25,7 +25,8 @@ const ALLOWED_ORIGINS = [
   "https://www.nixiafabric.com",
 ];
 
-export async function onRequestPost({ request, env }) {
+export async function onRequestPost(context) {
+  const { request, env } = context;
   const origin = request.headers.get("Origin") || "";
 
   // CORS headers
@@ -40,6 +41,31 @@ export async function onRequestPost({ request, env }) {
     return new Response(null, { status: 204, headers: corsHeaders });
   }
 
+  // ---- OUTER TRY/CATCH: prevent unhandled exceptions from reaching
+  //      Cloudflare platform layer (which would return the generic
+  //      "An error occurred. Please try again." HTML page) ----
+  try {
+    return await handlePost(request, env, corsHeaders);
+  } catch (err) {
+    console.error("Unhandled error in onRequestPost:", err);
+    // Even if JSON response fails, Cloudflare will at least get a proper
+    // Response object instead of a thrown exception.
+    try {
+      return jsonResponse(
+        { success: false, error: "Internal server error. Please try again or contact us at info@nixiafabric.com." },
+        500,
+        corsHeaders
+      );
+    } catch {
+      return new Response(
+        "Internal server error. Please try again or contact us at info@nixiafabric.com.",
+        { status: 500, headers: corsHeaders }
+      );
+    }
+  }
+}
+
+async function handlePost(request, env, corsHeaders) {
   // ---- Parse JSON body ----
   let body;
   try {
@@ -53,12 +79,24 @@ export async function onRequestPost({ request, env }) {
     );
   }
 
-  const { name, company, email, subject, message, "cf-turnstile-response": turnstileToken } = body;
+  const {
+    name = "",
+    company = "",
+    email = "",
+    subject = "",
+    message = "",
+    "cf-turnstile-response": turnstileToken = "",
+  } = body;
 
   // ---- Validate required fields ----
-  if (!name || !email || !subject || !message) {
+  const missing = [];
+  if (!name.trim()) missing.push("Name");
+  if (!email.trim()) missing.push("Email");
+  if (!subject.trim()) missing.push("Subject");
+  if (!message.trim()) missing.push("Message");
+  if (missing.length > 0) {
     return jsonResponse(
-      { success: false, error: "Missing required fields. Please fill in all required fields." },
+      { success: false, error: `Missing required fields: ${missing.join(", ")}. Please fill in all required fields.` },
       400,
       corsHeaders
     );
@@ -66,7 +104,7 @@ export async function onRequestPost({ request, env }) {
 
   // Basic email format check
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
+  if (!emailRegex.test(email.trim())) {
     return jsonResponse(
       { success: false, error: "Please provide a valid email address." },
       400,
@@ -87,7 +125,7 @@ export async function onRequestPost({ request, env }) {
   if (!turnstileSecret) {
     console.error("TURNSTILE_SECRET environment variable is not set.");
     return jsonResponse(
-      { success: false, error: "Server configuration error (TURNSTILE_SECRET). Please contact us at info@nixiafabric.com." },
+      { success: false, error: "Server configuration error. Please contact us at info@nixiafabric.com." },
       500,
       corsHeaders
     );
@@ -129,11 +167,33 @@ export async function onRequestPost({ request, env }) {
   const toEmail = env.MAIL_TO || "info@nixiafabric.com";
   const fromEmail = env.MAIL_FROM || "no-reply@nixiafabric.com";
 
-  const emailSubject = `[Website Inquiry] ${subject}`;
-  const emailHtml = buildEmailHtml({ name, company, email, subject, message });
-  const emailText = buildEmailText({ name, company, email, subject, message });
+  // Validate fromEmail format before passing to Resend
+  if (!fromEmail.includes("@") || !fromEmail.includes(".")) {
+    console.error("Invalid MAIL_FROM address:", fromEmail);
+    return jsonResponse(
+      { success: false, error: "Email service is misconfigured. Please contact us at info@nixiafabric.com." },
+      500,
+      corsHeaders
+    );
+  }
 
-  // ---- Send email via Resend API ----
+  const emailSubject = `[Website Inquiry] ${subject.trim()}`;
+  const emailHtml = buildEmailHtml({
+    name: name.trim(),
+    company: company.trim(),
+    email: email.trim(),
+    subject: subject.trim(),
+    message: message.trim(),
+  });
+  const emailText = buildEmailText({
+    name: name.trim(),
+    company: company.trim(),
+    email: email.trim(),
+    subject: subject.trim(),
+    message: message.trim(),
+  });
+
+  // ---- Verify Resend API key ----
   const resendKey = env.RESEND_API_KEY;
   if (!resendKey) {
     console.error("RESEND_API_KEY environment variable is not set.");
@@ -144,6 +204,7 @@ export async function onRequestPost({ request, env }) {
     );
   }
 
+  // ---- Send email via Resend API ----
   let sendRes;
   try {
     sendRes = await fetch(RESEND_API_URL, {
@@ -155,14 +216,14 @@ export async function onRequestPost({ request, env }) {
       body: JSON.stringify({
         from: `Nixia Fabric Website <${fromEmail}>`,
         to: [toEmail],
-        reply_to: `${name} <${email}>`,
+        reply_to: email.trim(),
         subject: emailSubject,
         html: emailHtml,
         text: emailText,
       }),
     });
   } catch (sendErr) {
-    console.error("Resend API request failed:", sendErr.message);
+    console.error("Resend API network error:", sendErr.message);
     return jsonResponse(
       { success: false, error: "Email delivery service is temporarily unavailable. Please try again or contact us at info@nixiafabric.com." },
       502,
@@ -171,16 +232,38 @@ export async function onRequestPost({ request, env }) {
   }
 
   if (!sendRes.ok) {
-    let errDetail = "";
+    let errDetail = `HTTP ${sendRes.status}`;
     try {
       const errBody = await sendRes.json();
       errDetail = errBody.message || JSON.stringify(errBody);
     } catch {
-      errDetail = await sendRes.text().catch(() => `HTTP ${sendRes.status}`);
+      try {
+        errDetail = await sendRes.text();
+      } catch {
+        // Keep default
+      }
     }
     console.error("Resend API error:", sendRes.status, errDetail);
     return jsonResponse(
-      { success: false, error: "Failed to send your inquiry. Our team has been notified. Please try again or contact us at info@nixiafabric.com." },
+      { success: false, error: `Email delivery failed (${sendRes.status}). Please try again or contact us at info@nixiafabric.com.` },
+      502,
+      corsHeaders
+    );
+  }
+
+  // Parse Resend success response to confirm
+  let resendData;
+  try {
+    resendData = await sendRes.json();
+  } catch {
+    // Some Resend responses may not have a body
+    resendData = {};
+  }
+
+  if (!resendData.id && !resendData.data?.id) {
+    console.error("Resend returned ok but no email ID:", JSON.stringify(resendData));
+    return jsonResponse(
+      { success: false, error: "Email delivery may have failed. Please try again or contact us at info@nixiafabric.com." },
       502,
       corsHeaders
     );
@@ -195,7 +278,10 @@ export async function onRequestPost({ request, env }) {
 
 // Handle non-POST requests
 export async function onRequestGet() {
-  return jsonResponse({ error: "Method not allowed. Use POST." }, 405);
+  return jsonResponse(
+    { success: false, error: "Method not allowed. Use POST." },
+    405
+  );
 }
 
 // ---- Helpers ----
