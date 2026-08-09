@@ -71,7 +71,7 @@ const contactPageData = {
               <line x1="12" y1="8" x2="12" y2="12" />
               <line x1="12" y1="16" x2="12.01" y2="16" />
             </svg>
-            <span id="form-error-text">An error occurred. Please try again.</span>
+            <span id="form-error-text"></span>
           </div>
 
           <form class="contact-form" id="contact-form" novalidate>
@@ -577,7 +577,7 @@ const contactPageData = {
 
   /* Error banner */
   .form-error {
-    display: flex;
+    display: none;                                  /* ← 修改：默认隐藏，避免覆盖 hidden 属性 */
     align-items: center;
     gap: var(--space-sm);
     padding: 0.875rem var(--space-md);
@@ -588,6 +588,10 @@ const contactPageData = {
     font-size: var(--text-sm);
     font-weight: 600;
     margin-bottom: var(--space-md);
+  }
+
+  .form-error:not([hidden]) {                       /* ← 新增：仅当 hidden 属性被移除时才显示 */
+    display: flex;
   }
 
   .form-error svg {
