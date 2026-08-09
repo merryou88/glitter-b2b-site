@@ -2,13 +2,13 @@
 /**
  * Header.astro — Site navigation header
  * Sticky, responsive with mobile menu
- * "Our Products" dropdown shows 4 end-use category links
+ * "Products" dropdown shows 4 end-use category links
  */
 import { endUseCategories } from "@data/products";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "Our Products", href: "/products", hasDropdown: true },
+  { label: "Products", href: "/products", hasDropdown: true },
   { label: "Factory", href: "/factory" },
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
@@ -71,7 +71,7 @@ const isProductSectionActive = currentPath.startsWith("/products");
               href={item.href}
               class:list={[
                 "header__nav-link",
-                { "is-active": item.label === "Our Products" ? isProductSectionActive : isActive(item.href) },
+                { "is-active": item.label === "Products" ? isProductSectionActive : isActive(item.href) },
               ]}
               aria-current={isActive(item.href) ? "page" : undefined}
             >
@@ -135,7 +135,7 @@ const isProductSectionActive = currentPath.startsWith("/products");
           </a>
         </li>
         <li class="header__mobile-group">
-          <span class="header__mobile-label">Our Products</span>
+          <span class="header__mobile-label">Products</span>
           <ul class="header__mobile-sublist">
             {endUseCategories.map((cat) => (
               <li>
