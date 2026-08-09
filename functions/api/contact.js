@@ -26,41 +26,48 @@ const ALLOWED_ORIGINS = [
 ];
 
 export async function onRequestPost(context) {
-  const { request, env } = context;
-  const origin = request.headers.get("Origin") || "";
+  // Defensive: Cloudflare Pages Functions pass a single context object,
+  // but we guard against unexpected shapes to avoid runtime throws.
+  const request = context && context.request ? context.request : null;
+  const env = context && context.env ? context.env : {};
 
-  // CORS headers
+  const origin = request && request.headers ? (request.headers.get("Origin") || "") : "";
   const corsHeaders = {
     "Access-Control-Allow-Origin": ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0],
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
   };
 
-  // Handle CORS preflight
-  if (request.method === "OPTIONS") {
+  // CORS preflight
+  if (request && request.method === "OPTIONS") {
     return new Response(null, { status: 204, headers: corsHeaders });
   }
 
-  // ---- OUTER TRY/CATCH: prevent unhandled exceptions from reaching
-  //      Cloudflare platform layer (which would return the generic
-  //      "An error occurred. Please try again." HTML page) ----
+  // Outer safety net — any unhandled error becomes a JSON response instead of
+  // letting Cloudflare render the generic "Bad gateway" HTML page.
   try {
+    if (!request) {
+      return jsonResponse(
+        { success: false, error: "Invalid request context." },
+        400,
+        corsHeaders
+      );
+    }
     return await handlePost(request, env, corsHeaders);
   } catch (err) {
-    console.error("Unhandled error in onRequestPost:", err);
-    // Even if JSON response fails, Cloudflare will at least get a proper
-    // Response object instead of a thrown exception.
+    const message = err && typeof err.message === "string" ? err.message : "Unknown error";
+    const stack = err && typeof err.stack === "string" ? err.stack : "No stack";
+    console.error("UNHANDLED ERROR in /api/contact:", message);
+    console.error("STACK:", stack);
+
     try {
       return jsonResponse(
         { success: false, error: "Internal server error. Please try again or contact us at info@nixiafabric.com." },
         500,
         corsHeaders
       );
-    } catch {
-      return new Response(
-        "Internal server error. Please try again or contact us at info@nixiafabric.com.",
-        { status: 500, headers: corsHeaders }
-      );
+    } catch (responseErr) {
+      return new Response("Internal server error", { status: 500 });
     }
   }
 }
@@ -71,7 +78,7 @@ async function handlePost(request, env, corsHeaders) {
   try {
     body = await request.json();
   } catch (parseErr) {
-    console.error("JSON parse error:", parseErr.message);
+    console.error("JSON parse error:", parseErr && parseErr.message ? parseErr.message : parseErr);
     return jsonResponse(
       { success: false, error: "Invalid request format. Please refresh the page and try again." },
       400,
@@ -79,32 +86,29 @@ async function handlePost(request, env, corsHeaders) {
     );
   }
 
-  const {
-    name = "",
-    company = "",
-    email = "",
-    subject = "",
-    message = "",
-    "cf-turnstile-response": turnstileToken = "",
-  } = body;
+  const name = String(body && body.name || "").trim();
+  const company = String(body && body.company || "").trim();
+  const email = String(body && body.email || "").trim();
+  const subject = String(body && body.subject || "").trim();
+  const message = String(body && body.message || "").trim();
+  const turnstileToken = String(body && body["cf-turnstile-response"] || "").trim();
 
   // ---- Validate required fields ----
   const missing = [];
-  if (!name.trim()) missing.push("Name");
-  if (!email.trim()) missing.push("Email");
-  if (!subject.trim()) missing.push("Subject");
-  if (!message.trim()) missing.push("Message");
+  if (!name) missing.push("Name");
+  if (!email) missing.push("Email");
+  if (!subject) missing.push("Subject");
+  if (!message) missing.push("Message");
   if (missing.length > 0) {
     return jsonResponse(
-      { success: false, error: `Missing required fields: ${missing.join(", ")}. Please fill in all required fields.` },
+      { success: false, error: `Missing required fields: ${missing.join(", ")}.` },
       400,
       corsHeaders
     );
   }
 
-  // Basic email format check
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email.trim())) {
+  if (!emailRegex.test(email)) {
     return jsonResponse(
       { success: false, error: "Please provide a valid email address." },
       400,
@@ -112,7 +116,7 @@ async function handlePost(request, env, corsHeaders) {
     );
   }
 
-  // ---- Verify Cloudflare Turnstile token ----
+  // ---- Turnstile token ----
   if (!turnstileToken) {
     return jsonResponse(
       { success: false, error: "Anti-bot verification is required. Please complete the verification." },
@@ -121,31 +125,33 @@ async function handlePost(request, env, corsHeaders) {
     );
   }
 
-  const turnstileSecret = env.TURNSTILE_SECRET;
+  const turnstileSecret = String(env.TURNSTILE_SECRET || "").trim();
   if (!turnstileSecret) {
     console.error("TURNSTILE_SECRET environment variable is not set.");
     return jsonResponse(
-      { success: false, error: "Server configuration error. Please contact us at info@nixiafabric.com." },
+      { success: false, error: "Server configuration error (TURNSTILE_SECRET). Please contact us at info@nixiafabric.com." },
       500,
       corsHeaders
     );
   }
 
+  // ---- Verify Cloudflare Turnstile token ----
   let turnstileData;
   try {
+    const ip = request.headers.get("CF-Connecting-IP") || "";
     const turnstileRes = await fetch(TURNSTILE_VERIFY_URL, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams({
         secret: turnstileSecret,
         response: turnstileToken,
-        remoteip: request.headers.get("CF-Connecting-IP") || "",
+        remoteip: ip,
       }),
     });
 
     turnstileData = await turnstileRes.json();
   } catch (turnstileErr) {
-    console.error("Turnstile verification request failed:", turnstileErr.message);
+    console.error("Turnstile verification request failed:", turnstileErr && turnstileErr.message ? turnstileErr.message : turnstileErr);
     return jsonResponse(
       { success: false, error: "Anti-bot verification service is temporarily unavailable. Please try again in a moment." },
       502,
@@ -153,8 +159,8 @@ async function handlePost(request, env, corsHeaders) {
     );
   }
 
-  if (!turnstileData.success) {
-    const errorCodes = turnstileData["error-codes"] || [];
+  if (!turnstileData || !turnstileData.success) {
+    const errorCodes = turnstileData && Array.isArray(turnstileData["error-codes"]) ? turnstileData["error-codes"] : [];
     console.error("Turnstile verification failed:", errorCodes.join(", "));
     return jsonResponse(
       { success: false, error: "Anti-bot verification failed. Please refresh the page and try again." },
@@ -163,13 +169,12 @@ async function handlePost(request, env, corsHeaders) {
     );
   }
 
-  // ---- Assemble email content ----
-  const toEmail = env.MAIL_TO || "info@nixiafabric.com";
-  const fromEmail = env.MAIL_FROM || "no-reply@nixiafabric.com";
+  // ---- Assemble email ----
+  const toEmail = String(env.MAIL_TO || "info@nixiafabric.com").trim();
+  const fromEmail = String(env.MAIL_FROM || "no-reply@nixiafabric.com").trim();
 
-  // Validate fromEmail format before passing to Resend
-  if (!fromEmail.includes("@") || !fromEmail.includes(".")) {
-    console.error("Invalid MAIL_FROM address:", fromEmail);
+  if (!toEmail.includes("@") || !fromEmail.includes("@")) {
+    console.error("Invalid MAIL_TO or MAIL_FROM:", toEmail, fromEmail);
     return jsonResponse(
       { success: false, error: "Email service is misconfigured. Please contact us at info@nixiafabric.com." },
       500,
@@ -177,24 +182,23 @@ async function handlePost(request, env, corsHeaders) {
     );
   }
 
-  const emailSubject = `[Website Inquiry] ${subject.trim()}`;
-  const emailHtml = buildEmailHtml({
-    name: name.trim(),
-    company: company.trim(),
-    email: email.trim(),
-    subject: subject.trim(),
-    message: message.trim(),
-  });
-  const emailText = buildEmailText({
-    name: name.trim(),
-    company: company.trim(),
-    email: email.trim(),
-    subject: subject.trim(),
-    message: message.trim(),
-  });
+  const emailSubject = `[Website Inquiry] ${subject}`;
+  let emailHtml;
+  let emailText;
+  try {
+    emailHtml = buildEmailHtml({ name, company, email, subject, message });
+    emailText = buildEmailText({ name, company, email, subject, message });
+  } catch (templateErr) {
+    console.error("Email template error:", templateErr && templateErr.message ? templateErr.message : templateErr);
+    return jsonResponse(
+      { success: false, error: "Failed to prepare email. Please try again." },
+      500,
+      corsHeaders
+    );
+  }
 
-  // ---- Verify Resend API key ----
-  const resendKey = env.RESEND_API_KEY;
+  // ---- Resend API key ----
+  const resendKey = String(env.RESEND_API_KEY || "").trim();
   if (!resendKey) {
     console.error("RESEND_API_KEY environment variable is not set.");
     return jsonResponse(
@@ -204,7 +208,7 @@ async function handlePost(request, env, corsHeaders) {
     );
   }
 
-  // ---- Send email via Resend API ----
+  // ---- Send email via Resend ----
   let sendRes;
   try {
     sendRes = await fetch(RESEND_API_URL, {
@@ -216,14 +220,14 @@ async function handlePost(request, env, corsHeaders) {
       body: JSON.stringify({
         from: `Nixia Fabric Website <${fromEmail}>`,
         to: [toEmail],
-        reply_to: email.trim(),
+        reply_to: email,
         subject: emailSubject,
         html: emailHtml,
         text: emailText,
       }),
     });
   } catch (sendErr) {
-    console.error("Resend API network error:", sendErr.message);
+    console.error("Resend API network error:", sendErr && sendErr.message ? sendErr.message : sendErr);
     return jsonResponse(
       { success: false, error: "Email delivery service is temporarily unavailable. Please try again or contact us at info@nixiafabric.com." },
       502,
@@ -231,36 +235,27 @@ async function handlePost(request, env, corsHeaders) {
     );
   }
 
+  // ---- Parse Resend response ----
+  let resendData;
+  try {
+    resendData = await sendRes.json();
+  } catch {
+    resendData = {};
+  }
+
   if (!sendRes.ok) {
-    let errDetail = `HTTP ${sendRes.status}`;
-    try {
-      const errBody = await sendRes.json();
-      errDetail = errBody.message || JSON.stringify(errBody);
-    } catch {
-      try {
-        errDetail = await sendRes.text();
-      } catch {
-        // Keep default
-      }
-    }
+    const errDetail = resendData && resendData.message ? resendData.message : `HTTP ${sendRes.status}`;
     console.error("Resend API error:", sendRes.status, errDetail);
     return jsonResponse(
-      { success: false, error: `Email delivery failed (${sendRes.status}). Please try again or contact us at info@nixiafabric.com.` },
+      { success: false, error: `Email delivery failed (${sendRes.status}: ${errDetail}). Please try again or contact us at info@nixiafabric.com.` },
       502,
       corsHeaders
     );
   }
 
-  // Parse Resend success response to confirm
-  let resendData;
-  try {
-    resendData = await sendRes.json();
-  } catch {
-    // Some Resend responses may not have a body
-    resendData = {};
-  }
-
-  if (!resendData.id && !resendData.data?.id) {
+  // Confirm we got an email ID back
+  const emailId = resendData && resendData.id ? resendData.id : (resendData && resendData.data && resendData.data.id ? resendData.data.id : null);
+  if (!emailId) {
     console.error("Resend returned ok but no email ID:", JSON.stringify(resendData));
     return jsonResponse(
       { success: false, error: "Email delivery may have failed. Please try again or contact us at info@nixiafabric.com." },
@@ -286,18 +281,18 @@ export async function onRequestGet() {
 
 // ---- Helpers ----
 
-function jsonResponse(data, status, extraHeaders = {}) {
-  return new Response(JSON.stringify(data), {
-    status,
-    headers: {
-      "Content-Type": "application/json",
-      ...extraHeaders,
-    },
-  });
+function jsonResponse(data, status, extraHeaders) {
+  const headers = { "Content-Type": "application/json" };
+  if (extraHeaders && typeof extraHeaders === "object") {
+    Object.keys(extraHeaders).forEach((key) => {
+      headers[key] = extraHeaders[key];
+    });
+  }
+  return new Response(JSON.stringify(data), { status, headers });
 }
 
 function escapeHtml(str) {
-  if (!str) return "";
+  if (str === null || str === undefined) return "";
   return String(str)
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
