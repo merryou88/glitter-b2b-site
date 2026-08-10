@@ -17,11 +17,11 @@ interface Slide {
 const slides: Slide[] = [
   {
     image: "/image/home/slide1.png",
-    title: "Factory Direct Hot-Stamping & Glitter Fabrics",
+    title: "Factory Direct Glitter & Foil-Printed Synthetic Leather",
     description:
       "In-house production | Custom color matching | SGS & REACH compliant",
     buttons: [
-      { label: "Request Free Sample", href: "/sample-policy", variant: "primary" },
+      { label: "Request Samples", href: "/sample-policy", variant: "primary" },
       { label: "Get Custom Quotation", href: "/contact", variant: "outline" },
     ],
   },
@@ -31,7 +31,7 @@ const slides: Slide[] = [
     description:
       "Foil-Printed Synthetic Leather and Chunky Glitter Synthetic Leather with multiple colors and base materials. Request free samples — buyer only covers international shipping cost.",
     buttons: [
-      { label: "Request Free Sample", href: "/sample-policy", variant: "primary" },
+      { label: "Request Samples", href: "/sample-policy", variant: "primary" },
       { label: "Discover Fabrics", href: "/products", variant: "outline" },
     ],
   },
@@ -41,7 +41,7 @@ const slides: Slide[] = [
     description:
       "Every batch undergoes full-range inspection during production. SGS Certified, REACH Compliant — test reports available upon request.",
     buttons: [
-      { label: "Request Free Sample", href: "/sample-policy", variant: "primary" },
+      { label: "Request Samples", href: "/sample-policy", variant: "primary" },
       { label: "Get Custom Quotation", href: "/contact", variant: "outline" },
     ],
   },
@@ -51,7 +51,7 @@ const slides: Slide[] = [
     description:
       "Organized warehouse for finished fabric stock. Support FOB and CIF international trade terms for global shipment.",
     buttons: [
-      { label: "Request Free Sample", href: "/sample-policy", variant: "primary" },
+      { label: "Request Samples", href: "/sample-policy", variant: "primary" },
       { label: "Get Custom Quotation", href: "/contact", variant: "outline" },
     ],
   },
@@ -61,7 +61,7 @@ const slides: Slide[] = [
     description:
       "Our Foil-Printed Synthetic Leather and Chunky Glitter Synthetic Leather are widely applied for footwear, handbags and fashion accessories. Custom Color Matching available for your end-product projects.",
     buttons: [
-      { label: "Request Free Sample", href: "/sample-policy", variant: "primary" },
+      { label: "Request Samples", href: "/sample-policy", variant: "primary" },
       { label: "Discover Fabrics", href: "/products", variant: "outline" },
     ],
   },
@@ -94,7 +94,7 @@ const slides: Slide[] = [
             />
             <img
               src={slide.image}
-              alt="Hot stamping foil and glitter fabric production at Nixia Fabric factory"
+              alt="Glitter and foil-printed synthetic leather production at Nixia Fabric factory"
               class="hero-carousel__image hero-carousel__image--mobile"
               loading={idx === 0 ? "eager" : "lazy"}
               width="1920"
@@ -105,7 +105,7 @@ const slides: Slide[] = [
           <img
             src={slide.image}
             alt={idx === 0
-              ? "Hot stamping fabric factory production line"
+              ? "Glitter and foil-printed synthetic leather factory production line"
               : idx === 1
               ? "Glitter and foil fabric samples in multiple colors"
               : idx === 2

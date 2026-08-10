@@ -15,9 +15,9 @@ import CTAButton from "@components/CTAButton.astro";
 const webPageData = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Nixia Fabric — Hot-Stamping Foil & Glitter Fabric Manufacturer",
+  name: "Nixia Fabric — Glitter & Foil-Printed Synthetic Leather Manufacturer",
   description:
-    "China factory direct supplier of hot-stamping foil and glitter fabrics for footwear, bags and fashion accessories. Custom colors and OEM support.",
+    "China factory direct supplier of glitter and foil-printed synthetic leather for footwear, handbags and fashion accessories. OEM, custom colors and quality certification supported.",
   url: "https://nixiafabric.com",
 };
 
@@ -66,26 +66,68 @@ const faqData = {
         text: "We manufacture glitter synthetic leather and foil-printed PU materials for shoes, handbags, and accessories. Multiple backing options and custom colors available.",
       },
     },
+    {
+      "@type": "Question",
+      name: "What is your minimum order quantity?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Our standard MOQ varies by product type and customization level. We also support sampling and trial orders for new projects — contact us with your requirements for detailed MOQ information.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can you provide samples before bulk order?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, we provide free fabric samples so you can evaluate material quality, color and texture before placing a bulk order. The buyer only covers international shipping cost.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can you customize colors and backing?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. We offer full custom color matching including Pantone references, and multiple backing options including elastic, PU, non-woven, and Oxford cloth to meet your specific application needs.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you support international shipping?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, we support international shipping with FOB and CIF trade terms. We have experience exporting to global footwear, handbag and accessory manufacturers.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Are your materials SGS certified and REACH compliant?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. All our glitter and foil-printed synthetic leather materials are SGS Certified and REACH Compliant. Test reports are available upon request to support your quality assurance requirements.",
+      },
+    },
   ],
 };
 
-// Our Main Fabric Series — 2 product cards
+// Our Core Product Collections — 2 product cards
 const fabricSeries = [
   {
-    title: "Hot-Stamping Foil Fabrics",
+    title: "Foil-Printed Synthetic Leather",
     description:
-      "Custom foil transfer fabrics with metallic finishes and multiple base fabric options for footwear, bags and fashion accessories.",
+      "Custom foil-printed synthetic leather with various metallic finishes and multiple backing options.",
     image: "/images/preview_hotstamping_foil.jpg",
-    alt: "Hot stamping foil fabric sample with metallic finish",
+    alt: "Foil printed synthetic leather sample with metallic finish",
     href: "/products",
+    cta: "Explore Foil-Printed Synthetic Leather",
   },
   {
-    title: "Glitter Fabrics",
+    title: "Glitter Synthetic Leather",
     description:
-      "Sparkle glitter fabrics with rich colors and textures for footwear, handbags and fashion accessories.",
+      "Sparkle glitter coated synthetic leather for footwear, handbags and fashion accessories.",
     image: "/images/preview_chunky_glitter.jpg",
-    alt: "Glitter fabric sample with sparkling texture",
+    alt: "Glitter synthetic leather material with sparkling texture",
     href: "/products",
+    cta: "Explore Glitter Synthetic Leather",
   },
 ];
 
@@ -95,33 +137,33 @@ const applications = [
     title: "Footwear",
     description: "Shoe uppers, trims, and decorative panels",
     image: "/image/home/Shoes.png",
-    alt: "Glitter fabric used for footwear upper",
+    alt: "Glitter synthetic leather used in footwear uppers",
     href: "/products",
   },
   {
     title: "Handbags & Purses",
     description: "Bag bodies, flaps, and accent panels",
     image: "/image/home/Handbags.png",
-    alt: "Glitter fabric used for handbag exterior",
+    alt: "Foil printed leather for handbags and purse panels",
     href: "/products",
   },
   {
     title: "Fashion Accessories",
     description: "Wallets, card holders, and belts",
     image: "/image/home/Accessories.png",
-    alt: "Glitter fabric used for wallet and belt accessories",
+    alt: "Glitter synthetic leather used for wallets and belts",
     href: "/products",
   },
   {
     title: "Garment Trimming",
     description: "Fashion trims and decorative accents",
     image: "/image/home/Fashion.png",
-    alt: "Glitter fabric used for garment trimming",
+    alt: "Foil printed synthetic leather for garment trimming and accents",
     href: "/products",
   },
 ];
 
-// Why Choose Us — 4 B2B advantage items
+// Why Global Buyers Choose Us — 5 B2B advantage items
 const whyChooseUs = [
   {
     title: "Factory Direct Supply",
@@ -130,7 +172,7 @@ const whyChooseUs = [
   },
   {
     title: "Custom Fabric Solutions",
-    desc: "Support custom colors, patterns and base fabric adjustment.",
+    desc: "Custom colors, patterns and backing options available.",
     icon: "palette",
   },
   {
@@ -140,8 +182,13 @@ const whyChooseUs = [
   },
   {
     title: "SGS & REACH Compliance",
-    desc: "Materials meet international textile requirements.",
+    desc: "Materials meet international requirements.",
     icon: "certificate",
+  },
+  {
+    title: "Flexible MOQ",
+    desc: "Support sampling and trial orders for new projects.",
+    icon: "box",
   },
 ];
 
@@ -150,7 +197,7 @@ const factoryEntries = [
   {
     title: "Production Line",
     image: "/image/process/hot_stamping_foil_transfer.jpg",
-    alt: "Hot stamping machine in factory production line",
+    alt: "Foil-printed synthetic leather production line in factory",
     href: "/factory",
   },
   {
@@ -177,9 +224,9 @@ const trustBadges = [
 ---
 
 <Layout
-  title="Hot-Stamping Foil & Glitter Fabric Manufacturer"
-  description="China factory direct supplier of hot-stamping foil and glitter fabrics for footwear, bags and fashion accessories. Custom colors and OEM support."
-  keywords="hot-stamping foil fabric, glitter fabric manufacturer, decorative fabric supplier, China fabric factory, custom fabric solutions, OEM ODM fabric, SGS REACH compliant fabric"
+  title="Glitter & Foil-Printed Synthetic Leather Manufacturer"
+  description="China factory direct supplier of glitter and foil-printed synthetic leather for footwear, handbags and fashion accessories. OEM, custom colors and quality certification supported."
+  keywords="glitter synthetic leather, foil-printed synthetic leather, synthetic leather manufacturer, China fabric factory, custom synthetic leather, OEM ODM fabric, SGS REACH compliant"
   structuredData={[webPageData, faqData]}
 >
   <!-- ==================== HERO CAROUSEL ==================== -->
@@ -195,15 +242,15 @@ const trustBadges = [
         </div>
         <div class="hero-trust__item">
           <span class="hero-trust__value">Factory Direct</span>
-          <span class="hero-trust__label">Custom Projects</span>
+          <span class="hero-trust__label">Own Production Capability</span>
         </div>
         <div class="hero-trust__item">
           <span class="hero-trust__value">SGS</span>
-          <span class="hero-trust__label">Certified</span>
+          <span class="hero-trust__label">Certified Materials</span>
         </div>
         <div class="hero-trust__item">
-          <span class="hero-trust__value">FOB/CIF</span>
-          <span class="hero-trust__label">Export Support</span>
+          <span class="hero-trust__value">OEM & ODM</span>
+          <span class="hero-trust__label">Custom Solutions</span>
         </div>
       </div>
     </div>
@@ -214,8 +261,8 @@ const trustBadges = [
     <div class="container">
       <div class="section-header">
         <span class="eyebrow">Our Products</span>
-        <h2>Our Main Fabric Series</h2>
-        <p>Two core decorative fabric series for footwear, bags and fashion accessories manufacturing.</p>
+        <h2>Our Core Product Collections</h2>
+        <p>Two core synthetic leather series for footwear, handbags and fashion accessories manufacturing.</p>
       </div>
 
       <div class="grid grid--2 fabric-series-grid">
@@ -234,7 +281,7 @@ const trustBadges = [
             <div class="fabric-card__body">
               <h3>{item.title}</h3>
               <p>{item.description}</p>
-              <span class="fabric-card__cta">View Details →</span>
+              <span class="fabric-card__cta">{item.cta} →</span>
             </div>
           </a>
         ))}
@@ -248,7 +295,7 @@ const trustBadges = [
       <div class="section-header">
         <span class="eyebrow">Applications</span>
         <h2>Applications</h2>
-        <p>From shoe uppers to handbag panels — see how our glitter and foil fabrics bring products to life.</p>
+        <p>Materials designed for footwear, handbag and fashion accessory manufacturers.</p>
       </div>
 
       <div class="grid grid--4 applications-grid">
@@ -282,11 +329,11 @@ const trustBadges = [
     <div class="container">
       <div class="section-header">
         <span class="eyebrow">Why Us</span>
-        <h2>Why Choose Nixia Fabric</h2>
-        <p>Factory direct decorative fabric manufacturer with in-house production and quality assurance.</p>
+        <h2>Why Global Buyers Choose Us</h2>
+        <p>Factory direct synthetic leather manufacturer with in-house production and quality assurance.</p>
       </div>
 
-      <div class="grid grid--4 advantage-grid">
+      <div class="grid advantage-grid">
         {whyChooseUs.map((item) => (
           <div class="advantage-card">
             <div class="advantage-card__icon">
@@ -319,6 +366,13 @@ const trustBadges = [
                   <path d="M20 20L23 23L28 17" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               )}
+              {item.icon === "box" && (
+                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M24 6L6 15V33L24 42L42 33V15L24 6Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                  <path d="M6 15L24 24L42 15" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                  <path d="M24 24V42" stroke="currentColor" stroke-width="2.5"/>
+                </svg>
+              )}
             </div>
             <h3 class="advantage-card__title">{item.title}</h3>
             <p class="advantage-card__desc">{item.desc}</p>
@@ -334,7 +388,7 @@ const trustBadges = [
       <div class="section-header">
         <span class="eyebrow">Our Factory</span>
         <h2>Our Factory</h2>
-        <p>In-house production with strict quality control — see how we manufacture your fabrics.</p>
+        <p>Own production capability, strict quality control and stable supply — see how we manufacture your synthetic leather.</p>
       </div>
 
       <div class="grid grid--3 factory-entry-grid">
@@ -371,9 +425,9 @@ const trustBadges = [
           <span class="eyebrow">Factory & Certification</span>
           <h2>Factory Direct, Quality Assured</h2>
           <p>
-            Specialized in synthetic leather since 2013. With our own production facility
-            and solid partnerships with qualified material factories, we deliver reliable
-            glitter & foil-printed fabrics for global footwear and bag manufacturers.
+            With our own production facility and experienced manufacturing partners, we provide
+            reliable glitter and foil-printed synthetic leather solutions for global footwear
+            and bag manufacturers.
           </p>
 
           <div class="trust-badges">
@@ -392,7 +446,7 @@ const trustBadges = [
               Explore Our Factory
             </CTAButton>
             <CTAButton href="/sample-policy" variant="secondary" size="lg">
-              Request Free Sample
+              Request Samples
             </CTAButton>
           </div>
         </div>
@@ -450,7 +504,7 @@ const trustBadges = [
         </p>
         <div class="final-cta__actions">
           <CTAButton href="/sample-policy" variant="primary" size="lg">
-            Request Free Sample
+            Request Samples
           </CTAButton>
           <CTAButton href="/contact" variant="secondary" size="lg">
             Get Custom Quotation
@@ -606,6 +660,7 @@ const trustBadges = [
 
   /* ==================== Why Choose Us ==================== */
   .advantage-grid {
+    grid-template-columns: repeat(5, 1fr);
     gap: var(--space-xl);
   }
 
@@ -952,10 +1007,13 @@ const trustBadges = [
       gap: var(--space-2xl);
     }
 
-    .grid--4.advantage-grid,
     .grid--4.applications-grid,
     .grid--3.factory-entry-grid {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    .advantage-grid {
+      grid-template-columns: repeat(3, 1fr);
     }
 
     .fabric-series-grid {
@@ -973,10 +1031,10 @@ const trustBadges = [
       gap: var(--space-xl) var(--space-lg);
     }
 
-    .grid--4.advantage-grid,
     .grid--4.applications-grid,
     .grid--3.factory-entry-grid,
-    .grid--2.fabric-series-grid {
+    .grid--2.fabric-series-grid,
+    .advantage-grid {
       grid-template-columns: 1fr;
     }
 
