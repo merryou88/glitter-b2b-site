@@ -469,16 +469,15 @@ const packingSteps = [
 
         <!-- Right: Google Maps (with fallback) -->
         <div class="visit-factory__map" id="factory-map-wrapper">
-          <iframe
-            src="https://maps.google.com/maps?q=No.63%20Chuangqi%20Road%2C%20Shilou%20Town%2C%20Panyu%20District%2C%20Guangzhou%2C%20China&t=&z=15&ie=UTF8&iwloc=&output=embed"
-            width="100%"
-            height="400"
-            style="border:0; border-radius:12px;"
-            loading="lazy"
-            allowfullscreen
-            referrerpolicy="no-referrer-when-downgrade"
-            id="factory-map-iframe"
-          ></iframe>
+          <div class="map-iframe-wrap">
+            <iframe
+              src="https://maps.google.com/maps?q=No.63%20Chuangqi%20Road%2C%20Shilou%20Town%2C%20Panyu%20District%2C%20Guangzhou%2C%20China&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              id="factory-map-iframe"
+            ></iframe>
+          </div>
         </div>
         <!-- Fallback card (shown when Google Maps is unreachable) -->
         <div class="visit-factory__fallback" id="factory-map-fallback">
@@ -918,7 +917,7 @@ const packingSteps = [
   .visit-factory__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-4xl);
+    gap: 2rem;
     align-items: center;
   }
 
@@ -995,13 +994,20 @@ const packingSteps = [
   .visit-factory__map {
     border-radius: 12px;
     overflow: hidden;
-    min-height: 400px;
   }
 
-  .visit-factory__map iframe {
-    display: block;
+  .map-iframe-wrap {
     width: 100%;
     height: 400px;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+
+  .map-iframe-wrap iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
   }
 
   /* Fallback card (shown when Google Maps is unreachable) */
@@ -1068,10 +1074,10 @@ const packingSteps = [
     grid-template-columns: 1fr;
   }
 
-  @media (max-width: 968px) {
+  @media (max-width: 767px) {
     .visit-factory__grid {
       grid-template-columns: 1fr;
-      gap: var(--space-2xl);
+      gap: 2rem;
     }
 
     .visit-factory__title {
@@ -1092,7 +1098,7 @@ const packingSteps = [
     if (!iframe || !wrapper || !fallback || !grid) return;
 
     function showFallback() {
-      wrapper.style.display = 'none';
+      wrapper.classList.add('visit-factory__map--hidden');
       fallback.classList.add('visit-factory__fallback--visible');
       grid.classList.add('visit-factory__grid--map-failed');
     }
