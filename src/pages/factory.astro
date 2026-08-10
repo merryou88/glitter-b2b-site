@@ -399,6 +399,106 @@ const packingSteps = [
       </div>
     </div>
   </section>
+
+  <!-- Visit Our Factory -->
+  <section class="visit-factory">
+    <div class="container">
+      <div class="visit-factory__grid">
+        <!-- Left: Contact Info -->
+        <div class="visit-factory__info">
+          <span class="visit-factory__eyebrow">GET IN TOUCH</span>
+          <h2 class="visit-factory__title">Visit Our Factory</h2>
+
+          <div class="visit-factory__items">
+            <div class="visit-factory__item">
+              <div class="visit-factory__icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div class="visit-factory__item-content">
+                <h3 class="visit-factory__item-label">Address</h3>
+                <p class="visit-factory__item-text">No.63 Chuangqi Road, Shilou Town, Panyu District, Guangzhou, China</p>
+              </div>
+            </div>
+
+            <div class="visit-factory__item">
+              <div class="visit-factory__icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              </div>
+              <div class="visit-factory__item-content">
+                <h3 class="visit-factory__item-label">Business Hours</h3>
+                <p class="visit-factory__item-text">Mon&#8209;Sat, 8:00 AM&#8209;18:00 PM (CST, UTC+8)</p>
+              </div>
+            </div>
+
+            <div class="visit-factory__item">
+              <div class="visit-factory__icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </div>
+              <div class="visit-factory__item-content">
+                <h3 class="visit-factory__item-label">Phone</h3>
+                <p class="visit-factory__item-text"><a href="tel:+8613800000000">+86 138 0000 0000</a></p>
+              </div>
+            </div>
+
+            <div class="visit-factory__item">
+              <div class="visit-factory__icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+              </div>
+              <div class="visit-factory__item-content">
+                <h3 class="visit-factory__item-label">Email</h3>
+                <p class="visit-factory__item-text"><a href="mailto:info@nixiafabric.com">info@nixiafabric.com</a></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="visit-factory__cta">
+            <CTAButton href="/contact" variant="primary" size="lg">Book a Factory Visit</CTAButton>
+          </div>
+        </div>
+
+        <!-- Right: Google Maps (with fallback) -->
+        <div class="visit-factory__map" id="factory-map-wrapper">
+          <iframe
+            src="https://maps.google.com/maps?q=No.63%20Chuangqi%20Road%2C%20Shilou%20Town%2C%20Panyu%20District%2C%20Guangzhou%2C%20China&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="400"
+            style="border:0; border-radius:12px;"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            id="factory-map-iframe"
+          ></iframe>
+        </div>
+        <!-- Fallback card (shown when Google Maps is unreachable) -->
+        <div class="visit-factory__fallback" id="factory-map-fallback">
+          <div class="visit-factory__fallback-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+          </div>
+          <p class="visit-factory__fallback-text">No.63 Chuangqi Road, Shilou Town, Panyu District, Guangzhou, China</p>
+          <a class="visit-factory__fallback-link" href="https://maps.google.com/maps?q=No.63%20Chuangqi%20Road%2C%20Shilou%20Town%2C%20Panyu%20District%2C%20Guangzhou%2C%20China" target="_blank" rel="noopener noreferrer">
+            View on Google Maps
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
 
 <style>
@@ -808,4 +908,216 @@ const packingSteps = [
       grid-template-columns: 1fr;
     }
   }
+
+  /* ===== Visit Our Factory ===== */
+  .visit-factory {
+    background-color: var(--color-primary-dark);
+    padding-block: var(--space-4xl);
+  }
+
+  .visit-factory__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4xl);
+    align-items: center;
+  }
+
+  .visit-factory__eyebrow {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-sm);
+  }
+
+  .visit-factory__title {
+    font-size: var(--text-4xl);
+    font-weight: 800;
+    color: var(--color-white);
+    line-height: 1.2;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .visit-factory__items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .visit-factory__item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-lg);
+  }
+
+  .visit-factory__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md);
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--color-accent-light);
+    flex-shrink: 0;
+  }
+
+  .visit-factory__item-label {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent-light);
+    margin-bottom: var(--space-xs);
+  }
+
+  .visit-factory__item-text {
+    font-size: var(--text-base);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .visit-factory__item-text a {
+    color: rgba(255, 255, 255, 0.72);
+    transition: color var(--transition-fast);
+  }
+
+  .visit-factory__item-text a:hover {
+    color: var(--color-accent-light);
+  }
+
+  .visit-factory__cta {
+    margin-top: var(--space-2xl);
+  }
+
+  .visit-factory__map {
+    border-radius: 12px;
+    overflow: hidden;
+    min-height: 400px;
+  }
+
+  .visit-factory__map iframe {
+    display: block;
+    width: 100%;
+    height: 400px;
+  }
+
+  /* Fallback card (shown when Google Maps is unreachable) */
+  .visit-factory__fallback {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: var(--space-lg);
+    min-height: 400px;
+    padding: var(--space-3xl);
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .visit-factory__fallback--visible {
+    display: flex;
+  }
+
+  .visit-factory__fallback-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: rgba(196, 160, 53, 0.12);
+    color: var(--color-accent-light);
+  }
+
+  .visit-factory__fallback-text {
+    font-size: var(--text-base);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.72);
+    max-width: 360px;
+  }
+
+  .visit-factory__fallback-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    background-color: var(--color-accent);
+    transition: all var(--transition-base);
+  }
+
+  .visit-factory__fallback-link:hover {
+    background-color: var(--color-accent-light);
+    transform: translateY(-2px);
+  }
+
+  /* Map hidden state — collapse map column, let info take full width */
+  .visit-factory__map--hidden {
+    display: none;
+  }
+
+  .visit-factory__grid--map-failed {
+    grid-template-columns: 1fr;
+  }
+
+  @media (max-width: 968px) {
+    .visit-factory__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+    }
+
+    .visit-factory__title {
+      font-size: var(--text-3xl);
+    }
+  }
 </style>
+
+<script>
+  // Map fallback: probe Google Maps servers with a lightweight image.
+  // If the image fails (e.g. Google blocked in China), hide the iframe
+  // and show the fallback card so no blank frame appears.
+  (function () {
+    var iframe = document.getElementById('factory-map-iframe');
+    var wrapper = document.getElementById('factory-map-wrapper');
+    var fallback = document.getElementById('factory-map-fallback');
+    var grid = document.querySelector('.visit-factory__grid');
+    if (!iframe || !wrapper || !fallback || !grid) return;
+
+    function showFallback() {
+      wrapper.style.display = 'none';
+      fallback.classList.add('visit-factory__fallback--visible');
+      grid.classList.add('visit-factory__grid--map-failed');
+    }
+
+    // Method 1: probe a Google Maps static asset
+    var probe = new Image();
+    probe.onload = function () {
+      // Google reachable — iframe should load, keep it
+    };
+    probe.onerror = function () {
+      // Google blocked — show fallback immediately
+      showFallback();
+    };
+    probe.src = 'https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-non-white3_hdpi.png?_=' + Date.now();
+
+    // Method 2: secondary timeout — if the iframe hasn't fired load
+    // within 6 seconds, show fallback as a safety net
+    var iframeLoaded = false;
+    iframe.addEventListener('load', function () {
+      iframeLoaded = true;
+    });
+    setTimeout(function () {
+      if (!iframeLoaded) {
+        showFallback();
+      }
+    }, 6000);
+  })();
+</script>
