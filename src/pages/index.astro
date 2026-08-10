@@ -3,8 +3,9 @@
  * index.astro — Nixia Fabric Home Page
  * Solution-oriented narrative (inspired by ecowoodplate.com)
  *
- * Module order: Hero → Applications → Advantages → Featured Products →
- *               Factory Trust → FAQ → Final CTA
+ * Module order: Hero → Our Main Fabric Series → Applications →
+ *               Why Choose Nixia Fabric → Our Factory → Factory Trust →
+ *               FAQ → Final CTA
  */
 import Layout from "@layouts/Layout.astro";
 import HeroCarousel from "@components/HeroCarousel.astro";
@@ -14,9 +15,9 @@ import CTAButton from "@components/CTAButton.astro";
 const webPageData = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Nixia Fabric — Glitter & Foil-Printed Synthetic Leather Manufacturer",
+  name: "Nixia Fabric — Hot-Stamping Foil & Glitter Fabric Manufacturer",
   description:
-    "China manufacturer specializing in Chunky Glitter Synthetic Leather and Foil-Printed Synthetic Leather for shoes, handbags, and fashion accessories. Factory Direct Supply and Custom Color Matching.",
+    "China factory direct supplier of hot-stamping foil and glitter fabrics for footwear, bags and fashion accessories. Custom colors and OEM support.",
   url: "https://nixiafabric.com",
 };
 
@@ -68,85 +69,105 @@ const faqData = {
   ],
 };
 
-// ③ Applications — 4 scenario cards (clickable, link to end-use pages)
-const applications = [
+// Our Main Fabric Series — 2 product cards
+const fabricSeries = [
   {
-    title: "Shoes",
-    description: "Shoe uppers, trims, and decorative panels",
-    image: "/image/home/Shoes.png",
-    alt: "Chunky Glitter Synthetic Leather shoe upper with metallic foil accent",
-    href: "/products/fabric-for-shoes",
+    title: "Hot-Stamping Foil Fabrics",
+    description:
+      "Custom foil transfer fabrics with metallic finishes and multiple base fabric options for footwear, bags and fashion accessories.",
+    image: "/images/preview_hotstamping_foil.jpg",
+    alt: "Hot stamping foil fabric sample with metallic finish",
+    href: "/products",
   },
   {
-    title: "Handbags",
-    description: "Bag bodies, flaps, and accent panels",
-    image: "/image/home/Handbags.png",
-    alt: "Chunky Glitter Synthetic Leather handbag",
-    href: "/products/fabric-for-handbags",
-  },
-  {
-    title: "Accessories",
-    description: "Belts, wallets, and small leather goods",
-    image: "/image/home/Accessories.png",
-    alt: "Chunky Glitter Synthetic Leather belt and wallet accessories",
-    href: "/products/fabric-for-accessories",
-  },
-  {
-    title: "Fashion",
-    description: "Fashion trims and decorative accents",
-    image: "/image/home/Fashion.png",
-    alt: "Chunky Glitter Synthetic Leather fashion trims",
-    href: "/products/fabric-for-fashion-trims",
+    title: "Glitter Fabrics",
+    description:
+      "Sparkle glitter fabrics with rich colors and textures for footwear, handbags and fashion accessories.",
+    image: "/images/preview_chunky_glitter.jpg",
+    alt: "Glitter fabric sample with sparkling texture",
+    href: "/products",
   },
 ];
 
-// ④ Advantages — 4 B2B benefit icons
-const advantages = [
+// Applications — 4 end-use scenario cards
+const applications = [
   {
-    title: "Request Free Sample",
-    desc: "Customer bears shipping cost",
-    icon: "sample",
+    title: "Footwear",
+    description: "Shoe uppers, trims, and decorative panels",
+    image: "/image/home/Shoes.png",
+    alt: "Glitter fabric used for footwear upper",
+    href: "/products",
   },
   {
-    title: "Custom Color & Backing",
-    desc: "Pantone color-matching & multiple backing options",
+    title: "Handbags & Purses",
+    description: "Bag bodies, flaps, and accent panels",
+    image: "/image/home/Handbags.png",
+    alt: "Glitter fabric used for handbag exterior",
+    href: "/products",
+  },
+  {
+    title: "Fashion Accessories",
+    description: "Wallets, card holders, and belts",
+    image: "/image/home/Accessories.png",
+    alt: "Glitter fabric used for wallet and belt accessories",
+    href: "/products",
+  },
+  {
+    title: "Garment Trimming",
+    description: "Fashion trims and decorative accents",
+    image: "/image/home/Fashion.png",
+    alt: "Glitter fabric used for garment trimming",
+    href: "/products",
+  },
+];
+
+// Why Choose Us — 4 B2B advantage items
+const whyChooseUs = [
+  {
+    title: "Factory Direct Supply",
+    desc: "Own production workshop with stable manufacturing capability.",
+    icon: "factory",
+  },
+  {
+    title: "Custom Fabric Solutions",
+    desc: "Support custom colors, patterns and base fabric adjustment.",
     icon: "palette",
   },
   {
-    title: "SGS Certified, REACH Compliant",
-    desc: "Test reports available upon request",
+    title: "Quality Inspection",
+    desc: "Strict quality checking before shipment.",
     icon: "shield",
   },
   {
-    title: "Factory Direct Supply",
-    desc: "Original manufacturer, not a trading company",
-    icon: "factory",
+    title: "SGS & REACH Compliance",
+    desc: "Materials meet international textile requirements.",
+    icon: "certificate",
   },
 ];
 
-// ⑤ Core collections preview — 2 cards only
-const coreCollections = [
+// Our Factory entry — 3 trust entry cards
+const factoryEntries = [
   {
-    label: "Foil-Printed Synthetic Leather",
-    title: "Foil-Printed Synthetic Leather",
-    description:
-      "Foil-printed synthetic leather delivers smooth metallic luster via thermal transfer. Multiple metallic tones available. Backing material can be customized per project requirements.",
-    image: "/images/preview_hotstamping_foil.jpg",
-    alt: "Foil-printed synthetic leather for footwear and bags",
-    href: "/products/metallic-foil-fabric",
+    title: "Production Line",
+    image: "/image/process/hot_stamping_foil_transfer.jpg",
+    alt: "Hot stamping machine in factory production line",
+    href: "/factory",
   },
   {
-    label: "Chunky Glitter Synthetic Leather",
-    title: "Chunky Glitter Synthetic Leather",
-    description:
-      "Sparkling glitter synthetic leather for shoes, bags and accessories. Customizable colors and backing options to match your end-product needs.",
-    image: "/images/preview_chunky_glitter.jpg",
-    alt: "Chunky glitter synthetic leather for shoes and handbags",
-    href: "/products/elastic-glitter-fabric",
+    title: "Quality Control",
+    image: "/image/process/on_line_visual_inspection.jpg",
+    alt: "QC inspection station for fabric quality control",
+    href: "/factory",
+  },
+  {
+    title: "Warehouse",
+    image: "/image/process/final_packing.jpg",
+    alt: "Finished goods warehouse with packed fabric rolls",
+    href: "/factory",
   },
 ];
 
-// ⑥ Factory trust badges
+// Factory trust badges
 const trustBadges = [
   { label: "SGS Certified" },
   { label: "REACH Compliant" },
@@ -156,15 +177,15 @@ const trustBadges = [
 ---
 
 <Layout
-  title=""
-  description="Nixia Fabric is a China manufacturer specializing in Chunky Glitter Synthetic Leather and Foil-Printed Synthetic Leather for shoes, handbags, and fashion accessories. Factory Direct Supply and Custom Color Matching."
-  keywords="chunky glitter synthetic leather, foil-printed synthetic leather, glitter fabric manufacturer, foil fabric manufacturer, fabric factory china, metallic fabric factory, Custom Color Matching, glitter fabric for shoes, foil fabric for handbags"
+  title="Hot-Stamping Foil & Glitter Fabric Manufacturer"
+  description="China factory direct supplier of hot-stamping foil and glitter fabrics for footwear, bags and fashion accessories. Custom colors and OEM support."
+  keywords="hot-stamping foil fabric, glitter fabric manufacturer, decorative fabric supplier, China fabric factory, custom fabric solutions, OEM ODM fabric, SGS REACH compliant fabric"
   structuredData={[webPageData, faqData]}
 >
-  <!-- ==================== ② HERO CAROUSEL ==================== -->
+  <!-- ==================== HERO CAROUSEL ==================== -->
   <HeroCarousel />
 
-  <!-- ==================== ②b HERO TRUST BAR ==================== -->
+  <!-- ==================== HERO TRUST BAR ==================== -->
   <section class="hero-trust" aria-label="Business advantages">
     <div class="container">
       <div class="hero-trust__grid">
@@ -173,12 +194,12 @@ const trustBadges = [
           <span class="hero-trust__label">RFQ Response</span>
         </div>
         <div class="hero-trust__item">
-          <span class="hero-trust__value">3-7d</span>
-          <span class="hero-trust__label">Sample Plan</span>
-        </div>
-        <div class="hero-trust__item">
           <span class="hero-trust__value">Factory Direct</span>
           <span class="hero-trust__label">Custom Projects</span>
+        </div>
+        <div class="hero-trust__item">
+          <span class="hero-trust__value">SGS</span>
+          <span class="hero-trust__label">Certified</span>
         </div>
         <div class="hero-trust__item">
           <span class="hero-trust__value">FOB/CIF</span>
@@ -188,12 +209,45 @@ const trustBadges = [
     </div>
   </section>
 
-  <!-- ==================== ③ APPLICATIONS (4 scenario cards) ==================== -->
-  <section class="section" id="applications">
+  <!-- ==================== OUR MAIN FABRIC SERIES ==================== -->
+  <section class="section" id="main-fabric-series">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Our Products</span>
+        <h2>Our Main Fabric Series</h2>
+        <p>Two core decorative fabric series for footwear, bags and fashion accessories manufacturing.</p>
+      </div>
+
+      <div class="grid grid--2 fabric-series-grid">
+        {fabricSeries.map((item) => (
+          <a href={item.href} class="fabric-card">
+            <div class="fabric-card__visual">
+              <img
+                src={item.image}
+                alt={item.alt}
+                width="800"
+                height="800"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="fabric-card__body">
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+              <span class="fabric-card__cta">View Details →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== APPLICATIONS (4 scenario cards) ==================== -->
+  <section class="section section--alt" id="applications">
     <div class="container">
       <div class="section-header">
         <span class="eyebrow">Applications</span>
-        <h2>Where Our Fabrics Are Used</h2>
+        <h2>Applications</h2>
         <p>From shoe uppers to handbag panels — see how our glitter and foil fabrics bring products to life.</p>
       </div>
 
@@ -223,26 +277,25 @@ const trustBadges = [
     </div>
   </section>
 
-  <!-- ==================== ④ ADVANTAGES (4 B2B icons) ==================== -->
-  <section class="section section--alt" id="advantages">
+  <!-- ==================== WHY CHOOSE NIXIA FABRIC ==================== -->
+  <section class="section" id="why-choose-us">
     <div class="container">
       <div class="section-header">
-        <span class="eyebrow">WHY US</span>
-        <h2>Your Reliable Manufacturing Partner</h2>
-        <p>From raw material to finished synthetic leather — full-service textile manufacturing with documented quality control.</p>
+        <span class="eyebrow">Why Us</span>
+        <h2>Why Choose Nixia Fabric</h2>
+        <p>Factory direct decorative fabric manufacturer with in-house production and quality assurance.</p>
       </div>
 
       <div class="grid grid--4 advantage-grid">
-        {advantages.map((item) => (
+        {whyChooseUs.map((item) => (
           <div class="advantage-card">
             <div class="advantage-card__icon">
-              {item.icon === "sample" && (
+              {item.icon === "factory" && (
                 <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8 20L24 10L40 20V38C40 39.1 39.1 40 38 40H10C8.9 40 8 39.1 8 38V20Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-                  <path d="M8 20H40" stroke="currentColor" stroke-width="2.5"/>
-                  <path d="M18 40V28H30V40" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-                  <path d="M24 10V6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                  <path d="M20 8C20 6.9 21.8 6 24 6C26.2 6 28 6.9 28 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M6 42V20L18 26V20L30 26V20L42 26V42H6Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                  <rect x="12" y="32" width="4" height="6" fill="currentColor"/>
+                  <rect x="22" y="32" width="4" height="6" fill="currentColor"/>
+                  <rect x="32" y="32" width="4" height="6" fill="currentColor"/>
                 </svg>
               )}
               {item.icon === "palette" && (
@@ -259,12 +312,11 @@ const trustBadges = [
                   <path d="M18 24L22 28L30 20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               )}
-              {item.icon === "factory" && (
+              {item.icon === "certificate" && (
                 <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M6 42V20L18 26V20L30 26V20L42 26V42H6Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-                  <rect x="12" y="32" width="4" height="6" fill="currentColor"/>
-                  <rect x="22" y="32" width="4" height="6" fill="currentColor"/>
-                  <rect x="32" y="32" width="4" height="6" fill="currentColor"/>
+                  <circle cx="24" cy="20" r="12" stroke="currentColor" stroke-width="2.5"/>
+                  <path d="M18 30L16 42L24 38L32 42L30 30" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                  <path d="M20 20L23 23L28 17" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               )}
             </div>
@@ -276,47 +328,41 @@ const trustBadges = [
     </div>
   </section>
 
-  <!-- ==================== ⑤ CORE COLLECTIONS PREVIEW ==================== -->
-  <section class="section" id="core-collections">
+  <!-- ==================== OUR FACTORY ENTRY ==================== -->
+  <section class="section section--alt" id="factory-entry">
     <div class="container">
       <div class="section-header">
-        <span class="eyebrow">Product Preview</span>
-        <h2>Core Collections</h2>
-        <p>Explore our core synthetic-leather collections for footwear &amp; accessories.</p>
+        <span class="eyebrow">Our Factory</span>
+        <h2>Our Factory</h2>
+        <p>In-house production with strict quality control — see how we manufacture your fabrics.</p>
       </div>
 
-      <div class="grid grid--2 collections-grid">
-        {coreCollections.map((item) => (
-          <a href={item.href} class="collection-card">
-            <div class="collection-card__visual">
+      <div class="grid grid--3 factory-entry-grid">
+        {factoryEntries.map((entry) => (
+          <a href={entry.href} class="factory-entry-card">
+            <div class="factory-entry-card__visual">
               <img
-                src={item.image}
-                alt={item.alt}
-                width="800"
-                height="800"
+                src={entry.image}
+                alt={entry.alt}
+                width="600"
+                height="400"
                 loading="lazy"
                 decoding="async"
               />
+              <div class="factory-entry-card__overlay">
+                <span class="factory-entry-card__cta">Explore →</span>
+              </div>
             </div>
-            <div class="collection-card__body">
-              <span class="collection-card__badge">{item.label}</span>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-              <span class="collection-card__cta">Learn More →</span>
+            <div class="factory-entry-card__body">
+              <h3>{entry.title}</h3>
             </div>
           </a>
         ))}
       </div>
-
-      <div class="featured-cta">
-        <CTAButton href="/products" variant="dark" size="lg">
-          Discover Fabrics
-        </CTAButton>
-      </div>
     </div>
   </section>
 
-  <!-- ==================== ⑥ FACTORY TRUST ==================== -->
+  <!-- ==================== FACTORY TRUST ==================== -->
   <section class="section section--dark" id="factory-trust">
     <div class="container">
       <div class="trust-layout">
@@ -365,7 +411,7 @@ const trustBadges = [
     </div>
   </section>
 
-  <!-- ==================== ⑦ FAQ ==================== -->
+  <!-- ==================== FAQ ==================== -->
   <section class="section" id="faq">
     <div class="container container--narrow">
       <div class="section-header">
@@ -391,17 +437,16 @@ const trustBadges = [
     </div>
   </section>
 
-  <!-- ==================== ⑧ FINAL CTA ==================== -->
+  <!-- ==================== FINAL CTA ==================== -->
   <section class="final-cta" id="final-cta">
     <div class="container">
       <div class="final-cta__inner">
-        <span class="eyebrow final-cta__eyebrow">Get Started</span>
+        <span class="eyebrow final-cta__eyebrow">WORK WITH OUR FACTORY</span>
         <h2 class="final-cta__title">
-          Request Free Samples for Your Project
+          Ready to Start Your Fabric Project?
         </h2>
         <p class="final-cta__text">
-          See and feel the quality before you commit. Free samples — you only
-          cover shipping.
+          Request samples or get a custom quotation for your fabric project.
         </p>
         <div class="final-cta__actions">
           <CTAButton href="/sample-policy" variant="primary" size="lg">
@@ -417,6 +462,70 @@ const trustBadges = [
 </Layout>
 
 <style>
+  /* ==================== Fabric Series ==================== */
+  .fabric-series-grid {
+    gap: var(--space-2xl);
+  }
+
+  .fabric-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all var(--transition-base);
+  }
+
+  .fabric-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+
+  .fabric-card__visual {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+
+  .fabric-card__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .fabric-card:hover .fabric-card__visual img {
+    transform: scale(1.04);
+  }
+
+  .fabric-card__body {
+    padding: var(--space-xl);
+  }
+
+  .fabric-card__body h3 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-sm);
+    color: var(--color-primary);
+  }
+
+  .fabric-card__body p {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+  }
+
+  .fabric-card__cta {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+
+  .fabric-card:hover .fabric-card__cta {
+    text-decoration: underline;
+  }
+
   /* ==================== Applications ==================== */
   .applications-grid {
     gap: var(--space-lg);
@@ -495,7 +604,7 @@ const trustBadges = [
     color: var(--color-text-muted);
   }
 
-  /* ==================== Advantages ==================== */
+  /* ==================== Why Choose Us ==================== */
   .advantage-grid {
     gap: var(--space-xl);
   }
@@ -545,84 +654,78 @@ const trustBadges = [
     line-height: 1.5;
   }
 
-  /* ==================== Core Collections ==================== */
-  .collections-grid {
-    gap: var(--space-2xl);
+  /* ==================== Factory Entry ==================== */
+  .factory-entry-grid {
+    gap: var(--space-lg);
   }
 
-  .collection-card {
+  .factory-entry-card {
     display: block;
     text-decoration: none;
     color: inherit;
-    background-color: var(--color-white);
-    border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     overflow: hidden;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
     transition: all var(--transition-base);
   }
 
-  .collection-card:hover {
+  .factory-entry-card:hover {
     box-shadow: var(--shadow-lg);
     transform: translateY(-4px);
   }
 
-  .collection-card__visual {
-    aspect-ratio: 1 / 1;
+  .factory-entry-card__visual {
+    aspect-ratio: 3 / 2;
+    position: relative;
     overflow: hidden;
   }
 
-  .collection-card__visual img {
+  .factory-entry-card__visual img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform var(--transition-slow);
   }
 
-  .collection-card:hover .collection-card__visual img {
-    transform: scale(1.04);
+  .factory-entry-card:hover .factory-entry-card__visual img {
+    transform: scale(1.05);
   }
 
-  .collection-card__body {
-    padding: var(--space-xl);
+  .factory-entry-card__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: var(--space-md);
+    background: linear-gradient(to top, rgba(22, 41, 77, 0.7) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
   }
 
-  .collection-card__badge {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    font-size: var(--text-xs);
-    font-weight: 600;
-    color: var(--color-accent);
-    background-color: rgba(196, 160, 53, 0.08);
+  .factory-entry-card:hover .factory-entry-card__overlay {
+    opacity: 1;
+  }
+
+  .factory-entry-card__cta {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-white);
+    background-color: var(--color-accent);
+    padding: 0.5rem 1.25rem;
     border-radius: var(--radius-full);
-    margin-bottom: var(--space-sm);
   }
 
-  .collection-card__body h3 {
-    font-size: var(--text-xl);
-    margin-bottom: var(--space-sm);
-    color: var(--color-primary);
-  }
-
-  .collection-card__body p {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    line-height: 1.7;
-    margin-bottom: var(--space-md);
-  }
-
-  .collection-card__cta {
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--color-accent);
-  }
-
-  .collection-card:hover .collection-card__cta {
-    text-decoration: underline;
-  }
-
-  .featured-cta {
+  .factory-entry-card__body {
+    padding: var(--space-md) var(--space-lg);
     text-align: center;
-    margin-top: var(--space-3xl);
+  }
+
+  .factory-entry-card__body h3 {
+    font-size: var(--text-lg);
+    margin: 0;
+    color: var(--color-primary);
   }
 
   /* ==================== Factory Trust ==================== */
@@ -850,8 +953,13 @@ const trustBadges = [
     }
 
     .grid--4.advantage-grid,
-    .grid--4.applications-grid {
+    .grid--4.applications-grid,
+    .grid--3.factory-entry-grid {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    .fabric-series-grid {
+      grid-template-columns: 1fr;
     }
 
     .final-cta__title {
@@ -867,7 +975,8 @@ const trustBadges = [
 
     .grid--4.advantage-grid,
     .grid--4.applications-grid,
-    .grid--4.featured-grid {
+    .grid--3.factory-entry-grid,
+    .grid--2.fabric-series-grid {
       grid-template-columns: 1fr;
     }
 
