@@ -10,7 +10,8 @@
 - 内部数据值（不改）：category="Hot-Stamping Foil Finish"、craft="Hot-Stamping Foil"、craftOptions 数组保留原值
 - 主标题/横幅/导航/SEO meta 禁止出现 "Hot-Stamping Foil"（该词指代烫金耗材膜，非成品面料）
 - 产品详情正文可使用 sparkle/sparkly 做修饰，不用于主标题
-- 按钮文案：Request Free Sample / Get Custom Quote / Discover Fabrics（禁止 Swatch）
+- 按钮文案：Request Samples / Get Custom Quotation / Discover Fabrics（禁止 Swatch）
+- 2026-08-10 起全站 Header/Footer/Hero/CTA 按钮统一从 "Request Free Sample" 改为 "Request Samples"
 - 正文仅 Sample Policy 页和产品详情页可使用 swatch（区分小块色卡和大货样）
 - 合规：SGS Certified, REACH Compliant
 - 能力：Factory Direct Supply / Custom Color Matching / Custom Backing Options
@@ -18,11 +19,12 @@
 
 ## 业务叙事基准（全站统一，2026-08-09 确立）
 - 工厂注册时间：since 2013，禁止虚构更早从业时间
+- 2026-08-10 起首页和 Footer 不再显示 "since 2013" 年份声明（避免真实性风险），改为强调自有工厂+合作工厂；其他页面（about/factory/contact/blog/sample-policy）仍保留
 - 企业身份：自有格利特/热烫金PU面料工厂 + 与其他资质合格面料工厂稳定合作
 - 目标客户：全球鞋、手袋、配饰制造商（footwear, handbag and accessory manufacturers worldwide）
 - 主营产品限定：glitter synthetic leather、foil-printed PU materials
 - 价值主张：可靠可定制合成面料，支持样品申请/定制颜色底材/SGS+REACH报告
-- 全站不展示价格；CTA 优先级：Request Free Sample > Get Custom Quote
+- 全站不展示价格；CTA 优先级：Request Samples > Get Custom Quotation
 - 博客公司背景描述统一使用指定段落，禁止出现其他版本
 
 ## 技术架构要点
