@@ -14,13 +14,13 @@
       "glitter",
       "synthetic-leather",
       "B2B",
+      "factory-direct",
+      "SGS-certified",
+      "REACH-compliant",
       "fluorescent",
       "handbag",
       "footwear",
-      "decoration",
-      "factory-direct",
-      "SGS-certified",
-      "REACH-compliant"
+      "decoration"
     ]
   },
   {
@@ -46,15 +46,14 @@
       "glitter",
       "synthetic-leather",
       "B2B",
+      "factory-direct",
+      "SGS-certified",
+      "REACH-compliant",
       "printed",
       "metallic",
       "pu-leather",
       "handbag",
-      "decoration",
-      "fabric",
-      "factory-direct",
-      "SGS-certified",
-      "REACH-compliant"
+      "decoration"
     ]
   },
   {
@@ -82,13 +81,12 @@
       "glitter",
       "synthetic-leather",
       "B2B",
-      "metallic",
-      "pu-leather",
-      "pvc",
-      "fabric",
       "factory-direct",
       "SGS-certified",
-      "REACH-compliant"
+      "REACH-compliant",
+      "metallic",
+      "pu-leather",
+      "pvc"
     ]
   },
   {
@@ -118,13 +116,12 @@
       "glitter",
       "synthetic-leather",
       "B2B",
-      "metallic",
-      "pu-leather",
-      "pvc",
-      "fabric",
       "factory-direct",
       "SGS-certified",
-      "REACH-compliant"
+      "REACH-compliant",
+      "metallic",
+      "pu-leather",
+      "pvc"
     ]
   },
   {
@@ -174,10 +171,10 @@
       "glitter",
       "synthetic-leather",
       "B2B",
-      "decoration",
       "factory-direct",
       "SGS-certified",
-      "REACH-compliant"
+      "REACH-compliant",
+      "decoration"
     ]
   },
   {
@@ -207,16 +204,16 @@
       "glitter",
       "synthetic-leather",
       "B2B",
+      "factory-direct",
+      "SGS-certified",
+      "REACH-compliant",
       "gradient",
       "printed",
       "fine-glitter",
       "star-pattern",
       "metallic",
       "handbag",
-      "footwear",
-      "factory-direct",
-      "SGS-certified",
-      "REACH-compliant"
+      "footwear"
     ]
   },
   {
@@ -234,15 +231,14 @@
       "glitter",
       "synthetic-leather",
       "B2B",
+      "factory-direct",
+      "SGS-certified",
+      "REACH-compliant",
       "stretch",
       "diamond",
       "mesh",
       "metallic",
-      "footwear",
-      "fabric",
-      "factory-direct",
-      "SGS-certified",
-      "REACH-compliant"
+      "footwear"
     ]
   },
   {
@@ -254,16 +250,16 @@
     "mainImage": "/images/products/glitter-fabric-009/main/主图-1.jpg",
     "skuImages": [],
     "detailImages": [],
-    "videoLocal": "/images/products/glitter-fabric-009/video/视频-1.mp4",
+    "videoLocal": "",
     "videoYoutubeUrl": "",
     "tags": [
       "glitter",
       "synthetic-leather",
       "B2B",
-      "pu-leather",
       "factory-direct",
       "SGS-certified",
-      "REACH-compliant"
+      "REACH-compliant",
+      "pu-leather"
     ]
   },
   {
@@ -275,16 +271,16 @@
     "mainImage": "/images/products/glitter-fabric-010/main/主图-1.jpg",
     "skuImages": [],
     "detailImages": [],
-    "videoLocal": "/images/products/glitter-fabric-010/video/视频-1.mp4",
+    "videoLocal": "",
     "videoYoutubeUrl": "",
     "tags": [
       "glitter",
       "synthetic-leather",
       "B2B",
-      "pu-leather",
       "factory-direct",
       "SGS-certified",
-      "REACH-compliant"
+      "REACH-compliant",
+      "pu-leather"
     ]
   },
   {
@@ -308,11 +304,11 @@
       "glitter",
       "synthetic-leather",
       "B2B",
-      "gradient",
-      "pu-leather",
       "factory-direct",
       "SGS-certified",
-      "REACH-compliant"
+      "REACH-compliant",
+      "gradient",
+      "pu-leather"
     ]
   },
   {
@@ -343,15 +339,14 @@
       "glitter",
       "synthetic-leather",
       "B2B",
+      "factory-direct",
+      "SGS-certified",
+      "REACH-compliant",
       "printed",
       "fine-glitter",
       "handbag",
       "footwear",
-      "decoration",
-      "fabric",
-      "factory-direct",
-      "SGS-certified",
-      "REACH-compliant"
+      "decoration"
     ]
   },
   {
@@ -360,7 +355,7 @@
     "category": "Glitter Synthetic Leather",
     "shortDesc": "Factory-direct mirror crystal glitter synthetic leather for footwear, handbag, and accessory manufacturing. SGS certified, REACH compliant, custom color matching available.",
     "fullDescription": "Nixia Fabric brings you our premium-grade mirror crystal glitter synthetic leather. Manufactured in our own facilities since 2013, this material delivers exceptional sparkle and durability for footwear, handbags, and fashion accessories.\n\nOur glitter synthetic leather is SGS certified and REACH compliant, ensuring safety and quality for your manufacturing needs. Available with custom color matching and backing options to fit your specific requirements.\n\nFree samples available — customer only bears international shipping cost, which will be deducted from your bulk order.",
-    "mainImage": "/images/products/glitter-fabric-013/main/主图-1.gif",
+    "mainImage": "/images/products/glitter-fabric-013/main/主图-1.jpg",
     "skuImages": [],
     "detailImages": [],
     "videoLocal": "",
@@ -369,15 +364,14 @@
       "glitter",
       "synthetic-leather",
       "B2B",
+      "factory-direct",
+      "SGS-certified",
+      "REACH-compliant",
       "mirror-finish",
       "crystal",
       "pu-leather",
       "handbag",
-      "footwear",
-      "fabric",
-      "factory-direct",
-      "SGS-certified",
-      "REACH-compliant"
+      "footwear"
     ]
   },
   {
@@ -424,13 +418,13 @@
       "glitter",
       "synthetic-leather",
       "B2B",
+      "factory-direct",
+      "SGS-certified",
+      "REACH-compliant",
       "fine-glitter",
       "fluorescent",
       "handbag",
-      "footwear",
-      "factory-direct",
-      "SGS-certified",
-      "REACH-compliant"
+      "footwear"
     ]
   },
   {
@@ -463,14 +457,13 @@
       "glitter",
       "synthetic-leather",
       "B2B",
+      "factory-direct",
+      "SGS-certified",
+      "REACH-compliant",
       "tpu",
       "pu-leather",
       "handbag",
-      "decoration",
-      "furniture",
-      "factory-direct",
-      "SGS-certified",
-      "REACH-compliant"
+      "decoration"
     ]
   },
   {
@@ -493,23 +486,22 @@
       "glitter",
       "synthetic-leather",
       "B2B",
+      "factory-direct",
+      "SGS-certified",
+      "REACH-compliant",
       "metallic",
       "pu-leather",
       "handbag",
       "footwear",
-      "decoration",
-      "fabric",
-      "factory-direct",
-      "SGS-certified",
-      "REACH-compliant"
+      "decoration"
     ]
   },
   {
     "id": "glitter-fabric-017",
-    "title": "PVC Glitter Synthetic Leather",
+    "title": "Glitter Synthetic Leather",
     "category": "Glitter Synthetic Leather",
-    "shortDesc": "Factory-direct pvc glitter synthetic leather for footwear, handbag, and accessory manufacturing. SGS certified, REACH compliant, custom color matching available.",
-    "fullDescription": "Nixia Fabric brings you our premium-grade pvc glitter synthetic leather. Manufactured in our own facilities since 2013, this material delivers exceptional sparkle and durability for footwear, handbags, and fashion accessories.\n\nOur glitter synthetic leather is SGS certified and REACH compliant, ensuring safety and quality for your manufacturing needs. Available with custom color matching and backing options to fit your specific requirements.\n\nFree samples available — customer only bears international shipping cost, which will be deducted from your bulk order.",
+    "shortDesc": "Factory-direct glitter synthetic leather for footwear, handbag, and accessory manufacturing. SGS certified, REACH compliant, custom color matching available.",
+    "fullDescription": "Nixia Fabric brings you our premium-grade glitter synthetic leather. Manufactured in our own facilities since 2013, this material delivers exceptional sparkle and durability for footwear, handbags, and fashion accessories.\n\nOur glitter synthetic leather is SGS certified and REACH compliant, ensuring safety and quality for your manufacturing needs. Available with custom color matching and backing options to fit your specific requirements.\n\nFree samples available — customer only bears international shipping cost, which will be deducted from your bulk order.",
     "mainImage": "/images/products/glitter-fabric-017/main/主图-1.jpg",
     "skuImages": [
       "/images/products/glitter-fabric-017/sku/sku-1-9107-1.jpg",
@@ -580,11 +572,11 @@
       "glitter",
       "synthetic-leather",
       "B2B",
-      "handbag",
-      "footwear",
       "factory-direct",
       "SGS-certified",
-      "REACH-compliant"
+      "REACH-compliant",
+      "handbag",
+      "footwear"
     ]
   },
   {
@@ -614,14 +606,13 @@
       "glitter",
       "synthetic-leather",
       "B2B",
+      "factory-direct",
+      "SGS-certified",
+      "REACH-compliant",
       "laser",
       "star-pattern",
       "handbag",
-      "footwear",
-      "fabric",
-      "factory-direct",
-      "SGS-certified",
-      "REACH-compliant"
+      "footwear"
     ]
   },
   {
@@ -668,16 +659,15 @@
       "glitter",
       "synthetic-leather",
       "B2B",
+      "factory-direct",
+      "SGS-certified",
+      "REACH-compliant",
       "crystal",
       "tpu",
       "silver",
       "pu-leather",
       "handbag",
-      "footwear",
-      "furniture",
-      "factory-direct",
-      "SGS-certified",
-      "REACH-compliant"
+      "footwear"
     ]
   },
   {
@@ -695,13 +685,13 @@
       "glitter",
       "synthetic-leather",
       "B2B",
+      "factory-direct",
+      "SGS-certified",
+      "REACH-compliant",
       "metallic",
       "pu-leather",
       "handbag",
-      "decoration",
-      "factory-direct",
-      "SGS-certified",
-      "REACH-compliant"
+      "decoration"
     ]
   },
   {
@@ -730,14 +720,13 @@
       "glitter",
       "synthetic-leather",
       "B2B",
+      "factory-direct",
+      "SGS-certified",
+      "REACH-compliant",
       "laser",
       "heart-pattern",
       "pu-leather",
-      "handbag",
-      "fabric",
-      "factory-direct",
-      "SGS-certified",
-      "REACH-compliant"
+      "handbag"
     ]
   },
   {
@@ -781,11 +770,10 @@
       "glitter",
       "synthetic-leather",
       "B2B",
-      "metallic",
-      "fabric",
       "factory-direct",
       "SGS-certified",
-      "REACH-compliant"
+      "REACH-compliant",
+      "metallic"
     ]
   },
   {
@@ -817,14 +805,14 @@
       "glitter",
       "synthetic-leather",
       "B2B",
+      "factory-direct",
+      "SGS-certified",
+      "REACH-compliant",
       "printed",
       "fine-glitter",
       "footwear",
       "accessories",
-      "decoration",
-      "factory-direct",
-      "SGS-certified",
-      "REACH-compliant"
+      "decoration"
     ]
   },
   {
@@ -853,15 +841,14 @@
       "glitter",
       "synthetic-leather",
       "B2B",
+      "factory-direct",
+      "SGS-certified",
+      "REACH-compliant",
       "gradient",
       "rainbow",
       "metallic",
       "handbag",
-      "footwear",
-      "fabric",
-      "factory-direct",
-      "SGS-certified",
-      "REACH-compliant"
+      "footwear"
     ]
   },
   {
@@ -885,11 +872,11 @@
       "glitter",
       "synthetic-leather",
       "B2B",
-      "gradient",
-      "rainbow",
       "factory-direct",
       "SGS-certified",
-      "REACH-compliant"
+      "REACH-compliant",
+      "gradient",
+      "rainbow"
     ]
   },
   {
@@ -913,11 +900,11 @@
       "glitter",
       "synthetic-leather",
       "B2B",
-      "fluorescent",
-      "metallic",
       "factory-direct",
       "SGS-certified",
-      "REACH-compliant"
+      "REACH-compliant",
+      "fluorescent",
+      "metallic"
     ]
   },
   {
@@ -941,11 +928,11 @@
       "glitter",
       "synthetic-leather",
       "B2B",
-      "gradient",
-      "rainbow",
       "factory-direct",
       "SGS-certified",
-      "REACH-compliant"
+      "REACH-compliant",
+      "gradient",
+      "rainbow"
     ]
   },
   {
@@ -969,11 +956,11 @@
       "glitter",
       "synthetic-leather",
       "B2B",
-      "gradient",
-      "rainbow",
       "factory-direct",
       "SGS-certified",
-      "REACH-compliant"
+      "REACH-compliant",
+      "gradient",
+      "rainbow"
     ]
   },
   {
@@ -997,10 +984,10 @@
       "glitter",
       "synthetic-leather",
       "B2B",
-      "chunky-glitter",
       "factory-direct",
       "SGS-certified",
-      "REACH-compliant"
+      "REACH-compliant",
+      "chunky-glitter"
     ]
   },
   {
@@ -1030,15 +1017,15 @@
       "glitter",
       "synthetic-leather",
       "B2B",
+      "factory-direct",
+      "SGS-certified",
+      "REACH-compliant",
       "gradient",
       "rainbow",
       "printed",
       "fluorescent",
       "laser",
-      "metallic",
-      "factory-direct",
-      "SGS-certified",
-      "REACH-compliant"
+      "metallic"
     ]
   },
   {
@@ -1079,16 +1066,15 @@
       "glitter",
       "synthetic-leather",
       "B2B",
+      "factory-direct",
+      "SGS-certified",
+      "REACH-compliant",
       "mirror-finish",
       "crystal",
       "fine-glitter",
       "handbag",
       "footwear",
-      "decoration",
-      "fabric",
-      "factory-direct",
-      "SGS-certified",
-      "REACH-compliant"
+      "decoration"
     ]
   },
   {
@@ -1122,15 +1108,15 @@
       "glitter",
       "synthetic-leather",
       "B2B",
+      "factory-direct",
+      "SGS-certified",
+      "REACH-compliant",
       "non-woven",
       "fine-glitter",
       "metallic",
       "footwear",
       "accessories",
-      "decoration",
-      "factory-direct",
-      "SGS-certified",
-      "REACH-compliant"
+      "decoration"
     ]
   },
   {
@@ -1154,13 +1140,13 @@
       "glitter",
       "synthetic-leather",
       "B2B",
+      "factory-direct",
+      "SGS-certified",
+      "REACH-compliant",
       "pu-leather",
       "handbag",
       "accessories",
-      "decoration",
-      "factory-direct",
-      "SGS-certified",
-      "REACH-compliant"
+      "decoration"
     ]
   },
   {
@@ -1184,11 +1170,11 @@
       "glitter",
       "synthetic-leather",
       "B2B",
-      "metallic",
-      "pu-leather",
       "factory-direct",
       "SGS-certified",
-      "REACH-compliant"
+      "REACH-compliant",
+      "metallic",
+      "pu-leather"
     ]
   },
   {
@@ -1218,22 +1204,22 @@
       "glitter",
       "synthetic-leather",
       "B2B",
+      "factory-direct",
+      "SGS-certified",
+      "REACH-compliant",
       "printed",
       "star-pattern",
       "pu-leather",
       "handbag",
-      "footwear",
-      "factory-direct",
-      "SGS-certified",
-      "REACH-compliant"
+      "footwear"
     ]
   },
   {
     "id": "glitter-fabric-036",
-    "title": "PU Glitter Synthetic Leather",
+    "title": "Decorative Glitter Synthetic Leather",
     "category": "Glitter Synthetic Leather",
-    "shortDesc": "Factory-direct pu glitter synthetic leather for footwear, handbag, and accessory manufacturing. SGS certified, REACH compliant, custom color matching available.",
-    "fullDescription": "Nixia Fabric brings you our premium-grade pu glitter synthetic leather. Manufactured in our own facilities since 2013, this material delivers exceptional sparkle and durability for footwear, handbags, and fashion accessories.\n\nOur glitter synthetic leather is SGS certified and REACH compliant, ensuring safety and quality for your manufacturing needs. Available with custom color matching and backing options to fit your specific requirements.\n\nFree samples available — customer only bears international shipping cost, which will be deducted from your bulk order.",
+    "shortDesc": "Factory-direct decorative glitter synthetic leather for footwear, handbag, and accessory manufacturing. SGS certified, REACH compliant, custom color matching available.",
+    "fullDescription": "Nixia Fabric brings you our premium-grade decorative glitter synthetic leather. Manufactured in our own facilities since 2013, this material delivers exceptional sparkle and durability for footwear, handbags, and fashion accessories.\n\nOur glitter synthetic leather is SGS certified and REACH compliant, ensuring safety and quality for your manufacturing needs. Available with custom color matching and backing options to fit your specific requirements.\n\nFree samples available — customer only bears international shipping cost, which will be deducted from your bulk order.",
     "mainImage": "/images/products/glitter-fabric-036/main/主图-1.jpg",
     "skuImages": [],
     "detailImages": [
@@ -1247,7 +1233,7 @@
       "/images/products/glitter-fabric-036/detail/详情-6.jpg",
       "/images/products/glitter-fabric-036/detail/详情-9.jpg"
     ],
-    "videoLocal": "/images/products/glitter-fabric-036/video/视频-1.mp4",
+    "videoLocal": "",
     "videoYoutubeUrl": "",
     "tags": [
       "glitter",
@@ -1275,18 +1261,17 @@
       "/images/products/glitter-fabric-037/detail/详情-8.jpg",
       "/images/products/glitter-fabric-037/detail/详情-9.jpg"
     ],
-    "videoLocal": "/images/products/glitter-fabric-037/video/视频-1.mp4",
+    "videoLocal": "",
     "videoYoutubeUrl": "",
     "tags": [
       "glitter",
       "synthetic-leather",
       "B2B",
-      "pu-leather",
-      "handbag",
-      "fabric",
       "factory-direct",
       "SGS-certified",
-      "REACH-compliant"
+      "REACH-compliant",
+      "pu-leather",
+      "handbag"
     ]
   },
   {
@@ -1310,15 +1295,15 @@
       "glitter",
       "synthetic-leather",
       "B2B",
+      "factory-direct",
+      "SGS-certified",
+      "REACH-compliant",
       "stretch",
       "diamond",
       "metallic",
       "handbag",
       "footwear",
-      "accessories",
-      "factory-direct",
-      "SGS-certified",
-      "REACH-compliant"
+      "accessories"
     ]
   },
   {
@@ -1362,13 +1347,12 @@
       "glitter",
       "synthetic-leather",
       "B2B",
-      "non-woven",
-      "metallic",
-      "silver",
-      "fabric",
       "factory-direct",
       "SGS-certified",
-      "REACH-compliant"
+      "REACH-compliant",
+      "non-woven",
+      "metallic",
+      "silver"
     ]
   },
   {
@@ -1392,11 +1376,11 @@
       "glitter",
       "synthetic-leather",
       "B2B",
-      "metallic",
-      "accessories",
       "factory-direct",
       "SGS-certified",
-      "REACH-compliant"
+      "REACH-compliant",
+      "metallic",
+      "accessories"
     ]
   }
 ]
