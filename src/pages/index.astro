@@ -15,9 +15,9 @@ import CTAButton from "@components/CTAButton.astro";
 const webPageData = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Nixia Fabric — Glitter & Foil-Printed Synthetic Leather Manufacturer",
+  name: "Nixia Fabric - Glitter & Thermal Foil Gulelite Fabric | OEM ODM Manufacturer & Wholesale Supplier",
   description:
-    "China factory direct supplier of glitter and foil-printed synthetic leather for footwear, handbags and fashion accessories. OEM, custom colors and quality certification supported.",
+    "Custom low MOQ glitter and thermal foil gulelite fabric supplier for Southeast Asia and Middle East buyers. Free sample available, OEM ODM support, and fast quote response.",
   url: "https://nixiafabric.com",
 };
 
@@ -109,85 +109,101 @@ const faqData = {
   ],
 };
 
-// Our Core Product Collections — 2 product cards
-const fabricSeries = [
+// Featured SKUs — 4 product cards
+const featuredProducts = [
   {
-    title: "Foil-Printed Synthetic Leather",
+    title: "Thermal Foil Bronzing Fabric",
     description:
-      "Custom foil-printed synthetic leather with various metallic finishes and multiple backing options.",
-    image: "/images/preview_hotstamping_foil.jpg",
-    alt: "Foil printed synthetic leather sample with metallic finish",
+      "High-shine bronzing surface, custom color matching, low MOQ.",
+    image: "/images/products/metallic-foil-fabric/01.jpg",
+    alt: "Thermal foil bronzing fabric with metallic finish",
     href: "/products",
-    cta: "Explore Foil-Printed Synthetic Leather",
+    cta: "View Details",
   },
   {
-    title: "Glitter Synthetic Leather",
+    title: "Gulelite / Glitter Fabric",
     description:
-      "Sparkle glitter coated synthetic leather for footwear, handbags and fashion accessories.",
-    image: "/images/preview_chunky_glitter.jpg",
-    alt: "Glitter synthetic leather material with sparkling texture",
+      "Dense sparkle surface for shoes and bags, stable quality.",
+    image: "/images/products/elastic-glitter-fabric/01.jpg",
+    alt: "Glitter fabric sample with sparkling texture",
     href: "/products",
-    cta: "Explore Glitter Synthetic Leather",
+    cta: "View Details",
+  },
+  {
+    title: "Gold Bronzing Fabric",
+    description: "Premium gold finish for luxury trims and panels.",
+    image: "/images/products/gold-foil-fabric/01.jpg",
+    alt: "Gold thermal foil fabric sample",
+    href: "/products",
+    cta: "View Details",
+  },
+  {
+    title: "Non-woven Glitter Fabric",
+    description: "Lightweight option for decoration and packaging.",
+    image: "/images/products/non-woven-glitter-fabric/01.jpg",
+    alt: "Non-woven glitter fabric sample",
+    href: "/products",
+    cta: "View Details",
   },
 ];
 
 // Applications — 4 end-use scenario cards
 const applications = [
   {
-    title: "Footwear",
-    description: "Shoe uppers, trims, and decorative panels",
+    title: "Bags & Shoes",
+    description: "Uppers, panels, and decorative trims",
     image: "/image/home/Shoes.png",
-    alt: "Glitter synthetic leather used in footwear uppers",
+    alt: "Glitter fabric used for bags and shoes",
     href: "/products",
   },
   {
-    title: "Handbags & Purses",
-    description: "Bag bodies, flaps, and accent panels",
+    title: "Garment & Costume",
+    description: "Stagewear, trims, and costume accents",
     image: "/image/home/Handbags.png",
-    alt: "Foil printed leather for handbags and purse panels",
+    alt: "Foil fabric used for garment and costume trims",
     href: "/products",
   },
   {
-    title: "Fashion Accessories",
-    description: "Wallets, card holders, and belts",
+    title: "Decoration & Gift Packaging",
+    description: "Boxes, gift wrap, and display pieces",
     image: "/image/home/Accessories.png",
-    alt: "Glitter synthetic leather used for wallets and belts",
+    alt: "Glitter fabric used for decoration and packaging",
     href: "/products",
   },
   {
-    title: "Garment Trimming",
-    description: "Fashion trims and decorative accents",
+    title: "Bags & Shoes",
+    description: "Panels, labels, and sample matching",
     image: "/image/home/Fashion.png",
-    alt: "Foil printed synthetic leather for garment trimming and accents",
+    alt: "Foil fabric used for bags and shoes",
     href: "/products",
   },
 ];
 
-// Why Global Buyers Choose Us — 5 B2B advantage items
+// Value advantages — 5 short buyer-focused points
 const whyChooseUs = [
   {
-    title: "Factory Direct Supply",
-    desc: "Own production workshop with stable manufacturing capability.",
+    title: "OEM & ODM",
+    desc: "Custom pattern and color.",
     icon: "factory",
   },
   {
-    title: "Custom Fabric Solutions",
-    desc: "Custom colors, patterns and backing options available.",
+    title: "Low MOQ Support",
+    desc: "Trial orders available.",
     icon: "palette",
   },
   {
-    title: "Quality Inspection",
-    desc: "Strict quality checking before shipment.",
+    title: "Fast Sample Turnaround",
+    desc: "Quick development and shipment.",
     icon: "shield",
   },
   {
-    title: "SGS & REACH Compliance",
-    desc: "Materials meet international requirements.",
+    title: "Strict Inspection",
+    desc: "Checked before shipment.",
     icon: "certificate",
   },
   {
-    title: "Flexible MOQ",
-    desc: "Support sampling and trial orders for new projects.",
+    title: "Export Markets",
+    desc: "Southeast Asia and Middle East.",
     icon: "box",
   },
 ];
@@ -216,16 +232,16 @@ const factoryEntries = [
 
 // Factory trust badges
 const trustBadges = [
-  { label: "SGS Certified" },
-  { label: "REACH Compliant" },
-  { label: "Factory Direct Supply" },
-  { label: "Custom Color Matching" },
+  { label: "Guangzhou Base" },
+  { label: "Southeast Asia" },
+  { label: "Middle East" },
+  { label: "Factory Backed" },
 ];
 ---
 
 <Layout
-  title="Glitter & Foil-Printed Synthetic Leather Manufacturer"
-  description="China factory direct supplier of glitter and foil-printed synthetic leather for footwear, handbags and fashion accessories. OEM, custom colors and quality certification supported."
+  title="Nixia Fabric - Glitter & Thermal Foil Gulelite Fabric | OEM ODM Manufacturer & Wholesale Supplier"
+  description="Custom low MOQ glitter and thermal foil gulelite fabric supplier for Southeast Asia and Middle East buyers. Free sample available, custom colors, and OEM ODM support."
   keywords="glitter synthetic leather, foil-printed synthetic leather, synthetic leather manufacturer, China fabric factory, custom synthetic leather, OEM ODM fabric, SGS REACH compliant"
   structuredData={[webPageData, faqData]}
 >
@@ -260,20 +276,20 @@ const trustBadges = [
   <section class="section" id="main-fabric-series">
     <div class="container">
       <div class="section-header">
-        <span class="eyebrow">Our Products</span>
-        <h2>Our Core Product Collections</h2>
-        <p>Two core synthetic leather series for footwear, handbags and fashion accessories manufacturing.</p>
+        <span class="eyebrow">Featured SKUs</span>
+        <h2>Core Materials for Fast Scanning</h2>
+        <p>Four main SKUs, each with a clear use case and a direct path to the product list.</p>
       </div>
 
-      <div class="grid grid--2 fabric-series-grid">
-        {fabricSeries.map((item) => (
+      <div class="grid grid--4 fabric-series-grid">
+        {featuredProducts.map((item) => (
           <a href={item.href} class="fabric-card">
             <div class="fabric-card__visual">
               <img
                 src={item.image}
                 alt={item.alt}
-                width="800"
-                height="800"
+                width="600"
+                height="600"
                 loading="lazy"
                 decoding="async"
               />
@@ -281,7 +297,7 @@ const trustBadges = [
             <div class="fabric-card__body">
               <h3>{item.title}</h3>
               <p>{item.description}</p>
-              <span class="fabric-card__cta">{item.cta} →</span>
+              <span class="fabric-card__cta">{item.cta}</span>
             </div>
           </a>
         ))}
@@ -295,7 +311,7 @@ const trustBadges = [
       <div class="section-header">
         <span class="eyebrow">Applications</span>
         <h2>Applications</h2>
-        <p>Materials designed for footwear, handbag and fashion accessory manufacturers.</p>
+        <p>Short labels for quick buyer scanning.</p>
       </div>
 
       <div class="grid grid--4 applications-grid">
@@ -329,8 +345,8 @@ const trustBadges = [
     <div class="container">
       <div class="section-header">
         <span class="eyebrow">Why Us</span>
-        <h2>Why Global Buyers Choose Us</h2>
-        <p>Factory direct synthetic leather manufacturer with in-house production and quality assurance.</p>
+        <h2>Buyer Advantages</h2>
+        <p>Short, practical points for sourcing teams.</p>
       </div>
 
       <div class="grid advantage-grid">
@@ -388,7 +404,7 @@ const trustBadges = [
       <div class="section-header">
         <span class="eyebrow">Our Factory</span>
         <h2>Our Factory</h2>
-        <p>Own production capability, strict quality control and stable supply — see how we manufacture your synthetic leather.</p>
+        <p>Factory-backed fabric supplier based in Guangzhou, serving Southeast Asia and the Middle East.</p>
       </div>
 
       <div class="grid grid--3 factory-entry-grid">
@@ -423,11 +439,10 @@ const trustBadges = [
         <!-- Left: content -->
         <div class="trust-layout__left">
           <span class="eyebrow">Factory & Certification</span>
-          <h2>Factory Direct, Quality Assured</h2>
+          <h2>Factory-backed fabric supplier based in Guangzhou</h2>
           <p>
-            With our own production facility and experienced manufacturing partners, we provide
-            reliable glitter and foil-printed synthetic leather solutions for global footwear
-            and bag manufacturers.
+            Built for Southeast Asia and Middle East sourcing teams. Stable supply, clear QC,
+            and direct factory support for custom projects.
           </p>
 
           <div class="trust-badges">
@@ -453,15 +468,46 @@ const trustBadges = [
 
         <!-- Right: factory image -->
         <div class="trust-layout__right">
-          <div class="trust-image">
+          <div class="trust-image-grid">
             <img
-              src="/image/home/slide3.png"
-              alt="In-house quality control inspection at Nixia Fabric factory"
+              src="/image/process/hot_stamping_foil_transfer.jpg"
+              alt="Factory workshop for thermal foil fabric production"
+              loading="lazy"
+            />
+            <img
+              src="/image/process/on_line_visual_inspection.jpg"
+              alt="Quality inspection station for fabric production"
               loading="lazy"
             />
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ==================== INQUIRY ==================== -->
+  <section class="section section--alt inquiry-section" id="inquiry">
+    <div class="container container--narrow">
+      <div class="section-header">
+        <span class="eyebrow">Inquiry</span>
+        <h2>Need Custom Fabric or Free Sample? Get Your Quote Within 24h</h2>
+      </div>
+
+      <form class="inquiry-form" id="inquiry-form" novalidate>
+        <div class="inquiry-grid">
+          <input class="inquiry-input" name="name" type="text" placeholder="Name *" autocomplete="name" required />
+          <input class="inquiry-input" name="company" type="text" placeholder="Company *" autocomplete="organization" required />
+          <input class="inquiry-input" name="email" type="email" placeholder="Email *" autocomplete="email" required />
+          <input class="inquiry-input" name="subject" type="text" value="Homepage inquiry" hidden />
+        </div>
+        <textarea class="inquiry-textarea" name="message" rows="4" placeholder="Your Requirement *" required></textarea>
+        <div class="inquiry-actions">
+          <button type="submit" class="btn btn--primary btn--lg inquiry-submit">Get Custom Quote</button>
+          <a href="/sample-policy" class="btn btn--outline btn--lg inquiry-link">Free Sample</a>
+        </div>
+        <p class="inquiry-note">Low MOQ, custom color, and fast sample support.</p>
+        <p class="inquiry-error" id="inquiry-error" hidden></p>
+      </form>
     </div>
   </section>
 
@@ -496,18 +542,14 @@ const trustBadges = [
     <div class="container">
       <div class="final-cta__inner">
         <span class="eyebrow final-cta__eyebrow">WORK WITH OUR FACTORY</span>
-        <h2 class="final-cta__title">
-          Ready to Start Your Fabric Project?
-        </h2>
-        <p class="final-cta__text">
-          Request samples or get a custom quotation for your fabric project.
-        </p>
+        <h2 class="final-cta__title">Need Custom Fabric or Free Sample? Get Your Quote Within 24h</h2>
+        <p class="final-cta__text">Fast reply. Low MOQ. Custom color and pattern support.</p>
         <div class="final-cta__actions">
-          <CTAButton href="/sample-policy" variant="primary" size="lg">
-            Request Samples
+          <CTAButton href="/contact" variant="primary" size="lg">
+            Get Custom Quote
           </CTAButton>
-          <CTAButton href="/contact" variant="secondary" size="lg">
-            Get Custom Quotation
+          <CTAButton href="/sample-policy" variant="secondary" size="lg">
+            Free Sample
           </CTAButton>
         </div>
       </div>
@@ -519,6 +561,7 @@ const trustBadges = [
   /* ==================== Fabric Series ==================== */
   .fabric-series-grid {
     gap: var(--space-2xl);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .fabric-card {
@@ -571,13 +614,20 @@ const trustBadges = [
   }
 
   .fabric-card__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 0.6rem 1rem;
     font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--color-accent);
+    font-weight: 700;
+    color: var(--color-white);
+    background: var(--color-accent);
+    border-radius: var(--radius-sm);
   }
 
   .fabric-card:hover .fabric-card__cta {
-    text-decoration: underline;
+    background: var(--color-accent-dark);
   }
 
   /* ==================== Applications ==================== */
@@ -843,17 +893,82 @@ const trustBadges = [
     position: relative;
   }
 
-  .trust-image {
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    aspect-ratio: 4 / 3;
-    box-shadow: var(--shadow-xl);
+  .trust-image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
   }
 
-  .trust-image img {
+  .trust-image-grid img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-xl);
+  }
+
+  /* ==================== Inquiry ==================== */
+  .inquiry-form {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+  }
+
+  .inquiry-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .inquiry-input,
+  .inquiry-textarea {
+    width: 100%;
+    padding: 0.85rem 0.95rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font: inherit;
+    color: var(--color-text);
+    background: var(--color-white);
+  }
+
+  .inquiry-textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .inquiry-input:focus,
+  .inquiry-textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(196, 160, 53, 0.12);
+  }
+
+  .inquiry-actions {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    margin-top: var(--space-md);
+  }
+
+  .inquiry-submit,
+  .inquiry-link {
+    min-width: 180px;
+    justify-content: center;
+  }
+
+  .inquiry-note {
+    margin-top: var(--space-sm);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  .inquiry-error {
+    margin-top: var(--space-sm);
+    color: #b91c1c;
+    font-size: var(--text-sm);
   }
 
   /* ==================== FAQ ==================== */
@@ -1017,11 +1132,19 @@ const trustBadges = [
     }
 
     .fabric-series-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
     }
 
     .final-cta__title {
       font-size: var(--text-3xl);
+    }
+
+    .inquiry-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .trust-image-grid {
+      grid-template-columns: 1fr;
     }
   }
 
@@ -1033,7 +1156,7 @@ const trustBadges = [
 
     .grid--4.applications-grid,
     .grid--3.factory-entry-grid,
-    .grid--2.fabric-series-grid,
+    .grid--4.fabric-series-grid,
     .advantage-grid {
       grid-template-columns: 1fr;
     }
@@ -1049,5 +1172,70 @@ const trustBadges = [
     .trust-actions {
       flex-direction: column;
     }
+
+    .inquiry-submit,
+    .inquiry-link {
+      width: 100%;
+    }
   }
 </style>
+
+<script>
+  const inquiryForm = document.getElementById("inquiry-form") as HTMLFormElement | null;
+  const inquiryError = document.getElementById("inquiry-error") as HTMLElement | null;
+
+  function showInquiryError(message: string) {
+    if (!inquiryError) return;
+    inquiryError.textContent = message;
+    inquiryError.hidden = false;
+  }
+
+  function hideInquiryError() {
+    if (inquiryError) inquiryError.hidden = true;
+  }
+
+  inquiryForm?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    hideInquiryError();
+
+    const data = new FormData(inquiryForm);
+    const name = String(data.get("name") || "").trim();
+    const company = String(data.get("company") || "").trim();
+    const email = String(data.get("email") || "").trim();
+    const message = String(data.get("message") || "").trim();
+
+    if (!name || !company || !email || !message) {
+      showInquiryError("Please complete all required fields.");
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showInquiryError("Please enter a valid email address.");
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          company,
+          email,
+          subject: "Homepage inquiry",
+          message,
+        }),
+      });
+
+      const payload = await res.json().catch(() => null);
+      if (res.ok && payload?.success) {
+        window.location.href = "/thank-you/";
+        return;
+      }
+
+      showInquiryError(payload?.error || "Request failed. Please try again.");
+    } catch {
+      showInquiryError("Unable to send inquiry right now.");
+    }
+  });
+</script>

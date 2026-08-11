@@ -4,15 +4,17 @@
  * Sticky, responsive with mobile menu
  * "Products" dropdown shows 4 end-use category links
  */
-import { endUseCategories } from "@data/products";
-
 const navItems = [
   { label: "Home", href: "/" },
   { label: "Products", href: "/products", hasDropdown: true },
-  { label: "Factory", href: "/factory" },
-  { label: "About", href: "/about" },
-  { label: "Blog", href: "/blog" },
+  { label: "Applications", href: "/#applications" },
+  { label: "About Us", href: "/about" },
   { label: "Contact", href: "/contact" },
+];
+
+const productDropdownItems = [
+  { title: "Gulelite / Glitter Fabric", desc: "Browse glitter fabric products" },
+  { title: "Thermal Foil Bronzing Fabric", desc: "Browse foil bronzing products" },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -84,10 +86,10 @@ const isProductSectionActive = currentPath.startsWith("/products");
             </a>
             {item.hasDropdown && (
               <div class="header__dropdown">
-                {endUseCategories.map((cat) => (
-                  <a href={`/products/${cat.slug}`} class="header__dropdown-link">
-                    <span class="header__dropdown-title">{cat.shortName}</span>
-                    <span class="header__dropdown-desc">{cat.name}</span>
+                {productDropdownItems.map((item) => (
+                  <a href="/products" class="header__dropdown-link">
+                    <span class="header__dropdown-title">{item.title}</span>
+                    <span class="header__dropdown-desc">{item.desc}</span>
                   </a>
                 ))}
                 <a href="/products" class="header__dropdown-link header__dropdown-link--all">
@@ -104,10 +106,10 @@ const isProductSectionActive = currentPath.startsWith("/products");
     <!-- Desktop CTA -->
     <div class="header__actions">
       <a href="/sample-policy" class="btn btn--outline header__btn">
-        Request Samples
+        Request Sample
       </a>
       <a href="/contact" class="btn btn--dark header__btn">
-        Get Custom Quotation
+        Get Quote
       </a>
     </div>
 
@@ -137,10 +139,10 @@ const isProductSectionActive = currentPath.startsWith("/products");
         <li class="header__mobile-group">
           <span class="header__mobile-label">Products</span>
           <ul class="header__mobile-sublist">
-            {endUseCategories.map((cat) => (
+            {productDropdownItems.map((item) => (
               <li>
-                <a href={`/products/${cat.slug}`} class="header__mobile-sublink">
-                  {cat.shortName}
+                <a href="/products" class="header__mobile-sublink">
+                  {item.title}
                 </a>
               </li>
             ))}
@@ -152,28 +154,23 @@ const isProductSectionActive = currentPath.startsWith("/products");
           </ul>
         </li>
         <li>
-          <a href="/factory" class:list={["header__mobile-link", { "is-active": isActive("/factory") }]}>
-            Factory
+          <a href="/#applications" class:list={["header__mobile-link", { "is-active": isActive("/#applications") }]}> 
+            Applications
           </a>
         </li>
         <li>
-          <a href="/about" class:list={["header__mobile-link", { "is-active": isActive("/about") }]}>
-            About
-          </a>
-        </li>
-        <li>
-          <a href="/blog" class:list={["header__mobile-link", { "is-active": isActive("/blog") }]}>
-            Blog
+          <a href="/about" class:list={["header__mobile-link", { "is-active": isActive("/about") }]}> 
+            About Us
           </a>
         </li>
       </ul>
     </nav>
     <div class="header__mobile-actions">
       <a href="/sample-policy" class="btn btn--outline btn--block">
-        Request Samples
+        Request Sample
       </a>
       <a href="/contact" class="btn btn--dark btn--block">
-        Get Custom Quotation
+        Get Quote
       </a>
     </div>
   </div>
@@ -593,6 +590,10 @@ const isProductSectionActive = currentPath.startsWith("/products");
 
     .header__mobile {
       display: flex;
+    }
+
+    .header__mobile-list > li:first-child {
+      display: none;
     }
   }
 </style>

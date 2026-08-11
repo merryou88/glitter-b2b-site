@@ -45,7 +45,11 @@ const {
 
 const siteName = "Nixia Fabric";
 const siteUrl = "https://nixiafabric.com";
-const pageTitle = title ? `${title} | ${siteName}` : `${siteName} — Glitter & Foil-Printed Synthetic Leather Manufacturer`;
+const pageTitle = title
+  ? title.includes(siteName)
+    ? title
+    : `${title} | ${siteName}`
+  : `${siteName} — Glitter & Foil-Printed Synthetic Leather Manufacturer`;
 const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).toString();
 const ogImageUrl = new URL(image, Astro.site).toString();
 
