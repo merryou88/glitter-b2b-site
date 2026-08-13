@@ -10,6 +10,7 @@
 import Layout from "@layouts/Layout.astro";
 import HeroCarousel from "@components/HeroCarousel.astro";
 import CTAButton from "@components/CTAButton.astro";
+import RFQQuoteModal from "@components/RFQQuoteModal.astro";
 
 // WebPage structured data for SEO
 const webPageData = {
@@ -63,7 +64,7 @@ const faqData = {
       name: "What products do you manufacture?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We manufacture glitter synthetic leather and foil-printed PU materials for shoes, handbags, and accessories. Multiple backing options and custom colors available.",
+        text: "We specialize in two core series: **Chunky Glitter Synthetic Leather** and **Foil-Printed Synthetic Leather**.\nOur fabrics are widely used for shoes, handbags, hair accessories, toys, stage decoration and wedding-event decor.\nWe support custom colors, patterns and multiple backing material options for bulk orders.",
       },
     },
     {
@@ -226,35 +227,7 @@ const whyNixiaBenefits = [
   },
 ];
 
-// Our Factory entry — 3 trust entry cards
-const factoryEntries = [
-  {
-    title: "Production Line",
-    image: "/image/process/hot_stamping_foil_transfer.jpg",
-    alt: "Foil-printed synthetic leather production line in factory",
-    href: "/factory",
-  },
-  {
-    title: "Quality Control",
-    image: "/image/process/on_line_visual_inspection.jpg",
-    alt: "QC inspection station for fabric quality control",
-    href: "/factory",
-  },
-  {
-    title: "Warehouse",
-    image: "/image/process/final_packing.jpg",
-    alt: "Finished goods warehouse with packed fabric rolls",
-    href: "/factory",
-  },
-];
-
-// Factory trust badges
-const trustBadges = [
-  { label: "Guangzhou Base" },
-  { label: "Southeast Asia" },
-  { label: "Middle East" },
-  { label: "Factory Backed" },
-];
+// homepage section data continues below
 ---
 
 <Layout
@@ -537,229 +510,239 @@ const trustBadges = [
     </div>
   </section>
 
-  <!-- ==================== FACTORY CREDENTIALS ==================== -->
-  <section class="section" id="factory-credentials">
-    <div class="container container--narrow">
-      <div class="credential-hero">
-        <div class="credential-hero__copy">
-          <span class="eyebrow">FACTORY CREDENTIALS &amp; COMPLIANCE</span>
-          <h2>Factory Credentials &amp; Compliance</h2>
-          <p>Business license verified, project-related test documents available on request.</p>
+  <!-- ==================== RFQ & BUYER RESOURCE ==================== -->
+  <section class="section section--alt" id="rfq-buyer-resource">
+    <div class="container">
+      <div class="rfq-grid">
+        <div class="rfq-card rfq-card--dark">
+          <span class="rfq-card__eyebrow">FACTORY DIRECT WHOLESALE</span>
+          <h2>Send RFQ for Custom Fabric Solutions</h2>
+          <p class="rfq-card__desc">Tell us your fabric type, end-use, quantity, color & backing requirements. Our factory team will reply with sample info, MOQ and quotation within 24 hours.</p>
+
+          <div class="rfq-preview-grid" aria-hidden="true">
+            <div class="rfq-preview-field">Fabric / Material Code</div>
+            <div class="rfq-preview-field">Target Application</div>
+            <div class="rfq-preview-field">Estimated Quantity</div>
+            <div class="rfq-preview-field">Color & Backing Requirement</div>
+            <div class="rfq-preview-field">Destination country</div>
+            <div class="rfq-preview-field">Target delivery date</div>
+          </div>
+          <button type="button" class="btn btn--primary btn--lg rfq-form__submit" data-rfq-open>Send RFQ Now</button>
         </div>
 
-        <div class="credential-hero__visual" aria-hidden="true">
-          <div class="credential-hero__glow"></div>
-          <div class="credential-hero__scene">
-            <div class="credential-hero__document">
-              <div class="credential-hero__seal"></div>
-              <div class="credential-hero__lines"></div>
-            </div>
-            <div class="credential-hero__shield"></div>
-            <div class="credential-hero__plant"></div>
+        <div class="rfq-card rfq-card--light">
+          <span class="rfq-card__eyebrow rfq-card__eyebrow--warm">BUYER RESOURCE</span>
+          <h2>Request Wholesale Fabric Catalog</h2>
+          <p>Use the catalog request to receive product range suggestions, OEM/ODM options, MOQ guidance and recommended SKUs for your market.</p>
+
+          <ul class="buyer-resource-list" aria-label="Buyer resources">
+            <li>Full fabric product range</li>
+            <li>Custom surface finish options</li>
+            <li>MOQ and sample guidance</li>
+            <li>Recommended SKUs by market</li>
+          </ul>
+
+          <a class="buyer-resource-button" href="/catalog.pdf" download>Download Catalog</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SOURCING WORKFLOW ==================== -->
+  <section class="section" id="sourcing-workflow">
+    <div class="container">
+      <div class="section-header section-header--left section-header--compact">
+        <span class="eyebrow">SAMPLE TO SHIPMENT</span>
+        <h2>Two Sourcing Paths for Fabric Buyers</h2>
+        <p>We support both ready-stock fabric and custom finished orders, with clear workflows for each.</p>
+      </div>
+
+      <div class="workflow-timelines">
+        <article class="workflow-timeline">
+          <div class="workflow-timeline__head">
+            <span class="workflow-timeline__eyebrow">Path A</span>
+            <h3>Ready-Stock Foil &amp; Glitter Fabric</h3>
+            <p>For in-stock hot-stamping &amp; glitter synthetic leather, fast lead time</p>
           </div>
+
+          <ol class="workflow-timeline__track" aria-label="Ready-stock fabric workflow">
+            <li class="workflow-step"><span>1</span><strong>Inquiry &amp; Check Stock</strong></li>
+            <li class="workflow-step"><span>2</span><strong>Confirm Unit Price</strong></li>
+            <li class="workflow-step"><span>3</span><strong>Request Stock Sample</strong></li>
+            <li class="workflow-step"><span>4</span><strong>Approve Fabric</strong></li>
+            <li class="workflow-step workflow-step--active"><span>5</span><strong>Place Bulk Order</strong></li>
+            <li class="workflow-step"><span>6</span><strong>Production &amp; Delivery</strong></li>
+          </ol>
+
+          <div class="workflow-timeline__actions">
+            <a href="/products" class="btn btn--outline btn--lg">Browse Stock Products →</a>
+          </div>
+        </article>
+
+        <article class="workflow-timeline">
+          <div class="workflow-timeline__head">
+            <span class="workflow-timeline__eyebrow">Path B</span>
+            <h3>Custom Foil / Glitter Fabric Order</h3>
+            <p>For custom color, backing and pattern modification</p>
+          </div>
+
+          <ol class="workflow-timeline__track" aria-label="Custom fabric workflow">
+            <li class="workflow-step"><span>1</span><strong>Inquiry &amp; Requirement</strong></li>
+            <li class="workflow-step"><span>2</span><strong>Formal Quotation</strong></li>
+            <li class="workflow-step"><span>3</span><strong>Prototype Sampling</strong></li>
+            <li class="workflow-step"><span>4</span><strong>Buyer Sample Confirmation</strong></li>
+            <li class="workflow-step"><span>5</span><strong>Pre-Production Sample</strong></li>
+            <li class="workflow-step workflow-step--active"><span>6</span><strong>Mass Production</strong></li>
+            <li class="workflow-step"><span>7</span><strong>Final Inspection &amp; Shipment</strong></li>
+          </ol>
+
+          <div class="workflow-timeline__actions">
+            <a href="/contact" class="btn btn--primary btn--lg">Request Custom Quote →</a>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== B2B BUYER SUPPORT ==================== -->
+  <section class="section section--alt" id="buyer-support">
+    <div class="container">
+      <div class="section-header section-header--left section-header--compact">
+        <span class="eyebrow">B2B BUYER SUPPORT</span>
+        <h2>Factory Information Buyers Can Verify</h2>
+        <p>We focus on practical sourcing details: fabric production capability, sample procedure, custom finishing, packaging options, export documents and responsive quotation support.</p>
+      </div>
+
+      <div class="support-grid grid grid--4">
+        <article class="support-card">
+          <span class="support-card__eyebrow">MANUFACTURING</span>
+          <h3>Factory Direct Supply</h3>
+          <p>Fabric weaving, custom finishing, packing and export coordination handled through our in-house Guangzhou factory team.</p>
+        </article>
+        <article class="support-card">
+          <span class="support-card__eyebrow">RFQ</span>
+          <h3>Practical Quote Details</h3>
+          <p>Quote requests collect fabric item, quantity, logo/artwork, packaging, destination country and buyer requirements.</p>
+        </article>
+        <article class="support-card">
+          <span class="support-card__eyebrow">SAMPLES</span>
+          <h3>Sample Confirmation</h3>
+          <p>Stock fabric samples, custom-finish samples and adjusted prototypes can be arranged before bulk production.</p>
+        </article>
+        <article class="support-card">
+          <span class="support-card__eyebrow">EXPORT</span>
+          <h3>Shipment Support</h3>
+          <p>FOB, CIF and buyer-forwarder coordination supported with complete standard export documents.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FACTORY CREDENTIALS ==================== -->
+  <section class="section" id="factory-credentials">
+    <div class="container credential-container">
+      <div class="credential-hero credential-hero--compact">
+        <div class="credential-hero__copy">
+          <span class="eyebrow">FACTORY VERIFIED QUALITY SYSTEM</span>
+          <h2>Factory Credentials &amp; Compliance</h2>
+          <p>Verified documentation, structured quality control, and transparent factory support for fabric sampling and bulk orders.</p>
         </div>
       </div>
 
-      <div class="credential-checklist" aria-label="Factory credentials and compliance">
-        <div class="credential-item">
-          <span class="credential-item__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <div class="credential-card-grid" aria-label="Factory credentials and compliance">
+        <article class="credential-card">
+          <span class="credential-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M6 4h12v16H6z" />
               <path d="M8 8h8" />
               <path d="M8 12h6" />
               <path d="M9 16h6" />
             </svg>
           </span>
-          <div class="credential-item__thumb" aria-hidden="true"></div>
           <div>
             <h3>Business License</h3>
-            <p>China fabric factory entity</p>
+            <p>Factory entity for verification.</p>
           </div>
-        </div>
+        </article>
 
-        <div class="credential-item">
-          <span class="credential-item__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <article class="credential-card">
+          <span class="credential-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M7 4h8l4 4v12H7z" />
               <path d="M15 4v4h4" />
               <path d="M9 11h6" />
               <path d="M9 14h4" />
             </svg>
           </span>
-          <div class="credential-item__thumb" aria-hidden="true"></div>
           <div>
             <h3>SGS Test Reports</h3>
-            <p>Available upon customer request</p>
+            <p>Test documents on request.</p>
           </div>
-        </div>
+        </article>
 
-        <div class="credential-item">
-          <span class="credential-item__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <article class="credential-card">
+          <span class="credential-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 3l5 2v5c0 4-2.3 7.1-5 11-2.7-3.9-5-7-5-11V5z" />
               <path d="M12 8v5" />
               <path d="M10 11h4" />
             </svg>
           </span>
-          <div class="credential-item__thumb" aria-hidden="true"></div>
           <div>
             <h3>Fire-Retardant Options</h3>
-            <p>Available for upholstery-grade fabrics</p>
+            <p>For upholstery and event fabrics.</p>
           </div>
-        </div>
+        </article>
 
-        <div class="credential-item">
-          <span class="credential-item__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <article class="credential-card">
+          <span class="credential-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M6 6h12v12H6z" />
               <path d="M8 10l2 2 4-4" />
               <path d="M8 15h8" />
             </svg>
           </span>
-          <div class="credential-item__thumb" aria-hidden="true"></div>
           <div>
             <h3>Batch-wise Inspection</h3>
-            <p>Quality check per material batch</p>
+            <p>Per-batch quality check.</p>
           </div>
-        </div>
+        </article>
 
-        <div class="credential-item">
-          <span class="credential-item__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <article class="credential-card">
+          <span class="credential-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M4 6h9l3 3v9H4z" />
               <path d="M7 10h6" />
               <path d="M7 13h4" />
               <path d="M15 9h5v8h-5z" />
             </svg>
           </span>
-          <div class="credential-item__thumb" aria-hidden="true"></div>
           <div>
             <h3>Buyer Audit Support</h3>
-            <p>Factory visit &amp; document support</p>
+            <p>Factory visit and document support.</p>
           </div>
+        </article>
+      </div>
+
+      <div class="qa-process">
+        <div class="qa-process__head">
+          <span class="eyebrow">QUALITY ASSURANCE PROCESS</span>
+          <h3>Quality Assurance Process</h3>
         </div>
+
+        <ol class="qa-process__track" aria-label="Quality assurance process">
+          <li class="qa-step"><span>Sample Approval</span></li>
+          <li class="qa-step"><span>Batch Inspection</span></li>
+          <li class="qa-step qa-step--active"><span>Production Check</span></li>
+          <li class="qa-step"><span>Final Document Review</span></li>
+          <li class="qa-step"><span>Shipment Confirmation</span></li>
+        </ol>
       </div>
 
       <div class="credential-footer">
-        <div class="credential-footer__copy">
-          <strong>Committed to Quality. Trusted by Global Buyers.</strong>
-          <p>We welcome audits, inspections, and document verification.</p>
-        </div>
-        <a class="credential-footer__action" href="/contact">Request Documents</a>
+        <a class="credential-footer__action" href="/contact">Request Document List →</a>
       </div>
-    </div>
-  </section>
-
-  <!-- ==================== OUR FACTORY ENTRY ==================== -->
-  <section class="section section--alt" id="factory-entry">
-    <div class="container">
-      <div class="section-header">
-        <span class="eyebrow">Our Factory</span>
-        <h2>Our Factory</h2>
-        <p>Factory-backed fabric supplier based in Guangzhou, serving Southeast Asia and the Middle East.</p>
-      </div>
-
-      <div class="grid grid--3 factory-entry-grid">
-        {factoryEntries.map((entry) => (
-          <a href={entry.href} class="factory-entry-card">
-            <div class="factory-entry-card__visual">
-              <img
-                src={entry.image}
-                alt={entry.alt}
-                width="600"
-                height="400"
-                loading="lazy"
-                decoding="async"
-              />
-              <div class="factory-entry-card__overlay">
-                <span class="factory-entry-card__cta">Explore →</span>
-              </div>
-            </div>
-            <div class="factory-entry-card__body">
-              <h3>{entry.title}</h3>
-            </div>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== FACTORY TRUST ==================== -->
-  <section class="section section--dark" id="factory-trust">
-    <div class="container">
-      <div class="trust-layout">
-        <!-- Left: content -->
-        <div class="trust-layout__left">
-          <span class="eyebrow">Factory & Certification</span>
-          <h2>Factory-backed fabric supplier based in Guangzhou</h2>
-          <p>
-            Built for Southeast Asia and Middle East sourcing teams. Stable supply, clear QC,
-            and direct factory support for custom projects.
-          </p>
-
-          <div class="trust-badges">
-            {trustBadges.map((badge) => (
-              <div class="trust-badge">
-                <svg class="trust-badge__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                <span class="trust-badge__label">{badge.label}</span>
-              </div>
-            ))}
-          </div>
-
-          <div class="trust-actions">
-            <CTAButton href="/factory" variant="primary" size="lg">
-              Explore Our Factory
-            </CTAButton>
-            <CTAButton href="/sample-policy" variant="secondary" size="lg">
-              Request Samples
-            </CTAButton>
-          </div>
-        </div>
-
-        <!-- Right: factory image -->
-        <div class="trust-layout__right">
-          <div class="trust-image-grid">
-            <img
-              src="/image/process/hot_stamping_foil_transfer.jpg"
-              alt="Factory workshop for thermal foil fabric production"
-              loading="lazy"
-            />
-            <img
-              src="/image/process/on_line_visual_inspection.jpg"
-              alt="Quality inspection station for fabric production"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== INQUIRY ==================== -->
-  <section class="section section--alt inquiry-section" id="inquiry">
-    <div class="container container--narrow">
-      <div class="section-header">
-        <span class="eyebrow">Inquiry</span>
-        <h2>Need Custom Fabric or Free Sample? Get Your Quote Within 24h</h2>
-      </div>
-
-      <form class="inquiry-form" id="inquiry-form" novalidate>
-        <div class="inquiry-grid">
-          <input class="inquiry-input" name="name" type="text" placeholder="Name *" autocomplete="name" required />
-          <input class="inquiry-input" name="company" type="text" placeholder="Company *" autocomplete="organization" required />
-          <input class="inquiry-input" name="email" type="email" placeholder="Email *" autocomplete="email" required />
-          <input class="inquiry-input" name="subject" type="text" value="Homepage inquiry" hidden />
-        </div>
-        <textarea class="inquiry-textarea" name="message" rows="4" placeholder="Your Requirement *" required></textarea>
-        <div class="inquiry-actions">
-          <button type="submit" class="btn btn--primary btn--lg inquiry-submit">Get Custom Quote</button>
-          <a href="/sample-policy" class="btn btn--outline btn--lg inquiry-link">Free Sample</a>
-        </div>
-        <p class="inquiry-note">Low MOQ, custom color, and fast sample support.</p>
-        <p class="inquiry-error" id="inquiry-error" hidden></p>
-      </form>
     </div>
   </section>
 
@@ -789,24 +772,36 @@ const trustBadges = [
     </div>
   </section>
 
+  <section class="section section--alt homepage-contact-cta" aria-label="Contact page prompt">
+    <div class="container container--narrow">
+      <p>Still have unanswered questions? Request samples or get a custom quote via our <a href="/contact">Contact page</a>.</p>
+    </div>
+  </section>
+
   <!-- ==================== FINAL CTA ==================== -->
   <section class="final-cta" id="final-cta">
     <div class="container">
       <div class="final-cta__inner">
         <span class="eyebrow final-cta__eyebrow">WORK WITH OUR FACTORY</span>
-        <h2 class="final-cta__title">Need Custom Fabric or Free Sample? Get Your Quote Within 24h</h2>
-        <p class="final-cta__text">Fast reply. Low MOQ. Custom color and pattern support.</p>
+        <h2 class="final-cta__title">Ready for Factory-Direct Fabric Wholesale?</h2>
+        <p class="final-cta__text">Send your bulk order, OEM/ODM concept, custom color, pattern and backing requirements. Our factory team will reply within 24 hours.</p>
+        <div class="final-cta__tags" aria-label="Factory-direct benefits">
+          <span class="final-cta__tag">OEM / ODM Custom Support</span>
+          <span class="final-cta__tag">Low MOQ for bulk orders</span>
+          <span class="final-cta__tag">Custom samples in 3-7 days</span>
+        </div>
         <div class="final-cta__actions">
           <CTAButton href="/contact" variant="primary" size="lg">
             Get Custom Quote
           </CTAButton>
-          <CTAButton href="/sample-policy" variant="secondary" size="lg">
-            Free Sample
+          <CTAButton href="https://wa.me/8613800000000" variant="secondary" size="lg" target="_blank" rel="noopener noreferrer">
+            WhatsApp Us
           </CTAButton>
         </div>
       </div>
     </div>
   </section>
+  <RFQQuoteModal />
 </Layout>
 
 <style>
@@ -1217,6 +1212,280 @@ const trustBadges = [
     min-width: 0;
   }
 
+  /* ==================== RFQ & Buyer Resource ==================== */
+  #rfq-buyer-resource {
+    background: #f7f5ef;
+  }
+
+  .rfq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .rfq-card {
+    border-radius: 28px;
+    padding: clamp(1.4rem, 2vw, 2rem);
+  }
+
+  .rfq-card--dark {
+    background: #2f2118;
+    color: #f5efe6;
+  }
+
+  .rfq-card--light {
+    background: #f7e8bd;
+    color: var(--color-primary);
+  }
+
+  .rfq-card__eyebrow {
+    display: inline-block;
+    margin-bottom: 0.8rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #e5bf56;
+  }
+
+  .rfq-card__eyebrow--warm {
+    color: #c88f1d;
+  }
+
+  .rfq-card h2 {
+    margin: 0 0 0.75rem;
+    color: inherit;
+  }
+
+  .rfq-card p {
+    margin: 0;
+    line-height: 1.65;
+  }
+
+  .rfq-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+    margin-top: var(--space-xl);
+  }
+
+  .rfq-card__desc {
+    color: rgba(245, 238, 226, 0.9);
+  }
+
+  .rfq-preview-field {
+    width: 100%;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.9rem 1rem;
+    color: rgba(255, 255, 255, 0.72);
+    font: inherit;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .rfq-form__submit {
+    margin-top: 0.9rem;
+    width: fit-content;
+  }
+
+  .buyer-resource-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-xl) 0 0;
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .buyer-resource-list li {
+    position: relative;
+    padding-left: 1.4rem;
+    color: rgba(47, 33, 24, 0.82);
+  }
+
+  .buyer-resource-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #c88f1d;
+    font-weight: 800;
+  }
+
+  .buyer-resource-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: var(--space-xl);
+    padding: 0.9rem 1.3rem;
+    border-radius: 16px;
+    background: #2f2118;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 800;
+  }
+
+  /* ==================== Sourcing Workflow ==================== */
+  #sourcing-workflow {
+    background: #f7f5ef;
+  }
+
+  .workflow-timelines {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .workflow-timeline {
+    background: var(--color-white);
+    border: 1px solid rgba(22, 41, 77, 0.08);
+    border-radius: 24px;
+    padding: var(--space-xl);
+  }
+
+  .workflow-timeline__head {
+    margin-bottom: var(--space-lg);
+  }
+
+  .workflow-timeline__eyebrow {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--color-accent);
+    margin-bottom: 0.4rem;
+  }
+
+  .workflow-timeline h3 {
+    font-size: var(--text-xl);
+    color: var(--color-primary);
+    margin: 0 0 0.35rem;
+  }
+
+  .workflow-timeline__head p {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .workflow-timeline__track {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.75rem;
+    counter-reset: step;
+    position: relative;
+  }
+
+  .workflow-timeline__track::before {
+    content: "";
+    position: absolute;
+    top: 1.15rem;
+    left: 3.2rem;
+    right: 3.2rem;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(196, 160, 53, 0.26), rgba(196, 160, 53, 0.12));
+  }
+
+  .workflow-step {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+    padding-top: 0.05rem;
+    text-align: center;
+  }
+
+  .workflow-step span {
+    position: relative;
+    z-index: 1;
+    width: 2.3rem;
+    height: 2.3rem;
+    margin: 0 auto 0.75rem;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: #f7f3ea;
+    color: var(--color-primary);
+    border: 1px solid rgba(196, 160, 53, 0.18);
+    font-size: var(--text-sm);
+    font-weight: 700;
+  }
+
+  .workflow-step--active span {
+    background: var(--color-accent);
+    color: var(--color-white);
+    border-color: var(--color-accent);
+  }
+
+  .workflow-step strong {
+    display: block;
+    font-size: var(--text-sm);
+    line-height: 1.4;
+    color: var(--color-primary);
+  }
+
+  .workflow-timeline__actions {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-xl);
+  }
+
+  /* ==================== Buyer Support ==================== */
+  #buyer-support {
+    background: #f8f8f4;
+  }
+
+  .support-grid {
+    gap: var(--space-lg);
+  }
+
+  .support-card {
+    background: var(--color-white);
+    border: 1px solid rgba(22, 41, 77, 0.08);
+    border-radius: 20px;
+    padding: var(--space-xl);
+    min-height: 100%;
+  }
+
+  .support-card__eyebrow {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--color-accent);
+    margin-bottom: 0.6rem;
+  }
+
+  .support-card h3 {
+    margin: 0 0 0.5rem;
+    color: var(--color-primary);
+    font-size: var(--text-lg);
+  }
+
+  .support-card p {
+    margin: 0;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+    font-size: var(--text-sm);
+  }
+
+  .homepage-contact-cta {
+    padding-top: 0;
+  }
+
+  .homepage-contact-cta p {
+    margin: 0;
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: var(--text-base);
+  }
+
+  .homepage-contact-cta a {
+    color: var(--color-accent-dark);
+    font-weight: 700;
+  }
+
   /* ==================== Factory Credentials ==================== */
   #factory-credentials {
     background: #f7f7f4;
@@ -1224,10 +1493,13 @@ const trustBadges = [
 
   .credential-hero {
     display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: var(--space-3xl);
-    align-items: center;
-    margin-bottom: var(--space-2xl);
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+  }
+
+  .credential-hero--compact {
+    align-items: start;
   }
 
   .credential-hero__copy {
@@ -1240,178 +1512,131 @@ const trustBadges = [
   }
 
   .credential-hero__copy p {
-    max-width: 42ch;
+    max-width: 56ch;
     color: var(--color-text-muted);
   }
 
-  .credential-hero__visual {
-    position: relative;
-    min-height: 340px;
+  .credential-container {
+    max-width: 1260px;
+    padding-inline: 40px;
   }
 
-  .credential-hero__glow {
-    position: absolute;
-    inset: 10% 0 0 0;
-    border-radius: 28px;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(250, 248, 242, 0.85) 46%, rgba(196, 160, 53, 0.08) 100%);
-    filter: blur(0.2px);
-  }
-
-  .credential-hero__scene {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    border-radius: 28px;
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.75)),
-      radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.15) 38%, transparent 40%),
-      linear-gradient(120deg, rgba(10, 32, 72, 0.12), rgba(10, 32, 72, 0.02));
-}
-
-  .credential-hero__scene::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, rgba(250, 250, 247, 0.96) 0%, rgba(250, 250, 247, 0.72) 40%, rgba(250, 250, 247, 0) 100%);
-  }
-
-  .credential-hero__document {
-    position: absolute;
-    right: 10%;
-    bottom: 10%;
-    width: 44%;
-    aspect-ratio: 3 / 4;
-    background: #fffdf8;
-    border: 3px solid rgba(196, 160, 53, 0.8);
-    box-shadow: 0 18px 40px rgba(22, 41, 77, 0.16);
-    transform: rotate(-4deg);
-  }
-
-  .credential-hero__seal {
-    position: absolute;
-    left: 50%;
-    top: 9%;
-    width: 26px;
-    height: 26px;
-    transform: translateX(-50%);
-    border-radius: 50%;
-    background: radial-gradient(circle, #d9b44a 0 30%, #b88a1c 31% 100%);
-  }
-
-  .credential-hero__lines {
-    position: absolute;
-    left: 12%;
-    right: 12%;
-    top: 22%;
-    bottom: 12%;
-    background:
-      repeating-linear-gradient(180deg, rgba(22, 41, 77, 0.42) 0 1px, transparent 1px 8px),
-      linear-gradient(180deg, transparent 0 12%, rgba(196, 160, 53, 0.08) 12% 13%, transparent 13% 100%);
-  }
-
-  .credential-hero__shield {
-    position: absolute;
-    left: 16%;
-    bottom: 12%;
-    width: 86px;
-    height: 102px;
-    background: linear-gradient(180deg, #f8df95 0%, #d2a632 45%, #9a7318 100%);
-    clip-path: polygon(50% 0, 92% 16%, 92% 54%, 50% 100%, 8% 54%, 8% 16%);
-    box-shadow: 0 10px 24px rgba(22, 41, 77, 0.16);
-  }
-
-  .credential-hero__shield::after {
-    content: "";
-    position: absolute;
-    inset: 18% 18% 20%;
-    border: 2px solid rgba(255, 248, 220, 0.9);
-    clip-path: inherit;
-  }
-
-  .credential-hero__plant {
-    position: absolute;
-    right: 2%;
-    bottom: 8%;
-    width: 74px;
-    height: 104px;
-    background: radial-gradient(circle at 50% 20%, #5f9d5a 0 18%, transparent 19%),
-      radial-gradient(circle at 65% 35%, #6bad66 0 18%, transparent 19%),
-      radial-gradient(circle at 38% 38%, #5c8f52 0 18%, transparent 19%),
-      linear-gradient(180deg, transparent 0 55%, #d8dad4 55% 100%);
-  }
-
-  .credential-checklist {
+  .credential-card-grid {
     display: grid;
-    gap: 0.85rem;
+    grid-template-columns: repeat(5, minmax(220px, 280px));
+    gap: 24px;
+    margin-top: var(--space-lg);
+    justify-content: center;
   }
 
-  .credential-item {
-    display: grid;
-    grid-template-columns: 96px 44px minmax(0, 1fr);
+  .credential-card {
+    display: flex;
     gap: 1rem;
-    align-items: center;
-    padding: 1rem 1.1rem;
-    border: 1px solid rgba(22, 41, 77, 0.06);
-    border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.75);
+    align-items: flex-start;
+    padding: 1rem 1rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(22, 41, 77, 0.08);
+    box-shadow: 0 8px 18px rgba(22, 41, 77, 0.04);
+    min-width: 220px;
+    max-width: 280px;
   }
 
-  .credential-item:last-child {
-    border-bottom: 1px solid rgba(22, 41, 77, 0.06);
-  }
-
-  .credential-item__icon {
-    width: 64px;
-    height: 64px;
-    color: var(--color-accent);
+  .credential-card__icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
     display: grid;
     place-items: center;
-    border-radius: 50%;
-    background: rgba(196, 160, 53, 0.12);
+    border-radius: 14px;
+    background: rgba(200, 164, 93, 0.12);
+    color: var(--color-accent-dark);
   }
 
-  .credential-item__icon svg {
+  .credential-card__icon svg {
     width: 24px;
     height: 24px;
   }
 
-  .credential-item__thumb {
-    width: 44px;
-    height: 58px;
-    border-radius: var(--radius-sm);
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(247, 247, 243, 0.95)),
-      repeating-linear-gradient(180deg, rgba(196, 160, 53, 0.14) 0 1px, transparent 1px 7px);
-    border: 1px solid rgba(196, 160, 53, 0.18);
-    flex-shrink: 0;
+  .credential-card h3 {
+    margin: 0 0 0.2rem;
+    color: var(--color-primary);
+    font-size: var(--text-base);
   }
 
-  .credential-item > div:last-child {
-    padding-left: 0.2rem;
+  .credential-card p {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+    line-height: 1.45;
+  }
+
+  .qa-process {
+    margin-top: var(--space-2xl);
+    padding: var(--space-xl);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(22, 41, 77, 0.08);
+  }
+
+  .qa-process__head {
+    margin-bottom: var(--space-lg);
+  }
+
+  .qa-process__head h3 {
+    margin: 0;
+    font-size: var(--text-xl);
+    color: var(--color-primary);
+  }
+
+  .qa-process__track {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
+    position: relative;
+  }
+
+  .qa-process__track::before {
+    content: "";
+    position: absolute;
+    top: 1rem;
+    left: 2rem;
+    right: 2rem;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(196, 160, 53, 0.16), rgba(196, 160, 53, 0.3));
+  }
+
+  .qa-step {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    min-width: 0;
+  }
+
+  .qa-step span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.2rem;
+    padding: 0 0.85rem;
+    border-radius: 999px;
+    background: #f7f3ea;
+    color: var(--color-primary);
+    border: 1px solid rgba(196, 160, 53, 0.14);
+    font-size: var(--text-sm);
+    font-weight: 700;
+  }
+
+  .qa-step--active span {
+    background: var(--color-accent);
+    color: var(--color-white);
+    border-color: var(--color-accent);
   }
 
   .credential-footer {
     margin-top: var(--space-2xl);
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-xl);
-    padding: 1.2rem 1.4rem;
-    border-radius: 20px;
-    background: linear-gradient(90deg, #173a6a 0%, #0f2b53 100%);
-    color: var(--color-white);
-  }
-
-  .credential-footer__copy strong {
-    display: block;
-    font-size: var(--text-lg);
-    line-height: 1.35;
-    margin-bottom: 0.35rem;
-  }
-
-  .credential-footer__copy p {
-    margin: 0;
-    color: rgba(255, 255, 255, 0.78);
+    justify-content: flex-end;
   }
 
   .credential-footer__action {
@@ -1419,224 +1644,13 @@ const trustBadges = [
     align-items: center;
     justify-content: center;
     padding: 0.8rem 1.25rem;
-    border: 1px solid rgba(255, 205, 90, 0.8);
-    border-radius: var(--radius-md);
-    color: #ffcf72;
+    border: 1px solid rgba(196, 160, 53, 0.28);
+    border-radius: 16px;
+    color: var(--color-primary);
+    background: rgba(196, 160, 53, 0.08);
     text-decoration: none;
     font-weight: 700;
     white-space: nowrap;
-  }
-
-  /* ==================== Factory Entry ==================== */
-  .factory-entry-grid {
-    gap: var(--space-lg);
-  }
-
-  .factory-entry-card {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    background-color: var(--color-white);
-    border: 1px solid var(--color-border);
-    transition: all var(--transition-base);
-  }
-
-  .factory-entry-card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-4px);
-  }
-
-  .factory-entry-card__visual {
-    aspect-ratio: 3 / 2;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .factory-entry-card__visual img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform var(--transition-slow);
-  }
-
-  .factory-entry-card:hover .factory-entry-card__visual img {
-    transform: scale(1.05);
-  }
-
-  .factory-entry-card__overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding-bottom: var(--space-md);
-    background: linear-gradient(to top, rgba(22, 41, 77, 0.7) 0%, transparent 50%);
-    opacity: 0;
-    transition: opacity var(--transition-base);
-  }
-
-  .factory-entry-card:hover .factory-entry-card__overlay {
-    opacity: 1;
-  }
-
-  .factory-entry-card__cta {
-    font-size: var(--text-sm);
-    font-weight: 700;
-    color: var(--color-white);
-    background-color: var(--color-accent);
-    padding: 0.5rem 1.25rem;
-    border-radius: var(--radius-full);
-  }
-
-  .factory-entry-card__body {
-    padding: var(--space-md) var(--space-lg);
-    text-align: center;
-  }
-
-  .factory-entry-card__body h3 {
-    font-size: var(--text-lg);
-    margin: 0;
-    color: var(--color-primary);
-  }
-
-  /* ==================== Factory Trust ==================== */
-  .trust-layout {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: var(--space-4xl);
-    align-items: center;
-  }
-
-  .trust-layout__left h2 {
-    color: var(--color-white);
-    margin-bottom: var(--space-md);
-  }
-
-  .trust-layout__left > p {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: var(--text-lg);
-    line-height: 1.7;
-    margin-bottom: var(--space-xl);
-  }
-
-  .trust-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-xl);
-  }
-
-  .trust-badge {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    padding: 0.5rem 1rem;
-    border: 1px solid rgba(196, 160, 53, 0.3);
-    border-radius: var(--radius-full);
-    background: rgba(196, 160, 53, 0.05);
-  }
-
-  .trust-badge__check {
-    width: 16px;
-    height: 16px;
-    color: var(--color-accent);
-    flex-shrink: 0;
-  }
-
-  .trust-badge__label {
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.9);
-  }
-
-  .trust-actions {
-    display: flex;
-    gap: var(--space-md);
-    flex-wrap: wrap;
-  }
-
-  .trust-layout__right {
-    position: relative;
-  }
-
-  .trust-image-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-md);
-  }
-
-  .trust-image-grid img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    aspect-ratio: 1 / 1;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-xl);
-  }
-
-  /* ==================== Inquiry ==================== */
-  .inquiry-form {
-    background: var(--color-white);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: var(--space-xl);
-  }
-
-  .inquiry-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-sm);
-    margin-bottom: var(--space-sm);
-  }
-
-  .inquiry-input,
-  .inquiry-textarea {
-    width: 100%;
-    padding: 0.85rem 0.95rem;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    font: inherit;
-    color: var(--color-text);
-    background: var(--color-white);
-  }
-
-  .inquiry-textarea {
-    min-height: 120px;
-    resize: vertical;
-  }
-
-  .inquiry-input:focus,
-  .inquiry-textarea:focus {
-    outline: none;
-    border-color: var(--color-accent);
-    box-shadow: 0 0 0 3px rgba(196, 160, 53, 0.12);
-  }
-
-  .inquiry-actions {
-    display: flex;
-    gap: var(--space-md);
-    flex-wrap: wrap;
-    margin-top: var(--space-md);
-  }
-
-  .inquiry-submit,
-  .inquiry-link {
-    min-width: 180px;
-    justify-content: center;
-  }
-
-  .inquiry-note {
-    margin-top: var(--space-sm);
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-  }
-
-  .inquiry-error {
-    margin-top: var(--space-sm);
-    color: #b91c1c;
-    font-size: var(--text-sm);
   }
 
   /* ==================== FAQ ==================== */
@@ -1698,6 +1712,17 @@ const trustBadges = [
     line-height: 1.7;
   }
 
+  .homepage-contact-cta {
+    padding-top: 0;
+  }
+
+  .homepage-contact-cta p {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: var(--text-base);
+    margin: 0;
+  }
+
   /* ==================== Final CTA ==================== */
   .final-cta {
     background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
@@ -1731,6 +1756,8 @@ const trustBadges = [
   .final-cta__title {
     color: var(--color-white);
     font-size: var(--text-4xl);
+    line-height: 1.1;
+    white-space: nowrap;
     margin-bottom: var(--space-md);
   }
 
@@ -1741,11 +1768,51 @@ const trustBadges = [
     margin-bottom: var(--space-2xl);
   }
 
+  .final-cta__tags {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem 2rem;
+    justify-content: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .final-cta__tag {
+    display: block;
+    min-width: 0;
+    text-align: left;
+    color: var(--color-white);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .final-cta__tag::before {
+    content: "✓";
+    color: var(--color-accent);
+    font-weight: 700;
+    margin-right: 0.45rem;
+  }
+
   .final-cta__actions {
     display: flex;
     gap: var(--space-md);
     justify-content: center;
     flex-wrap: wrap;
+  }
+
+  .final-cta__actions :global(a) {
+    min-width: 180px;
+  }
+
+  .final-cta__actions :global(a[href*="wa.me"]) {
+    background: #25d366;
+    color: #fff;
+    border-color: #25d366;
+  }
+
+  .final-cta__actions :global(a[href*="wa.me"]:hover) {
+    background: #1fa954;
+    border-color: #1fa954;
   }
 
   /* ==================== Hero Trust Bar ==================== */
@@ -1785,11 +1852,6 @@ const trustBadges = [
 
   /* ==================== Responsive ==================== */
   @media (max-width: 968px) {
-    .trust-layout {
-      grid-template-columns: 1fr;
-      gap: var(--space-2xl);
-    }
-
     .grid--4.applications-grid,
     .grid--3.factory-entry-grid {
       grid-template-columns: repeat(2, 1fr);
@@ -1803,16 +1865,42 @@ const trustBadges = [
       grid-template-columns: repeat(2, 1fr);
     }
 
+    .rfq-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .workflow-timelines {
+      grid-template-columns: 1fr;
+    }
+
+    .support-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .credential-card-grid {
+      grid-template-columns: repeat(2, minmax(220px, 1fr));
+      justify-content: stretch;
+    }
+
+    .qa-process__track {
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+    }
+
+    .qa-process__track::before {
+      display: none;
+    }
+
+    .qa-step {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.75rem;
+      text-align: left;
+      align-items: center;
+    }
+
     .final-cta__title {
       font-size: var(--text-3xl);
-    }
-
-    .inquiry-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .trust-image-grid {
-      grid-template-columns: 1fr;
     }
 
     .why-nixia-split {
@@ -1857,6 +1945,21 @@ const trustBadges = [
       flex-direction: column;
       align-items: flex-start;
     }
+
+    .buyer-resource-button,
+    .rfq-form__submit {
+      width: 100%;
+    }
+
+    .workflow-timeline__track {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .workflow-timeline__track::before {
+      top: 1.1rem;
+      left: 1.8rem;
+      right: 1.8rem;
+    }
   }
 
   @media (max-width: 640px) {
@@ -1866,27 +1969,33 @@ const trustBadges = [
     }
 
     .grid--4.applications-grid,
-    .grid--3.factory-entry-grid,
     .grid--4.fabric-series-grid,
     .advantage-grid {
       grid-template-columns: 1fr;
     }
 
     .final-cta__title {
-      font-size: var(--text-2xl);
+      font-size: var(--text-xl);
     }
 
     .final-cta__actions {
       flex-direction: column;
     }
 
-    .trust-actions {
-      flex-direction: column;
+    .final-cta__tags {
+      grid-template-columns: 1fr;
+      justify-items: center;
     }
 
-    .inquiry-submit,
-    .inquiry-link {
+    .final-cta__tag {
+      white-space: nowrap;
+      text-align: center;
+      max-width: 100%;
+    }
+
+    .final-cta__actions :global(a) {
       width: 100%;
+      min-width: 0;
     }
 
     .capability-bar {
@@ -1925,65 +2034,48 @@ const trustBadges = [
       padding: 1rem;
       border-radius: 16px;
     }
+
+    .support-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .credential-card-grid {
+      grid-template-columns: 1fr;
+      justify-content: stretch;
+    }
+
+    .credential-container {
+      padding-inline: 20px;
+    }
+
+    .workflow-timeline__track {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .workflow-timeline__track::before {
+      display: none;
+    }
+
+    .workflow-step {
+      display: grid;
+      grid-template-columns: 2.3rem minmax(0, 1fr);
+      gap: 0.75rem;
+      text-align: left;
+      align-items: center;
+    }
+
+    .workflow-step span {
+      margin: 0;
+    }
+
+    .rfq-card {
+      padding: 1.2rem;
+      border-radius: 20px;
+    }
+
+    .rfq-preview-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
-
-<script>
-  const inquiryForm = document.getElementById("inquiry-form") as HTMLFormElement | null;
-  const inquiryError = document.getElementById("inquiry-error") as HTMLElement | null;
-
-  function showInquiryError(message: string) {
-    if (!inquiryError) return;
-    inquiryError.textContent = message;
-    inquiryError.hidden = false;
-  }
-
-  function hideInquiryError() {
-    if (inquiryError) inquiryError.hidden = true;
-  }
-
-  inquiryForm?.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    hideInquiryError();
-
-    const data = new FormData(inquiryForm);
-    const name = String(data.get("name") || "").trim();
-    const company = String(data.get("company") || "").trim();
-    const email = String(data.get("email") || "").trim();
-    const message = String(data.get("message") || "").trim();
-
-    if (!name || !company || !email || !message) {
-      showInquiryError("Please complete all required fields.");
-      return;
-    }
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      showInquiryError("Please enter a valid email address.");
-      return;
-    }
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          company,
-          email,
-          subject: "Homepage inquiry",
-          message,
-        }),
-      });
-
-      const payload = await res.json().catch(() => null);
-      if (res.ok && payload?.success) {
-        window.location.href = "/thank-you/";
-        return;
-      }
-
-      showInquiryError(payload?.error || "Request failed. Please try again.");
-    } catch {
-      showInquiryError("Unable to send inquiry right now.");
-    }
-  });
-</script>
