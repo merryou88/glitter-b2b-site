@@ -175,29 +175,29 @@ const glitterProducts = [
 // Applications — 4 end-use scenario cards
 const applications = [
   {
-    title: "Footwear",
-    description: "Shoe uppers, trims, and decorative panels",
+    title: "Fabrics for Bags & Shoes",
+    description: "Uppers, clutches, hair-accessories & fashion trims.",
     image: "/image/home/Shoes.png",
     alt: "Foil fabric used in footwear",
     href: "/products",
   },
   {
-    title: "Handbags & Purses",
-    description: "Fashion bags, purses, and decorative surfaces",
+    title: "Fabrics for Stage & Costume",
+    description: "Stagewear, dance costumes, cosplay and carnival performance outfits.",
     image: "/image/home/Handbags.png",
     alt: "Foil fabric used in handbags and purses",
     href: "/products",
   },
   {
-    title: "Fashion Accessories",
-    description: "Hair accessories, belts, and small decorative items",
+    title: "Fabrics for Night-Club & KTV Upholstery",
+    description: "KTV booth & nightclub wall soft-pack interior decoration. Fire-retardant optional.",
     image: "/image/home/Accessories.png",
     alt: "Foil fabric used in fashion accessories",
     href: "/products",
   },
   {
-    title: "Garment Trimming",
-    description: "Patches, accents, labels, and trim details",
+    title: "Fabrics for Toys, Crafts & Festive Decor",
+    description: "Toy covers, DIY craft materials, party backdrop & Christmas decorative projects.",
     image: "/image/home/Fashion.png",
     alt: "Foil fabric used in garment trimming",
     href: "/products",
@@ -333,9 +333,9 @@ const whyNixiaBenefits = [
         <p>Factory-direct wholesale glitter &amp; hot-stamping foil fabrics for importers, distributors and bulk-order buyers.</p>
       </div>
 
-      <div class="grid grid--4 applications-grid applications-grid--feature">
+      <div class="grid grid--4 applications-grid applications-grid--stacked">
         {applications.map((app) => (
-          <a href={app.href} class="app-card app-card--feature">
+          <a href={app.href} class="app-card app-card--split">
             <div class="app-card__visual">
               <img
                 src={app.image}
@@ -354,7 +354,7 @@ const whyNixiaBenefits = [
               <p>{app.description}</p>
               <span class="app-card__link">View Products ›</span>
             </div>
-            </a>
+          </a>
         ))}
       </div>
     </div>
@@ -991,8 +991,8 @@ const whyNixiaBenefits = [
   }
 
   /* ==================== Applications ==================== */
-  .applications-grid--feature {
-    gap: var(--space-3xl) var(--space-2xl);
+  .applications-grid--stacked {
+    gap: 2.7rem 2.25rem;
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1007,9 +1007,12 @@ const whyNixiaBenefits = [
     transition: all var(--transition-base);
   }
 
-  .app-card--feature {
+  .app-card--split {
     display: flex;
+    align-items: stretch;
     min-height: 100%;
+    width: 90%;
+    justify-self: center;
   }
 
   .app-card:hover {
@@ -1023,10 +1026,10 @@ const whyNixiaBenefits = [
     overflow: hidden;
   }
 
-  .app-card--feature .app-card__visual {
-    flex: 0 0 45%;
+  .app-card--split .app-card__visual {
+    flex: 0 0 48%;
     aspect-ratio: auto;
-    min-height: 100%;
+    min-height: 252px;
   }
 
   .app-card__visual img {
@@ -1070,12 +1073,12 @@ const whyNixiaBenefits = [
     text-align: center;
   }
 
-  .app-card--feature .app-card__body {
+  .app-card--split .app-card__body {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: var(--space-xl);
+    padding: 1.62rem;
     text-align: left;
   }
 
@@ -1084,19 +1087,13 @@ const whyNixiaBenefits = [
     margin-bottom: 0.25rem;
   }
 
-  .app-card--feature .app-card__body h3,
-  .app-card--feature .app-card__body p,
-  .app-card--feature .app-card__link {
-    text-align: left;
-  }
-
   .app-card__body p {
     font-size: var(--text-xs);
     color: var(--color-text-muted);
   }
 
-  .app-card--feature .app-card__body p {
-    margin-bottom: var(--space-md);
+  .app-card--split .app-card__body p {
+    margin-bottom: 0.9rem;
   }
 
   .app-card__link {
@@ -1105,10 +1102,6 @@ const whyNixiaBenefits = [
     font-size: var(--text-sm);
     font-weight: 700;
     color: var(--color-accent);
-  }
-
-  .app-card--feature .app-card__link {
-    margin-top: auto;
   }
 
   /* ==================== Why Nixia ==================== */
@@ -1972,8 +1965,13 @@ const whyNixiaBenefits = [
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .applications-grid--feature {
+    .applications-grid--stacked {
+      gap: 2rem;
       grid-template-columns: 1fr;
+    }
+
+    .app-card--split {
+      width: 90%;
     }
 
     .advantage-grid {
