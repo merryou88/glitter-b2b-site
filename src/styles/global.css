@@ -60,15 +60,15 @@ ol {
   --color-white: #ffffff;
   --color-bg: #ffffff;
   --color-bg-alt: #f7f8fa;
-  --color-bg-dark: #0f1d33;
+  --color-bg-dark: #182538;
   --color-border: #e4e7ec;
   --color-border-dark: #c9cdd6;
 
   /* Text Colors */
   --color-text: #1a1f36;
   --color-text-secondary: #4a5170;
-  --color-text-muted: #6b7280;
-  --color-text-light: #9ca3af;
+  --color-text-muted: #5d6470;
+  --color-text-light: #8a9098;
   --color-text-inverse: #ffffff;
 
   /* Typography */
@@ -215,7 +215,7 @@ p {
 }
 
 .section--dark p {
-  color: rgba(255, 255, 255, 0.75);
+  color: #f2ebdf;
 }
 
 .section-header {
