@@ -5,7 +5,7 @@
  *
  * Module order: Hero → Our Main Fabric Series → Applications →
  *               Why Choose Nixia Fabric → Our Factory → Factory Trust →
- *               FAQ → Final CTA
+ *               Final CTA
  */
 import Layout from "@layouts/Layout.astro";
 import HeroCarousel from "@components/HeroCarousel.astro";
@@ -22,120 +22,34 @@ const webPageData = {
   url: "https://nixiafabric.com",
 };
 
-// FAQPage structured data for rich snippets
-const faqData = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Do you offer free samples?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes, we provide free fabric samples. The buyer only covers international shipping cost. Contact us to request samples for your project.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Can I get custom colors and custom backing?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. We offer Custom Color Matching including Pantone matching, and Custom Backing Options including elastic, PU, non-woven, and Oxford.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Are your fabrics SGS Certified and REACH Compliant?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Our fabrics are SGS Certified and REACH Compliant. Test reports are available upon request.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is Nixia Fabric a manufacturer or a trading company?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Nixia Fabric is a manufacturer — not a trading company. We own our in-house factory for glitter and foil-printed PU materials, with stable partnerships with other qualified material manufacturers.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What products do you manufacture?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "We specialize in two core series: **Chunky Glitter Synthetic Leather** and **Foil-Printed Synthetic Leather**.\nOur fabrics are widely used for shoes, handbags, hair accessories, toys, stage decoration and wedding-event decor.\nWe support custom colors, patterns and multiple backing material options for bulk orders.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What is your minimum order quantity?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Our standard MOQ varies by product type and customization level. We also support sampling and trial orders for new projects — contact us with your requirements for detailed MOQ information.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Can you provide samples before bulk order?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes, we provide free fabric samples so you can evaluate material quality, color and texture before placing a bulk order. The buyer only covers international shipping cost.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Can you customize colors and backing?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. We offer full custom color matching including Pantone references, and multiple backing options including elastic, PU, non-woven, and Oxford cloth to meet your specific application needs.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Do you support international shipping?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes, we support international shipping with FOB and CIF trade terms. We have experience exporting to global footwear, handbag and accessory manufacturers.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Are your materials SGS certified and REACH compliant?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. All our glitter and foil-printed synthetic leather materials are SGS Certified and REACH Compliant. Test reports are available upon request to support your quality assurance requirements.",
-      },
-    },
-  ],
-};
+const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 
 const hotStampingFoilProducts = [
   {
     title: "Metallic Foil-Printed Synthetic Leather",
     description: "Reflective surface for stage and party projects.",
-    image: "/images/products/metallic-foil-fabric/01.jpg",
+    image: "/images/preview_hotstamping_foil.jpg",
     alt: "Metallic Foil-Printed Synthetic Leather",
     href: "/products",
   },
   {
     title: "Gold Foil-Printed Synthetic Leather",
     description: "Premium gold finish with strong visual impact.",
-    image: "/images/products/gold-foil-fabric/01.jpg",
+    image: "/images/preview_hotstamping_foil.jpg",
     alt: "Gold Foil-Printed Synthetic Leather",
     href: "/products",
   },
   {
     title: "Silver Foil-Printed Synthetic Leather",
     description: "Bright silver surface for trims and decor.",
-    image: "/images/products/silver-foil-fabric/01.jpg",
+    image: "/images/preview_hotstamping_foil.jpg",
     alt: "Silver Foil-Printed Synthetic Leather",
     href: "/products",
   },
   {
     title: "Chunky Glitter + Foil-Printed Composite Fabric",
     description: "Composite surface for heavier decorative use.",
-    image: "/images/products/oxford-glitter-fabric/01.jpg",
+    image: "/images/detail_glitter_main.jpg",
     alt: "Chunky Glitter + Foil-Printed Composite Fabric",
     href: "/products",
   },
@@ -145,28 +59,28 @@ const glitterProducts = [
   {
     title: "Elastic Chunky Glitter Synthetic Leather",
     description: "Stretchable glitter fabric for footwear and bags.",
-    image: "/images/products/elastic-glitter-fabric/01.jpg",
+    image: "/images/preview_chunky_glitter.jpg",
     alt: "Elastic Chunky Glitter Synthetic Leather",
     href: "/products",
   },
   {
     title: "Elastic PU Chunky Glitter Synthetic Leather",
     description: "Durable PU base with bonded glitter finish.",
-    image: "/images/products/pu-glitter-fabric/01.jpg",
+    image: "/images/backing_pu_coated.jpg",
     alt: "Elastic PU Chunky Glitter Synthetic Leather",
     href: "/products",
   },
   {
     title: "Non-woven Chunky Glitter Synthetic Leather",
     description: "Lightweight option for accessories and decor.",
-    image: "/images/products/non-woven-glitter-fabric/01.jpg",
+    image: "/images/backing_elastic_knit.jpg",
     alt: "Non-woven Chunky Glitter Synthetic Leather",
     href: "/products",
   },
   {
     title: "Chunky Glitter + Foil-Printed Composite Fabric",
     description: "Composite fabric with glitter and foil finish.",
-    image: "/images/products/oxford-glitter-fabric/01.jpg",
+    image: "/images/detail_glitter_main.jpg",
     alt: "Chunky Glitter + Foil-Printed Composite Fabric",
     href: "/products",
   },
@@ -177,28 +91,28 @@ const applications = [
   {
     title: "Fabrics for Bags & Shoes",
     description: "Uppers, clutches, hair-accessories & fashion trims.",
-    image: "/image/home/Shoes.png",
+    image: "/shots/application-shoes-glitter-fabric.jpg",
     alt: "Foil fabric used in footwear",
     href: "/products",
   },
   {
     title: "Fabrics for Stage & Costume",
     description: "Stagewear, dance costumes, cosplay and carnival performance outfits.",
-    image: "/image/home/Handbags.png",
+    image: "/shots/application-handbags-glitter-fabric.jpg",
     alt: "Foil fabric used in handbags and purses",
     href: "/products",
   },
   {
     title: "Fabrics for Night-Club & KTV Upholstery",
     description: "KTV booth & nightclub wall soft-pack interior decoration. Fire-retardant optional.",
-    image: "/image/home/Accessories.png",
+    image: "/shots/application-accessories-glitter-fabric.jpg",
     alt: "Foil fabric used in fashion accessories",
     href: "/products",
   },
   {
     title: "Fabrics for Toys, Crafts & Festive Decor",
     description: "Toy covers, DIY craft materials, party backdrop & Christmas decorative projects.",
-    image: "/image/home/Fashion.png",
+    image: "/shots/application-fashion-trim-glitter-fabric.jpg",
     alt: "Foil fabric used in garment trimming",
     href: "/products",
   },
@@ -227,6 +141,51 @@ const whyNixiaBenefits = [
   },
 ];
 
+const workflowA = [
+  { title: "Inquiry &amp; Check Stock", icon: "message", tone: "slate" },
+  { title: "Confirm Unit Price", icon: "warehouse", tone: "slate" },
+  { title: "Request Stock Sample", icon: "swatch", tone: "gold" },
+  { title: "Approve Fabric", icon: "invoice", tone: "olive" },
+  { title: "Place Bulk Order", icon: "package", tone: "gold" },
+  { title: "Production &amp; Delivery", icon: "truck", tone: "slate" },
+];
+
+const workflowB = [
+  { title: "Inquiry &amp; Requirement", icon: "message", tone: "slate" },
+  { title: "Formal Quotation", icon: "invoice", tone: "slate" },
+  { title: "Prototype Sampling", icon: "sample", tone: "gold" },
+  { title: "Buyer Sample Confirmation", icon: "sample", tone: "warm" },
+  { title: "Pre-Production Sample", icon: "package", tone: "mist" },
+  { title: "Mass Production", icon: "machine", tone: "gold" },
+  { title: "Final Inspection &amp; Shipment", icon: "truck", tone: "slate" },
+];
+
+const workflowStepLabel = (index: number) => `STEP ${String(index + 1).padStart(2, "0")}`;
+
+const renderWorkflowIcon = (type: string) => {
+  switch (type) {
+    case "warehouse":
+      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16" /><path d="M5 20V9l7-4 7 4v11" /><path d="M9 20v-7h6v7" /><path d="M8 12h8" /></svg>`;
+    case "swatch":
+      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5h8l4 4-7 10H6L4 9z" /><path d="M8 9h5" /><path d="M9 12h3" /></svg>`;
+    case "invoice":
+      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v16l-2-1.5-2 1.5-2-1.5-2 1.5-2-1.5-2 1.5z" /><path d="M9 8h6" /><path d="M9 12h6" /></svg>`;
+    case "sample":
+      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14v10H5z" /><path d="M9 7v10" /><path d="M5 11h14" /><path d="M9 11c1.2-1 2.8-1 4 0" /></svg>`;
+    case "package":
+      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4-8 4-8-4z" /><path d="M4 7v10l8 4 8-4V7" /><path d="M12 11v10" /></svg>`;
+    case "machine":
+      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14v8H5z" /><path d="M9 8V5h6v3" /><path d="M8 16v3" /><path d="M16 16v3" /><path d="M9 12h6" /></svg>`;
+    case "truck":
+      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h12v9H3z" /><path d="M15 10h4l2 3v3h-6z" /><circle cx="8" cy="18" r="1.5" /><circle cx="18" cy="18" r="1.5" /></svg>`;
+    case "message":
+    default:
+      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H8l-4 4z" /><path d="M7 9h10" /><path d="M7 12h6" /></svg>`;
+  }
+};
+
+const workflowToneClass = (tone: string) => `workflow-step__icon--${tone}`;
+
 // homepage section data continues below
 ---
 
@@ -234,7 +193,7 @@ const whyNixiaBenefits = [
   title="Nixia Fabric - Glitter & Thermal Foil Gulelite Fabric | OEM ODM Manufacturer & Wholesale Supplier"
   description="Custom low MOQ glitter and thermal foil gulelite fabric supplier for Southeast Asia and Middle East buyers. Free sample available, custom colors, and OEM ODM support."
   keywords="glitter synthetic leather, foil-printed synthetic leather, synthetic leather manufacturer, China fabric factory, custom synthetic leather, OEM ODM fabric, SGS REACH compliant"
-  structuredData={[webPageData, faqData]}
+  structuredData={[webPageData]}
 >
   <!-- ==================== HERO CAROUSEL ==================== -->
   <HeroCarousel />
@@ -281,7 +240,10 @@ const whyNixiaBenefits = [
           {hotStampingFoilProducts.map((item) => (
             <a href={item.href} class="fabric-card fabric-card--split">
               <div class="fabric-card__visual">
-                <img src="/images/nixia-fabric-placeholder.svg" alt="Nixia fabric placeholder" width="600" height="600" loading="lazy" decoding="async" />
+                <picture>
+                  <source srcset={toWebp(item.image)} type="image/webp" />
+                  <img src={item.image} alt={item.alt} width="1200" height="675" loading="lazy" decoding="async" />
+                </picture>
               </div>
               <div class="fabric-card__body">
                 <span class="fabric-card__tag fabric-card__tag--inline">BUYER PICK</span>
@@ -306,7 +268,10 @@ const whyNixiaBenefits = [
           {glitterProducts.map((item) => (
             <a href={item.href} class="fabric-card fabric-card--split">
               <div class="fabric-card__visual">
-                <img src="/images/nixia-fabric-placeholder.svg" alt="Nixia fabric placeholder" width="600" height="600" loading="lazy" decoding="async" />
+                <picture>
+                  <source srcset={toWebp(item.image)} type="image/webp" />
+                  <img src={item.image} alt={item.alt} width="1200" height="675" loading="lazy" decoding="async" />
+                </picture>
               </div>
               <div class="fabric-card__body">
                 <span class="fabric-card__tag fabric-card__tag--inline">BUYER PICK</span>
@@ -333,22 +298,18 @@ const whyNixiaBenefits = [
         <p>Factory-direct wholesale glitter &amp; hot-stamping foil fabrics for importers, distributors and bulk-order buyers.</p>
       </div>
 
-      <div class="grid grid--4 applications-grid applications-grid--stacked">
-        {applications.map((app) => (
-          <a href={app.href} class="app-card app-card--split">
-            <div class="app-card__visual">
-              <img
-                src="/images/nixia-fabric-placeholder.svg"
-                alt="Nixia fabric placeholder"
-                width="1200"
-                height="675"
-                loading="lazy"
-                decoding="async"
-              />
-              <div class="app-card__overlay">
-                <span class="app-card__cta">View Fabrics →</span>
+        <div class="grid grid--4 applications-grid applications-grid--stacked">
+          {applications.map((app) => (
+            <a href={app.href} class="app-card app-card--split">
+              <div class="app-card__visual">
+                <picture>
+                  <source srcset={toWebp(app.image)} type="image/webp" />
+                  <img src={app.image} alt={app.alt} width="1200" height="675" loading="lazy" decoding="async" />
+                </picture>
+                <div class="app-card__overlay">
+                  <span class="app-card__cta">View Fabrics →</span>
+                </div>
               </div>
-            </div>
             <div class="app-card__body">
               <h3>{app.title}</h3>
               <p>{app.description}</p>
@@ -422,7 +383,10 @@ const whyNixiaBenefits = [
         </div>
 
         <div class="why-nixia-media">
-          <img src="/image/process/hot_stamping_foil_transfer.jpg" alt="Factory workshop for fabric manufacturing" loading="lazy" />
+          <picture>
+            <source srcset={toWebp('/image/process/hot_stamping_foil_transfer.jpg')} type="image/webp" />
+            <img src="/image/process/hot_stamping_foil_transfer.jpg" alt="Factory workshop for fabric manufacturing" width="1200" height="675" loading="lazy" decoding="async" />
+          </picture>
           <div class="why-nixia-badges" aria-label="Factory badges">
             <span class="why-nixia-badge-chip">SGS Test Available</span>
             <span class="why-nixia-badge-chip">Verified Factory</span>
@@ -574,12 +538,13 @@ const whyNixiaBenefits = [
           </div>
 
           <ol class="workflow-timeline__track" aria-label="Ready-stock fabric workflow">
-            <li class="workflow-step"><span>1</span><strong>Inquiry &amp; Check Stock</strong></li>
-            <li class="workflow-step"><span>2</span><strong>Confirm Unit Price</strong></li>
-            <li class="workflow-step"><span>3</span><strong>Request Stock Sample</strong></li>
-            <li class="workflow-step"><span>4</span><strong>Approve Fabric</strong></li>
-            <li class="workflow-step workflow-step--active"><span>5</span><strong>Place Bulk Order</strong></li>
-            <li class="workflow-step"><span>6</span><strong>Production &amp; Delivery</strong></li>
+            {workflowA.map((step, idx) => (
+              <li class:list={["workflow-step", { "workflow-step--active": idx === 4 }]}>
+                <span class="workflow-step__step">{workflowStepLabel(idx)}</span>
+                <span class:list={["workflow-step__icon", workflowToneClass(step.tone)]} aria-hidden="true" set:html={renderWorkflowIcon(step.icon)}></span>
+                <strong>{step.title}</strong>
+              </li>
+            ))}
           </ol>
 
           <div class="workflow-timeline__actions">
@@ -587,7 +552,7 @@ const whyNixiaBenefits = [
           </div>
         </article>
 
-        <article class="workflow-timeline">
+        <article class="workflow-timeline workflow-timeline--path-b">
           <div class="workflow-timeline__head">
             <span class="workflow-timeline__eyebrow">Path B</span>
             <h3>Custom Foil / Glitter Fabric Order</h3>
@@ -595,13 +560,13 @@ const whyNixiaBenefits = [
           </div>
 
           <ol class="workflow-timeline__track" aria-label="Custom fabric workflow">
-            <li class="workflow-step"><span>1</span><strong>Inquiry &amp; Requirement</strong></li>
-            <li class="workflow-step"><span>2</span><strong>Formal Quotation</strong></li>
-            <li class="workflow-step"><span>3</span><strong>Prototype Sampling</strong></li>
-            <li class="workflow-step"><span>4</span><strong>Buyer Sample Confirmation</strong></li>
-            <li class="workflow-step"><span>5</span><strong>Pre-Production Sample</strong></li>
-            <li class="workflow-step workflow-step--active"><span>6</span><strong>Mass Production</strong></li>
-            <li class="workflow-step"><span>7</span><strong>Final Inspection &amp; Shipment</strong></li>
+            {workflowB.map((step, idx) => (
+              <li class:list={["workflow-step", { "workflow-step--active": idx === 5 }]}>
+                <span class="workflow-step__step">{workflowStepLabel(idx)}</span>
+                <span class:list={["workflow-step__icon", workflowToneClass(step.tone)]} aria-hidden="true" set:html={renderWorkflowIcon(step.icon)}></span>
+                <strong>{step.title}</strong>
+              </li>
+            ))}
           </ol>
 
           <div class="workflow-timeline__actions">
@@ -754,32 +719,6 @@ const whyNixiaBenefits = [
     </div>
   </section>
 
-  <!-- ==================== FAQ ==================== -->
-  <section class="section" id="faq">
-    <div class="container container--narrow">
-      <div class="section-header">
-        <span class="eyebrow">FAQ</span>
-        <h2>Frequently Asked Questions</h2>
-      </div>
-
-      <div class="faq-list">
-        {faqData.mainEntity.map((item, idx) => (
-          <details class="faq-item" open={idx === 0}>
-            <summary class="faq-item__question">
-              <span>{item.name}</span>
-              <svg class="faq-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </summary>
-            <div class="faq-item__answer">
-              <p>{item.acceptedAnswer.text}</p>
-            </div>
-          </details>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <section class="section section--alt homepage-contact-cta" aria-label="Contact page prompt">
     <div class="container container--narrow">
       <p>Still have unanswered questions? Request samples or get a custom quote via our <a href="/contact">Contact page</a>.</p>
@@ -876,15 +815,32 @@ const whyNixiaBenefits = [
   }
 
   .fabric-card__visual {
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     position: relative;
   }
 
   .fabric-card--split .fabric-card__visual {
     flex: 0 0 45%;
-    aspect-ratio: auto;
-    min-height: 100%;
+    aspect-ratio: 16 / 9;
+  }
+
+  .fabric-card__visual picture,
+  .app-card__visual picture,
+  .why-nixia-media picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .fabric-card__visual img,
+  .app-card__visual img,
+  .why-nixia-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.92) contrast(1.02) brightness(1.01);
   }
 
   .fabric-card__tag {
@@ -1028,14 +984,10 @@ const whyNixiaBenefits = [
 
   .app-card--split .app-card__visual {
     flex: 0 0 48%;
-    aspect-ratio: auto;
-    min-height: 252px;
+    aspect-ratio: 16 / 9;
   }
 
   .app-card__visual img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
     transition: transform var(--transition-slow);
   }
 
@@ -1127,12 +1079,8 @@ const whyNixiaBenefits = [
   }
 
   .why-nixia-media img {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
-    display: block;
   }
 
   .why-nixia-badges {
@@ -1448,10 +1396,11 @@ const whyNixiaBenefits = [
   }
 
   .workflow-timeline {
-    background: var(--color-white);
-    border: 1px solid rgba(22, 41, 77, 0.08);
-    border-radius: 24px;
-    padding: var(--space-xl);
+    background: #f7f9fc;
+    border: 1px solid #e5eaf2;
+    border-radius: 20px;
+    padding: clamp(1.25rem, 2vw, 1.75rem);
+    box-shadow: 0 10px 28px rgba(31, 41, 55, 0.06);
   }
 
   .workflow-timeline__head {
@@ -1463,81 +1412,153 @@ const whyNixiaBenefits = [
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.14em;
-    color: var(--color-accent);
+    color: #7d8fa3;
     margin-bottom: 0.4rem;
   }
 
   .workflow-timeline h3 {
     font-size: var(--text-xl);
-    color: var(--color-primary);
+    color: #1f2937;
+    font-weight: 800;
     margin: 0 0 0.35rem;
   }
 
   .workflow-timeline__head p {
     margin: 0;
-    color: var(--color-text-muted);
+    color: #667085;
     font-size: var(--text-sm);
+    line-height: 1.55;
   }
 
   .workflow-timeline__track {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 0.75rem;
-    counter-reset: step;
+    gap: 1rem;
     position: relative;
+  }
+
+  .workflow-timeline--path-b .workflow-timeline__track {
+    grid-template-columns: repeat(7, minmax(120px, 1fr));
+    gap: 0.75rem;
   }
 
   .workflow-timeline__track::before {
     content: "";
     position: absolute;
-    top: 1.15rem;
-    left: 3.2rem;
-    right: 3.2rem;
-    height: 2px;
-    background: linear-gradient(90deg, rgba(196, 160, 53, 0.26), rgba(196, 160, 53, 0.12));
+    top: 1.55rem;
+    left: 2.4rem;
+    right: 2.4rem;
+    height: 1px;
+    background: linear-gradient(90deg, #d8dfea 0%, #d8dfea 75%, transparent 100%);
+    border-top: 1px dashed #d8dfea;
+    opacity: 0.9;
   }
 
   .workflow-step {
     position: relative;
     z-index: 1;
     min-width: 0;
-    padding-top: 0.05rem;
-    text-align: center;
+    padding: 0.25rem 0.25rem 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.55rem;
   }
 
-  .workflow-step span {
-    position: relative;
-    z-index: 1;
-    width: 2.3rem;
-    height: 2.3rem;
-    margin: 0 auto 0.75rem;
-    border-radius: 999px;
+  .workflow-timeline--path-b .workflow-step {
+    min-width: 120px;
+  }
+
+  .workflow-step__step {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1rem;
+    font-size: 0.7rem;
+    line-height: 1;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #7d8fa3;
+  }
+
+  .workflow-step__icon {
+    width: 3rem;
+    height: 3rem;
     display: grid;
     place-items: center;
-    background: #f7f3ea;
-    color: var(--color-primary);
-    border: 1px solid rgba(196, 160, 53, 0.18);
-    font-size: var(--text-sm);
-    font-weight: 700;
+    border-radius: 999px;
+    background: var(--workflow-icon-bg, #eef3f9);
+    color: var(--workflow-icon-color, #667085);
+    border: 1px solid var(--workflow-icon-border, #d8dfea);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
   }
 
-  .workflow-step--active span {
-    background: var(--color-accent);
-    color: var(--color-white);
-    border-color: var(--color-accent);
+  .workflow-step__icon--slate {
+    --workflow-icon-color: #667085;
+    --workflow-icon-bg: #f2f5f9;
+    --workflow-icon-border: #d8dfea;
+  }
+
+  .workflow-step__icon--gold {
+    --workflow-icon-color: #c8a45d;
+    --workflow-icon-bg: rgba(200, 164, 93, 0.12);
+    --workflow-icon-border: rgba(200, 164, 93, 0.26);
+  }
+
+  .workflow-step__icon--olive {
+    --workflow-icon-color: #7d8f63;
+    --workflow-icon-bg: rgba(125, 143, 99, 0.12);
+    --workflow-icon-border: rgba(125, 143, 99, 0.24);
+  }
+
+  .workflow-step__icon--warm {
+    --workflow-icon-color: #8b6a4e;
+    --workflow-icon-bg: rgba(139, 106, 78, 0.12);
+    --workflow-icon-border: rgba(139, 106, 78, 0.24);
+  }
+
+  .workflow-step__icon--mist {
+    --workflow-icon-color: #6f8fb0;
+    --workflow-icon-bg: rgba(111, 143, 176, 0.12);
+    --workflow-icon-border: rgba(111, 143, 176, 0.24);
+  }
+
+  .workflow-step__icon svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .workflow-step--active .workflow-step__step {
+    color: var(--color-accent-dark);
+  }
+
+  .workflow-step--active .workflow-step__icon {
+    background: rgba(200, 164, 93, 0.16);
+    border-color: rgba(200, 164, 93, 0.38);
+    color: #c8a45d;
   }
 
   .workflow-step strong {
     display: block;
     font-size: var(--text-sm);
-    line-height: 1.4;
-    color: var(--color-primary);
+    line-height: 1.5;
+    color: #1f2937;
+    font-weight: 700;
   }
 
   .workflow-timeline__actions {
     display: flex;
     justify-content: center;
     margin-top: var(--space-xl);
+  }
+
+  .workflow-timeline__actions :global(.btn) {
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(22, 41, 77, 0.08);
+  }
+
+  .workflow-timeline__actions :global(.btn:hover) {
+    transform: translateY(-1px);
   }
 
   /* ==================== Buyer Support ==================== */
@@ -1761,65 +1782,6 @@ const whyNixiaBenefits = [
     text-decoration: none;
     font-weight: 700;
     white-space: nowrap;
-  }
-
-  /* ==================== FAQ ==================== */
-  .faq-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
-  }
-
-  .faq-item {
-    background-color: var(--color-white);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    transition: border-color var(--transition-base);
-  }
-
-  .faq-item[open] {
-    border-color: var(--color-accent-light);
-  }
-
-  .faq-item__question {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-md);
-    padding: var(--space-lg) var(--space-xl);
-    font-size: var(--text-base);
-    font-weight: 600;
-    color: var(--color-primary);
-    cursor: pointer;
-    list-style: none;
-    user-select: none;
-  }
-
-  .faq-item__question::-webkit-details-marker {
-    display: none;
-  }
-
-  .faq-item__icon {
-    width: 20px;
-    height: 20px;
-    color: var(--color-accent);
-    flex-shrink: 0;
-    transition: transform var(--transition-base);
-  }
-
-  .faq-item[open] .faq-item__icon {
-    transform: rotate(180deg);
-  }
-
-  .faq-item__answer {
-    padding: 0 var(--space-xl) var(--space-lg);
-  }
-
-  .faq-item__answer p {
-    font-size: var(--text-sm);
-    color: var(--color-text-secondary);
-    line-height: 1.7;
   }
 
   .homepage-contact-cta {
@@ -2084,6 +2046,10 @@ const whyNixiaBenefits = [
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
+    .workflow-timeline--path-b .workflow-timeline__track {
+      grid-template-columns: repeat(7, minmax(120px, 1fr));
+    }
+
     .workflow-timeline__track::before {
       top: 1.1rem;
       left: 1.8rem;
@@ -2091,9 +2057,96 @@ const whyNixiaBenefits = [
     }
   }
 
+  @media (max-width: 768px) {
+    .fabric-series-grid,
+    .fabric-series-grid--hot,
+    .fabric-series-grid--glitter,
+    .applications-grid--stacked,
+    .why-nixia-split,
+    .rfq-grid,
+    .workflow-timelines,
+    .support-grid,
+    .credential-card-grid,
+    .hero-trust__grid,
+    .capability-bar,
+    .final-cta__tags {
+      grid-template-columns: 1fr;
+    }
+
+    .grid--4.applications-grid,
+    .grid--4.fabric-series-grid,
+    .grid--3.factory-entry-grid,
+    .advantage-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .app-card--split,
+    .fabric-card--split {
+      width: 100%;
+    }
+
+    .workflow-timeline--path-b .workflow-timeline__track {
+      grid-template-columns: repeat(7, minmax(120px, 1fr));
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(120px, 1fr);
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x proximity;
+      padding-bottom: 0.5rem;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      mask-image: linear-gradient(to right, #000 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, #000 92%, transparent 100%);
+    }
+
+    .workflow-timeline--path-b .workflow-timeline__track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .qa-step {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.75rem;
+      text-align: left;
+      align-items: center;
+    }
+
+    .why-nixia-media {
+      order: 2;
+    }
+
+    .why-nixia-copy {
+      order: 1;
+    }
+
+    .final-cta__title {
+      font-size: var(--text-3xl);
+    }
+
+    .workflow-timeline--path-b .workflow-step {
+      min-width: 120px;
+      scroll-snap-align: start;
+    }
+
+    .workflow-timeline {
+      position: relative;
+    }
+
+    .workflow-timeline::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 2.5rem;
+      height: 100%;
+      pointer-events: none;
+      background: linear-gradient(to left, rgba(247, 249, 252, 1), rgba(247, 249, 252, 0));
+    }
+  }
+
   @media (max-width: 640px) {
     .hero-trust__grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
       gap: var(--space-xl) var(--space-lg);
     }
 

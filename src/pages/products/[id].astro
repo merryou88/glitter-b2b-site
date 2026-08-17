@@ -70,6 +70,8 @@ const productData = {
 const mainImages = product.mainImage ? [product.mainImage] : [];
 const galleryImages = [...mainImages, ...product.skuImages];
 
+const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
+
 // SEO title & description
 const seoTitle = `${product.title} — Glitter Synthetic Leather | Nixia Fabric`;
 const seoDesc = product.shortDesc;
@@ -101,16 +103,10 @@ const seoDesc = product.shortDesc;
           <div class="detail-gallery__main">
             {
               product.mainImage ? (
-                <img
-                  id="main-image"
-                  src={product.mainImage}
-                  alt={product.title}
-                  class="detail-gallery__hero"
-                  loading="lazy"
-                  width="600"
-                  height="600"
-                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-                />
+                <picture>
+                  <source srcset={toWebp(product.mainImage)} type="image/webp" />
+                  <img id="main-image" src={product.mainImage} alt={product.title} class="detail-gallery__hero" loading="lazy" width="1200" height="675" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                </picture>
               ) : null
             }
             <div
@@ -136,14 +132,10 @@ const seoDesc = product.shortDesc;
                     onclick={`document.getElementById('main-image').src='${img}';document.querySelectorAll('.detail-gallery__thumb').forEach(b=>b.classList.remove('detail-gallery__thumb--active'));this.classList.add('detail-gallery__thumb--active')`}
                     aria-label={`View image ${i + 1}`}
                   >
-                    <img
-                      src={img}
-                      alt={`${product.title} thumbnail ${i + 1}`}
-                      loading="lazy"
-                      width="80"
-                      height="80"
-                      onerror="this.style.display='none'"
-                    />
+                    <picture>
+                      <source srcset={toWebp(img)} type="image/webp" />
+                      <img src={img} alt={`${product.title} thumbnail ${i + 1}`} loading="lazy" width="80" height="80" decoding="async" onerror="this.style.display='none'" />
+                    </picture>
                   </button>
                 ))}
               </div>
@@ -229,14 +221,10 @@ const seoDesc = product.shortDesc;
             <div class="sku-grid">
               {product.skuImages.map((img: string) => (
                 <div class="sku-item">
-                  <img
-                    src={img}
-                    alt="Color variant"
-                    loading="lazy"
-                    width="200"
-                    height="200"
-                    onerror="this.style.display='none';this.parentElement.querySelector('.sku-item__placeholder').style.display='flex'"
-                  />
+                  <picture>
+                    <source srcset={toWebp(img)} type="image/webp" />
+                    <img src={img} alt="Color variant" loading="lazy" width="200" height="200" decoding="async" onerror="this.style.display='none';this.parentElement.querySelector('.sku-item__placeholder').style.display='flex'" />
+                  </picture>
                   <div class="sku-item__placeholder" style="display:none">
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                       <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
@@ -256,15 +244,10 @@ const seoDesc = product.shortDesc;
             <h2>Product Details</h2>
             <div class="detail-images-grid">
               {product.detailImages.map((img: string) => (
-                <img
-                  src={img}
-                  alt={`${product.title} detail`}
-                  loading="lazy"
-                  width="400"
-                  height="400"
-                  class="detail-image"
-                  onerror="this.style.display='none'"
-                />
+                <picture>
+                  <source srcset={toWebp(img)} type="image/webp" />
+                  <img src={img} alt={`${product.title} detail`} loading="lazy" width="1200" height="675" class="detail-image" decoding="async" onerror="this.style.display='none'" />
+                </picture>
               ))}
             </div>
           </div>
@@ -381,7 +364,7 @@ const seoDesc = product.shortDesc;
   }
 
   .detail-gallery__main {
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 16 / 9;
     background: var(--color-bg);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
@@ -392,6 +375,13 @@ const seoDesc = product.shortDesc;
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .detail-gallery__main picture,
+  .detail-images-grid picture {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .detail-gallery__hero-placeholder {
@@ -598,7 +588,7 @@ const seoDesc = product.shortDesc;
 
   .detail-image {
     width: 100%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
     border-radius: var(--radius-sm);
     border: 1px solid var(--color-border);
@@ -671,6 +661,29 @@ const seoDesc = product.shortDesc;
 
     .detail-images-grid {
       grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .detail-layout,
+    .detail-specs,
+    .sku-grid,
+    .detail-images-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .detail-cta {
+      flex-direction: column;
+    }
+
+    .detail-cta .btn {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .detail-gallery__thumbs {
+      gap: var(--space-xs);
     }
   }
 

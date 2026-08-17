@@ -44,6 +44,8 @@ const collectionPageData = {
     image: `https://nixiafabric.com${p.mainImage}`,
   })),
 };
+
+const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 ---
 
 <Layout
@@ -85,15 +87,10 @@ const collectionPageData = {
               <div class="product-card__image-wrap">
                 {
                   product.mainImage ? (
-                    <img
-                      src={product.mainImage}
-                      alt={product.title}
-                      class="product-card__image"
-                      loading="lazy"
-                      width="400"
-                      height="400"
-                      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-                    />
+                    <picture>
+                      <source srcset={toWebp(product.mainImage)} type="image/webp" />
+                      <img src={product.mainImage} alt={product.title} class="product-card__image" loading="lazy" width="1200" height="675" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                    </picture>
                   ) : null
                 }
                 <div
@@ -238,14 +235,19 @@ const collectionPageData = {
 
   .product-card__image-wrap {
     position: relative;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 16 / 9;
     background: var(--color-bg);
     overflow: hidden;
   }
 
-  .product-card__image {
+  .product-card__image-wrap picture,
+  .product-card__image-wrap img {
+    display: block;
     width: 100%;
     height: 100%;
+  }
+
+  .product-card__image {
     object-fit: cover;
     transition: transform var(--transition-slow);
   }
@@ -347,6 +349,16 @@ const collectionPageData = {
   @media (max-width: 968px) {
     .product-grid {
       grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .product-card__body {
+      padding: var(--space-md);
     }
   }
 

@@ -270,6 +270,7 @@ p {
   padding: 0.75rem 1.75rem;
   font-size: var(--text-base);
   font-weight: 600;
+  min-height: 44px;
   border: 2px solid transparent;
   border-radius: var(--radius-sm);
   cursor: pointer;
@@ -331,6 +332,7 @@ p {
 .btn--lg {
   padding: 0.875rem 2.25rem;
   font-size: var(--text-lg);
+  min-height: 48px;
 }
 
 .btn--block {
@@ -466,6 +468,61 @@ p {
 
   .grid--3 {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid--2,
+  .grid--3,
+  .grid--4,
+  .applications-grid--stacked,
+  .fabric-series-grid,
+  .why-nixia-split,
+  .rfq-grid,
+  .workflow-timelines,
+  .support-grid,
+  .credential-card-grid,
+  .hero-trust__grid,
+  .listing__layout,
+  .cross-link-grid,
+  .detail-layout,
+  .sku-grid,
+  .detail-images-grid,
+  .process-steps-with-images,
+  .process-step-img,
+  .packing-grid,
+  .visit-factory__grid,
+  .product-grid,
+  .capability-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-group {
+    flex-direction: column;
+  }
+
+  .btn-group .btn,
+  .btn {
+    width: 100%;
+    white-space: normal;
+    min-height: 44px;
+  }
+
+  .section-header p,
+  .page-hero__desc,
+  .product-card__desc,
+  .detail-info__desc,
+  .detail-body__text p,
+  .detail-body__section p,
+  .sample-policy-content p,
+  .rfq-card p,
+  .why-nixia-copy p,
+  .why-nixia-advantage p,
+  .capability-item p,
+  .product-card__desc,
+  .page-hero p {
+    font-size: 1rem;
+    line-height: 1.6;
   }
 }
 

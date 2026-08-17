@@ -41,6 +41,8 @@ const factoryPageData = {
   },
 };
 
+const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
+
 const productionSteps = [
   {
     num: "01",
@@ -308,13 +310,10 @@ const packingSteps = [
       <div class="process-steps-with-images">
         <div class="process-step-img">
           <div class="process-step-img__media">
-            <img
-              src="/image/process/raw_material_preparation.jpg"
-              alt="Raw material preparation in glitter fabric production warehouse"
-              width="1200"
-              height="675"
-              loading="lazy"
-            />
+            <picture>
+              <source srcset={toWebp('/image/process/raw_material_preparation.jpg')} type="image/webp" />
+              <img src="/image/process/raw_material_preparation.jpg" alt="Raw material preparation in glitter fabric production warehouse" width="1200" height="675" loading="lazy" decoding="async" />
+            </picture>
           </div>
           <div class="process-step-img__info">
             <span class="process-step-img__num">01</span>
@@ -328,13 +327,10 @@ const packingSteps = [
 
         <div class="process-step-img">
           <div class="process-step-img__media">
-            <img
-              src="/image/process/hot_stamping_foil_transfer.jpg"
-              alt="Hot-stamping foil transfer production line for metallic foil fabrics"
-              width="1200"
-              height="675"
-              loading="lazy"
-            />
+            <picture>
+              <source srcset={toWebp('/image/process/hot_stamping_foil_transfer.jpg')} type="image/webp" />
+              <img src="/image/process/hot_stamping_foil_transfer.jpg" alt="Hot-stamping foil transfer production line for metallic foil fabrics" width="1200" height="675" loading="lazy" decoding="async" />
+            </picture>
           </div>
           <div class="process-step-img__info">
             <span class="process-step-img__num">02</span>
@@ -348,13 +344,10 @@ const packingSteps = [
 
         <div class="process-step-img">
           <div class="process-step-img__media">
-            <img
-              src="/image/process/on_line_visual_inspection.jpg"
-              alt="On-line visual inspection of glitter and foil-printed fabric quality"
-              width="1200"
-              height="675"
-              loading="lazy"
-            />
+            <picture>
+              <source srcset={toWebp('/image/process/on_line_visual_inspection.jpg')} type="image/webp" />
+              <img src="/image/process/on_line_visual_inspection.jpg" alt="On-line visual inspection of glitter and foil-printed fabric quality" width="1200" height="675" loading="lazy" decoding="async" />
+            </picture>
           </div>
           <div class="process-step-img__info">
             <span class="process-step-img__num">03</span>
@@ -368,13 +361,10 @@ const packingSteps = [
 
         <div class="process-step-img">
           <div class="process-step-img__media">
-            <img
-              src="/image/process/sample_confirmation.jpg"
-              alt="Sample confirmation close-up of hot-pressed glitter fabric detail"
-              width="1200"
-              height="675"
-              loading="lazy"
-            />
+            <picture>
+              <source srcset={toWebp('/image/process/sample_confirmation.jpg')} type="image/webp" />
+              <img src="/image/process/sample_confirmation.jpg" alt="Sample confirmation close-up of hot-pressed glitter fabric detail" width="1200" height="675" loading="lazy" decoding="async" />
+            </picture>
           </div>
           <div class="process-step-img__info">
             <span class="process-step-img__num">04</span>
@@ -388,13 +378,10 @@ const packingSteps = [
 
         <div class="process-step-img">
           <div class="process-step-img__media">
-            <img
-              src="/image/process/final_packing.jpg"
-              alt="Factory exterior and final packing area for glitter and foil fabrics"
-              width="1200"
-              height="675"
-              loading="lazy"
-            />
+            <picture>
+              <source srcset={toWebp('/image/process/final_packing.jpg')} type="image/webp" />
+              <img src="/image/process/final_packing.jpg" alt="Factory exterior and final packing area for glitter and foil fabrics" width="1200" height="675" loading="lazy" decoding="async" />
+            </picture>
           </div>
           <div class="process-step-img__info">
             <span class="process-step-img__num">05</span>
@@ -1042,12 +1029,19 @@ const packingSteps = [
     border-radius: var(--radius-md);
     overflow: hidden;
     box-shadow: var(--shadow-md);
+    aspect-ratio: 16 / 9;
+    background: var(--color-bg);
   }
 
+  .process-step-img__media picture,
   .process-step-img__media img {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+  }
+
+  .process-step-img__media img {
+    object-fit: cover;
   }
 
   .process-step-img__info {
@@ -1100,6 +1094,29 @@ const packingSteps = [
 
     .process-step-img:nth-child(even) {
       direction: ltr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .factory-intro,
+    .qc-grid,
+    .packing-grid,
+    .capabilities-grid,
+    .visit-factory__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .process-step-img {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    .process-step-img:nth-child(even) {
+      direction: ltr;
+    }
+
+    .visit-factory__grid--map-failed {
+      grid-template-columns: 1fr;
     }
   }
 
@@ -1299,6 +1316,10 @@ const packingSteps = [
     .visit-factory__grid {
       grid-template-columns: 1fr;
       gap: 2rem;
+    }
+
+    .process-step-img__media {
+      aspect-ratio: 16 / 9;
     }
 
     .visit-factory__title {

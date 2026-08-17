@@ -59,6 +59,8 @@ const itemListData = {
 
 // Other end-use categories for cross-linking
 const otherCategories = endUseCategories.filter((c) => c.slug !== category.slug);
+
+const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 ---
 
 <Layout
@@ -199,12 +201,15 @@ const otherCategories = endUseCategories.filter((c) => c.slug !== category.slug)
         <span class="eyebrow">Other Applications</span>
         <h2>Browse by End-Use</h2>
       </div>
-      <div class="cross-link-grid">
-        {otherCategories.map((cat) => (
-          <a href={`/products/${cat.slug}`} class="cross-link-card">
-            <div class="cross-link-card__visual">
-              <img src={cat.image} alt={cat.alt} width="1200" height="675" loading="lazy" />
-            </div>
+        <div class="cross-link-grid">
+          {otherCategories.map((cat) => (
+            <a href={`/products/${cat.slug}`} class="cross-link-card">
+              <div class="cross-link-card__visual">
+              <picture>
+                <source srcset={toWebp(cat.image)} type="image/webp" />
+                <img src={cat.image} alt={cat.alt} width="1200" height="675" loading="lazy" decoding="async" />
+              </picture>
+              </div>
             <div class="cross-link-card__body">
               <h3>{cat.shortName}</h3>
               <p>{cat.description}</p>
@@ -499,6 +504,17 @@ const otherCategories = endUseCategories.filter((c) => c.slug !== category.slug)
     overflow: hidden;
   }
 
+  .cross-link-card__visual picture,
+  .cross-link-card__visual img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .cross-link-card__visual img {
+    object-fit: cover;
+  }
+
   .cross-link-card__visual img {
     width: 100%;
     height: 100%;
@@ -548,6 +564,48 @@ const otherCategories = endUseCategories.filter((c) => c.slug !== category.slug)
 
   @media (max-width: 768px) {
     .listing__layout {
+      grid-template-columns: 1fr;
+    }
+
+    .filter-sidebar {
+      position: static;
+      padding: var(--space-md);
+    }
+
+    .filter-sidebar__mobile-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0.75rem var(--space-md);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--color-primary);
+      background-color: var(--color-bg-alt);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      margin-bottom: var(--space-md);
+    }
+
+    .filter-sidebar__mobile-toggle.is-open + .filter-section,
+    .filter-sidebar__mobile-toggle.is-open ~ .filter-section {
+      display: block;
+    }
+
+    .filter-section {
+      display: none;
+    }
+
+    .filter-sidebar.is-mobile-open .filter-section {
+      display: block;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .listing__layout,
+    .product-grid,
+    .cross-link-grid {
       grid-template-columns: 1fr;
     }
 
