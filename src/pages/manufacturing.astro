@@ -1,0 +1,649 @@
+---
+/**
+ * Manufacturing Page — /manufacturing
+ * Focused on factory production capability only:
+ * workshop photos, production lines, equipment, capacity,
+ * quality control process, OEM & ODM capability, factory audit support.
+ * Company background / export experience lives on /about.
+ */
+import Layout from "@layouts/Layout.astro";
+import CTAButton from "@components/CTAButton.astro";
+
+const breadcrumbData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://nixiafabric.com/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Manufacturing",
+      item: "https://nixiafabric.com/manufacturing",
+    },
+  ],
+};
+
+const manufacturingPageData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Manufacturing — Nixia Fabric Production Capability",
+  description:
+    "Inside Nixia Fabric's glitter and foil-printed synthetic leather production: workshop, production lines, equipment, capacity, quality control and OEM / ODM service.",
+  url: "https://nixiafabric.com/manufacturing",
+  about: {
+    "@type": "Organization",
+    name: "Nixia Fabric",
+    additionalType: "Manufacturer",
+  },
+};
+
+const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
+
+const productionLines = [
+  {
+    title: "Glitter Coating Line",
+    desc: "Glitter particle bonding on woven, knitted and non-woven substrates with adjustable particle density.",
+  },
+  {
+    title: "Hot-Stamping Foil Transfer Line",
+    desc: "Metallic foil lamination under controlled heat and pressure for gold, silver and custom metallic finishes.",
+  },
+  {
+    title: "Color Development & Matching Lab",
+    desc: "In-house lab for Pantone-based color development and batch-to-batch consistency checks.",
+  },
+  {
+    title: "Finishing & Inspection Station",
+    desc: "Surface finish, edge treatment, on-line inspection and roll grading before packing.",
+  },
+];
+
+const workshopPhotos = [
+  { src: "/image/process/raw_material_preparation.jpg", alt: "Raw material preparation in the glitter fabric workshop" },
+  { src: "/image/process/hot_stamping_foil_transfer.jpg", alt: "Hot-stamping foil transfer production line in operation" },
+  { src: "/image/process/on_line_visual_inspection.jpg", alt: "On-line visual inspection of glitter and foil fabric" },
+  { src: "/image/process/sample_confirmation.jpg", alt: "Sample confirmation of hot-pressed glitter fabric detail" },
+  { src: "/image/process/final_packing.jpg", alt: "Final packing area for glitter and foil fabric rolls" },
+];
+
+const equipment = [
+  "Glitter coating / bonding machines",
+  "Hot-stamping foil transfer presses",
+  "Color matching & development stations",
+  "Curing & heat-setting equipment",
+  "Inspection & grading tables",
+];
+
+const qcSteps = [
+  {
+    num: "01",
+    title: "Raw Material Inspection",
+    desc: "Incoming base fabrics checked for composition, weight, width and visual defects before production.",
+  },
+  {
+    num: "02",
+    title: "In-Process Quality Control",
+    desc: "Adhesion strength, glitter density, color consistency and surface uniformity monitored at each stage.",
+  },
+  {
+    num: "03",
+    title: "Color Consistency Check",
+    desc: "Every batch checked against approved color standards using lightbox and spectrophotometer.",
+  },
+  {
+    num: "04",
+    title: "Final Inspection & Grading",
+    desc: "Each roll individually inspected, graded and tagged with batch numbers for full traceability.",
+  },
+];
+
+const oemOdm = [
+  {
+    title: "Custom Colors",
+    desc: "Pantone reference or client swatch matched to production color standards.",
+  },
+  {
+    title: "Custom Backing & GSM",
+    desc: "Elastic, PU, non-woven and Oxford backing with adjustable GSM and width.",
+  },
+  {
+    title: "Custom Finishes",
+    desc: "Matte, glossy, embossed and special surface treatments per product requirement.",
+  },
+  {
+    title: "Sample-to-Bulk Process",
+    desc: "Prototype samples, buyer confirmation and pre-production samples before bulk production.",
+  },
+];
+
+const auditSupport = [
+  "Factory visit arrangement for buyers and agents",
+  "Business license and entity documents",
+  "SGS / REACH test reports on request",
+  "Production & packing documentation support",
+];
+---
+
+<Layout
+  title="Manufacturing — Production Capability"
+  description="Nixia Fabric's manufacturing capability: glitter coating and hot-stamping foil transfer lines, equipment, capacity, quality control and OEM / ODM service for fabric buyers."
+  keywords="glitter fabric factory, foil fabric production line, fabric manufacturer china, glitter coating line, hot-stamping foil transfer, OEM ODM fabric, fabric quality control"
+  structuredData={[breadcrumbData, manufacturingPageData]}
+>
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-bar">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="breadcrumb__sep">/</span>
+        <span class="breadcrumb__current">Manufacturing</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Manufacturing Hero -->
+  <section class="mfg-hero">
+    <div class="container">
+      <span class="eyebrow">Production Capability</span>
+      <h1>Inside Our Fabric Manufacturing</h1>
+      <p class="mfg-hero__desc">
+        An overview of how glitter and foil-printed synthetic leather is produced in our
+        factory — from raw material and coating lines to inspection and packing.
+      </p>
+      <div class="mfg-hero__badges">
+        <span class="mfg-hero__badge">Production Lines</span>
+        <span class="mfg-hero__badge">Quality Control</span>
+        <span class="mfg-hero__badge">OEM &amp; ODM</span>
+        <span class="mfg-hero__badge">Factory Audit Support</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Production Lines -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header section-header--left">
+        <span class="eyebrow">Production Lines</span>
+        <h2>Dedicated Lines for Glitter &amp; Foil Fabric</h2>
+        <p>
+          Our production is organized around dedicated lines so each fabric type keeps a
+          consistent process and finish.
+        </p>
+      </div>
+      <div class="lines-grid">
+        {productionLines.map((line) => (
+          <article class="line-card">
+            <h3>{line.title}</h3>
+            <p>{line.desc}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Workshop Photos -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Workshop</span>
+        <h2>Real Workshop Scenes</h2>
+        <p>
+          Photos of our production floor — coating, foil transfer, inspection and packing.
+        </p>
+      </div>
+      <div class="workshop-grid">
+        {workshopPhotos.map((photo) => (
+          <figure class="workshop-photo">
+            <picture>
+              <source srcset={toWebp(photo.src)} type="image/webp" />
+              <img src={photo.src} alt={photo.alt} width="1200" height="675" loading="lazy" decoding="async" />
+            </picture>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment & Capacity -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header section-header--left">
+        <span class="eyebrow">Equipment &amp; Capacity</span>
+        <h2>Equipment We Run In-House</h2>
+        <p>
+          Capability is driven by the equipment on our production floor — from coating to
+          final inspection.
+        </p>
+      </div>
+      <div class="equipment-grid">
+        <ul class="equipment-list">
+          {equipment.map((item) => (
+            <li class="equipment-item">
+              <span class="equipment-check" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quality Control -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Quality Control</span>
+        <h2>Quality Inspection Process</h2>
+        <p>
+          Every production batch passes a structured inspection flow from raw material to
+          finished roll.
+        </p>
+      </div>
+      <div class="qc-grid">
+        {qcSteps.map((step) => (
+          <article class="qc-card">
+            <span class="qc-card__num">{step.num}</span>
+            <h3>{step.title}</h3>
+            <p>{step.desc}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- OEM & ODM -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">OEM &amp; ODM</span>
+        <h2>Custom Fabric Development</h2>
+        <p>
+          We develop fabric to your specification — from color and backing to finish and
+          packing.
+        </p>
+      </div>
+      <div class="oem-grid">
+        {oemOdm.map((item) => (
+          <article class="oem-card">
+            <h3>{item.title}</h3>
+            <p>{item.desc}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Factory Audit Support -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="audit-wrap">
+        <div class="audit-copy">
+          <span class="eyebrow">Factory Audit</span>
+          <h2>Buyers Are Welcome to Visit</h2>
+          <p>
+            We support buyer and agent factory visits, and provide the documents needed
+            for audit and compliance review.
+          </p>
+          <ul class="audit-list">
+            {auditSupport.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="audit-cta">
+          <CTAButton href="/contact" variant="primary" size="lg">Book a Factory Visit</CTAButton>
+          <CTAButton href="/certifications" variant="outline" size="lg">View Certifications</CTAButton>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--dark">
+    <div class="container text-center">
+      <span class="eyebrow">Start a Production Project</span>
+      <h2>Talk to Our Production Team</h2>
+      <p style="max-width: 600px; margin: var(--space-lg) auto var(--space-2xl);">
+        Send your fabric requirements and our factory team will reply with sample info,
+        MOQ and quotation.
+      </p>
+      <div class="btn-group" style="justify-content: center;">
+        <CTAButton href="/sample-policy" variant="primary" size="lg">Request Free Sample</CTAButton>
+        <CTAButton href="/contact" variant="secondary" size="lg">Get Custom Quotation</CTAButton>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .breadcrumb-bar {
+    background-color: var(--color-bg-alt);
+    padding-block: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  .breadcrumb a:hover {
+    color: var(--color-accent-dark);
+  }
+
+  .breadcrumb__sep {
+    color: var(--color-text-light);
+  }
+
+  .breadcrumb__current {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  /* Manufacturing Hero */
+  .mfg-hero {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: var(--color-white);
+    padding-block: var(--space-3xl) var(--space-4xl);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mfg-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(196, 160, 53, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 30%, rgba(42, 65, 112, 0.4) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .mfg-hero .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .mfg-hero .eyebrow {
+    color: var(--color-accent-light);
+  }
+
+  .mfg-hero h1 {
+    color: var(--color-white);
+    margin-bottom: var(--space-md);
+  }
+
+  .mfg-hero__desc {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: var(--text-lg);
+    max-width: 680px;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .mfg-hero__badges {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .mfg-hero__badge {
+    padding: 0.5rem 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  /* Production Lines */
+  .lines-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .line-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+    border-top: 3px solid var(--color-accent);
+    transition: all var(--transition-base);
+  }
+
+  .line-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+  }
+
+  .line-card h3 {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-sm);
+  }
+
+  .line-card p {
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-secondary);
+  }
+
+  /* Workshop Photos */
+  .workshop-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .workshop-photo {
+    margin: 0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    aspect-ratio: 16 / 10;
+    background: var(--color-bg);
+  }
+
+  .workshop-photo picture,
+  .workshop-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .workshop-photo img {
+    object-fit: cover;
+    filter: sepia(0.08) saturate(0.95) brightness(1.02) hue-rotate(5deg);
+  }
+
+  /* Equipment */
+  .equipment-grid {
+    max-width: 720px;
+  }
+
+  .equipment-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+  }
+
+  .equipment-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    background-color: var(--color-bg-alt);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  .equipment-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: rgba(196, 160, 53, 0.12);
+    color: var(--color-accent-dark);
+    flex-shrink: 0;
+  }
+
+  /* Quality Control */
+  .qc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .qc-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+    transition: all var(--transition-base);
+  }
+
+  .qc-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-accent-light);
+  }
+
+  .qc-card__num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    font-weight: 800;
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .qc-card h3 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-sm);
+  }
+
+  .qc-card p {
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-secondary);
+  }
+
+  /* OEM & ODM */
+  .oem-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .oem-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl);
+    text-align: center;
+    transition: all var(--transition-base);
+  }
+
+  .oem-card:hover {
+    background-color: var(--color-bg-alt);
+    transform: translateY(-4px);
+  }
+
+  .oem-card h3 {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-sm);
+    color: var(--color-primary);
+  }
+
+  .oem-card p {
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-secondary);
+  }
+
+  /* Factory Audit */
+  .audit-wrap {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--space-4xl);
+    align-items: center;
+  }
+
+  .audit-copy p {
+    margin-bottom: var(--space-lg);
+    color: var(--color-text-secondary);
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+  }
+
+  .audit-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .audit-list li {
+    padding: var(--space-sm) var(--space-md);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .audit-cta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    .qc-grid,
+    .oem-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .workshop-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .audit-wrap {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .lines-grid,
+    .qc-grid,
+    .oem-grid,
+    .workshop-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .equipment-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

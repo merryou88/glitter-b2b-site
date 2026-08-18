@@ -1,0 +1,373 @@
+---
+/**
+ * RfqQuoteForm.astro — RFQ / custom fabric quotation form
+ * Posts to Worker: WORKER_URL + "/api/inquiry/rfq"
+ * Cloudflare Turnstile protection + custom English validation
+ * Success → /thank-you; failure → inline error message
+ */
+
+// Backend endpoint comes from environment — NEVER hard-code the domain.
+// Set WORKER_URL in .env (dev) / .env.production (prod) or as a build var.
+const WORKER_URL = (import.meta.env.WORKER_URL ?? "").replace(/\/$/, "");
+const RFQ_ENDPOINT = `${WORKER_URL}/api/inquiry/rfq`;
+const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY ?? "";
+---
+
+<div class="rfq-form">
+  <div class="rfq-form__error" id="rfq-form-error" role="alert" hidden>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="10" />
+      <line x1="12" y1="8" x2="12" y2="12" />
+      <line x1="12" y1="16" x2="12.01" y2="16" />
+    </svg>
+    <span id="rfq-form-error-text"></span>
+  </div>
+
+  <form class="rfq-form__inner" id="rfq-form" novalidate>
+    <div class="rfq-form__grid">
+      <div class="rfq-field">
+        <label for="rfq-company" class="rfq-field__label">Company *</label>
+        <input type="text" id="rfq-company" name="company" class="rfq-field__input" placeholder="Your company name" autocomplete="organization" />
+      </div>
+
+      <div class="rfq-field">
+        <label for="rfq-country" class="rfq-field__label">Destination Country</label>
+        <input type="text" id="rfq-country" name="destinationCountry" class="rfq-field__input" placeholder="e.g. United States" />
+      </div>
+
+      <div class="rfq-field rfq-field--full">
+        <label for="rfq-sku" class="rfq-field__label">Product SKU / Fabric Code</label>
+        <input type="text" id="rfq-sku" name="productSku" class="rfq-field__input" placeholder="Input SKU or describe your target fabric" />
+      </div>
+
+      <div class="rfq-field rfq-field--full">
+        <label for="rfq-buyer" class="rfq-field__label">Buyer Identity</label>
+        <select id="rfq-buyer" name="buyerIdentity" class="rfq-field__select">
+          <option value="">Select buyer type</option>
+          <option>Importer / Distributor</option>
+          <option>Retail Chain Buyer</option>
+          <option>Amazon / Online Seller</option>
+          <option>Brand Owner</option>
+          <option>Gift &amp; Event Deco Company</option>
+          <option>Shoe &amp; Bag Manufacturer</option>
+          <option>Other B2B Buyer</option>
+        </select>
+      </div>
+
+      <div class="rfq-field">
+        <label for="rfq-qty" class="rfq-field__label">Estimated Quantity</label>
+        <input type="text" id="rfq-qty" name="estimatedQuantity" class="rfq-field__input" placeholder="e.g. sample order / 500 meters" />
+      </div>
+
+      <div class="rfq-field">
+        <label for="rfq-timeline" class="rfq-field__label">Target Timeline</label>
+        <input type="text" id="rfq-timeline" name="targetTimeline" class="rfq-field__input" placeholder="e.g. Need samples this month" />
+      </div>
+
+      <div class="rfq-field">
+        <label for="rfq-logo" class="rfq-field__label">Logo Artwork</label>
+        <input type="text" id="rfq-logo" name="logoArtwork" class="rfq-field__input" placeholder="e.g. Embossed logo / no logo" />
+      </div>
+
+      <div class="rfq-field">
+        <label for="rfq-packaging" class="rfq-field__label">Packaging</label>
+        <input type="text" id="rfq-packaging" name="packaging" class="rfq-field__input" placeholder="e.g. Roll packing / cut pieces" />
+      </div>
+
+      <div class="rfq-field rfq-field--full">
+        <label for="rfq-message" class="rfq-field__label">Message *</label>
+        <textarea id="rfq-message" name="message" rows="5" class="rfq-field__textarea" placeholder="Tell us your target application, color, backing and other custom fabric requirements..."></textarea>
+      </div>
+    </div>
+
+    <!-- Cloudflare Turnstile -->
+    <div class="rfq-form__turnstile" id="rfq-form-turnstile"></div>
+
+    <button type="submit" class="btn btn--primary btn--lg rfq-form__submit" id="rfq-form-submit" disabled>
+      <span class="rfq-form__submit-text">Send Quote Request</span>
+      <span class="rfq-form__spinner" hidden>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="12" y1="2" x2="12" y2="6" />
+          <line x1="12" y1="18" x2="12" y2="22" />
+          <line x1="4.93" y1="4.93" x2="7.76" y2="7.76" />
+          <line x1="16.24" y1="16.24" x2="19.07" y2="19.07" />
+          <line x1="2" y1="12" x2="6" y2="12" />
+          <line x1="18" y1="12" x2="22" y2="12" />
+          <line x1="4.93" y1="19.07" x2="7.76" y2="16.24" />
+          <line x1="16.24" y1="7.76" x2="19.07" y2="4.93" />
+        </svg>
+      </span>
+    </button>
+  </form>
+</div>
+
+<script define:vars={{ TURNSTILE_SITE_KEY, RFQ_ENDPOINT }}>
+  const form = document.getElementById("rfq-form") as HTMLFormElement | null;
+  const submitBtn = document.getElementById("rfq-form-submit") as HTMLButtonElement | null;
+  const submitText = submitBtn?.querySelector(".rfq-form__submit-text") as HTMLElement | null;
+  const submitSpinner = submitBtn?.querySelector(".rfq-form__spinner") as HTMLElement | null;
+  const errorBanner = document.getElementById("rfq-form-error") as HTMLElement | null;
+  const errorText = document.getElementById("rfq-form-error-text") as HTMLElement | null;
+
+  let turnstileToken = "";
+  let turnstileWidgetId: string | null = null;
+
+  function showError(message: string) {
+    if (errorText) errorText.textContent = message;
+    if (errorBanner) errorBanner.hidden = false;
+    if (errorBanner) errorBanner.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  function hideError() {
+    if (errorBanner) errorBanner.hidden = true;
+  }
+
+  function validateForm(): boolean {
+    if (!form) return false;
+    const data = new FormData(form);
+    const company = String(data.get("company") || "").trim();
+    const message = String(data.get("message") || "").trim();
+
+    if (!company || !message) {
+      showError("Please fill in all required fields (Company and Message).");
+      return false;
+    }
+    return true;
+  }
+
+  function updateSubmitState() {
+    if (!submitBtn) return;
+    const allFilled = (() => {
+      if (!form) return false;
+      const data = new FormData(form);
+      return ["company", "message"].every((k) => String(data.get(k) || "").trim().length > 0);
+    })();
+    submitBtn.disabled = !allFilled || !turnstileToken;
+  }
+
+  function setLoading(loading: boolean) {
+    if (!submitBtn) return;
+    submitBtn.disabled = loading;
+    if (submitText) submitText.textContent = loading ? "Sending..." : "Send Quote Request";
+    if (submitSpinner) submitSpinner.hidden = !loading;
+  }
+
+  // Load Turnstile script (only if site key configured).
+  // Render the widget only when the container becomes visible
+  // (handles modals that start with display:none).
+  if (TURNSTILE_SITE_KEY) {
+    const script = document.createElement("script");
+    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+    script.async = true;
+    script.defer = true;
+    script.onload = () => {
+      const win = window as any;
+      if (!win.turnstile) return;
+      const container = document.getElementById("rfq-form-turnstile");
+      if (!container) return;
+
+      const renderWidget = () => {
+        if (turnstileWidgetId) return;
+        turnstileWidgetId = win.turnstile.render(container, {
+          sitekey: TURNSTILE_SITE_KEY,
+          callback: (token: string) => {
+            turnstileToken = token;
+            updateSubmitState();
+          },
+          "expired-callback": () => {
+            turnstileToken = "";
+            updateSubmitState();
+          },
+          "error-callback": () => {
+            turnstileToken = "";
+            updateSubmitState();
+          },
+        });
+      };
+
+      if (typeof IntersectionObserver !== "undefined") {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            if (entries.some((e) => e.isIntersecting)) {
+              renderWidget();
+              observer.disconnect();
+            }
+          },
+          { root: null, threshold: 0.05 }
+        );
+        observer.observe(container);
+      } else {
+        renderWidget();
+      }
+    };
+    document.head.appendChild(script);
+  }
+
+  form?.addEventListener("input", updateSubmitState);
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    hideError();
+
+    if (!validateForm()) return;
+
+    if (!turnstileToken) {
+      showError("Please complete the human verification checkbox.");
+      return;
+    }
+
+    const formData = new FormData(form);
+    const payload = {
+      company: String(formData.get("company") || "").trim(),
+      destinationCountry: String(formData.get("destinationCountry") || "").trim(),
+      productSku: String(formData.get("productSku") || "").trim(),
+      buyerIdentity: String(formData.get("buyerIdentity") || "").trim(),
+      estimatedQuantity: String(formData.get("estimatedQuantity") || "").trim(),
+      logoArtwork: String(formData.get("logoArtwork") || "").trim(),
+      packaging: String(formData.get("packaging") || "").trim(),
+      targetTimeline: String(formData.get("targetTimeline") || "").trim(),
+      message: String(formData.get("message") || "").trim(),
+      "cf-turnstile-response": turnstileToken,
+    };
+
+    setLoading(true);
+
+    try {
+      const res = await fetch(RFQ_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      let data: { success?: boolean; message?: string };
+      const contentType = res.headers.get("content-type") || "";
+      if (contentType.includes("application/json")) {
+        data = await res.json();
+      } else {
+        const textSample = (await res.text().catch(() => "")).slice(0, 200);
+        console.error("Non-JSON response:", res.status, textSample);
+        showError("Server error. Please try again or contact us at info@nixiafabric.com.");
+        return;
+      }
+
+      if (res.ok && data.success) {
+        window.location.href = "/thank-you/";
+      } else {
+        showError(data.message || "Submission failed. Please try again or contact us at info@nixiafabric.com.");
+      }
+    } catch (err) {
+      showError("Unable to reach the server. Please check your internet connection and try again.");
+    } finally {
+      setLoading(false);
+    }
+  });
+</script>
+
+<style>
+  .rfq-form__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+  }
+
+  .rfq-field {
+    display: grid;
+    gap: 0.45rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .rfq-field--full {
+    grid-column: 1 / -1;
+  }
+
+  .rfq-field__label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+  }
+
+  .rfq-field__input,
+  .rfq-field__select,
+  .rfq-field__textarea {
+    width: 100%;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-white);
+    color: var(--color-text);
+    padding: 0.85rem 1rem;
+    font: inherit;
+  }
+
+  .rfq-field__input:focus,
+  .rfq-field__select:focus,
+  .rfq-field__textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(196, 160, 53, 0.1);
+  }
+
+  .rfq-field__textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .rfq-form__turnstile {
+    margin-bottom: var(--space-lg);
+  }
+
+  .rfq-form__submit {
+    justify-self: start;
+    min-height: 48px;
+  }
+
+  .rfq-form__submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .rfq-form__submit:hover:not(:disabled) {
+    transform: translateY(-1px);
+  }
+
+  .rfq-form__spinner svg {
+    animation: rfq-form-spin 0.8s linear infinite;
+  }
+
+  @keyframes rfq-form-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .rfq-form__error {
+    display: none;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 0.875rem var(--space-md);
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: var(--radius-sm);
+    color: #dc2626;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+  }
+
+  .rfq-form__error:not([hidden]) {
+    display: flex;
+  }
+
+  .rfq-form__error svg {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 640px) {
+    .rfq-form__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .rfq-form__submit {
+      width: 100%;
+      justify-self: stretch;
+    }
+  }
+</style>

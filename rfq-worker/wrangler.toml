@@ -1,0 +1,52 @@
+# ============================================
+# Nixia Fabric — Inquiry Worker
+# Cloudflare Worker handling Contact & RFQ forms
+# Email delivery via native send_email binding
+# ============================================
+
+name = "nixia-fabric-inquiry"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+
+# ------------------------------------------------------------------
+# Environment variables
+# Configure real values with:
+#   cd rfq-worker
+#   wrangler secret put TURNSTILE_SECRET
+#   wrangler secret put RECIPIENT_EMAIL
+# ------------------------------------------------------------------
+
+# Allowed origin(s) for CORS — comma separated
+# Production: https://nixiafabric.com
+# Local dev:  http://localhost:4321
+[vars]
+ALLOWED_ORIGINS = "https://nixiafabric.com,http://localhost:4321,http://localhost:3000"
+
+# ------------------------------------------------------------------
+# Cloudflare native Email binding (send_email)
+# Destination address is the verified recipient inbox that receives
+# all inquiry notifications. It must be a verified Email Routing
+# destination address in your Cloudflare dashboard.
+# ------------------------------------------------------------------
+[[send_email]]
+name = "EMAIL"
+destination_address = "info@nixiafabric.com"
+
+# ------------------------------------------------------------------
+# Service Binding (RESERVED for future migration)
+# When you later switch from the public Worker URL to an internal
+# service-to-service call, expose this Worker under a service name:
+#
+#   [services]
+#   api-service = { binding = "INQUIRY_API", service = "nixia-fabric-inquiry" }
+#
+# The Worker code already reads env.INQUIRY_API (service binding)
+# as an alternative transport so the frontend only changes the
+# WORKER_URL env value — no business code changes required.
+# ------------------------------------------------------------------
+
+# ------------------------------------------------------------------
+# Observability (optional, requires paid plan)
+# ------------------------------------------------------------------
+[observability]
+enabled = true

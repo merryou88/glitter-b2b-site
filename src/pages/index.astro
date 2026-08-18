@@ -713,15 +713,12 @@ const workflowToneClass = (tone: string) => `workflow-step__icon--${tone}`;
         </ol>
       </div>
 
-      <div class="credential-footer">
-        <a class="credential-footer__action" href="/contact">Request Document List →</a>
+      <div class="credential-cta">
+        <CTAButton href="/manufacturing" variant="outline" size="lg">
+          View Full Manufacturing Page →
+        </CTAButton>
       </div>
-    </div>
-  </section>
 
-  <section class="section section--alt homepage-contact-cta" aria-label="Contact page prompt">
-    <div class="container container--narrow">
-      <p>Still have unanswered questions? Request samples or get a custom quote via our <a href="/contact">Contact page</a>.</p>
     </div>
   </section>
 
@@ -840,7 +837,7 @@ const workflowToneClass = (tone: string) => `workflow-step__icon--${tone}`;
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: saturate(0.92) contrast(1.02) brightness(1.01);
+    filter: sepia(0.08) saturate(0.95) contrast(1.02) brightness(1.02) hue-rotate(5deg);
   }
 
   .fabric-card__tag {
@@ -907,7 +904,7 @@ const workflowToneClass = (tone: string) => `workflow-step__icon--${tone}`;
   .fabric-card__body p {
     font-size: var(--text-sm);
     color: var(--color-text-muted);
-    line-height: 1.7;
+    line-height: var(--leading-relaxed);
     margin-bottom: var(--space-md);
   }
 
@@ -1315,7 +1312,7 @@ const workflowToneClass = (tone: string) => `workflow-step__icon--${tone}`;
 
   .rfq-card p {
     margin: 0;
-    line-height: 1.65;
+    line-height: var(--leading-relaxed);
   }
 
   .rfq-preview-grid {
@@ -1486,46 +1483,14 @@ const workflowToneClass = (tone: string) => `workflow-step__icon--${tone}`;
     height: 3rem;
     display: grid;
     place-items: center;
-    border-radius: 999px;
-    background: var(--workflow-icon-bg, #eef3f9);
-    color: var(--workflow-icon-color, #667085);
-    border: 1px solid var(--workflow-icon-border, #d8dfea);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  }
-
-  .workflow-step__icon--slate {
-    --workflow-icon-color: #667085;
-    --workflow-icon-bg: #f2f5f9;
-    --workflow-icon-border: #d8dfea;
-  }
-
-  .workflow-step__icon--gold {
-    --workflow-icon-color: #c8a45d;
-    --workflow-icon-bg: rgba(200, 164, 93, 0.12);
-    --workflow-icon-border: rgba(200, 164, 93, 0.26);
-  }
-
-  .workflow-step__icon--olive {
-    --workflow-icon-color: #7d8f63;
-    --workflow-icon-bg: rgba(125, 143, 99, 0.12);
-    --workflow-icon-border: rgba(125, 143, 99, 0.24);
-  }
-
-  .workflow-step__icon--warm {
-    --workflow-icon-color: #8b6a4e;
-    --workflow-icon-bg: rgba(139, 106, 78, 0.12);
-    --workflow-icon-border: rgba(139, 106, 78, 0.24);
-  }
-
-  .workflow-step__icon--mist {
-    --workflow-icon-color: #6f8fb0;
-    --workflow-icon-bg: rgba(111, 143, 176, 0.12);
-    --workflow-icon-border: rgba(111, 143, 176, 0.24);
+    border-radius: 14px;
+    background: rgba(200, 164, 93, 0.12);
+    color: var(--color-accent-dark);
   }
 
   .workflow-step__icon svg {
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 24px;
+    height: 24px;
   }
 
   .workflow-step--active .workflow-step__step {
@@ -1533,9 +1498,8 @@ const workflowToneClass = (tone: string) => `workflow-step__icon--${tone}`;
   }
 
   .workflow-step--active .workflow-step__icon {
-    background: rgba(200, 164, 93, 0.16);
-    border-color: rgba(200, 164, 93, 0.38);
-    color: #c8a45d;
+    background: rgba(200, 164, 93, 0.12);
+    color: var(--color-accent-dark);
   }
 
   .workflow-step strong {
@@ -1598,22 +1562,6 @@ const workflowToneClass = (tone: string) => `workflow-step__icon--${tone}`;
     color: var(--color-text-muted);
     line-height: 1.65;
     font-size: var(--text-sm);
-  }
-
-  .homepage-contact-cta {
-    padding-top: 0;
-  }
-
-  .homepage-contact-cta p {
-    margin: 0;
-    text-align: center;
-    color: var(--color-text-muted);
-    font-size: var(--text-base);
-  }
-
-  .homepage-contact-cta a {
-    color: var(--color-accent-dark);
-    font-weight: 700;
   }
 
   /* ==================== Factory Credentials ==================== */
@@ -1699,7 +1647,17 @@ const workflowToneClass = (tone: string) => `workflow-step__icon--${tone}`;
     margin: 0;
     color: var(--color-text-muted);
     font-size: var(--text-xs);
-    line-height: 1.45;
+    line-height: 1.6;
+  }
+
+  .credential-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-2xl);
+  }
+
+  .credential-cta :global(.btn) {
+    border-radius: 14px;
   }
 
   .qa-process {
@@ -1764,37 +1722,6 @@ const workflowToneClass = (tone: string) => `workflow-step__icon--${tone}`;
     border-color: var(--color-accent);
   }
 
-  .credential-footer {
-    margin-top: var(--space-2xl);
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .credential-footer__action {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.8rem 1.25rem;
-    border: 1px solid rgba(196, 160, 53, 0.28);
-    border-radius: 16px;
-    color: var(--color-primary);
-    background: rgba(196, 160, 53, 0.08);
-    text-decoration: none;
-    font-weight: 700;
-    white-space: nowrap;
-  }
-
-  .homepage-contact-cta {
-    padding-top: 0;
-  }
-
-  .homepage-contact-cta p {
-    text-align: center;
-    color: var(--color-text-muted);
-    font-size: var(--text-base);
-    margin: 0;
-  }
-
   /* ==================== Final CTA ==================== */
   .final-cta {
     background: #1e2b3e;
@@ -1834,7 +1761,7 @@ const workflowToneClass = (tone: string) => `workflow-step__icon--${tone}`;
   .final-cta__text {
     color: #f2ebdf;
     font-size: var(--text-lg);
-    line-height: 1.7;
+    line-height: var(--leading-relaxed);
     margin-bottom: var(--space-2xl);
   }
 
@@ -2032,11 +1959,6 @@ const workflowToneClass = (tone: string) => `workflow-step__icon--${tone}`;
       min-height: 280px;
     }
 
-    .credential-footer {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
     .buyer-resource-button,
     .rfq-form__submit {
       width: 100%;
@@ -2210,11 +2132,6 @@ const workflowToneClass = (tone: string) => `workflow-step__icon--${tone}`;
     .credential-item__icon {
       width: 52px;
       height: 52px;
-    }
-
-    .credential-footer {
-      padding: 1rem;
-      border-radius: 16px;
     }
 
     .support-grid {

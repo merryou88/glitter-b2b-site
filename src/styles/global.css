@@ -89,6 +89,12 @@ ol {
   --text-5xl: 3rem;
   --text-6xl: 3.75rem;
 
+  /* Line Heights */
+  --leading-tight: 1.2;
+  --leading-snug: 1.4;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.6;
+
   /* Spacing */
   --space-xs: 0.5rem;
   --space-sm: 0.75rem;
@@ -171,7 +177,7 @@ h4 {
 
 p {
   color: var(--color-text-secondary);
-  line-height: 1.7;
+  line-height: var(--leading-relaxed);
 }
 
 /* ---------- Layout Utilities ---------- */
@@ -505,7 +511,7 @@ p {
   .btn {
     width: 100%;
     white-space: normal;
-    min-height: 44px;
+    min-height: 48px;
   }
 
   .section-header p,

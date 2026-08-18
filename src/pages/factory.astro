@@ -729,7 +729,7 @@ const packingSteps = [
   .factory-intro__left p {
     margin-bottom: var(--space-md);
     font-size: var(--text-base);
-    line-height: 1.8;
+    line-height: var(--leading-relaxed);
   }
 
   .factory-intro__right {
@@ -918,7 +918,7 @@ const packingSteps = [
 
   .process-step__desc {
     font-size: var(--text-sm);
-    line-height: 1.7;
+    line-height: var(--leading-relaxed);
   }
 
   /* QC Grid */
@@ -960,7 +960,7 @@ const packingSteps = [
 
   .qc-card__desc {
     font-size: var(--text-sm);
-    line-height: 1.7;
+    line-height: var(--leading-relaxed);
   }
 
   /* Packing Grid */
@@ -1042,6 +1042,7 @@ const packingSteps = [
 
   .process-step-img__media img {
     object-fit: cover;
+    filter: sepia(0.08) saturate(0.95) brightness(1.02) hue-rotate(5deg);
   }
 
   .process-step-img__info {
@@ -1069,7 +1070,7 @@ const packingSteps = [
 
   .process-step-img__desc {
     font-size: var(--text-sm);
-    line-height: 1.7;
+    line-height: var(--leading-relaxed);
     color: var(--color-text-secondary);
   }
 
@@ -1212,7 +1213,7 @@ const packingSteps = [
 
   .visit-factory__item-text {
     font-size: var(--text-base);
-    line-height: 1.7;
+    line-height: var(--leading-relaxed);
     color: rgba(255, 255, 255, 0.72);
   }
 
@@ -1280,7 +1281,7 @@ const packingSteps = [
 
   .visit-factory__fallback-text {
     font-size: var(--text-base);
-    line-height: 1.7;
+    line-height: var(--leading-relaxed);
     color: rgba(255, 255, 255, 0.72);
     max-width: 360px;
   }

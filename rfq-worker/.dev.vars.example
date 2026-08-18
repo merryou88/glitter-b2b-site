@@ -1,0 +1,5 @@
+# Local development secrets for `wrangler dev`
+# Copy to `.dev.vars` and fill values. Never commit `.dev.vars`.
+
+TURNSTILE_SECRET=your_turnstile_secret_key
+RECIPIENT_EMAIL=info@nixiafabric.com
