@@ -7,8 +7,8 @@
 const navItems = [
   { label: "Home", href: "/" },
   { label: "Products", href: "/products", hasDropdown: true },
-  { label: "Manufacturing", href: "/manufacturing" },
-  { label: "News", href: "/blog" },
+  { label: "Factory", href: "/factory" },
+  { label: "Blog", href: "/blog" },
   { label: "About Us", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -152,13 +152,13 @@ const isProductSectionActive = currentPath.startsWith("/products");
           </ul>
         </li>
         <li>
-          <a href="/manufacturing" class:list={["header__mobile-link", { "is-active": isActive("/manufacturing") }]}>
-            Manufacturing
+          <a href="/factory" class:list={["header__mobile-link", { "is-active": isActive("/factory") }]}>
+            Factory
           </a>
         </li>
         <li>
           <a href="/blog" class:list={["header__mobile-link", { "is-active": isActive("/blog") }]}>
-            News
+            Blog
           </a>
         </li>
         <li>
