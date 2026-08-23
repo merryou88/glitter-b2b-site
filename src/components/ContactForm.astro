@@ -9,7 +9,7 @@
 // Backend endpoint comes from environment — NEVER hard-code the domain.
 // Set WORKER_URL in .env (dev) / .env.production (prod) or as a build var.
 const WORKER_URL = (import.meta.env.WORKER_URL ?? "").replace(/\/$/, "");
-const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/inquiry/contact` : "https://nixia-fabric-inquiry.sales-8db.workers.dev/api/inquiry/contact";
+const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nixia-fabric-inquiry.sales-8db.workers.dev/api/contact";
 const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY ?? "";
 ---
 
@@ -189,7 +189,7 @@ const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY ?? "";
       email: String(formData.get("email") || "").trim(),
       subject: String(formData.get("subject") || "").trim(),
       message: String(formData.get("message") || "").trim(),
-      "cf-turnstile-response": turnstileToken,
+      captcha: turnstileToken,
     };
 
     setLoading(true);

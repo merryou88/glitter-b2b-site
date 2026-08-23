@@ -10,7 +10,6 @@
 import Layout from "@layouts/Layout.astro";
 import HeroCarousel from "@components/HeroCarousel.astro";
 import CTAButton from "@components/CTAButton.astro";
-import RFQQuoteModal from "@components/RFQQuoteModal.astro";
 
 // WebPage structured data for SEO
 const webPageData = {
@@ -188,7 +187,8 @@ const renderWorkflowIcon = (type: string) => {
 const workflowToneClass = (tone: string) => `workflow-step__icon--${tone}`;
 
 const WORKER_URL = (import.meta.env.WORKER_URL ?? "").replace(/\/$/, "");
-const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/inquiry/rfq` : "https://nixia-fabric-inquiry.sales-8db.workers.dev/api/inquiry/rfq";
+const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabric-inquiry.sales-8db.workers.dev/api/rfq";
+const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY ?? "";
 
 // homepage section data continues below
 ---
@@ -479,15 +479,8 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/inquiry/rfq` : "https://nix
               <label for="rfq-inline-message">Message *</label>
               <textarea id="rfq-inline-message" name="message" rows="3" placeholder="Fabric type, end-use, quantity, color & backing requirements..." required></textarea>
             </div>
-            <div class="rfq-inline-form__field rfq-inline-form__field--captcha">
-              <label for="rfq-inline-captcha">CAPTCHA *</label>
-              <div class="rfq-inline-form__captcha-row">
-                <input type="text" id="rfq-inline-captcha" name="captcha" placeholder="Enter code" autocomplete="off" required />
-                <canvas id="rfq-inline-captcha-canvas" width="120" height="38" aria-label="CAPTCHA verification code"></canvas>
-                <button type="button" class="rfq-inline-form__captcha-refresh" id="rfq-captcha-refresh" aria-label="Refresh CAPTCHA">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
-                </button>
-              </div>
+            <div class="rfq-inline-form__field rfq-inline-form__field--turnstile">
+              <div class="rfq-inline-form__turnstile" id="rfq-inline-turnstile"></div>
             </div>
             <div class="rfq-inline-form__error" id="rfq-inline-error" role="alert" hidden></div>
             <button type="submit" class="btn btn--primary btn--lg rfq-inline-form__submit">
@@ -742,7 +735,6 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/inquiry/rfq` : "https://nix
       </div>
     </div>
   </section>
-  <RFQQuoteModal />
 </Layout>
 
 <style>
@@ -1365,42 +1357,8 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/inquiry/rfq` : "https://nix
     background: rgba(255, 255, 255, 0.15);
   }
 
-  .rfq-inline-form__captcha-row {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .rfq-inline-form__captcha-row input {
-    flex: 1;
-    min-width: 0;
-    min-height: 40px;
-    padding: 0.45rem 0.75rem;
-  }
-
-  .rfq-inline-form__captcha-row canvas {
-    border-radius: 6px;
-    flex-shrink: 0;
-    cursor: pointer;
-  }
-
-  .rfq-inline-form__captcha-refresh {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    flex-shrink: 0;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 8px;
-    color: rgba(245, 238, 226, 0.8);
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-
-  .rfq-inline-form__captcha-refresh:hover {
-    background: rgba(255, 255, 255, 0.2);
+  .rfq-inline-form__turnstile {
+    margin-bottom: 0;
   }
 
   .rfq-inline-form__error {
@@ -1419,6 +1377,11 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/inquiry/rfq` : "https://nix
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+  }
+
+  .rfq-inline-form__submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   .buyer-resource-list {
@@ -2257,19 +2220,19 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/inquiry/rfq` : "https://nix
   }
 </style>
 
-<script define:vars={{ RFQ_ENDPOINT }}>
+<script define:vars={{ RFQ_ENDPOINT, TURNSTILE_SITE_KEY }}>
 (function() {
-  const form = document.getElementById("rfq-inline-form");
+  var form = document.getElementById("rfq-inline-form");
   if (!form) return;
-  const errorEl = document.getElementById("rfq-inline-error");
-  const submitText = form.querySelector(".rfq-inline-form__submit-text");
-  const submitSpinner = form.querySelector(".rfq-inline-form__spinner");
-  const canvas = document.getElementById("rfq-inline-captcha-canvas");
-  const refreshBtn = document.getElementById("rfq-captcha-refresh");
-  const ctx = canvas ? canvas.getContext("2d") : null;
-  let captchaCode = "";
+  var errorEl = document.getElementById("rfq-inline-error");
+  var submitText = form.querySelector(".rfq-inline-form__submit-text");
+  var submitSpinner = form.querySelector(".rfq-inline-form__spinner");
+  var submitBtn = form.querySelector(".rfq-inline-form__submit");
 
-  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var turnstileToken = "";
+  var turnstileWidgetId = null;
+
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   function showError(msg) {
     if (errorEl) { errorEl.textContent = msg; errorEl.hidden = false; }
@@ -2278,45 +2241,45 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/inquiry/rfq` : "https://nix
     if (errorEl) errorEl.hidden = true;
   }
 
-  function generateCaptcha() {
-    if (!ctx || !canvas) return;
-    var chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-    captchaCode = "";
-    for (var i = 0; i < 5; i++) captchaCode += chars.charAt(Math.floor(Math.random() * chars.length));
-
-    var w = canvas.width, h = canvas.height;
-    ctx.fillStyle = "#1a2738";
-    ctx.fillRect(0, 0, w, h);
-
-    for (var i = 0; i < 30; i++) {
-      ctx.strokeStyle = "rgba(229,191,86," + (Math.random() * 0.3 + 0.1) + ")";
-      ctx.beginPath();
-      ctx.moveTo(Math.random() * w, Math.random() * h);
-      ctx.lineTo(Math.random() * w, Math.random() * h);
-      ctx.stroke();
-    }
-    for (var i = 0; i < 60; i++) {
-      ctx.fillStyle = "rgba(255,255,255," + (Math.random() * 0.15) + ")";
-      ctx.fillRect(Math.random() * w, Math.random() * h, 2, 2);
-    }
-
-    ctx.font = "bold 28px monospace";
-    ctx.textBaseline = "middle";
-    var gap = w / captchaCode.length;
-    for (var i = 0; i < captchaCode.length; i++) {
-      ctx.save();
-      ctx.fillStyle = "rgba(" + (200 + Math.floor(Math.random() * 55)) + "," + (180 + Math.floor(Math.random() * 60)) + "," + (80 + Math.floor(Math.random() * 50)) + ",1)";
-      ctx.translate(gap * i + gap / 2, h / 2);
-      ctx.rotate((Math.random() - 0.5) * 0.4);
-      ctx.fillText(captchaCode[i], -10, 0);
-      ctx.restore();
-    }
+  function updateSubmitState() {
+    if (!submitBtn) return;
+    var data = new FormData(form);
+    var allFilled = (data.get("name") || "").trim() &&
+                    (data.get("email") || "").trim() &&
+                    (data.get("message") || "").trim();
+    submitBtn.disabled = !allFilled || !turnstileToken;
   }
 
-  generateCaptcha();
+  function setLoading(loading) {
+    if (!submitBtn) return;
+    submitBtn.disabled = loading;
+    if (submitText) submitText.textContent = loading ? "Sending..." : "Send";
+    if (submitSpinner) submitSpinner.hidden = !loading;
+  }
 
-  if (canvas) canvas.addEventListener("click", generateCaptcha);
-  if (refreshBtn) refreshBtn.addEventListener("click", generateCaptcha);
+  if (TURNSTILE_SITE_KEY) {
+    var script = document.createElement("script");
+    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+    script.async = true;
+    script.defer = true;
+    script.onload = function() {
+      var win = window;
+      if (!win.turnstile) return;
+      var container = document.getElementById("rfq-inline-turnstile");
+      if (!container) return;
+      turnstileWidgetId = win.turnstile.render(container, {
+        sitekey: TURNSTILE_SITE_KEY,
+        theme: "dark",
+        callback: function(token) { turnstileToken = token; updateSubmitState(); },
+        "expired-callback": function() { turnstileToken = ""; updateSubmitState(); },
+        "error-callback": function() { turnstileToken = ""; updateSubmitState(); }
+      });
+    };
+    document.head.appendChild(script);
+  }
+
+  form.addEventListener("input", updateSubmitState);
+  updateSubmitState();
 
   form.addEventListener("submit", async function(e) {
     e.preventDefault();
@@ -2326,9 +2289,8 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/inquiry/rfq` : "https://nix
     var name = (data.get("name") || "").trim();
     var email = (data.get("email") || "").trim();
     var message = (data.get("message") || "").trim();
-    var captcha = (data.get("captcha") || "").trim().toUpperCase();
 
-    if (!name || !email || !message || !captcha) {
+    if (!name || !email || !message) {
       showError("Please fill in all required fields.");
       return;
     }
@@ -2336,20 +2298,18 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/inquiry/rfq` : "https://nix
       showError("Please enter a valid email address.");
       return;
     }
-    if (captcha !== captchaCode) {
-      showError("CAPTCHA code is incorrect. Please try again.");
-      generateCaptcha();
+    if (!turnstileToken) {
+      showError("Please complete the human verification.");
       return;
     }
 
-    if (submitText) submitText.textContent = "Sending...";
-    if (submitSpinner) submitSpinner.hidden = false;
+    setLoading(true);
 
     try {
       var resp = await fetch(RFQ_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: name, email: email, message: message }),
+        body: JSON.stringify({ name: name, email: email, message: message, captcha: turnstileToken }),
       });
       if (resp.ok) {
         window.location.href = "/thank-you";
@@ -2360,8 +2320,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/inquiry/rfq` : "https://nix
     } catch (err) {
       showError("Network error. Please check your connection and try again.");
     } finally {
-      if (submitText) submitText.textContent = "Send";
-      if (submitSpinner) submitSpinner.hidden = true;
+      setLoading(false);
     }
   });
 })();

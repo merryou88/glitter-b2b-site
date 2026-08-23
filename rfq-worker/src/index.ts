@@ -146,8 +146,11 @@ export function buildContactEmail(payload: Record<string, unknown>): EmailMessag
 
 /** RFQ form email template */
 export function buildRfqEmail(payload: Record<string, unknown>): EmailMessage {
+  const company = payload.company ? String(payload.company).trim() : "";
   const rows: Array<[string, unknown]> = [
-    ["Company", payload.company],
+    ["Name", payload.name],
+    ["Email", payload.email],
+    ["Company", company || "(not provided)"],
     ["Destination Country", payload.destinationCountry],
     ["Product SKU / Fabric Code", payload.productSku],
     ["Buyer Identity", payload.buyerIdentity],
@@ -226,17 +229,24 @@ function validateContact(payload: Record<string, unknown>): string | null {
 
 /** Validate RFQ payload. Returns error string or null when valid. */
 function validateRfq(payload: Record<string, unknown>): string | null {
-  if (!notEmpty(payload.company)) return "Company is required.";
+  if (!notEmpty(payload.name)) return "Name is required.";
+  if (!notEmpty(payload.email)) return "Email is required.";
+  if (!validEmail(payload.email)) return "A valid email address is required.";
   if (!notEmpty(payload.message)) return "Message is required.";
   return null;
 }
 
-const ROUTE_CONTACT = "/api/inquiry/contact";
-const ROUTE_RFQ = "/api/inquiry/rfq";
+const ROUTE_CONTACT = "/api/contact";
+const ROUTE_RFQ = "/api/rfq";
 
 async function handleRequest(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
   const url = new URL(request.url);
   const origin = isAllowedOrigin(request.headers.get("Origin"), env);
+
+  // DEBUG: print route matching info
+  console.log("实际pathname:", JSON.stringify(url.pathname));
+  console.log("ROUTE_CONTACT值:", JSON.stringify(ROUTE_CONTACT));
+  console.log("ROUTE_RFQ值:", JSON.stringify(ROUTE_RFQ));
 
   // CORS preflight
   if (request.method === "OPTIONS") {
@@ -274,6 +284,7 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
     validationError = validateContact(payload);
     if (!validationError) email = buildContactEmail(payload);
   } else if (url.pathname === ROUTE_RFQ) {
+    if (!payload.company) payload.company = "";
     validationError = validateRfq(payload);
     if (!validationError) email = buildRfqEmail(payload);
   } else {
@@ -284,34 +295,53 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
     return json(400, { success: false, message: validationError ?? "Invalid payload." }, origin);
   }
 
-  // Turnstile verification
-  const token = typeof payload["cf-turnstile-response"] === "string" ? payload["cf-turnstile-response"] : "";
-  const turnstileOk = await verifyTurnstile(token, env.TURNSTILE_SECRET);
+  // Turnstile verification — both Contact and RFQ forms
+  const captchaToken = typeof payload["captcha"] === "string" ? payload["captcha"] : "";
+  const turnstileOk = await verifyTurnstile(captchaToken, env.TURNSTILE_SECRET);
   if (!turnstileOk) {
     return json(403, { success: false, message: "Human verification failed. Please try again." }, origin);
   }
 
-  // Finalize email recipient — reserved for self-host migration transport
+  // Finalize email recipient
   email.to = env.RECIPIENT_EMAIL || "info@nixiafabric.com";
 
-  // Fire-and-forget email send, do NOT block the HTTP response.
-  // ctx.waitUntil keeps the Worker alive until the email is dispatched.
-  ctx.waitUntil(sendEmail(env, email));
+  // Return response FIRST, then fire-and-forget email.
+  // This guarantees the client always gets a JSON response quickly,
+  // even if the email send hangs or fails.
+  const successResponse = json(200, { success: true }, origin);
 
-  return json(200, { success: true }, origin);
+  ctx.waitUntil(
+    (async () => {
+      try {
+        await sendEmailWithTimeout(env, email, 10_000);
+      } catch (err) {
+        console.error("[inquiry-worker] email send failed:", err);
+      }
+    })()
+  );
+
+  return successResponse;
 }
 
 /**
- * Email transport abstraction.
- * Currently: Cloudflare send_email binding.
- * Reserved: when a Service Binding / internal transport is introduced,
- * add the branch here and flip a flag — the caller never changes.
+ * Email transport abstraction with timeout guard.
+ * Prevents the Worker from hanging if EMAIL.send never resolves.
  */
+async function sendEmailWithTimeout(env: Env, email: EmailMessage, ms: number): Promise<void> {
+  const result = await Promise.race([
+    env.EMAIL.send(email).then(() => "ok" as const),
+    new Promise<"timeout">((resolve) => setTimeout(() => resolve("timeout"), ms)),
+  ]);
+  if (result === "timeout") {
+    console.error("[inquiry-worker] email send timed out after", ms, "ms");
+  }
+}
+
+/** Legacy wrapper — kept for Contact route compatibility */
 async function sendEmail(env: Env, email: EmailMessage): Promise<void> {
   try {
     await env.EMAIL.send(email);
   } catch (err) {
-    // Log for observability without leaking internals to the client.
     console.error("[inquiry-worker] email send failed:", err);
   }
 }
