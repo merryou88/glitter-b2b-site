@@ -104,14 +104,15 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
 </div>
 
 <script define:vars={{ RFQ_ENDPOINT }}>
-  const form = document.getElementById("rfq-form") as HTMLFormElement | null;
-  const submitBtn = document.getElementById("rfq-form-submit") as HTMLButtonElement | null;
-  const submitText = submitBtn?.querySelector(".rfq-form__submit-text") as HTMLElement | null;
-  const submitSpinner = submitBtn?.querySelector(".rfq-form__spinner") as HTMLElement | null;
-  const errorBanner = document.getElementById("rfq-form-error") as HTMLElement | null;
-  const errorText = document.getElementById("rfq-form-error-text") as HTMLElement | null;
+(function () {
+  const form = document.getElementById("rfq-form");
+  const submitBtn = document.getElementById("rfq-form-submit");
+  const submitText = submitBtn ? submitBtn.querySelector(".rfq-form__submit-text") : null;
+  const submitSpinner = submitBtn ? submitBtn.querySelector(".rfq-form__spinner") : null;
+  const errorBanner = document.getElementById("rfq-form-error");
+  const errorText = document.getElementById("rfq-form-error-text");
 
-  function showError(message: string) {
+  function showError(message) {
     if (errorText) errorText.textContent = message;
     if (errorBanner) errorBanner.hidden = false;
     if (errorBanner) errorBanner.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -121,7 +122,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     if (errorBanner) errorBanner.hidden = true;
   }
 
-  function validateForm(): boolean {
+  function validateForm() {
     if (!form) return false;
     const data = new FormData(form);
     const company = String(data.get("company") || "").trim();
@@ -144,7 +145,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     submitBtn.disabled = !allFilled;
   }
 
-  function setLoading(loading: boolean) {
+  function setLoading(loading) {
     if (!submitBtn) return;
     submitBtn.disabled = loading;
     if (submitText) submitText.textContent = loading ? "Sending..." : "Send Quote Request";
@@ -182,7 +183,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
         body: JSON.stringify(payload),
       });
 
-      let data: { success?: boolean; message?: string };
+      let data = {};
       const contentType = res.headers.get("content-type") || "";
       if (contentType.includes("application/json")) {
         data = await res.json();
@@ -204,6 +205,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
       setLoading(false);
     }
   });
+})();
 </script>
 
 <style>

@@ -81,15 +81,17 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
 </div>
 
 <script define:vars={{ CONTACT_ENDPOINT }}>
-  const form = document.getElementById("contact-form") as HTMLFormElement | null;
-  const submitBtn = document.getElementById("form-submit-btn") as HTMLButtonElement | null;
-  const submitText = submitBtn?.querySelector(".form-submit__text") as HTMLElement | null;
-  const submitSpinner = submitBtn?.querySelector(".form-submit__spinner") as HTMLElement | null;
-  const submitArrow = submitBtn?.querySelector(".form-submit__arrow") as HTMLElement | null;
-  const errorBanner = document.getElementById("form-error") as HTMLElement | null;
-  const errorText = document.getElementById("form-error-text") as HTMLElement | null;
+(function () {
+  // NOTE: define:vars scripts are inlined without TS compilation — plain JS only.
+  const form = document.getElementById("contact-form");
+  const submitBtn = document.getElementById("form-submit-btn");
+  const submitText = submitBtn ? submitBtn.querySelector(".form-submit__text") : null;
+  const submitSpinner = submitBtn ? submitBtn.querySelector(".form-submit__spinner") : null;
+  const submitArrow = submitBtn ? submitBtn.querySelector(".form-submit__arrow") : null;
+  const errorBanner = document.getElementById("form-error");
+  const errorText = document.getElementById("form-error-text");
 
-  function showError(message: string) {
+  function showError(message) {
     if (errorText) errorText.textContent = message;
     if (errorBanner) errorBanner.hidden = false;
     if (errorBanner) errorBanner.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -99,7 +101,7 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
     if (errorBanner) errorBanner.hidden = true;
   }
 
-  function validateForm(): boolean {
+  function validateForm() {
     if (!form) return false;
     const data = new FormData(form);
     const name = String(data.get("name") || "").trim();
@@ -132,7 +134,7 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
     submitBtn.disabled = !allFilled;
   }
 
-  function setLoading(loading: boolean) {
+  function setLoading(loading) {
     if (!submitBtn) return;
     submitBtn.disabled = loading;
     if (submitText) submitText.textContent = loading ? "Sending..." : "Send Inquiry";
@@ -167,7 +169,7 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
         body: JSON.stringify(payload),
       });
 
-      let data: { success?: boolean; message?: string };
+      let data = {};
       const contentType = res.headers.get("content-type") || "";
       if (contentType.includes("application/json")) {
         data = await res.json();
@@ -189,6 +191,7 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
       setLoading(false);
     }
   });
+})();
 </script>
 
 <style>
