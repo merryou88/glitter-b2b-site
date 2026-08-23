@@ -67,7 +67,8 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 const toMobile = (src: string) => src.replace(/\.(png|jpe?g|webp)$/i, "-mobile.webp");
 ---
 
-<div class="hero-carousel" id="hero-carousel" role="region" aria-label="Hero carousel">
+<div class="hero-carousel-wrap">
+  <div class="hero-carousel" id="hero-carousel" role="region" aria-label="Hero carousel">
   <!-- Slides -->
   <div class="hero-carousel__track">
     {slides.map((slide, idx) => (
@@ -193,17 +194,28 @@ const toMobile = (src: string) => src.replace(/\.(png|jpe?g|webp)$/i, "-mobile.w
       ></button>
     ))}
   </div>
+  </div>
 </div>
 
 <style>
+  /* Outer wrap: content width, centered — aligns with header nav width */
+  .hero-carousel-wrap {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--space-lg);
+    box-sizing: border-box;
+    padding-top: var(--space-xl);
+  }
+
 .hero-carousel {
     position: relative;
     width: 100%;
     max-width: 100%;
-    /* Viewport-based height: shorter than full 16:9, caps on large
-       screens so images keep more of their original framing. */
-    height: clamp(400px, 62vh, 660px);
+    /* ~16:9 of the 1280px content column; height tapers on short viewports */
+    height: clamp(360px, 46vw, 720px);
     overflow: hidden;
+    border-radius: 8px;
     background-color: #0a0a0a;
   }
 
@@ -252,7 +264,7 @@ const toMobile = (src: string) => src.replace(/\.(png|jpe?g|webp)$/i, "-mobile.w
 
   @media (max-width: 768px) {
     .hero-carousel {
-      height: clamp(320px, 52vh, 480px);
+      height: clamp(280px, 62vw, 440px);
     }
 
     .hero-carousel__video {
