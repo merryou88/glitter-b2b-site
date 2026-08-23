@@ -198,11 +198,11 @@ const toMobile = (src: string) => src.replace(/\.(png|jpe?g|webp)$/i, "-mobile.w
 <style>
 .hero-carousel {
     position: relative;
-    margin-top: calc(-0.001 * var(--header-height));
     width: 100%;
     max-width: 100%;
-    padding-top: 56.25%;
-    max-height: 850px;
+    /* Viewport-based height: shorter than full 16:9, caps on large
+       screens so images keep more of their original framing. */
+    height: clamp(400px, 62vh, 660px);
     overflow: hidden;
     background-color: #0a0a0a;
   }
@@ -251,6 +251,10 @@ const toMobile = (src: string) => src.replace(/\.(png|jpe?g|webp)$/i, "-mobile.w
   }
 
   @media (max-width: 768px) {
+    .hero-carousel {
+      height: clamp(320px, 52vh, 480px);
+    }
+
     .hero-carousel__video {
       display: none;
     }
@@ -260,34 +264,36 @@ const toMobile = (src: string) => src.replace(/\.(png|jpe?g|webp)$/i, "-mobile.w
     }
   }
 
-  /* Bottom-up gradient overlay — subtle dark at bottom */
+  /* Bottom-up gradient overlay — light touch, only darkens lower third */
   .hero-carousel__overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.55) 0%,
-      rgba(0, 0, 0, 0.2) 40%,
-      transparent 65%
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.18) 30%,
+      transparent 55%
     );
   }
 
-  /* Content — left aligned, lower portion */
+  /* Content — horizontally & vertically centered */
   .hero-carousel__content {
     position: absolute;
     inset: 0;
-    padding: calc(var(--header-height) + 2rem) clamp(1.5rem, 5vw, 6rem) 0;
+    padding: calc(var(--header-height) * 0.5 + 1rem) clamp(1.5rem, 5vw, 6rem) clamp(2.5rem, 6vh, 4rem);
     z-index: 2;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 
   .hero-carousel__text {
     width: 100%;
-    max-width: 50vw;
-    text-align: left;
+    max-width: 720px;
+    text-align: center;
     overflow-wrap: anywhere;
   }
 
@@ -313,6 +319,7 @@ const toMobile = (src: string) => src.replace(/\.(png|jpe?g|webp)$/i, "-mobile.w
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   /* Buttons */
