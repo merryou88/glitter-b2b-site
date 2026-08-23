@@ -9,7 +9,7 @@
 // Backend endpoint comes from environment — NEVER hard-code the domain.
 // Set WORKER_URL in .env (dev) / .env.production (prod) or as a build var.
 const WORKER_URL = (import.meta.env.WORKER_URL ?? "").replace(/\/$/, "");
-const RFQ_ENDPOINT = `${WORKER_URL}/rfq`;
+const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/rfq` : "https://nixia-fabric-inquiry.sales-8db.workers.dev/rfq";
 const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY ?? "";
 ---
 
