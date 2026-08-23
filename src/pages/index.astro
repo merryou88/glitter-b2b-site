@@ -188,7 +188,7 @@ const renderWorkflowIcon = (type: string) => {
 const workflowToneClass = (tone: string) => `workflow-step__icon--${tone}`;
 
 const WORKER_URL = (import.meta.env.WORKER_URL ?? "").replace(/\/$/, "");
-const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/rfq` : "https://nixia-fabric-inquiry.sales-8db.workers.dev/rfq";
+const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/inquiry/rfq` : "https://nixia-fabric-inquiry.sales-8db.workers.dev/api/inquiry/rfq";
 
 // homepage section data continues below
 ---
