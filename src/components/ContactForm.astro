@@ -50,6 +50,12 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
       <textarea id="message" name="message" rows="5" class="form-field__textarea" placeholder="Product interest, color requirements, backing preference, quantity, timeline..."></textarea>
     </div>
 
+    <!-- Honeypot: hidden from humans, bots fill it and get rejected server-side -->
+    <div class="hp-field" aria-hidden="true">
+      <label for="company-website">Website</label>
+      <input type="text" id="company-website" name="website" tabindex="-1" autocomplete="off" />
+    </div>
+
     <button type="submit" class="form-submit" id="form-submit-btn" disabled>
       <span class="form-submit__text">Send Inquiry</span>
       <span class="form-submit__spinner" hidden>
@@ -149,6 +155,7 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
       email: String(formData.get("email") || "").trim(),
       subject: String(formData.get("subject") || "").trim(),
       message: String(formData.get("message") || "").trim(),
+      website: String(formData.get("website") || "").trim(),
     };
 
     setLoading(true);
@@ -185,6 +192,16 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
 </script>
 
 <style>
+  /* Honeypot — visually and accessibly hidden */
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+  }
+
   .contact-form__inner {
     display: block;
   }

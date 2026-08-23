@@ -77,6 +77,12 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
         <label for="rfq-message" class="rfq-field__label">Message *</label>
         <textarea id="rfq-message" name="message" rows="5" class="rfq-field__textarea" placeholder="Tell us your target application, color, backing and other custom fabric requirements..."></textarea>
       </div>
+
+      <!-- Honeypot: hidden from humans, bots fill it and get rejected server-side -->
+      <div class="hp-field" aria-hidden="true">
+        <label for="rfq-company-website">Website</label>
+        <input type="text" id="rfq-company-website" name="website" tabindex="-1" autocomplete="off" />
+      </div>
     </div>
 
     <button type="submit" class="btn btn--primary btn--lg rfq-form__submit" id="rfq-form-submit" disabled>
@@ -164,6 +170,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
       packaging: String(formData.get("packaging") || "").trim(),
       targetTimeline: String(formData.get("targetTimeline") || "").trim(),
       message: String(formData.get("message") || "").trim(),
+      website: String(formData.get("website") || "").trim(),
     };
 
     setLoading(true);
@@ -200,6 +207,16 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
 </script>
 
 <style>
+  /* Honeypot — visually and accessibly hidden */
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+  }
+
   .rfq-form__grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));

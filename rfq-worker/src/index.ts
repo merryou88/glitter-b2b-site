@@ -20,6 +20,8 @@ export interface Env {
   EMAIL: {
     send(message: EmailMessage): Promise<unknown>;
   };
+  /** Turnstile secret (set via `wrangler secret put TURNSTILE_SECRET`) */
+  TURNSTILE_SECRET: string;
   /** Recipient inbox for all inquiry notifications */
   RECIPIENT_EMAIL: string;
   /** Comma-separated allowed CORS origins */
@@ -256,6 +258,13 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
 
   if (typeof payload !== "object" || payload === null || Array.isArray(payload)) {
     return json(400, { success: false, message: "Invalid payload." }, origin);
+  }
+
+  // Honeypot check — bots fill the hidden "website" field, humans never see it.
+  // Silently drop: respond with fake success so bots don't retry with a new strategy.
+  if (typeof payload["website"] === "string" && payload["website"].trim().length > 0) {
+    console.log("[inquiry-worker] honeypot triggered, dropped submission");
+    return json(200, { success: true }, origin);
   }
 
   // Route dispatch

@@ -478,6 +478,11 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
               <label for="rfq-inline-message">Message *</label>
               <textarea id="rfq-inline-message" name="message" rows="3" placeholder="Fabric type, end-use, quantity, color & backing requirements..." required></textarea>
             </div>
+            <!-- Honeypot: hidden from humans, bots fill it and get rejected server-side -->
+            <div class="rfq-inline-hp" aria-hidden="true">
+              <label for="rfq-inline-website">Website</label>
+              <input type="text" id="rfq-inline-website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
             <div class="rfq-inline-form__error" id="rfq-inline-error" role="alert" hidden></div>
             <button type="submit" class="btn btn--primary btn--lg rfq-inline-form__submit">
               <span class="rfq-inline-form__submit-text">Send</span>
@@ -1351,6 +1356,15 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
   .rfq-inline-form__field textarea:focus {
     border-color: #e5bf56;
     background: rgba(255, 255, 255, 0.15);
+  }
+
+  .rfq-inline-hp {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    height: 0;
+    width: 0;
+    overflow: hidden;
   }
 
   .rfq-inline-form__error {
@@ -2257,6 +2271,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     var name = (data.get("name") || "").trim();
     var email = (data.get("email") || "").trim();
     var message = (data.get("message") || "").trim();
+    var website = (data.get("website") || "").trim();
 
     if (!name || !email || !message) {
       showError("Please fill in all required fields.");
@@ -2273,7 +2288,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
       var resp = await fetch(RFQ_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: name, email: email, message: message }),
+        body: JSON.stringify({ name: name, email: email, message: message, website: website }),
       });
       if (resp.ok) {
         window.location.href = "/thank-you/";
