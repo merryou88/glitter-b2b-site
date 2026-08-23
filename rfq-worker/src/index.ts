@@ -124,11 +124,13 @@ function kvTable(rows: Array<[string, unknown]>): string {
 
 /** Contact form email template */
 export function buildContactEmail(payload: Record<string, unknown>): EmailMessage {
+  const company = payload.company ? String(payload.company).trim() : "";
+  const subject = payload.subject ? String(payload.subject).trim() : "";
   const rows: Array<[string, unknown]> = [
     ["Name", payload.name],
-    ["Company", payload.company],
     ["Email", payload.email],
-    ["Subject", payload.subject],
+    ["Company", company || "(not provided)"],
+    ["Subject", subject || "(not provided)"],
     ["Message", payload.message],
   ];
   return {
@@ -203,10 +205,8 @@ function isAllowedOrigin(origin: string | null, env: Env): string | null {
 /** Validate contact payload. Returns error string or null when valid. */
 function validateContact(payload: Record<string, unknown>): string | null {
   if (!notEmpty(payload.name)) return "Name is required.";
-  if (!notEmpty(payload.company)) return "Company is required.";
   if (!notEmpty(payload.email)) return "Email is required.";
   if (!validEmail(payload.email)) return "A valid email address is required.";
-  if (!notEmpty(payload.subject)) return "Subject is required.";
   if (!notEmpty(payload.message)) return "Message is required.";
   return null;
 }

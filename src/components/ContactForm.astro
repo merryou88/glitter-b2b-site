@@ -29,8 +29,8 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
         <input type="text" id="name" name="name" class="form-field__input" placeholder="Your full name" autocomplete="name" />
       </div>
       <div class="form-field">
-        <label for="company" class="form-field__label">Company *</label>
-        <input type="text" id="company" name="company" class="form-field__input" placeholder="Your company name" autocomplete="organization" />
+        <label for="company" class="form-field__label">Company</label>
+        <input type="text" id="company" name="company" class="form-field__input" placeholder="Your company name (optional)" autocomplete="organization" />
       </div>
     </div>
 
@@ -40,8 +40,8 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
         <input type="email" id="email" name="email" class="form-field__input" placeholder="you@company.com" autocomplete="email" />
       </div>
       <div class="form-field">
-        <label for="subject" class="form-field__label">Subject *</label>
-        <input type="text" id="subject" name="subject" class="form-field__input" placeholder="e.g. Request free sample — glitter synthetic leather for shoes" />
+        <label for="subject" class="form-field__label">Subject</label>
+        <input type="text" id="subject" name="subject" class="form-field__input" placeholder="e.g. Request free sample — glitter synthetic leather for shoes (optional)" />
       </div>
     </div>
 
@@ -105,13 +105,11 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
     if (!form) return false;
     const data = new FormData(form);
     const name = String(data.get("name") || "").trim();
-    const company = String(data.get("company") || "").trim();
     const email = String(data.get("email") || "").trim();
-    const subject = String(data.get("subject") || "").trim();
     const message = String(data.get("message") || "").trim();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!name || !company || !email || !subject || !message) {
+    if (!name || !email || !message) {
       showError("Please fill in all required fields.");
       return false;
     }
@@ -127,7 +125,7 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
     const allFilled = (() => {
       if (!form) return false;
       const data = new FormData(form);
-      return ["name", "company", "email", "subject", "message"].every(
+      return ["name", "email", "message"].every(
         (k) => String(data.get(k) || "").trim().length > 0
       );
     })();

@@ -25,8 +25,8 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
   <form class="rfq-form__inner" id="rfq-form" novalidate>
     <div class="rfq-form__grid">
       <div class="rfq-field">
-        <label for="rfq-company" class="rfq-field__label">Company *</label>
-        <input type="text" id="rfq-company" name="company" class="rfq-field__input" placeholder="Your company name" autocomplete="organization" />
+        <label for="rfq-company" class="rfq-field__label">Company</label>
+        <input type="text" id="rfq-company" name="company" class="rfq-field__input" placeholder="Your company name (optional)" autocomplete="organization" />
       </div>
 
       <div class="rfq-field">
@@ -125,11 +125,10 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
   function validateForm() {
     if (!form) return false;
     const data = new FormData(form);
-    const company = String(data.get("company") || "").trim();
     const message = String(data.get("message") || "").trim();
 
-    if (!company || !message) {
-      showError("Please fill in all required fields (Company and Message).");
+    if (!message) {
+      showError("Please tell us about your fabric requirements (Message).");
       return false;
     }
     return true;
@@ -140,7 +139,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     const allFilled = (() => {
       if (!form) return false;
       const data = new FormData(form);
-      return ["company", "message"].every((k) => String(data.get(k) || "").trim().length > 0);
+      return ["message"].every((k) => String(data.get(k) || "").trim().length > 0);
     })();
     submitBtn.disabled = !allFilled;
   }
