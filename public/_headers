@@ -13,6 +13,16 @@
 /_astro/*.js
   Cache-Control: public, max-age=31536000, immutable
 
+# Images - cache for 30 days
+/*.webp
+  Cache-Control: public, max-age=2592000
+/*.png
+  Cache-Control: public, max-age=2592000
+/*.jpg
+  Cache-Control: public, max-age=2592000
+/*.jpeg
+  Cache-Control: public, max-age=2592000
+
 # SVG images - cache for 30 days
 /*.svg
   Cache-Control: public, max-age=2592000

@@ -9,7 +9,9 @@ export default defineConfig({
   trailingSlash: 'always',
   build: {
     inlineStylesheets: 'auto',
+    format: 'directory',
   },
+  compressHTML: true,
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'hover',

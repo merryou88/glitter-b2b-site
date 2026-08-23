@@ -26,46 +26,64 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 
 const popularProducts = [
   {
-    title: "Metallic Foil-Printed Synthetic Leather",
-    description: "Reflective surface for stage and party projects.",
-    image: "/images/preview_hotstamping_foil.jpg",
-    alt: "Metallic Foil-Printed Synthetic Leather",
+    title: "Full‑Print Hot‑Stamping Spandex Milk‑Silk Fabric",
+    description: "Stretchy 4‑way stretch, soft hand‑feel. Ideal for fashion garments, swimwear & stage performance costumes.",
+    image: "/images/hot01.jpg",
+    webp: "",
+    alt: "Full‑Print Hot‑Stamping Spandex Milk‑Silk Fabric",
     href: "/products",
+    moq: "MOQ 100m",
+    badge: "In‑Stock Available",
   },
   {
-    title: "Gold Foil-Printed Synthetic Leather",
-    description: "Premium gold finish with strong visual impact.",
-    image: "/images/preview_hotstamping_foil.jpg",
-    alt: "Gold Foil-Printed Synthetic Leather",
+    title: "Iridescent Laser Hot‑Stamping Stretch Ice‑Silk Fabric",
+    description: "Elastic, gradient multi‑color finish. Great for stage costumes and backdrop decoration.",
+    image: "/images/hot02.jpg",
+    webp: "/images/hot02.webp",
+    alt: "Iridescent Laser Hot‑Stamping Stretch Ice‑Silk Fabric",
     href: "/products",
+    moq: "MOQ 100m",
+    badge: "In‑Stock Available",
   },
   {
-    title: "Silver Foil-Printed Synthetic Leather",
-    description: "Bright silver surface for trims and decor.",
-    image: "/images/preview_hotstamping_foil.jpg",
-    alt: "Silver Foil-Printed Synthetic Leather",
+    title: "Non‑Woven Glitter Fabric",
+    description: "Sparkling glitter surface, widely used for holiday decoration, stage props & performance costumes.",
+    image: "/images/hot03.jpg",
+    webp: "/images/hot03.webp",
+    alt: "Non‑Woven Glitter Fabric",
     href: "/products",
+    moq: "MOQ 200m",
+    badge: "In‑Stock Available",
   },
   {
-    title: "Chunky Glitter + Foil-Printed Composite Fabric",
-    description: "Composite fabric with glitter and foil finish.",
-    image: "/images/detail_glitter_main.jpg",
-    alt: "Chunky Glitter + Foil-Printed Composite Fabric",
+    title: "Iridescent Gradient Laser Hot‑Stamping Ice‑Silk Fabric",
+    description: "Stretchy fabric with multi‑color iridescent finish, suitable for fashion apparel, stage costumes and backdrop decoration.",
+    image: "/images/hot04.jpg",
+    webp: "/images/hot04.webp",
+    alt: "Iridescent Gradient Laser Hot‑Stamping Ice‑Silk Fabric",
     href: "/products",
+    moq: "MOQ 100m",
+    badge: "In‑Stock Available",
   },
   {
-    title: "Elastic Chunky Glitter Synthetic Leather",
-    description: "Stretchable glitter fabric for footwear and bags.",
-    image: "/images/preview_chunky_glitter.jpg",
-    alt: "Elastic Chunky Glitter Synthetic Leather",
+    title: "Plain Iridescent Laser Hot‑Stamping Spandex 4‑Way Stretch Fabric",
+    description: "High 4‑way stretch performance, ideal for western‑style bodysuits, swimwear and fashionable stage garments.",
+    image: "/images/hot05.jpg",
+    webp: "",
+    alt: "Plain Iridescent Laser Hot‑Stamping Spandex 4‑Way Stretch Fabric",
     href: "/products",
+    moq: "MOQ 100m",
+    badge: "In‑Stock Available",
   },
   {
-    title: "Elastic PU Chunky Glitter Synthetic Leather",
-    description: "Durable PU base with bonded glitter finish.",
-    image: "/images/backing_pu_coated.jpg",
-    alt: "Elastic PU Chunky Glitter Synthetic Leather",
+    title: "Rainbow Gradient Glitter Synthetic Leather Fabric",
+    description: "Reflective glitter finish, widely applied for bags, footwear and book‑covering materials.",
+    image: "/images/hot06.jpg",
+    webp: "/images/hot06.webp",
+    alt: "Rainbow Gradient Glitter Synthetic Leather Fabric",
     href: "/products",
+    moq: "MOQ 200m",
+    badge: "3‑7 Days Lead Time",
   },
 ];
 
@@ -170,7 +188,7 @@ const renderWorkflowIcon = (type: string) => {
 const workflowToneClass = (tone: string) => `workflow-step__icon--${tone}`;
 
 const WORKER_URL = (import.meta.env.WORKER_URL ?? "").replace(/\/$/, "");
-const RFQ_ENDPOINT = `${WORKER_URL}/api/inquiry/rfq`;
+const RFQ_ENDPOINT = `${WORKER_URL}/rfq`;
 
 // homepage section data continues below
 ---
@@ -215,17 +233,17 @@ const RFQ_ENDPOINT = `${WORKER_URL}/api/inquiry/rfq`;
         <div>
           <span class="eyebrow">HOT SELLING</span>
           <h2>Popular Products</h2>
-          <p>Bulk OEM &amp; ODM glitter and hot-stamping foil fabrics. Clear MOQ, sample support and export-ready packing.</p>
+          <p>Premium fabrics for fashion, swimwear, stage costumes, footwear &amp; bags. OEM &amp; ODM available, sample service offered.</p>
         </div>
         <a href="/products" class="view-all-link">View All →</a>
       </div>
 
-      <div class="grid grid--3 fabric-series-grid">
+      <div class="grid fabric-series-grid">
           {popularProducts.map((item) => (
             <a href={item.href} class="fabric-card fabric-card--split">
               <div class="fabric-card__visual">
                 <picture>
-                  <source srcset={toWebp(item.image)} type="image/webp" />
+                  {item.webp && <source srcset={item.webp} type="image/webp" />}
                   <img src={item.image} alt={item.alt} width="1200" height="675" loading="lazy" decoding="async" />
                 </picture>
               </div>
@@ -234,8 +252,8 @@ const RFQ_ENDPOINT = `${WORKER_URL}/api/inquiry/rfq`;
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
                 <div class="fabric-card__meta">
-                  <span>MOQ 200m</span>
-                  <span>Lead time 15-20 days</span>
+                  <span>{item.moq}</span>
+                  <span>{item.badge}</span>
                 </div>
               </div>
             </a>
@@ -733,13 +751,14 @@ const RFQ_ENDPOINT = `${WORKER_URL}/api/inquiry/rfq`;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    text-align: left;
     max-width: 100%;
     margin-inline: 0;
   }
 
   .section-header--row > div {
     max-width: 720px;
+    text-align: center;
+    margin: 0 auto;
   }
 
   .view-all-link {
@@ -757,8 +776,8 @@ const RFQ_ENDPOINT = `${WORKER_URL}/api/inquiry/rfq`;
   }
 
   .fabric-series-grid {
-    gap: var(--space-2xl);
-    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-3xl) var(--space-2xl);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .fabric-card {

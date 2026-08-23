@@ -166,13 +166,18 @@ const allStructuredData = structuredData
     <!-- Performance: Preconnect & DNS Prefetch -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 
-    <!-- Fonts: Inter -->
+    <!-- LCP: Preload hero image -->
+    <link rel="preload" as="image" href="/image/home/slide1.webp" type="image/webp" fetchpriority="high" />
+
+    <!-- Fonts: Inter (with font-display: swap via URL param) -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
 
     <!-- Structured Data -->
     {allStructuredData.map((data) => (
