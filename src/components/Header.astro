@@ -5,11 +5,11 @@
  */
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "Products", href: "/products" },
-  { label: "Factory", href: "/factory" },
-  { label: "Blog", href: "/blog" },
-  { label: "About Us", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Products", href: "/products/" },
+  { label: "Factory", href: "/factory/" },
+  { label: "Blog", href: "/blog/" },
+  { label: "About Us", href: "/about/" },
+  { label: "Contact", href: "/contact/" },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -54,7 +54,7 @@ const isProductSectionActive = currentPath.startsWith("/products");
 
     <!-- Desktop CTA -->
     <div class="header__actions">
-      <a href="/contact" class="btn btn--dark header__btn">
+      <a href="/contact/" class="btn btn--dark header__btn">
         Request Sample &amp; Quote →
       </a>
     </div>
@@ -83,34 +83,34 @@ const isProductSectionActive = currentPath.startsWith("/products");
           </a>
         </li>
         <li>
-          <a href="/products" class:list={["header__mobile-link", { "is-active": isActive("/products") }]}>
+          <a href="/products/" class:list={["header__mobile-link", { "is-active": isActive("/products/") }]}>
             Products
           </a>
         </li>
         <li>
-          <a href="/factory" class:list={["header__mobile-link", { "is-active": isActive("/factory") }]}>
+          <a href="/factory/" class:list={["header__mobile-link", { "is-active": isActive("/factory/") }]}>
             Factory
           </a>
         </li>
         <li>
-          <a href="/blog" class:list={["header__mobile-link", { "is-active": isActive("/blog") }]}>
+          <a href="/blog/" class:list={["header__mobile-link", { "is-active": isActive("/blog/") }]}>
             Blog
           </a>
         </li>
         <li>
-          <a href="/about" class:list={["header__mobile-link", { "is-active": isActive("/about") }]}> 
+          <a href="/about/" class:list={["header__mobile-link", { "is-active": isActive("/about/") }]}> 
             About Us
           </a>
         </li>
         <li>
-          <a href="/contact" class:list={["header__mobile-link", { "is-active": isActive("/contact") }]}>
+          <a href="/contact/" class:list={["header__mobile-link", { "is-active": isActive("/contact/") }]}>
             Contact
           </a>
         </li>
       </ul>
     </nav>
     <div class="header__mobile-actions">
-      <a href="/contact" class="btn btn--dark btn--block">
+      <a href="/contact/" class="btn btn--dark btn--block">
         Request Sample &amp; Quote →
       </a>
     </div>

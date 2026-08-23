@@ -20,8 +20,6 @@ export interface Env {
   EMAIL: {
     send(message: EmailMessage): Promise<unknown>;
   };
-  /** Turnstile secret (set via `wrangler secret put TURNSTILE_SECRET`) */
-  TURNSTILE_SECRET: string;
   /** Recipient inbox for all inquiry notifications */
   RECIPIENT_EMAIL: string;
   /** Comma-separated allowed CORS origins */
@@ -200,22 +198,6 @@ function isAllowedOrigin(origin: string | null, env: Env): string | null {
   return null;
 }
 
-/** Cloudflare Turnstile server-side verification */
-async function verifyTurnstile(token: string, secret: string): Promise<boolean> {
-  if (!token || !secret) return false;
-  try {
-    const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ secret, response: token }),
-    });
-    const data = (await res.json()) as { success?: boolean };
-    return data.success === true;
-  } catch {
-    return false;
-  }
-}
-
 /** Validate contact payload. Returns error string or null when valid. */
 function validateContact(payload: Record<string, unknown>): string | null {
   if (!notEmpty(payload.name)) return "Name is required.";
@@ -293,13 +275,6 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
 
   if (validationError || !email) {
     return json(400, { success: false, message: validationError ?? "Invalid payload." }, origin);
-  }
-
-  // Turnstile verification — both Contact and RFQ forms
-  const captchaToken = typeof payload["captcha"] === "string" ? payload["captcha"] : "";
-  const turnstileOk = await verifyTurnstile(captchaToken, env.TURNSTILE_SECRET);
-  if (!turnstileOk) {
-    return json(403, { success: false, message: "Human verification failed. Please try again." }, origin);
   }
 
   // Finalize email recipient

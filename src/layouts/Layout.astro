@@ -139,7 +139,7 @@ const allStructuredData = structuredData
     <!-- Mobile / PWA -->
     <meta name="theme-color" content="#16294d" />
     <meta name="format-detection" content="telephone=no" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Nixia Fabric" />
 
     <!-- Open Graph -->
@@ -167,8 +167,9 @@ const allStructuredData = structuredData
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- LCP: Preload hero image -->
-    <link rel="preload" as="image" href="/image/home/slide1.webp" type="image/webp" fetchpriority="high" />
+    <!-- LCP: Preload hero image (desktop & mobile variants) -->
+    <link rel="preload" as="image" href="/image/home/slide1.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/image/home/slide1-mobile.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />
 
     <!-- Fonts: Inter (with font-display: swap via URL param) -->
     <link

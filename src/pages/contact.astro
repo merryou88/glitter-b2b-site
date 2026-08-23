@@ -2,7 +2,6 @@
 /**
  * Contact Page — /contact
  * Form submission via Cloudflare Worker (/api/inquiry/contact)
- * Anti-bot: Cloudflare Turnstile
  * Success → redirect to /thank-you; Failure → inline error message
  */
 import Layout from "@layouts/Layout.astro";
@@ -106,21 +105,21 @@ const contactPageData = {
 
           <div class="contact-quick-links">
             <h3 class="contact-quick-links__title">Quick Links</h3>
-            <a href="/sample-policy" class="contact-quick-links__item">
+            <a href="/sample-policy/" class="contact-quick-links__item">
               <span>Sample Policy</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
             </a>
-            <a href="/certifications" class="contact-quick-links__item">
+            <a href="/certifications/" class="contact-quick-links__item">
               <span>Certifications</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
             </a>
-            <a href="/products" class="contact-quick-links__item">
+            <a href="/products/" class="contact-quick-links__item">
               <span>All Fabrics</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12" />

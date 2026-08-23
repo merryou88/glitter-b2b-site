@@ -16,55 +16,55 @@ interface Slide {
 
 const slides: Slide[] = [
   {
-    image: "/image/home/slide1.png",
+    image: "/image/home/slide1.webp",
     title: "Specialty Fabrics for Fashion & Creative Products",
     description:
       "Iridescent, glitter and foil‑effect fabrics designed to bring distinctive finishes to your products.",
     buttons: [
-      { label: "Explore Fabrics", href: "/products", variant: "primary" },
+      { label: "Explore Fabrics", href: "/products/", variant: "primary" },
       { label: "Request Samples", href: "#rfq-form", variant: "outline" },
     ],
   },
   {
-    image: "/image/home/slide2.png",
+    image: "/image/home/slide2.webp",
     title: "Wholesale Glitter Fabrics | Factory Direct Supply",
     description:
       "Bulk purchase support, free sample offered, custom colors & patterns. Perfect for shoes, bags, toys & DIY craft.",
     buttons: [
-      { label: "Explore Products", href: "/products", variant: "primary" },
+      { label: "Explore Products", href: "/products/", variant: "primary" },
     ],
   },
   {
-    image: "/image/home/slide3.png",
+    image: "/image/home/slide3.webp",
     title: "Strict In-House Quality Control",
     description:
       "Every batch undergoes full-range inspection during production. SGS Certified, REACH Compliant — test reports available upon request.",
     buttons: [
-      { label: "Get Custom Quotation", href: "/contact", variant: "primary" },
+      { label: "Get Custom Quotation", href: "/contact/", variant: "primary" },
     ],
   },
   {
-    image: "/image/home/slide4.png",
+    image: "/image/home/slide4.webp",
     title: "Well-Managed Warehouse & Export Support",
     description:
       "Organized warehouse for finished fabric stock. Support FOB and CIF international trade terms for global shipment.",
     buttons: [
-      { label: "Quality Control", href: "/factory", variant: "primary" },
+      { label: "Quality Control", href: "/factory/", variant: "primary" },
     ],
   },
   {
-    image: "/image/home/slide5.png",
+    image: "/image/home/slide5.webp",
     title: "Fabric for Finished Shoes and Bags",
     description:
       "Our Foil-Printed Synthetic Leather and Chunky Glitter Synthetic Leather are widely applied for footwear, handbags and fashion accessories. Custom Color Matching available for your end-product projects.",
     buttons: [
-      { label: "Get Free Quote", href: "/contact", variant: "primary" },
+      { label: "Get Free Quote", href: "/contact/", variant: "primary" },
     ],
   },
 ];
 
 const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
-const toMobile = (src: string) => src.replace(/\.(png|jpe?g)$/i, "-mobile.webp");
+const toMobile = (src: string) => src.replace(/\.(png|jpe?g|webp)$/i, "-mobile.webp");
 ---
 
 <div class="hero-carousel" id="hero-carousel" role="region" aria-label="Hero carousel">

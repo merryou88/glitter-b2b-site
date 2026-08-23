@@ -30,7 +30,7 @@ const popularProducts = [
     image: "/images/hot01.jpg",
     webp: "",
     alt: "Full‑Print Hot‑Stamping Spandex Milk‑Silk Fabric",
-    href: "/products",
+    href: "/products/",
     moq: "MOQ 100m",
     badge: "In‑Stock Available",
   },
@@ -40,7 +40,7 @@ const popularProducts = [
     image: "/images/hot02.jpg",
     webp: "/images/hot02.webp",
     alt: "Iridescent Laser Hot‑Stamping Stretch Ice‑Silk Fabric",
-    href: "/products",
+    href: "/products/",
     moq: "MOQ 100m",
     badge: "In‑Stock Available",
   },
@@ -50,7 +50,7 @@ const popularProducts = [
     image: "/images/hot03.jpg",
     webp: "/images/hot03.webp",
     alt: "Non‑Woven Glitter Fabric",
-    href: "/products",
+    href: "/products/",
     moq: "MOQ 200m",
     badge: "In‑Stock Available",
   },
@@ -60,7 +60,7 @@ const popularProducts = [
     image: "/images/hot04.jpg",
     webp: "/images/hot04.webp",
     alt: "Iridescent Gradient Laser Hot‑Stamping Ice‑Silk Fabric",
-    href: "/products",
+    href: "/products/",
     moq: "MOQ 100m",
     badge: "In‑Stock Available",
   },
@@ -70,7 +70,7 @@ const popularProducts = [
     image: "/images/hot05.jpg",
     webp: "",
     alt: "Plain Iridescent Laser Hot‑Stamping Spandex 4‑Way Stretch Fabric",
-    href: "/products",
+    href: "/products/",
     moq: "MOQ 100m",
     badge: "In‑Stock Available",
   },
@@ -80,7 +80,7 @@ const popularProducts = [
     image: "/images/hot06.jpg",
     webp: "/images/hot06.webp",
     alt: "Rainbow Gradient Glitter Synthetic Leather Fabric",
-    href: "/products",
+    href: "/products/",
     moq: "MOQ 200m",
     badge: "3‑7 Days Lead Time",
   },
@@ -93,28 +93,28 @@ const applications = [
     description: "Uppers, clutches, hair-accessories & fashion trims.",
     image: "/shots/application-shoes-glitter-fabric.jpg",
     alt: "Foil fabric used in footwear",
-    href: "/products",
+    href: "/products/",
   },
   {
     title: "Fabrics for Stage & Costume",
     description: "Stagewear, dance costumes, cosplay and carnival performance outfits.",
     image: "/shots/application-handbags-glitter-fabric.jpg",
     alt: "Foil fabric used in handbags and purses",
-    href: "/products",
+    href: "/products/",
   },
   {
     title: "Fabrics for Night-Club & KTV Upholstery",
     description: "KTV booth & nightclub wall soft-pack interior decoration. Fire-retardant optional.",
     image: "/shots/application-accessories-glitter-fabric.jpg",
     alt: "Foil fabric used in fashion accessories",
-    href: "/products",
+    href: "/products/",
   },
   {
     title: "Fabrics for Toys, Crafts & Festive Decor",
     description: "Toy covers, DIY craft materials, party backdrop & Christmas decorative projects.",
     image: "/shots/application-fashion-trim-glitter-fabric.jpg",
     alt: "Foil fabric used in garment trimming",
-    href: "/products",
+    href: "/products/",
   },
 ];
 
@@ -188,7 +188,6 @@ const workflowToneClass = (tone: string) => `workflow-step__icon--${tone}`;
 
 const WORKER_URL = (import.meta.env.WORKER_URL ?? "").replace(/\/$/, "");
 const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabric-inquiry.sales-8db.workers.dev/api/rfq";
-const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY ?? "";
 
 // homepage section data continues below
 ---
@@ -235,7 +234,7 @@ const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY ?? "";
           <h2>Popular Products</h2>
           <p>Premium fabrics for fashion, swimwear, stage costumes, footwear &amp; bags. OEM &amp; ODM available, sample service offered.</p>
         </div>
-        <a href="/products" class="view-all-link">View All →</a>
+        <a href="/products/" class="view-all-link">View All →</a>
       </div>
 
       <div class="grid fabric-series-grid">
@@ -479,9 +478,6 @@ const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY ?? "";
               <label for="rfq-inline-message">Message *</label>
               <textarea id="rfq-inline-message" name="message" rows="3" placeholder="Fabric type, end-use, quantity, color & backing requirements..." required></textarea>
             </div>
-            <div class="rfq-inline-form__field rfq-inline-form__field--turnstile">
-              <div class="rfq-inline-form__turnstile" id="rfq-inline-turnstile"></div>
-            </div>
             <div class="rfq-inline-form__error" id="rfq-inline-error" role="alert" hidden></div>
             <button type="submit" class="btn btn--primary btn--lg rfq-inline-form__submit">
               <span class="rfq-inline-form__submit-text">Send</span>
@@ -538,7 +534,7 @@ const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY ?? "";
           </ol>
 
           <div class="workflow-timeline__actions">
-            <a href="/products" class="btn btn--outline btn--lg">Browse Stock Products →</a>
+            <a href="/products/" class="btn btn--outline btn--lg">Browse Stock Products →</a>
           </div>
         </article>
 
@@ -560,7 +556,7 @@ const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY ?? "";
           </ol>
 
           <div class="workflow-timeline__actions">
-            <a href="/contact" class="btn btn--primary btn--lg">Request Custom Quote →</a>
+            <a href="/contact/" class="btn btn--primary btn--lg">Request Custom Quote →</a>
           </div>
         </article>
       </div>
@@ -704,7 +700,7 @@ const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY ?? "";
       </div>
 
       <div class="credential-cta">
-        <CTAButton href="/factory" variant="outline" size="lg">
+        <CTAButton href="/factory/" variant="outline" size="lg">
           View Full Manufacturing Page →
         </CTAButton>
       </div>
@@ -725,7 +721,7 @@ const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY ?? "";
           <span class="final-cta__tag">Custom samples in 3-7 days</span>
         </div>
         <div class="final-cta__actions">
-          <CTAButton href="/contact" variant="primary" size="lg">
+          <CTAButton href="/contact/" variant="primary" size="lg">
             Get Custom Quote
           </CTAButton>
           <CTAButton href="https://wa.me/8613800000000" variant="secondary" size="lg" target="_blank" rel="noopener noreferrer">
@@ -1355,10 +1351,6 @@ const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY ?? "";
   .rfq-inline-form__field textarea:focus {
     border-color: #e5bf56;
     background: rgba(255, 255, 255, 0.15);
-  }
-
-  .rfq-inline-form__turnstile {
-    margin-bottom: 0;
   }
 
   .rfq-inline-form__error {
@@ -2220,7 +2212,7 @@ const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY ?? "";
   }
 </style>
 
-<script define:vars={{ RFQ_ENDPOINT, TURNSTILE_SITE_KEY }}>
+<script define:vars={{ RFQ_ENDPOINT }}>
 (function() {
   var form = document.getElementById("rfq-inline-form");
   if (!form) return;
@@ -2228,9 +2220,6 @@ const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY ?? "";
   var submitText = form.querySelector(".rfq-inline-form__submit-text");
   var submitSpinner = form.querySelector(".rfq-inline-form__spinner");
   var submitBtn = form.querySelector(".rfq-inline-form__submit");
-
-  var turnstileToken = "";
-  var turnstileWidgetId = null;
 
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -2247,7 +2236,7 @@ const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY ?? "";
     var allFilled = (data.get("name") || "").trim() &&
                     (data.get("email") || "").trim() &&
                     (data.get("message") || "").trim();
-    submitBtn.disabled = !allFilled || !turnstileToken;
+    submitBtn.disabled = !allFilled;
   }
 
   function setLoading(loading) {
@@ -2255,27 +2244,6 @@ const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY ?? "";
     submitBtn.disabled = loading;
     if (submitText) submitText.textContent = loading ? "Sending..." : "Send";
     if (submitSpinner) submitSpinner.hidden = !loading;
-  }
-
-  if (TURNSTILE_SITE_KEY) {
-    var script = document.createElement("script");
-    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
-    script.async = true;
-    script.defer = true;
-    script.onload = function() {
-      var win = window;
-      if (!win.turnstile) return;
-      var container = document.getElementById("rfq-inline-turnstile");
-      if (!container) return;
-      turnstileWidgetId = win.turnstile.render(container, {
-        sitekey: TURNSTILE_SITE_KEY,
-        theme: "dark",
-        callback: function(token) { turnstileToken = token; updateSubmitState(); },
-        "expired-callback": function() { turnstileToken = ""; updateSubmitState(); },
-        "error-callback": function() { turnstileToken = ""; updateSubmitState(); }
-      });
-    };
-    document.head.appendChild(script);
   }
 
   form.addEventListener("input", updateSubmitState);
@@ -2298,10 +2266,6 @@ const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY ?? "";
       showError("Please enter a valid email address.");
       return;
     }
-    if (!turnstileToken) {
-      showError("Please complete the human verification.");
-      return;
-    }
 
     setLoading(true);
 
@@ -2309,10 +2273,10 @@ const TURNSTILE_SITE_KEY = import.meta.env.TURNSTILE_SITE_KEY ?? "";
       var resp = await fetch(RFQ_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: name, email: email, message: message, captcha: turnstileToken }),
+        body: JSON.stringify({ name: name, email: email, message: message }),
       });
       if (resp.ok) {
-        window.location.href = "/thank-you";
+        window.location.href = "/thank-you/";
       } else {
         var errData = await resp.json().catch(function() { return {}; });
         showError(errData.message || "Submission failed. Please try again later.");
