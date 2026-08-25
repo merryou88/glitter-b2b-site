@@ -6,6 +6,16 @@
 import Layout from "@layouts/Layout.astro";
 import products from "@data/products.json";
 
+export interface ProductSpec {
+  label: string;
+  value: string;
+}
+
+export interface ProductFaqItem {
+  q: string;
+  a: string;
+}
+
 export interface Product {
   id: string;
   title: string;
@@ -18,6 +28,10 @@ export interface Product {
   videoLocal: string;
   videoYoutubeUrl: string;
   tags: string[];
+  moq?: string;
+  leadTime?: string;
+  specs?: ProductSpec[];
+  faq?: ProductFaqItem[];
 }
 
 export function getStaticPaths() {
@@ -70,6 +84,24 @@ const productData = {
 const mainImages = product.mainImage ? [product.mainImage] : [];
 const galleryImages = [...mainImages, ...product.skuImages];
 
+// FAQ structured data
+const faqData = (product.faq ?? []).length > 0 && {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: (product.faq ?? []).map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+
+const structuredDataList = [breadcrumbData, productData, ...(faqData ? [faqData] : [])];
+
+// Related products: other items sharing at least one tag (max 3)
+const relatedProducts = (products as Product[])
+  .filter((p) => p.id !== product.id && p.tags.some((t) => product.tags.includes(t)))
+  .slice(0, 3);
+
 const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 
 // SEO title & description
@@ -83,7 +115,7 @@ const seoDesc = product.shortDesc;
   keywords={product.tags.join(", ")}
   image={product.mainImage ? `https://nixiafabric.com${product.mainImage}` : undefined}
   canonical={`https://nixiafabric.com/products/${product.id}`}
-  structuredData={[breadcrumbData, productData]}
+  structuredData={structuredDataList}
 >
   <!-- Hero Section -->
   <section class="detail-hero">
@@ -149,13 +181,20 @@ const seoDesc = product.shortDesc;
           <h1 class="detail-info__title">{product.title}</h1>
           <p class="detail-info__desc">{product.shortDesc}</p>
 
+          <!-- MOQ / Lead Time highlights -->
+          <div class="detail-highlights">
+            {product.moq && <span class="detail-highlights__item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9l-2 2H4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1z"/></svg>{product.moq}</span>}
+            {product.leadTime && <span class="detail-highlights__item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>{product.leadTime}</span>}
+            <span class="detail-highlights__item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Free Sample</span>
+          </div>
+
           <!-- CTA Buttons -->
           <div class="detail-cta">
             <a href="/sample-policy/" class="btn btn--primary btn--lg">
               Request Free Sample
             </a>
-            <a href="/contact/" class="btn btn--outline btn--lg">
-              Get Custom Quotation
+            <a href={`/contact/?sku=${product.id}`} class="btn btn--outline btn--lg">
+              Add to Quote
             </a>
           </div>
 
@@ -291,6 +330,57 @@ const seoDesc = product.shortDesc;
           </div>
         )}
 
+        <!-- Specifications -->
+        {(product.specs ?? []).length > 0 && (
+          <div class="detail-body__section" id="specifications">
+            <h2>Product Specifications</h2>
+            <dl class="spec-grid">
+              {(product.specs ?? []).map((spec) => (
+                <div class="spec-grid__item">
+                  <dt>{spec.label}</dt>
+                  <dd>{spec.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        )}
+
+        <!-- OEM / ODM Service -->
+        <div class="detail-body__section detail-body__section--full">
+          <h2>OEM &amp; ODM Manufacturing Service</h2>
+          <div class="oem-grid">
+            <div class="oem-card">
+              <div class="oem-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+              </div>
+              <h3>Custom Development</h3>
+              <p>Custom logo, pattern, color, width, thickness, backing and packaging development. From your design or reference sample to bulk production with physical approval samples at every stage.</p>
+            </div>
+            <div class="oem-card">
+              <div class="oem-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 19.5 4 17 4 12V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+              </div>
+              <h3>Sampling, QC &amp; Export</h3>
+              <p>Free samples within 3–7 working days. Inline quality control and final inspection on every bulk order, plus export-ready packing and FOB / CIF shipping arrangement.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ -->
+        {(product.faq ?? []).length > 0 && (
+          <div class="detail-body__section" id="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+              {(product.faq ?? []).map((item) => (
+                <details class="faq-item">
+                  <summary>{item.q}</summary>
+                  <p>{item.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        )}
+
         <!-- Sample Policy -->
         <div class="detail-body__section detail-sample-policy">
           <h2>Sample Policy</h2>
@@ -308,14 +398,43 @@ const seoDesc = product.shortDesc;
             <a href="/sample-policy/" class="btn btn--primary btn--lg">
               Request Free Sample
             </a>
-            <a href="/contact/" class="btn btn--outline btn--lg">
-              Get Custom Quotation
+            <a href={`/contact/?sku=${product.id}`} class="btn btn--outline btn--lg">
+              Add to Quote
             </a>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Related Products -->
+  {relatedProducts.length > 0 && (
+    <section class="section section--alt" aria-label="Related products">
+      <div class="container">
+        <div class="section-header">
+          <h2>You May Also Like</h2>
+          <p>Other glitter &amp; foil fabrics frequently ordered together with this item.</p>
+        </div>
+        <div class="related-grid">
+          {relatedProducts.map((rel) => (
+            <a href={`/products/${rel.id}/`} class="related-card">
+              <div class="related-card__visual">
+                <picture>
+                  <source srcset={toWebp(rel.mainImage)} type="image/webp" />
+                  <img src={rel.mainImage} alt={rel.title} loading="lazy" width="1200" height="675" decoding="async" />
+                </picture>
+              </div>
+              <div class="related-card__body">
+                <h3>{rel.title}</h3>
+                <span class="related-card__meta">{rel.moq ?? "Low MOQ"}</span>
+                <span class="related-card__link">View Details ›</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 </Layout>
 
 <style>
@@ -507,6 +626,239 @@ const seoDesc = product.shortDesc;
     text-transform: capitalize;
   }
 
+  /* MOQ / Lead Time highlights */
+  .detail-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-sm);
+  }
+
+  .detail-highlights__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 0.9rem;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-primary);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+  }
+
+  .detail-highlights__item svg {
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  /* ===== Specification Grid ===== */
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .spec-grid__item {
+    background: var(--color-white);
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .spec-grid__item dt {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.25rem;
+  }
+
+  .spec-grid__item dd {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-primary);
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  /* ===== OEM / ODM ===== */
+  .oem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+  }
+
+  .oem-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+  }
+
+  .oem-card__icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+    background: rgba(196, 160, 53, 0.1);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .oem-card__icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .oem-card h3 {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .oem-card p {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+  }
+
+  /* ===== FAQ ===== */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .faq-item {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .faq-item summary {
+    cursor: pointer;
+    padding: var(--space-md) var(--space-lg);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-primary);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    transition: background var(--transition-fast);
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary::after {
+    content: "+";
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--color-accent);
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .faq-item[open] summary::after {
+    content: "−";
+  }
+
+  .faq-item summary:hover {
+    background: var(--color-bg);
+  }
+
+  .faq-item p {
+    padding: 0 var(--space-lg) var(--space-md);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-md);
+  }
+
+  /* ===== Related Products ===== */
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .related-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all var(--transition-base);
+  }
+
+  .related-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+
+  .related-card__visual {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+
+  .related-card__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .related-card:hover .related-card__visual img {
+    transform: scale(1.05);
+  }
+
+  .related-card__body {
+    padding: var(--space-md) var(--space-lg) var(--space-lg);
+  }
+
+  .related-card__body h3 {
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.4rem;
+    line-height: 1.35;
+  }
+
+  .related-card__meta {
+    display: inline-block;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-accent-dark);
+    background: rgba(196, 160, 53, 0.08);
+    border-radius: var(--radius-full);
+    padding: 0.2rem 0.65rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .related-card__link {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+
   /* ===== Detail Body ===== */
   .detail-body {
     max-width: 900px;
@@ -662,13 +1014,23 @@ const seoDesc = product.shortDesc;
     .detail-images-grid {
       grid-template-columns: 1fr 1fr;
     }
+
+    .spec-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .related-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   @media (max-width: 768px) {
     .detail-layout,
     .detail-specs,
     .sku-grid,
-    .detail-images-grid {
+    .detail-images-grid,
+    .oem-grid,
+    .related-grid {
       grid-template-columns: 1fr;
     }
 
@@ -693,6 +1055,10 @@ const seoDesc = product.shortDesc;
     }
 
     .detail-specs {
+      grid-template-columns: 1fr;
+    }
+
+    .spec-grid {
       grid-template-columns: 1fr;
     }
 
