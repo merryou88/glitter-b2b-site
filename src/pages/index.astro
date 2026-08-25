@@ -89,31 +89,31 @@ const popularProducts = [
 // Applications — 4 end-use scenario cards
 const applications = [
   {
-    title: "Fabrics for Bags & Shoes",
-    description: "Uppers, clutches, hair-accessories & fashion trims.",
+    title: "Fashion & Swimwear",
+    description: "4-way stretch spandex & milk-silk bases with foil and laser finishes — form-fitting shine that moves with the body.",
+    image: "/shots/application-swimwear-glitter-fabric.jpg",
+    alt: "Iridescent laser foil swimsuit made with Nixia stretch fabric",
+    href: "/products/",
+  },
+  {
+    title: "Shoes & Bags",
+    description: "Structured glitter and synthetic-leather bases for footwear uppers, handbags and clutches — sparkle that holds its shape.",
     image: "/shots/application-shoes-glitter-fabric.jpg",
-    alt: "Foil fabric used in footwear",
+    alt: "Glitter fabric used on footwear uppers",
     href: "/products/",
   },
   {
-    title: "Fabrics for Stage & Costume",
-    description: "Stagewear, dance costumes, cosplay and carnival performance outfits.",
-    image: "/shots/application-handbags-glitter-fabric.jpg",
-    alt: "Foil fabric used in handbags and purses",
+    title: "Party & Stage Costumes",
+    description: "Holographic and iridescent fabrics built for the spotlight — dance costumes, cosplay, carnival and performance outfits.",
+    image: "/shots/application-costume-glitter-fabric.jpg",
+    alt: "Holographic stage costume and glitter fabric rolls",
     href: "/products/",
   },
   {
-    title: "Fabrics for Night-Club & KTV Upholstery",
-    description: "KTV booth & nightclub wall soft-pack interior decoration. Fire-retardant optional.",
-    image: "/shots/application-accessories-glitter-fabric.jpg",
-    alt: "Foil fabric used in fashion accessories",
-    href: "/products/",
-  },
-  {
-    title: "Fabrics for Toys, Crafts & Festive Decor",
-    description: "Toy covers, DIY craft materials, party backdrop & Christmas decorative projects.",
+    title: "Toys, Crafts & Festive Decor",
+    description: "Cut-clean glitter fabrics for toy covers, DIY crafts, party backdrops and Christmas projects. Fire-retardant backing optional.",
     image: "/shots/application-fashion-trim-glitter-fabric.jpg",
-    alt: "Foil fabric used in garment trimming",
+    alt: "Glitter fabric strips and rhinestone craft materials",
     href: "/products/",
   },
 ];
@@ -239,9 +239,9 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
   <section class="section section--alt" id="applications">
     <div class="container">
       <div class="section-header">
-        <span class="eyebrow">WHAT WE MAKE</span>
-        <h2>Product Series</h2>
-        <p>Factory-direct wholesale glitter &amp; hot-stamping foil fabrics for importers, distributors and bulk-order buyers.</p>
+        <span class="eyebrow">WHERE OUR FABRICS GO</span>
+        <h2>Applications</h2>
+        <p>One factory, four core markets — factory-direct glitter &amp; hot-stamping foil fabrics for fashion, footwear, entertainment and decoration buyers worldwide.</p>
       </div>
 
         <div class="grid grid--4 applications-grid applications-grid--stacked">
@@ -259,7 +259,6 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
             <div class="app-card__body">
               <h3>{app.title}</h3>
               <p>{app.description}</p>
-              <span class="app-card__link">View Products ›</span>
             </div>
           </a>
         ))}
@@ -1002,15 +1001,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
   }
 
   .app-card--split .app-card__body p {
-    margin-bottom: 0.9rem;
-  }
-
-  .app-card__link {
-    display: inline-flex;
-    margin-top: var(--space-sm);
-    font-size: var(--text-sm);
-    font-weight: 700;
-    color: var(--color-accent);
+    margin-bottom: 0;
   }
 
   /* ==================== Why Nixia ==================== */
