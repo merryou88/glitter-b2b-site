@@ -17,48 +17,51 @@ interface Slide {
 const slides: Slide[] = [
   {
     image: "/image/home/slide1.webp",
-    title: "Specialty Fabrics for Fashion & Creative Products",
+    title: "Iridescent, Glitter & Foil Fabrics — Factory Direct",
     description:
-      "Iridescent, glitter and foil‑effect fabrics designed to bring distinctive finishes to your products.",
+      "Distinctive finishes from our own factory in Guangzhou since 2013. Custom colors, low MOQ, free samples — in-stock designs ship within days.",
     buttons: [
       { label: "Explore Fabrics", href: "/products/", variant: "primary" },
-      { label: "Request Samples", href: "#rfq-form", variant: "outline" },
+      { label: "Get Free Samples", href: "#rfq-buyer-resource", variant: "outline" },
     ],
   },
   {
     image: "/image/home/slide2.webp",
-    title: "Wholesale Glitter Fabrics | Factory Direct Supply",
+    title: "Runway-Ready Finishes, Factory-Direct Prices",
     description:
-      "Bulk purchase support, free sample offered, custom colors & patterns. Perfect for shoes, bags, toys & DIY craft.",
+      "Laser and holographic foils with a catwalk shine, at wholesale-direct pricing. OEM/ODM development from your design or reference sample.",
     buttons: [
       { label: "Explore Products", href: "/products/", variant: "primary" },
+      { label: "Send Your Design", href: "/contact/", variant: "outline" },
     ],
   },
   {
     image: "/image/home/slide3.webp",
-    title: "Strict In-House Quality Control",
+    title: "Built for Shoes, Bags & Accessories",
     description:
-      "Every batch undergoes full-range inspection during production. SGS Certified, REACH Compliant — test reports available upon request.",
+      "Structured glitter and foil synthetic leathers for uppers, handbags and trims — sparkle that keeps its shape through production.",
     buttons: [
-      { label: "Get Custom Quotation", href: "/contact/", variant: "primary" },
+      { label: "View Fabrics", href: "/products/", variant: "primary" },
+      { label: "Get a Quote", href: "/contact/", variant: "outline" },
     ],
   },
   {
     image: "/image/home/slide4.webp",
-    title: "Well-Managed Warehouse & Export Support",
+    title: "Made for the Spotlight",
     description:
-      "Organized warehouse for finished fabric stock. Support FOB and CIF international trade terms for global shipment.",
+      "Holographic stretch fabrics for party wear, dance costumes and stage outfits — bright under the lights, comfortable on the body.",
     buttons: [
-      { label: "Quality Control", href: "/factory/", variant: "primary" },
+      { label: "Explore Fabrics", href: "/products/", variant: "primary" },
     ],
   },
   {
     image: "/image/home/slide5.webp",
-    title: "Fabric for Finished Shoes and Bags",
+    title: "In-House Production, Batch-by-Batch QC",
     description:
-      "Our Foil-Printed Synthetic Leather and Chunky Glitter Synthetic Leather are widely applied for footwear, handbags and fashion accessories. Custom Color Matching available for your end-product projects.",
+      "Every roll is finished and inspected in our own facility. SGS certified, REACH compliant — test reports available on request.",
     buttons: [
-      { label: "Get Free Quote", href: "/contact/", variant: "primary" },
+      { label: "Tour Our Factory", href: "/factory/", variant: "primary" },
+      { label: "Get Custom Quotation", href: "/contact/", variant: "outline" },
     ],
   },
 ];
@@ -114,14 +117,14 @@ const toMobile = (src: string) => src.replace(/\.(png|jpe?g|webp)$/i, "-mobile.w
             <img
               src={slide.image}
               alt={idx === 0
-                ? "Glitter and foil-printed synthetic leather factory production line"
+                ? "Model wearing an iridescent holographic dress made with Nixia foil fabric"
                 : idx === 1
-                ? "Glitter and foil fabric samples in multiple colors"
+                ? "Runway model in an iridescent gown with a close-up of the laser foil fabric"
                 : idx === 2
-                ? "In-house quality control inspection for fabric production"
+                ? "Holographic shoes and accessories with rolls of pastel glitter fabric"
                 : idx === 3
-                ? "Finished fabric rolls stored in factory warehouse"
-                : "Glitter and foil fabric applied to shoes and handbags"}
+                ? "Party outfits in lime holographic fabric with a close-up of the material"
+                : "Nixia Fabric in-house production line finishing rolls of foil fabric"}
               class="hero-carousel__image"
               width="1920"
               height="1080"
