@@ -1,7 +1,8 @@
 ---
 /**
  * Products Listing Page — /products
- * Displays all 40 glitter synthetic leather products in a responsive grid
+ * Catalog-style layout: category tiles → filter chips + sort → product grid
+ * Filter/sort implemented client-side on the static-rendered grid.
  */
 import Layout from "@layouts/Layout.astro";
 import products from "@data/products.json";
@@ -21,6 +22,45 @@ interface Product {
 }
 
 const allProducts: Product[] = products;
+
+/* ---- Application collections (from product tags) ---- */
+const collections = [
+  {
+    key: "footwear",
+    label: "Footwear Materials",
+    desc: "Glitter and foil uppers for casual shoes, sneakers and stage footwear.",
+    icon: '<path d="M3 7h9l2 2h5a2 2 0 0 1 2 2v1h-9l-2 1H6l-2-2z" /><path d="M6 13l-2 4h6l2-4" />',
+  },
+  {
+    key: "handbag",
+    label: "Bags & Accessories",
+    desc: "Chunky-glitter and metallic finishes for handbags, clutches and trims.",
+    icon: '<path d="M6 8h12l1.5 12h-15z" /><path d="M9 8a3 3 0 0 1 6 0" />',
+  },
+  {
+    key: "decoration",
+    label: "Decoration & Craft",
+    desc: "Sparkling fabrics for holiday décor, stage backdrops and DIY projects.",
+    icon: '<path d="M12 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" /><path d="M19 15l1 2 2 1-2 1-1 2-1-2-2-1 2-1z" />',
+  },
+];
+
+const collectionCount = (key: string) =>
+  allProducts.filter((p) => p.tags.includes(key)).length;
+
+/* ---- Filter chips (application-based, with counts) ---- */
+const filters = [
+  { key: "all", label: "All Products" },
+  { key: "footwear", label: "Footwear" },
+  { key: "handbag", label: "Bags & Accessories" },
+  { key: "metallic", label: "Metallic" },
+  { key: "gradient", label: "Gradient" },
+  { key: "fluorescent", label: "Fluorescent" },
+  { key: "printed", label: "Printed" },
+].map((f) => ({
+  ...f,
+  count: f.key === "all" ? allProducts.length : allProducts.filter((p) => p.tags.includes(f.key)).length,
+}));
 
 const breadcrumbData = {
   "@context": "https://schema.org",
@@ -46,6 +86,9 @@ const collectionPageData = {
 };
 
 const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
+
+const MOQ = "Low MOQ";
+const LEAD = "7–15 days";
 ---
 
 <Layout
@@ -55,7 +98,7 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
   canonical="https://nixiafabric.com/products"
   structuredData={[breadcrumbData, collectionPageData]}
 >
-  <!-- Page Hero -->
+  <!-- Page Hero (compact catalog header) -->
   <section class="page-hero">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -63,89 +106,117 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
         <span class="breadcrumb__sep">/</span>
         <span class="breadcrumb__current">Products</span>
       </nav>
-      <span class="eyebrow">Our Collection</span>
-      <h1>Glitter Synthetic Leather</h1>
+      <span class="eyebrow">Wholesale Catalog</span>
+      <h1>Our Products</h1>
       <p class="page-hero__desc">
-        Explore our complete range of glitter synthetic leather.
-        All products are SGS certified and REACH compliant, with free samples and custom color matching available.
+        {allProducts.length} glitter &amp; foil synthetic leather items available for wholesale,
+        OEM/ODM customization and factory-direct supply. Free samples for every SKU.
       </p>
     </div>
   </section>
 
-  <!-- Product Grid -->
-  <section class="section">
+  <!-- Application Collections -->
+  <section class="section section--flush">
     <div class="container">
+      <div class="collections-grid">
+        {collections.map((c) => (
+          <a href="#catalog" class="collection-tile" data-filter={c.key}>
+            <span class="collection-tile__icon" aria-hidden="true" set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${c.icon}</svg>`} />
+            <div class="collection-tile__body">
+              <h2 class="collection-tile__title">{c.label}</h2>
+              <span class="collection-tile__count">{collectionCount(c.key)} items</span>
+              <p class="collection-tile__desc">{c.desc}</p>
+            </div>
+            <span class="collection-tile__arrow" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalog: filter + sort + grid -->
+  <section class="section" id="catalog">
+    <div class="container">
+      <div class="catalog-toolbar">
+        <div class="catalog-chips" role="tablist" aria-label="Filter products">
+          {filters.map((f, i) => (
+            <button
+              type="button"
+              class:list={["catalog-chip", { "is-active": i === 0 }]}
+              data-filter={f.key}
+              role="tab"
+              aria-selected={i === 0 ? "true" : "false"}
+            >
+              {f.label} <span class="catalog-chip__count">{f.count}</span>
+            </button>
+          ))}
+        </div>
+        <label class="catalog-sort">
+          <span class="catalog-sort__label">Sort by</span>
+          <select id="catalog-sort" class="catalog-sort__select">
+            <option value="default">Recommended</option>
+            <option value="az">Name A–Z</option>
+            <option value="colors">Most Colors</option>
+          </select>
+        </label>
+      </div>
+
+      <p class="catalog-count" id="catalog-count" aria-live="polite">
+        Showing {allProducts.length} products
+      </p>
+
       <div class="product-grid" id="product-grid">
         {
           allProducts.map((product) => (
-            <a
-              href={`/products/${product.id}/`}
-              class="product-card"
-              data-id={product.id}
-            >
-              <!-- Image -->
-              <div class="product-card__image-wrap">
-                {
-                  product.mainImage ? (
+            <div class="product-card" data-id={product.id} data-tags={product.tags.join(",")} data-colors={product.skuImages.length} data-title={product.title}>
+              <a href={`/products/${product.id}/`} class="product-card__link" aria-label={`View ${product.title}`}>
+                <div class="product-card__image-wrap">
+                  {product.mainImage ? (
                     <picture>
                       <source srcset={toWebp(product.mainImage)} type="image/webp" />
-                      <img src={product.mainImage} alt={product.title} class="product-card__image" loading="lazy" width="1200" height="675" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                      <img src={product.mainImage} alt={product.title} class="product-card__image" loading="lazy" width="1200" height="675" decoding="async" onerror="this.style.display='none';this.closest('.product-card__image-wrap').querySelector('.product-card__placeholder').style.display='flex'" />
                     </picture>
-                  ) : null
-                }
-                <div
-                  class="product-card__placeholder"
-                  style={product.mainImage ? "display:none" : "display:flex"}
-                >
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                    <circle cx="8.5" cy="8.5" r="1.5"/>
-                    <polyline points="21 15 16 10 5 21"/>
-                  </svg>
-                  <span>Image coming soon</span>
+                  ) : null}
+                  <div class="product-card__placeholder" style={product.mainImage ? "display:none" : "display:flex"}>
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/>
+                      <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                    <span>Image coming soon</span>
+                  </div>
+                  <span class="product-card__badge">{product.skuImages.length > 0 ? `${product.skuImages.length} Colors` : "New"}</span>
                 </div>
-                <span class="product-card__badge">{product.category}</span>
-              </div>
+              </a>
 
-              <!-- Info -->
               <div class="product-card__body">
-                <h2 class="product-card__title">{product.title}</h2>
+                <a href={`/products/${product.id}/`} class="product-card__title-link">
+                  <h2 class="product-card__title">{product.title}</h2>
+                </a>
                 <p class="product-card__desc">{product.shortDesc}</p>
 
-                <!-- Tags -->
-                <div class="product-card__tags">
-                  {product.tags.slice(0, 4).map((tag: string) => (
-                    <span class="product-card__tag">{tag.replace(/-/g, " ")}</span>
-                  ))}
+                <div class="product-card__specs">
+                  <span class="product-card__spec">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9l-2 2H4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1z"/></svg>
+                    {MOQ}
+                  </span>
+                  <span class="product-card__spec">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    {LEAD}
+                  </span>
                 </div>
 
-                <!-- Meta -->
-                <div class="product-card__meta">
-                  {product.skuImages.length > 0 && (
-                    <span class="product-card__meta-item">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                        <circle cx="8.5" cy="8.5" r="1.5"/>
-                        <polyline points="21 15 16 10 5 21"/>
-                      </svg>
-                      {product.skuImages.length} colors
-                    </span>
-                  )}
-                  {(product.videoLocal || product.videoYoutubeUrl) && (
-                    <span class="product-card__meta-item">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="23 7 16 12 23 17 23 7"/>
-                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
-                      </svg>
-                      Video
-                    </span>
-                  )}
+                <div class="product-card__actions">
+                  <a href={`/products/${product.id}/`} class="product-card__btn product-card__btn--outline">Details</a>
+                  <a href={`/contact/?sku=${product.id}`} class="product-card__btn product-card__btn--primary">Add Quote</a>
                 </div>
               </div>
-            </a>
+            </div>
           ))
         }
       </div>
+
+      <p class="catalog-empty" id="catalog-empty" hidden>No products match this filter.</p>
     </div>
   </section>
 
@@ -207,35 +278,217 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
     max-width: 640px;
   }
 
-  /* Product Grid */
-  .product-grid {
+  /* ==================== Collection Tiles ==================== */
+  .section--flush {
+    padding-top: var(--space-3xl);
+    background: #f7f5ef;
+  }
+
+  .collections-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-xl);
+    gap: var(--space-lg);
   }
 
-  /* Product Card */
-  .product-card {
+  .collection-tile {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
     background: var(--color-white);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    overflow: hidden;
+    border: 1px solid rgba(22, 41, 77, 0.08);
+    border-radius: 16px;
+    padding: 1.5rem;
     text-decoration: none;
     color: inherit;
-    transition: all var(--transition-base);
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
   }
 
-  .product-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+  .collection-tile:hover {
+    box-shadow: 0 12px 28px rgba(22, 41, 77, 0.1);
+    transform: translateY(-3px);
+  }
+
+  .collection-tile__icon {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    background: rgba(196, 160, 53, 0.1);
+    border-radius: 14px;
+    color: var(--color-accent-dark);
+  }
+
+  .collection-tile__icon svg { width: 26px; height: 26px; }
+
+  .collection-tile__body { min-width: 0; }
+
+  .collection-tile__title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin: 0 0 0.2rem;
+    letter-spacing: -0.01em;
+  }
+
+  .collection-tile__count {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-accent-dark);
+    background: rgba(196, 160, 53, 0.12);
+    border-radius: 999px;
+    padding: 0.15rem 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .collection-tile__desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .collection-tile__arrow {
+    position: absolute;
+    right: 1.25rem;
+    bottom: 1.1rem;
+    color: var(--color-accent);
+    font-size: 1.1rem;
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .collection-tile:hover .collection-tile__arrow {
+    opacity: 1;
+    transform: translateX(3px);
+  }
+
+  /* ==================== Catalog Toolbar ==================== */
+  .catalog-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-md);
+  }
+
+  .catalog-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .catalog-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    background: var(--color-white);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 38px;
+  }
+
+  .catalog-chip:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent-dark);
+  }
+
+  .catalog-chip.is-active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+  }
+
+  .catalog-chip__count {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.05rem 0.45rem;
+    border-radius: 999px;
+    background: rgba(22, 41, 77, 0.07);
+  }
+
+  .catalog-chip.is-active .catalog-chip__count {
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .catalog-sort {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  .catalog-sort__select {
+    padding: 0.45rem 0.75rem;
+    border-radius: 10px;
+    border: 1px solid var(--color-border);
+    background: var(--color-white);
+    color: var(--color-primary);
+    font: inherit;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 38px;
+  }
+
+  .catalog-sort__select:focus {
+    outline: none;
     border-color: var(--color-accent);
   }
 
+  .catalog-count {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin: 0 0 var(--space-lg);
+  }
+
+  .catalog-empty {
+    text-align: center;
+    color: var(--color-text-muted);
+    padding: var(--space-3xl) 0;
+  }
+
+  /* ==================== Product Grid ==================== */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  /* ==================== Product Card ==================== */
+  .product-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(22, 41, 77, 0.1);
+    border-color: rgba(196, 160, 53, 0.4);
+  }
+
+  .product-card.is-hidden { display: none; }
+
+  .product-card__link { display: block; }
+
   .product-card__image-wrap {
     position: relative;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 10;
     background: var(--color-bg);
     overflow: hidden;
   }
@@ -284,12 +537,14 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
   }
 
   .product-card__body {
-    padding: var(--space-md) var(--space-lg) var(--space-lg);
+    padding: var(--space-md) var(--space-md) var(--space-md);
     display: flex;
     flex-direction: column;
-    gap: var(--space-xs);
+    gap: 0.5rem;
     flex: 1;
   }
+
+  .product-card__title-link { text-decoration: none; }
 
   .product-card__title {
     font-size: var(--text-base);
@@ -314,65 +569,154 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
     overflow: hidden;
   }
 
-  .product-card__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.375rem;
-    margin-top: auto;
-  }
-
-  .product-card__tag {
-    display: inline-block;
-    padding: 0.125rem 0.5rem;
-    font-size: var(--text-xs);
-    color: var(--color-accent-dark);
-    background: rgba(196, 160, 53, 0.08);
-    border-radius: var(--radius-sm);
-    text-transform: capitalize;
-  }
-
-  .product-card__meta {
+  .product-card__specs {
     display: flex;
     gap: var(--space-md);
-    margin-top: var(--space-sm);
     font-size: var(--text-xs);
-    color: var(--color-text-light);
+    color: var(--color-text-muted);
+    margin-top: auto;
+    padding-top: 0.25rem;
   }
 
-  .product-card__meta-item {
+  .product-card__spec {
     display: inline-flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.3rem;
+    font-weight: 600;
   }
 
-  /* Responsive */
+  .product-card__spec svg { color: var(--color-accent-dark); }
+
+  .product-card__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .product-card__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.75rem;
+    border-radius: 10px;
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    min-height: 40px;
+  }
+
+  .product-card__btn--outline {
+    border: 1.5px solid var(--color-border);
+    color: var(--color-primary);
+    background: var(--color-white);
+  }
+
+  .product-card__btn--outline:hover {
+    border-color: var(--color-primary);
+    background: rgba(22, 41, 77, 0.03);
+  }
+
+  .product-card__btn--primary {
+    background: var(--color-accent);
+    color: #fff;
+    border: 1.5px solid var(--color-accent);
+  }
+
+  .product-card__btn--primary:hover {
+    background: var(--color-accent-dark);
+    border-color: var(--color-accent-dark);
+  }
+
+  /* ==================== Responsive ==================== */
   @media (max-width: 968px) {
-    .product-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+    .collections-grid { grid-template-columns: 1fr; }
+    .catalog-toolbar { align-items: flex-start; flex-direction: column; }
   }
 
   @media (max-width: 768px) {
-    .product-grid {
-      grid-template-columns: 1fr;
-    }
+    .product-grid { grid-template-columns: 1fr; }
 
-    .product-card__body {
-      padding: var(--space-md);
-    }
-  }
+    .product-card__body { padding: var(--space-md); }
 
-  @media (max-width: 640px) {
-    .product-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .page-hero {
-      padding-block: var(--space-2xl) var(--space-3xl);
-    }
-
-    .page-hero__desc {
-      font-size: var(--text-base);
-    }
+    .page-hero { padding-block: var(--space-2xl) var(--space-3xl); }
+    .page-hero__desc { font-size: var(--text-base); }
   }
 </style>
+
+<script>
+  (function () {
+    var grid = document.getElementById("product-grid");
+    var chips = document.querySelectorAll(".catalog-chip");
+    var sortSelect = document.getElementById("catalog-sort");
+    var countEl = document.getElementById("catalog-count");
+    var emptyEl = document.getElementById("catalog-empty");
+    if (!grid || !chips.length) return;
+
+    var cards = Array.prototype.slice.call(grid.querySelectorAll(".product-card"));
+    var currentFilter = "all";
+
+    function applyFilter() {
+      var visible = 0;
+      cards.forEach(function (card) {
+        var tags = (card.getAttribute("data-tags") || "").split(",");
+        var show = currentFilter === "all" || tags.indexOf(currentFilter) !== -1;
+        card.classList.toggle("is-hidden", !show);
+        if (show) visible++;
+      });
+      if (countEl) countEl.textContent = "Showing " + visible + " products";
+      if (emptyEl) emptyEl.hidden = visible !== 0;
+    }
+
+    function applySort(mode) {
+      var sorted = cards.slice().sort(function (a, b) {
+        if (mode === "az") {
+          return (a.getAttribute("data-title") || "").localeCompare(b.getAttribute("data-title") || "");
+        }
+        if (mode === "colors") {
+          return parseInt(b.getAttribute("data-colors") || "0", 10) - parseInt(a.getAttribute("data-colors") || "0", 10);
+        }
+        return parseInt(a.getAttribute("data-order") || "0", 10) - parseInt(b.getAttribute("data-order") || "0", 10);
+      });
+      sorted.forEach(function (card) { grid.appendChild(card); });
+    }
+
+    // Preserve original order for "Recommended"
+    cards.forEach(function (card, i) { card.setAttribute("data-order", String(i)); });
+
+    chips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        chips.forEach(function (c) {
+          c.classList.remove("is-active");
+          c.setAttribute("aria-selected", "false");
+        });
+        chip.classList.add("is-active");
+        chip.setAttribute("aria-selected", "true");
+        currentFilter = chip.getAttribute("data-filter") || "all";
+        applyFilter();
+      });
+    });
+
+    // Collection tiles scroll to catalog and activate the matching filter
+    document.querySelectorAll(".collection-tile").forEach(function (tile) {
+      tile.addEventListener("click", function (e) {
+        var key = tile.getAttribute("data-filter");
+        var chip = document.querySelector('.catalog-chip[data-filter="' + key + '"]');
+        if (chip) {
+          e.preventDefault();
+          chip.click();
+        }
+        // default: anchor scroll to #catalog happens naturally
+      });
+    });
+
+    if (sortSelect) {
+      sortSelect.addEventListener("change", function () {
+        applySort(sortSelect.value);
+      });
+    }
+
+    applyFilter();
+  })();
+</script>
