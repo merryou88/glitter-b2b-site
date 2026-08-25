@@ -6,3 +6,4 @@ dist
 .astro
 *.log
 rfq-worker/.dev.vars
+.DS_Store
