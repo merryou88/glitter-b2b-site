@@ -23,43 +23,50 @@ interface Product {
 
 const allProducts: Product[] = products;
 
-/* ---- Application collections (from product tags) ---- */
+/* ---- Application collections (aligned with home Applications section) ---- */
 const collections = [
   {
-    key: "footwear",
-    label: "Footwear Materials",
-    desc: "Glitter and foil uppers for casual shoes, sneakers and stage footwear.",
+    key: "swimwear",
+    label: "Fashion & Swimwear",
+    desc: "4-way stretch spandex and milk-silk bases with foil and laser finishes.",
+    icon: '<path d="M2 18c1.5 0 1.5 1.5 3 1.5S6.5 18 8 18s1.5 1.5 3 1.5S12.5 18 14 18s1.5 1.5 3 1.5S18.5 18 20 18" /><path d="M8 13c-2 0-3.5-1.5-3.5-3.5S6 6 8 6s3.5 1.5 3.5 3.5S10 13 8 13z" /><path d="M10.5 9.5L19 4" />',
+  },
+  {
+    key: "footwear,handbag",
+    label: "Shoes & Bags",
+    desc: "Structured glitter and synthetic-leather bases for uppers, handbags and trims.",
     icon: '<path d="M3 7h9l2 2h5a2 2 0 0 1 2 2v1h-9l-2 1H6l-2-2z" /><path d="M6 13l-2 4h6l2-4" />',
   },
   {
-    key: "handbag",
-    label: "Bags & Accessories",
-    desc: "Chunky-glitter and metallic finishes for handbags, clutches and trims.",
-    icon: '<path d="M6 8h12l1.5 12h-15z" /><path d="M9 8a3 3 0 0 1 6 0" />',
+    key: "stage-costume",
+    label: "Party & Stage Costumes",
+    desc: "Holographic and iridescent fabrics for dance, cosplay and performance outfits.",
+    icon: '<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z" /><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z" />',
   },
   {
     key: "decoration",
-    label: "Decoration & Craft",
-    desc: "Sparkling fabrics for holiday décor, stage backdrops and DIY projects.",
+    label: "Toys, Crafts & Decor",
+    desc: "Cut-clean glitter fabrics for toys, DIY crafts, backdrops and festive projects.",
     icon: '<path d="M12 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" /><path d="M19 15l1 2 2 1-2 1-1 2-1-2-2-1 2-1z" />',
   },
 ];
 
 const collectionCount = (key: string) =>
-  allProducts.filter((p) => p.tags.includes(key)).length;
+  allProducts.filter((p) => key.split(",").some((t) => p.tags.includes(t))).length;
 
 /* ---- Filter chips (application-based, with counts) ---- */
 const filters = [
   { key: "all", label: "All Products" },
-  { key: "footwear", label: "Footwear" },
-  { key: "handbag", label: "Bags & Accessories" },
+  { key: "swimwear", label: "Fashion & Swimwear" },
+  { key: "footwear,handbag", label: "Shoes & Bags" },
+  { key: "stage-costume", label: "Party & Stage" },
+  { key: "decoration", label: "Decor & Crafts" },
   { key: "metallic", label: "Metallic" },
   { key: "gradient", label: "Gradient" },
-  { key: "fluorescent", label: "Fluorescent" },
   { key: "printed", label: "Printed" },
 ].map((f) => ({
   ...f,
-  count: f.key === "all" ? allProducts.length : allProducts.filter((p) => p.tags.includes(f.key)).length,
+  count: f.key === "all" ? allProducts.length : collectionCount(f.key),
 }));
 
 const breadcrumbData = {
@@ -286,7 +293,7 @@ const LEAD = "7–15 days";
 
   .collections-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--space-lg);
   }
 
@@ -631,12 +638,13 @@ const LEAD = "7–15 days";
   /* ==================== Responsive ==================== */
   @media (max-width: 968px) {
     .product-grid { grid-template-columns: repeat(2, 1fr); }
-    .collections-grid { grid-template-columns: 1fr; }
+    .collections-grid { grid-template-columns: repeat(2, 1fr); }
     .catalog-toolbar { align-items: flex-start; flex-direction: column; }
   }
 
   @media (max-width: 768px) {
     .product-grid { grid-template-columns: 1fr; }
+    .collections-grid { grid-template-columns: repeat(2, 1fr); }
 
     .product-card__body { padding: var(--space-md); }
 
@@ -659,9 +667,10 @@ const LEAD = "7–15 days";
 
     function applyFilter() {
       var visible = 0;
+      var activeTags = currentFilter === "all" ? [] : currentFilter.split(",");
       cards.forEach(function (card) {
         var tags = (card.getAttribute("data-tags") || "").split(",");
-        var show = currentFilter === "all" || tags.indexOf(currentFilter) !== -1;
+        var show = currentFilter === "all" || activeTags.some(function (t) { return tags.indexOf(t) !== -1; });
         card.classList.toggle("is-hidden", !show);
         if (show) visible++;
       });
