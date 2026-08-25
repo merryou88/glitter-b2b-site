@@ -91,6 +91,23 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
   const errorBanner = document.getElementById("form-error");
   const errorText = document.getElementById("form-error-text");
 
+  // Pre-fill subject/message from URL params (?subject=, ?sku=)
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var subjectField = form ? form.querySelector('input[name="subject"]') : null;
+    var messageField = form ? form.querySelector('textarea[name="message"]') : null;
+    var subjectParam = params.get("subject");
+    var skuParam = params.get("sku");
+    if (subjectParam && subjectField && !subjectField.value) {
+      subjectField.value = subjectParam;
+    }
+    if (skuParam && messageField && !messageField.value) {
+      messageField.value = "Product/SKU of interest: " + skuParam + "\n";
+    }
+  } catch (e) {
+    // URLSearchParams not supported — skip prefill
+  }
+
   function showError(message) {
     if (errorText) errorText.textContent = message;
     if (errorBanner) errorBanner.hidden = false;

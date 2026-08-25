@@ -20,6 +20,7 @@ export default defineConfig({
     sitemap({
       changefreq: 'weekly',
       priority: 0.8,
+      filter: (page) => !page.includes('/thank-you'),
     }),
   ],
 });
