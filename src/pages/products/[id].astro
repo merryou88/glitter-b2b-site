@@ -88,9 +88,40 @@ const relatedProducts = (products as Product[])
 
 const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 
-// SEO title & description
-const seoTitle = `${product.title} — Glitter Synthetic Leather | Nixia Fabric`;
-const seoDesc = product.shortDesc;
+// SEO title & description — per-product, not shared
+const productMeta: Record<string, { title: string; desc: string }> = {
+  "full-print-hot-stamping-spandex-milk-silk": {
+    title: "Full-Print Hot-Stamping Spandex Milk-Silk Fabric | Wholesale - Nixia Fabric",
+    desc: "Wholesale full-print hot-stamping spandex milk-silk fabric. 4-way stretch, soft hand-feel, free sample, low MOQ. Ideal for fashion garments, swimwear & stage costumes. Get custom quote.",
+  },
+  "iridescent-laser-hot-stamping-stretch-ice-silk": {
+    title: "Iridescent Laser Hot-Stamping Stretch Ice-Silk Fabric | Wholesale - Nixia Fabric",
+    desc: "Wholesale iridescent laser hot-stamping stretch ice-silk fabric. Gradient multi-color finish, elastic recovery, free sample, low MOQ. Ideal for stage costumes & backdrop decoration. Get custom quote.",
+  },
+  "non-woven-glitter-fabric": {
+    title: "Non-Woven Glitter Fabric | Wholesale - Nixia Fabric",
+    desc: "Wholesale non-woven glitter fabric. Dense sparkle coating, cut-clean edges, free sample, low MOQ. Ideal for holiday decoration, stage props & performance costumes. Get custom quote.",
+  },
+  "iridescent-gradient-laser-ice-silk": {
+    title: "Iridescent Gradient Laser Hot-Stamping Ice-Silk Fabric | Wholesale - Nixia Fabric",
+    desc: "Wholesale iridescent gradient laser hot-stamping ice-silk fabric. Smooth color-flow finish, stretch base, free sample, low MOQ. Ideal for fashion apparel, stage costumes & backdrops. Get custom quote.",
+  },
+  "plain-iridescent-laser-spandex-4-way-stretch": {
+    title: "Plain Iridescent Laser Spandex 4-Way Stretch Fabric | Wholesale - Nixia Fabric",
+    desc: "Wholesale plain iridescent laser hot-stamping spandex fabric. 4-way stretch, uniform metallic shine, free sample, low MOQ. Ideal for bodysuits, swimwear & stage garments. Get custom quote.",
+  },
+  "rainbow-gradient-glitter-synthetic-leather": {
+    title: "Rainbow Gradient Glitter Synthetic Leather Fabric | Wholesale - Nixia Fabric",
+    desc: "Wholesale rainbow gradient glitter synthetic leather. Reflective finish, structured base, free sample, low MOQ. Ideal for bags, footwear & book-covering materials. Get custom quote.",
+  },
+};
+
+const meta = productMeta[product.id] ?? {
+  title: `${product.title} | Wholesale - Nixia Fabric`,
+  desc: product.shortDesc,
+};
+const seoTitle = meta.title;
+const seoDesc = meta.desc;
 ---
 
 <Layout
