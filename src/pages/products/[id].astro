@@ -146,65 +146,30 @@ const seoDesc = meta.desc;
       <div class="detail-layout">
         {/* Hero Carousel — plain-iridescent-laser-spandex-4-way-stretch only */}
         {product.id === "plain-iridescent-laser-spandex-4-way-stretch" ? (
-          <div class="p-hero-carousel" id="p-hero-carousel">
-            <div class="p-hero-carousel__track" id="p-hero-track">
-              {/* main */}
-              <div class="p-hero-carousel__slide p-hero-carousel__slide--active">
-                <picture>
-                  <source srcset="/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/plain-iridescent-laser-spandex-4-way-stretch-05.webp" type="image/webp" />
-                  <img src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/plain-iridescent-laser-spandex-4-way-stretch-05.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="1200" height="675" loading="eager" decoding="async" />
-                </picture>
-              </div>
-              {/* sku */}
-              <div class="p-hero-carousel__slide">
-                <picture>
-                  <source srcset="/images/products/plain-iridescent-laser-spandex-4-way-stretch/sku/plain-iridescent-laser-spandex-4-way-stretch-02.webp" type="image/webp" />
-                  <img src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/sku/plain-iridescent-laser-spandex-4-way-stretch-02.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="1200" height="675" loading="lazy" decoding="async" />
-                </picture>
-              </div>
-              {/* detail images */}
-              <div class="p-hero-carousel__slide">
-                <picture>
-                  <source srcset="/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/plain-iridescent-laser-spandex-4-way-stretch-02.webp" type="image/webp" />
-                  <img src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/plain-iridescent-laser-spandex-4-way-stretch-02.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="1200" height="675" loading="lazy" decoding="async" />
-                </picture>
-              </div>
-              <div class="p-hero-carousel__slide">
-                <picture>
-                  <source srcset="/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/plain-iridescent-laser-spandex-4-way-stretch-03.webp" type="image/webp" />
-                  <img src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/plain-iridescent-laser-spandex-4-way-stretch-03.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="1200" height="675" loading="lazy" decoding="async" />
-                </picture>
-              </div>
-              <div class="p-hero-carousel__slide">
-                <picture>
-                  <source srcset="/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/plain-iridescent-laser-spandex-4-way-stretch-04.webp" type="image/webp" />
-                  <img src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/plain-iridescent-laser-spandex-4-way-stretch-04.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="1200" height="675" loading="lazy" decoding="async" />
-                </picture>
-              </div>
-              <div class="p-hero-carousel__slide">
-                <picture>
-                  <source srcset="/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/plain-iridescent-laser-spandex-4-way-stretch-05.webp" type="image/webp" />
-                  <img src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/plain-iridescent-laser-spandex-4-way-stretch-05.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="1200" height="675" loading="lazy" decoding="async" />
-                </picture>
-              </div>
-              {/* video */}
-              <div class="p-hero-carousel__slide p-hero-carousel__slide--video">
-                <div class="p-hero-carousel__video-wrap">
-                  <video controls preload="none" muted playsinline poster="/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/plain-iridescent-laser-spandex-4-way-stretch-05.jpg">
-                    <source src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/video/demo-video.mp4" type="video/mp4" />
-                  </video>
-                </div>
-              </div>
+          <div class="p-hero-gallery" id="p-hero-gallery">
+            <div class="p-hero-gallery__main" id="p-hero-main">
+              <img id="p-hero-img" src="/images/products/plain-iridescent-spandex/main-view.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" loading="eager" decoding="async" />
+              <video id="p-hero-video" controls preload="none" muted playsinline style="display:none">
+                <source src="/images/products/plain-iridescent-spandex/demo-video.mp4" type="video/mp4" />
+              </video>
             </div>
-            {/* prev / next */}
-            <button class="p-hero-carousel__arrow p-hero-carousel__arrow--prev" id="p-hero-prev" aria-label="Previous slide">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-            </button>
-            <button class="p-hero-carousel__arrow p-hero-carousel__arrow--next" id="p-hero-next" aria-label="Next slide">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-            </button>
-            {/* dots */}
-            <div class="p-hero-carousel__dots" id="p-hero-dots"></div>
+            <div class="p-hero-gallery__thumbs">
+              <button class="p-hero-gallery__thumb p-hero-gallery__thumb--active" data-type="image" data-src="/images/products/plain-iridescent-spandex/main-view.jpg" aria-label="View main image">
+                <img src="/images/products/plain-iridescent-spandex/main-view.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="120" height="80" loading="eager" decoding="async" />
+              </button>
+              <button class="p-hero-gallery__thumb" data-type="image" data-src="/images/products/plain-iridescent-spandex/close-up.jpg" aria-label="View close‑up image">
+                <img src="/images/products/plain-iridescent-spandex/close-up.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="120" height="80" loading="lazy" decoding="async" />
+              </button>
+              <button class="p-hero-gallery__thumb" data-type="image" data-src="/images/products/plain-iridescent-spandex/color-chart.jpg" aria-label="View color chart image">
+                <img src="/images/products/plain-iridescent-spandex/color-chart.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="120" height="80" loading="lazy" decoding="async" />
+              </button>
+              <button class="p-hero-gallery__thumb p-hero-gallery__thumb--video" data-type="video" aria-label="Play video">
+                <img src="/images/products/plain-iridescent-spandex/main-view.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="120" height="80" loading="lazy" decoding="async" />
+                <span class="p-hero-gallery__play-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="8,5 20,12 8,19"/></svg>
+                </span>
+              </button>
+            </div>
           </div>
         ) : (
         /* Default gallery for other products */
@@ -517,44 +482,30 @@ const seoDesc = meta.desc;
 </Layout>
 
 <script>
-  const carousel = document.getElementById('p-hero-carousel');
-  if (carousel) {
-    const slides = carousel.querySelectorAll('.p-hero-carousel__slide');
-    const dotsWrap = document.getElementById('p-hero-dots');
-    let current = 0;
+  const gallery = document.getElementById('p-hero-gallery');
+  if (gallery) {
+    const heroImg = document.getElementById('p-hero-img');
+    const heroVid = document.getElementById('p-hero-video');
+    const thumbs = gallery.querySelectorAll('.p-hero-gallery__thumb');
 
-    slides.forEach((_, i) => {
-      const dot = document.createElement('button');
-      dot.className = 'p-hero-carousel__dot' + (i === 0 ? ' p-hero-carousel__dot--active' : '');
-      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-      dot.addEventListener('click', () => goTo(i));
-      dotsWrap.appendChild(dot);
+    thumbs.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        thumbs.forEach(t => t.classList.remove('p-hero-gallery__thumb--active'));
+        thumb.classList.add('p-hero-gallery__thumb--active');
+        const type = thumb.dataset.type;
+
+        if (type === 'video') {
+          heroImg.style.display = 'none';
+          heroVid.style.display = 'block';
+          heroVid.currentTime = 0;
+        } else {
+          heroVid.pause();
+          heroVid.style.display = 'none';
+          heroImg.style.display = 'block';
+          heroImg.src = thumb.dataset.src;
+        }
+      });
     });
-
-    function goTo(index) {
-      const wasVideo = slides[current].classList.contains('p-hero-carousel__slide--video');
-      slides[current].classList.remove('p-hero-carousel__slide--active');
-      dotsWrap.children[current].classList.remove('p-hero-carousel__dot--active');
-
-      if (wasVideo) {
-        const v = slides[current].querySelector('video');
-        if (v) { v.pause(); v.currentTime = 0; }
-      }
-
-      current = (index + slides.length) % slides.length;
-      slides[current].classList.add('p-hero-carousel__slide--active');
-      dotsWrap.children[current].classList.add('p-hero-carousel__dot--active');
-    }
-
-    document.getElementById('p-hero-prev').addEventListener('click', () => goTo(current - 1));
-    document.getElementById('p-hero-next').addEventListener('click', () => goTo(current + 1));
-
-    let startX = 0;
-    carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-    carousel.addEventListener('touchend', e => {
-      const diff = startX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
-    }, { passive: true });
   }
 </script>
 
@@ -1168,6 +1119,19 @@ const seoDesc = meta.desc;
     .detail-gallery__thumbs {
       gap: var(--space-xs);
     }
+
+    .p-hero-gallery {
+      position: static;
+    }
+
+    .p-hero-gallery__main {
+      max-height: 360px;
+    }
+
+    .p-hero-gallery__main img,
+    .p-hero-gallery__main video {
+      max-height: 360px;
+    }
   }
 
   @media (max-width: 640px) {
@@ -1209,106 +1173,100 @@ const seoDesc = meta.desc;
       width: 56px;
       height: 56px;
     }
+
+    .p-hero-gallery__main {
+      max-height: 360px;
+    }
+
+    .p-hero-gallery__main img,
+    .p-hero-gallery__main video {
+      max-height: 360px;
+    }
+
+    .p-hero-gallery__thumb {
+      width: 56px;
+      height: 56px;
+    }
   }
 
-  /* ===== Hero Carousel (plain-iridescent-laser) ===== */
-  .p-hero-carousel {
-    position: relative;
+  /* ===== Hero Gallery Viewer (plain-iridescent-laser) ===== */
+  .p-hero-gallery {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-xl));
+  }
+
+  .p-hero-gallery__main {
+    width: 100%;
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     overflow: hidden;
     background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    aspect-ratio: 16 / 9;
-  }
-
-  .p-hero-carousel__track {
     display: flex;
-    width: 100%;
-    height: 100%;
+    align-items: center;
+    justify-content: center;
+    max-height: 520px;
   }
 
-  .p-hero-carousel__slide {
-    flex: 0 0 100%;
+  .p-hero-gallery__main img {
     width: 100%;
-    height: 100%;
-    display: none;
-  }
-
-  .p-hero-carousel__slide--active {
+    max-height: 520px;
+    object-fit: contain;
     display: block;
   }
 
-  .p-hero-carousel__slide picture,
-  .p-hero-carousel__slide img {
+  .p-hero-gallery__main video {
+    width: 100%;
+    max-height: 520px;
+    object-fit: contain;
+  }
+
+  .p-hero-gallery__thumbs {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+    overflow-x: auto;
+    padding-bottom: var(--space-xs);
+  }
+
+  .p-hero-gallery__thumb {
+    flex-shrink: 0;
+    width: 72px;
+    height: 72px;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    cursor: pointer;
+    padding: 0;
+    background: none;
+    transition: border-color var(--transition-fast);
+    position: relative;
+  }
+
+  .p-hero-gallery__thumb:hover {
+    border-color: var(--color-accent);
+  }
+
+  .p-hero-gallery__thumb--active {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px var(--color-accent);
+  }
+
+  .p-hero-gallery__thumb img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
 
-  .p-hero-carousel__video-wrap {
-    width: 100%;
-    height: 100%;
+  .p-hero-gallery__play-icon {
+    position: absolute;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #111;
-  }
-
-  .p-hero-carousel__video-wrap video {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .p-hero-carousel__arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,.35);
     background: rgba(0,0,0,.35);
     color: #fff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background .2s;
-    z-index: 2;
-  }
-
-  .p-hero-carousel__arrow:hover {
-    background: rgba(0,0,0,.6);
-  }
-
-  .p-hero-carousel__arrow--prev { left: 12px; }
-  .p-hero-carousel__arrow--next { right: 12px; }
-
-  .p-hero-carousel__dots {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 6px;
-    z-index: 2;
-  }
-
-  .p-hero-carousel__dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,.6);
-    background: transparent;
-    cursor: pointer;
-    padding: 0;
-    transition: background .2s;
-  }
-
-  .p-hero-carousel__dot--active {
-    background: #fff;
+    pointer-events: none;
   }
 
   @media (max-width: 768px) {
