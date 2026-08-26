@@ -107,8 +107,8 @@ const productMeta: Record<string, { title: string; desc: string }> = {
     desc: "Wholesale iridescent gradient laser hot-stamping ice-silk fabric. Smooth color-flow finish, stretch base, free sample, low MOQ. Ideal for fashion apparel, stage costumes & backdrops. Get custom quote.",
   },
   "plain-iridescent-laser-spandex-4-way-stretch": {
-    title: "Plain Iridescent Laser Spandex 4-Way Stretch Fabric | Wholesale - Nixia Fabric",
-    desc: "Wholesale plain iridescent laser hot-stamping spandex fabric. 4-way stretch, uniform metallic shine, free sample, low MOQ. Ideal for bodysuits, swimwear & stage garments. Get custom quote.",
+    title: "Plain Iridescent Laser Hot-Stamping Spandex | 4-Way Stretch Fabric-Nixia Fabric",
+    desc: "Wholesale plain iridescent laser hot-stamping 4-way stretch spandex fabric. Free sample, low 100m MOQ. For swimwear, stage costumes & dance apparel. Get custom quote.",
   },
   "rainbow-gradient-glitter-synthetic-leather": {
     title: "Rainbow Gradient Glitter Synthetic Leather Fabric | Wholesale - Nixia Fabric",
@@ -267,6 +267,28 @@ const seoDesc = meta.desc;
             <p>{para}</p>
           ))}
         </div>
+
+        {/* Per-product intro & specs block for plain-iridescent-laser-spandex-4-way-stretch */}
+        {product.id === "plain-iridescent-laser-spandex-4-way-stretch" && (
+          <div class="detail-body__section">
+            <p>Plain iridescent laser hot‑stamping spandex fabric features shiny holographic finish with excellent 4‑way stretch performance. Soft, skin‑friendly and highly elastic, fits tightly for body‑wearing garments. Widely used for swimwear, dance wear, stage costumes and fashion apparel. Custom colors &amp; free sample for quality testing are available.</p>
+
+            <h3>Specifications</h3>
+            <ul>
+              <li>Width: 150cm</li>
+              <li>Weight: 180 g/m²</li>
+              <li>Base material: Polyester knitted base</li>
+              <li>Thickness: 0.35‑0.4mm</li>
+            </ul>
+
+            <h3>Order Information</h3>
+            <ul>
+              <li>MOQ: 100 meters</li>
+              <li>Sample: Free sample available</li>
+              <li>Lead time: 7‑15 working days</li>
+            </ul>
+          </div>
+        )}
 
         <!-- SKU Color Gallery -->
         {product.skuImages.length > 0 && (
