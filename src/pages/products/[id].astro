@@ -144,7 +144,70 @@ const seoDesc = meta.desc;
       </nav>
 
       <div class="detail-layout">
-        <!-- Image Gallery -->
+        {/* Hero Carousel — plain-iridescent-laser-spandex-4-way-stretch only */}
+        {product.id === "plain-iridescent-laser-spandex-4-way-stretch" ? (
+          <div class="p-hero-carousel" id="p-hero-carousel">
+            <div class="p-hero-carousel__track" id="p-hero-track">
+              {/* main */}
+              <div class="p-hero-carousel__slide p-hero-carousel__slide--active">
+                <picture>
+                  <source srcset="/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/plain-iridescent-laser-spandex-4-way-stretch-05.webp" type="image/webp" />
+                  <img src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/plain-iridescent-laser-spandex-4-way-stretch-05.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="1200" height="675" loading="eager" decoding="async" />
+                </picture>
+              </div>
+              {/* sku */}
+              <div class="p-hero-carousel__slide">
+                <picture>
+                  <source srcset="/images/products/plain-iridescent-laser-spandex-4-way-stretch/sku/plain-iridescent-laser-spandex-4-way-stretch-02.webp" type="image/webp" />
+                  <img src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/sku/plain-iridescent-laser-spandex-4-way-stretch-02.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="1200" height="675" loading="lazy" decoding="async" />
+                </picture>
+              </div>
+              {/* detail images */}
+              <div class="p-hero-carousel__slide">
+                <picture>
+                  <source srcset="/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/plain-iridescent-laser-spandex-4-way-stretch-02.webp" type="image/webp" />
+                  <img src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/plain-iridescent-laser-spandex-4-way-stretch-02.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="1200" height="675" loading="lazy" decoding="async" />
+                </picture>
+              </div>
+              <div class="p-hero-carousel__slide">
+                <picture>
+                  <source srcset="/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/plain-iridescent-laser-spandex-4-way-stretch-03.webp" type="image/webp" />
+                  <img src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/plain-iridescent-laser-spandex-4-way-stretch-03.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="1200" height="675" loading="lazy" decoding="async" />
+                </picture>
+              </div>
+              <div class="p-hero-carousel__slide">
+                <picture>
+                  <source srcset="/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/plain-iridescent-laser-spandex-4-way-stretch-04.webp" type="image/webp" />
+                  <img src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/plain-iridescent-laser-spandex-4-way-stretch-04.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="1200" height="675" loading="lazy" decoding="async" />
+                </picture>
+              </div>
+              <div class="p-hero-carousel__slide">
+                <picture>
+                  <source srcset="/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/plain-iridescent-laser-spandex-4-way-stretch-05.webp" type="image/webp" />
+                  <img src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/plain-iridescent-laser-spandex-4-way-stretch-05.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="1200" height="675" loading="lazy" decoding="async" />
+                </picture>
+              </div>
+              {/* video */}
+              <div class="p-hero-carousel__slide p-hero-carousel__slide--video">
+                <div class="p-hero-carousel__video-wrap">
+                  <video controls preload="none" muted playsinline poster="/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/plain-iridescent-laser-spandex-4-way-stretch-05.jpg">
+                    <source src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/video/demo-video.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              </div>
+            </div>
+            {/* prev / next */}
+            <button class="p-hero-carousel__arrow p-hero-carousel__arrow--prev" id="p-hero-prev" aria-label="Previous slide">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="p-hero-carousel__arrow p-hero-carousel__arrow--next" id="p-hero-next" aria-label="Next slide">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+            {/* dots */}
+            <div class="p-hero-carousel__dots" id="p-hero-dots"></div>
+          </div>
+        ) : (
+        /* Default gallery for other products */
         <div class="detail-gallery">
           <!-- Main Image -->
           <div class="detail-gallery__main">
@@ -189,6 +252,7 @@ const seoDesc = meta.desc;
             )
           }
         </div>
+        )}
 
         <!-- Product Info -->
         <div class="detail-info">
@@ -451,6 +515,48 @@ const seoDesc = meta.desc;
     </section>
   )}
 </Layout>
+
+<script>
+  const carousel = document.getElementById('p-hero-carousel');
+  if (carousel) {
+    const slides = carousel.querySelectorAll('.p-hero-carousel__slide');
+    const dotsWrap = document.getElementById('p-hero-dots');
+    let current = 0;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'p-hero-carousel__dot' + (i === 0 ? ' p-hero-carousel__dot--active' : '');
+      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+
+    function goTo(index) {
+      const wasVideo = slides[current].classList.contains('p-hero-carousel__slide--video');
+      slides[current].classList.remove('p-hero-carousel__slide--active');
+      dotsWrap.children[current].classList.remove('p-hero-carousel__dot--active');
+
+      if (wasVideo) {
+        const v = slides[current].querySelector('video');
+        if (v) { v.pause(); v.currentTime = 0; }
+      }
+
+      current = (index + slides.length) % slides.length;
+      slides[current].classList.add('p-hero-carousel__slide--active');
+      dotsWrap.children[current].classList.add('p-hero-carousel__dot--active');
+    }
+
+    document.getElementById('p-hero-prev').addEventListener('click', () => goTo(current - 1));
+    document.getElementById('p-hero-next').addEventListener('click', () => goTo(current + 1));
+
+    let startX = 0;
+    carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    carousel.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+    }, { passive: true });
+  }
+</script>
 
 <style>
   /* ===== Hero ===== */
@@ -1103,5 +1209,125 @@ const seoDesc = meta.desc;
       width: 56px;
       height: 56px;
     }
+  }
+
+  /* ===== Hero Carousel (plain-iridescent-laser) ===== */
+  .p-hero-carousel {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    aspect-ratio: 16 / 9;
+  }
+
+  .p-hero-carousel__track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .p-hero-carousel__slide {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    display: none;
+  }
+
+  .p-hero-carousel__slide--active {
+    display: block;
+  }
+
+  .p-hero-carousel__slide picture,
+  .p-hero-carousel__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .p-hero-carousel__video-wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111;
+  }
+
+  .p-hero-carousel__video-wrap video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .p-hero-carousel__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.35);
+    background: rgba(0,0,0,.35);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .2s;
+    z-index: 2;
+  }
+
+  .p-hero-carousel__arrow:hover {
+    background: rgba(0,0,0,.6);
+  }
+
+  .p-hero-carousel__arrow--prev { left: 12px; }
+  .p-hero-carousel__arrow--next { right: 12px; }
+
+  .p-hero-carousel__dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 2;
+  }
+
+  .p-hero-carousel__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.6);
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: background .2s;
+  }
+
+  .p-hero-carousel__dot--active {
+    background: #fff;
+  }
+
+  @media (max-width: 768px) {
+    .p-hero-carousel {
+      aspect-ratio: 4 / 3;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .p-hero-carousel {
+      aspect-ratio: 1 / 1;
+    }
+
+    .p-hero-carousel__arrow {
+      width: 30px;
+      height: 30px;
+    }
+
+    .p-hero-carousel__arrow--prev { left: 6px; }
+    .p-hero-carousel__arrow--next { right: 6px; }
   }
 </style>
