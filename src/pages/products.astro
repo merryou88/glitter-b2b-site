@@ -84,12 +84,6 @@ const collectionPageData = {
   name: "Glitter Synthetic Leather Collection",
   description: "Browse our complete range of glitter synthetic leather for footwear, handbag and accessory manufacturing. Factory direct supply with custom color matching.",
   url: "https://nixiafabric.com/products",
-  hasPart: allProducts.map((p) => ({
-    "@type": "Product",
-    name: p.title,
-    url: `https://nixiafabric.com/products/${p.id}`,
-    image: `https://nixiafabric.com${p.mainImage}`,
-  })),
 };
 
 const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");

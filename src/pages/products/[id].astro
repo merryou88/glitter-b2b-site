@@ -64,22 +64,6 @@ const breadcrumbData = {
   ],
 };
 
-const productData = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: product.title,
-  description: product.shortDesc,
-  category: product.category,
-  image: product.mainImage ? `https://nixiafabric.com${product.mainImage}` : undefined,
-  brand: { "@type": "Brand", name: "Nixia Fabric" },
-  manufacturer: { "@type": "Organization", name: "Nixia Fabric" },
-  offers: {
-    "@type": "Offer",
-    availability: "https://schema.org/InStock",
-    itemCondition: "https://schema.org/NewCondition",
-  },
-};
-
 // Build main image gallery: use mainImage as hero, then all sku images
 const mainImages = product.mainImage ? [product.mainImage] : [];
 const galleryImages = [...mainImages, ...product.skuImages];
@@ -95,7 +79,7 @@ const faqData = (product.faq ?? []).length > 0 && {
   })),
 };
 
-const structuredDataList = [breadcrumbData, productData, ...(faqData ? [faqData] : [])];
+const structuredDataList = [breadcrumbData, ...(faqData ? [faqData] : [])];
 
 // Related products: other items sharing at least one tag (max 3)
 const relatedProducts = (products as Product[])
