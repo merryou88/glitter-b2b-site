@@ -419,7 +419,7 @@ const toMobile = (src: string) => src.replace(/\.(png|jpe?g|webp)$/i, "-mobile.w
   /* Dots */
   .hero-carousel__dots {
     position: absolute;
-    bottom: clamp(1.5rem, 4vh, 2.5rem);
+    bottom: 16px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -440,7 +440,7 @@ const toMobile = (src: string) => src.replace(/\.(png|jpe?g|webp)$/i, "-mobile.w
   }
 
   .hero-carousel__dot.is-active {
-    background-color: var(--color-accent);
+    background-color: #d4ac2e;
     width: 30px;
     border-radius: 5px;
     background-clip: content-box;
@@ -528,7 +528,7 @@ const toMobile = (src: string) => src.replace(/\.(png|jpe?g|webp)$/i, "-mobile.w
     const nextBtn = document.getElementById("carousel-next");
     let current = 0;
     let autoTimer: ReturnType<typeof setInterval> | null = null;
-    const INTERVAL = 7000;
+    const INTERVAL = 5000;
 
     function goTo(index: number) {
       const total = slides.length;
