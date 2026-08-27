@@ -36,7 +36,7 @@ const {
   title,
   description = "Nixia Fabric is a China manufacturer specializing in Chunky Glitter Synthetic Leather and Foil-Printed Synthetic Leather for shoes, handbags, and fashion accessories. Factory Direct Supply and Custom Color Matching.",
   keywords = "chunky glitter synthetic leather, foil-printed synthetic leather, glitter fabric manufacturer, foil fabric manufacturer, fabric factory china, metallic fabric factory, Custom Color Matching, Custom Backing Options",
-  image = "/og-image.svg",
+  image = "/og-image.jpg",
   canonical,
   ogType = "website",
   structuredData,
@@ -61,7 +61,7 @@ const orgStructuredData = {
   alternateName: "Nixia Fabric Manufacturer",
   description: "China manufacturer of holographic, iridescent and glitter fabrics for fashion, footwear, bags and stage costumes. Factory direct supply, custom color matching and OEM/ODM support.",
   url: siteUrl,
-  logo: `${siteUrl}/favicon.svg`,
+  logo: `${siteUrl}/logo.png`,
   address: {
     "@type": "PostalAddress",
     streetAddress: "No.63 Chuangqi Road, Shilou Town, Panyu District",
@@ -132,6 +132,9 @@ const allStructuredData = structuredData
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:alt" content={`${siteName} — Decorative Fabric Manufacturer`} />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:locale" content="en_US" />

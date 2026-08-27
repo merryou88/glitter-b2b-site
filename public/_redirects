@@ -1,0 +1,3 @@
+# Cloudflare Pages redirects
+# Redirect legacy sitemap URL to Astro-generated sitemap-index.xml (301)
+/sitemap.xml /sitemap-index.xml 301
