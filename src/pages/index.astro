@@ -283,6 +283,15 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
             <span><strong>500+ Rolls</strong> Monthly Capacity</span>
           </div>
 
+          <div class="why-nixia-quotes" aria-label="Customer reviews">
+            <blockquote>
+              <p>&ldquo;Sample to bulk in three weeks — the holographic spandex matched our approved swatch exactly.&rdquo;<cite>Swimwear manufacturer, Thailand</cite></p>
+            </blockquote>
+            <blockquote>
+              <p>&ldquo;Consistent glitter density across three repeat orders, and export documents were complete every time.&rdquo;<cite>Footwear &amp; bags brand, UAE</cite></p>
+            </blockquote>
+          </div>
+
           <div class="why-nixia-advantages" aria-label="Core advantages">
             {whyNixiaBenefits.map((item) => (
               <div class="why-nixia-advantage">
@@ -434,11 +443,12 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     <div class="container">
       <div class="rfq-grid">
         <div class="rfq-card rfq-card--dark">
-          <span class="rfq-card__eyebrow">FACTORY DIRECT WHOLESALE</span>
-          <h2>Send RFQ for Custom Fabric Solutions</h2>
-          <p class="rfq-card__desc">Tell us your fabric type, end-use, quantity, color & backing requirements. Our factory team will reply with sample info, MOQ and quotation within 24 hours.</p>
+          <div class="rfq-card__main">
+            <span class="rfq-card__eyebrow">FACTORY DIRECT WHOLESALE</span>
+            <h2>Send RFQ for Custom Fabric Solutions</h2>
+            <p class="rfq-card__desc">Tell us your fabric type, end-use, quantity, color & backing requirements. Our factory team will reply with sample info, MOQ and quotation within 24 hours.</p>
 
-          <form class="rfq-inline-form" id="rfq-inline-form" novalidate>
+            <form class="rfq-inline-form" id="rfq-inline-form" novalidate>
             <div class="rfq-inline-form__row">
               <div class="rfq-inline-form__field">
                 <label for="rfq-inline-name">Name *</label>
@@ -466,6 +476,11 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
               </span>
             </button>
           </form>
+          </div>
+          <figure class="rfq-card__quote">
+            <blockquote>&ldquo;Fast RFQ replies and flexible MOQ made our first trial order easy to place.&rdquo;</blockquote>
+            <figcaption>Stage costume studio, Philippines</figcaption>
+          </figure>
         </div>
 
         <div class="rfq-card rfq-card--light">
@@ -544,138 +559,45 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     </div>
   </section>
 
-  <!-- ==================== B2B BUYER SUPPORT ==================== -->
-  <section class="section section--alt" id="buyer-support">
+  <!-- ==================== VERIFIED FACTORY ==================== -->
+  <section class="section section--alt" id="verified-factory">
     <div class="container">
       <div class="section-header section-header--left section-header--compact">
-        <span class="eyebrow">B2B BUYER SUPPORT</span>
-        <h2>Factory Information Buyers Can Verify</h2>
-        <p>We focus on practical sourcing details: fabric production capability, sample procedure, custom finishing, packaging options, export documents and responsive quotation support.</p>
+        <span class="eyebrow">VERIFIED FACTORY</span>
+        <h2>Verified Factory, Documented Quality</h2>
+        <p>Business license, SGS test reports and batch-wise QC — every claim on this page can be verified with documents or a factory visit.</p>
       </div>
 
       <div class="support-grid grid grid--4">
         <article class="support-card">
-          <span class="support-card__eyebrow">MANUFACTURING</span>
-          <h3>Factory Direct Supply</h3>
-          <p>Fabric weaving, custom finishing, packing and export coordination handled through our in-house Guangzhou factory team.</p>
+          <span class="support-card__eyebrow">ENTITY</span>
+          <h3>Verified Factory Entity</h3>
+          <p>Business license available; buyer audits and factory visits welcome.</p>
         </article>
         <article class="support-card">
-          <span class="support-card__eyebrow">RFQ</span>
-          <h3>Practical Quote Details</h3>
-          <p>Quote requests collect fabric item, quantity, logo/artwork, packaging, destination country and buyer requirements.</p>
+          <span class="support-card__eyebrow">COMPLIANCE</span>
+          <h3>Compliance Documents</h3>
+          <p>SGS test reports and fire-retardant certificates on request, per project.</p>
         </article>
         <article class="support-card">
-          <span class="support-card__eyebrow">SAMPLES</span>
-          <h3>Sample Confirmation</h3>
-          <p>Stock fabric samples, custom-finish samples and adjusted prototypes can be arranged before bulk production.</p>
+          <span class="support-card__eyebrow">QC</span>
+          <h3>Batch-wise Inspection</h3>
+          <p>Every roll inspected in-house before packing, batch by batch.</p>
         </article>
         <article class="support-card">
           <span class="support-card__eyebrow">EXPORT</span>
-          <h3>Shipment Support</h3>
-          <p>FOB, CIF and buyer-forwarder coordination supported with complete standard export documents.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== FACTORY CREDENTIALS ==================== -->
-  <section class="section" id="factory-credentials">
-    <div class="container credential-container">
-      <div class="credential-hero credential-hero--compact">
-        <div class="credential-hero__copy">
-          <span class="eyebrow">FACTORY VERIFIED QUALITY SYSTEM</span>
-          <h2>Factory Credentials &amp; Compliance</h2>
-          <p>Verified documentation, structured quality control, and transparent factory support for fabric sampling and bulk orders.</p>
-        </div>
-      </div>
-
-      <div class="credential-card-grid" aria-label="Factory credentials and compliance">
-        <article class="credential-card">
-          <span class="credential-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 4h12v16H6z" />
-              <path d="M8 8h8" />
-              <path d="M8 12h6" />
-              <path d="M9 16h6" />
-            </svg>
-          </span>
-          <div>
-            <h3>Business License</h3>
-            <p>Factory entity for verification.</p>
-          </div>
-        </article>
-
-        <article class="credential-card">
-          <span class="credential-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7 4h8l4 4v12H7z" />
-              <path d="M15 4v4h4" />
-              <path d="M9 11h6" />
-              <path d="M9 14h4" />
-            </svg>
-          </span>
-          <div>
-            <h3>SGS Test Reports</h3>
-            <p>Test documents on request.</p>
-          </div>
-        </article>
-
-        <article class="credential-card">
-          <span class="credential-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 3l5 2v5c0 4-2.3 7.1-5 11-2.7-3.9-5-7-5-11V5z" />
-              <path d="M12 8v5" />
-              <path d="M10 11h4" />
-            </svg>
-          </span>
-          <div>
-            <h3>Fire-Retardant Options</h3>
-            <p>For upholstery and event fabrics.</p>
-          </div>
-        </article>
-
-        <article class="credential-card">
-          <span class="credential-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 6h12v12H6z" />
-              <path d="M8 10l2 2 4-4" />
-              <path d="M8 15h8" />
-            </svg>
-          </span>
-          <div>
-            <h3>Batch-wise Inspection</h3>
-            <p>Per-batch quality check.</p>
-          </div>
-        </article>
-
-        <article class="credential-card">
-          <span class="credential-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 6h9l3 3v9H4z" />
-              <path d="M7 10h6" />
-              <path d="M7 13h4" />
-              <path d="M15 9h5v8h-5z" />
-            </svg>
-          </span>
-          <div>
-            <h3>Buyer Audit Support</h3>
-            <p>Factory visit and document support.</p>
-          </div>
+          <h3>Export Support</h3>
+          <p>FOB, CIF or buyer-forwarder handover with complete export documents.</p>
         </article>
       </div>
 
-      <div class="qa-process">
-        <div class="qa-process__head">
-          <span class="eyebrow">QUALITY ASSURANCE PROCESS</span>
-          <h3>Quality Assurance Process</h3>
-        </div>
-
-        <ol class="qa-process__track" aria-label="Quality assurance process">
-          <li class="qa-step"><span>Sample Approval</span></li>
-          <li class="qa-step"><span>Batch Inspection</span></li>
-          <li class="qa-step qa-step--active"><span>Production Check</span></li>
-          <li class="qa-step"><span>Final Document Review</span></li>
-          <li class="qa-step"><span>Shipment Confirmation</span></li>
+      <div class="vf-process" aria-label="Quality assurance process">
+        <ol class="vf-process__track">
+          <li>Sample Approval</li>
+          <li>Batch Inspection</li>
+          <li>Production Check</li>
+          <li>Document Review</li>
+          <li>Shipment Confirmation</li>
         </ol>
       </div>
 
@@ -684,7 +606,6 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
           View Full Manufacturing Page →
         </CTAButton>
       </div>
-
     </div>
   </section>
 
@@ -1094,6 +1015,35 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     font-weight: 600;
   }
 
+  .why-nixia-quotes {
+    margin-top: var(--space-xl);
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .why-nixia-quotes blockquote {
+    margin: 0;
+    padding: 0.75rem 1rem;
+    border-left: 2px solid var(--color-accent);
+    background: rgba(196, 160, 53, 0.06);
+  }
+
+  .why-nixia-quotes blockquote p {
+    margin: 0;
+    font-style: italic;
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.55;
+  }
+
+  .why-nixia-quotes cite {
+    display: block;
+    margin-top: 0.3rem;
+    font-style: normal;
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+
   .why-nixia-advantages {
     display: grid;
     gap: 1rem;
@@ -1270,6 +1220,52 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
 
   .rfq-card__desc {
     color: rgba(245, 238, 226, 0.85);
+  }
+
+  /* RFQ card: testimonial beside form on desktop, above form on mobile */
+  .rfq-card--dark {
+    display: grid;
+    align-items: center;
+  }
+
+  .rfq-card__quote {
+    margin: 0;
+    padding: 1rem 1.1rem;
+    border-left: 2px solid var(--color-accent);
+    align-self: center;
+  }
+
+  .rfq-card__quote blockquote {
+    margin: 0;
+    font-style: italic;
+    font-size: var(--text-sm);
+    color: rgba(245, 238, 226, 0.9);
+    line-height: 1.6;
+  }
+
+  .rfq-card__quote figcaption {
+    margin-top: 0.4rem;
+    font-style: normal;
+    font-size: var(--text-xs);
+    color: rgba(245, 238, 226, 0.6);
+  }
+
+  @media (min-width: 900px) {
+    .rfq-card--dark {
+      grid-template-columns: 1.55fr 1fr;
+      column-gap: 2rem;
+    }
+  }
+
+  @media (max-width: 899px) {
+    .rfq-card__main {
+      order: 2;
+    }
+
+    .rfq-card__quote {
+      order: 1;
+      margin-bottom: var(--space-lg);
+    }
   }
 
   /* Inline RFQ form */
@@ -1716,6 +1712,41 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
 
   .credential-cta :global(.btn) {
     border-radius: 14px;
+  }
+
+  /* ==================== Verified Factory (merged) ==================== */
+  .vf-process {
+    margin-top: var(--space-xl);
+    padding: var(--space-md) var(--space-lg);
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(22, 41, 77, 0.08);
+    border-radius: 16px;
+  }
+
+  .vf-process__track {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vf-process__track li {
+    display: flex;
+    align-items: center;
+    min-height: 2rem;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+  }
+
+  .vf-process__track li + li::before {
+    content: "→";
+    margin-inline: 0.75rem;
+    color: var(--color-accent);
+    font-weight: 700;
   }
 
   .qa-process {
