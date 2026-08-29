@@ -89,6 +89,9 @@ const relatedProducts = (products as Product[])
 const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 
 // MOQ / Lead Time card values (real per-product data, formatted for display)
+const titleCase = (s: string) =>
+  s.replace(/(^|[\s-])([a-z])/g, (_m, p1: string, p2: string) => p1 + p2.toUpperCase());
+
 const moqNumber = product.moq?.match(/\d+/)?.[0] ?? "100";
 const moqText = `${moqNumber} Meters`;
 const leadTimeRaw = (product.leadTime ?? "").toLowerCase();
@@ -321,7 +324,7 @@ const seoDesc = meta.desc;
               <h2 class="detail-apps__title">Application Scenarios</h2>
               <ul class="detail-apps__list">
                 {applications.map((app) => (
-                  <li class="detail-apps__item">{app}</li>
+                  <li class="detail-apps__item">{titleCase(app)}</li>
                 ))}
               </ul>
             </div>
@@ -833,7 +836,8 @@ const seoDesc = meta.desc;
 
   /* Application Scenarios */
   .detail-apps {
-    margin-top: var(--space-sm);
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-lg);
   }
 
   .detail-apps__title {
@@ -848,8 +852,9 @@ const seoDesc = meta.desc;
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.625rem 2rem;
   }
 
   .detail-apps__item {
@@ -1286,6 +1291,11 @@ const seoDesc = meta.desc;
     .oem-grid,
     .related-grid {
       grid-template-columns: 1fr;
+    }
+
+    .detail-apps__list {
+      flex-direction: column;
+      gap: var(--space-xs);
     }
 
     .detail-cta {
