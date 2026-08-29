@@ -121,8 +121,18 @@ import RfqQuoteForm from "@components/RfqQuoteForm.astro";
     document.body.style.overflow = "";
   };
 
-  openers.forEach((button) => button.addEventListener("click", openModal));
+  openers.forEach((element) =>
+    element.addEventListener("click", (event) => {
+      if (element.tagName === "A") event.preventDefault();
+      openModal();
+    })
+  );
   closers.forEach((button) => button.addEventListener("click", closeModal));
+
+  // Auto-open the modal on pages that carry a [data-rfq-autoopen] marker (e.g. /contact)
+  if (document.querySelector("[data-rfq-autoopen]")) {
+    window.addEventListener("load", openModal);
+  }
 
   modal?.addEventListener("click", (event) => {
     if (event.target === modal) closeModal();

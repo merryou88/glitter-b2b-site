@@ -16,6 +16,7 @@
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import FloatingContact from "@components/FloatingContact.astro";
+import RFQQuoteModal from "@components/RFQQuoteModal.astro";
 import "../styles/global.css";
 
 export interface Props {
@@ -182,6 +183,7 @@ const allStructuredData = structuredData
       <slot />
     </main>
     <Footer />
+    <RFQQuoteModal />
     <FloatingContact />
 
     <style>

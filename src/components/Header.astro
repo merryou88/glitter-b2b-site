@@ -9,7 +9,6 @@ const navItems = [
   { label: "Factory", href: "/factory/" },
   { label: "Blog", href: "/blog/" },
   { label: "About Us", href: "/about/" },
-  { label: "Contact", href: "/contact/" },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -100,11 +99,6 @@ const isProductSectionActive = currentPath.startsWith("/products");
         <li>
           <a href="/about/" class:list={["header__mobile-link", { "is-active": isActive("/about/") }]}> 
             About Us
-          </a>
-        </li>
-        <li>
-          <a href="/contact/" class:list={["header__mobile-link", { "is-active": isActive("/contact/") }]}>
-            Contact
           </a>
         </li>
       </ul>
