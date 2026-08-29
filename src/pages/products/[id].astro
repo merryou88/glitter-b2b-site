@@ -88,6 +88,28 @@ const relatedProducts = (products as Product[])
 
 const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 
+// MOQ / Lead Time card values (real per-product data, formatted for display)
+const moqNumber = product.moq?.match(/\d+/)?.[0] ?? "100";
+const moqText = `${moqNumber} Meters`;
+const leadTimeRaw = (product.leadTime ?? "").toLowerCase();
+const leadText = leadTimeRaw.includes("in-stock")
+  ? "In-Stock"
+  : /(\d+)\s*[-–]\s*(\d+)\s*days?/.test(leadTimeRaw)
+    ? (product.leadTime as string).replace(/(\d+)\s*[-–]\s*(\d+)\s*days?/i, "$1-$2 working days").trim()
+    : (product.leadTime ?? "7-15 working days");
+
+// Application scenarios from specs, plus combined bottom SEO tags
+const applications =
+  ((product.specs ?? []).find((s: ProductSpec) => s.label.toLowerCase().includes("applications"))?.value ?? "")
+    .split(",")
+    .map((s: string) => s.trim())
+    .filter(Boolean);
+const seoTags = [
+  ...new Map(
+    [...applications, ...product.tags.map((t: string) => t.replace(/-/g, " "))].map((t) => [t.toLowerCase(), t] as const)
+  ).values(),
+];
+
 // SEO title & description — per-product, not shared
 const productMeta: Record<string, { title: string; desc: string }> = {
   "full-print-hot-stamping-spandex-milk-silk": {
@@ -248,11 +270,39 @@ const seoDesc = meta.desc;
           <h1 class="detail-info__title">{product.title}</h1>
           <p class="detail-info__desc">{product.shortDesc}</p>
 
-          <!-- MOQ / Lead Time highlights -->
-          <div class="detail-highlights">
-            {product.moq && <span class="detail-highlights__item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9l-2 2H4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1z"/></svg>{product.moq}</span>}
-            {product.leadTime && <span class="detail-highlights__item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>{product.leadTime}</span>}
-            <span class="detail-highlights__item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Free Sample</span>
+          <!-- MOQ / Lead Time cards -->
+          <div class="detail-offer-grid">
+            <div class="detail-offer-card">
+              <span class="detail-offer-card__label">MOQ</span>
+              <strong class="detail-offer-card__value">{moqText}</strong>
+            </div>
+            <div class="detail-offer-card">
+              <span class="detail-offer-card__label">LEAD TIME</span>
+              <strong class="detail-offer-card__value">{leadText}</strong>
+            </div>
+          </div>
+
+          <!-- B2B Buying Details -->
+          <div class="detail-buying">
+            <h2 class="detail-buying__title">B2B Buying Details</h2>
+            <div class="detail-buying__grid">
+              <div class="detail-buying__item">
+                <h3 class="detail-buying__item-title">SAMPLE</h3>
+                <p class="detail-buying__item-text">Free sample available, customer bears shipping cost</p>
+              </div>
+              <div class="detail-buying__item">
+                <h3 class="detail-buying__item-title">CUSTOMIZATION</h3>
+                <p class="detail-buying__item-text">Custom colors &amp; custom width</p>
+              </div>
+              <div class="detail-buying__item">
+                <h3 class="detail-buying__item-title">PACKAGING</h3>
+                <p class="detail-buying__item-text">Roll packing, export carton</p>
+              </div>
+              <div class="detail-buying__item">
+                <h3 class="detail-buying__item-title">TRADE TERMS</h3>
+                <p class="detail-buying__item-text">FOB, CIF upon quotation</p>
+              </div>
+            </div>
           </div>
 
           <!-- CTA Buttons -->
@@ -265,44 +315,17 @@ const seoDesc = meta.desc;
             </a>
           </div>
 
-          <!-- Quick Specs -->
-          <div class="detail-specs">
-            <div class="detail-specs__item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                <polyline points="22 4 12 14.01 9 11.01"/>
-              </svg>
-              <span>SGS Certified</span>
+          <!-- Application Scenarios -->
+          {applications.length > 0 && (
+            <div class="detail-apps">
+              <h2 class="detail-apps__title">Application Scenarios</h2>
+              <ul class="detail-apps__list">
+                {applications.map((app) => (
+                  <li class="detail-apps__item">{app}</li>
+                ))}
+              </ul>
             </div>
-            <div class="detail-specs__item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                <polyline points="22 4 12 14.01 9 11.01"/>
-              </svg>
-              <span>REACH Compliant</span>
-            </div>
-            <div class="detail-specs__item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                <polyline points="22 4 12 14.01 9 11.01"/>
-              </svg>
-              <span>Custom Color Matching</span>
-            </div>
-            <div class="detail-specs__item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                <polyline points="22 4 12 14.01 9 11.01"/>
-              </svg>
-              <span>{product.skuImages.length > 0 ? `${product.skuImages.length} Color Options` : "Multi-Color Available"}</span>
-            </div>
-          </div>
-
-          <!-- Tags -->
-          <div class="detail-tags">
-            {product.tags.map((tag: string) => (
-              <span class="detail-tags__item">{tag.replace(/-/g, " ")}</span>
-            ))}
-          </div>
+          )}
         </div>
       </div>
     </div>
@@ -502,6 +525,19 @@ const seoDesc = meta.desc;
       </div>
     </section>
   )}
+
+  <!-- Bottom SEO Tags -->
+  <section class="section detail-tags-section" aria-label="Product tags">
+    <div class="container">
+      <h2>Product Tags</h2>
+      <p>Application scenarios and fabric attributes associated with this product.</p>
+      <div class="detail-tags">
+        {seoTags.map((tag) => (
+          <span class="detail-tags__item">{tag}</span>
+        ))}
+      </div>
+    </div>
+  </section>
 </Layout>
 
 <script>
@@ -715,28 +751,142 @@ const seoDesc = meta.desc;
   }
 
   /* Quick Specs */
-  .detail-specs {
+  .detail-offer-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-sm);
-    margin-top: var(--space-md);
-    padding: var(--space-md);
-    background: var(--color-bg);
-    border-radius: var(--radius-sm);
+    gap: var(--space-md);
+    margin-top: var(--space-sm);
   }
 
-  .detail-specs__item {
+  .detail-offer-card {
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md) var(--space-lg);
     display: flex;
-    align-items: center;
-    gap: var(--space-sm);
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .detail-offer-card__label {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+  }
+
+  .detail-offer-card__value {
+    font-size: var(--text-xl);
+    font-weight: 800;
+    color: var(--color-primary);
+  }
+
+  /* B2B Buying Details */
+  .detail-buying {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+  }
+
+  .detail-buying__title {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+    margin: 0 0 var(--space-md);
+  }
+
+  .detail-buying__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--color-border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    padding: 1px;
+  }
+
+  .detail-buying__item {
+    background: var(--color-bg-alt);
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .detail-buying__item-title {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .detail-buying__item-text {
     font-size: var(--text-sm);
     font-weight: 600;
-    color: var(--color-text-secondary);
+    color: var(--color-primary);
+    line-height: 1.45;
+    margin: 0;
   }
 
-  .detail-specs__item svg {
-    color: var(--color-accent);
-    flex-shrink: 0;
+  /* Application Scenarios */
+  .detail-apps {
+    margin-top: var(--space-sm);
+  }
+
+  .detail-apps__title {
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .detail-apps__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .detail-apps__item {
+    position: relative;
+    padding-left: 1.25rem;
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .detail-apps__item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.4rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+
+  .detail-tags-section {
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg-alt);
+  }
+
+  .detail-tags-section h2 {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .detail-tags-section p {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin: 0 0 var(--space-md);
   }
 
   /* Tags */
@@ -755,32 +905,6 @@ const seoDesc = meta.desc;
     background: rgba(196, 160, 53, 0.08);
     border-radius: var(--radius-sm);
     text-transform: capitalize;
-  }
-
-  /* MOQ / Lead Time highlights */
-  .detail-highlights {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-sm);
-    margin-top: var(--space-sm);
-  }
-
-  .detail-highlights__item {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    padding: 0.4rem 0.9rem;
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--color-primary);
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-full);
-  }
-
-  .detail-highlights__item svg {
-    color: var(--color-accent);
-    flex-shrink: 0;
   }
 
   /* ===== Specification Grid ===== */
@@ -1157,7 +1281,6 @@ const seoDesc = meta.desc;
 
   @media (max-width: 768px) {
     .detail-layout,
-    .detail-specs,
     .sku-grid,
     .detail-images-grid,
     .oem-grid,
@@ -1189,7 +1312,7 @@ const seoDesc = meta.desc;
       padding-top: var(--space-lg);
     }
 
-    .detail-specs {
+    .detail-offer-grid {
       grid-template-columns: 1fr;
     }
 
