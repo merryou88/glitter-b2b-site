@@ -31,25 +31,25 @@ const collections = [
     key: "swimwear",
     label: "Fashion & Swimwear",
     desc: "4-way stretch spandex and milk-silk bases with foil and laser finishes.",
-    icon: '<path d="M2 18c1.5 0 1.5 1.5 3 1.5S6.5 18 8 18s1.5 1.5 3 1.5S12.5 18 14 18s1.5 1.5 3 1.5S18.5 18 20 18" /><path d="M8 13c-2 0-3.5-1.5-3.5-3.5S6 6 8 6s3.5 1.5 3.5 3.5S10 13 8 13z" /><path d="M10.5 9.5L19 4" />',
+    image: "/shots/application-swimwear-glitter-fabric.jpg",
   },
   {
     key: "footwear,handbag",
     label: "Shoes & Bags",
     desc: "Structured glitter and synthetic-leather bases for uppers, handbags and trims.",
-    icon: '<path d="M3 7h9l2 2h5a2 2 0 0 1 2 2v1h-9l-2 1H6l-2-2z" /><path d="M6 13l-2 4h6l2-4" />',
+    image: "/shots/application-shoes-glitter-fabric.png",
   },
   {
     key: "stage-costume",
     label: "Party & Stage Costumes",
     desc: "Holographic and iridescent fabrics for dance, cosplay and performance outfits.",
-    icon: '<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z" /><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z" />',
+    image: "/shots/application-costume-glitter-fabric.jpg",
   },
   {
     key: "decoration",
     label: "Toys, Crafts & Decor",
     desc: "Cut-clean glitter fabrics for toys, DIY crafts, backdrops and festive projects.",
-    icon: '<path d="M12 3l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" /><path d="M19 15l1 2 2 1-2 1-1 2-1-2-2-1 2-1z" />',
+    image: "/shots/application-fashion-trim-glitter-fabric.png",
   },
 ];
 
@@ -120,14 +120,18 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
     <div class="container">
       <div class="collections-grid">
         {collections.map((c) => (
-          <a href="#catalog" class="collection-tile" data-filter={c.key}>
-            <span class="collection-tile__icon" aria-hidden="true" set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${c.icon}</svg>`} />
-            <div class="collection-tile__body">
-              <h2 class="collection-tile__title">{c.label}</h2>
-              <span class="collection-tile__count">{collectionCount(c.key)} items</span>
-              <p class="collection-tile__desc">{c.desc}</p>
+          <a href="#catalog" class="collection-card" data-filter={c.key}>
+            <picture class="collection-card__media">
+              <source srcset={toWebp(c.image)} type="image/webp" />
+              <img src={c.image} alt="" loading="lazy" width="1672" height="941" />
+            </picture>
+            <span class="collection-card__overlay" aria-hidden="true"></span>
+            <div class="collection-card__body">
+              <span class="collection-card__count">{collectionCount(c.key)} ITEMS</span>
+              <h2 class="collection-card__title">{c.label}</h2>
+              <p class="collection-card__desc">{c.desc}</p>
+              <span class="collection-card__cta">Browse Collection &gt;</span>
             </div>
-            <span class="collection-tile__arrow" aria-hidden="true">→</span>
           </a>
         ))}
       </div>
@@ -296,79 +300,91 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
     gap: var(--space-lg);
   }
 
-  .collection-tile {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    background: var(--color-white);
-    border: 1px solid rgba(22, 41, 77, 0.08);
-    border-radius: 16px;
-    padding: 1.5rem;
-    text-decoration: none;
-    color: inherit;
+  .collection-card {
     position: relative;
-    transition: box-shadow 0.25s ease, transform 0.25s ease;
+    display: block;
+    height: 280px;
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    border: 1px solid rgba(22, 41, 77, 0.06);
+    box-shadow: 0 6px 20px rgba(22, 41, 77, 0.12);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
 
-  .collection-tile:hover {
-    box-shadow: 0 12px 28px rgba(22, 41, 77, 0.1);
-    transform: translateY(-3px);
+  .collection-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 34px rgba(22, 41, 77, 0.18);
   }
 
-  .collection-tile__icon {
-    flex-shrink: 0;
-    width: 52px;
-    height: 52px;
-    display: grid;
-    place-items: center;
-    background: rgba(196, 160, 53, 0.1);
-    border-radius: 14px;
-    color: var(--color-accent-dark);
-  }
-
-  .collection-tile__icon svg { width: 26px; height: 26px; }
-
-  .collection-tile__body { min-width: 0; }
-
-  .collection-tile__title {
-    font-size: 1.05rem;
-    font-weight: 800;
-    color: var(--color-primary);
-    margin: 0 0 0.2rem;
-    letter-spacing: -0.01em;
-  }
-
-  .collection-tile__count {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--color-accent-dark);
-    background: rgba(196, 160, 53, 0.12);
-    border-radius: 999px;
-    padding: 0.15rem 0.6rem;
-    margin-bottom: 0.4rem;
-  }
-
-  .collection-tile__desc {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    line-height: 1.55;
-    margin: 0;
-  }
-
-  .collection-tile__arrow {
+  .collection-card__media {
     position: absolute;
-    right: 1.25rem;
-    bottom: 1.1rem;
-    color: var(--color-accent);
-    font-size: 1.1rem;
-    opacity: 0;
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    inset: 0;
   }
 
-  .collection-tile:hover .collection-tile__arrow {
-    opacity: 1;
-    transform: translateX(3px);
+  .collection-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .collection-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.78) 0%,
+      rgba(0, 0, 0, 0.38) 45%,
+      rgba(0, 0, 0, 0.32) 100%
+    );
+  }
+
+  .collection-card__body {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.25rem;
+  }
+
+  .collection-card__count {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: var(--color-accent-light);
+    border: 1px solid rgba(196, 160, 53, 0.45);
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 999px;
+    padding: 0.2rem 0.7rem;
+  }
+
+  .collection-card__title {
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 0.7rem 0 0;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  }
+
+  .collection-card__desc {
+    color: rgba(255, 255, 255, 0.92);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    margin: 0.35rem 0 0;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .collection-card__cta {
+    margin-top: auto;
+    color: var(--color-accent-light);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    letter-spacing: 0.02em;
   }
 
   /* ==================== Catalog Toolbar ==================== */
@@ -645,15 +661,18 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
   }
 
   /* ==================== Responsive ==================== */
+  @media (max-width: 1199px) {
+    .collections-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
   @media (max-width: 968px) {
     .product-grid { grid-template-columns: repeat(2, 1fr); }
-    .collections-grid { grid-template-columns: repeat(2, 1fr); }
     .catalog-toolbar { align-items: flex-start; flex-direction: column; }
   }
 
   @media (max-width: 768px) {
     .product-grid { grid-template-columns: 1fr; }
-    .collections-grid { grid-template-columns: repeat(2, 1fr); }
+    .collections-grid { grid-template-columns: 1fr; }
 
     .product-card__body { padding: var(--space-md); }
 
@@ -717,7 +736,7 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
     });
 
     // Collection tiles scroll to catalog and activate the matching filter
-    document.querySelectorAll(".collection-tile").forEach(function (tile) {
+    document.querySelectorAll(".collection-card").forEach(function (tile) {
       tile.addEventListener("click", function (e) {
         var key = tile.getAttribute("data-filter");
         var chip = document.querySelector('.catalog-chip[data-filter="' + key + '"]');
