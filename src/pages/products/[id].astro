@@ -148,27 +148,20 @@ const seoDesc = meta.desc;
         {product.id === "plain-iridescent-laser-spandex-4-way-stretch" ? (
           <div class="p-hero-gallery" id="p-hero-gallery">
             <div class="p-hero-gallery__main" id="p-hero-main">
-              <img id="p-hero-img" src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/plain-iridescent-laser-spandex-4-way-stretch-05.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" loading="eager" decoding="async" />
+              <img id="p-hero-img" src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" loading="eager" decoding="async" />
               <video id="p-hero-video" controls preload="none" muted playsinline style="display:none">
                 <source src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/video/demo-video.mp4" type="video/mp4" />
               </video>
             </div>
             <div class="p-hero-gallery__thumbs">
-              <button class="p-hero-gallery__thumb p-hero-gallery__thumb--active" data-type="image" data-src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/plain-iridescent-laser-spandex-4-way-stretch-05.jpg" aria-label="View main image">
-                <img src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/plain-iridescent-laser-spandex-4-way-stretch-05.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="120" height="80" loading="eager" decoding="async" />
+              <button class="p-hero-gallery__thumb p-hero-gallery__thumb--active" data-type="image" data-src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.jpg" aria-label="View main image">
+                <img src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="120" height="80" loading="eager" decoding="async" />
               </button>
-              <button class="p-hero-gallery__thumb" data-type="image" data-src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/sku/plain-iridescent-laser-spandex-4-way-stretch-02.jpg" aria-label="View close‑up image">
-                <img src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/sku/plain-iridescent-laser-spandex-4-way-stretch-02.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="120" height="80" loading="lazy" decoding="async" />
-              </button>
-              <button class="p-hero-gallery__thumb" data-type="image" data-src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/plain-iridescent-laser-spandex-4-way-stretch-02.jpg" aria-label="View detail image">
-                <img src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/plain-iridescent-laser-spandex-4-way-stretch-02.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="120" height="80" loading="lazy" decoding="async" />
-              </button>
-              <button class="p-hero-gallery__thumb p-hero-gallery__thumb--video" data-type="video" aria-label="Play video">
-                <img src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/plain-iridescent-laser-spandex-4-way-stretch-03.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="120" height="80" loading="lazy" decoding="async" />
-                <span class="p-hero-gallery__play-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="8,5 20,12 8,19"/></svg>
-                </span>
-              </button>
+              {[2, 3, 4].map((n) => (
+                <button class="p-hero-gallery__thumb" data-type="image" data-src={`/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/${n}.jpg`} aria-label="View detail image">
+                  <img src={`/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/${n}.jpg`} alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="120" height="80" loading="lazy" decoding="async" />
+                </button>
+              ))}
             </div>
           </div>
         ) : (
