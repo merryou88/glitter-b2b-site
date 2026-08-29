@@ -268,11 +268,13 @@ const seoDesc = meta.desc;
           <div class="detail-offer-grid">
             <div class="detail-offer-card detail-offer-card--moq">
               <span class="detail-offer-card__label">MOQ</span>
-              <strong class="detail-offer-card__value">100 Meters</strong>
+              <strong class="detail-offer-card__value">100</strong>
+              <span class="detail-offer-card__unit">Meters</span>
             </div>
             <div class="detail-offer-card detail-offer-card--lead">
               <span class="detail-offer-card__label">LEAD TIME</span>
-              <strong class="detail-offer-card__value">7-15 working days</strong>
+              <strong class="detail-offer-card__value">1-3</strong>
+              <span class="detail-offer-card__unit">Days</span>
             </div>
           </div>
 
@@ -782,9 +784,16 @@ const seoDesc = meta.desc;
   }
 
   .detail-offer-card__value {
-    font-size: var(--text-2xl);
+    font-size: var(--text-3xl);
     font-weight: 800;
     color: var(--color-primary);
+    line-height: 1.1;
+  }
+
+  .detail-offer-card__unit {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    letter-spacing: 0.03em;
   }
 
   /* B2B Buying Details */
