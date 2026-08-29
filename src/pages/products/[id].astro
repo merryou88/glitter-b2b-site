@@ -148,8 +148,8 @@ const seoDesc = meta.desc;
   canonical={`https://nixiafabric.com/products/${product.id}`}
   structuredData={structuredDataList}
 >
-  <!-- Hero Section -->
-  <section class="detail-hero">
+  <!-- Product Banner Header -->
+  <section class="p-banner">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a>
@@ -159,6 +159,14 @@ const seoDesc = meta.desc;
         <span class="breadcrumb__current">{product.title}</span>
       </nav>
 
+      <h1 class="p-banner__title">{product.title}</h1>
+      <p class="p-banner__desc">{product.shortDesc}</p>
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <section class="detail-hero">
+    <div class="container">
       <div class="detail-layout">
         {/* Hero Carousel — plain-iridescent-laser-spandex-4-way-stretch only */}
         {product.id === "plain-iridescent-laser-spandex-4-way-stretch" ? (
@@ -261,8 +269,6 @@ const seoDesc = meta.desc;
         <!-- Product Info -->
         <div class="detail-info">
           <span class="badge badge--accent">{product.category}</span>
-          <h1 class="detail-info__title">{product.title}</h1>
-          <p class="detail-info__desc">{product.shortDesc}</p>
 
           <!-- MOQ / Lead Time cards -->
           <div class="detail-offer-grid">
@@ -565,6 +571,34 @@ const seoDesc = meta.desc;
 </script>
 
 <style>
+  /* ===== Product Banner Header ===== */
+  .p-banner {
+    background: linear-gradient(
+      rgba(22, 41, 77, 0.88) 0%,
+      rgba(22, 41, 77, 0.7) 100%
+    );
+    color: var(--color-white);
+    padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  }
+
+  .p-banner__title {
+    margin: 0;
+    max-width: 70ch;
+    font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--color-white);
+    text-wrap: balance;
+  }
+
+  .p-banner__desc {
+    margin: var(--space-md) 0 0;
+    max-width: 60ch;
+    font-size: var(--text-base);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
   /* ===== Hero ===== */
   .detail-hero {
     padding-top: var(--space-2xl);
@@ -574,25 +608,26 @@ const seoDesc = meta.desc;
   .breadcrumb {
     margin-bottom: var(--space-xl);
     font-size: var(--text-sm);
-    color: var(--color-text-muted);
+    color: rgba(255, 255, 255, 0.8);
   }
 
   .breadcrumb a {
-    color: var(--color-text-muted);
+    color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
   }
 
   .breadcrumb a:hover {
-    color: var(--color-accent-dark);
+    color: var(--color-white);
+    text-decoration: underline;
   }
 
   .breadcrumb__sep {
     margin-inline: var(--space-xs);
-    opacity: 0.5;
+    opacity: 0.6;
   }
 
   .breadcrumb__current {
-    color: var(--color-text-secondary);
+    color: var(--color-white);
     font-weight: 600;
   }
 
@@ -718,21 +753,6 @@ const seoDesc = meta.desc;
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
-  }
-
-  .detail-info__title {
-    font-size: var(--text-3xl);
-    font-weight: 800;
-    color: var(--color-primary);
-    line-height: 1.2;
-    margin: 0;
-  }
-
-  .detail-info__desc {
-    font-size: var(--text-base);
-    color: var(--color-text-secondary);
-    margin: 0;
-    line-height: 1.6;
   }
 
   .detail-cta {
@@ -1272,10 +1292,6 @@ const seoDesc = meta.desc;
 
     .detail-gallery {
       position: static;
-    }
-
-    .detail-info__title {
-      font-size: var(--text-2xl);
     }
 
     .sku-grid {
