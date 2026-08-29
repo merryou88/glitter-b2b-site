@@ -550,7 +550,6 @@ const seoDesc = meta.desc;
   .detail-gallery__main {
     aspect-ratio: 16 / 9;
     background: var(--color-bg);
-    border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     overflow: hidden;
   }
@@ -1190,27 +1189,25 @@ const seoDesc = meta.desc;
 
   .p-hero-gallery__main {
     width: 100%;
-    border: 1px solid var(--color-border);
+    aspect-ratio: 16 / 9;
+    max-height: 520px;
     border-radius: var(--radius-md);
     overflow: hidden;
     background: var(--color-bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-height: 520px;
   }
 
   .p-hero-gallery__main img {
     width: 100%;
-    max-height: 520px;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
     display: block;
   }
 
   .p-hero-gallery__main video {
     width: 100%;
-    max-height: 520px;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   .p-hero-gallery__thumbs {
