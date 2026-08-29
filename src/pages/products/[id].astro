@@ -1115,15 +1115,6 @@ const seoDesc = meta.desc;
     .p-hero-gallery {
       position: static;
     }
-
-    .p-hero-gallery__main {
-      max-height: 360px;
-    }
-
-    .p-hero-gallery__main img,
-    .p-hero-gallery__main video {
-      max-height: 360px;
-    }
   }
 
   @media (max-width: 640px) {
@@ -1166,18 +1157,9 @@ const seoDesc = meta.desc;
       height: 56px;
     }
 
-    .p-hero-gallery__main {
-      max-height: 360px;
-    }
-
-    .p-hero-gallery__main img,
-    .p-hero-gallery__main video {
-      max-height: 360px;
-    }
-
     .p-hero-gallery__thumb {
       width: 56px;
-      height: 56px;
+      aspect-ratio: 4 / 3;
     }
   }
 
@@ -1189,8 +1171,7 @@ const seoDesc = meta.desc;
 
   .p-hero-gallery__main {
     width: 100%;
-    aspect-ratio: 16 / 9;
-    max-height: 520px;
+    aspect-ratio: 4 / 3;
     border-radius: var(--radius-md);
     overflow: hidden;
     background: var(--color-bg);
@@ -1200,6 +1181,7 @@ const seoDesc = meta.desc;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     display: block;
   }
 
@@ -1207,6 +1189,7 @@ const seoDesc = meta.desc;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     display: block;
   }
 
@@ -1221,7 +1204,7 @@ const seoDesc = meta.desc;
   .p-hero-gallery__thumb {
     flex-shrink: 0;
     width: 72px;
-    height: 72px;
+    aspect-ratio: 4 / 3;
     border: 2px solid var(--color-border);
     border-radius: var(--radius-sm);
     overflow: hidden;
