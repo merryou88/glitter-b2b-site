@@ -163,6 +163,21 @@ const seoDesc = meta.desc;
                 </button>
               ))}
             </div>
+
+            <div class="detail-feature-tags">
+              <span class="feature-tag feature-tag--green">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>SGS Certified</span>
+              </span>
+              <span class="feature-tag feature-tag--blue">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>REACH Compliant</span>
+              </span>
+              <span class="feature-tag feature-tag--amber">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Pre-shipment QC</span>
+              </span>
+            </div>
           </div>
         ) : (
         /* Default gallery for other products */
@@ -209,6 +224,21 @@ const seoDesc = meta.desc;
               </div>
             )
           }
+        </div>
+
+        <div class="detail-feature-tags">
+          <span class="feature-tag feature-tag--green">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>SGS Certified</span>
+          </span>
+          <span class="feature-tag feature-tag--blue">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>REACH Compliant</span>
+          </span>
+          <span class="feature-tag feature-tag--amber">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Pre-shipment QC</span>
+          </span>
         </div>
         )}
 
@@ -542,6 +572,43 @@ const seoDesc = meta.desc;
   }
 
   /* ===== Gallery ===== */
+  .detail-feature-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+  }
+
+  .feature-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.375rem 0.875rem;
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .feature-tag svg {
+    flex-shrink: 0;
+  }
+
+  .feature-tag--green {
+    background-color: #e7f5eb;
+    color: #27724a;
+  }
+
+  .feature-tag--blue {
+    background-color: #e8f1fb;
+    color: #1e5fae;
+  }
+
+  .feature-tag--amber {
+    background-color: #fdf1e1;
+    color: #b26a13;
+  }
+
   .detail-gallery {
     position: sticky;
     top: calc(var(--header-height) + var(--space-xl));
