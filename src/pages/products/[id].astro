@@ -573,16 +573,30 @@ const seoDesc = meta.desc;
 <style>
   /* ===== Product Banner Header ===== */
   .p-banner {
-    background: linear-gradient(
-      rgba(22, 41, 77, 0.88) 0%,
-      rgba(22, 41, 77, 0.7) 100%
-    );
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: var(--color-white);
-    padding-block: clamp(2.5rem, 6vw, 4.5rem);
+    padding-block: var(--space-3xl) var(--space-4xl);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .p-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(196, 160, 53, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 30%, rgba(42, 65, 112, 0.4) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .p-banner .container {
+    position: relative;
+    z-index: 1;
   }
 
   .p-banner__title {
-    margin: 0;
+    margin: 0 0 var(--space-md);
     max-width: 70ch;
     font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
     font-weight: 800;
@@ -592,11 +606,11 @@ const seoDesc = meta.desc;
   }
 
   .p-banner__desc {
-    margin: var(--space-md) 0 0;
-    max-width: 60ch;
-    font-size: var(--text-base);
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+    max-width: 640px;
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75);
   }
 
   /* ===== Hero ===== */
@@ -606,24 +620,23 @@ const seoDesc = meta.desc;
   }
 
   .breadcrumb {
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-lg);
     font-size: var(--text-sm);
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.6);
   }
 
   .breadcrumb a {
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.6);
     text-decoration: none;
   }
 
   .breadcrumb a:hover {
-    color: var(--color-white);
-    text-decoration: underline;
+    color: var(--color-accent-light);
   }
 
   .breadcrumb__sep {
     margin-inline: var(--space-xs);
-    opacity: 0.6;
+    opacity: 0.5;
   }
 
   .breadcrumb__current {
