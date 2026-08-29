@@ -88,18 +88,9 @@ const relatedProducts = (products as Product[])
 
 const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 
-// MOQ / Lead Time card values (real per-product data, formatted for display)
+// MOQ / Lead Time card display values (reference-style fixed copy)
 const titleCase = (s: string) =>
   s.replace(/(^|[\s-])([a-z])/g, (_m, p1: string, p2: string) => p1 + p2.toUpperCase());
-
-const moqNumber = product.moq?.match(/\d+/)?.[0] ?? "100";
-const moqText = `${moqNumber} Meters`;
-const leadTimeRaw = (product.leadTime ?? "").toLowerCase();
-const leadText = leadTimeRaw.includes("in-stock")
-  ? "In-Stock"
-  : /(\d+)\s*[-–]\s*(\d+)\s*days?/.test(leadTimeRaw)
-    ? (product.leadTime as string).replace(/(\d+)\s*[-–]\s*(\d+)\s*days?/i, "$1-$2 working days").trim()
-    : (product.leadTime ?? "7-15 working days");
 
 // Application scenarios from specs, plus combined bottom SEO tags
 const applications =
@@ -275,13 +266,13 @@ const seoDesc = meta.desc;
 
           <!-- MOQ / Lead Time cards -->
           <div class="detail-offer-grid">
-            <div class="detail-offer-card">
+            <div class="detail-offer-card detail-offer-card--moq">
               <span class="detail-offer-card__label">MOQ</span>
-              <strong class="detail-offer-card__value">{moqText}</strong>
+              <strong class="detail-offer-card__value">100 Meters</strong>
             </div>
-            <div class="detail-offer-card">
+            <div class="detail-offer-card detail-offer-card--lead">
               <span class="detail-offer-card__label">LEAD TIME</span>
-              <strong class="detail-offer-card__value">{leadText}</strong>
+              <strong class="detail-offer-card__value">7-15 working days</strong>
             </div>
           </div>
 
@@ -757,30 +748,41 @@ const seoDesc = meta.desc;
   .detail-offer-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-md);
+    gap: var(--space-lg);
     margin-top: var(--space-sm);
   }
 
   .detail-offer-card {
-    background: var(--color-bg-alt);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: var(--space-md) var(--space-lg);
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     gap: 0.25rem;
+    padding: var(--space-xl) var(--space-md);
+    border-radius: var(--radius-lg);
+  }
+
+  .detail-offer-card--moq {
+    background: #fbf3e0;
+    border: 1px solid #f0e2bd;
+  }
+
+  .detail-offer-card--lead {
+    background: #e6f6ee;
+    border: 1px solid #cdeae0;
   }
 
   .detail-offer-card__label {
     font-size: var(--text-xs);
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     color: var(--color-text-muted);
   }
 
   .detail-offer-card__value {
-    font-size: var(--text-xl);
+    font-size: var(--text-2xl);
     font-weight: 800;
     color: var(--color-primary);
   }
@@ -1293,6 +1295,10 @@ const seoDesc = meta.desc;
       grid-template-columns: 1fr;
     }
 
+    .detail-offer-grid {
+      grid-template-columns: 1fr;
+    }
+
     .detail-apps__list {
       flex-direction: column;
       gap: var(--space-xs);
@@ -1320,10 +1326,6 @@ const seoDesc = meta.desc;
   @media (max-width: 640px) {
     .detail-hero {
       padding-top: var(--space-lg);
-    }
-
-    .detail-offer-grid {
-      grid-template-columns: 1fr;
     }
 
     .spec-grid {
