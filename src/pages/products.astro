@@ -19,6 +19,8 @@ interface Product {
   videoLocal: string;
   videoYoutubeUrl: string;
   tags: string[];
+  moq?: string;
+  leadTime?: string;
 }
 
 const allProducts: Product[] = products;
@@ -87,9 +89,6 @@ const collectionPageData = {
 };
 
 const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
-
-const MOQ = "Low MOQ";
-const LEAD = "7–15 days";
 ---
 
 <Layout
@@ -197,13 +196,19 @@ const LEAD = "7–15 days";
                 <p class="product-card__desc">{product.shortDesc}</p>
 
                 <div class="product-card__specs">
+                  {product.leadTime?.toLowerCase().includes("in-stock") ? (
+                    <span class="product-card__spec product-card__spec--stock" title="In stock">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                      In-Stock
+                    </span>
+                  ) : null}
                   <span class="product-card__spec">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9l-2 2H4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1z"/></svg>
-                    {MOQ}
+                    {product.moq}
                   </span>
                   <span class="product-card__spec">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    {LEAD}
+                    7–15 days
                   </span>
                 </div>
 
@@ -572,6 +577,7 @@ const LEAD = "7–15 days";
 
   .product-card__specs {
     display: flex;
+    flex-wrap: wrap;
     gap: var(--space-md);
     font-size: var(--text-xs);
     color: var(--color-text-muted);
@@ -587,6 +593,15 @@ const LEAD = "7–15 days";
   }
 
   .product-card__spec svg { color: var(--color-accent-dark); }
+
+  .product-card__spec--stock {
+    color: var(--color-accent-dark);
+    font-weight: 700;
+  }
+
+  .product-card__spec--stock svg {
+    color: var(--color-accent);
+  }
 
   .product-card__actions {
     display: grid;
