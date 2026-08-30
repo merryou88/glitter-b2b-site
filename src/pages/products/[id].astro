@@ -313,6 +313,19 @@ const seoDesc = meta.desc;
             </div>
           </div>
 
+          <!-- Quote Information Tips -->
+          <div class="detail-quote-tips">
+            <h3 class="detail-quote-tips__title">For an Accurate Quote, Please Share</h3>
+            <div class="detail-quote-tips__grid">
+              <div class="detail-quote-tips__item">Target quantity(Meters)</div>
+              <div class="detail-quote-tips__item">Destination country</div>
+              <div class="detail-quote-tips__item">Color requirement</div>
+              <div class="detail-quote-tips__item">Trade Terms (FOB/CIF/EXW)</div>
+              <div class="detail-quote-tips__item">Base material</div>
+              <div class="detail-quote-tips__item">Target delivery date</div>
+            </div>
+          </div>
+
           <!-- Action Buttons -->
           <div class="detail-cta">
             <a href="/sample-policy/" class="btn btn--primary btn--lg detail-cta__btn">
@@ -944,6 +957,34 @@ const seoDesc = meta.desc;
     line-height: 1.4;
   }
 
+  /* Quote Information Tips */
+  .detail-quote-tips {
+    margin-top: var(--space-lg);
+    background: #fbf3e0;
+    border: 1px solid #f0e2bd;
+    border-radius: var(--radius-lg);
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .detail-quote-tips__title {
+    margin: 0 0 var(--space-sm);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .detail-quote-tips__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xs) var(--space-md);
+  }
+
+  .detail-quote-tips__item {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
   /* Application Scenarios */
   .detail-apps {
     margin-top: var(--space-md);
@@ -1408,6 +1449,10 @@ const seoDesc = meta.desc;
     }
 
     .detail-buying__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .detail-quote-tips__grid {
       grid-template-columns: 1fr;
     }
 
