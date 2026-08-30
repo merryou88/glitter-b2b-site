@@ -288,31 +288,6 @@ const seoDesc = meta.desc;
             </div>
           </div>
 
-          <!-- B2B Buying Details -->
-          <div class="detail-buying">
-            <h2 class="detail-buying__title">B2B Buying Details</h2>
-            <div class="detail-buying__card">
-              <div class="detail-buying__grid">
-                <div class="detail-buying__item">
-                  <h3 class="detail-buying__item-title">SAMPLE</h3>
-                  <p class="detail-buying__item-text">Free sample available, customer bears shipping cost</p>
-                </div>
-                <div class="detail-buying__item">
-                  <h3 class="detail-buying__item-title">CUSTOMIZATION</h3>
-                  <p class="detail-buying__item-text">Custom colors &amp; custom base fabric</p>
-                </div>
-                <div class="detail-buying__item">
-                  <h3 class="detail-buying__item-title">PACKAGING</h3>
-                  <p class="detail-buying__item-text">Roll packing, export carton</p>
-                </div>
-                <div class="detail-buying__item">
-                  <h3 class="detail-buying__item-title">TRADE TERMS</h3>
-                  <p class="detail-buying__item-text">FOB, CIF upon quotation</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <!-- Action Buttons -->
           <div class="detail-cta">
             <a href="/sample-policy/" class="btn btn--primary btn--lg detail-cta__btn">
@@ -335,6 +310,31 @@ const seoDesc = meta.desc;
               </ul>
             </div>
           )}
+        </div>
+      </div>
+
+      <!-- B2B Buying Details -->
+      <div class="detail-buying">
+        <div class="detail-buying__card">
+          <h2 class="detail-buying__title">B2B Buying Details</h2>
+          <div class="detail-buying__grid">
+            <div class="detail-buying__item">
+              <h3 class="detail-buying__item-title">SAMPLE</h3>
+              <p class="detail-buying__item-text">Free sample available, customer bears shipping cost</p>
+            </div>
+            <div class="detail-buying__item">
+              <h3 class="detail-buying__item-title">CUSTOMIZATION</h3>
+              <p class="detail-buying__item-text">Custom colors &amp; custom base fabric</p>
+            </div>
+            <div class="detail-buying__item">
+              <h3 class="detail-buying__item-title">PACKAGING</h3>
+              <p class="detail-buying__item-text">Roll packing, export carton</p>
+            </div>
+            <div class="detail-buying__item">
+              <h3 class="detail-buying__item-title">TRADE TERMS</h3>
+              <p class="detail-buying__item-text">FOB, CIF upon quotation</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -896,50 +896,52 @@ const seoDesc = meta.desc;
     margin-top: var(--space-2xl);
   }
 
-  .detail-buying__title {
-    font-size: var(--text-xl);
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--color-primary);
-    margin: 0 0 var(--space-md);
+  .detail-buying__card {
+    background: #f8f8f8;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
   }
 
-  .detail-buying__card {
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    background: var(--color-bg);
+  .detail-buying__title {
+    margin: 0;
     padding: var(--space-lg) var(--space-xl);
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--text-lg);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text);
   }
 
   .detail-buying__grid {
     display: grid;
-    gap: var(--space-md);
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--color-border);
   }
 
   .detail-buying__item {
-    display: grid;
-    grid-template-columns: max-content 1fr;
-    gap: var(--space-lg);
-    align-items: baseline;
+    background: #f8f8f8;
+    padding: var(--space-lg) var(--space-xl);
   }
 
   .detail-buying__item-title {
+    display: block;
+    margin: 0 0 var(--space-xs);
     font-size: var(--text-sm);
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--color-text-muted);
-    margin: 0;
-    white-space: nowrap;
   }
 
   .detail-buying__item-text {
-    font-size: var(--text-base);
-    font-weight: 500;
-    color: var(--color-primary);
-    line-height: 1.5;
     margin: 0;
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: #1a1a1a;
+    line-height: 1.4;
   }
 
   /* Application Scenarios */
@@ -1405,10 +1407,8 @@ const seoDesc = meta.desc;
       font-size: var(--text-2xl);
     }
 
-    .detail-buying__item {
+    .detail-buying__grid {
       grid-template-columns: 1fr;
-      gap: var(--space-xs);
-      align-items: start;
     }
 
     .detail-apps__list {
