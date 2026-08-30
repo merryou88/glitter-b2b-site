@@ -158,6 +158,9 @@ const seoDesc = meta.desc;
         <span class="breadcrumb__sep">/</span>
         <span class="breadcrumb__current">{product.title}</span>
       </nav>
+
+      <h1 class="p-banner__title">{product.title}</h1>
+      <p class="p-banner__desc">{product.shortDesc}</p>
     </div>
   </section>
 
@@ -266,7 +269,7 @@ const seoDesc = meta.desc;
         <!-- Product Info -->
         <div class="detail-info">
           <div class="detail-info__heading">
-            <h1 class="detail-info__title">{product.title}</h1>
+            <h2 class="detail-info__title">{product.title}</h2>
             <span class="detail-info__tag">{product.category}</span>
           </div>
           <p class="detail-info__desc">{product.shortDesc}</p>
@@ -595,6 +598,24 @@ const seoDesc = meta.desc;
   .p-banner .container {
     position: relative;
     z-index: 1;
+  }
+
+  .p-banner__title {
+    margin: 0 0 var(--space-md);
+    max-width: 70ch;
+    font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--color-white);
+    text-wrap: balance;
+  }
+
+  .p-banner__desc {
+    margin: 0;
+    max-width: 640px;
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75);
   }
 
   /* ===== Hero ===== */
