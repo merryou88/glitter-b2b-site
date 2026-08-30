@@ -1,9 +1,9 @@
 ---
 /**
- * RfqQuoteForm.astro — RFQ / custom fabric quotation form
- * Posts to Worker: WORKER_URL + "/rfq"
- * Custom English validation
- * Success → /thank-you; failure → inline error message
+ * RfqQuoteForm.astro — Step 1 (Contact Info) of the RFQ quote modal
+ * Fields: Full Name*, Company, Email*, Phone. Required fields get gold borders.
+ * Posts to Worker: WORKER_URL + "/api/rfq" along with the selected product info.
+ * Success → /thank-you; failure → inline error message.
  */
 
 // Backend endpoint comes from environment — NEVER hard-code the domain.
@@ -23,83 +23,60 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
   </div>
 
   <form class="rfq-form__inner" id="rfq-form" novalidate>
-    <div class="rfq-form__grid">
-      <div class="rfq-field">
-        <label for="rfq-company" class="rfq-field__label">Company</label>
-        <input type="text" id="rfq-company" name="company" class="rfq-field__input" placeholder="Your company name (optional)" autocomplete="organization" />
-      </div>
+    <input type="hidden" id="rfq-sku" name="productSku" />
 
-      <div class="rfq-field">
-        <label for="rfq-country" class="rfq-field__label">Destination Country</label>
-        <input type="text" id="rfq-country" name="destinationCountry" class="rfq-field__input" placeholder="e.g. United States" />
-      </div>
-
-      <div class="rfq-field rfq-field--full">
-        <label for="rfq-sku" class="rfq-field__label">Product SKU / Fabric Code</label>
-        <input type="text" id="rfq-sku" name="productSku" class="rfq-field__input" placeholder="Input SKU or describe your target fabric" />
-      </div>
-
-      <div class="rfq-field rfq-field--full">
-        <label for="rfq-buyer" class="rfq-field__label">Buyer Identity</label>
-        <select id="rfq-buyer" name="buyerIdentity" class="rfq-field__select">
-          <option value="">Select buyer type</option>
-          <option>Importer / Distributor</option>
-          <option>Retail Chain Buyer</option>
-          <option>Amazon / Online Seller</option>
-          <option>Brand Owner</option>
-          <option>Gift &amp; Event Deco Company</option>
-          <option>Shoe &amp; Bag Manufacturer</option>
-          <option>Other B2B Buyer</option>
-        </select>
-      </div>
-
-      <div class="rfq-field">
-        <label for="rfq-qty" class="rfq-field__label">Estimated Quantity</label>
-        <input type="text" id="rfq-qty" name="estimatedQuantity" class="rfq-field__input" placeholder="e.g. sample order / 500 meters" />
-      </div>
-
-      <div class="rfq-field">
-        <label for="rfq-timeline" class="rfq-field__label">Target Timeline</label>
-        <input type="text" id="rfq-timeline" name="targetTimeline" class="rfq-field__input" placeholder="e.g. Need samples this month" />
-      </div>
-
-      <div class="rfq-field">
-        <label for="rfq-logo" class="rfq-field__label">Logo Artwork</label>
-        <input type="text" id="rfq-logo" name="logoArtwork" class="rfq-field__input" placeholder="e.g. Embossed logo / no logo" />
-      </div>
-
-      <div class="rfq-field">
-        <label for="rfq-packaging" class="rfq-field__label">Packaging</label>
-        <input type="text" id="rfq-packaging" name="packaging" class="rfq-field__input" placeholder="e.g. Roll packing / cut pieces" />
-      </div>
-
-      <div class="rfq-field rfq-field--full">
-        <label for="rfq-message" class="rfq-field__label">Message *</label>
-        <textarea id="rfq-message" name="message" rows="5" class="rfq-field__textarea" placeholder="Tell us your target application, color, backing and other custom fabric requirements..."></textarea>
-      </div>
-
-      <!-- Honeypot: hidden from humans, bots fill it and get rejected server-side -->
-      <div class="hp-field" aria-hidden="true">
-        <label for="rfq-company-website">Website</label>
-        <input type="text" id="rfq-company-website" name="website" tabindex="-1" autocomplete="off" />
-      </div>
+    <div class="rfq-field">
+      <label for="rfq-full-name" class="rfq-field__label">Full Name <span class="rfq-field__req">*</span></label>
+      <input type="text" id="rfq-full-name" name="fullName" class="rfq-field__input rfq-field__input--required" placeholder="Your full name" autocomplete="name" />
+      <span class="rfq-field__error" id="rfq-full-name-error"></span>
     </div>
 
-    <button type="submit" class="btn btn--primary btn--lg rfq-form__submit" id="rfq-form-submit" disabled>
-      <span class="rfq-form__submit-text">Send Quote Request</span>
-      <span class="rfq-form__spinner" hidden>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="12" y1="2" x2="12" y2="6" />
-          <line x1="12" y1="18" x2="12" y2="22" />
-          <line x1="4.93" y1="4.93" x2="7.76" y2="7.76" />
-          <line x1="16.24" y1="16.24" x2="19.07" y2="19.07" />
-          <line x1="2" y1="12" x2="6" y2="12" />
-          <line x1="18" y1="12" x2="22" y2="12" />
-          <line x1="4.93" y1="19.07" x2="7.76" y2="16.24" />
-          <line x1="16.24" y1="7.76" x2="19.07" y2="4.93" />
-        </svg>
-      </span>
-    </button>
+    <div class="rfq-field">
+      <label for="rfq-company" class="rfq-field__label">Company Name</label>
+      <input type="text" id="rfq-company" name="company" class="rfq-field__input" placeholder="Company name (optional)" autocomplete="organization" />
+    </div>
+
+    <div class="rfq-field">
+      <label for="rfq-email" class="rfq-field__label">Email Address <span class="rfq-field__req">*</span></label>
+      <input type="email" id="rfq-email" name="email" class="rfq-field__input rfq-field__input--required" placeholder="you@company.com" autocomplete="email" />
+      <span class="rfq-field__error" id="rfq-email-error"></span>
+    </div>
+
+    <div class="rfq-field">
+      <label for="rfq-phone" class="rfq-field__label">Phone Number</label>
+      <input type="tel" id="rfq-phone" name="phone" class="rfq-field__input" placeholder="+91 98765 43210" autocomplete="tel" />
+      <span class="rfq-field__hint">Optional. If you prefer WhatsApp communication, please leave your phone number.</span>
+    </div>
+
+    <!-- Honeypot: hidden from humans, bots fill it and get rejected server-side -->
+    <div class="hp-field" aria-hidden="true">
+      <label for="rfq-company-website">Website</label>
+      <input type="text" id="rfq-company-website" name="website" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <div class="rfq-form__actions">
+      <button type="submit" class="rfq-form__submit" id="rfq-form-submit">
+        <span class="rfq-form__submit-text">Send Inquiry</span>
+        <span class="rfq-form__submit-arrow" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </span>
+        <span class="rfq-form__spinner" hidden>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="12" y1="2" x2="12" y2="6" />
+            <line x1="12" y1="18" x2="12" y2="22" />
+            <line x1="4.93" y1="4.93" x2="7.76" y2="7.76" />
+            <line x1="16.24" y1="16.24" x2="19.07" y2="19.07" />
+            <line x1="2" y1="12" x2="6" y2="12" />
+            <line x1="18" y1="12" x2="22" y2="12" />
+            <line x1="4.93" y1="19.07" x2="7.76" y2="16.24" />
+            <line x1="16.24" y1="7.76" x2="19.07" y2="4.93" />
+          </svg>
+        </span>
+      </button>
+    </div>
   </form>
 </div>
 
@@ -111,18 +88,6 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
   const submitSpinner = submitBtn ? submitBtn.querySelector(".rfq-form__spinner") : null;
   const errorBanner = document.getElementById("rfq-form-error");
   const errorText = document.getElementById("rfq-form-error-text");
-  const skuInput = document.getElementById("rfq-sku");
-
-  // Prefill the SKU field with the full product title when arriving via ?sku=
-  try {
-    const skuParam = new URLSearchParams(window.location.search).get("sku");
-    if (skuParam && skuInput && !skuInput.value) {
-      skuInput.value = skuParam;
-      skuInput.dispatchEvent(new Event("input", { bubbles: true }));
-    }
-  } catch (e) {
-    /* ignore — leave the field untouched */
-  }
 
   function showError(message) {
     if (errorText) errorText.textContent = message;
@@ -134,54 +99,92 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     if (errorBanner) errorBanner.hidden = true;
   }
 
-  function validateForm() {
-    if (!form) return false;
-    const data = new FormData(form);
-    const message = String(data.get("message") || "").trim();
-
-    if (!message) {
-      showError("Please tell us about your fabric requirements (Message).");
-      return false;
+  function setFieldError(input, errorEl, message) {
+    const field = input?.closest(".rfq-field");
+    if (!input || !errorEl) return;
+    if (message) {
+      input.classList.add("is-invalid");
+      errorEl.textContent = message;
+      if (field) field.classList.add("rfq-field--invalid");
+    } else {
+      input.classList.remove("is-invalid");
+      errorEl.textContent = "";
+      if (field) field.classList.remove("rfq-field--invalid");
     }
-    return true;
   }
 
-  function updateSubmitState() {
-    if (!submitBtn) return;
-    const allFilled = (() => {
-      if (!form) return false;
-      const data = new FormData(form);
-      return ["message"].every((k) => String(data.get(k) || "").trim().length > 0);
-    })();
-    submitBtn.disabled = !allFilled;
+  function validateStep1() {
+    if (!form) return false;
+    const data = new FormData(form);
+    const name = String(data.get("fullName") || "").trim();
+    const email = String(data.get("email") || "").trim();
+    const nameInput = document.getElementById("rfq-full-name");
+    const emailInput = document.getElementById("rfq-email");
+    const nameError = document.getElementById("rfq-full-name-error");
+    const emailError = document.getElementById("rfq-email-error");
+
+    let valid = true;
+
+    if (!name) {
+      setFieldError(nameInput, nameError, "Please enter your full name.");
+      valid = false;
+    } else {
+      setFieldError(nameInput, nameError, "");
+    }
+
+    if (!email) {
+      setFieldError(emailInput, emailError, "Please enter your email address.");
+      valid = false;
+    } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+      setFieldError(emailInput, emailError, "Please enter a valid email address.");
+      valid = false;
+    } else {
+      setFieldError(emailInput, emailError, "");
+    }
+
+    return valid;
   }
 
   function setLoading(loading) {
     if (!submitBtn) return;
+    submitBtn.classList.toggle("is-loading", loading);
     submitBtn.disabled = loading;
-    if (submitText) submitText.textContent = loading ? "Sending..." : "Send Quote Request";
+    if (submitText) submitText.textContent = loading ? "Sending..." : "Send Inquiry";
     if (submitSpinner) submitSpinner.hidden = !loading;
+    const arrow = submitBtn ? submitBtn.querySelector(".rfq-form__submit-arrow") : null;
+    if (arrow) arrow.hidden = loading;
   }
 
-  form?.addEventListener("input", updateSubmitState);
+  // Clear a field's error as soon as the user types
+  ["rfq-full-name", "rfq-email"].forEach((id) => {
+    const input = document.getElementById(id);
+    input?.addEventListener("input", () => {
+      setFieldError(input, document.getElementById(`${id}-error`), "");
+      hideError();
+    });
+  });
 
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
     hideError();
 
-    if (!validateForm()) return;
+    if (!validateStep1()) return;
 
     const formData = new FormData(form);
+    const phone = String(formData.get("phone") || "").trim();
+    const selectedName = String(formData.get("productSku") || "").trim();
+    const weight = document.getElementById("rfq-selected-weight")?.textContent || "—";
+    const width = document.getElementById("rfq-selected-width")?.textContent || "—";
+
     const payload = {
+      fullName: String(formData.get("fullName") || "").trim(),
       company: String(formData.get("company") || "").trim(),
-      destinationCountry: String(formData.get("destinationCountry") || "").trim(),
-      productSku: String(formData.get("productSku") || "").trim(),
-      buyerIdentity: String(formData.get("buyerIdentity") || "").trim(),
-      estimatedQuantity: String(formData.get("estimatedQuantity") || "").trim(),
-      logoArtwork: String(formData.get("logoArtwork") || "").trim(),
-      packaging: String(formData.get("packaging") || "").trim(),
-      targetTimeline: String(formData.get("targetTimeline") || "").trim(),
-      message: String(formData.get("message") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
+      phone,
+      productSku: selectedName,
+      productName: selectedName,
+      productWeight: weight,
+      productWidth: width,
       website: String(formData.get("website") || "").trim(),
     };
 
@@ -230,65 +233,111 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     overflow: hidden;
   }
 
-  .rfq-form__grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-md);
+  .rfq-form__inner {
+    display: flex;
+    flex-direction: column;
   }
 
   .rfq-field {
     display: grid;
-    gap: 0.45rem;
-    margin-bottom: var(--space-md);
-  }
-
-  .rfq-field--full {
-    grid-column: 1 / -1;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
   }
 
   .rfq-field__label {
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--color-text-secondary);
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #5b6576;
   }
 
-  .rfq-field__input,
-  .rfq-field__select,
-  .rfq-field__textarea {
+  .rfq-field__req {
+    color: var(--color-accent-dark);
+  }
+
+  .rfq-field__input {
     width: 100%;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
+    height: 50px;
+    border: 1px solid #d8dce4;
+    border-radius: 6px;
     background: var(--color-white);
     color: var(--color-text);
-    padding: 0.85rem 1rem;
-    font: inherit;
+    padding: 0 1rem;
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
   }
 
-  .rfq-field__input:focus,
-  .rfq-field__select:focus,
-  .rfq-field__textarea:focus {
+  .rfq-field__input--required {
+    border-color: var(--color-accent);
+  }
+
+  .rfq-field__input::placeholder {
+    color: #a3abba;
+  }
+
+  .rfq-field__input:focus {
     outline: none;
     border-color: var(--color-accent);
-    box-shadow: 0 0 0 3px rgba(196, 160, 53, 0.1);
+    box-shadow: 0 0 0 3px rgba(196, 160, 53, 0.16);
   }
 
-  .rfq-field__textarea {
-    resize: vertical;
-    min-height: 120px;
+  .rfq-field__input.is-invalid {
+    border-color: #dc2626;
+  }
+
+  .rfq-field__error {
+    min-height: 0;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #dc2626;
+  }
+
+  .rfq-field__hint {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #98a2b3;
+  }
+
+  .rfq-form__actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
   }
 
   .rfq-form__submit {
-    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
     min-height: 48px;
-  }
-
-  .rfq-form__submit:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+    padding: 0 1.5rem;
+    border: 0;
+    border-radius: 6px;
+    background: var(--color-primary);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.15s ease;
   }
 
   .rfq-form__submit:hover:not(:disabled) {
+    background: var(--color-primary-dark);
     transform: translateY(-1px);
+  }
+
+  .rfq-form__submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .rfq-form__submit .rfq-form__submit-arrow {
+    display: inline-flex;
   }
 
   .rfq-form__spinner svg {
@@ -305,13 +354,13 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     align-items: center;
     gap: var(--space-sm);
     padding: 0.875rem var(--space-md);
+    margin-bottom: 1.5rem;
     background-color: #fef2f2;
     border: 1px solid #fecaca;
-    border-radius: var(--radius-sm);
+    border-radius: 6px;
     color: #dc2626;
     font-size: var(--text-sm);
     font-weight: 600;
-    margin-bottom: var(--space-md);
   }
 
   .rfq-form__error:not([hidden]) {
@@ -320,16 +369,5 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
 
   .rfq-form__error svg {
     flex-shrink: 0;
-  }
-
-  @media (max-width: 640px) {
-    .rfq-form__grid {
-      grid-template-columns: 1fr;
-    }
-
-    .rfq-form__submit {
-      width: 100%;
-      justify-self: stretch;
-    }
   }
 </style>

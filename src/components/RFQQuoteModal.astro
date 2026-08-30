@@ -1,16 +1,24 @@
 ---
 /**
  * RFQQuoteModal.astro — Modal container for the RFQ quote form
+ * Two-column layout: navy sidebar (#0A2040) + white Contact Info form.
  * Opens via [data-rfq-open], closes via [data-rfq-close] / backdrop / Esc.
- * The form itself is the reusable <RfqQuoteForm /> component.
+ * Step 1 (Contact Info) implemented; Steps 2 & 3 reserved in the stepper.
  */
 import RfqQuoteForm from "@components/RfqQuoteForm.astro";
+import products from "@data/products.json";
+
+const productLookup = products.map((p) => {
+  const specs = p.specs ?? [];
+  const valueOf = (label: string) => specs.find((s) => s.label.toLowerCase() === label.toLowerCase())?.value ?? "";
+  return { name: p.title, weight: valueOf("Weight"), width: valueOf("Width") };
+});
 ---
 
 <div class="rfq-modal" id="rfq-quote-modal" aria-hidden="true">
   <div class="rfq-modal__backdrop" data-rfq-close></div>
 
-  <div class="rfq-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="rfq-modal-title">
+  <div class="rfq-modal__wrap" role="dialog" aria-modal="true" aria-labelledby="rfq-modal-title">
     <button class="rfq-modal__close" type="button" aria-label="Close quote form" data-rfq-close>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <line x1="18" y1="6" x2="6" y2="18" />
@@ -18,11 +26,55 @@ import RfqQuoteForm from "@components/RfqQuoteForm.astro";
       </svg>
     </button>
 
-    <span class="rfq-modal__eyebrow">Request a Quote</span>
-    <h2 class="rfq-modal__title" id="rfq-modal-title">Request a Quote</h2>
-    <p class="rfq-modal__desc">Share your fabric requirements, target application and OEM/ODM needs for an accurate factory quote.</p>
+    <!-- Left navy sidebar -->
+    <aside class="rfq-modal__side">
+      <div class="rfq-modal__brand">
+        <span class="rfq-modal__brand-mark">NF</span>
+        <span class="rfq-modal__brand-name">Nixia&nbsp;Fabric</span>
+      </div>
 
-    <RfqQuoteForm />
+      <h2 class="rfq-modal__title" id="rfq-modal-title">Request a Custom Quote</h2>
+      <p class="rfq-modal__desc">Fill in your details and we&rsquo;ll prepare a personalised bulk pricing sheet within 24 hours.</p>
+
+      <div class="rfq-modal__product">
+        <span class="rfq-modal__product-label">Selected Product</span>
+        <div class="rfq-modal__product-box">
+          <p class="rfq-modal__product-name" id="rfq-selected-name">General fabric inquiry</p>
+          <div class="rfq-modal__product-meta">
+            <span class="rfq-modal__chip">Weight:&nbsp;<b id="rfq-selected-weight">&mdash;</b></span>
+            <span class="rfq-modal__chip">Width:&nbsp;<b id="rfq-selected-width">&mdash;</b></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rfq-modal__steps">
+        <span class="rfq-modal__step rfq-modal__step--active">
+          <span class="rfq-modal__step-num">1</span>
+          Contact Info
+        </span>
+        <span class="rfq-modal__step">
+          <span class="rfq-modal__step-num">2</span>
+          Product Details
+        </span>
+        <span class="rfq-modal__step">
+          <span class="rfq-modal__step-num">3</span>
+          Review &amp; Submit
+        </span>
+      </div>
+    </aside>
+
+    <!-- Right white form area (Step 1) -->
+    <div class="rfq-modal__main">
+      <p class="rfq-modal__eyebrow">Contact Info</p>
+      <h3 class="rfq-modal__form-title">Your Contact Details</h3>
+
+      <!-- Step panels — Step 1 built, Steps 2 & 3 reserved -->
+      <div class="rfq-step rfq-step--active" data-rfq-step="1">
+        <RfqQuoteForm />
+      </div>
+      <div class="rfq-step" data-rfq-step="2" hidden></div>
+      <div class="rfq-step" data-rfq-step="3" hidden></div>
+    </div>
   </div>
 </div>
 
@@ -41,77 +93,271 @@ import RfqQuoteForm from "@components/RfqQuoteForm.astro";
   .rfq-modal__backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(12, 21, 40, 0.72);
+    background: rgba(9, 17, 34, 0.76);
   }
 
-  .rfq-modal__dialog {
+  .rfq-modal__wrap {
     position: relative;
     z-index: 1;
-    width: min(920px, calc(100vw - 2rem));
+    display: flex;
+    width: min(880px, calc(100vw - 2rem));
     max-height: calc(100vh - 2rem);
-    overflow: auto;
     margin: 1rem auto;
-    padding: var(--space-2xl);
-    border-radius: var(--radius-lg);
+    border-radius: 12px;
+    overflow: hidden;
     background: var(--color-white);
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
   }
 
   .rfq-modal__close {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 0.875rem;
+    right: 0.875rem;
+    z-index: 3;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    width: 38px;
+    height: 38px;
     border: 0;
-    border-radius: 999px;
-    background: rgba(42, 65, 112, 0.08);
+    border-radius: 50%;
+    background: rgba(22, 41, 77, 0.08);
     color: var(--color-primary);
     cursor: pointer;
   }
 
-  .rfq-modal__eyebrow {
-    display: inline-block;
-    margin-bottom: var(--space-sm);
-    font-size: var(--text-xs);
-    font-weight: 700;
-    letter-spacing: 0;
-    text-transform: uppercase;
-    color: var(--color-accent-dark);
+  /* ===== Left navy sidebar ===== */
+  .rfq-modal__side {
+    flex: 0 0 322px;
+    display: flex;
+    flex-direction: column;
+    background: #0a2040;
+    color: #ffffff;
+    padding: 2rem 1.75rem 1.75rem;
+  }
+
+  .rfq-modal__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin-bottom: 2rem;
+  }
+
+  .rfq-modal__brand-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 1.5px solid var(--color-accent);
+    border-radius: 8px;
+    color: var(--color-accent);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+  }
+
+  .rfq-modal__brand-name {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.01em;
   }
 
   .rfq-modal__title {
-    margin-bottom: var(--space-sm);
-    color: var(--color-primary);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 27px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 0.875rem;
   }
 
   .rfq-modal__desc {
-    margin-bottom: var(--space-xl);
-    color: var(--color-text-muted);
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #b9c3d6;
+    margin: 0 0 1.5rem;
   }
 
-  @media (max-width: 640px) {
-    .rfq-modal__dialog {
+  .rfq-modal__product-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .rfq-modal__product-box {
+    border: 1px solid rgba(196, 160, 53, 0.45);
+    border-radius: 8px;
+    background: rgba(196, 160, 53, 0.06);
+    padding: 0.9rem 1rem;
+  }
+
+  .rfq-modal__product-name {
+    font-size: 14px;
+    line-height: 1.45;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 0.7rem;
+  }
+
+  .rfq-modal__product-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .rfq-modal__chip {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgba(196, 160, 53, 0.4);
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-size: 11.5px;
+    color: #e8d9a0;
+  }
+
+  .rfq-modal__chip b {
+    font-weight: 800;
+  }
+
+  .rfq-modal__steps {
+    margin-top: auto;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .rfq-modal__step {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #93a0ba;
+  }
+
+  .rfq-modal__step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    color: #93a0ba;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .rfq-modal__step--active {
+    color: #ffffff;
+  }
+
+  .rfq-modal__step--active .rfq-modal__step-num {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #ffffff;
+  }
+
+  /* ===== Right white form area ===== */
+  .rfq-modal__main {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-y: auto;
+    padding: 2.25rem 2.5rem 2rem;
+  }
+
+  .rfq-modal__eyebrow {
+    margin: 0 0 0.4rem;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #98a2b3;
+  }
+
+  .rfq-modal__form-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 1.75rem;
+  }
+
+  @media (max-width: 767px) {
+    .rfq-modal__wrap {
+      flex-direction: column;
       width: calc(100vw - 1rem);
+      max-height: calc(100vh - 1rem);
       margin: 0.5rem auto;
-      padding: 1.25rem;
+      border-radius: 10px;
+      overflow-y: auto;
+    }
+
+    .rfq-modal__side {
+      flex: 0 0 auto;
+      width: 100%;
+      padding: 1.5rem 1.25rem 1.25rem;
+    }
+
+    .rfq-modal__main {
+      overflow: visible;
+      padding: 1.5rem 1.25rem 1.5rem;
+    }
+
+    .rfq-modal__brand {
+      margin-bottom: 1.5rem;
+    }
+
+    .rfq-modal__steps {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.9rem 1.25rem;
+      padding-top: 1.25rem;
     }
   }
 </style>
 
-<script>
+<script define:vars={{ productLookup }}>
   const modal = document.getElementById("rfq-quote-modal");
   const openers = Array.from(document.querySelectorAll("[data-rfq-open]"));
   const closers = Array.from(document.querySelectorAll("[data-rfq-close]"));
+
+  const findProduct = (name) =>
+    productLookup.find((p) => p.name.toLowerCase() === String(name || "").trim().toLowerCase());
+
+  function setSelectedProduct(skuValue) {
+    const name = String(skuValue || "").trim();
+    const skuInput = document.getElementById("rfq-sku");
+    if (skuInput) skuInput.value = name;
+
+    const rec = findProduct(name);
+    const nameEl = document.getElementById("rfq-selected-name");
+    if (nameEl) nameEl.textContent = name || "General fabric inquiry";
+    const weightEl = document.getElementById("rfq-selected-weight");
+    if (weightEl) weightEl.textContent = rec?.weight || "—";
+    const widthEl = document.getElementById("rfq-selected-width");
+    if (widthEl) widthEl.textContent = rec?.width || "—";
+  }
 
   const openModal = () => {
     if (!modal) return;
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    const urlSku = new URLSearchParams(window.location.search).get("sku") || "";
+    if (urlSku) setSelectedProduct(urlSku);
   };
 
   const closeModal = () => {
@@ -121,13 +367,20 @@ import RfqQuoteForm from "@components/RfqQuoteForm.astro";
     document.body.style.overflow = "";
   };
 
+  // Reserved Step 2 / Step 3 switching framework
+  const stepPanels = Array.from(document.querySelectorAll("[data-rfq-step]"));
+  const goToStep = (n) => {
+    stepPanels.forEach((panel) => {
+      const active = panel.getAttribute("data-rfq-step") === String(n);
+      panel.hidden = !active;
+      panel.classList.toggle("rfq-step--active", active);
+    });
+  };
+
   openers.forEach((element) =>
     element.addEventListener("click", (event) => {
       if (element.tagName === "A") event.preventDefault();
-      const skuInput = document.getElementById("rfq-sku");
-      if (skuInput && element.hasAttribute("data-rfq-sku")) {
-        skuInput.value = element.getAttribute("data-rfq-sku") || "";
-      }
+      setSelectedProduct(element.getAttribute("data-rfq-sku") || "");
       openModal();
     })
   );
