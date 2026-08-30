@@ -269,7 +269,17 @@ const seoDesc = meta.desc;
         <!-- Product Info -->
         <div class="detail-info">
           <div class="detail-info__heading">
-            <h2 class="detail-info__title">{product.title}</h2>
+            <h2 class="detail-info__title">
+              <span class="detail-info__badge">
+                <svg class="detail-info__badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+                  <path d="m3.3 7 8.7 5 8.7-5" />
+                  <path d="M12 22V12" />
+                </svg>
+                WHOLESALE
+              </span>
+              {product.title}
+            </h2>
           </div>
           <p class="detail-info__desc">Plain iridescent laser hot‑stamping spandex fabric is engineered for garments that need real stretch performance. The 4‑way stretch spandex base stretches and recovers in every direction, while the plain laser foil surface delivers a clean, uniform iridescent shine.</p>
 
@@ -806,6 +816,29 @@ const seoDesc = meta.desc;
     font-weight: 800;
     line-height: 1.2;
     color: var(--color-primary);
+  }
+
+  .detail-info__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    vertical-align: baseline;
+    padding: 6px 12px;
+    background: rgba(22, 41, 77, 0.88);
+    color: var(--color-white);
+    font-size: var(--text-xs);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border-radius: var(--radius-full);
+  }
+
+  .detail-info__badge-icon {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 auto;
   }
 
   .detail-info__tag {
