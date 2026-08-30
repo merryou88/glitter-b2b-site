@@ -218,7 +218,7 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 
                 <div class="product-card__actions">
                   <a href={`/products/${product.id}/`} class="product-card__btn product-card__btn--outline">Details</a>
-                  <a href={`/contact/?sku=${product.id}`} class="product-card__btn product-card__btn--primary">Add Quote</a>
+                  <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} class="product-card__btn product-card__btn--primary">Add Quote</a>
                 </div>
               </div>
             </div>

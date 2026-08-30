@@ -111,6 +111,18 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
   const submitSpinner = submitBtn ? submitBtn.querySelector(".rfq-form__spinner") : null;
   const errorBanner = document.getElementById("rfq-form-error");
   const errorText = document.getElementById("rfq-form-error-text");
+  const skuInput = document.getElementById("rfq-sku");
+
+  // Prefill the SKU field with the full product title when arriving via ?sku=
+  try {
+    const skuParam = new URLSearchParams(window.location.search).get("sku");
+    if (skuParam && skuInput && !skuInput.value) {
+      skuInput.value = skuParam;
+      skuInput.dispatchEvent(new Event("input", { bubbles: true }));
+    }
+  } catch (e) {
+    /* ignore — leave the field untouched */
+  }
 
   function showError(message) {
     if (errorText) errorText.textContent = message;
