@@ -124,6 +124,10 @@ import RfqQuoteForm from "@components/RfqQuoteForm.astro";
   openers.forEach((element) =>
     element.addEventListener("click", (event) => {
       if (element.tagName === "A") event.preventDefault();
+      const skuInput = document.getElementById("rfq-sku");
+      if (skuInput && element.hasAttribute("data-rfq-sku")) {
+        skuInput.value = element.getAttribute("data-rfq-sku") || "";
+      }
       openModal();
     })
   );

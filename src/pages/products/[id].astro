@@ -337,7 +337,7 @@ const seoDesc = meta.desc;
 
           <!-- Action Buttons -->
           <div class="detail-cta">
-            <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} class="btn btn--lg detail-cta__btn detail-cta__btn--gold">
+            <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} data-rfq-open data-rfq-sku={product.title} class="btn btn--lg detail-cta__btn detail-cta__btn--gold">
               <svg class="detail-cta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
                 <path d="M14 2v4a2 2 0 0 0 2 2h4" />
@@ -527,7 +527,7 @@ const seoDesc = meta.desc;
             <a href="/sample-policy/" class="btn btn--primary btn--lg">
               Request Free Sample
             </a>
-            <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} class="btn btn--outline btn--lg">
+            <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} data-rfq-open data-rfq-sku={product.title} class="btn btn--outline btn--lg">
               Add to Quote
             </a>
           </div>
