@@ -5,6 +5,7 @@
  */
 import Layout from "@layouts/Layout.astro";
 import products from "@data/products.json";
+import { existsSync, readdirSync } from "node:fs";
 
 export interface ProductSpec {
   label: string;
@@ -56,6 +57,23 @@ const skuBasePath = `/images/products/${product.id}/sku/`;
 
 // Plain iridescent page uses a custom spec-table + B2B buyers layout
 const isPlainIridescent = product.id === "plain-iridescent-laser-spandex-4-way-stretch";
+
+// Application scenario images, scanned from the /application folder at build time
+const appImagesBase = `public/images/products/${product.id}/application`;
+const applicationImages =
+  isPlainIridescent && existsSync(appImagesBase)
+    ? readdirSync(appImagesBase)
+        .filter((f: string) => /\.(png|jpe?g|webp)$/i.test(f))
+        .sort((a: string, b: string) => {
+          const na = Number.parseInt(a.match(/\d+/)?.[0] ?? "0", 10);
+          const nb = Number.parseInt(b.match(/\d+/)?.[0] ?? "0", 10);
+          return (na || 0) - (nb || 0) || a.localeCompare(b);
+        })
+        .map((f: string) => ({
+          src: `/images/products/${product.id}/application/${f}`,
+          hasWebp: existsSync(`${appImagesBase}/${f.replace(/\.(png|jpe?g)$/i, ".webp")}`),
+        }))
+    : [];
 
 const breadcrumbData = {
   "@context": "https://schema.org",
@@ -543,6 +561,16 @@ const seoDesc = meta.desc;
                 <li class="detail-apps__item">{titleCase(app)}</li>
               ))}
             </ul>
+            {applicationImages.length > 0 && (
+              <div class="detail-apps-grid">
+                {applicationImages.map((img) => (
+                  <picture>
+                    {img.hasWebp && <source srcset={toWebp(img.src)} type="image/webp" />}
+                    <img src={img.src} alt={`${product.title} application`} loading="lazy" width="1200" height="675" class="detail-image" decoding="async" onerror="this.style.display='none'" />
+                  </picture>
+                ))}
+              </div>
+            )}
           </div>
         )}
 
@@ -1750,6 +1778,14 @@ const seoDesc = meta.desc;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-md);
+  }
+
+  /* Application scenario images */
+  .detail-apps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
   }
 
   .detail-image {
