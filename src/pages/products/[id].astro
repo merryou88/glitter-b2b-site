@@ -376,7 +376,7 @@ const seoDesc = meta.desc;
   <!-- Full Description -->
   <section class="section">
     <div class="container">
-      <div class="detail-body">
+      <div class={`detail-body${isPlainIridescent ? " detail-body--plain" : ""}`}>
         <!-- Description -->
         <div class="detail-body__text">
           <h2>Product Description</h2>
@@ -411,7 +411,7 @@ const seoDesc = meta.desc;
 
         <!-- Detail Images -->
         {product.detailImages.length > 0 && (
-          <div class="detail-body__section">
+          <div class="detail-body__section" id="product-details">
             <h2>Product Details</h2>
             <div class="detail-images-grid">
               {product.detailImages.map((img: string) => (
@@ -426,7 +426,7 @@ const seoDesc = meta.desc;
 
         <!-- Video: YouTube priority > local mp4 > none -->
         {(product.videoYoutubeUrl || product.videoLocal) && (
-          <div class="detail-body__section">
+          <div class="detail-body__section" id="product-video">
             <h2>Product Video</h2>
             <div class="detail-video">
               {product.videoYoutubeUrl ? (
@@ -478,8 +478,7 @@ const seoDesc = meta.desc;
                   <tr><td>Width</td><td>150cm</td></tr>
                   <tr><td>Thickness</td><td>0.35&#8209;0.4mm</td></tr>
                   <tr><td>Feature</td><td>4-way stretch, iridescent laser foil finish</td></tr>
-                  <tr><td>Knitted type</td><td>Warp knitting</td></tr>
-                  <tr><td>Certification</td><td>SGS, REACH compliant</td></tr>
+                  <tr><td>Quality Standard</td><td>China Textile Industry Standard (FZ)</td></tr>
                   <tr><td>Usage</td><td>Swimwear, dance wear, stage costumes, fashion apparel</td></tr>
                 </tbody>
               </table>
@@ -520,11 +519,12 @@ const seoDesc = meta.desc;
                   <tbody>
                     <tr><td>MOQ</td><td>100 Meters</td></tr>
                     <tr><td>Supply type</td><td>Make to order / In-stock available</td></tr>
-                    <tr><td>Sample</td><td>Free sample, customer bears international freight</td></tr>
-                    <tr><td>Bulk Lead time</td><td>7-15 working days</td></tr>
+                    <tr><td>Sample</td><td>Free sample, customer bears international freight; shipping cost deducted from bulk order</td></tr>
+                    <tr><td>Bulk Lead time</td><td>1-3 working days for orders &le;500m; 7-15 working days for orders &gt;500m</td></tr>
                     <tr><td>Port</td><td>Ningbo / Shanghai</td></tr>
-                    <tr><td>Available Customization</td><td>Custom colors, custom width, custom hot-stamping finish</td></tr>
-                    <tr><td>OEM / ODM</td><td>Custom color matching, custom pattern available</td></tr>
+                    <tr><td>Available Customization</td><td>Custom colors, backing options, custom hot-stamping finish</td></tr>
+                    <tr><td>OEM / ODM</td><td>Supported</td></tr>
+                    <tr><td>Certification Document</td><td>SGS, REACH test reports available upon request</td></tr>
                     <tr><td>Package type</td><td>Roll packing with paper tube inside, plastic bag outside; can follow customer requirement</td></tr>
                     <tr><td>Trade Terms</td><td>FOB, CIF available, provide commercial invoice &amp; packing list</td></tr>
                   </tbody>
@@ -534,8 +534,20 @@ const seoDesc = meta.desc;
           </div>
         )}
 
+        <!-- Application Scenarios -->
+        {isPlainIridescent && applications.length > 0 && (
+          <div class="detail-body__section" id="applications">
+            <h2>Application Scenarios</h2>
+            <ul class="detail-apps__list">
+              {applications.map((app) => (
+                <li class="detail-apps__item">{titleCase(app)}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         <!-- OEM / ODM Service -->
-        <div class="detail-body__section detail-body__section--full">
+        <div class="detail-body__section detail-body__section--full" id="oem-manufacturing">
           <h2>OEM &amp; ODM Manufacturing Service</h2>
           <div class="oem-grid">
             <div class="oem-card">
@@ -554,6 +566,25 @@ const seoDesc = meta.desc;
             </div>
           </div>
         </div>
+
+        <!-- Buyer Important Notice -->
+        {isPlainIridescent && (
+          <div class="detail-body__section buyer-notice">
+            <details class="buyer-notice__box">
+              <summary class="buyer-notice__summary">
+                <h2>Buyer Important Notice</h2>
+              </summary>
+              <ol class="buyer-notice__list">
+                <li>Color difference: All photos are real-product shooting. Slight color deviation may exist due to light, shooting angle and different monitor displays. Minor batch-to-batch color difference may also occur for textile products. If you are highly sensitive to color, please request pre-production sample for confirmation before bulk order.</li>
+                <li>Return &amp; Refund Policy: Please confirm fabric specification including price, usage, width, elasticity, composition and weight before placing orders. No return or exchange after fabric is cut, unless quality-related defects. Please contact our support if you have any questions before cutting.</li>
+                <li>Sample cutting tolerance: Manual cutting brings minor dimensional tolerance. Please consult our team if strict dimensional requirement is needed.</li>
+                <li>Invoice service: Extra tax charge will apply for formal commercial invoice, please confirm with us prior to order placement.</li>
+                <li>Order unit: Unit price is per meter. Multiple meters will be supplied in full roll without separate cuts.</li>
+                <li>Fabric smell: New fabric may carry slight manufacturing odor, which can disappear after natural ventilation.</li>
+              </ol>
+            </details>
+          </div>
+        )}
 
         <!-- FAQ -->
         {(product.faq ?? []).length > 0 && (
@@ -1191,6 +1222,120 @@ const seoDesc = meta.desc;
     height: 0.5rem;
     border-radius: 50%;
     background: var(--color-accent);
+  }
+
+  /* ===== Plain iridescent: reordered body stack (flex order) ===== */
+  .detail-body--plain {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .detail-body--plain > * {
+    order: 50;
+  }
+
+  .detail-body--plain .detail-body__text {
+    order: 10;
+  }
+
+  .detail-body--plain #specifications {
+    order: 20;
+  }
+
+  .detail-body--plain #b2b-specifications {
+    order: 30;
+  }
+
+  .detail-body--plain #applications {
+    order: 40;
+  }
+
+  .detail-body--plain #oem-manufacturing {
+    order: 50;
+  }
+
+  .detail-body--plain .buyer-notice {
+    order: 60;
+  }
+
+  .detail-body--plain #faq {
+    order: 70;
+  }
+
+  .detail-body--plain #sku-colors {
+    order: 90;
+  }
+
+  .detail-body--plain #product-details {
+    order: 91;
+  }
+
+  .detail-body--plain #product-video {
+    order: 92;
+  }
+
+  .detail-body--plain .detail-sample-policy {
+    order: 99;
+  }
+
+  /* ===== Buyer Important Notice (collapsible) ===== */
+  .buyer-notice__box {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .buyer-notice__summary {
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+  }
+
+  .buyer-notice__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .buyer-notice__summary h2 {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .buyer-notice__summary::after {
+    content: "+";
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .buyer-notice__box[open] .buyer-notice__summary::after {
+    content: "\2212";
+  }
+
+  .buyer-notice__list {
+    margin: var(--space-md) 0 0;
+    padding-left: 1.25rem;
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .buyer-notice__list li {
+    margin-bottom: 0.625rem;
+  }
+
+  .buyer-notice__list li:last-child {
+    margin-bottom: 0;
   }
 
   .detail-tags-section {
