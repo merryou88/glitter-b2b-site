@@ -51,10 +51,6 @@ if (!product) {
   });
 }
 
-// Gather all main images for gallery (from the main folder via scan)
-const baseMainPath = `/images/products/${product.id}/main/`;
-const skuBasePath = `/images/products/${product.id}/sku/`;
-
 // Plain iridescent page uses a custom spec-table + B2B buyers layout
 const isPlainIridescent = product.id === "plain-iridescent-laser-spandex-4-way-stretch";
 
@@ -102,6 +98,19 @@ const faqData = (product.faq ?? []).length > 0 && {
 
 const structuredDataList = [breadcrumbData, ...(faqData ? [faqData] : [])];
 
+// B2B Product schema (no public price / no offers — wholesale only)
+const productData =
+  isPlainIridescent && {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: "Plain Iridescent Laser Hot-Stamping Spandex 4-Way Stretch Fabric",
+    description:
+      "4-way stretch plain iridescent laser hot-stamping spandex fabric. 150cm width, 180 g/m², polyester knitted base for swimwear, dance wear, stage costumes.",
+    image: product.mainImage ? `https://nixiafabric.com${product.mainImage}` : undefined,
+    brand: { "@type": "Brand", name: "Nixia Fabric" },
+  };
+if (productData) structuredDataList.push(productData);
+
 // Related products: other items sharing at least one tag (max 3)
 const relatedProducts = (products as Product[])
   .filter((p) => p.id !== product.id && p.tags.some((t) => product.tags.includes(t)))
@@ -145,7 +154,7 @@ const productMeta: Record<string, { title: string; desc: string }> = {
   },
   "plain-iridescent-laser-spandex-4-way-stretch": {
     title: "Plain Iridescent Laser Spandex 4-Way Stretch Fabric | Nixia Fabric",
-    desc: "4-way stretch plain iridescent laser hot-stamping spandex fabric. 150cm width, 180g/m², polyester knitted base. For swimwear, dance & stage costumes. Request quotation.",
+    desc: "High-quality plain iridescent laser hot-stamping spandex fabric with excellent 4-way stretch. 180g/m², 150cm width, suitable for swimwear, dance wear and stage costumes. Custom color and bulk OEM available.",
   },
   "rainbow-gradient-glitter-synthetic-leather": {
     title: "Rainbow Gradient Glitter Synthetic Leather Fabric | Wholesale - Nixia Fabric",
@@ -167,6 +176,7 @@ const seoDesc = meta.desc;
   keywords={product.tags.join(", ")}
   image={product.mainImage ? `https://nixiafabric.com${product.mainImage}` : undefined}
   canonical={`https://nixiafabric.com/products/${product.id}`}
+  ogType={isPlainIridescent ? "product" : "website"}
   structuredData={structuredDataList}
 >
   <!-- Product Banner Header -->
@@ -193,18 +203,28 @@ const seoDesc = meta.desc;
         {product.id === "plain-iridescent-laser-spandex-4-way-stretch" ? (
           <div class="p-hero-gallery" id="p-hero-gallery">
             <div class="p-hero-gallery__main" id="p-hero-main">
-              <img id="p-hero-img" src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" loading="eager" decoding="async" />
+              <picture>
+                <source srcset="/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.webp" type="image/webp" />
+                <source srcset="/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.jpg" type="image/jpeg" />
+                <img id="p-hero-img" src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.jpg" alt="Plain iridescent laser spandex 4-way stretch fabric with holographic laser finish" width="800" height="800" loading="eager" fetchpriority="high" decoding="async" />
+              </picture>
               <video id="p-hero-video" controls preload="none" muted playsinline style="display:none">
                 <source src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/video/demo-video.mp4" type="video/mp4" />
               </video>
             </div>
             <div class="p-hero-gallery__thumbs">
               <button class="p-hero-gallery__thumb p-hero-gallery__thumb--active" data-type="image" data-src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.jpg" aria-label="View main image">
-                <img src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.jpg" alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="120" height="80" loading="eager" decoding="async" />
+                <picture>
+                  <source srcset="/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.webp" type="image/webp" />
+                  <img src="/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.jpg" alt="Plain iridescent laser spandex 4-way stretch fabric with holographic laser finish" width="120" height="80" loading="eager" decoding="async" />
+                </picture>
               </button>
               {[2, 3, 4].map((n) => (
                 <button class="p-hero-gallery__thumb" data-type="image" data-src={`/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/${n}.jpg`} aria-label="View detail image">
-                  <img src={`/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/${n}.jpg`} alt="Plain iridescent laser hot‑stamping 4‑way stretch spandex fabric" width="120" height="80" loading="lazy" decoding="async" />
+                  <picture>
+                    <source srcset={`/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/${n}.webp`} type="image/webp" />
+                    <img src={`/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/${n}.jpg`} alt={`Close-up texture of iridescent laser hot stamping spandex fabric ${n}`} width="120" height="80" loading="lazy" decoding="async" />
+                  </picture>
                 </button>
               ))}
             </div>
@@ -561,7 +581,7 @@ const seoDesc = meta.desc;
         <!-- Application Scenarios -->
         {isPlainIridescent && applications.length > 0 && (
           <div class="detail-body__section" id="applications">
-            <h2>Application Scenarios</h2>
+            <h2>Applications</h2>
             <ul class="detail-apps__list">
               {applications.map((app) => (
                 <li class="detail-apps__item">{titleCase(app)}</li>
@@ -572,7 +592,7 @@ const seoDesc = meta.desc;
                 {applicationImages.map((img) => (
                   <picture>
                     {img.hasWebp && <source srcset={toWebp(img.src)} type="image/webp" />}
-                    <img src={img.src} alt={`${product.title} application`} loading="lazy" width="1200" height="675" class="detail-image" decoding="async" onerror="this.style.display='none'" />
+                    <img src={img.src} alt="Iridescent stretch spandex fabric for swimwear and stage fashion costumes" loading="lazy" width="1672" height="941" class="detail-image" decoding="async" onerror="this.style.display='none'" />
                   </picture>
                 ))}
               </div>
