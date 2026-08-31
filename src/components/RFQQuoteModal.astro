@@ -52,14 +52,6 @@ const productLookup = products.map((p) => {
           <span class="rfq-modal__step-num">1</span>
           Contact Info
         </span>
-        <span class="rfq-modal__step">
-          <span class="rfq-modal__step-num">2</span>
-          Product Details
-        </span>
-        <span class="rfq-modal__step">
-          <span class="rfq-modal__step-num">3</span>
-          Review &amp; Submit
-        </span>
       </div>
     </aside>
 
@@ -68,12 +60,7 @@ const productLookup = products.map((p) => {
       <p class="rfq-modal__eyebrow">Contact Info</p>
       <h3 class="rfq-modal__form-title">Your Contact Details</h3>
 
-      <!-- Step panels — Step 1 built, Steps 2 & 3 reserved -->
-      <div class="rfq-step rfq-step--active" data-rfq-step="1">
-        <RfqQuoteForm />
-      </div>
-      <div class="rfq-step" data-rfq-step="2" hidden></div>
-      <div class="rfq-step" data-rfq-step="3" hidden></div>
+      <RfqQuoteForm />
     </div>
   </div>
 </div>
@@ -365,16 +352,6 @@ const productLookup = products.map((p) => {
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
-  };
-
-  // Reserved Step 2 / Step 3 switching framework
-  const stepPanels = Array.from(document.querySelectorAll("[data-rfq-step]"));
-  const goToStep = (n) => {
-    stepPanels.forEach((panel) => {
-      const active = panel.getAttribute("data-rfq-step") === String(n);
-      panel.hidden = !active;
-      panel.classList.toggle("rfq-step--active", active);
-    });
   };
 
   openers.forEach((element) =>
