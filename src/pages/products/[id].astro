@@ -99,17 +99,17 @@ const faqData = (product.faq ?? []).length > 0 && {
 const structuredDataList = [breadcrumbData, ...(faqData ? [faqData] : [])];
 
 // B2B Product schema (no public price / no offers — wholesale only)
-const productData =
-  isPlainIridescent && {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: "Plain Iridescent Laser Hot-Stamping Spandex 4-Way Stretch Fabric",
-    description:
-      "4-way stretch plain iridescent laser hot-stamping spandex fabric. 150cm width, 180 g/m², polyester knitted base for swimwear, dance wear, stage costumes.",
-    image: product.mainImage ? `https://nixiafabric.com${product.mainImage}` : undefined,
-    brand: { "@type": "Brand", name: "Nixia Fabric" },
-  };
-if (productData) structuredDataList.push(productData);
+const productData = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: product.title,
+  description: isPlainIridescent
+    ? "4-way stretch plain iridescent laser hot-stamping spandex fabric. 150cm width, 180 g/m², polyester knitted base for swimwear, dance wear, stage costumes."
+    : product.shortDesc,
+  image: product.mainImage ? `https://nixiafabric.com${product.mainImage}` : undefined,
+  brand: { "@type": "Brand", name: "Nixia Fabric" },
+};
+structuredDataList.push(productData);
 
 // Related products: other items sharing at least one tag (max 3)
 const relatedProducts = (products as Product[])
@@ -134,36 +134,63 @@ const seoTags = [
   ).values(),
 ];
 
+// Business alt text — per-product, not shared
+const productImageAlt: Record<string, { main: string; detail: string }> = {
+  "full-print-hot-stamping-spandex-milk-silk": {
+    main: "Full-print hot-stamping spandex milk-silk fabric with soft hand-feel and 4-way stretch",
+    detail: "Close-up texture of full-print hot-stamping spandex milk-silk fabric for fashion garments",
+  },
+  "iridescent-laser-hot-stamping-stretch-ice-silk": {
+    main: "Iridescent laser hot-stamping stretch ice-silk fabric with gradient multi-color finish",
+    detail: "Close-up texture of iridescent laser hot-stamping stretch ice-silk fabric",
+  },
+  "non-woven-glitter-fabric": {
+    main: "Sparkling non-woven glitter fabric with dense sparkle coating",
+    detail: "Close-up texture of sparkling non-woven glitter fabric",
+  },
+  "iridescent-gradient-laser-ice-silk": {
+    main: "Iridescent gradient laser hot-stamping ice-silk fabric with smooth color-flow finish",
+    detail: "Close-up texture of iridescent gradient laser hot-stamping ice-silk fabric",
+  },
+  "rainbow-gradient-glitter-synthetic-leather": {
+    main: "Rainbow gradient glitter synthetic leather fabric with reflective finish",
+    detail: "Close-up texture of rainbow gradient glitter synthetic leather fabric",
+  },
+};
+const imageAltBase = productImageAlt[product.id] ?? {};
+const mainAlt = imageAltBase.main ?? product.title;
+const detailAlt = imageAltBase.detail ?? `${product.title} detail`;
+
 // SEO title & description — per-product, not shared
 const productMeta: Record<string, { title: string; desc: string }> = {
   "full-print-hot-stamping-spandex-milk-silk": {
-    title: "Full-Print Hot-Stamping Spandex Milk-Silk Fabric | Wholesale - Nixia Fabric",
-    desc: "Wholesale full-print hot-stamping spandex milk-silk fabric. 4-way stretch, soft hand-feel, free sample, low MOQ. Ideal for fashion garments, swimwear & stage costumes. Get custom quote.",
+    title: "Full-Print Hot-Stamping Spandex Milk-Silk Fabric | Nixia Fabric",
+    desc: "Full-print hot-stamping spandex milk-silk fabric with a soft hand-feel and 4-way stretch. Ideal for fashion garments, swimwear & stage costumes. Custom colors and bulk OEM supported.",
   },
   "iridescent-laser-hot-stamping-stretch-ice-silk": {
-    title: "Iridescent Laser Hot-Stamping Stretch Ice-Silk Fabric | Wholesale - Nixia Fabric",
-    desc: "Wholesale iridescent laser hot-stamping stretch ice-silk fabric. Gradient multi-color finish, elastic recovery, free sample, low MOQ. Ideal for stage costumes & backdrop decoration. Get custom quote.",
+    title: "Iridescent Laser Hot-Stamping Stretch Ice-Silk Fabric | Nixia Fabric",
+    desc: "Iridescent laser hot-stamping stretch ice-silk fabric with a gradient multi-color finish and elastic recovery. Ideal for stage costumes & backdrop decoration. Custom colors and bulk OEM supported.",
   },
   "non-woven-glitter-fabric": {
-    title: "Non-Woven Glitter Fabric | Wholesale - Nixia Fabric",
-    desc: "Wholesale non-woven glitter fabric. Dense sparkle coating, cut-clean edges, free sample, low MOQ. Ideal for holiday decoration, stage props & performance costumes. Get custom quote.",
+    title: "Non-Woven Glitter Fabric | Nixia Fabric",
+    desc: "Sparkling non-woven glitter fabric with a dense sparkle coating and clean-cut edges. Ideal for holiday decoration, stage props & performance costumes. Custom colors and bulk OEM supported.",
   },
   "iridescent-gradient-laser-ice-silk": {
-    title: "Iridescent Gradient Laser Hot-Stamping Ice-Silk Fabric | Wholesale - Nixia Fabric",
-    desc: "Wholesale iridescent gradient laser hot-stamping ice-silk fabric. Smooth color-flow finish, stretch base, free sample, low MOQ. Ideal for fashion apparel, stage costumes & backdrops. Get custom quote.",
+    title: "Iridescent Gradient Laser Hot-Stamping Ice-Silk Fabric | Nixia Fabric",
+    desc: "Iridescent gradient laser hot-stamping ice-silk fabric with a smooth color-flow finish on a stretch base. Ideal for fashion apparel, stage costumes & backdrops. Custom colors and bulk OEM supported.",
   },
   "plain-iridescent-laser-spandex-4-way-stretch": {
     title: "Plain Iridescent Laser Spandex 4-Way Stretch Fabric | Nixia Fabric",
     desc: "High-quality plain iridescent laser hot-stamping spandex fabric with excellent 4-way stretch. 180g/m², 150cm width, suitable for swimwear, dance wear and stage costumes. Custom color and bulk OEM available.",
   },
   "rainbow-gradient-glitter-synthetic-leather": {
-    title: "Rainbow Gradient Glitter Synthetic Leather Fabric | Wholesale - Nixia Fabric",
-    desc: "Wholesale rainbow gradient glitter synthetic leather. Reflective finish, structured base, free sample, low MOQ. Ideal for bags, footwear & book-covering materials. Get custom quote.",
+    title: "Rainbow Gradient Glitter Synthetic Leather Fabric | Nixia Fabric",
+    desc: "Rainbow gradient glitter synthetic leather with a reflective finish and structured base. Ideal for bags, footwear & book-covering materials. Custom colors and bulk OEM supported.",
   },
 };
 
 const meta = productMeta[product.id] ?? {
-  title: `${product.title} | Wholesale - Nixia Fabric`,
+  title: `${product.title} | Nixia Fabric`,
   desc: product.shortDesc,
 };
 const seoTitle = meta.title;
@@ -176,7 +203,7 @@ const seoDesc = meta.desc;
   keywords={product.tags.join(", ")}
   image={product.mainImage ? `https://nixiafabric.com${product.mainImage}` : undefined}
   canonical={`https://nixiafabric.com/products/${product.id}`}
-  ogType={isPlainIridescent ? "product" : "website"}
+  ogType="product"
   structuredData={structuredDataList}
 >
   <!-- Product Banner Header -->
@@ -253,7 +280,7 @@ const seoDesc = meta.desc;
               product.mainImage ? (
                 <picture>
                   <source srcset={toWebp(product.mainImage)} type="image/webp" />
-                  <img id="main-image" src={product.mainImage} alt={product.title} class="detail-gallery__hero" loading="lazy" width="1200" height="675" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                  <img id="main-image" src={product.mainImage} alt={mainAlt} class="detail-gallery__hero" loading="eager" fetchpriority="high" width="1200" height="675" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
                 </picture>
               ) : null
             }
@@ -282,7 +309,7 @@ const seoDesc = meta.desc;
                   >
                     <picture>
                       <source srcset={toWebp(img)} type="image/webp" />
-                      <img src={img} alt={`${product.title} thumbnail ${i + 1}`} loading="lazy" width="80" height="80" decoding="async" onerror="this.style.display='none'" />
+                      <img src={img} alt={mainAlt} loading="lazy" width="80" height="80" decoding="async" onerror="this.style.display='none'" />
                     </picture>
                   </button>
                 ))}
@@ -438,7 +465,7 @@ const seoDesc = meta.desc;
                 <div class="sku-item">
                   <picture>
                     <source srcset={toWebp(img)} type="image/webp" />
-                    <img src={img} alt="Color variant" loading="lazy" width="200" height="200" decoding="async" onerror="this.style.display='none';this.parentElement.querySelector('.sku-item__placeholder').style.display='flex'" />
+                    <img src={img} alt={mainAlt} loading="lazy" width="200" height="200" decoding="async" onerror="this.style.display='none';this.parentElement.querySelector('.sku-item__placeholder').style.display='flex'" />
                   </picture>
                   <div class="sku-item__placeholder" style="display:none">
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -461,7 +488,7 @@ const seoDesc = meta.desc;
               {product.detailImages.map((img: string) => (
                 <picture>
                   <source srcset={toWebp(img)} type="image/webp" />
-                  <img src={img} alt={`${product.title} detail`} loading="lazy" width="1200" height="675" class="detail-image" decoding="async" onerror="this.style.display='none'" />
+                  <img src={img} alt={detailAlt} loading="lazy" width="1200" height="675" class="detail-image" decoding="async" onerror="this.style.display='none'" />
                 </picture>
               ))}
             </div>
@@ -532,14 +559,18 @@ const seoDesc = meta.desc;
           (product.specs ?? []).length > 0 && (
             <div class="detail-body__section" id="specifications">
               <h2>Product Specifications</h2>
-              <dl class="spec-grid">
-                {(product.specs ?? []).map((spec) => (
-                  <div class="spec-grid__item">
-                    <dt>{spec.label}</dt>
-                    <dd>{spec.value}</dd>
-                  </div>
-                ))}
-              </dl>
+              <div class="table-scroll">
+                <table class="param-table">
+                  <thead>
+                    <tr><th>Parameter</th><th>Value</th></tr>
+                  </thead>
+                  <tbody>
+                    {(product.specs ?? []).map((spec) => (
+                      <tr><th scope="row">{spec.label}</th><td>{spec.value}</td></tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           )
         )}
@@ -579,7 +610,7 @@ const seoDesc = meta.desc;
         )}
 
         <!-- Application Scenarios -->
-        {isPlainIridescent && applications.length > 0 && (
+        {applications.length > 0 && (
           <div class="detail-body__section" id="applications">
             <h2>Applications</h2>
             <ul class="detail-apps__list">
@@ -1464,39 +1495,6 @@ const seoDesc = meta.desc;
     text-transform: capitalize;
   }
 
-  /* ===== Specification Grid ===== */
-  .spec-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--color-border);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-  }
-
-  .spec-grid__item {
-    background: var(--color-white);
-    padding: var(--space-md) var(--space-lg);
-  }
-
-  .spec-grid__item dt {
-    font-size: var(--text-xs);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--color-text-muted);
-    margin-bottom: 0.25rem;
-  }
-
-  .spec-grid__item dd {
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--color-primary);
-    line-height: 1.45;
-    margin: 0;
-  }
-
   /* ===== Simple field-value tables (plain iridescent) ===== */
   .table-scroll {
     overflow-x: auto;
@@ -1536,9 +1534,21 @@ const seoDesc = meta.desc;
     border-bottom: none;
   }
 
-  .param-table tbody td:first-child {
+  .param-table tbody td:first-child,
+  .param-table tbody th[scope="row"] {
     font-weight: 600;
     color: var(--color-primary);
+  }
+
+  .param-table tbody th[scope="row"] {
+    text-align: left;
+    padding: 0.8125rem var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: top;
+  }
+
+  .param-table tbody tr:last-child th[scope="row"] {
+    border-bottom: none;
   }
 
   .b2b-card {
@@ -1939,10 +1949,6 @@ const seoDesc = meta.desc;
       grid-template-columns: 1fr 1fr;
     }
 
-    .spec-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
     .related-grid {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -1990,10 +1996,6 @@ const seoDesc = meta.desc;
   @media (max-width: 640px) {
     .detail-hero {
       padding-top: var(--space-lg);
-    }
-
-    .spec-grid {
-      grid-template-columns: 1fr;
     }
 
     .sku-grid {
