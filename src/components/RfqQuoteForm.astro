@@ -48,6 +48,12 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
       <span class="rfq-field__hint">Optional. If you prefer WhatsApp communication, please leave your phone number.</span>
     </div>
 
+    <div class="rfq-field">
+      <label for="rfq-message" class="rfq-field__label">Message <span class="rfq-field__req">*</span></label>
+      <textarea id="rfq-message" name="message" rows="4" class="rfq-field__textarea rfq-field__input--required" placeholder="Tell us your requirements, such as order quantity, target color, custom base material etc."></textarea>
+      <span class="rfq-field__error" id="rfq-message-error"></span>
+    </div>
+
     <!-- Honeypot: hidden from humans, bots fill it and get rejected server-side -->
     <div class="hp-field" aria-hidden="true">
       <label for="rfq-company-website">Website</label>
@@ -118,10 +124,13 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     const data = new FormData(form);
     const name = String(data.get("fullName") || "").trim();
     const email = String(data.get("email") || "").trim();
+    const message = String(data.get("message") || "").trim();
     const nameInput = document.getElementById("rfq-full-name");
     const emailInput = document.getElementById("rfq-email");
+    const messageInput = document.getElementById("rfq-message");
     const nameError = document.getElementById("rfq-full-name-error");
     const emailError = document.getElementById("rfq-email-error");
+    const messageError = document.getElementById("rfq-message-error");
 
     let valid = true;
 
@@ -140,6 +149,13 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
       valid = false;
     } else {
       setFieldError(emailInput, emailError, "");
+    }
+
+    if (!message) {
+      setFieldError(messageInput, messageError, "Message is required.");
+      valid = false;
+    } else {
+      setFieldError(messageInput, messageError, "");
     }
 
     return valid;
@@ -164,6 +180,12 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     });
   });
 
+  document.getElementById("rfq-message")?.addEventListener("input", () => {
+    const input = document.getElementById("rfq-message");
+    setFieldError(input, document.getElementById("rfq-message-error"), "");
+    hideError();
+  });
+
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
     hideError();
@@ -181,6 +203,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
       company: String(formData.get("company") || "").trim(),
       email: String(formData.get("email") || "").trim(),
       phone,
+      message: String(formData.get("message") || "").trim(),
       productSku: selectedName,
       productName: selectedName,
       productWeight: weight,
@@ -299,6 +322,35 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     font-size: 12px;
     line-height: 1.5;
     color: #98a2b3;
+  }
+
+  .rfq-field__textarea {
+    width: 100%;
+    border: 1px solid var(--color-accent);
+    border-radius: 6px;
+    background: var(--color-white);
+    color: var(--color-text);
+    padding: 0.85rem 1rem;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.6;
+    resize: vertical;
+    min-height: 110px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .rfq-field__textarea::placeholder {
+    color: #a3abba;
+  }
+
+  .rfq-field__textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(196, 160, 53, 0.16);
+  }
+
+  .rfq-field__textarea.is-invalid {
+    border-color: #dc2626;
   }
 
   .rfq-form__actions {
