@@ -5,9 +5,10 @@
   "description": "Nixia Fabric - China Glitter Fabric Manufacturer B2B Website",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && npm run validate:products",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "validate:products": "node scripts/validate-products.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.4.0",

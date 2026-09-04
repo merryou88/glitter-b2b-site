@@ -17,7 +17,7 @@ const webPageData = {
   "@type": "WebPage",
   name: "Holographic & Glitter Fabric Manufacturer | Nixia Fabric",
   description:
-    "Factory-direct holographic, iridescent & glitter fabrics for fashion, footwear & stage costumes. Low MOQ, free samples, OEM/ODM, 24h quote. SGS certified.",
+    "Factory-direct holographic, iridescent & glitter fabrics for fashion, footwear & stage costumes. Low MOQ, free samples, OEM/ODM, 24h quote. Buyer-specific testing support.",
   url: "https://nixiafabric.com",
 };
 
@@ -93,28 +93,28 @@ const applications = [
     description: "4-way stretch spandex & milk-silk bases with foil and laser finishes — form-fitting shine that moves with the body.",
     image: "/shots/application-swimwear-glitter-fabric.jpg",
     alt: "Iridescent laser foil swimsuit made with Nixia stretch fabric",
-    href: "/products/",
+    href: "/applications/foil-fabric-for-swimwear/",
   },
   {
     title: "Shoes & Bags",
     description: "Structured glitter and synthetic-leather bases for footwear uppers, handbags and clutches — sparkle that holds its shape.",
     image: "/shots/application-shoes-glitter-fabric.png",
     alt: "Glitter fabric used on footwear uppers",
-    href: "/products/",
+    href: "/applications/glitter-fabric-for-shoes/",
   },
   {
     title: "Party & Stage Costumes",
     description: "Holographic and iridescent fabrics built for the spotlight — dance costumes, cosplay, carnival and performance outfits.",
     image: "/shots/application-costume-glitter-fabric.jpg",
     alt: "Holographic stage costume and glitter fabric rolls",
-    href: "/products/",
+    href: "/applications/holographic-fabric-for-stage-costumes/",
   },
   {
     title: "Toys, Crafts & Festive Decor",
     description: "Cut-clean glitter fabrics for toy covers, DIY crafts, party backdrops and Christmas projects. Fire-retardant backing optional.",
     image: "/shots/application-fashion-trim-glitter-fabric.png",
     alt: "Glitter fabric strips and rhinestone craft materials",
-    href: "/products/",
+    href: "/applications/glitter-fabric-for-decoration/",
   },
 ];
 
@@ -168,8 +168,8 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
 
 <Layout
   title="Holographic & Glitter Fabric Manufacturer | Nixia Fabric"
-  description="Factory-direct holographic, iridescent & glitter fabrics for fashion, footwear & stage costumes. Low MOQ, free samples, OEM/ODM, 24h quote. SGS certified."
-  keywords="glitter synthetic leather, foil-printed synthetic leather, synthetic leather manufacturer, China fabric factory, custom synthetic leather, OEM ODM fabric, SGS REACH compliant"
+  description="Factory-direct holographic, iridescent & glitter fabrics for fashion, footwear & stage costumes. Low MOQ, free samples, OEM/ODM, 24h quote. Buyer-specific testing support."
+  keywords="glitter synthetic leather, foil-printed synthetic leather, synthetic leather manufacturer, China fabric factory, custom synthetic leather, OEM ODM fabric, SGS REACH testing"
   structuredData={[webPageData]}
 >
   <!-- ==================== HERO CAROUSEL ==================== -->
@@ -188,8 +188,8 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
           <span class="hero-trust__label">Own Production Capability</span>
         </div>
         <div class="hero-trust__item">
-          <span class="hero-trust__value">SGS</span>
-          <span class="hero-trust__label">Certified Materials</span>
+          <span class="hero-trust__value">Testing</span>
+          <span class="hero-trust__label">Buyer-Specific Support</span>
         </div>
         <div class="hero-trust__item">
           <span class="hero-trust__value">OEM & ODM</span>
@@ -338,8 +338,8 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
 
         <div class="why-nixia-media">
           <picture>
-            <source srcset={toWebp('/image/process/hot_stamping_foil_transfer.jpg')} type="image/webp" />
-            <img src="/image/process/hot_stamping_foil_transfer.jpg" alt="Factory workshop for fabric manufacturing" width="1200" height="675" loading="lazy" decoding="async" />
+            <source srcset={toWebp('/images/process/hot_stamping_foil_transfer.jpg')} type="image/webp" />
+            <img src="/images/process/hot_stamping_foil_transfer.jpg" alt="Factory workshop for fabric manufacturing" width="1200" height="675" loading="lazy" decoding="async" />
           </picture>
           <div class="why-nixia-badges" aria-label="Factory badges">
             <span class="why-nixia-badge-chip">SGS Test Available</span>
@@ -516,7 +516,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
             <span class="workflow-timeline__eyebrow">Path A · Ready Stock</span>
             <h3>Fast Lane for Stock Fabric</h3>
             <p>In-stock hot-stamping &amp; glitter synthetic leather — standard finishes, short lead time.</p>
-            <span class="workflow-timeline__meta">Lead time: 5–12 days</span>
+            <span class="workflow-timeline__meta">Stock dispatch: 1–3 working days*</span>
           </div>
 
           <ol class="workflow-timeline__track" aria-label="Ready-stock fabric workflow">
@@ -538,7 +538,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
             <span class="workflow-timeline__eyebrow">Path B · Custom Order</span>
             <h3>Full Customization Route</h3>
             <p>Custom color, backing, pattern and finishing — engineered to your end-product specs.</p>
-            <span class="workflow-timeline__meta">Lead time: 15–30 days</span>
+          <span class="workflow-timeline__meta">Custom production: 15–30 working days*</span>
           </div>
 
           <ol class="workflow-timeline__track" aria-label="Custom fabric workflow">
@@ -551,11 +551,12 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
           </ol>
 
           <div class="workflow-timeline__actions">
-            <a href="/contact/" class="btn btn--primary btn--lg">Request Custom Quote →</a>
+            <a href="/contact/" data-rfq-open class="btn btn--primary btn--lg">Request Custom Quote →</a>
           </div>
         </article>
       </div>
 
+      <p class="workflow-note">*Timing starts after payment, stock confirmation or final sample approval as applicable. International transit time is quoted separately.</p>
     </div>
   </section>
 
@@ -622,7 +623,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
           <span class="final-cta__tag">Custom samples in 3-7 days</span>
         </div>
         <div class="final-cta__actions">
-          <CTAButton href="/contact/" variant="primary" size="lg">
+          <CTAButton href="/contact/" variant="primary" size="lg" rfq>
             Get Custom Quote
           </CTAButton>
           <CTAButton href="https://wa.me/8613616899303" variant="secondary" size="lg" target="_blank" rel="noopener noreferrer">
@@ -1488,6 +1489,15 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     background: #f2f4f9;
     padding: 0.25rem 0.65rem;
     border-radius: 6px;
+  }
+
+  .workflow-note {
+    margin: var(--space-lg) auto 0;
+    max-width: 920px;
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+    line-height: 1.5;
+    text-align: center;
   }
 
   .workflow-timeline--path-b .workflow-timeline__meta {

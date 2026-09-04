@@ -1,0 +1,102 @@
+---
+/**
+ * Product Detail Page — /products/[slug]
+ * ---------------------------------------------------------------------------
+ * Astro dynamic route. At build time it loops over every entry in
+ * allProducts.js and generates one static page per product at
+ * /products/{slug} (all 6 products).
+ *
+ * This page is responsible ONLY for:
+ *   - <head> SEO: title, meta description, og:title, og:description,
+ *     og:image, og:type
+ *   - Product, FAQPage and BreadcrumbList structured data
+ *
+ * The visible UI lives entirely in <ProductDetail product={product} />.
+ */
+import Layout from "@layouts/Layout.astro";
+import ProductDetail from "@components/ProductDetail.astro";
+import { allProducts } from "@data/allProducts";
+
+export function getStaticPaths() {
+  return allProducts.map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props as {
+  product: (typeof allProducts)[number];
+};
+
+const productUrl = `https://nixiafabric.com/products/${product.slug}/`;
+const ogImage = `https://nixiafabric.com${product.mainImageUrl}`;
+
+const productImages = product.imageList.map((image) => `https://nixiafabric.com${image.src}`);
+const productProperties = [
+  ["Base material", product.specs.baseMaterial],
+  ["Width", product.specs.width],
+  ["Weight", product.specs.weight],
+  ["Thickness", product.specs.thickness],
+  ["MOQ", `${product.specs.moq} meters`],
+  ["Lead time", `${product.specs.leadTime} working days`],
+].filter(([, value]) => value);
+
+// Keep the product schema factual for an RFQ site: no invented public price or rating.
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: product.title,
+  description: product.metaDesc,
+  image: productImages.length > 0 ? productImages : [ogImage],
+  brand: { "@type": "Brand", name: "Nixia Fabric" },
+  sku: product.slug,
+  url: productUrl,
+  category: product.tags.join(", "),
+  material: product.specs.baseMaterial,
+  color: product.availableColors,
+  manufacturer: {
+    "@type": "Organization",
+    name: "Nixia Fabric",
+    url: "https://nixiafabric.com/",
+  },
+  additionalProperty: productProperties.map(([name, value]) => ({
+    "@type": "PropertyValue",
+    name,
+    value,
+  })),
+  mainEntityOfPage: productUrl,
+};
+
+// JSON-LD: FAQPage schema (each product supplies its own Q&A list)
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: product.faqList.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+};
+
+// JSON-LD: breadcrumb for navigation context
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://nixiafabric.com/" },
+    { "@type": "ListItem", position: 2, name: "Products", item: "https://nixiafabric.com/products/" },
+    { "@type": "ListItem", position: 3, name: product.title, item: productUrl },
+  ],
+};
+---
+
+<Layout
+  title={product.metaTitle}
+  description={product.metaDesc}
+  canonical={productUrl}
+  image={ogImage}
+  ogType="product"
+  structuredData={[productSchema, faqSchema, breadcrumbSchema]}
+>
+  <ProductDetail product={product} />
+</Layout>

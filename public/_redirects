@@ -1,3 +1,11 @@
 # Cloudflare Pages redirects
 # Redirect legacy sitemap URL to Astro-generated sitemap-index.xml (301)
 /sitemap.xml /sitemap-index.xml 301
+
+# Product URLs without the trailing slash (including legacy bookmarks)
+/products/full-print-hot-stamping-spandex-milk-silk /products/full-print-hot-stamping-spandex-milk-silk/ 301
+/products/iridescent-laser-hot-stamping-stretch-ice-silk /products/iridescent-laser-hot-stamping-stretch-ice-silk/ 301
+/products/non-woven-glitter-fabric /products/non-woven-glitter-fabric/ 301
+/products/iridescent-gradient-laser-ice-silk /products/iridescent-gradient-laser-ice-silk/ 301
+/products/plain-iridescent-laser-spandex-4-way-stretch /products/plain-iridescent-laser-spandex-4-way-stretch/ 301
+/products/rainbow-gradient-glitter-synthetic-leather /products/rainbow-gradient-glitter-synthetic-leather/ 301

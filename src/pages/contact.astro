@@ -1,7 +1,7 @@
 ---
 /**
  * Contact Page — /contact
- * Form submission via Cloudflare Worker (/api/inquiry/contact)
+ * Form submission via Cloudflare Worker (/api/contact)
  * Success → redirect to /thank-you; Failure → inline error message
  */
 import Layout from "@layouts/Layout.astro";
@@ -12,7 +12,7 @@ const breadcrumbData = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://nixiafabric.com/" },
-    { "@type": "ListItem", position: 2, name: "Contact", item: "https://nixiafabric.com/contact" },
+    { "@type": "ListItem", position: 2, name: "Contact", item: "https://nixiafabric.com/contact/" },
   ],
 };
 
@@ -21,7 +21,7 @@ const contactPageData = {
   "@type": "ContactPage",
   name: "Contact Nixia Fabric",
   description: "Contact Nixia Fabric for free samples, custom quotations, and synthetic leather manufacturing inquiries.",
-  url: "https://nixiafabric.com/contact",
+  url: "https://nixiafabric.com/contact/",
 };
 ---
 
@@ -29,7 +29,7 @@ const contactPageData = {
   title="Contact — Request Free Sample or Custom Quotation | Nixia Fabric"
   description="Contact Nixia Fabric for free fabric samples, custom quotations, and synthetic leather manufacturing inquiries. Factory Direct Supply with Custom Color Matching."
   keywords="contact fabric manufacturer, request free sample, custom quotation, synthetic leather supplier, glitter fabric, foil fabric"
-  canonical="https://nixiafabric.com/contact"
+  canonical="https://nixiafabric.com/contact/"
   structuredData={[breadcrumbData, contactPageData]}
 >
   <div data-rfq-autoopen aria-hidden="true"></div>

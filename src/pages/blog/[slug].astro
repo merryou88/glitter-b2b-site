@@ -1,0 +1,521 @@
+---
+/**
+ * Blog Article Page — /blog/[slug]
+ * Static buyer guides with product recommendations and RFQ CTAs.
+ */
+import Layout from "@layouts/Layout.astro";
+import CTAButton from "@components/CTAButton.astro";
+import { blogArticles } from "@data/blogArticles";
+import { allProducts } from "@data/allProducts";
+
+const formatDate = (value: string) =>
+  new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(
+    new Date(`${value}T00:00:00`),
+  );
+
+export function getStaticPaths() {
+  return blogArticles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const relatedProducts = article.focusProducts
+  .map((slug) => allProducts.find((product) => product.slug === slug))
+  .filter(Boolean);
+const articleUrl = `https://nixiafabric.com/blog/${article.slug}/`;
+const contactHref = `/contact/?subject=${encodeURIComponent(`Question about ${article.title}`)}`;
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: article.title,
+  description: article.metaDesc,
+  image: `https://nixiafabric.com${article.image}`,
+  datePublished: article.date,
+  dateModified: article.date,
+  mainEntityOfPage: articleUrl,
+  author: { "@type": "Organization", name: "Nixia Fabric" },
+  publisher: {
+    "@type": "Organization",
+    name: "Nixia Fabric",
+    logo: { "@type": "ImageObject", url: "https://nixiafabric.com/logo.png" },
+  },
+};
+
+const breadcrumbData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://nixiafabric.com/" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://nixiafabric.com/blog/" },
+    { "@type": "ListItem", position: 3, name: article.title, item: articleUrl },
+  ],
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: article.faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+  })),
+};
+---
+
+<Layout
+  title={article.metaTitle}
+  description={article.metaDesc}
+  keywords={`${article.title}, ${article.tags.join(", ")}, glitter fabric manufacturer, foil fabric supplier`}
+  image={article.image}
+  canonical={articleUrl}
+  ogType="article"
+  structuredData={[articleSchema, breadcrumbData, faqSchema]}
+>
+  <div class="article-breadcrumb">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>/</span>
+        <a href="/blog/">Blog</a>
+        <span>/</span>
+        <span aria-current="page">{article.category}</span>
+      </nav>
+    </div>
+  </div>
+
+  <article class="article-page">
+    <header class="article-hero">
+      <div class="container article-hero__grid">
+        <div class="article-hero__copy">
+          <div class="article-tags">
+            {article.tags.map((tag) => <span class="badge badge--accent">{tag}</span>)}
+          </div>
+          <span class="eyebrow">{article.category}</span>
+          <h1>{article.title}</h1>
+          <p class="article-hero__intro">{article.intro}</p>
+          <div class="article-meta">
+            <span>Published {formatDate(article.date)}</span>
+            <span aria-hidden="true">·</span>
+            <span>{article.readTime}</span>
+          </div>
+        </div>
+        <picture class="article-hero__image">
+          <source srcset={article.imageWebp} type="image/webp" />
+          <img src={article.image} alt={article.imageAlt} width="1600" height="900" />
+        </picture>
+      </div>
+    </header>
+
+    <div class="container article-layout">
+      <aside class="article-aside">
+        <div class="article-aside__block">
+          <span class="eyebrow">Key Takeaways</span>
+          <ul>
+            {article.takeaways.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div class="article-aside__block article-aside__block--cta">
+          <span class="eyebrow">Next Step</span>
+          <h2>Ready to compare materials?</h2>
+          <p>{article.quoteAngle}</p>
+          <CTAButton href={contactHref} variant="primary" block>Send an RFQ</CTAButton>
+        </div>
+      </aside>
+
+      <div class="article-content">
+        {article.sections.map((section) => (
+          <section class="article-section">
+            <h2>{section.heading}</h2>
+            <p>{section.body}</p>
+          </section>
+        ))}
+
+        <section class="decision-section">
+          <span class="eyebrow">Buyer Decision Checklist</span>
+          <h2>Confirm these points before you order</h2>
+          <ul class="decision-list">
+            {article.decisionChecklist.map((item) => (
+              <li>
+                <span class="decision-list__mark" aria-hidden="true">✓</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="related-section">
+          <div class="related-section__heading">
+            <div>
+              <span class="eyebrow">Recommended Products</span>
+              <h2>Shortlist for your next sample request</h2>
+            </div>
+            <a href="/products/" class="text-link">View all products →</a>
+          </div>
+          <div class="related-products">
+            {relatedProducts.map((product) => (
+              <a href={`/products/${product.slug}/`} class="related-product">
+                <picture>
+                  {product.mainImageWebp && <source srcset={product.mainImageWebp} type="image/webp" />}
+                  <img src={product.mainImageUrl} alt={product.mainImageAlt} loading="lazy" width="720" height="405" />
+                </picture>
+                <span class="related-product__body">
+                  <strong>{product.title}</strong>
+                  <small>{product.specs.width} · MOQ {product.specs.moq}m · {product.stockStatus}</small>
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <section class="article-faq">
+          <span class="eyebrow">Common Questions</span>
+          <h2>Before you request a quotation</h2>
+          <div class="faq-list">
+            {article.faqs.map((faq) => (
+              <details>
+                <summary>{faq.question}</summary>
+                <p>{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>
+  </article>
+
+  <section class="section section--dark article-final-cta">
+    <div class="container">
+      <div>
+        <span class="eyebrow">Talk to Nixia Fabric</span>
+        <h2>{article.ctaHeading}</h2>
+        <p>{article.ctaText}</p>
+      </div>
+      <div class="btn-group">
+        <CTAButton href={contactHref} variant="primary" size="lg" rfq>Request a Quotation</CTAButton>
+        <CTAButton href="/sample-policy/" variant="secondary" size="lg">Review Sample Policy</CTAButton>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .article-breadcrumb {
+    padding-block: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg-alt);
+  }
+
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .breadcrumb a:hover,
+  .text-link:hover {
+    color: var(--color-accent-dark);
+  }
+
+  .article-hero {
+    padding-block: var(--space-4xl);
+    background: var(--color-primary);
+  }
+
+  .article-hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    align-items: center;
+    gap: var(--space-3xl);
+  }
+
+  .article-hero__copy h1 {
+    margin: var(--space-sm) 0 var(--space-lg);
+    color: var(--color-white);
+    font-size: var(--text-5xl);
+  }
+
+  .article-hero .eyebrow {
+    color: var(--color-accent-light);
+  }
+
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-xl);
+  }
+
+  .article-hero__intro {
+    max-width: 650px;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: var(--text-lg);
+  }
+
+  .article-meta {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-xl);
+    color: rgba(255, 255, 255, 0.58);
+    font-size: var(--text-sm);
+  }
+
+  .article-hero__image {
+    display: block;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .article-hero__image img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 760px);
+    justify-content: center;
+    gap: var(--space-3xl);
+    padding-block: var(--space-4xl);
+  }
+
+  .article-aside {
+    display: grid;
+    align-content: start;
+    gap: var(--space-xl);
+  }
+
+  .article-aside__block {
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .article-aside__block h2 {
+    margin: var(--space-sm) 0;
+    font-size: var(--text-xl);
+  }
+
+  .article-aside__block p,
+  .article-aside li {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+
+  .article-aside ul {
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .article-aside li {
+    padding-left: 1rem;
+    border-left: 2px solid var(--color-accent);
+  }
+
+  .article-aside__block--cta {
+    padding: var(--space-lg);
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-accent);
+    background: var(--color-bg-alt);
+  }
+
+  .article-content {
+    min-width: 0;
+  }
+
+  .article-section {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .article-section h2,
+  .decision-section h2,
+  .related-section h2,
+  .article-faq h2 {
+    margin-bottom: var(--space-md);
+    font-size: var(--text-2xl);
+  }
+
+  .article-section p {
+    font-size: var(--text-lg);
+    line-height: 1.75;
+  }
+
+  .decision-section {
+    margin-block: var(--space-3xl);
+    padding: var(--space-xl);
+    border-left: 4px solid var(--color-accent);
+    background: var(--color-bg-alt);
+  }
+
+  .decision-list {
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .decision-list li {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-start;
+    color: var(--color-text-secondary);
+  }
+
+  .decision-list__mark {
+    display: grid;
+    width: 24px;
+    height: 24px;
+    flex: 0 0 auto;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: var(--color-white);
+    font-size: var(--text-sm);
+    font-weight: 700;
+  }
+
+  .related-section {
+    margin-bottom: var(--space-3xl);
+  }
+
+  .related-section__heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+  }
+
+  .text-link {
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .related-products {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+  }
+
+  .related-product {
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    transition: box-shadow var(--transition-base), transform var(--transition-base);
+  }
+
+  .related-product:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .related-product picture,
+  .related-product img {
+    display: block;
+    width: 100%;
+  }
+
+  .related-product img {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .related-product__body {
+    display: grid;
+    gap: var(--space-xs);
+    padding: var(--space-md);
+  }
+
+  .related-product strong {
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    line-height: 1.35;
+  }
+
+  .related-product small {
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+  }
+
+  .faq-list {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .faq-list details {
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .faq-list summary {
+    color: var(--color-primary);
+    cursor: pointer;
+    font-weight: 700;
+  }
+
+  .faq-list p {
+    margin-top: var(--space-sm);
+  }
+
+  .article-final-cta .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2xl);
+  }
+
+  .article-final-cta h2 {
+    margin: var(--space-sm) 0;
+  }
+
+  .article-final-cta p {
+    max-width: 700px;
+  }
+
+  @media (max-width: 900px) {
+    .article-hero__grid,
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .article-aside {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .article-final-cta .container {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .article-hero {
+      padding-block: var(--space-3xl);
+    }
+
+    .article-hero__copy h1 {
+      font-size: var(--text-4xl);
+    }
+
+    .article-meta {
+      flex-wrap: wrap;
+    }
+
+    .article-aside,
+    .related-products {
+      grid-template-columns: 1fr;
+    }
+
+    .related-section__heading {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

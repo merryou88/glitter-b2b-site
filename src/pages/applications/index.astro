@@ -1,0 +1,212 @@
+---
+import Layout from "@layouts/Layout.astro";
+
+const applications = [
+  {
+    href: "/applications/glitter-fabric-for-shoes/",
+    title: "Glitter Fabric for Shoes & Footwear",
+    description: "Structured glitter and reflective materials for footwear uppers, trims and fashion shoes.",
+    image: "/shots/application-shoes-glitter-fabric.png",
+    alt: "Glitter fabric for shoes and footwear",
+  },
+  {
+    href: "/applications/glitter-fabric-for-handbags/",
+    title: "Glitter Fabric for Handbags & Accessories",
+    description: "Glitter synthetic leather and foil-effect fabrics for handbags, clutches, wallets and accessories.",
+    image: "/shots/application-shoes-glitter-fabric.png",
+    alt: "Glitter fabric for handbags and accessories",
+  },
+  {
+    href: "/applications/foil-fabric-for-swimwear/",
+    title: "Foil Fabric for Swimwear & Bodywear",
+    description: "4-way stretch iridescent and hot-stamping foil fabrics for swimwear, dancewear and bodywear.",
+    image: "/shots/application-swimwear-glitter-fabric.jpg",
+    alt: "Iridescent foil fabric for swimwear",
+  },
+  {
+    href: "/applications/holographic-fabric-for-stage-costumes/",
+    title: "Holographic Fabric for Stage Costumes",
+    description: "Holographic, iridescent and glitter fabrics for stage costumes, dancewear and performance outfits.",
+    image: "/shots/application-costume-glitter-fabric.jpg",
+    alt: "Holographic fabric for stage costumes",
+  },
+  {
+    href: "/applications/glitter-fabric-for-decoration/",
+    title: "Glitter Fabric for Crafts, Toys & Decoration",
+    description: "Non-woven glitter fabric and decorative materials for toys, crafts, festive projects and stage props.",
+    image: "/shots/application-fashion-trim-glitter-fabric.png",
+    alt: "Glitter fabric for crafts, toys and decoration",
+  },
+  {
+    href: "/applications/custom-glitter-fabric/",
+    title: "Custom Glitter & Foil Fabric Manufacturing",
+    description: "OEM/ODM development for custom glitter, foil, iridescent and stretch fabrics.",
+    image: "/images/process/hot_stamping_foil_transfer.jpg",
+    alt: "Custom hot-stamping foil fabric manufacturing",
+  },
+];
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Fabric Applications for B2B Buyers",
+  description: "Application guides for buyers sourcing glitter, foil, iridescent and stretch fabrics.",
+  url: "https://nixiafabric.com/applications/",
+};
+
+const breadcrumbData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://nixiafabric.com/" },
+    { "@type": "ListItem", position: 2, name: "Applications", item: "https://nixiafabric.com/applications/" },
+  ],
+};
+---
+
+<Layout
+  title="Fabric Applications for B2B Buyers | Nixia Fabric"
+  description="Explore glitter, foil, iridescent and stretch fabric applications for shoes, handbags, swimwear, stage costumes, crafts and custom manufacturing."
+  canonical="https://nixiafabric.com/applications/"
+  structuredData={[breadcrumbData, pageSchema]}
+>
+  <section class="applications-index-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>/</span>
+        <span aria-current="page">Applications</span>
+      </nav>
+      <span class="eyebrow">B2B SOURCING GUIDES</span>
+      <h1>Choose Fabrics by Application</h1>
+      <p>
+        Explore material guidance for footwear, handbags, swimwear, stage costumes,
+        decoration and custom production. Each guide links to relevant products and
+        practical buyer specifications.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="applications-index-grid">
+        {applications.map((application) => (
+          <a href={application.href} class="applications-index-card">
+            <div class="applications-index-card__image">
+              <img src={application.image} alt={application.alt} width="1200" height="800" loading="lazy" />
+            </div>
+            <div class="applications-index-card__body">
+              <h2>{application.title}</h2>
+              <p>{application.description}</p>
+              <span>View sourcing guide</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .applications-index-hero {
+    padding-block: var(--space-3xl);
+    background: var(--color-bg-alt);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .applications-index-hero .breadcrumb {
+    margin-bottom: var(--space-xl);
+    color: var(--color-text-muted);
+  }
+
+  .applications-index-hero .breadcrumb a {
+    color: var(--color-text-secondary);
+  }
+
+  .applications-index-hero h1 {
+    margin: var(--space-sm) 0 var(--space-md);
+    color: var(--color-primary);
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 1.12;
+  }
+
+  .applications-index-hero p {
+    max-width: 720px;
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--text-lg);
+    line-height: 1.7;
+  }
+
+  .applications-index-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .applications-index-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    color: inherit;
+    text-decoration: none;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+  }
+
+  .applications-index-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .applications-index-card__image {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: var(--color-bg);
+  }
+
+  .applications-index-card__image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .applications-index-card__body {
+    padding: var(--space-lg);
+  }
+
+  .applications-index-card h2 {
+    margin: 0 0 var(--space-sm);
+    color: var(--color-primary);
+    font-size: var(--text-lg);
+    line-height: 1.3;
+  }
+
+  .applications-index-card p {
+    margin: 0 0 var(--space-md);
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.55;
+  }
+
+  .applications-index-card span {
+    color: var(--color-accent-dark);
+    font-size: var(--text-sm);
+    font-weight: 700;
+  }
+
+  @media (max-width: 900px) {
+    .applications-index-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 600px) {
+    .applications-index-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

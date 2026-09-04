@@ -3,8 +3,10 @@
  * Nixia Fabric — Inquiry Worker
  * ============================================================
  * Single Cloudflare Worker serving TWO inquiry routes:
- *   POST /api/inquiry/contact  → general contact form
- *   POST /api/inquiry/rfq      → fabric RFQ form
+ *   POST /api/contact         → general contact form
+ *   POST /api/rfq             → fabric RFQ form
+ *   POST /api/inquiry/contact → legacy alias for contact
+ *   POST /api/inquiry/rfq     → legacy alias for RFQ
  *
  * Email delivery uses Cloudflare's native send_email binding
  * (env.EMAIL.send). No third-party email provider.
@@ -129,8 +131,11 @@ export function buildContactEmail(payload: Record<string, unknown>): EmailMessag
   const rows: Array<[string, unknown]> = [
     ["Name", payload.name],
     ["Email", payload.email],
+    ["Phone / WhatsApp", payload.phone || "(not provided)"],
     ["Company", company || "(not provided)"],
     ["Subject", subject || "(not provided)"],
+    ["Product / SKU", payload.productSku || "(not provided)"],
+    ["Estimated Quantity", payload.estimatedQuantity || "(not provided)"],
     ["Message", payload.message],
   ];
   return {
@@ -152,6 +157,7 @@ export function buildRfqEmail(payload: Record<string, unknown>): EmailMessage {
   const rows: Array<[string, unknown]> = [
     ["Name", payload.name],
     ["Email", payload.email],
+    ["Phone / WhatsApp", payload.phone || "(not provided)"],
     ["Company", company || "(not provided)"],
     ["Destination Country", payload.destinationCountry],
     ["Product SKU / Fabric Code", payload.productSku],
@@ -220,17 +226,12 @@ function validateRfq(payload: Record<string, unknown>): string | null {
   return null;
 }
 
-const ROUTE_CONTACT = "/api/contact";
-const ROUTE_RFQ = "/api/rfq";
+const CONTACT_ROUTES = new Set(["/api/contact", "/api/inquiry/contact"]);
+const RFQ_ROUTES = new Set(["/api/rfq", "/api/inquiry/rfq"]);
 
 async function handleRequest(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
   const url = new URL(request.url);
   const origin = isAllowedOrigin(request.headers.get("Origin"), env);
-
-  // DEBUG: print route matching info
-  console.log("实际pathname:", JSON.stringify(url.pathname));
-  console.log("ROUTE_CONTACT值:", JSON.stringify(ROUTE_CONTACT));
-  console.log("ROUTE_RFQ值:", JSON.stringify(ROUTE_RFQ));
 
   // CORS preflight
   if (request.method === "OPTIONS") {
@@ -271,10 +272,10 @@ async function handleRequest(request: Request, env: Env, ctx: ExecutionContext):
   let email: EmailMessage | null = null;
   let validationError: string | null = null;
 
-  if (url.pathname === ROUTE_CONTACT) {
+  if (CONTACT_ROUTES.has(url.pathname)) {
     validationError = validateContact(payload);
     if (!validationError) email = buildContactEmail(payload);
-  } else if (url.pathname === ROUTE_RFQ) {
+  } else if (RFQ_ROUTES.has(url.pathname)) {
     if (!payload.company) payload.company = "";
     validationError = validateRfq(payload);
     if (!validationError) email = buildRfqEmail(payload);

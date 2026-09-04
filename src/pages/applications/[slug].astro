@@ -1,0 +1,621 @@
+---
+/**
+ * Application landing pages for search-led B2B fabric sourcing.
+ * Each page has one clear buying use case and links to relevant products.
+ */
+import Layout from "@layouts/Layout.astro";
+import { allProducts } from "@data/allProducts";
+
+const applicationPages = [
+  {
+    slug: "glitter-fabric-for-shoes",
+    title: "Glitter Fabric for Shoes & Footwear",
+    metaTitle: "Glitter Fabric for Shoes & Footwear | Wholesale Supplier",
+    description:
+      "Source glitter synthetic leather, iridescent foil and structured decorative fabrics for footwear uppers, trims and fashion shoes. Factory-direct wholesale supply from Nixia Fabric.",
+    intro:
+      "Choose structured glitter and reflective materials for footwear uppers, trims and fashion shoe collections. We can confirm the suitable base, thickness, surface finish, MOQ and sample route for your production.",
+    image: "/shots/application-shoes-glitter-fabric.png",
+    imageAlt: "Glitter fabric used for shoe and footwear applications",
+    tags: ["footwear"],
+    applications: ["Footwear"],
+    benefits: [
+      "Structured bases for footwear uppers and trims",
+      "Reflective glitter and gradient surface options",
+      "Sample approval before bulk production",
+      "Custom color, thickness and backing discussions",
+    ],
+    faqs: [
+      {
+        question: "Which glitter fabrics are suitable for shoes?",
+        answer:
+          "Structured glitter synthetic leather is the usual starting point for footwear uppers. We can compare the base, thickness, surface finish and construction method against your shoe design.",
+      },
+      {
+        question: "Can you provide a footwear sample?",
+        answer:
+          "Yes. Request a sample with your shoe type, target color, approximate quantity and destination market so we can recommend the closest available material.",
+      },
+    ],
+  },
+  {
+    slug: "glitter-fabric-for-handbags",
+    title: "Glitter Fabric for Handbags & Accessories",
+    metaTitle: "Glitter Fabric for Handbags & Accessories | Wholesale Supplier",
+    description:
+      "Wholesale glitter synthetic leather and foil-effect fabrics for handbags, clutches, wallets and fashion accessories. Compare structure, sparkle, color and backing with a factory supplier.",
+    intro:
+      "For handbags and accessories, the right material needs visual impact plus enough structure for cutting, bonding and assembly. Nixia Fabric can help compare glitter synthetic leather and foil-finished options for your collection.",
+    image: "/shots/application-shoes-glitter-fabric.png",
+    imageAlt: "Glitter fabric and synthetic leather for handbags and accessories",
+    tags: ["handbag"],
+    applications: ["Bags", "Handbags"],
+    benefits: [
+      "Structured synthetic leather options for bags and clutches",
+      "Gradient, glitter and metallic surface finishes",
+      "Custom thickness, color and backing support",
+      "Factory quotation based on quantity and construction",
+    ],
+    faqs: [
+      {
+        question: "Can glitter synthetic leather be used for handbags?",
+        answer:
+          "Yes. A structured synthetic leather base is suitable for many handbag, clutch and accessory constructions. Final suitability should be checked with a physical sample and your bonding or sewing process.",
+      },
+      {
+        question: "What should I include in a handbag material RFQ?",
+        answer:
+          "Share the product type, approximate quantity, target color, preferred thickness, backing or construction method and delivery destination.",
+      },
+    ],
+  },
+  {
+    slug: "foil-fabric-for-swimwear",
+    title: "Foil Fabric for Swimwear & Bodywear",
+    metaTitle: "Foil Fabric for Swimwear & Bodywear | Wholesale Supplier",
+    description:
+      "Source 4-way stretch iridescent and hot-stamping foil fabrics for swimwear, dancewear and bodywear. Review stretch, recovery, width, weight and sample options with a factory supplier.",
+    intro:
+      "Stretch foil fabric for swimwear and bodywear needs more than a bright finish. Buyers should confirm stretch recovery, hand-feel, width, weight and performance on an approval sample before bulk production.",
+    image: "/shots/application-swimwear-glitter-fabric.jpg",
+    imageAlt: "Iridescent foil stretch fabric for swimwear and bodywear",
+    tags: ["swimwear"],
+    applications: ["Swimwear", "Dancewear"],
+    benefits: [
+      "4-way stretch bases for fitted garments",
+      "Iridescent laser and hot-stamping foil finishes",
+      "Width, weight and recovery details for review",
+      "Buyer-specific testing can be discussed by project",
+    ],
+    faqs: [
+      {
+        question: "What should I check before ordering stretch foil fabric?",
+        answer:
+          "Confirm the stretch direction, recovery, width, weight, surface finish and the fabric's behavior in your own cutting, sewing and wash-test process.",
+      },
+      {
+        question: "Can you arrange a swimwear fabric sample?",
+        answer:
+          "Yes. Send the target use, quantity, color reference and destination. We can recommend a stock option or discuss a custom finish for bulk orders.",
+      },
+    ],
+  },
+  {
+    slug: "holographic-fabric-for-stage-costumes",
+    title: "Holographic Fabric for Stage Costumes",
+    metaTitle: "Holographic Fabric for Stage Costumes | Wholesale Supplier",
+    description:
+      "Wholesale holographic, iridescent and glitter fabrics for stage costumes, dancewear, performance outfits and event backdrops. Factory-direct supply with sample approval support.",
+    intro:
+      "Stage and performance buyers often need a strong color-shifting effect that reads under changing light while remaining practical to cut and sew. Compare iridescent foil, gradient laser and glitter options by application.",
+    image: "/shots/application-costume-glitter-fabric.jpg",
+    imageAlt: "Holographic fabric for stage costumes and performance outfits",
+    tags: ["stage-costume"],
+    applications: ["Stage costumes", "Dancewear", "Performance costumes"],
+    benefits: [
+      "Holographic and iridescent finishes for stage lighting",
+      "Stretch options for fitted costumes and dancewear",
+      "Gradient color-flow and glitter surface choices",
+      "Physical sample approval before a production run",
+    ],
+    faqs: [
+      {
+        question: "Which fabric finish works best under stage lights?",
+        answer:
+          "Iridescent laser and gradient foil finishes shift with light and viewing angle, while glitter gives a more textured sparkle. The best choice depends on the costume distance, lighting and desired surface effect.",
+      },
+      {
+        question: "Can you match a costume color or reference?",
+        answer:
+          "Custom color matching can be discussed for bulk orders. Send a Pantone reference, photo or physical swatch together with the required quantity.",
+      },
+    ],
+  },
+  {
+    slug: "glitter-fabric-for-decoration",
+    title: "Glitter Fabric for Crafts, Toys & Decoration",
+    metaTitle: "Glitter Fabric for Crafts, Toys & Decoration | Wholesale Supplier",
+    description:
+      "Wholesale non-woven glitter fabric and decorative materials for toys, crafts, festive projects, banners and stage props. Factory-direct supply with sample and custom color support.",
+    intro:
+      "Decorative buyers need a material that delivers consistent sparkle, cuts cleanly and fits the production budget. Compare non-woven glitter fabric and other decorative finishes by backing, width, color, quantity and end use.",
+    image: "/shots/application-fashion-trim-glitter-fabric.png",
+    imageAlt: "Glitter fabric used for crafts, toys and festive decoration",
+    tags: ["decoration"],
+    applications: ["Holiday decoration", "Crafts", "Stage props"],
+    benefits: [
+      "Dense sparkle for festive and decorative projects",
+      "Cut-clean options for crafts, toys and banners",
+      "Stock colors for faster project planning",
+      "Custom glitter colors and width for bulk orders",
+    ],
+    faqs: [
+      {
+        question: "Is non-woven glitter fabric suitable for crafts and decoration?",
+        answer:
+          "Yes. Its stable non-woven backing and clean-cut behavior make it practical for many banners, stage props, craft pieces and festive decoration projects.",
+      },
+      {
+        question: "Can decorative glitter fabric be supplied in custom colors?",
+        answer:
+          "Custom glitter colors and width can be discussed for bulk orders. Share your color reference, required quantity and delivery destination for a quotation.",
+      },
+    ],
+  },
+  {
+    slug: "custom-glitter-fabric",
+    title: "Custom Glitter & Foil Fabric Manufacturing",
+    metaTitle: "Custom Glitter & Foil Fabric Manufacturer | OEM Supplier",
+    description:
+      "Develop custom glitter, foil, iridescent and stretch fabrics with a factory supplier. Discuss color, pattern, backing, width, thickness, quantity and testing requirements through an RFQ.",
+    intro:
+      "When a stock color or standard finish is not enough, our factory team can review your target appearance and end product before confirming a production route. Custom scope, sample timing and quotation are based on the actual requirement.",
+    image: "/images/process/hot_stamping_foil_transfer.jpg",
+    imageAlt: "Hot-stamping foil fabric production and custom finishing",
+    tags: [],
+    applications: [],
+    benefits: [
+      "Custom color, pattern and gradient discussions",
+      "Backing, width and thickness options",
+      "OEM/ODM sample and approval workflow",
+      "Testing support arranged according to buyer requirements",
+    ],
+    faqs: [
+      {
+        question: "What information is needed for a custom fabric quote?",
+        answer:
+          "Share the end product, target appearance, base material, width, thickness, approximate quantity, destination and any reference image or physical sample.",
+      },
+      {
+        question: "Do custom fabrics require a separate sample approval?",
+        answer:
+          "Yes. Custom colors, patterns or finishes should be reviewed on a physical approval sample before bulk production is confirmed.",
+      },
+    ],
+  },
+];
+
+export function getStaticPaths() {
+  return [
+    "glitter-fabric-for-shoes",
+    "glitter-fabric-for-handbags",
+    "foil-fabric-for-swimwear",
+    "holographic-fabric-for-stage-costumes",
+    "glitter-fabric-for-decoration",
+    "custom-glitter-fabric",
+  ].map((slug) => ({ params: { slug } }));
+}
+
+const page = applicationPages.find((item) => item.slug === Astro.params.slug);
+if (!page) throw new Error(`Unknown application page: ${Astro.params.slug}`);
+const relatedProducts = page.tags.length === 0
+  ? allProducts
+  : allProducts.filter((product) => page.tags.some((tag) => product.tags.includes(tag)));
+
+const breadcrumbData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://nixiafabric.com/" },
+    { "@type": "ListItem", position: 2, name: "Applications", item: "https://nixiafabric.com/applications/" },
+    { "@type": "ListItem", position: 3, name: page.title, item: `https://nixiafabric.com/applications/${page.slug}/` },
+  ],
+};
+
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: page.title,
+  description: page.description,
+  url: `https://nixiafabric.com/applications/${page.slug}/`,
+  about: page.applications.length > 0 ? page.applications : ["Custom fabric manufacturing"],
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: page.faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+  })),
+};
+---
+
+<Layout
+  title={page.metaTitle}
+  description={page.description}
+  canonical={`https://nixiafabric.com/applications/${page.slug}/`}
+  image={page.image}
+  structuredData={[breadcrumbData, pageSchema, faqSchema]}
+>
+  <section class="application-hero">
+    <div class="container application-hero__grid">
+      <div class="application-hero__copy">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span>/</span>
+          <a href="/products/">Products</a>
+          <span>/</span>
+          <span aria-current="page">{page.title}</span>
+        </nav>
+        <span class="eyebrow">B2B APPLICATION GUIDE</span>
+        <h1>{page.title}</h1>
+        <p>{page.intro}</p>
+        <div class="application-hero__actions">
+          <a href="/contact/" data-rfq-open class="btn btn--primary btn--lg">Request a Quote</a>
+          <a href="/products/" class="btn btn--outline btn--lg">Browse All Products</a>
+        </div>
+      </div>
+      <picture class="application-hero__image">
+        <img src={page.image} alt={page.imageAlt} width="1200" height="800" fetchpriority="high" />
+      </picture>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container application-content">
+      <div>
+        <span class="eyebrow">WHAT BUYERS REVIEW</span>
+        <h2>Choose the right material for your production</h2>
+        <p>
+          A fabric that looks right in a photo still needs to work in cutting, sewing,
+          bonding, packaging and shipment. We help buyers compare the practical details
+          before a stock or custom route is quoted.
+        </p>
+        <ul class="application-benefits">
+          {page.benefits.map((benefit) => <li>{benefit}</li>)}
+        </ul>
+      </div>
+      <aside class="application-note">
+        <span class="eyebrow">RFQ CHECKLIST</span>
+        <h2>Share these details for a faster reply</h2>
+        <ul>
+          <li>End product and application</li>
+          <li>Approximate quantity</li>
+          <li>Target color or reference image</li>
+          <li>Required width or backing</li>
+          <li>Destination country</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header section-header--left">
+        <span class="eyebrow">RECOMMENDED MATERIALS</span>
+        <h2>Products for {page.title.replace(" | Wholesale Supplier", "")}</h2>
+        <p>Review the specifications and request a sample or quotation for the material closest to your project.</p>
+      </div>
+      <div class="application-products">
+        {relatedProducts.map((product) => (
+          <article class="application-product">
+            <a href={`/products/${product.slug}/`} class="application-product__image">
+              <img src={product.mainImageUrl} alt={product.mainImageAlt} width="800" height="800" loading="lazy" />
+            </a>
+            <div class="application-product__body">
+              <h3><a href={`/products/${product.slug}/`}>{product.title}</a></h3>
+              <p>{product.shortIntro}</p>
+              <div class="application-product__meta">
+                <span>MOQ {product.specs.moq}m</span>
+                <span>{product.specs.width}</span>
+                <span>{product.stockStatus}</span>
+              </div>
+              <a href={`/products/${product.slug}/`} class="application-product__link">View product specifications</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container application-faq">
+      <div class="section-header section-header--left">
+        <span class="eyebrow">BUYER QUESTIONS</span>
+        <h2>Frequently asked questions</h2>
+      </div>
+      {page.faqs.map((faq) => (
+        <details>
+          <summary>{faq.question}</summary>
+          <p>{faq.answer}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .application-hero {
+    background: var(--color-bg-alt);
+    border-bottom: 1px solid var(--color-border);
+    padding-block: var(--space-3xl);
+  }
+
+  .application-hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+    align-items: center;
+    gap: var(--space-3xl);
+  }
+
+  .application-hero__copy .breadcrumb {
+    margin-bottom: var(--space-xl);
+    color: var(--color-text-muted);
+  }
+
+  .application-hero__copy .breadcrumb a {
+    color: var(--color-text-secondary);
+  }
+
+  .application-hero h1 {
+    max-width: 760px;
+    margin: var(--space-sm) 0 var(--space-md);
+    color: var(--color-primary);
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 1.12;
+  }
+
+  .application-hero__copy > p {
+    max-width: 650px;
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--text-lg);
+    line-height: 1.7;
+  }
+
+  .application-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+  }
+
+  .application-hero__image {
+    display: block;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    box-shadow: var(--shadow-md);
+  }
+
+  .application-hero__image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .application-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    gap: var(--space-3xl);
+    align-items: start;
+  }
+
+  .application-content h2,
+  .application-note h2 {
+    margin: var(--space-sm) 0 var(--space-md);
+    color: var(--color-primary);
+  }
+
+  .application-content p {
+    max-width: 700px;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  .application-benefits,
+  .application-note ul {
+    display: grid;
+    gap: var(--space-sm);
+    margin: var(--space-lg) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .application-benefits li,
+  .application-note li {
+    position: relative;
+    padding-left: 1.35rem;
+    color: var(--color-text);
+    line-height: 1.5;
+  }
+
+  .application-benefits li::before,
+  .application-note li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+
+  .application-note {
+    padding: var(--space-xl);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    background: var(--color-bg-alt);
+  }
+
+  .application-products {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .application-product {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--color-white);
+  }
+
+  .application-product__image {
+    display: block;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: var(--color-bg);
+  }
+
+  .application-product__image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+
+  .application-product:hover .application-product__image img {
+    transform: scale(1.04);
+  }
+
+  .application-product__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: var(--space-lg);
+  }
+
+  .application-product h3 {
+    margin: 0;
+    font-size: var(--text-lg);
+    line-height: 1.35;
+  }
+
+  .application-product h3 a {
+    color: var(--color-primary);
+  }
+
+  .application-product p {
+    margin: var(--space-sm) 0 var(--space-md);
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.55;
+  }
+
+  .application-product__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.75rem;
+    margin-top: auto;
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+  }
+
+  .application-product__link {
+    margin-top: var(--space-md);
+    color: var(--color-accent-dark);
+    font-size: var(--text-sm);
+    font-weight: 700;
+  }
+
+  .application-faq {
+    max-width: 900px;
+  }
+
+  .application-faq details {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .application-faq details:last-of-type {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .application-faq summary {
+    cursor: pointer;
+    padding: var(--space-lg) 2rem var(--space-lg) 0;
+    color: var(--color-primary);
+    font-weight: 700;
+    list-style: none;
+    position: relative;
+  }
+
+  .application-faq summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .application-faq summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: var(--space-lg);
+    color: var(--color-accent-dark);
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+
+  .application-faq details[open] summary::after {
+    content: "−";
+  }
+
+  .application-faq details p {
+    max-width: 760px;
+    margin: -0.25rem 0 var(--space-lg);
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+  }
+
+  @media (max-width: 900px) {
+    .application-hero__grid,
+    .application-content {
+      grid-template-columns: 1fr;
+    }
+
+    .application-hero__image {
+      max-width: 680px;
+    }
+
+    .application-products {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 600px) {
+    .application-hero {
+      padding-block: var(--space-2xl);
+    }
+
+    .application-hero__actions {
+      flex-direction: column;
+    }
+
+    .application-hero__actions .btn {
+      width: 100%;
+    }
+
+    .application-products {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -24,7 +24,7 @@ const breadcrumbData = {
       "@type": "ListItem",
       position: 2,
       name: "Factory",
-      item: "https://nixiafabric.com/factory",
+      item: "https://nixiafabric.com/factory/",
     },
   ],
 };
@@ -32,9 +32,9 @@ const breadcrumbData = {
 const factoryPageData = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Our Factory — Nixiafabric Glitter & Hot-Stamping Fabric Manufacturer",
-  description: "Our factory based in Guangzhou provides professional glitter fabric, glitter synthetic leather and hot-stamping foil fabrics. Support OEM, ODM and custom sample service.",
-  url: "https://nixiafabric.com/factory",
+  name: "Glitter & Foil Fabric Factory in Guangzhou | Nixia Fabric",
+  description: "Explore Nixia Fabric's Guangzhou production facility for glitter, foil, iridescent and stretch fabrics, with in-house finishing, batch QC, OEM/ODM and custom sample support.",
+  url: "https://nixiafabric.com/factory/",
   about: {
     "@type": "Organization",
     name: "Nixia Fabric",
@@ -172,11 +172,11 @@ const productionLines = [
 ];
 
 const workshopPhotos = [
-  { src: "/image/process/raw_material_preparation.jpg", alt: "Raw material preparation in the glitter fabric workshop" },
-  { src: "/image/process/hot_stamping_foil_transfer.jpg", alt: "Hot-stamping foil transfer production line in operation" },
-  { src: "/image/process/on_line_visual_inspection.jpg", alt: "On-line visual inspection of glitter and foil fabric" },
-  { src: "/image/process/sample_confirmation.jpg", alt: "Sample confirmation of hot-pressed glitter fabric detail" },
-  { src: "/image/process/final_packing.jpg", alt: "Final packing area for glitter and foil fabric rolls" },
+  { src: "/images/process/raw_material_preparation.jpg", alt: "Raw material preparation in the glitter fabric workshop" },
+  { src: "/images/process/hot_stamping_foil_transfer.jpg", alt: "Hot-stamping foil transfer production line in operation" },
+  { src: "/images/process/on_line_visual_inspection.jpg", alt: "On-line visual inspection of glitter and foil fabric" },
+  { src: "/images/process/sample_confirmation.jpg", alt: "Sample confirmation of hot-pressed glitter fabric detail" },
+  { src: "/images/process/final_packing.jpg", alt: "Final packing area for glitter and foil fabric rolls" },
 ];
 
 const equipment = [
@@ -209,14 +209,14 @@ const oemOdm = [
 const auditSupport = [
   "Factory visit arrangement for buyers and agents",
   "Business license and entity documents",
-  "SGS / REACH test reports on request",
+  "SGS / REACH testing arranged according to buyer requirements",
   "Production & packing documentation support",
 ];
 ---
 
 <Layout
-  title="Our Factory | Nixiafabric — Glitter & Hot-Stamping Fabric Manufacturer"
-  description="Our factory based in Guangzhou provides professional glitter fabric, glitter synthetic leather and hot-stamping foil fabrics. Support OEM, ODM and custom sample service."
+  title="Glitter & Foil Fabric Factory in Guangzhou | Nixia Fabric"
+  description="Explore Nixia Fabric's Guangzhou production facility for glitter, foil, iridescent and stretch fabrics, with in-house finishing, batch QC, OEM/ODM and custom sample support."
   keywords="glitter fabric factory, foil fabric factory, fabric manufacturer china, Factory Direct Supply, Custom Color Matching, fabric quality control, OEM, ODM"
   structuredData={[breadcrumbData, factoryPageData]}
 >
@@ -260,19 +260,14 @@ const auditSupport = [
           <h2>Specialized in Glitter & Foil-Printed Manufacturing</h2>
           <p>
             We are a synthetic leather manufacturer since 2013, with in-house production
-            for glitter and foil-printed PU, together with partnerships with other
-            qualified material factories. Our production focuses on fabrics for shoes,
+            for glitter and foil-printed PU, plus qualified upstream material support
+            when a project needs it. Our production focuses on fabrics for shoes,
             handbags and accessories.
           </p>
           <p>
-            We own our in-house factory and control every step — from raw material
-            selection to color development, from glitter bonding to final inspection.
-            Our clients deal directly with the people who make their fabric.
-          </p>
-          <p>
-            We do not publish factory area, machine counts, or employee numbers —
-            because what matters to our clients is the quality of the fabric we deliver,
-            the consistency of our colors, and the reliability of our production schedule.
+            We control every step we run in-house — from raw material selection to color
+            development, from glitter bonding to final inspection. Our clients deal
+            directly with the people who make their fabric.
           </p>
         </div>
         <div class="factory-intro__right">
@@ -432,8 +427,8 @@ const auditSupport = [
         <div class="process-step-img">
           <div class="process-step-img__media">
             <picture>
-              <source srcset={toWebp('/image/process/raw_material_preparation.jpg')} type="image/webp" />
-              <img src="/image/process/raw_material_preparation.jpg" alt="Raw material preparation in glitter fabric production warehouse" width="1200" height="675" loading="lazy" decoding="async" />
+              <source srcset={toWebp('/images/process/raw_material_preparation.jpg')} type="image/webp" />
+              <img src="/images/process/raw_material_preparation.jpg" alt="Raw material preparation in glitter fabric production warehouse" width="1200" height="675" loading="lazy" decoding="async" />
             </picture>
           </div>
           <div class="process-step-img__info">
@@ -449,8 +444,8 @@ const auditSupport = [
         <div class="process-step-img">
           <div class="process-step-img__media">
             <picture>
-              <source srcset={toWebp('/image/process/hot_stamping_foil_transfer.jpg')} type="image/webp" />
-              <img src="/image/process/hot_stamping_foil_transfer.jpg" alt="Hot-stamping foil transfer production line for metallic foil fabrics" width="1200" height="675" loading="lazy" decoding="async" />
+              <source srcset={toWebp('/images/process/hot_stamping_foil_transfer.jpg')} type="image/webp" />
+              <img src="/images/process/hot_stamping_foil_transfer.jpg" alt="Hot-stamping foil transfer production line for metallic foil fabrics" width="1200" height="675" loading="lazy" decoding="async" />
             </picture>
           </div>
           <div class="process-step-img__info">
@@ -466,8 +461,8 @@ const auditSupport = [
         <div class="process-step-img">
           <div class="process-step-img__media">
             <picture>
-              <source srcset={toWebp('/image/process/on_line_visual_inspection.jpg')} type="image/webp" />
-              <img src="/image/process/on_line_visual_inspection.jpg" alt="On-line visual inspection of glitter and foil-printed fabric quality" width="1200" height="675" loading="lazy" decoding="async" />
+              <source srcset={toWebp('/images/process/on_line_visual_inspection.jpg')} type="image/webp" />
+              <img src="/images/process/on_line_visual_inspection.jpg" alt="On-line visual inspection of glitter and foil-printed fabric quality" width="1200" height="675" loading="lazy" decoding="async" />
             </picture>
           </div>
           <div class="process-step-img__info">
@@ -483,8 +478,8 @@ const auditSupport = [
         <div class="process-step-img">
           <div class="process-step-img__media">
             <picture>
-              <source srcset={toWebp('/image/process/sample_confirmation.jpg')} type="image/webp" />
-              <img src="/image/process/sample_confirmation.jpg" alt="Sample confirmation close-up of hot-pressed glitter fabric detail" width="1200" height="675" loading="lazy" decoding="async" />
+              <source srcset={toWebp('/images/process/sample_confirmation.jpg')} type="image/webp" />
+              <img src="/images/process/sample_confirmation.jpg" alt="Sample confirmation close-up of hot-pressed glitter fabric detail" width="1200" height="675" loading="lazy" decoding="async" />
             </picture>
           </div>
           <div class="process-step-img__info">
@@ -500,8 +495,8 @@ const auditSupport = [
         <div class="process-step-img">
           <div class="process-step-img__media">
             <picture>
-              <source srcset={toWebp('/image/process/final_packing.jpg')} type="image/webp" />
-              <img src="/image/process/final_packing.jpg" alt="Factory exterior and final packing area for glitter and foil fabrics" width="1200" height="675" loading="lazy" decoding="async" />
+              <source srcset={toWebp('/images/process/final_packing.jpg')} type="image/webp" />
+              <img src="/images/process/final_packing.jpg" alt="Factory exterior and final packing area for glitter and foil fabrics" width="1200" height="675" loading="lazy" decoding="async" />
             </picture>
           </div>
           <div class="process-step-img__info">
@@ -680,7 +675,7 @@ const auditSupport = [
         </div>
         <div class="audit-cta">
           <CTAButton href="/contact/" variant="primary" size="lg">Book a Factory Visit</CTAButton>
-          <CTAButton href="/certifications/" variant="outline" size="lg">View Certifications</CTAButton>
+          <CTAButton href="/contact/" variant="outline" size="lg">View Certifications</CTAButton>
         </div>
       </div>
     </div>
@@ -696,8 +691,8 @@ const auditSupport = [
         Request samples or get a custom quote for your specific requirements.
       </p>
       <div class="btn-group" style="justify-content: center;">
-        <CTAButton href="/sample-policy/" variant="primary" size="lg">Request Free Sample</CTAButton>
-        <CTAButton href="/contact/" variant="secondary" size="lg">Get Custom Quotation</CTAButton>
+        <CTAButton href="/sample-policy/" variant="primary" size="lg" rfq>Request Free Sample</CTAButton>
+        <CTAButton href="/contact/" variant="secondary" size="lg" rfq>Get Custom Quotation</CTAButton>
       </div>
     </div>
   </section>

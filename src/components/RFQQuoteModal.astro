@@ -6,19 +6,19 @@
  * Step 1 (Contact Info) implemented; Steps 2 & 3 reserved in the stepper.
  */
 import RfqQuoteForm from "@components/RfqQuoteForm.astro";
-import products from "@data/products.json";
+import { allProducts } from "@data/allProducts";
 
-const productLookup = products.map((p) => {
-  const specs = p.specs ?? [];
-  const valueOf = (label: string) => specs.find((s) => s.label.toLowerCase() === label.toLowerCase())?.value ?? "";
-  return { name: p.title, weight: valueOf("Weight"), width: valueOf("Width") };
-});
+const productLookup = allProducts.map((p) => ({
+  name: p.title,
+  weight: p.specs.weight,
+  width: p.specs.width,
+}));
 ---
 
 <div class="rfq-modal" id="rfq-quote-modal" aria-hidden="true">
   <div class="rfq-modal__backdrop" data-rfq-close></div>
 
-  <div class="rfq-modal__wrap" role="dialog" aria-modal="true" aria-labelledby="rfq-modal-title">
+  <div class="rfq-modal__wrap" role="dialog" aria-modal="true" aria-labelledby="rfq-modal-title" aria-describedby="rfq-modal-desc" tabindex="-1">
     <button class="rfq-modal__close" type="button" aria-label="Close quote form" data-rfq-close>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <line x1="18" y1="6" x2="6" y2="18" />
@@ -34,7 +34,7 @@ const productLookup = products.map((p) => {
       </div>
 
       <h2 class="rfq-modal__title" id="rfq-modal-title">Request a Custom Quote</h2>
-      <p class="rfq-modal__desc">Fill in your details and we&rsquo;ll prepare a personalised bulk pricing sheet within 24 hours.</p>
+      <p class="rfq-modal__desc" id="rfq-modal-desc">Fill in your details and we&rsquo;ll prepare a personalised bulk pricing sheet within 24 hours.</p>
 
       <div class="rfq-modal__product">
         <span class="rfq-modal__product-label">Selected Product</span>
@@ -58,7 +58,6 @@ const productLookup = products.map((p) => {
     <!-- Right white form area (Step 1) -->
     <div class="rfq-modal__main">
       <p class="rfq-modal__eyebrow">Contact Info</p>
-      <h3 class="rfq-modal__form-title">Your Contact Details</h3>
 
       <RfqQuoteForm />
     </div>
@@ -274,14 +273,6 @@ const productLookup = products.map((p) => {
     color: #98a2b3;
   }
 
-  .rfq-modal__form-title {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin: 0 0 1.75rem;
-  }
-
   @media (max-width: 767px) {
     .rfq-modal__wrap {
       flex-direction: column;
@@ -318,8 +309,25 @@ const productLookup = products.map((p) => {
 
 <script define:vars={{ productLookup }}>
   const modal = document.getElementById("rfq-quote-modal");
+  const modalWrap = modal?.querySelector(".rfq-modal__wrap");
   const openers = Array.from(document.querySelectorAll("[data-rfq-open]"));
   const closers = Array.from(document.querySelectorAll("[data-rfq-close]"));
+  const focusableSelector = [
+    "a[href]",
+    "area[href]",
+    "button:not([disabled])",
+    "input:not([disabled])",
+    "select:not([disabled])",
+    "textarea:not([disabled])",
+    "[contenteditable='true']",
+    "[tabindex]:not([tabindex='-1'])",
+  ].join(",");
+  let lastTrigger = null;
+
+  const getFocusableElements = () =>
+    Array.from(modalWrap?.querySelectorAll(focusableSelector) || []).filter(
+      (element) => !element.hasAttribute("hidden") && element.offsetParent !== null
+    );
 
   const findProduct = (name) =>
     productLookup.find((p) => p.name.toLowerCase() === String(name || "").trim().toLowerCase());
@@ -338,27 +346,38 @@ const productLookup = products.map((p) => {
     if (widthEl) widthEl.textContent = rec?.width || "—";
   }
 
-  const openModal = () => {
+  const openModal = (trigger = null) => {
     if (!modal) return;
+    lastTrigger = trigger instanceof HTMLElement ? trigger : null;
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
     const urlSku = new URLSearchParams(window.location.search).get("sku") || "";
     if (urlSku) setSelectedProduct(urlSku);
+    requestAnimationFrame(() => {
+      const firstFocusable = getFocusableElements()[0];
+      if (firstFocusable) firstFocusable.focus();
+      else modalWrap?.focus();
+    });
   };
 
   const closeModal = () => {
     if (!modal) return;
+    const triggerToRestore = lastTrigger;
+    lastTrigger = null;
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
+    requestAnimationFrame(() => {
+      if (triggerToRestore?.isConnected) triggerToRestore.focus();
+    });
   };
 
   openers.forEach((element) =>
     element.addEventListener("click", (event) => {
       if (element.tagName === "A") event.preventDefault();
       setSelectedProduct(element.getAttribute("data-rfq-sku") || "");
-      openModal();
+      openModal(element);
     })
   );
   closers.forEach((button) => button.addEventListener("click", closeModal));
@@ -373,6 +392,29 @@ const productLookup = products.map((p) => {
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && modal?.classList.contains("is-open")) closeModal();
+    if (!modal?.classList.contains("is-open")) return;
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeModal();
+      return;
+    }
+    if (event.key !== "Tab") return;
+
+    const focusable = getFocusableElements();
+    if (!focusable.length) {
+      event.preventDefault();
+      modalWrap?.focus();
+      return;
+    }
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
   });
 </script>

@@ -1,7 +1,7 @@
 ---
 /**
  * Certifications Page — /certifications
- * SGS Certified, REACH Compliant — test reports available upon request
+ * Buyer-specific testing and compliance support — reports arranged by project
  * Supports PDF certificate preview/download
  */
 import Layout from "@layouts/Layout.astro";
@@ -12,22 +12,22 @@ const breadcrumbData = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://nixiafabric.com/" },
-    { "@type": "ListItem", position: 2, name: "Certifications", item: "https://nixiafabric.com/certifications" },
+    { "@type": "ListItem", position: 2, name: "Certifications", item: "https://nixiafabric.com/certifications/" },
   ],
 };
 
 const certifications = [
   {
     name: "SGS Test Report",
-    standard: "SGS Certified",
-    desc: "Independent third-party testing by SGS verifies that our Chunky Glitter Synthetic Leather and Foil-Printed Synthetic Leather meet international safety and quality standards for textile materials.",
+    standard: "SGS Testing Available",
+    desc: "SGS testing can be arranged according to the product, application and destination market. Existing reports may be available for selected materials; additional testing can be arranged upon request.",
     requestNote: "SGS test report",
     icon: "shield",
   },
   {
     name: "REACH Compliance Report",
-    standard: "REACH Compliant",
-    desc: "EU REACH regulation compliance confirms that our synthetic leather products do not contain substances of very high concern (SVHC) above regulatory thresholds, safe for European market import.",
+    standard: "REACH Documentation Available",
+    desc: "REACH-related documentation and testing can be arranged according to buyer requirements, product scope and destination market. Please confirm the required standard before ordering.",
     requestNote: "REACH compliance report",
     icon: "document",
   },
@@ -44,7 +44,7 @@ const qualitySteps = [
   },
   {
     title: "Finished Product Testing",
-    desc: "Final products undergo SGS and REACH compliance testing before shipment approval.",
+    desc: "Buyer-specific testing can be arranged before shipment according to product, application and destination-market requirements.",
   },
   {
     title: "Batch Traceability",
@@ -54,10 +54,10 @@ const qualitySteps = [
 ---
 
 <Layout
-  title="Certifications — SGS Certified, REACH Compliant | Nixia Fabric"
-  description="Nixia Fabric synthetic leather products are SGS Certified and REACH Compliant. Test reports available upon request. Quality-controlled manufacturing from raw material to finished fabric."
-  keywords="SGS Certified, REACH Compliant, fabric certification, synthetic leather test report, quality control, textile compliance"
-  canonical="https://nixiafabric.com/certifications"
+  title="Testing & Compliance Support | Nixia Fabric"
+  description="Nixia Fabric can arrange SGS, REACH and buyer-specific testing according to product, application and destination market. Quality-controlled manufacturing and test documentation support."
+  keywords="SGS testing, REACH documentation, buyer-specific fabric testing, synthetic leather test report, quality control, textile compliance"
+  canonical="https://nixiafabric.com/certifications/"
   structuredData={[breadcrumbData]}
 >
   <!-- Page Hero -->
@@ -69,11 +69,11 @@ const qualitySteps = [
         <span class="breadcrumb__current">Certifications</span>
       </nav>
       <span class="eyebrow">Quality Assurance</span>
-      <h1>SGS Certified, REACH Compliant</h1>
+      <h1>Testing &amp; Compliance Support</h1>
       <p class="page-hero__desc">
-        Every batch of Chunky Glitter Synthetic Leather and Foil-Printed Synthetic Leather
-        is tested and certified to meet international textile safety standards.
-        Test reports available upon request.
+        SGS, REACH and buyer-specific test reports can be arranged according to the
+        product, application and destination market. We confirm testing scope,
+        standards and lead time before proceeding.
       </p>
     </div>
   </section>
@@ -146,15 +146,15 @@ const qualitySteps = [
       <div class="trust-badges-row">
         <div class="trust-badge">
           <span class="trust-badge__icon">SGS</span>
-          <span class="trust-badge__label">SGS Certified</span>
+          <span class="trust-badge__label">SGS Testing Available</span>
         </div>
         <div class="trust-badge">
           <span class="trust-badge__icon">REACH</span>
-          <span class="trust-badge__label">REACH Compliant</span>
+          <span class="trust-badge__label">REACH Documentation</span>
         </div>
         <div class="trust-badge">
-          <span class="trust-badge__icon">ISO</span>
-          <span class="trust-badge__label">Quality Management</span>
+          <span class="trust-badge__icon">QC</span>
+          <span class="trust-badge__label">Batch QC Available</span>
         </div>
         <div class="trust-badge">
           <span class="trust-badge__icon">Factory</span>
@@ -174,8 +174,8 @@ const qualitySteps = [
         Contact us with your specific requirements.
       </p>
       <div class="btn-group" style="justify-content: center;">
-        <CTAButton href="/contact/" variant="primary" size="lg">Request Documents</CTAButton>
-        <CTAButton href="/sample-policy/" variant="secondary" size="lg">Request Free Sample</CTAButton>
+        <CTAButton href="/contact/" variant="primary" size="lg" rfq>Request Documents</CTAButton>
+        <CTAButton href="/sample-policy/" variant="secondary" size="lg" rfq>Request Free Sample</CTAButton>
       </div>
     </div>
   </section>

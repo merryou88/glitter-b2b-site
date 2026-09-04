@@ -6,6 +6,7 @@
  */
 import Layout from "@layouts/Layout.astro";
 import CTAButton from "@components/CTAButton.astro";
+import { allProducts } from "@data/allProducts";
 
 const breadcrumbData = {
   "@context": "https://schema.org",
@@ -21,7 +22,7 @@ const breadcrumbData = {
       "@type": "ListItem",
       position: 2,
       name: "About",
-      item: "https://nixiafabric.com/about",
+      item: "https://nixiafabric.com/about/",
     },
   ],
 };
@@ -30,8 +31,8 @@ const aboutPageData = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
   name: "About Nixia Fabric",
-  description: "Learn about Nixia Fabric — a China-based manufacturer specializing in Chunky Glitter Synthetic Leather and Foil-Printed Synthetic Leather for shoes, handbags, and fashion accessories.",
-  url: "https://nixiafabric.com/about",
+  description: "Learn about Nixia Fabric, a Guangzhou manufacturer of glitter, foil, iridescent and stretch fabrics for fashion, footwear, handbags, swimwear and stage costumes.",
+  url: "https://nixiafabric.com/about/",
   mainEntity: {
     "@type": "Organization",
     name: "Nixia Fabric",
@@ -40,8 +41,10 @@ const aboutPageData = {
       addressCountry: "CN",
     },
     knowsAbout: [
-      "Chunky Glitter Synthetic Leather Manufacturing",
-      "Foil-Printed Synthetic Leather Manufacturing",
+      "Glitter Fabric Manufacturing",
+      "Hot-Stamping Foil Fabric Manufacturing",
+      "Laser Iridescent Fabric Manufacturing",
+      "Stretch Fabric Manufacturing",
       "Custom Color Matching",
       "Factory Direct Supply",
       "Decorative Fabric",
@@ -113,11 +116,30 @@ const brandValues = [
     icon: "chat",
   },
 ];
+
+const currentProductCount = allProducts.length;
+const buyerSteps = [
+  {
+    num: "01",
+    title: "Tell us the application",
+    desc: "Share your finished product, target look, quantity and destination market.",
+  },
+  {
+    num: "02",
+    title: "Compare material routes",
+    desc: "We recommend stock glitter, foil, iridescent or stretch options and confirm the key specifications.",
+  },
+  {
+    num: "03",
+    title: "Approve the sample",
+    desc: "Check color, hand feel, stretch, structure and processing performance before bulk production.",
+  },
+];
 ---
 
 <Layout
-  title="About — Brand Story"
-  description="Learn about Nixia Fabric — a China-based manufacturer specializing in Chunky Glitter Synthetic Leather and Foil-Printed Synthetic Leather. Our background, industry experience, and commitment to synthetic leather manufacturing."
+  title="About Nixia Fabric | Glitter & Foil Fabric Manufacturer"
+  description="Learn about Nixia Fabric, a Guangzhou manufacturer of glitter, foil, iridescent and stretch fabrics for fashion, footwear, handbags, swimwear and stage costumes."
   keywords="nixia fabric, glitter fabric manufacturer, fabric manufacturer china, decorative fabric, Factory Direct Supply, Custom Color Matching"
   structuredData={[breadcrumbData, aboutPageData]}
 >
@@ -134,14 +156,29 @@ const brandValues = [
 
   <!-- About Hero -->
   <section class="about-hero">
-    <div class="container">
+    <picture class="about-hero__media" aria-hidden="true">
+      <source srcset="/images/process/raw_material_preparation.webp" type="image/webp" />
+      <img src="/images/process/raw_material_preparation.jpg" alt="" width="1200" height="675" fetchpriority="high" />
+    </picture>
+    <div class="about-hero__overlay" aria-hidden="true"></div>
+    <div class="container about-hero__content">
       <span class="eyebrow">About Nixia Fabric</span>
-      <h1>Synthetic Leather Manufacturer Since 2013</h1>
+      <h1>Built for buyers who need decorative fabric to perform</h1>
       <p class="about-hero__desc">
-        We have specialized in glitter and foil-printed synthetic leather since 2013.
-        With our own factory and stable partnerships with qualified material manufacturers,
-        we supply reliable fabrics for footwear, handbag and accessory manufacturers worldwide.
+        Since 2013, we have supplied glitter, foil, iridescent and stretch materials for
+        footwear, handbags, fashion, swimwear and stage costumes. Our own production capability
+        and qualified material partners help buyers move from material selection to approved sample
+        with less uncertainty.
       </p>
+      <div class="about-hero__actions">
+        <CTAButton href="/contact/" variant="primary" size="lg" rfq>Discuss Your Material</CTAButton>
+        <CTAButton href="/factory/" variant="outline" size="lg">See Our Capability</CTAButton>
+      </div>
+      <div class="about-hero__proof">
+        <span>Since 2013</span>
+        <span>Guangzhou, China</span>
+        <span>Factory-direct support</span>
+      </div>
     </div>
   </section>
 
@@ -151,9 +188,11 @@ const brandValues = [
       <div class="brand-story">
         <div class="brand-story__left">
           <span class="eyebrow">Brand Story</span>
-          <h2>Synthetic Leather Manufacturer Since 2013</h2>
+          <h2>From a material brief to a production-ready solution</h2>
           <p>
-            We have specialized in glitter and foil-printed synthetic leather since 2013.
+            Nixia Fabric was built around a practical sourcing problem: buyers need decorative
+            materials that look right in a photo and still work in cutting, sewing, bonding and
+            shipment.
           </p>
           <p>
             We own our in-house factory for glitter and foil-printed PU materials.
@@ -164,24 +203,24 @@ const brandValues = [
             handbag and accessory manufacturers worldwide.
           </p>
           <p>
-            We support custom colors, different backing options and provide SGS / REACH
-            compliance reports upon request. We offer free material samples — customers only
+            We support custom colors, different backing options and can arrange SGS / REACH
+            testing according to buyer requirements. We offer free material samples — customers only
             cover international shipping cost, and sample freight can be deducted from bulk orders.
           </p>
         </div>
         <div class="brand-story__right">
           <div class="brand-story__card">
             <div class="brand-story__card-item">
-              <span class="brand-story__card-num">100%</span>
-              <span class="brand-story__card-label">In-house Production</span>
+              <span class="brand-story__card-num">2013</span>
+              <span class="brand-story__card-label">Specialist Since</span>
             </div>
             <div class="brand-story__card-item">
-              <span class="brand-story__card-num">2</span>
-              <span class="brand-story__card-label">Product Lines</span>
+              <span class="brand-story__card-num">4</span>
+              <span class="brand-story__card-label">Material Routes</span>
             </div>
             <div class="brand-story__card-item">
-              <span class="brand-story__card-num">7+</span>
-              <span class="brand-story__card-label">Fabric Variations</span>
+              <span class="brand-story__card-num">{currentProductCount}</span>
+              <span class="brand-story__card-label">Current Product SKUs</span>
             </div>
             <div class="brand-story__card-item">
               <span class="brand-story__card-num">Factory</span>
@@ -200,8 +239,9 @@ const brandValues = [
         <span class="eyebrow">Industry Experience</span>
         <h2>Our Journey in Synthetic Leather</h2>
         <p>
-          From our start in 2013 to specialized manufacturing of glitter and foil-printed
-          foil synthetic leather for footwear, handbag and accessory manufacturers worldwide.
+          From our start in 2013 to today, our work has stayed focused on decorative materials
+          that help footwear, handbag, fashion and performance-product buyers make confident
+          production decisions.
         </p>
       </div>
 
@@ -226,28 +266,28 @@ const brandValues = [
       <div class="focus-section">
         <div class="focus-section__left">
           <span class="eyebrow">Our Focus</span>
-          <h2>Specialized in Glitter & Foil-Printed Synthetic Leather</h2>
+          <h2>Specialized in glitter, foil and iridescent materials</h2>
           <p>
-            Our expertise is in glitter synthetic leather and foil-printed PU materials —
-            fabrics with visual impact for footwear, handbag and accessory applications.
+            Our current range covers glitter, hot-stamping foil, laser-iridescent and stretch
+            materials — each selected for a specific end-use requirement rather than only for
+            surface appearance.
           </p>
           <p>
-            This focus means we understand the specific challenges of glitter bonding,
-            foil lamination, and color consistency. We know how the fabric needs to perform —
-            in terms of adhesion, durability, and appearance — for shoes, handbags and accessories.
+            This focus means we pay attention to glitter adhesion, foil lamination, stretch
+            recovery, color consistency and the processing conditions buyers use in production.
           </p>
           <ul class="focus-section__list">
             <li>
-              <strong>Chunky Glitter Synthetic Leather</strong> — Elastic, PU, Non-woven, and Oxford backing
-              options for diverse applications
+              <strong>Glitter Materials</strong> — Non-woven glitter and structured glitter synthetic
+              leather for decoration, footwear, handbags and accessories
             </li>
             <li>
-              <strong>Foil-Printed Synthetic Leather</strong> — Gold, silver, and custom metallic finishes
-              with high-shine reflective properties
+              <strong>Hot-Stamping &amp; Laser Foil</strong> — Full-print, plain iridescent, gradient
+              and stretch finishes for garments and performance products
             </li>
             <li>
-              <strong>Custom Color Matching</strong> — Custom colors, GSM, width, and
-              backing materials tailored to client specifications
+              <strong>Custom Development</strong> — Color, GSM, width, backing, pattern and packaging
+              options tailored to client specifications
             </li>
           </ul>
         </div>
@@ -271,6 +311,35 @@ const brandValues = [
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Buyer Journey -->
+  <section class="section buyer-journey-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">How We Work With Buyers</span>
+        <h2>A clear path from inquiry to bulk order</h2>
+        <p>
+          Good material decisions happen before production starts. We help you reduce risk at each
+          stage, from the first specification to sample approval and quotation.
+        </p>
+      </div>
+
+      <div class="buyer-journey">
+        {buyerSteps.map((step) => (
+          <div class="buyer-step">
+            <span class="buyer-step__num">{step.num}</span>
+            <h3>{step.title}</h3>
+            <p>{step.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="buyer-journey__cta">
+        <p>Have a reference image or material sample? Send it with your target quantity.</p>
+        <CTAButton href="/contact/" variant="primary" rfq>Start a Material Discussion</CTAButton>
       </div>
     </div>
   </section>
@@ -354,13 +423,13 @@ const brandValues = [
       <span class="eyebrow">Let's Build Together</span>
       <h2>Partner With a Manufacturer</h2>
       <p style="max-width: 600px; margin: var(--space-lg) auto var(--space-2xl);">
-        Whether you need standard glitter synthetic leather, foil-printed PU materials,
-        or custom color matching — we're the manufacturer that can make it happen.
+        Whether you need a standard stock material, a specific color and backing, or a custom
+        decorative finish, send us the project details and we will recommend the next practical step.
       </p>
       <div class="btn-group" style="justify-content: center;">
         <CTAButton href="/factory/" variant="outline" size="lg">View Manufacturing Capability</CTAButton>
-        <CTAButton href="/sample-policy/" variant="primary" size="lg">Request Free Sample</CTAButton>
-        <CTAButton href="/contact/" variant="secondary" size="lg">Get Custom Quotation</CTAButton>
+        <CTAButton href="/sample-policy/" variant="primary" size="lg" rfq>Request Free Sample</CTAButton>
+        <CTAButton href="/contact/" variant="secondary" size="lg" rfq>Get Custom Quotation</CTAButton>
       </div>
     </div>
   </section>
@@ -396,21 +465,84 @@ const brandValues = [
 
   /* About Hero */
   .about-hero {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    min-height: 560px;
+    display: flex;
+    align-items: center;
     color: var(--color-white);
-    padding-block: var(--space-3xl) var(--space-4xl);
     position: relative;
     overflow: hidden;
+  }
+
+  .about-hero__media,
+  .about-hero__overlay {
+    position: absolute;
+    inset: 0;
+  }
+
+  .about-hero__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .about-hero__overlay {
+    background:
+      linear-gradient(90deg, rgba(13, 27, 51, 0.92) 0%, rgba(13, 27, 51, 0.72) 48%, rgba(13, 27, 51, 0.3) 100%),
+      linear-gradient(0deg, rgba(13, 27, 51, 0.45), rgba(13, 27, 51, 0.08));
+  }
+
+  .about-hero__content {
+    position: relative;
+    z-index: 1;
+    padding-block: var(--space-4xl);
+  }
+
+  .about-hero__content h1 {
+    max-width: 760px;
+  }
+
+  .about-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-xl);
+  }
+
+  .about-hero__proof {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+    margin-top: var(--space-2xl);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--text-sm);
+    font-weight: 600;
+  }
+
+  .about-hero__proof span {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .about-hero__proof span::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent-light);
   }
 
   .about-hero::before {
     content: "";
     position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(circle at 20% 50%, rgba(196, 160, 53, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 80% 30%, rgba(42, 65, 112, 0.4) 0%, transparent 50%);
+    width: 1px;
+    top: 0;
+    bottom: 0;
+    left: 66%;
+    background: rgba(255, 255, 255, 0.18);
     pointer-events: none;
+    z-index: 1;
   }
 
   .about-hero .container {
@@ -609,6 +741,59 @@ const brandValues = [
     letter-spacing: 0.03em;
   }
 
+  /* Buyer Journey */
+  .buyer-journey-section {
+    background: #fbf3e0;
+  }
+
+  .buyer-journey {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .buyer-step {
+    position: relative;
+    min-height: 190px;
+    padding: var(--space-xl);
+    border-top: 3px solid var(--color-primary);
+    background: var(--color-white);
+  }
+
+  .buyer-step__num {
+    display: block;
+    margin-bottom: var(--space-lg);
+    color: var(--color-accent-dark);
+    font-size: var(--text-sm);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  .buyer-step h3 {
+    margin-bottom: var(--space-sm);
+    font-size: var(--text-xl);
+  }
+
+  .buyer-step p {
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+
+  .buyer-journey__cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+    padding: var(--space-lg) var(--space-xl);
+    background: var(--color-primary);
+  }
+
+  .buyer-journey__cta p {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: var(--text-sm);
+  }
+
   /* Values Grid */
   .values-grid {
     display: grid;
@@ -705,9 +890,30 @@ const brandValues = [
     .markets-grid {
       grid-template-columns: repeat(2, 1fr);
     }
+
+    .buyer-journey {
+      grid-template-columns: 1fr;
+    }
   }
 
   @media (max-width: 640px) {
+    .about-hero {
+      min-height: 0;
+    }
+
+    .about-hero__content {
+      padding-block: var(--space-3xl);
+    }
+
+    .about-hero__content h1 {
+      font-size: var(--text-4xl);
+    }
+
+    .about-hero__proof {
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
     .brand-story__card {
       grid-template-columns: 1fr;
       gap: var(--space-xl);
@@ -719,6 +925,12 @@ const brandValues = [
 
     .markets-grid {
       grid-template-columns: 1fr;
+    }
+
+    .buyer-journey__cta {
+      align-items: flex-start;
+      flex-direction: column;
+      padding: var(--space-lg);
     }
   }
 </style>

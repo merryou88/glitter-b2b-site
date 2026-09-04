@@ -25,8 +25,8 @@ export interface Props {
   keywords?: string;
   image?: string;
   canonical?: string;
-  /** Page type for OG: "website" (default) or "article" */
-  ogType?: "website" | "article";
+  /** Page type for OG: "website" (default), "article" or "product" */
+  ogType?: "website" | "article" | "product";
   /** Additional JSON-LD structured data */
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
   /** Robots meta: default "index, follow" */
@@ -46,12 +46,20 @@ const {
 
 const siteName = "Nixia Fabric";
 const siteUrl = "https://nixiafabric.com";
+const isHomePage = Astro.url.pathname === "/";
 const pageTitle = title
   ? title.includes(siteName)
     ? title
     : `${title} | ${siteName}`
   : `${siteName} — Glitter & Foil-Printed Synthetic Leather Manufacturer`;
-const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).toString();
+const withTrailingSlash = (value: string) => {
+  const url = new URL(value, siteUrl);
+  if (url.pathname !== "/" && !url.pathname.endsWith("/")) {
+    url.pathname += "/";
+  }
+  return url.toString();
+};
+const canonicalUrl = withTrailingSlash(canonical || new URL(Astro.url.pathname, siteUrl).toString());
 const ogImageUrl = new URL(image, Astro.site).toString();
 
 // Organization structured data
@@ -112,7 +120,6 @@ const allStructuredData = structuredData
     <!-- Primary Meta Tags -->
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content={keywords} />
     <link rel="canonical" href={canonicalUrl} />
 
     <!-- Robots -->
@@ -155,9 +162,13 @@ const allStructuredData = structuredData
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- LCP: Preload hero image (desktop & mobile variants) -->
-    <link rel="preload" as="image" href="/image/home/slide1.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high" />
-    <link rel="preload" as="image" href="/image/home/slide1-mobile.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />
+    {isHomePage && (
+      <>
+        <!-- LCP: Preload hero image (desktop & mobile variants) -->
+        <link rel="preload" as="image" href="/images/home/slide1.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high" />
+        <link rel="preload" as="image" href="/images/home/slide1-mobile.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />
+      </>
+    )}
 
     <!-- Fonts: Inter (with font-display: swap via URL param) -->
     <link

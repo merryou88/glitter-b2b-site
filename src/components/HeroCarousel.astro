@@ -16,7 +16,7 @@ interface Slide {
 
 const slides: Slide[] = [
   {
-    image: "/image/home/slide1.webp",
+    image: "/images/home/slide1.webp",
     title: "Specialty Fabrics for Fashion & Creative Products",
     description:
       "Iridescent, holographic, glitter and foil-effect fabrics for distinctive fashion collections.",
@@ -26,7 +26,7 @@ const slides: Slide[] = [
     ],
   },
   {
-    image: "/image/home/slide2.png",
+    image: "/images/home/slide2.webp",
     title: "Stretch Fabrics for Swimwear & Bodywear",
     description: "4-way stretch fabrics with holographic and metallic finishes.",
     buttons: [
@@ -35,7 +35,7 @@ const slides: Slide[] = [
     ],
   },
   {
-    image: "/image/home/slide3.webp",
+    image: "/images/home/slide3.webp",
     title: "Glitter & Foil Fabrics for Shoes & Bags",
     description: "Structured materials for footwear, handbags and fashion accessories.",
     buttons: [
@@ -44,7 +44,7 @@ const slides: Slide[] = [
     ],
   },
   {
-    image: "/image/home/slide4.webp",
+    image: "/images/home/slide4.webp",
     title: "Made for the Spotlight",
     description:
       "Holographic stretch fabrics for party wear, dance costumes and stage outfits — bright under the lights, comfortable on the body.",
@@ -53,10 +53,10 @@ const slides: Slide[] = [
     ],
   },
   {
-    image: "/image/home/slide5.webp",
+    image: "/images/home/slide5.webp",
     title: "In-House Production, Batch-by-Batch QC",
     description:
-      "Every roll is finished and inspected in our own facility. SGS certified, REACH compliant — test reports available on request.",
+      "Every roll is finished and inspected in our own facility. SGS, REACH and buyer-specific testing can be arranged by project.",
     buttons: [
       { label: "Tour Our Factory", href: "/factory/", variant: "primary" },
       { label: "Get Custom Quotation", href: "/contact/", variant: "outline" },
@@ -145,6 +145,7 @@ const toMobile = (src: string) => src.replace(/\.(png|jpe?g|webp)$/i, "-mobile.w
                 {slide.buttons.map((btn) => (
                   <a
                     href={btn.href}
+                    data-rfq-open={btn.label === "Request Samples" || btn.label === "Send Your Design" || btn.label === "Get a Quote" || btn.label === "Get Custom Quotation" ? true : undefined}
                     class:list={[
                       "hero-carousel__btn",
                       `hero-carousel__btn--${btn.variant}`,

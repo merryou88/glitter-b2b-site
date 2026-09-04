@@ -1,74 +1,23 @@
 ---
 /**
  * Blog Page — /blog
- * Structure for future SEO content. Four sample article titles.
- * Articles not yet written — this page establishes the blog structure.
+ * Buyer-focused knowledge center with static article detail pages.
  */
 import Layout from "@layouts/Layout.astro";
 import CTAButton from "@components/CTAButton.astro";
+import { blogArticles, blogCategories } from "@data/blogArticles";
 
-// Sample article data (for future SEO content)
-const articles = [
-  {
-    title: "What is Chunky Glitter Synthetic Leather?",
-    slug: "what-is-glitter-fabric",
-    tags: ["Glitter-Leather", "Material-Guide"],
-    excerpt:
-      "A comprehensive introduction to Chunky Glitter Synthetic Leather — what it is, how it's made, and where it's used in shoes, handbags, and fashion accessories. See our Chunky Glitter Synthetic Leather products for color and backing options.",
-    date: "Coming Soon",
-    readTime: "— min read",
-    status: "upcoming",
-  },
-  {
-    title: "Foil-Printed Synthetic Leather: Manufacturing & Applications",
-    slug: "hot-stamping-foil-finish-guide",
-    tags: ["Hot-Stamping-Foil", "Material-Guide"],
-    excerpt:
-      "Understanding foil-printed synthetic leather — the thermal transfer process, metallic tone options, and applications for footwear and bags. Explore our Foil-Printed Synthetic Leather collection.",
-    date: "Coming Soon",
-    readTime: "— min read",
-    status: "upcoming",
-  },
-  {
-    title: "SGS Certified & REACH Compliant: What Buyers Need to Know",
-    slug: "sgs-reach-compliance-guide",
-    tags: ["Compliance", "Material-Guide"],
-    excerpt:
-      "A guide to SGS Certified and REACH Compliant textile standards — what the certifications mean, how to request test reports, and why they matter for European market import.",
-    date: "Coming Soon",
-    readTime: "— min read",
-    status: "upcoming",
-  },
-  {
-    title: "Glitter vs Foil-Printed: Which Fabric for Your Project?",
-    slug: "glitter-vs-foil-comparison",
-    tags: ["Glitter-Leather", "Hot-Stamping-Foil", "Material-Guide"],
-    excerpt:
-      "Comparing Chunky Glitter Synthetic Leather and Foil-Printed Synthetic Leather — visual effect, durability, backing options, and best-use scenarios to help you choose the right fabric.",
-    date: "Coming Soon",
-    readTime: "— min read",
-    status: "upcoming",
-  },
-];
-
-const categories = ["All", "Glitter-Leather", "Hot-Stamping-Foil", "Material-Guide", "Compliance"];
+const formatDate = (value: string) =>
+  new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(
+    new Date(`${value}T00:00:00`),
+  );
 
 const breadcrumbData = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: "https://nixiafabric.com/",
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Blog",
-      item: "https://nixiafabric.com/blog",
-    },
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://nixiafabric.com/" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://nixiafabric.com/blog/" },
   ],
 };
 
@@ -76,18 +25,17 @@ const blogData = {
   "@context": "https://schema.org",
   "@type": "Blog",
   name: "Nixia Fabric Blog",
-  description: "Articles and guides about Chunky Glitter Synthetic Leather, Foil-Printed Synthetic Leather, and Custom Color Matching.",
-  url: "https://nixiafabric.com/blog",
+  description: "Practical guides for buyers sourcing glitter, foil, iridescent and synthetic leather fabrics.",
+  url: "https://nixiafabric.com/blog/",
 };
 ---
 
 <Layout
   title="Blog — Fabric Knowledge & Manufacturing Guides"
-  description="Articles and guides about Chunky Glitter Synthetic Leather, Foil-Printed Synthetic Leather, manufacturing processes, and Custom Color Matching. Learn about synthetic leather from Nixia Fabric."
-  keywords="chunky glitter synthetic leather guide, foil-printed synthetic leather guide, fabric manufacturing process, Custom Color Matching, fabric knowledge"
+  description="Practical buyer guides about glitter fabric, hot-stamping foil, compliance testing and material selection from Nixia Fabric."
+  keywords="glitter fabric guide, foil fabric guide, SGS REACH fabric testing, synthetic leather buyer guide, fabric manufacturer"
   structuredData={[breadcrumbData, blogData]}
 >
-  <!-- Breadcrumb -->
   <div class="breadcrumb-bar">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -98,124 +46,149 @@ const blogData = {
     </div>
   </div>
 
-  <!-- Blog Hero -->
   <section class="blog-hero">
-    <div class="container">
-      <span class="eyebrow">Knowledge Center</span>
-      <h1>Fabric Knowledge & Guides</h1>
-      <p class="blog-hero__desc">
-        We are a synthetic leather manufacturer since 2013, with in-house production for
-        glitter and foil-printed PU, together with partnerships with other qualified
-        material factories. Practical guides for footwear, handbag and accessory manufacturers.
-      </p>
+    <div class="container blog-hero__inner">
+      <div>
+        <span class="eyebrow">Knowledge Center</span>
+        <h1>Fabric Knowledge &amp; Guides</h1>
+        <p class="blog-hero__desc">
+          Practical sourcing guidance for footwear, handbag, fashion, swimwear, stage costume and
+          decoration buyers. Use each guide to narrow your material choice before requesting samples.
+        </p>
+      </div>
+      <div class="blog-hero__signal">
+        <strong>{blogArticles.length}</strong>
+        <span>buyer guides</span>
+        <small>with product recommendations</small>
+      </div>
     </div>
   </section>
 
-  <!-- Category Filter (visual only, non-functional in static) -->
-  <section class="blog-categories">
+  <section class="blog-categories" aria-label="Filter articles">
     <div class="container">
       <div class="blog-categories__list">
-        {categories.map((cat, i) => (
+        {blogCategories.map((category, index) => (
           <button
-            class={`blog-category ${i === 0 ? "blog-category--active" : ""}`}
+            class:list={["blog-category", { "blog-category--active": index === 0 }]}
             type="button"
+            data-blog-filter={category}
+            aria-pressed={index === 0 ? "true" : "false"}
           >
-            {cat}
+            {category}
           </button>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Articles Grid -->
   <section class="section">
     <div class="container">
-      <div class="articles-grid">
-        {articles.map((article) => (
-          <article class="article-card">
-            <div class="article-card__image">
-              <div class="article-card__pattern">
-                {article.tags.includes("Material-Guide") && (
-                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-                  </svg>
-                )}
-                {article.tags.includes("Compliance") && (
-                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  </svg>
-                )}
-                {article.tags.includes("Glitter-Leather") && !article.tags.includes("Material-Guide") && (
-                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><line x1="12" y1="17" x2="12.01" y2="17" />
-                  </svg>
-                )}
-                {article.tags.includes("Hot-Stamping-Foil") && !article.tags.includes("Material-Guide") && (
-                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M2 20h20V8l-6 4V8l-6 4V4H2v16z" /><path d="M6 16h2M10 16h2M14 16h2" />
-                  </svg>
-                )}
-              </div>
-              <div class="article-card__tags">
-                {article.tags.map((tag) => (
-                  <span class="badge badge--accent article-card__badge">{tag}</span>
-                ))}
-              </div>
-              <span class="article-card__status">Coming Soon</span>
-            </div>
+      <div class="articles-heading">
+        <div>
+          <span class="eyebrow">For Better Buying Decisions</span>
+          <h2>Start with the question behind your order</h2>
+        </div>
+        <p id="article-count" aria-live="polite">Showing {blogArticles.length} guides</p>
+      </div>
+
+      <div class="articles-grid" id="articles-grid">
+        {blogArticles.map((article) => (
+          <article class="article-card" data-blog-category={article.category}>
+            <a href={`/blog/${article.slug}/`} class="article-card__image-link" aria-label={`Read ${article.title}`}>
+              <picture class="article-card__image">
+                <source srcset={article.imageWebp} type="image/webp" />
+                <img src={article.image} alt={article.imageAlt} loading="lazy" width="1600" height="900" />
+              </picture>
+            </a>
             <div class="article-card__body">
-              <h2 class="article-card__title">{article.title}</h2>
+              <div class="article-card__tags">
+                {article.tags.map((tag) => <span class="badge badge--accent">{tag}</span>)}
+              </div>
+              <span class="article-card__category">{article.category}</span>
+              <h2 class="article-card__title">
+                <a href={`/blog/${article.slug}/`}>{article.title}</a>
+              </h2>
               <p class="article-card__excerpt">{article.excerpt}</p>
               <div class="article-card__meta">
-                <span class="article-card__date">{article.date}</span>
-                <span class="article-card__dot">·</span>
-                <span class="article-card__read">{article.readTime}</span>
+                <span>{formatDate(article.date)}</span>
+                <span aria-hidden="true">·</span>
+                <span>{article.readTime}</span>
+              </div>
+              <div class="article-card__footer">
+                <a href={`/blog/${article.slug}/`} class="article-card__read-link">
+                  Read buyer guide <span aria-hidden="true">→</span>
+                </a>
+                <span>{article.focusProducts.length} product matches</span>
               </div>
             </div>
           </article>
         ))}
       </div>
 
-      <!-- Blog Notice -->
       <div class="blog-notice">
-        <div class="blog-notice__icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" />
-          </svg>
-        </div>
+        <div class="blog-notice__icon" aria-hidden="true">NF</div>
         <div class="blog-notice__content">
-          <h3>Articles Coming Soon</h3>
+          <span class="eyebrow">Need a faster answer?</span>
+          <h3>Send your project details to the manufacturer</h3>
           <p>
-            We're preparing in-depth articles about Chunky Glitter Synthetic Leather,
-            Foil-Printed Synthetic Leather, and Custom Color Matching. These guides will help
-            you make informed decisions about fabric selection and manufacturing.
-            Subscribe or check back soon.
+            Share your end product, target look, quantity and delivery date. We can compare stock
+            materials, sample routes and custom options before you commit to a bulk order.
           </p>
+          <div class="blog-notice__actions">
+            <CTAButton href="/products/" variant="outline">Compare Products</CTAButton>
+            <CTAButton href="/contact/" variant="primary" rfq>Send Your Requirement</CTAButton>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="section section--dark">
     <div class="container text-center">
-      <span class="eyebrow">Have Questions?</span>
-      <h2>Talk to the Manufacturer</h2>
-      <p style="max-width: 600px; margin: var(--space-lg) auto var(--space-2xl);">
-        While our articles are being prepared, you can get answers directly from our
-        production team. Contact us with your fabric questions or project requirements.
+      <span class="eyebrow">Factory Support</span>
+      <h2>Turn a material question into a clear quotation</h2>
+      <p class="blog-cta-copy">
+        Tell us what you are making, how much you need and when you need it. We will help you
+        choose a practical material route and arrange the next sample step.
       </p>
       <div class="btn-group" style="justify-content: center;">
-        <CTAButton href="/sample-policy/" variant="primary" size="lg">Request Free Sample</CTAButton>
-        <CTAButton href="/contact/" variant="secondary" size="lg">Get Custom Quotation</CTAButton>
+        <CTAButton href="/sample-policy/" variant="primary" size="lg" rfq>Request Free Sample</CTAButton>
+        <CTAButton href="/contact/" variant="secondary" size="lg" rfq>Get Custom Quotation</CTAButton>
       </div>
     </div>
   </section>
 </Layout>
 
+<script>
+  const filterButtons = Array.from(document.querySelectorAll("[data-blog-filter]"));
+  const cards = Array.from(document.querySelectorAll("[data-blog-category]"));
+  const count = document.getElementById("article-count");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.getAttribute("data-blog-filter");
+      let visible = 0;
+
+      filterButtons.forEach((item) => {
+        const active = item === button;
+        item.classList.toggle("blog-category--active", active);
+        item.setAttribute("aria-pressed", String(active));
+      });
+
+      cards.forEach((card) => {
+        const matches = filter === "All" || card.getAttribute("data-blog-category") === filter;
+        card.hidden = !matches;
+        if (matches) visible += 1;
+      });
+
+      if (count) count.textContent = `Showing ${visible} ${visible === 1 ? "guide" : "guides"}`;
+    });
+  });
+</script>
+
 <style>
   .breadcrumb-bar {
-    background-color: var(--color-bg-alt);
+    background: var(--color-bg-alt);
     padding-block: var(--space-md);
     border-bottom: 1px solid var(--color-border);
   }
@@ -241,28 +214,17 @@ const blogData = {
     font-weight: 600;
   }
 
-  /* Blog Hero */
   .blog-hero {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    background: var(--color-primary);
     color: var(--color-white);
-    padding-block: var(--space-3xl) var(--space-4xl);
-    position: relative;
-    overflow: hidden;
+    padding-block: var(--space-3xl);
   }
 
-  .blog-hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(circle at 20% 50%, rgba(196, 160, 53, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 80% 30%, rgba(42, 65, 112, 0.4) 0%, transparent 50%);
-    pointer-events: none;
-  }
-
-  .blog-hero .container {
-    position: relative;
-    z-index: 1;
+  .blog-hero__inner {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: var(--space-3xl);
   }
 
   .blog-hero .eyebrow {
@@ -275,184 +237,247 @@ const blogData = {
   }
 
   .blog-hero__desc {
-    color: rgba(255, 255, 255, 0.75);
+    max-width: 700px;
+    color: rgba(255, 255, 255, 0.78);
     font-size: var(--text-lg);
-    max-width: 680px;
   }
 
-  /* Categories */
+  .blog-hero__signal {
+    min-width: 190px;
+    padding: var(--space-lg);
+    border-left: 1px solid rgba(255, 255, 255, 0.25);
+    display: grid;
+    gap: 0.15rem;
+  }
+
+  .blog-hero__signal strong {
+    color: var(--color-accent-light);
+    font-size: var(--text-5xl);
+    line-height: 1;
+  }
+
+  .blog-hero__signal span {
+    font-weight: 700;
+  }
+
+  .blog-hero__signal small {
+    color: rgba(255, 255, 255, 0.65);
+  }
+
   .blog-categories {
-    padding-block: var(--space-2xl);
+    padding-block: var(--space-xl);
     border-bottom: 1px solid var(--color-border);
   }
 
   .blog-categories__list {
     display: flex;
-    gap: var(--space-sm);
     flex-wrap: wrap;
+    gap: var(--space-sm);
   }
 
   .blog-category {
-    padding: 0.5rem 1.25rem;
-    font-size: var(--text-sm);
-    font-weight: 600;
+    padding: 0.55rem 1rem;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-full);
-    background-color: var(--color-white);
+    background: var(--color-white);
     color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    font-weight: 600;
     cursor: pointer;
-    transition: all var(--transition-fast);
   }
 
-  .blog-category:hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent-dark);
-  }
-
+  .blog-category:hover,
   .blog-category--active {
-    background-color: var(--color-primary);
     border-color: var(--color-primary);
+    background: var(--color-primary);
     color: var(--color-white);
   }
 
-  /* Articles Grid */
+  .articles-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .articles-heading h2 {
+    max-width: 620px;
+    margin-top: var(--space-xs);
+  }
+
+  .articles-heading p {
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    white-space: nowrap;
+  }
+
   .articles-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-xl);
   }
 
   .article-card {
-    background-color: var(--color-white);
+    overflow: hidden;
+    background: var(--color-white);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    overflow: hidden;
-    transition: all var(--transition-base);
-    position: relative;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
   }
 
   .article-card:hover {
-    box-shadow: var(--shadow-lg);
     transform: translateY(-4px);
-    border-color: var(--color-accent-light);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .article-card[hidden] {
+    display: none;
+  }
+
+  .article-card__image-link,
+  .article-card__image {
+    display: block;
   }
 
   .article-card__image {
+    width: 100%;
     aspect-ratio: 16 / 9;
-    background: linear-gradient(135deg, var(--color-bg-alt) 0%, #e8eaf0 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
+    object-fit: cover;
+    background: var(--color-bg-alt);
   }
 
-  .article-card__pattern {
-    color: var(--color-border-dark);
-    opacity: 0.6;
-    transition: all var(--transition-base);
-  }
-
-  .article-card:hover .article-card__pattern {
-    opacity: 1;
-    transform: scale(1.1);
-    color: var(--color-accent);
-  }
-
-  .article-card__tags {
-    position: absolute;
-    top: var(--space-md);
-    left: var(--space-md);
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
-  }
-
-  .article-card__badge {
-    position: static;
-  }
-
-  .article-card__status {
-    position: absolute;
-    top: var(--space-md);
-    right: var(--space-md);
-    padding: 0.25rem 0.75rem;
-    font-size: var(--text-xs);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border-radius: var(--radius-full);
-    background-color: rgba(22, 41, 77, 0.8);
-    color: var(--color-white);
+  .article-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .article-card__body {
     padding: var(--space-xl);
   }
 
-  .article-card__title {
-    font-size: var(--text-xl);
+  .article-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+  }
+
+  .article-card__category {
+    display: block;
     margin-bottom: var(--space-sm);
+    color: var(--color-accent-dark);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .article-card__title {
+    margin-bottom: var(--space-sm);
+    font-size: var(--text-2xl);
     line-height: 1.3;
   }
 
+  .article-card__title a:hover,
+  .article-card__read-link:hover {
+    color: var(--color-accent-dark);
+  }
+
   .article-card__excerpt {
+    min-height: 5.2rem;
+    margin-bottom: var(--space-lg);
     font-size: var(--text-sm);
     line-height: var(--leading-relaxed);
-    margin-bottom: var(--space-lg);
+  }
+
+  .article-card__meta,
+  .article-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    font-size: var(--text-xs);
   }
 
   .article-card__meta {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    font-size: var(--text-xs);
-    color: var(--color-text-muted);
     padding-top: var(--space-md);
     border-top: 1px solid var(--color-border);
+    color: var(--color-text-muted);
   }
 
-  .article-card__dot {
+  .article-card__footer {
+    margin-top: var(--space-lg);
     color: var(--color-text-light);
   }
 
-  /* Blog Notice */
+  .article-card__read-link {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
   .blog-notice {
     display: flex;
     align-items: flex-start;
     gap: var(--space-lg);
     margin-top: var(--space-3xl);
     padding: var(--space-xl) var(--space-2xl);
-    background-color: var(--color-bg-alt);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
     border-left: 4px solid var(--color-accent);
+    background: var(--color-bg-alt);
   }
 
   .blog-notice__icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
     width: 48px;
     height: 48px;
-    border-radius: var(--radius-sm);
-    background-color: var(--color-accent);
-    color: var(--color-white);
-    flex-shrink: 0;
+    flex: 0 0 auto;
+    place-items: center;
+    background: var(--color-primary);
+    color: var(--color-accent-light);
+    font-weight: 800;
   }
 
   .blog-notice__content h3 {
-    font-size: var(--text-base);
     margin-bottom: var(--space-sm);
+    font-size: var(--text-xl);
   }
 
   .blog-notice__content p {
+    max-width: 780px;
+    margin-bottom: var(--space-lg);
     font-size: var(--text-sm);
-    line-height: var(--leading-relaxed);
   }
 
-  /* Responsive */
+  .blog-notice__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .blog-cta-copy {
+    max-width: 650px;
+    margin: var(--space-lg) auto var(--space-2xl);
+  }
+
   @media (max-width: 768px) {
+    .blog-hero__inner,
+    .articles-heading {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .blog-hero__signal {
+      min-width: 0;
+      padding: var(--space-md) 0 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.25);
+      border-left: 0;
+    }
+
+    .articles-heading p {
+      white-space: normal;
+    }
+
     .articles-grid {
       grid-template-columns: 1fr;
     }
@@ -461,6 +486,10 @@ const blogData = {
   @media (max-width: 640px) {
     .blog-notice {
       flex-direction: column;
+      padding: var(--space-lg);
+    }
+
+    .article-card__body {
       padding: var(--space-lg);
     }
   }

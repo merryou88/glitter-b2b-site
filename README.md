@@ -16,8 +16,8 @@ glitter-b2b-site/
 ├─ functions/api/              # Legacy Pages Functions (kept, NOT used for new forms)
 ├─ src/
 │  ├─ components/
-│  │  ├─ ContactForm.astro     # Contact form → Worker /api/inquiry/contact
-│  │  └─ RfqQuoteForm.astro    # RFQ form     → Worker /api/inquiry/rfq
+│  │  ├─ ContactForm.astro     # Contact form → Worker /api/contact
+│  │  └─ RfqQuoteForm.astro    # RFQ form     → Worker /api/rfq
 │  └─ pages/
 │     ├─ contact.astro         # Uses <ContactForm />
 │     └─ thank-you.astro       # Success landing page
@@ -29,8 +29,10 @@ glitter-b2b-site/
 
 | Method | Route | Payload |
 |--------|-------|---------|
-| POST | `/api/inquiry/contact` | `name`, `company`, `email`, `subject`, `message`, `cf-turnstile-response` |
-| POST | `/api/inquiry/rfq` | `company`, `destinationCountry`, `productSku`, `buyerIdentity`, `estimatedQuantity`, `logoArtwork`, `packaging`, `targetTimeline`, `message`, `cf-turnstile-response` |
+| POST | `/api/contact` | `name`, `company`, `email`, `subject`, `productSku`, `estimatedQuantity`, `phone`, `message` |
+| POST | `/api/rfq` | `name`, `company`, `email`, `phone`, `productSku`, `productName`, `productWeight`, `productWidth`, `estimatedQuantity`, `message` |
+
+The Worker also accepts `/api/inquiry/contact` and `/api/inquiry/rfq` as legacy aliases.
 
 Response format (fixed):
 ```json

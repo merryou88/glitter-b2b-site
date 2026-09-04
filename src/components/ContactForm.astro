@@ -1,7 +1,8 @@
 ---
 /**
  * ContactForm.astro — Reusable contact inquiry form
- * Posts to Worker: WORKER_URL + "/api/inquiry/contact"
+ * Posts to Worker: WORKER_URL + "/api/contact"
+ * The Worker also accepts the documented legacy alias "/api/inquiry/contact".
  * Custom English validation
  * Success → /thank-you; failure → inline error message
  */
@@ -45,9 +46,25 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
       </div>
     </div>
 
+    <div class="form-row">
+      <div class="form-field">
+        <label for="product-sku" class="form-field__label">Product / SKU</label>
+        <input type="text" id="product-sku" name="productSku" class="form-field__input" placeholder="Product name or SKU (optional)" />
+      </div>
+      <div class="form-field">
+        <label for="estimated-quantity" class="form-field__label">Estimated Quantity</label>
+        <input type="text" id="estimated-quantity" name="estimatedQuantity" class="form-field__input" placeholder="e.g. 100 meters (optional)" />
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="phone" class="form-field__label">Phone / WhatsApp</label>
+      <input type="tel" id="phone" name="phone" class="form-field__input" placeholder="+ country code (optional)" autocomplete="tel" />
+    </div>
+
     <div class="form-field">
       <label for="message" class="form-field__label">Message *</label>
-      <textarea id="message" name="message" rows="5" class="form-field__textarea" placeholder="Product interest, color requirements, backing preference, quantity, timeline..."></textarea>
+      <textarea id="message" name="message" rows="5" class="form-field__textarea" placeholder="Please share any details you have, such as product interest, color, application or target delivery date."></textarea>
     </div>
 
     <!-- Honeypot: hidden from humans, bots fill it and get rejected server-side -->
@@ -95,11 +112,15 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
   try {
     var params = new URLSearchParams(window.location.search);
     var subjectField = form ? form.querySelector('input[name="subject"]') : null;
+    var productField = form ? form.querySelector('input[name="productSku"]') : null;
     var messageField = form ? form.querySelector('textarea[name="message"]') : null;
     var subjectParam = params.get("subject");
     var skuParam = params.get("sku");
     if (subjectParam && subjectField && !subjectField.value) {
       subjectField.value = subjectParam;
+    }
+    if (skuParam && productField && !productField.value) {
+      productField.value = skuParam;
     }
     if (skuParam && messageField && !messageField.value) {
       messageField.value = "Product/SKU of interest: " + skuParam + "\n";
@@ -171,6 +192,9 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
       company: String(formData.get("company") || "").trim(),
       email: String(formData.get("email") || "").trim(),
       subject: String(formData.get("subject") || "").trim(),
+      productSku: String(formData.get("productSku") || "").trim(),
+      estimatedQuantity: String(formData.get("estimatedQuantity") || "").trim(),
+      phone: String(formData.get("phone") || "").trim(),
       message: String(formData.get("message") || "").trim(),
       website: String(formData.get("website") || "").trim(),
     };

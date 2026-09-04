@@ -3,6 +3,7 @@
  * RfqQuoteForm.astro — Step 1 (Contact Info) of the RFQ quote modal
  * Fields: Full Name*, Company, Email*, Phone. Required fields get gold borders.
  * Posts to Worker: WORKER_URL + "/api/rfq" along with the selected product info.
+ * The Worker also accepts the documented legacy alias "/api/inquiry/rfq".
  * Success → /thank-you; failure → inline error message.
  */
 
@@ -44,13 +45,18 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
 
     <div class="rfq-field">
       <label for="rfq-phone" class="rfq-field__label">Phone Number</label>
-      <input type="tel" id="rfq-phone" name="phone" class="rfq-field__input" placeholder="+91 98765 43210" autocomplete="tel" />
+      <input type="tel" id="rfq-phone" name="phone" class="rfq-field__input" placeholder="+ country code (optional)" autocomplete="tel" />
       <span class="rfq-field__hint">Optional. If you prefer WhatsApp communication, please leave your phone number.</span>
     </div>
 
     <div class="rfq-field">
+      <label for="rfq-quantity" class="rfq-field__label">Estimated Quantity</label>
+      <input type="text" id="rfq-quantity" name="estimatedQuantity" class="rfq-field__input" placeholder="e.g. 100 meters (optional)" />
+    </div>
+
+    <div class="rfq-field">
       <label for="rfq-message" class="rfq-field__label">Message <span class="rfq-field__req">*</span></label>
-      <textarea id="rfq-message" name="message" rows="4" class="rfq-field__textarea rfq-field__input--required" placeholder="Tell us your requirements, such as order quantity, target color, custom base material etc."></textarea>
+      <textarea id="rfq-message" name="message" rows="4" class="rfq-field__textarea rfq-field__input--required" placeholder="Please share any details you have, such as color, application or target delivery date."></textarea>
       <span class="rfq-field__error" id="rfq-message-error"></span>
     </div>
 
@@ -208,6 +214,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
       productName: selectedName,
       productWeight: weight,
       productWidth: width,
+      estimatedQuantity: String(formData.get("estimatedQuantity") || "").trim(),
       website: String(formData.get("website") || "").trim(),
     };
 
