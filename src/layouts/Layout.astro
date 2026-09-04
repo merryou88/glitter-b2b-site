@@ -31,6 +31,13 @@ export interface Props {
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
   /** Robots meta: default "index, follow" */
   robots?: string;
+  /** LCP image preloads: { href, type, media?, fetchpriority? } */
+  preloadImages?: Array<{
+    href: string;
+    type?: string;
+    media?: string;
+    fetchpriority?: string;
+  }>;
 }
 
 const {
@@ -42,6 +49,7 @@ const {
   ogType = "website",
   structuredData,
   robots = "index, follow",
+  preloadImages = [],
 } = Astro.props;
 
 const siteName = "Nixia Fabric";
@@ -169,6 +177,17 @@ const allStructuredData = structuredData
         <link rel="preload" as="image" href="/images/home/slide1-mobile.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />
       </>
     )}
+
+    {preloadImages.map((img) => (
+      <link
+        rel="preload"
+        as="image"
+        href={img.href}
+        type={img.type}
+        media={img.media}
+        fetchpriority={img.fetchpriority}
+      />
+    ))}
 
     <!-- Fonts: Inter (with font-display: swap via URL param) -->
     <link
