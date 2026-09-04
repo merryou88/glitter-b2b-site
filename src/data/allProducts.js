@@ -270,7 +270,7 @@ export const allProducts = [
     galleryImages: ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"],
     detailImagePath: "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/detail/",
     video: {
-      src: "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/video/0a414c25e4bbcf3568b12efd0b199526.mp4",
+      src: "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/video/1.mp4",
       poster: "1.jpg",
     },
     shortIntro:
@@ -460,7 +460,7 @@ export const allProducts = [
     ],
     galleryMainPath: "/images/products/iridescent-gradient-laser-ice-silk/main/",
     galleryImages: ["hot04.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg"],
-    detailImagePath: "/images/products/iridescent-gradient-laser-ice-silk/application/product-detail/",
+    detailImagePath: "/images/products/iridescent-gradient-laser-ice-silk/detail/",
     video: { src: "/images/products/iridescent-gradient-laser-ice-silk/video/1.mp4", poster: "hot04.jpg" },
     shortIntro:
       "Iridescent gradient laser hot-stamping ice-silk fabric features a smooth gradient that flows across the width of the fabric, shifting through multiple colors under light. The stretch ice-silk base keeps it comfortable against the skin and easy to sew.",
@@ -1020,14 +1020,6 @@ export const allProducts = [
       "详情-1.jpg",
       "详情-2.jpg",
       "详情-3.jpg",
-      "详情-4.jpg",
-      "详情-5.jpg",
-      "详情-6.jpg",
-      "详情-7.jpg",
-      "详情-12.jpg",
-      "详情-13.jpg",
-      "详情-14.jpg",
-      "详情-19.jpg",
     ],
   },
 ];
