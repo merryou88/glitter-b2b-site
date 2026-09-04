@@ -54,7 +54,7 @@ export const allProducts = [
     galleryMainPath: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/",
     galleryImages: ["1.jpg", "2.jpg", "3.jpg", "4.jpg"],
     detailImagePath:
-      "/images/products/plain-iridescent-laser-spandex-4-way-stretch/application/product-detail/",
+      "/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/",
     video: null,
     shortIntro:
       "Plain iridescent laser hot‑stamping spandex fabric is engineered for garments that need real stretch performance. The 4‑way stretch spandex base stretches and recovers in every direction, while the plain laser foil surface delivers a clean, uniform iridescent shine.",
