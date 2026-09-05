@@ -48,10 +48,20 @@ export interface Props {
     faqList: Array<{ question: string; answer: string }>;
     skuImages: Array<{ src: string; alt: string }>;
     detailImages: string[];
+    heroHighlights?: string[];
+    whyChoose?: Array<{ title: string; desc: string }>;
+    buyerApplications?: Array<{ title: string; desc: string }>;
+    samplePrompt?: string;
   };
 }
 
 const { product } = Astro.props;
+const isInquiryFocusedProduct = product.slug === "plain-iridescent-laser-spandex-4-way-stretch";
+const quoteButtonLabel = isInquiryFocusedProduct ? "Get a Quote" : "Add to Quotation List";
+const inquiryButtonLabel = isInquiryFocusedProduct ? "Send an Inquiry" : "WhatsApp";
+const samplePolicyIntro =
+  product.samplePrompt ??
+  "Free samples available, buyer covers international shipping cost. Shipping fee will be deducted from bulk orders.";
 
 // Available Colors — fall back to the factory default when not configured
 const availableColors =
@@ -340,15 +350,22 @@ const heroVideo = product.video
             )
           }
         </div>
+        {product.heroHighlights && product.heroHighlights.length > 0 && (
+          <div class="detail-highlights">
+            {product.heroHighlights.map((item) => (
+              <div class="detail-highlights__item">{item}</div>
+            ))}
+          </div>
+        )}
 
         <div class="detail-feature-tags">
           <span class="feature-tag feature-tag--green">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>SGS Testing Available</span>
+            <span>SGS on Request</span>
           </span>
           <span class="feature-tag feature-tag--blue">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>REACH Documentation Available</span>
+            <span>REACH on Request</span>
           </span>
           <span class="feature-tag feature-tag--amber">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -389,7 +406,7 @@ const heroVideo = product.video
         <!-- B2B Buying Details -->
         <div class="detail-buying">
           <div class="detail-buying__card">
-            <h2 class="detail-buying__title">B2B Buying Details</h2>
+            <h2 class="detail-buying__title">B2B Buying Information</h2>
             <div class="detail-buying__grid">
               <div class="detail-buying__item">
                 <h3 class="detail-buying__item-title">SAMPLE</h3>
@@ -417,9 +434,9 @@ const heroVideo = product.video
           <div class="detail-quote-tips__grid">
             <div class="detail-quote-tips__item">Target quantity(Meters)</div>
             <div class="detail-quote-tips__item">Destination country</div>
-            <div class="detail-quote-tips__item">Color requirement</div>
-            <div class="detail-quote-tips__item">Trade Terms (FOB/CIF/EXW)</div>
+            <div class="detail-quote-tips__item">Application / end product</div>
             <div class="detail-quote-tips__item">Base material</div>
+            <div class="detail-quote-tips__item">Customization requirement</div>
             <div class="detail-quote-tips__item">Target delivery date</div>
           </div>
         </div>
@@ -434,7 +451,7 @@ const heroVideo = product.video
               <path d="M16 13H8" />
               <path d="M16 17H8" />
             </svg>
-            Add to Quotation List
+            {quoteButtonLabel}
           </a>
           <a href="/sample-policy/" data-rfq-open data-rfq-sku={product.title} class="btn detail-cta__btn detail-cta__btn--sample">
             <svg class="detail-cta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -442,13 +459,13 @@ const heroVideo = product.video
               <path d="m3.3 7 8.7 5 8.7-5" />
               <path d="M12 22V12" />
             </svg>
-            Request Free Sample
+            Get Sample
           </a>
           <a href="https://wa.me/8613616899303" target="_blank" rel="noopener noreferrer" class="btn detail-cta__btn detail-cta__btn--wa">
             <svg class="detail-cta__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
             </svg>
-            WhatsApp
+            {inquiryButtonLabel}
           </a>
           <button type="button" class="btn detail-cta__btn detail-cta__btn--sample detail-cta__btn--copy" id="copy-product-link">
             <svg class="detail-cta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -468,18 +485,59 @@ const heroVideo = product.video
 <!-- Detail Body -->
 <section class="section">
   <div class="container">
-    <div class="detail-body detail-body--plain">
+    <div class={`detail-body detail-body--plain ${isInquiryFocusedProduct ? "detail-body--wide" : ""}`}>
       <!-- Description -->
       <div class="detail-body__text">
-        <h2>Product Description</h2>
+        <h2 class="section-title-with-icon">
+          <span class="section-title-with-icon__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 3h9l3 3v15H6z" />
+              <path d="M15 3v4h4" />
+              <path d="M8 11h8" />
+              <path d="M8 15h8" />
+            </svg>
+          </span>
+          <span>Product Description</span>
+        </h2>
         {product.fullDescription.split("\n\n").map((para: string) => (
           <p>{para}</p>
         ))}
       </div>
 
+      {product.whyChoose && product.whyChoose.length > 0 && (
+        <div class="detail-body__section" id="why-choose">
+          <h2 class="section-title-with-icon">
+            <span class="section-title-with-icon__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.8 6.4 20.2l1.1-6.2L3 9.6l6.2-.9L12 3z" />
+              </svg>
+            </span>
+            <span>Why Choose This Fabric?</span>
+          </h2>
+          <div class="why-choose-grid">
+            {product.whyChoose.map((item) => (
+              <div class="why-choose-card">
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       <!-- Product Specifications -->
       <div class="detail-body__section" id="specifications">
-        <h2>Product Specifications</h2>
+        <h2 class="section-title-with-icon">
+          <span class="section-title-with-icon__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 20h16" />
+              <path d="M7 16V8" />
+              <path d="M12 16V5" />
+              <path d="M17 16v-4" />
+            </svg>
+          </span>
+          <span>Product Specifications</span>
+        </h2>
         <div class="table-scroll">
           <table class="param-table">
             <thead>
@@ -499,7 +557,16 @@ const heroVideo = product.video
         <div class="b2b-card">
           <div class="b2b-card__head">
             <div>
-              <h2>Specifications Table for B2B Buyers</h2>
+              <h2 class="section-title-with-icon">
+                <span class="section-title-with-icon__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="4" y="4" width="16" height="16" rx="2" />
+                    <path d="M4 9h16" />
+                    <path d="M9 4v16" />
+                  </svg>
+                </span>
+                <span>Specifications Table for B2B Buyers</span>
+              </h2>
               <p class="b2b-card__subtitle">Key factory details for wholesale and OEM/ODM buyers</p>
             </div>
             <span class="b2b-card__tag">Factory sourcing details</span>
@@ -522,12 +589,37 @@ const heroVideo = product.video
       <!-- Application Scenarios -->
       {product.applications.length > 0 && (
         <div class="detail-body__section" id="applications">
-          <h2>Applications</h2>
-          <ul class="detail-apps__list">
-            {product.applications.map((app) => (
-              <li class="detail-apps__item">{titleCase(app)}</li>
-            ))}
-          </ul>
+          <h2 class="section-title-with-icon">
+            <span class="section-title-with-icon__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </span>
+            <span>Perfect For</span>
+          </h2>
+          {product.buyerApplications && product.buyerApplications.length > 0 ? (
+            <div class="application-cards">
+              {product.buyerApplications.map((app) => (
+                <div class="application-card">
+                  <div class="application-card__head">
+                    <span class="application-card__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </span>
+                    <h3>{app.title}</h3>
+                  </div>
+                  <p>{app.desc}</p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <ul class="detail-apps__list">
+              {product.applications.map((app) => (
+                <li class="detail-apps__item">{titleCase(app)}</li>
+              ))}
+            </ul>
+          )}
           {applicationImages.length > 0 && (
             <div class="detail-apps-grid">
               {applicationImages.map((img) => (
@@ -541,9 +633,120 @@ const heroVideo = product.video
         </div>
       )}
 
+      {isInquiryFocusedProduct && (
+        <div class="detail-body__section" id="buyer-confirm">
+          <h2 class="section-title-with-icon">
+            <span class="section-title-with-icon__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M9.5 12.5 11 14l3.5-4" />
+              </svg>
+            </span>
+            <span>What Buyers Usually Confirm</span>
+          </h2>
+          <div class="buyer-confirm-grid">
+            <div class="buyer-confirm-card">
+              <div class="buyer-confirm-card__head">
+                <span class="buyer-confirm-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 7l8-4 8 4-8 4-8-4z" />
+                    <path d="M4 12l8 4 8-4" />
+                    <path d="M4 17l8 4 8-4" />
+                  </svg>
+                </span>
+                <h3>Fabric Build</h3>
+              </div>
+              <p>Iridescent laser finish on a 4-way stretch spandex base.</p>
+            </div>
+            <div class="buyer-confirm-card">
+              <div class="buyer-confirm-card__head">
+                <span class="buyer-confirm-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 20h16" />
+                    <path d="M7 16V8" />
+                    <path d="M12 16V5" />
+                    <path d="M17 16v-4" />
+                  </svg>
+                </span>
+                <h3>Key Specs</h3>
+              </div>
+              <p>150 cm width, 180 GSM weight and 0.35-0.40 mm thickness.</p>
+            </div>
+            <div class="buyer-confirm-card">
+              <div class="buyer-confirm-card__head">
+                <span class="buyer-confirm-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 5c4.5 0 8 3.6 9 7-1 3.4-4.5 7-9 7s-8-3.6-9-7c1-3.4 4.5-7 9-7z" />
+                    <circle cx="12" cy="12" r="2.5" />
+                  </svg>
+                </span>
+                <h3>Sample Route</h3>
+              </div>
+              <p>Sample available for color, stretch and surface effect checks.</p>
+            </div>
+            <div class="buyer-confirm-card">
+              <div class="buyer-confirm-card__head">
+                <span class="buyer-confirm-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 7h16" />
+                    <path d="M4 12h10" />
+                    <path d="M4 17h13" />
+                    <path d="M18 15l2 2 3-3" />
+                  </svg>
+                </span>
+                <h3>Order Planning</h3>
+              </div>
+              <p>MOQ starts from 100 meters with stock dispatch timing shown above.</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isInquiryFocusedProduct && (
+        <div class="detail-body__section" id="sustainability-certifications">
+          <h2 class="section-title-with-icon">
+            <span class="section-title-with-icon__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3 4 7v6c0 5 3.5 7.5 8 8 4.5-.5 8-3 8-8V7z" />
+                <path d="m9.5 12 1.8 1.8 3.7-4" />
+              </svg>
+            </span>
+            <span>Sustainability &amp; Certifications</span>
+          </h2>
+          <div class="sustainability-grid">
+            <div class="sustainability-card">
+              <h3>Testing Support</h3>
+              <p>SGS / REACH testing can be arranged according to buyer requirements, product scope and destination market.</p>
+            </div>
+            <div class="sustainability-card">
+              <h3>Buyer Review</h3>
+              <p>Factory visit arrangement and buyer audit support are available for project review.</p>
+            </div>
+            <div class="sustainability-card">
+              <h3>Documentation</h3>
+              <p>Commercial invoice, packing list and batch-related export documents can be confirmed before shipment.</p>
+            </div>
+            <div class="sustainability-card">
+              <h3>Project Scope</h3>
+              <p>Testing and document needs should be confirmed by product, application and destination market before bulk order.</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       <!-- OEM / ODM Service -->
       <div class="detail-body__section detail-body__section--full" id="oem-manufacturing">
-        <h2>OEM &amp; ODM Manufacturing Service</h2>
+        <h2 class="section-title-with-icon">
+          <span class="section-title-with-icon__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 20h18" />
+              <path d="M5 20V8l7-4 7 4v12" />
+              <path d="M9 20v-6h6v6" />
+            </svg>
+          </span>
+          <span>OEM &amp; ODM Manufacturing Service</span>
+        </h2>
+        <p class="oem-intro">Factory support for custom development, sample approval, quality control and export packing.</p>
         <div class="oem-grid">
           <div class="oem-card">
             <div class="oem-card__icon" aria-hidden="true">
@@ -556,8 +759,22 @@ const heroVideo = product.video
             <div class="oem-card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 19.5 4 17 4 12V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
             </div>
-            <h3>Sampling, QC &amp; Export</h3>
-            <p>Free samples within 3–7 working days. Inline quality control and final inspection on every bulk order, plus export-ready packing and FOB / CIF shipping arrangement.</p>
+            <h3>Sampling &amp; Approval</h3>
+            <p>Free samples within 3–7 working days so buyers can confirm color, stretch, surface effect and sewing performance before bulk order.</p>
+          </div>
+          <div class="oem-card">
+            <div class="oem-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7l9 5 9-5-9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg>
+            </div>
+            <h3>Quality Control</h3>
+            <p>Inline quality checks and final inspection on every bulk order to verify appearance, dimensions and packing before shipment.</p>
+          </div>
+          <div class="oem-card">
+            <div class="oem-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h13v10H3z"/><path d="M16 10h3l2 3v4h-5"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="18.5" cy="17.5" r="1.5"/></svg>
+            </div>
+            <h3>Packaging &amp; Export</h3>
+            <p>Roll packing with paper tube inside and plastic bag outside, plus commercial invoice and packing list support for export shipments.</p>
           </div>
         </div>
       </div>
@@ -565,7 +782,16 @@ const heroVideo = product.video
       <!-- SKU Color Gallery -->
       {product.skuImages.length > 0 && (
         <div class="detail-body__section" id="sku-colors">
-          <h2>Color Options ({product.skuImages.length})</h2>
+          <h2 class="section-title-with-icon">
+            <span class="section-title-with-icon__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="7" cy="12" r="3" />
+                <circle cx="12" cy="7" r="3" />
+                <circle cx="17" cy="12" r="3" />
+              </svg>
+            </span>
+            <span>Color Options ({product.skuImages.length})</span>
+          </h2>
           <div class="sku-grid">
             {product.skuImages.map((img) => (
               <div class="sku-item">
@@ -586,7 +812,16 @@ const heroVideo = product.video
       <!-- Product Details -->
       {productDetailImages.length > 0 && (
         <div class="detail-body__section" id="product-details">
-          <h2>Product Details</h2>
+          <h2 class="section-title-with-icon">
+            <span class="section-title-with-icon__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="4" width="16" height="16" rx="2" />
+                <path d="M8 12h8" />
+                <path d="M8 16h5" />
+              </svg>
+            </span>
+            <span>Product Details</span>
+          </h2>
           <div class="detail-images-grid">
             {productDetailImages.map((img) => (
               <picture>
@@ -602,7 +837,16 @@ const heroVideo = product.video
       <div class="detail-body__section buyer-notice">
         <details class="buyer-notice__box">
           <summary class="buyer-notice__summary">
-            <h2>Buyer Important Notice</h2>
+            <h2 class="section-title-with-icon">
+              <span class="section-title-with-icon__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 9v4" />
+                  <path d="M12 17h.01" />
+                  <path d="M10.3 4.5h3.4L21 17a2 2 0 0 1-1.7 3H4.7A2 2 0 0 1 3 17L10.3 4.5z" />
+                </svg>
+              </span>
+              <span>Buyer Important Notice</span>
+            </h2>
           </summary>
           <ol class="buyer-notice__list">
             <li>Color difference: All photos are real-product shooting. Slight color deviation may exist due to light, shooting angle and different monitor displays. Minor batch-to-batch color difference may also occur for textile products. If you are highly sensitive to color, please request pre-production sample for confirmation before bulk order.</li>
@@ -618,7 +862,16 @@ const heroVideo = product.video
       <!-- FAQ -->
       {product.faqList.length > 0 && (
         <div class="detail-body__section" id="faq">
-          <h2>Frequently Asked Questions</h2>
+          <h2 class="section-title-with-icon">
+            <span class="section-title-with-icon__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M9.5 9a2.5 2.5 0 1 1 3.8 2.1c-.8.5-1.3 1-1.3 2.4" />
+                <path d="M12 17h.01" />
+              </svg>
+            </span>
+            <span>Frequently Asked Questions</span>
+          </h2>
           <div class="faq-list">
             {product.faqList.map((item) => (
               <details class="faq-item">
@@ -632,24 +885,31 @@ const heroVideo = product.video
 
       <!-- Sample Policy -->
       <div class="detail-body__section detail-sample-policy">
-        <h2>Our Policy</h2>
+        <h2 class="section-title-with-icon">
+          <span class="section-title-with-icon__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 3h12v18H6z" />
+              <path d="M9 8h6" />
+              <path d="M9 12h6" />
+              <path d="M9 16h4" />
+            </svg>
+          </span>
+          <span>Our Policy</span>
+        </h2>
         <div class="sample-policy-content">
-          <p>
-            Free samples available, buyer covers international shipping cost.
-            Shipping fee will be deducted from bulk orders.
-          </p>
+          <p>{samplePolicyIntro}</p>
           <p>
             SGS / REACH testing and buyer-specific reports can be arranged according to
             product, application and destination market.
-            Custom colors and base materials are supported for bulk orders.
+            OEM / ODM development can be discussed according to project requirements.
           </p>
         </div>
         <div class="policy-cta">
           <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} data-rfq-open data-rfq-sku={product.title} class="btn detail-cta__btn detail-cta__btn--gold policy-cta__btn">
-            Request Free Sample
+            Get Sample
           </a>
           <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} data-rfq-open data-rfq-sku={product.title} class="btn detail-cta__btn detail-cta__btn--sample policy-cta__btn">
-            Add to Quotation List
+            Get a Quote
           </a>
           <a href="https://wa.me/8613616899303" target="_blank" rel="noopener noreferrer" class="btn detail-cta__btn detail-cta__btn--wa policy-cta__btn">
             <svg class="detail-cta__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -668,8 +928,18 @@ const heroVideo = product.video
   <section class="section section--alt" aria-label="Related products">
     <div class="container">
       <div class="section-header">
-        <h2>You May Also Like</h2>
-        <p>Other glitter &amp; foil fabrics frequently ordered together with this item.</p>
+        <h2 class="section-title-with-icon">
+          <span class="section-title-with-icon__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 6h14" />
+              <path d="M5 12h14" />
+              <path d="M5 18h10" />
+              <path d="m16 16 3 3 4-4" />
+            </svg>
+          </span>
+          <span>You May Also Like</span>
+        </h2>
+        <p>Other stretch and holographic fabrics frequently ordered together with this item.</p>
       </div>
       <div class="related-grid">
         {relatedProducts.map((rel) => (
@@ -681,7 +951,7 @@ const heroVideo = product.video
               </picture>
             </div>
             <div class="related-card__body">
-              <h3>{rel.title}</h3>
+              <h3>{/^[a-z0-9-]+$/.test(rel.title) ? rel.metaTitle.replace(/ \| .+$/, "") : rel.title}</h3>
               <span class="related-card__meta">MOQ {rel.specs.moq}m</span>
               <span class="related-card__link">View Details ›</span>
             </div>
@@ -695,7 +965,15 @@ const heroVideo = product.video
 <!-- Bottom SEO Tags -->
 <section class="section detail-tags-section" aria-label="Product tags">
   <div class="container">
-    <h2>Product Tags</h2>
+    <h2 class="section-title-with-icon">
+      <span class="section-title-with-icon__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 10 12 3 4 10v8l8 3 8-3z" />
+          <path d="M12 3v18" />
+        </svg>
+      </span>
+      <span>Product Tags</span>
+    </h2>
     <p>Application scenarios and fabric attributes associated with this product.</p>
     <div class="detail-tags">
       {seoTags.map((tag) => (
@@ -1020,6 +1298,25 @@ const heroVideo = product.video
     color: #5d697a;
   }
 
+  .detail-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-top: var(--space-sm);
+  }
+
+  .detail-highlights__item {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #dde5ee;
+    border-radius: var(--radius-sm);
+    background: #f7f9fc;
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: center;
+  }
+
   .detail-cta {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1265,6 +1562,152 @@ const heroVideo = product.video
     font-weight: 700;
   }
 
+  /* Why Choose / Applications */
+  .why-choose-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-sm);
+  }
+
+  .why-choose-card {
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-white);
+  }
+
+  .why-choose-card h3,
+  .application-card h3 {
+    margin: 0 0 0.35rem;
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .why-choose-card p,
+  .application-card p {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .application-card__head {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .application-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    color: #2c8b57;
+    flex: 0 0 auto;
+  }
+
+  .application-card__icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .application-cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-sm);
+  }
+
+  .application-card {
+    padding: var(--space-md);
+    border: 1px solid #dfe6ee;
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    background: #fbfcfe;
+  }
+
+  .buyer-confirm-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-sm);
+  }
+
+  .buyer-confirm-card {
+    padding: var(--space-md);
+    border: 1px solid #dfe6ee;
+    border-radius: var(--radius-sm);
+    background: #f8fafc;
+  }
+
+  .buyer-confirm-card__head {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .buyer-confirm-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    color: var(--color-accent);
+    flex: 0 0 auto;
+  }
+
+  .buyer-confirm-card__icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .buyer-confirm-card h3 {
+    margin: 0;
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .buyer-confirm-card p {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .sustainability-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-sm);
+  }
+
+  .sustainability-card {
+    padding: var(--space-md);
+    border: 1px solid #dfe6ee;
+    border-radius: var(--radius-sm);
+    background: #f7fbff;
+  }
+
+  .sustainability-card h3 {
+    margin: 0 0 0.35rem;
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .sustainability-card p {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
   /* Application Scenarios */
   .detail-apps {
     margin-top: var(--space-md);
@@ -1321,6 +1764,10 @@ const heroVideo = product.video
     order: 10;
   }
 
+  .detail-body--plain #why-choose {
+    order: 50;
+  }
+
   .detail-body--plain #specifications {
     order: 20;
   }
@@ -1333,16 +1780,24 @@ const heroVideo = product.video
     order: 40;
   }
 
+  .detail-body--plain #buyer-confirm {
+    order: 45;
+  }
+
+  .detail-body--plain #sustainability-certifications {
+    order: 55;
+  }
+
   .detail-body--plain #oem-manufacturing {
-    order: 50;
+    order: 70;
   }
 
   .detail-body--plain .buyer-notice {
-    order: 60;
+    order: 100;
   }
 
   .detail-body--plain #faq {
-    order: 70;
+    order: 90;
   }
 
   .detail-body--plain #sku-colors {
@@ -1358,7 +1813,7 @@ const heroVideo = product.video
   }
 
   .detail-body--plain .detail-sample-policy {
-    order: 99;
+    order: 80;
   }
 
   /* ===== Buyer Important Notice (collapsible) ===== */
@@ -1568,6 +2023,13 @@ const heroVideo = product.video
     gap: var(--space-lg);
   }
 
+  .oem-intro {
+    margin: 0 0 var(--space-md);
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
   .oem-card {
     background: var(--color-bg);
     border: 1px solid var(--color-border);
@@ -1748,6 +2210,10 @@ const heroVideo = product.video
     margin: 0 auto;
   }
 
+  .detail-body--wide {
+    max-width: 1180px;
+  }
+
   .detail-body__text {
     margin-bottom: var(--space-2xl);
   }
@@ -1781,6 +2247,27 @@ const heroVideo = product.video
     padding-bottom: var(--space-sm);
     border-bottom: 2px solid var(--color-accent);
     display: inline-block;
+  }
+
+  .section-title-with-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .section-title-with-icon__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    color: var(--color-accent);
+    flex: 0 0 auto;
+  }
+
+  .section-title-with-icon__icon svg {
+    width: 22px;
+    height: 22px;
   }
 
   /* SKU Grid */
@@ -1953,6 +2440,17 @@ const heroVideo = product.video
       grid-template-columns: 1fr 1fr;
     }
 
+    .detail-highlights,
+    .why-choose-grid,
+    .application-cards,
+    .sustainability-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .buyer-confirm-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .related-grid {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -1968,6 +2466,14 @@ const heroVideo = product.video
     }
 
     .detail-offer-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .detail-highlights,
+    .why-choose-grid,
+    .application-cards,
+    .buyer-confirm-grid,
+    .sustainability-grid {
       grid-template-columns: 1fr;
     }
 

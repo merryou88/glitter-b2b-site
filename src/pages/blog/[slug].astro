@@ -26,6 +26,19 @@ const relatedProducts = article.focusProducts
   .filter(Boolean);
 const articleUrl = `https://nixiafabric.com/blog/${article.slug}/`;
 const contactHref = `/contact/?subject=${encodeURIComponent(`Question about ${article.title}`)}`;
+const toParagraphs = (body: string | string[]) =>
+  Array.isArray(body) ? body : String(body).split("\n\n").filter(Boolean);
+const stripSectionNumber = (heading: string) => heading.replace(/^\d+\.\s*/, "");
+const slugifyHeading = (heading: string) =>
+  stripSectionNumber(heading)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+const sectionNav = article.sections.map((section, index) => ({
+  id: slugifyHeading(section.heading),
+  label: stripSectionNumber(section.heading),
+  number: String(index + 1).padStart(2, "0"),
+}));
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -111,6 +124,17 @@ const faqSchema = {
 
     <div class="container article-layout">
       <aside class="article-aside">
+        <div class="article-aside__block article-aside__block--toc">
+          <span class="eyebrow">In This Guide</span>
+          <nav class="article-toc" aria-label="Article sections">
+            {sectionNav.map((item) => (
+              <a href={`#${item.id}`}>
+                <span>{item.number}</span>
+                <strong>{item.label}</strong>
+              </a>
+            ))}
+          </nav>
+        </div>
         <div class="article-aside__block">
           <span class="eyebrow">Key Takeaways</span>
           <ul>
@@ -121,15 +145,62 @@ const faqSchema = {
           <span class="eyebrow">Next Step</span>
           <h2>Ready to compare materials?</h2>
           <p>{article.quoteAngle}</p>
-          <CTAButton href={contactHref} variant="primary" block>Send an RFQ</CTAButton>
+          <CTAButton href={contactHref} variant="primary" block rfq>Send an RFQ</CTAButton>
         </div>
       </aside>
 
       <div class="article-content">
-        {article.sections.map((section) => (
-          <section class="article-section">
-            <h2>{section.heading}</h2>
-            <p>{section.body}</p>
+        {article.buyerSummary && (
+          <section class="article-summary">
+            <span class="eyebrow">Buyer Summary</span>
+            <h2>{article.buyerSummary.heading}</h2>
+            <div class="article-summary__grid">
+              {article.buyerSummary.items.map((item) => (
+                <div class="article-summary__item">
+                  <span>{item.label}</span>
+                  <strong>{item.value}</strong>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {article.sections.map((section, index) => (
+          <section class="article-section" id={sectionNav[index].id}>
+            <div class="article-section__heading">
+              <span>{sectionNav[index].number}</span>
+              <h2>{sectionNav[index].label}</h2>
+            </div>
+            {section.image && (
+              <figure class="article-section__figure">
+                <picture>
+                  {section.imageWebp && <source srcset={section.imageWebp} type="image/webp" />}
+                  <img src={section.image} alt={section.imageAlt ?? section.heading} loading="lazy" width="1200" height="900" />
+                </picture>
+                {section.caption && <figcaption>{section.caption}</figcaption>}
+              </figure>
+            )}
+            {toParagraphs(section.body).map((paragraph) => <p>{paragraph}</p>)}
+            {section.bullets && (
+              <ul class="article-section__bullets">
+                {section.bullets.map((item) => <li>{item}</li>)}
+              </ul>
+            )}
+            {section.table && (
+              <div class="article-table-wrap">
+                <table class="article-table">
+                  <thead>
+                    <tr>{section.table.headers.map((header) => <th>{header}</th>)}</tr>
+                  </thead>
+                  <tbody>
+                    {section.table.rows.map((row) => (
+                      <tr>{row.map((cell) => <td>{cell}</td>)}</tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+            {section.callout && <div class="article-callout">{section.callout}</div>}
           </section>
         ))}
 
@@ -279,7 +350,7 @@ const faqSchema = {
 
   .article-layout {
     display: grid;
-    grid-template-columns: 280px minmax(0, 760px);
+    grid-template-columns: 300px minmax(0, 790px);
     justify-content: center;
     gap: var(--space-3xl);
     padding-block: var(--space-4xl);
@@ -325,25 +396,220 @@ const faqSchema = {
     background: var(--color-bg-alt);
   }
 
+  .article-toc {
+    display: grid;
+    gap: var(--space-xs);
+    margin-top: var(--space-md);
+  }
+
+  .article-toc a {
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr);
+    align-items: start;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.35;
+    transition: background var(--transition-base), color var(--transition-base);
+  }
+
+  .article-toc a:hover {
+    background: var(--color-bg-alt);
+    color: var(--color-primary);
+  }
+
+  .article-toc span {
+    color: var(--color-accent-dark);
+    font-weight: 800;
+  }
+
   .article-content {
     min-width: 0;
   }
 
-  .article-section {
-    margin-bottom: var(--space-2xl);
+  .article-summary {
+    margin-bottom: var(--space-3xl);
+    padding: var(--space-xl);
+    border: 1px solid var(--color-border);
+    border-top: 4px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    box-shadow: var(--shadow-sm);
   }
 
-  .article-section h2,
-  .decision-section h2,
-  .related-section h2,
-  .article-faq h2 {
-    margin-bottom: var(--space-md);
+  .article-summary h2 {
+    margin: var(--space-xs) 0 var(--space-lg);
+    color: var(--color-primary);
     font-size: var(--text-2xl);
   }
 
+  .article-summary__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+  }
+
+  .article-summary__item {
+    display: grid;
+    gap: var(--space-xs);
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-alt);
+  }
+
+  .article-summary__item span {
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .article-summary__item strong {
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    line-height: 1.45;
+  }
+
+  .article-section {
+    scroll-margin-top: 110px;
+    margin-bottom: var(--space-3xl);
+  }
+
+  .article-section__heading,
+  .decision-section h2,
+  .related-section h2,
+  .article-faq h2 {
+    margin-bottom: var(--space-lg);
+  }
+
+  .article-section__heading {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    align-items: start;
+    gap: var(--space-md);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .article-section__heading span {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-size: var(--text-sm);
+    font-weight: 800;
+  }
+
+  .article-section__heading h2,
+  .decision-section h2,
+  .related-section h2,
+  .article-faq h2 {
+    font-size: var(--text-2xl);
+  }
+
+  .article-section__heading h2 {
+    margin: 0;
+    color: var(--color-primary);
+  }
+
   .article-section p {
+    margin-bottom: var(--space-md);
     font-size: var(--text-lg);
     line-height: 1.75;
+  }
+
+  .article-section__figure {
+    overflow: hidden;
+    margin: 0 0 var(--space-lg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .article-section__figure picture,
+  .article-section__figure img {
+    display: block;
+    width: 100%;
+  }
+
+  .article-section__figure img {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .article-section__figure figcaption {
+    padding: var(--space-sm) var(--space-md);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .article-section__bullets {
+    display: grid;
+    gap: var(--space-sm);
+    margin: var(--space-lg) 0;
+    padding: var(--space-lg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg-alt);
+  }
+
+  .article-section__bullets li {
+    padding-left: var(--space-md);
+    border-left: 3px solid var(--color-accent);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .article-table-wrap {
+    overflow-x: auto;
+    margin: var(--space-lg) 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+  }
+
+  .article-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+  }
+
+  .article-table th,
+  .article-table td {
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .article-table th {
+    background: var(--color-bg-alt);
+    color: var(--color-primary);
+    font-weight: 800;
+  }
+
+  .article-table tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .article-callout {
+    margin-top: var(--space-lg);
+    padding: var(--space-lg);
+    border-left: 4px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--color-accent) 10%, white);
+    color: var(--color-primary);
+    font-weight: 700;
+    line-height: var(--leading-relaxed);
   }
 
   .decision-section {
@@ -423,7 +689,7 @@ const faqSchema = {
   }
 
   .related-product img {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
   }
 
@@ -489,6 +755,10 @@ const faqSchema = {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .article-aside__block--toc {
+      grid-column: 1 / -1;
+    }
+
     .article-final-cta .container {
       align-items: flex-start;
       flex-direction: column;
@@ -509,7 +779,8 @@ const faqSchema = {
     }
 
     .article-aside,
-    .related-products {
+    .related-products,
+    .article-summary__grid {
       grid-template-columns: 1fr;
     }
 

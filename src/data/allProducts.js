@@ -21,34 +21,34 @@
 export const allProducts = [
   {
     slug: "plain-iridescent-laser-spandex-4-way-stretch",
-    metaTitle: "Plain Iridescent 4-Way Stretch Foil Fabric | Wholesale Supplier",
+    metaTitle: "Iridescent Laser 4-Way Stretch Fabric for Swimwear & Performance Wear | Nixia Fabric",
     metaDesc:
-      "Plain iridescent laser foil fabric with 4-way stretch, 180 g/m² weight and 150 cm width for swimwear, dancewear and stage costumes. Factory wholesale supply with custom color support.",
-    title: "Plain Iridescent Laser Hot-Stamping Spandex 4-Way Stretch Fabric",
+      "Iridescent laser 4-way stretch fabric on a spandex base for swimwear, dancewear, stage costumes and fashion apparel. Width 150 cm, weight 180 GSM, MOQ 100 meters, sample available.",
+    title: "Iridescent Laser 4-Way Stretch Fabric for Swimwear & Performance Wear",
     mainImageUrl: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.jpg",
     mainImageWebp: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.webp",
     mainImageAlt:
-      "Plain iridescent laser spandex 4-way stretch fabric with holographic laser finish",
+      "Iridescent laser 4-way stretch fabric used in swimwear and performance wear",
     imageList: [
       {
         src: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.jpg",
         webp: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.webp",
-        alt: "Plain iridescent laser spandex 4-way stretch fabric with holographic laser finish",
+        alt: "Iridescent laser 4-way stretch fabric used in swimwear and performance wear",
       },
       {
         src: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/2.jpg",
         webp: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/2.webp",
-        alt: "Close-up texture of iridescent laser hot stamping spandex fabric 2",
+        alt: "Close-up of iridescent laser 4-way stretch fabric surface",
       },
       {
         src: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/3.jpg",
         webp: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/3.webp",
-        alt: "Close-up texture of iridescent laser hot stamping spandex fabric 3",
+        alt: "Close-up of reflective holographic stretch fabric surface",
       },
       {
         src: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/4.jpg",
         webp: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/4.webp",
-        alt: "Close-up texture of iridescent laser hot stamping spandex fabric 4",
+        alt: "Close-up of iridescent laser hot-stamping stretch fabric texture",
       },
     ],
     galleryMainPath: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/",
@@ -57,76 +57,138 @@ export const allProducts = [
       "/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/",
     video: null,
     shortIntro:
-      "Plain iridescent laser hot‑stamping spandex fabric is engineered for garments that need real stretch performance. The 4‑way stretch spandex base stretches and recovers in every direction, while the plain laser foil surface delivers a clean, uniform iridescent shine.",
+      "Holographic hot-stamping finish on a flexible stretch base, designed for swimwear, dancewear, stage costumes and fashion apparel.",
     fullDescription:
-      "Our plain iridescent laser hot-stamping spandex fabric delivers uniform iridescent luster with excellent 4-way stretch-recovery. It is widely used for swimwear, dancewear and stage costumes.\n\nProduced in our self-owned factory, SGS and REACH testing can be arranged according to product and buyer requirements. Bulk custom colors are available. Free samples are offered; buyer covers international shipping cost, which will be deducted from bulk orders.",
+      "This iridescent laser stretch fabric combines a reflective holographic surface with a flexible 4-way stretch base. It is designed for fitted apparel and performance-focused applications where visual impact and fabric movement both matter.\n\nThe fabric works well for swimwear, dancewear, stage costumes and fashion apparel. It has a soft stretch base, a 150 cm width, 180 GSM weight and 0.35–0.40 mm thickness. MOQ is 100 meters, and samples are available for pre-production checking before bulk order.",
     specs: {
       width: "150cm",
-      weight: "180 g/m²",
-      baseMaterial: "Polyester knitted base",
-      thickness: "0.35‑0.4mm",
+      weight: "180 GSM",
+      baseMaterial: "Spandex / stretch fabric",
+      thickness: "0.35–0.40 mm",
       moq: "100",
       leadTime: "1-3",
     },
     specTable: [
-      { label: "Name", value: "Plain Iridescent Laser Hot-Stamping 4-Way Stretch Fabric" },
-      { label: "Material", value: "100% Polyester knitted base" },
-      { label: "Weight", value: "180 g/m²" },
+      { label: "Name", value: "Iridescent Laser 4-Way Stretch Fabric for Swimwear & Performance Wear" },
+      { label: "Material", value: "Spandex / stretch fabric" },
+      { label: "Surface", value: "Iridescent laser hot-stamping" },
       { label: "Width", value: "150cm" },
-      { label: "Thickness", value: "0.35‑0.4mm" },
-      { label: "Feature", value: "4-way stretch, iridescent laser foil finish" },
-      { label: "Quality Standard", value: "China Textile Industry Standard (FZ)" },
-      { label: "Usage", value: "Swimwear, dance wear, stage costumes, fashion apparel" },
+      { label: "Weight", value: "180 GSM" },
+      { label: "Thickness", value: "0.35–0.40 mm" },
+      { label: "Stretch", value: "4-way stretch" },
+      { label: "Color", value: "One standard color" },
+      { label: "MOQ", value: "100 meters" },
+      { label: "Sample", value: "Available" },
+      { label: "Usage", value: "Swimwear, dancewear, stage costumes, fashion apparel" },
     ],
     b2bTable: [
       { label: "MOQ", value: "100 Meters" },
       { label: "Supply type", value: "In-stock available" },
       { label: "Sample", value: "Free sample, customer bears international freight; shipping cost deducted from bulk order" },
       { label: "Bulk Lead time", value: "1-3 working days after payment and stock confirmation for orders ≤500m; 7-15 working days when production is required" },
-      { label: "Port", value: "Ningbo / Shanghai" },
       { label: "Available Customization", value: "backing options" },
       { label: "OEM / ODM", value: "Supported" },
-      { label: "Testing & Compliance", value: "SGS / REACH testing can be arranged according to buyer requirements" },
+      { label: "Testing & Compliance", value: "SGS / REACH on request" },
       { label: "Package type", value: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement" },
       { label: "Trade Terms", value: "FOB, CIF available, provide commercial invoice & packing list" },
     ],
     applications: [
-      "Western-style bodysuits",
       "Swimwear",
-      "Stage garments",
       "Dancewear",
+      "Stage costumes",
       "Fashion apparel",
     ],
     inStock: true,
     stockStatus: "In-Stock",
-    badge: "8 Stock Colors",
-    colorCount: 8,
+    badge: "Standard Color",
+    colorCount: 1,
     tags: ["metallic", "hot-stamping", "spandex", "swimwear", "stage-costume"],
-    availableColors: "8 stock colors, support custom color",
+    availableColors: "1 standard color",
     sampleNote: "Free sample available, customer bears shipping cost",
-    customizationNote: "Custom colors & custom base fabric",
+    customizationNote: "OEM / ODM available for bulk development",
     packaging: "Roll packing, export carton",
     tradeTerms: "FOB, CIF upon quotation",
+    heroHighlights: [
+      "4-Way Stretch",
+      "Iridescent Laser Finish",
+      "150 cm Width",
+      "180 GSM",
+      "MOQ 100 Meters",
+      "Sample Available",
+    ],
+    whyChoose: [
+      {
+        title: "Iridescent Laser Effect",
+        desc: "Reflective surface effect that changes with light and viewing angle.",
+      },
+      {
+        title: "4-Way Stretch",
+        desc: "Flexible stretch performance for fitted garments and movement.",
+      },
+      {
+        title: "Soft & Flexible Base",
+        desc: "Suitable for apparel applications that need body movement and drape.",
+      },
+      {
+        title: "Built for Performance & Fashion",
+        desc: "Designed for swimwear, dancewear, stage costumes and fashion apparel.",
+      },
+    ],
+    buyerApplications: [
+      {
+        title: "Swimwear Manufacturers",
+        desc: "Suitable for reflective and eye-catching swimwear designs.",
+      },
+      {
+        title: "Dancewear & Performance Wear",
+        desc: "Flexible stretch fabric for fitted performance garments.",
+      },
+      {
+        title: "Stage Costume Manufacturers",
+        desc: "Iridescent surface effect helps costumes stand out under stage lighting.",
+      },
+      {
+        title: "Fashion Apparel Brands",
+        desc: "Suitable for fashion garments requiring a reflective holographic appearance.",
+      },
+    ],
+    samplePrompt:
+      "Request a fabric sample to confirm color, stretch and surface effect before bulk order. Sample is free; buyer covers shipping.",
     faqList: [
       {
-        question: "What is the MOQ for this fabric?",
+        question: "What is this iridescent laser stretch fabric used for?",
         answer:
-          "The MOQ is 100m per color from stock. Custom colors start from higher quantities — contact us for a quotation.",
+          "It is used for swimwear, dancewear, stage costumes and fashion apparel that need a reflective holographic appearance with stretch performance.",
       },
       {
-        question: "Can I get a sample before placing a bulk order?",
+        question: "Does the fabric have 4-way stretch?",
         answer:
-          "Yes. Samples are free — you only bear the international shipping cost, which is deducted from your bulk order. Samples are ready within 3–7 working days.",
+          "Yes. The fabric is built on a stretch base with 4-way stretch performance for fitted garments and movement-based applications.",
       },
       {
-        question: "How does the foil hold up on a high-stretch base?",
+        question: "What is the MOQ?",
         answer:
-          "The foil finish is engineered to flex with the 4-way stretch base without cracking in normal wear. For demanding applications we recommend garment wash-testing on an approval sample first.",
+          "The MOQ is 100 meters.",
       },
       {
-        question: "What certifications are available?",
+        question: "Can I request a sample before placing a bulk order?",
         answer:
-          "The material is SGS and REACH testing can be arranged according to product and buyer requirements. Buyer-specific test reports can be arranged by project.",
+          "Yes. Samples are available before bulk order. Buyer covers international shipping, and the shipping cost can be deducted from the bulk order.",
+      },
+      {
+        question: "What is the fabric width and weight?",
+        answer:
+          "The fabric width is 150 cm and the weight is 180 GSM.",
+      },
+      {
+        question: "Can you provide custom development?",
+        answer:
+          "OEM / ODM support is available for bulk development according to buyer requirements.",
+      },
+      {
+        question: "How should I test the fabric before bulk production?",
+        answer:
+          "We recommend requesting a sample and checking the stretch, surface effect and sewing performance with your own production process before bulk approval.",
       },
     ],
     skuImages: [],
