@@ -56,6 +56,20 @@ for (const product of allProducts) {
     checkAsset(`${product.slug} gallery image`, `${product.galleryMainPath}${file}`);
   }
 
+  const galleryDir = publicPath(product.galleryMainPath);
+  if (fs.existsSync(galleryDir)) {
+    const mainFiles = fs.readdirSync(galleryDir).map((file) => file.toLowerCase());
+    const hasNumberedMain = mainFiles.some((file) => /^1\.(jpe?g|png|webp)$/.test(file));
+    const usesMain01 =
+      /\/main01\.(jpe?g|png|webp)$/i.test(product.mainImageUrl ?? "") ||
+      /\/main01\.(jpe?g|png|webp)$/i.test(product.mainImageWebp ?? "") ||
+      (product.galleryImages ?? []).some((file) => /^main01\.(jpe?g|png|webp)$/i.test(file));
+
+    if (hasNumberedMain && usesMain01) {
+      errors.push(`${product.slug}: use main/1 instead of main/main01 when both exist`);
+    }
+  }
+
   for (const file of product.detailImages ?? []) {
     checkAsset(`${product.slug} detail image`, `${product.detailImagePath}${file}`);
   }

@@ -139,14 +139,6 @@ const relatedProducts = allProducts
   )
   .slice(0, 3);
 
-// Bottom SEO tags — applications + a stable attribute set
-const seoTags = [
-  ...new Set([
-    ...product.applications,
-    ...["wholesale", "oem odm", "factory direct", "free sample"],
-  ]),
-];
-
 const titleCase = (s: string) =>
   s.replace(/(^|[\s-])([a-z])/g, (_m, p1: string, p2: string) => p1 + p2.toUpperCase());
 
@@ -999,27 +991,6 @@ const heroVideo = product.video
     </div>
   </section>
 )}
-
-<!-- Bottom SEO Tags -->
-<section class="section detail-tags-section" aria-label="Product tags">
-  <div class="container">
-    <h2 class="section-title-with-icon">
-      <span class="section-title-with-icon__icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 10 12 3 4 10v8l8 3 8-3z" />
-          <path d="M12 3v18" />
-        </svg>
-      </span>
-      <span>Product Tags</span>
-    </h2>
-    <p>Application scenarios and fabric attributes associated with this product.</p>
-    <div class="detail-tags">
-      {seoTags.map((tag) => (
-        <span class="detail-tags__item">{tag}</span>
-      ))}
-    </div>
-  </div>
-</section>
 
 <script>
   const gallery = document.getElementById('p-hero-gallery');
@@ -1945,42 +1916,6 @@ const heroVideo = product.video
 
   .buyer-notice__list li:last-child {
     margin-bottom: 0;
-  }
-
-  .detail-tags-section {
-    border-top: 1px solid var(--color-border);
-    background: var(--color-bg-alt);
-  }
-
-  .detail-tags-section h2 {
-    font-size: var(--text-xl);
-    font-weight: 700;
-    color: var(--color-primary);
-    margin-bottom: var(--space-sm);
-  }
-
-  .detail-tags-section p {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    margin: 0 0 var(--space-md);
-  }
-
-  /* Tags */
-  .detail-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.375rem;
-    margin-top: var(--space-sm);
-  }
-
-  .detail-tags__item {
-    display: inline-block;
-    padding: 0.25rem 0.625rem;
-    font-size: var(--text-xs);
-    color: var(--color-accent-dark);
-    background: rgba(196, 160, 53, 0.08);
-    border-radius: var(--radius-sm);
-    text-transform: capitalize;
   }
 
   /* ===== Simple field-value tables (plain iridescent) ===== */

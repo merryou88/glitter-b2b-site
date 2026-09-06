@@ -201,19 +201,19 @@ export const allProducts = [
       "Full-print hot-stamping spandex milk-silk fabric with 160 g/m² weight, 22 available colors and 4-way stretch for fashion garments, swimwear and stage costumes. Factory wholesale and OEM support.",
     title: "Full-Print Hot-Stamping Spandex Milk-Silk Fabric",
     sku: "P0002",
-    mainImageUrl: "/images/products/full-print-hot-stamping-spandex-milk-silk/main/main01.jpg",
-    mainImageWebp: "/images/products/full-print-hot-stamping-spandex-milk-silk/main/main01.webp",
+    mainImageUrl: "/images/products/full-print-hot-stamping-spandex-milk-silk/main/1.jpg",
+    mainImageWebp: "/images/products/full-print-hot-stamping-spandex-milk-silk/main/1.webp",
     mainImageAlt:
       "Full-print hot-stamping spandex milk-silk fabric with soft hand-feel and 4-way stretch",
     imageList: [
       {
-        src: "/images/products/full-print-hot-stamping-spandex-milk-silk/main/main01.jpg",
-        webp: "/images/products/full-print-hot-stamping-spandex-milk-silk/main/main01.webp",
+        src: "/images/products/full-print-hot-stamping-spandex-milk-silk/main/1.jpg",
+        webp: "/images/products/full-print-hot-stamping-spandex-milk-silk/main/1.webp",
         alt: "Full-print hot-stamping spandex milk-silk fabric with soft hand-feel and 4-way stretch",
       },
     ],
     galleryMainPath: "/images/products/full-print-hot-stamping-spandex-milk-silk/main/",
-    galleryImages: ["main01.jpg"],
+    galleryImages: ["1.jpg"],
     detailImagePath: "/images/products/full-print-hot-stamping-spandex-milk-silk/application/product-detail/",
     video: null,
     shortIntro:
@@ -416,18 +416,18 @@ export const allProducts = [
       "Non-woven glitter fabric with dense sparkle, clean-cut edges and a stable backing for holiday decoration, stage props, banners and performance costumes. Factory wholesale supply.",
     title: "Non-Woven Glitter Fabric",
     sku: "P0004",
-    mainImageUrl: "/images/products/non-woven-glitter-fabric/main/main01.jpg",
-    mainImageWebp: "/images/products/non-woven-glitter-fabric/main/main01.webp",
+    mainImageUrl: "/images/products/non-woven-glitter-fabric/main/1.jpg",
+    mainImageWebp: "/images/products/non-woven-glitter-fabric/main/1.webp",
     mainImageAlt: "Sparkling non-woven glitter fabric with dense sparkle coating",
     imageList: [
       {
-        src: "/images/products/non-woven-glitter-fabric/main/main01.jpg",
-        webp: "/images/products/non-woven-glitter-fabric/main/main01.webp",
+        src: "/images/products/non-woven-glitter-fabric/main/1.jpg",
+        webp: "/images/products/non-woven-glitter-fabric/main/1.webp",
         alt: "Sparkling non-woven glitter fabric with dense sparkle coating",
       },
     ],
     galleryMainPath: "/images/products/non-woven-glitter-fabric/main/",
-    galleryImages: ["main01.jpg"],
+    galleryImages: ["1.jpg"],
     detailImagePath: "/images/products/non-woven-glitter-fabric/application/product-detail/",
     video: null,
     shortIntro:
@@ -605,19 +605,19 @@ export const allProducts = [
       "Rainbow gradient glitter synthetic leather with a reflective finish and structured base for bags, footwear and book-covering materials. Factory wholesale supply with custom options.",
     title: "Rainbow Gradient Glitter Synthetic Leather Fabric",
     sku: "P0006",
-    mainImageUrl: "/images/products/rainbow-gradient-glitter-synthetic-leather/main/main01.jpg",
-    mainImageWebp: "/images/products/rainbow-gradient-glitter-synthetic-leather/main/main01.webp",
+    mainImageUrl: "/images/products/rainbow-gradient-glitter-synthetic-leather/main/1.jpg",
+    mainImageWebp: "/images/products/rainbow-gradient-glitter-synthetic-leather/main/1.webp",
     mainImageAlt:
       "Rainbow gradient glitter synthetic leather fabric with reflective finish",
     imageList: [
       {
-        src: "/images/products/rainbow-gradient-glitter-synthetic-leather/main/main01.jpg",
-        webp: "/images/products/rainbow-gradient-glitter-synthetic-leather/main/main01.webp",
+        src: "/images/products/rainbow-gradient-glitter-synthetic-leather/main/1.jpg",
+        webp: "/images/products/rainbow-gradient-glitter-synthetic-leather/main/1.webp",
         alt: "Rainbow gradient glitter synthetic leather fabric with reflective finish",
       },
     ],
     galleryMainPath: "/images/products/rainbow-gradient-glitter-synthetic-leather/main/",
-    galleryImages: ["main01.jpg"],
+    galleryImages: ["1.jpg"],
     detailImagePath: "/images/products/rainbow-gradient-glitter-synthetic-leather/application/product-detail/",
     video: null,
     shortIntro:
