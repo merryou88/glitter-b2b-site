@@ -36,16 +36,6 @@ const blogData = {
   keywords="glitter fabric guide, foil fabric guide, SGS REACH fabric testing, synthetic leather buyer guide, fabric manufacturer"
   structuredData={[breadcrumbData, blogData]}
 >
-  <div class="breadcrumb-bar">
-    <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a>
-        <span class="breadcrumb__sep">/</span>
-        <span class="breadcrumb__current">Blog</span>
-      </nav>
-    </div>
-  </div>
-
   <section class="blog-hero">
     <div class="container blog-hero__inner">
       <div>
@@ -187,33 +177,6 @@ const blogData = {
 </script>
 
 <style>
-  .breadcrumb-bar {
-    background: var(--color-bg-alt);
-    padding-block: var(--space-md);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-  }
-
-  .breadcrumb a:hover {
-    color: var(--color-accent-dark);
-  }
-
-  .breadcrumb__sep {
-    color: var(--color-text-light);
-  }
-
-  .breadcrumb__current {
-    color: var(--color-primary);
-    font-weight: 600;
-  }
-
   .blog-hero {
     background: var(--color-primary);
     color: var(--color-white);

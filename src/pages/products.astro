@@ -105,11 +105,6 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
   <!-- Page Hero (compact catalog header) -->
   <section class="page-hero">
     <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a>
-        <span class="breadcrumb__sep">/</span>
-        <span class="breadcrumb__current">Products</span>
-      </nav>
       <span class="eyebrow">Wholesale Catalog</span>
       <h1>Wholesale Glitter, Foil &amp; Iridescent Fabrics</h1>
       <p class="page-hero__desc">
@@ -271,18 +266,6 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
   }
 
   .page-hero .container { position: relative; z-index: 1; }
-
-  .page-hero .breadcrumb {
-    margin-bottom: var(--space-lg);
-    font-size: var(--text-sm);
-    color: rgba(255, 255, 255, 0.6);
-  }
-
-  .page-hero .breadcrumb a { color: rgba(255, 255, 255, 0.6); text-decoration: none; }
-  .page-hero .breadcrumb a:hover { color: var(--color-accent-light); }
-
-  .breadcrumb__sep { margin-inline: var(--space-xs); opacity: 0.5; }
-  .breadcrumb__current { color: var(--color-white); }
 
   .page-hero .eyebrow { color: var(--color-accent-light); }
   .page-hero h1 { color: var(--color-white); margin-bottom: var(--space-md); }
