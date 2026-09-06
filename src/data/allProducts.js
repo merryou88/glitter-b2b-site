@@ -25,6 +25,7 @@ export const allProducts = [
     metaDesc:
       "Iridescent laser 4-way stretch fabric on a spandex base for swimwear, dancewear, stage costumes and fashion apparel. Width 150 cm, weight 180 GSM, MOQ 100 meters, sample available.",
     title: "Iridescent Laser 4-Way Stretch Fabric for Swimwear & Performance Wear",
+    sku: "P0001",
     mainImageUrl: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.jpg",
     mainImageWebp: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.webp",
     mainImageAlt:
@@ -59,7 +60,7 @@ export const allProducts = [
     shortIntro:
       "Holographic hot-stamping finish on a flexible stretch base, designed for swimwear, dancewear, stage costumes and fashion apparel.",
     fullDescription:
-      "This iridescent laser stretch fabric combines a reflective holographic surface with a flexible 4-way stretch base. It is designed for fitted apparel and performance-focused applications where visual impact and fabric movement both matter.\n\nThe fabric works well for swimwear, dancewear, stage costumes and fashion apparel. It has a soft stretch base, a 150 cm width, 180 GSM weight and 0.35–0.40 mm thickness. MOQ is 100 meters, and samples are available for pre-production checking before bulk order.",
+      "This iridescent laser stretch fabric combines a reflective holographic surface with a flexible 4-way stretch base. It is designed for fitted apparel and performance-focused applications where visual impact and fabric movement both matter, including swimwear, dancewear, stage costumes and fashion apparel.",
     specs: {
       width: "150cm",
       weight: "180 GSM",
@@ -86,8 +87,7 @@ export const allProducts = [
       { label: "Supply type", value: "In-stock available" },
       { label: "Sample", value: "Free sample, customer bears international freight; shipping cost deducted from bulk order" },
       { label: "Bulk Lead time", value: "1-3 working days after payment and stock confirmation for orders ≤500m; 7-15 working days when production is required" },
-      { label: "Available Customization", value: "backing options" },
-      { label: "OEM / ODM", value: "Supported" },
+      { label: "OEM / ODM", value: "Custom color, width, new fabric development & private label available" },
       { label: "Testing & Compliance", value: "SGS / REACH on request" },
       { label: "Package type", value: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement" },
       { label: "Trade Terms", value: "FOB, CIF available, provide commercial invoice & packing list" },
@@ -103,7 +103,7 @@ export const allProducts = [
     badge: "Standard Color",
     colorCount: 1,
     tags: ["metallic", "hot-stamping", "spandex", "swimwear", "stage-costume"],
-    availableColors: "1 standard color",
+    availableColors: "19 colors available, color card and sample available on request",
     sampleNote: "Free sample available, customer bears shipping cost",
     customizationNote: "OEM / ODM available for bulk development",
     packaging: "Roll packing, export carton",
@@ -200,25 +200,26 @@ export const allProducts = [
     metaDesc:
       "Full-print hot-stamping spandex milk-silk fabric with 160 g/m² weight, 22 available colors and 4-way stretch for fashion garments, swimwear and stage costumes. Factory wholesale and OEM support.",
     title: "Full-Print Hot-Stamping Spandex Milk-Silk Fabric",
-    mainImageUrl: "/images/hot01.jpg",
-    mainImageWebp: "/images/hot01.webp",
+    sku: "P0002",
+    mainImageUrl: "/images/products/full-print-hot-stamping-spandex-milk-silk/main/main01.jpg",
+    mainImageWebp: "/images/products/full-print-hot-stamping-spandex-milk-silk/main/main01.webp",
     mainImageAlt:
       "Full-print hot-stamping spandex milk-silk fabric with soft hand-feel and 4-way stretch",
     imageList: [
       {
-        src: "/images/hot01.jpg",
-        webp: "/images/hot01.webp",
+        src: "/images/products/full-print-hot-stamping-spandex-milk-silk/main/main01.jpg",
+        webp: "/images/products/full-print-hot-stamping-spandex-milk-silk/main/main01.webp",
         alt: "Full-print hot-stamping spandex milk-silk fabric with soft hand-feel and 4-way stretch",
       },
     ],
     galleryMainPath: "/images/products/full-print-hot-stamping-spandex-milk-silk/main/",
-    galleryImages: ["hot01.jpg"],
+    galleryImages: ["main01.jpg"],
     detailImagePath: "/images/products/full-print-hot-stamping-spandex-milk-silk/application/product-detail/",
     video: null,
     shortIntro:
       "Full-print hot-stamping spandex milk-silk fabric pairs a soft milk-silk ground with an all-over foil print. The 4-way stretch base recovers well and the foil surface delivers a bright metallic shine that holds up through wear.",
     fullDescription:
-      "Nixia Fabric brings you our full-print hot-stamping spandex milk-silk fabric — a stretchy base fabric finished with an all-over hot-stamping foil print. The milk-silk ground gives a soft, smooth hand-feel, while the foil surface delivers a bright metallic shine that holds up through wear.\n\nThe 4-way stretch construction recovers well after stretching, making it a practical choice for fitted fashion garments, swimwear and stage performance costumes. Manufactured in our own facility since 2013, with SGS and REACH testing support available according to product and buyer requirements, custom color matching and backing options are available for bulk orders.\n\nFree samples available — customer only bears international shipping cost, which will be deducted from your bulk order.",
+      "Nixia Fabric brings you our full-print hot-stamping spandex milk-silk fabric — a stretchy base fabric finished with an all-over hot-stamping foil print. The milk-silk ground gives a soft, smooth hand-feel, while the foil surface delivers a bright metallic shine that holds up through wear.\n\nThe 4-way stretch construction recovers well after stretching, making it a practical choice for fitted fashion garments, swimwear and stage performance costumes.",
     specs: {
       width: "150cm",
       weight: "160 g/m²",
@@ -244,8 +245,7 @@ export const allProducts = [
       { label: "Sample", value: "Free sample, customer bears international freight; shipping cost deducted from bulk order" },
       { label: "Bulk Lead time", value: "1-3 working days after payment and stock confirmation for orders ≤500m; 7-15 working days when production is required" },
       { label: "Port", value: "Ningbo / Shanghai" },
-      { label: "Available Customization", value: "Custom patterns, colors, width & backing" },
-      { label: "OEM / ODM", value: "Supported" },
+      { label: "OEM / ODM", value: "Custom color, width, new fabric development & private label available" },
       { label: "Testing & Compliance", value: "SGS / REACH testing can be arranged according to buyer requirements" },
       { label: "Package type", value: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement" },
       { label: "Trade Terms", value: "FOB, CIF available, provide commercial invoice & packing list" },
@@ -297,6 +297,7 @@ export const allProducts = [
     metaDesc:
       "Iridescent laser stretch ice-silk fabric with a shifting multi-color finish and elastic recovery for stage costumes, dancewear and backdrop decoration. Factory wholesale supply.",
     title: "iridescent-laser-hot-stamping-stretch-ice-silk",
+    sku: "P0003",
     mainImageUrl: "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/main/1.jpg",
     mainImageWebp: "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/main/1.webp",
     mainImageAlt:
@@ -338,7 +339,7 @@ export const allProducts = [
     shortIntro:
       "Iridescent laser hot-stamping stretch ice-silk fabric pairs a light, elastic ice-silk ground with a laser foil surface that shifts through multiple colors as light and viewing angle change. The gradient rainbow effect makes it a favorite for stage costumes and photo backdrops.",
     fullDescription:
-      "Our iridescent laser hot-stamping stretch ice-silk fabric pairs a light, elastic ice-silk ground with a laser foil surface that shifts through multiple colors as light and viewing angle change. The gradient rainbow effect makes it a favorite for stage costumes and photo backdrops.\n\nThe stretch base drapes well and recovers after stretching, so it works for both fitted garments and decorative installations. Manufactured in-house since 2013; SGS and REACH testing can be arranged according to product and buyer requirements, with custom color matching available for bulk orders.\n\nFree samples available — customer only bears international shipping cost, which will be deducted from your bulk order.",
+      "Our iridescent laser hot-stamping stretch ice-silk fabric pairs a light, elastic ice-silk ground with a laser foil surface that shifts through multiple colors as light and viewing angle change. The gradient rainbow effect makes it a favorite for stage costumes and photo backdrops.\n\nThe stretch base drapes well and recovers after stretching, so it works for both fitted garments and decorative installations.",
     specs: {
       width: "150cm",
       weight: "160 g/m²",
@@ -363,8 +364,7 @@ export const allProducts = [
       { label: "Sample", value: "Free sample, customer bears international freight; shipping cost deducted from bulk order" },
       { label: "Bulk Lead time", value: "1-3 working days after payment and stock confirmation for orders ≤500m; 7-15 working days when production is required" },
       { label: "Port", value: "Ningbo / Shanghai" },
-      { label: "Available Customization", value: "Custom foil colors, width & backing" },
-      { label: "OEM / ODM", value: "Supported" },
+      { label: "OEM / ODM", value: "Custom color, width, new fabric development & private label available" },
       { label: "Testing & Compliance", value: "SGS / REACH testing can be arranged according to buyer requirements" },
       { label: "Package type", value: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement" },
       { label: "Trade Terms", value: "FOB, CIF available, provide commercial invoice & packing list" },
@@ -379,7 +379,7 @@ export const allProducts = [
     badge: "Standard Color",
     colorCount: 1,
     tags: ["metallic", "gradient", "hot-stamping", "spandex", "stage-costume", "decoration"],
-    availableColors: "1 standard color",
+    availableColors: "19 colors available, color card available on request",
     sampleNote: "Free sample available, customer bears shipping cost",
     customizationNote: "Custom foil colors & custom width",
     packaging: "Roll packing, export carton",
@@ -415,24 +415,25 @@ export const allProducts = [
     metaDesc:
       "Non-woven glitter fabric with dense sparkle, clean-cut edges and a stable backing for holiday decoration, stage props, banners and performance costumes. Factory wholesale supply.",
     title: "Non-Woven Glitter Fabric",
-    mainImageUrl: "/images/hot03.jpg",
-    mainImageWebp: "/images/hot03.webp",
+    sku: "P0004",
+    mainImageUrl: "/images/products/non-woven-glitter-fabric/main/main01.jpg",
+    mainImageWebp: "/images/products/non-woven-glitter-fabric/main/main01.webp",
     mainImageAlt: "Sparkling non-woven glitter fabric with dense sparkle coating",
     imageList: [
       {
-        src: "/images/hot03.jpg",
-        webp: "/images/hot03.webp",
+        src: "/images/products/non-woven-glitter-fabric/main/main01.jpg",
+        webp: "/images/products/non-woven-glitter-fabric/main/main01.webp",
         alt: "Sparkling non-woven glitter fabric with dense sparkle coating",
       },
     ],
     galleryMainPath: "/images/products/non-woven-glitter-fabric/main/",
-    galleryImages: ["hot03.jpg"],
+    galleryImages: ["main01.jpg"],
     detailImagePath: "/images/products/non-woven-glitter-fabric/application/product-detail/",
     video: null,
     shortIntro:
       "Non-woven glitter fabric carries a dense, sparkling glitter surface on a stable non-woven backing. It is the cost-effective workhorse of the glitter range — bright, uniform sparkle at a friendly price point for volume decoration projects.",
     fullDescription:
-      "Our non-woven glitter fabric carries a dense, sparkling glitter surface on a stable non-woven backing. It is the cost-effective workhorse of the glitter range — bright, uniform sparkle at a friendly price point for volume decoration projects.\n\nThe non-woven base cuts cleanly without fraying, which makes it especially practical for holiday decoration, stage props, banners and performance costumes. Manufactured in our own facility since 2013; SGS and REACH testing can be arranged according to product and buyer requirements, with custom colors available for bulk orders.\n\nFree samples available — customer only bears international shipping cost, which will be deducted from your bulk order.",
+      "Our non-woven glitter fabric carries a dense, sparkling glitter surface on a stable non-woven backing. It is the cost-effective workhorse of the glitter range — bright, uniform sparkle at a friendly price point for volume decoration projects.\n\nThe non-woven base cuts cleanly without fraying, which makes it especially practical for holiday decoration, stage props, banners and performance costumes.",
     specs: {
       width: "140cm",
       weight: "150 g/m²",
@@ -456,8 +457,7 @@ export const allProducts = [
       { label: "Sample", value: "Free sample, customer bears international freight; shipping cost deducted from bulk order" },
       { label: "Bulk Lead time", value: "3-7 working days after payment and stock confirmation for orders ≤500m; 7-15 working days when production is required" },
       { label: "Port", value: "Ningbo / Shanghai" },
-      { label: "Available Customization", value: "Custom glitter colors & width" },
-      { label: "OEM / ODM", value: "Supported" },
+      { label: "OEM / ODM", value: "Custom color, width, new fabric development & private label available" },
       { label: "Testing & Compliance", value: "SGS / REACH testing can be arranged according to buyer requirements" },
       { label: "Package type", value: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement" },
       { label: "Trade Terms", value: "FOB, CIF available, provide commercial invoice & packing list" },
@@ -473,7 +473,7 @@ export const allProducts = [
     badge: "Standard Color",
     colorCount: 1,
     tags: ["glitter", "decoration", "stage-costume", "non-woven"],
-    availableColors: "1 standard color",
+    availableColors: "19 colors available, color card available on request",
     sampleNote: "Free sample available, customer bears shipping cost",
     customizationNote: "Custom glitter colors & custom width",
     packaging: "Roll packing, export carton",
@@ -505,29 +505,30 @@ export const allProducts = [
   },
   {
     slug: "iridescent-gradient-laser-ice-silk",
-    metaTitle: "Iridescent Gradient Laser Fabric | Wholesale Supplier",
+    metaTitle: "Holographic Foil Stretch Spandex Fabric, Iridescent Gradient for Dancewear, Costumes & Decoration | Nixia Fabric",
     metaDesc:
       "Iridescent gradient laser ice-silk fabric with a smooth color-flow finish on a stretch base for fashion apparel, stage costumes and backdrops. Factory wholesale and custom color support.",
-    title: "iridescent-gradient-laser-ice-silk",
-    mainImageUrl: "/images/hot04.jpg",
-    mainImageWebp: "/images/hot04.webp",
+    title: "Holographic Foil Stretch Spandex Fabric, Iridescent Gradient for Dancewear, Costumes & Decoration",
+    sku: "P0005",
+    mainImageUrl: "/images/products/iridescent-gradient-laser-ice-silk/main/1.jpg",
+    mainImageWebp: "/images/products/iridescent-gradient-laser-ice-silk/main/1.webp",
     mainImageAlt:
       "Iridescent gradient laser hot-stamping ice-silk fabric with smooth color-flow finish",
     imageList: [
       {
-        src: "/images/hot04.jpg",
-        webp: "/images/hot04.webp",
+        src: "/images/products/iridescent-gradient-laser-ice-silk/main/1.jpg",
+        webp: "/images/products/iridescent-gradient-laser-ice-silk/main/1.webp",
         alt: "Iridescent gradient laser hot-stamping ice-silk fabric with smooth color-flow finish",
       },
     ],
     galleryMainPath: "/images/products/iridescent-gradient-laser-ice-silk/main/",
-    galleryImages: ["hot04.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg"],
+    galleryImages: ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"],
     detailImagePath: "/images/products/iridescent-gradient-laser-ice-silk/detail/",
-    video: { src: "/images/products/iridescent-gradient-laser-ice-silk/video/1.mp4", poster: "hot04.jpg" },
+    video: { src: "/images/products/iridescent-gradient-laser-ice-silk/video/1.mp4", poster: "1.jpg" },
     shortIntro:
-      "Iridescent gradient laser hot-stamping ice-silk fabric features a smooth gradient that flows across the width of the fabric, shifting through multiple colors under light. The stretch ice-silk base keeps it comfortable against the skin and easy to sew.",
+      "The iridescent gradient laser hot-stamping ice-silk fabric features a smooth gradient that flows across the width of the fabric, shifting through multiple colors under light. The stretch ice-silk base keeps it comfortable against the skin and easy to sew.",
     fullDescription:
-      "The iridescent gradient laser hot-stamping ice-silk fabric features a smooth gradient that flows across the width of the fabric, shifting through multiple colors under light. The stretch ice-silk base keeps it comfortable against the skin and easy to sew.\n\nThe flowing gradient makes it popular for fashion apparel where a single piece of fabric carries a full color story, as well as stage costumes and backdrop decoration. Manufactured in our own facility since 2013; SGS and REACH testing can be arranged according to product and buyer requirements, custom gradient directions and colors available on bulk orders.\n\nFree samples available — customer only bears international shipping cost, which will be deducted from your bulk order.",
+      "The iridescent gradient laser hot-stamping ice-silk fabric features a smooth gradient that flows across the width of the fabric, shifting through multiple colors under light. The stretch ice-silk base keeps it comfortable against the skin and easy to sew. The flowing gradient makes it popular for fashion apparel where a single piece of fabric carries a full color story, as well as stage costumes and backdrop decoration.",
     specs: {
       width: "150cm",
       weight: "160 g/m²",
@@ -552,8 +553,7 @@ export const allProducts = [
       { label: "Sample", value: "Free sample, customer bears international freight; shipping cost deducted from bulk order" },
       { label: "Bulk Lead time", value: "1-3 working days after payment and stock confirmation for orders ≤500m; 7-15 working days when production is required" },
       { label: "Port", value: "Ningbo / Shanghai" },
-      { label: "Available Customization", value: "Custom gradient colors & direction" },
-      { label: "OEM / ODM", value: "Supported" },
+      { label: "OEM / ODM", value: "Custom color, width, new fabric development & private label available" },
       { label: "Testing & Compliance", value: "SGS / REACH testing can be arranged according to buyer requirements" },
       { label: "Package type", value: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement" },
       { label: "Trade Terms", value: "FOB, CIF available, provide commercial invoice & packing list" },
@@ -568,7 +568,7 @@ export const allProducts = [
     badge: "Standard Color",
     colorCount: 1,
     tags: ["gradient", "metallic", "hot-stamping", "spandex", "stage-costume", "decoration"],
-    availableColors: "1 standard color",
+    availableColors: "19 colors available, color card available on request",
     sampleNote: "Free sample available, customer bears shipping cost",
     customizationNote: "Custom gradient colors & direction",
     packaging: "Roll packing, export carton",
@@ -596,7 +596,7 @@ export const allProducts = [
       },
     ],
     skuImages: [],
-    detailImages: ["0.jpg", "00.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg", "10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg", "16.jpg", "17.jpg", "18.jpg", "19.jpg", "20.jpg"],
+    detailImages: ["detail01.png"],
   },
   {
     slug: "rainbow-gradient-glitter-synthetic-leather",
@@ -604,25 +604,26 @@ export const allProducts = [
     metaDesc:
       "Rainbow gradient glitter synthetic leather with a reflective finish and structured base for bags, footwear and book-covering materials. Factory wholesale supply with custom options.",
     title: "Rainbow Gradient Glitter Synthetic Leather Fabric",
-    mainImageUrl: "/images/hot06.jpg",
-    mainImageWebp: "/images/hot06.webp",
+    sku: "P0006",
+    mainImageUrl: "/images/products/rainbow-gradient-glitter-synthetic-leather/main/main01.jpg",
+    mainImageWebp: "/images/products/rainbow-gradient-glitter-synthetic-leather/main/main01.webp",
     mainImageAlt:
       "Rainbow gradient glitter synthetic leather fabric with reflective finish",
     imageList: [
       {
-        src: "/images/hot06.jpg",
-        webp: "/images/hot06.webp",
+        src: "/images/products/rainbow-gradient-glitter-synthetic-leather/main/main01.jpg",
+        webp: "/images/products/rainbow-gradient-glitter-synthetic-leather/main/main01.webp",
         alt: "Rainbow gradient glitter synthetic leather fabric with reflective finish",
       },
     ],
     galleryMainPath: "/images/products/rainbow-gradient-glitter-synthetic-leather/main/",
-    galleryImages: ["hot06.jpg"],
+    galleryImages: ["main01.jpg"],
     detailImagePath: "/images/products/rainbow-gradient-glitter-synthetic-leather/application/product-detail/",
     video: null,
     shortIntro:
       "Rainbow gradient glitter synthetic leather combines a reflective glitter surface with a gradient of colors on a durable synthetic leather base. Unlike stretch fabrics, the leather base gives structure and durability, holding its shape in bags, footwear and book covers.",
     fullDescription:
-      "The rainbow gradient glitter synthetic leather combines a reflective glitter surface with a gradient of colors on a durable synthetic leather base. Unlike stretch fabrics, the leather base gives structure and durability, holding its shape in bags, footwear and book covers.\n\nThe rainbow gradient moves across the surface for a premium look that photographs well — popular with bag, footwear and stationery buyers. Manufactured in our own facility since 2013; SGS and REACH testing can be arranged according to product and buyer requirements, with custom colors available for bulk orders.\n\nFree samples available — customer only bears international shipping cost, which will be deducted from your bulk order.",
+      "The rainbow gradient glitter synthetic leather combines a reflective glitter surface with a gradient of colors on a durable synthetic leather base. Unlike stretch fabrics, the leather base gives structure and durability, holding its shape in bags, footwear and book covers.\n\nThe rainbow gradient moves across the surface for a premium look that photographs well — popular with bag, footwear and stationery buyers.",
     specs: {
       width: "137cm",
       weight: "170 g/m²",
@@ -646,8 +647,7 @@ export const allProducts = [
       { label: "Sample", value: "Free sample, customer bears international freight; shipping cost deducted from bulk order" },
       { label: "Bulk Lead time", value: "3-7 working days after payment and stock confirmation for orders ≤500m; 7-15 working days when production is required" },
       { label: "Port", value: "Ningbo / Shanghai" },
-      { label: "Available Customization", value: "Custom gradient colors, thickness & backing" },
-      { label: "OEM / ODM", value: "Supported" },
+      { label: "OEM / ODM", value: "Custom color, width, new fabric development & private label available" },
       { label: "Testing & Compliance", value: "SGS / REACH testing can be arranged according to buyer requirements" },
       { label: "Package type", value: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement" },
       { label: "Trade Terms", value: "FOB, CIF available, provide commercial invoice & packing list" },
@@ -694,6 +694,7 @@ export const allProducts = [
     metaDesc:
       "Coarse glitter PU hot stamping fabric with a bold reflective surface for bows, bags, footwear, phone cases and decorative accessories. CMA-certified documentation available for buyer review.",
     title: "Coarse Glitter PU Hot Stamping Fabric – CMA Certified",
+    sku: "P0007",
     mainImageUrl:
       "/images/products/coarse-glitter-pu-hot-stamping-fabric-cma-certified/main/主图-1.jpg",
     mainImageWebp:
@@ -769,7 +770,7 @@ export const allProducts = [
     shortIntro:
       "Coarse glitter PU hot stamping fabric combines a structured PU base with a bold, reflective glitter surface. Its high-impact texture is designed for fashion accessories, footwear and decorative applications.",
     fullDescription:
-      "Coarse glitter PU hot stamping fabric features a dimensional reflective surface with a structured PU backing. The coarse glitter effect creates strong visual impact under showroom and stage lighting, making it suitable for accessory and decorative product development.\n\nTypical applications include bows, bag panels, footwear uppers, phone cases and other fashion accessories. CMA-certified documentation is available for buyer review, while samples, color selection and project-specific testing can be arranged according to product and buyer requirements.\n\nFree samples available — customer only bears international shipping cost, which will be deducted from your bulk order.",
+      "Coarse glitter PU hot stamping fabric features a dimensional reflective surface with a structured PU backing. The coarse glitter effect creates strong visual impact under showroom and stage lighting, making it suitable for accessory and decorative product development.\n\nTypical applications include bows, bag panels, footwear uppers, phone cases and other fashion accessories.",
     specs: {
       width: "137cm",
       weight: "200 g/m²",
@@ -795,8 +796,7 @@ export const allProducts = [
       { label: "Bulk Lead time", value: "Quoted after stock and production requirements are confirmed" },
       { label: "Available Colors", value: "7 sample colors shown, support custom color" },
       { label: "Port", value: "Ningbo / Shanghai" },
-      { label: "Available Customization", value: "Custom colors, backing and packaging according to project requirements" },
-      { label: "OEM / ODM", value: "Supported" },
+      { label: "OEM / ODM", value: "Custom color, width, new fabric development & private label available" },
       { label: "Testing & Compliance", value: "CMA-certified documentation available; additional testing can be arranged according to buyer requirements" },
       { label: "Package type", value: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement" },
       { label: "Trade Terms", value: "FOB, CIF available, provide commercial invoice & packing list" },
@@ -891,6 +891,7 @@ export const allProducts = [
     metaDesc:
       "Sparkle glitter surface solid leather fabric with a 200 g/m² weight, 140cm width and about 0.6mm thickness for decoration, notebook covers, DIY materials, bags, shoes and hair accessories. Factory wholesale supply.",
     title: "Sparkle Glitter Surface Solid Leather Fabric",
+    sku: "P0008",
     mainImageUrl: "/images/products/sparkle-glitter-surface-solid-leather-fabric/main/主图-1.jpg",
     mainImageWebp: "/images/products/sparkle-glitter-surface-solid-leather-fabric/main/主图-1.webp",
     mainImageAlt:
@@ -924,7 +925,7 @@ export const allProducts = [
     shortIntro:
       "Sparkle glitter surface solid leather fabric combines a bright glitter finish with a PU and PET leather base. It is suitable for decorative and craft applications where a rich sparkle effect is needed.",
     fullDescription:
-      "Sparkle glitter surface solid leather fabric combines a bright glitter finish with a PU and PET leather base. The dusting powder technology creates a vivid sparkle effect that works well for decorative projects and fashion-accessory development.\n\nTypical uses include notebook covers, DIY materials, bags, shoes, hair accessories, glitter wallpaper and other decorative applications. Free samples are available, and bulk customization can be arranged according to product and buyer requirements.\n\nFree samples available — customer only bears international shipping cost, which will be deducted from your bulk order.",
+      "Sparkle glitter surface solid leather fabric combines a bright glitter finish with a PU and PET leather base. The dusting powder technology creates a vivid sparkle effect that works well for decorative projects and fashion-accessory development.\n\nTypical uses include notebook covers, DIY materials, bags, shoes, hair accessories, glitter wallpaper and other decorative applications.",
     specs: {
       width: "140cm",
       weight: "200 g/m²",
@@ -950,8 +951,7 @@ export const allProducts = [
       { label: "Bulk Lead time", value: "3-7 working days after payment and stock confirmation for orders ≤500m; 7-15 working days when production is required" },
       { label: "Available Colors", value: "17 sample colors shown, support custom color" },
       { label: "Port", value: "Ningbo / Shanghai" },
-      { label: "Available Customization", value: "Custom colors, backing and packaging according to project requirements" },
-      { label: "OEM / ODM", value: "Supported" },
+      { label: "OEM / ODM", value: "Custom color, width, new fabric development & private label available" },
       { label: "Testing & Compliance", value: "Testing can be arranged according to buyer requirements" },
       { label: "Package type", value: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement" },
       { label: "Trade Terms", value: "FOB, CIF available, provide commercial invoice & packing list" },

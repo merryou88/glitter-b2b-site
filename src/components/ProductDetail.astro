@@ -57,6 +57,24 @@ export interface Props {
 
 const { product } = Astro.props;
 const isInquiryFocusedProduct = product.slug === "plain-iridescent-laser-spandex-4-way-stretch";
+const showExpandedHeroDescription = [
+  "plain-iridescent-laser-spandex-4-way-stretch",
+  "full-print-hot-stamping-spandex-milk-silk",
+  "iridescent-laser-hot-stamping-stretch-ice-silk",
+  "non-woven-glitter-fabric",
+  "rainbow-gradient-glitter-synthetic-leather",
+  "coarse-glitter-pu-hot-stamping-fabric-cma-certified",
+  "sparkle-glitter-surface-solid-leather-fabric",
+].includes(product.slug);
+const hideProductDescription = [
+  "iridescent-gradient-laser-ice-silk",
+  "full-print-hot-stamping-spandex-milk-silk",
+  "iridescent-laser-hot-stamping-stretch-ice-silk",
+  "non-woven-glitter-fabric",
+  "rainbow-gradient-glitter-synthetic-leather",
+  "coarse-glitter-pu-hot-stamping-fabric-cma-certified",
+  "sparkle-glitter-surface-solid-leather-fabric",
+].includes(product.slug);
 const quoteButtonLabel = isInquiryFocusedProduct ? "Get a Quote" : "Add to Quotation List";
 const inquiryButtonLabel = isInquiryFocusedProduct ? "Send an Inquiry" : "WhatsApp";
 const samplePolicyIntro =
@@ -206,7 +224,14 @@ const b2bValue = (labels: string[]) => findRowValue(product.b2bTable, labels);
 
 // B2B Specifications follows the buyer's quote, approval and shipment order.
 const b2bRows = [
-  { label: "MOQ", value: `${product.specs.moq} meters` },
+  {
+    label: "Product Name / SKU",
+    value: `${product.title} / ${product.sku ?? ""}`.trim(),
+  },
+  {
+    label: "MOQ",
+    value: "Standard products: 100 meters minimum. Custom projects: MOQ to be confirmed based on customization requirements.",
+  },
   { label: "Supply Type", value: b2bValue(["Supply type", "Supply Type"]) },
   {
     label: "Stock Dispatch",
@@ -215,25 +240,19 @@ const b2bRows = [
   { label: "Bulk Lead Time", value: b2bValue(["Bulk Lead time", "Bulk Lead Time"]) },
   { label: "Available Colors", value: availableColors },
   { label: "Sample", value: b2bValue(["Sample", "Sampling"]) || product.sampleNote },
-  {
-    label: "Available Customization",
-    value: b2bValue(["Available Customization", "Customization"]) || product.customizationNote,
-  },
   { label: "OEM / ODM", value: b2bValue(["OEM / ODM", "OEM/ODM"]) },
   { label: "Packaging", value: b2bValue(["Package type", "Packaging"]) || product.packaging },
   {
     label: "Testing & Compliance",
     value: b2bValue(["Testing & Compliance", "Compliance"]),
   },
-  { label: "Country of Origin", value: "China" },
-  { label: "Port", value: b2bValue(["Port"]) },
-  { label: "HS Code", value: "Confirmed by product and shipment" },
   { label: "Transit Time", value: "Quoted according to destination and shipping method" },
   {
     label: "Payment Terms",
     value: "Confirmed in quotation according to order and buyer requirements",
   },
   { label: "Trade Terms", value: b2bValue(["Trade Terms"]) || product.tradeTerms },
+  { label: "Country of Origin", value: "China" },
 ].filter((row) => row.value);
 
 // Video poster is required and read from the product's main/ directory.
@@ -263,6 +282,16 @@ const heroVideo = product.video
   <div class="container">
     <div class="detail-layout">
       <div class="p-hero-gallery" id="p-hero-gallery">
+        {isInquiryFocusedProduct && (
+          <span class="detail-info__badge detail-info__badge--gallery">
+            <svg class="detail-info__badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+              <path d="m3.3 7 8.7 5 8.7-5" />
+              <path d="M12 22V12" />
+            </svg>
+            WHOLESALE
+          </span>
+        )}
         <div class="p-hero-gallery__main" id="p-hero-main">
           <picture>
             {
@@ -377,17 +406,19 @@ const heroVideo = product.video
       <!-- Product Info -->
       <div class="detail-info">
         <div class="detail-info__heading">
-          <span class="detail-info__badge">
-            <svg class="detail-info__badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
-              <path d="m3.3 7 8.7 5 8.7-5" />
-              <path d="M12 22V12" />
-            </svg>
-            WHOLESALE FABRIC
-          </span>
-          <h2 class="detail-info__title">{product.title}</h2>
+          <h2 class={`detail-info__title ${isInquiryFocusedProduct ? "detail-info__title--focused" : ""}`}>
+            {product.title}
+          </h2>
         </div>
-        <p class="detail-info__desc">{product.shortIntro}</p>
+        {showExpandedHeroDescription ? (
+          <div class="detail-info__desc detail-info__desc--expanded">
+            {product.fullDescription.split("\n\n").slice(0, 2).map((para: string) => (
+              <p>{para}</p>
+            ))}
+          </div>
+        ) : (
+          <p class="detail-info__desc">{product.shortIntro}</p>
+        )}
 
         <!-- MOQ / Lead Time cards -->
         <div class="detail-offer-grid">
@@ -475,7 +506,12 @@ const heroVideo = product.video
             Copy Product Link
           </button>
         </div>
-        <p class="detail-cta__note">Our factory team will reply within 24 hours.</p>
+        <p class="detail-cta__note">
+          <svg class="detail-cta__note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m13 2-9 12h7l-1 8 9-12h-7z" />
+          </svg>
+          <span>Our factory team will reply within 24 hours.</span>
+        </p>
         <div class="rfq-toast" id="rfq-toast" role="status" aria-live="polite">Link copied</div>
       </div>
     </div>
@@ -483,26 +519,28 @@ const heroVideo = product.video
 </section>
 
 <!-- Detail Body -->
-<section class="section">
+<section class="section detail-content-section--compact">
   <div class="container">
-    <div class={`detail-body detail-body--plain ${isInquiryFocusedProduct ? "detail-body--wide" : ""}`}>
-      <!-- Description -->
-      <div class="detail-body__text">
-        <h2 class="section-title-with-icon">
-          <span class="section-title-with-icon__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 3h9l3 3v15H6z" />
-              <path d="M15 3v4h4" />
-              <path d="M8 11h8" />
-              <path d="M8 15h8" />
-            </svg>
-          </span>
-          <span>Product Description</span>
-        </h2>
-        {product.fullDescription.split("\n\n").map((para: string) => (
-          <p>{para}</p>
-        ))}
-      </div>
+    <div class="detail-body detail-body--plain detail-body--wide">
+      {!isInquiryFocusedProduct && !hideProductDescription && (
+        <!-- Description -->
+        <div class="detail-body__text">
+          <h2 class="section-title-with-icon">
+            <span class="section-title-with-icon__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 3h9l3 3v15H6z" />
+                <path d="M15 3v4h4" />
+                <path d="M8 11h8" />
+                <path d="M8 15h8" />
+              </svg>
+            </span>
+            <span>Product Description</span>
+          </h2>
+          {product.fullDescription.split("\n\n").map((para: string) => (
+            <p>{para}</p>
+          ))}
+        </div>
+      )}
 
       {product.whyChoose && product.whyChoose.length > 0 && (
         <div class="detail-body__section" id="why-choose">
@@ -520,6 +558,30 @@ const heroVideo = product.video
                 <h3>{item.title}</h3>
                 <p>{item.desc}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Product Details -->
+      {productDetailImages.length > 0 && (
+        <div class="detail-body__section" id="product-details">
+          <h2 class="section-title-with-icon">
+            <span class="section-title-with-icon__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="4" width="16" height="16" rx="2" />
+                <path d="M8 12h8" />
+                <path d="M8 16h5" />
+              </svg>
+            </span>
+            <span>Product Details</span>
+          </h2>
+          <div class="detail-images-grid">
+            {productDetailImages.map((img) => (
+              <picture>
+                {img.webp && <source srcset={img.webp} type="image/webp" />}
+                <img src={img.src} alt={img.alt} loading="lazy" width="1200" height="1200" class="detail-image" decoding="async" onerror="this.style.display='none'" />
+              </picture>
             ))}
           </div>
         </div>
@@ -804,30 +866,6 @@ const heroVideo = product.video
                   </svg>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      <!-- Product Details -->
-      {productDetailImages.length > 0 && (
-        <div class="detail-body__section" id="product-details">
-          <h2 class="section-title-with-icon">
-            <span class="section-title-with-icon__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="4" y="4" width="16" height="16" rx="2" />
-                <path d="M8 12h8" />
-                <path d="M8 16h5" />
-              </svg>
-            </span>
-            <span>Product Details</span>
-          </h2>
-          <div class="detail-images-grid">
-            {productDetailImages.map((img) => (
-              <picture>
-                {img.webp && <source srcset={img.webp} type="image/webp" />}
-                <img src={img.src} alt={img.alt} loading="lazy" width="1200" height="1200" class="detail-image" decoding="async" onerror="this.style.display='none'" />
-              </picture>
             ))}
           </div>
         </div>
@@ -1240,17 +1278,25 @@ const heroVideo = product.video
   }
 
   .detail-info__heading {
-    display: block;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
     padding-bottom: var(--space-xs);
   }
 
   .detail-info__title {
-    margin: var(--space-sm) 0 0;
+    margin: 0;
     font-size: clamp(1.75rem, 2.4vw, 2.125rem);
     font-weight: 800;
     line-height: 1.22;
     letter-spacing: 0;
     color: var(--color-primary);
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .detail-info__title--focused {
+    font-size: clamp(1.375rem, 1.8vw, 1.75rem);
   }
 
   .detail-info__badge {
@@ -1298,6 +1344,18 @@ const heroVideo = product.video
     color: #5d697a;
   }
 
+  .detail-info__desc--expanded {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .detail-info__desc--expanded p {
+    margin: 0;
+    color: inherit;
+    line-height: inherit;
+  }
+
   .detail-highlights {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1336,6 +1394,19 @@ const heroVideo = product.video
     width: 18px;
     height: 18px;
     flex: 0 0 auto;
+  }
+
+  .detail-cta__note {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .detail-cta__note-icon {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 auto;
+    color: #c18a2b;
   }
 
   .detail-cta__btn--gold {
@@ -1768,11 +1839,11 @@ const heroVideo = product.video
     order: 50;
   }
 
-  .detail-body--plain #specifications {
+  .detail-body--plain #b2b-specifications {
     order: 20;
   }
 
-  .detail-body--plain #b2b-specifications {
+  .detail-body--plain #specifications {
     order: 30;
   }
 
@@ -1805,7 +1876,7 @@ const heroVideo = product.video
   }
 
   .detail-body--plain #product-details {
-    order: 91;
+    order: 51;
   }
 
   .detail-body--plain #product-video {
@@ -2214,6 +2285,10 @@ const heroVideo = product.video
     max-width: 1180px;
   }
 
+  .detail-content-section--compact {
+    padding-top: var(--space-xl);
+  }
+
   .detail-body__text {
     margin-bottom: var(--space-2xl);
   }
@@ -2481,6 +2556,10 @@ const heroVideo = product.video
       font-size: var(--text-2xl);
     }
 
+    .detail-info__title--focused {
+      font-size: var(--text-lg);
+    }
+
     .detail-cta {
       grid-template-columns: 1fr;
     }
@@ -2542,9 +2621,25 @@ const heroVideo = product.video
 
   /* ===== Hero Gallery Viewer (plain-iridescent-laser) ===== */
   .p-hero-gallery {
-    position: static;
+    position: relative;
     max-width: 560px;
     margin-inline: auto;
+  }
+
+  .detail-info__badge--gallery {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+    padding: 0.375rem 0.875rem;
+    border: 0;
+    border-radius: var(--radius-full);
+    background-color: #e8eef7;
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 0;
+    box-shadow: none;
   }
 
   .p-hero-gallery__main {

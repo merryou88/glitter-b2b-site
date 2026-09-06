@@ -10,6 +10,7 @@
 import Layout from "@layouts/Layout.astro";
 import HeroCarousel from "@components/HeroCarousel.astro";
 import CTAButton from "@components/CTAButton.astro";
+import { allProducts } from "@data/allProducts";
 
 // WebPage structured data for SEO
 const webPageData = {
@@ -23,66 +24,56 @@ const webPageData = {
 
 const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 
+const productMap = new Map(allProducts.map((product) => [product.slug, product]));
+
 const popularProducts = [
   {
-    title: "Full‑Print Hot‑Stamping Spandex Milk‑Silk Fabric",
-    description: "Stretchy 4‑way stretch, soft hand‑feel. Ideal for fashion garments, swimwear & stage performance costumes.",
-    image: "/images/hot01.jpg",
-    webp: "/images/hot01.webp",
-    alt: "Full‑Print Hot‑Stamping Spandex Milk‑Silk Fabric",
-    href: "/products/full-print-hot-stamping-spandex-milk-silk/",
-    moq: "MOQ 100m",
-    badge: "In‑Stock Available",
+    slug: "coarse-glitter-pu-hot-stamping-fabric-cma-certified",
+    title: "Coarse Glitter PU Hot Stamping Fabric – CMA Certified",
+    description: "Dimensional reflective coarse glitter on a structured PU backing for bows, bag panels, footwear uppers and accessories.",
+    href: "/products/coarse-glitter-pu-hot-stamping-fabric-cma-certified/",
+    moq: "MOQ 200m",
+    badge: "CMA Certified",
   },
   {
+    slug: "iridescent-laser-hot-stamping-stretch-ice-silk",
     title: "Iridescent Laser Hot‑Stamping Stretch Ice‑Silk Fabric",
     description: "Elastic, gradient multi‑color finish. Great for stage costumes and backdrop decoration.",
-    image: "/images/hot02.jpg",
-    webp: "/images/hot02.webp",
-    alt: "Iridescent Laser Hot‑Stamping Stretch Ice‑Silk Fabric",
     href: "/products/iridescent-laser-hot-stamping-stretch-ice-silk/",
     moq: "MOQ 100m",
     badge: "In‑Stock Available",
   },
   {
+    slug: "non-woven-glitter-fabric",
     title: "Non‑Woven Glitter Fabric",
     description: "Sparkling glitter surface, widely used for holiday decoration, stage props & performance costumes.",
-    image: "/images/hot03.jpg",
-    webp: "/images/hot03.webp",
-    alt: "Non‑Woven Glitter Fabric",
     href: "/products/non-woven-glitter-fabric/",
     moq: "MOQ 200m",
     badge: "In‑Stock Available",
   },
   {
+    slug: "iridescent-gradient-laser-ice-silk",
     title: "Iridescent Gradient Laser Hot‑Stamping Ice‑Silk Fabric",
     description: "Stretchy fabric with multi‑color iridescent finish, suitable for fashion apparel, stage costumes and backdrop decoration.",
-    image: "/images/hot04.jpg",
-    webp: "/images/hot04.webp",
-    alt: "Iridescent Gradient Laser Hot‑Stamping Ice‑Silk Fabric",
     href: "/products/iridescent-gradient-laser-ice-silk/",
     moq: "MOQ 100m",
     badge: "In‑Stock Available",
   },
   {
+    slug: "plain-iridescent-laser-spandex-4-way-stretch",
     title: "Plain Iridescent Laser Hot‑Stamping Spandex 4‑Way Stretch Fabric",
     description: "High 4‑way stretch performance, ideal for western‑style bodysuits, swimwear and fashionable stage garments.",
-    image: "/images/hot05.jpg",
-    webp: "/images/hot05.webp",
-    alt: "Plain Iridescent Laser Hot‑Stamping Spandex 4‑Way Stretch Fabric",
     href: "/products/plain-iridescent-laser-spandex-4-way-stretch/",
     moq: "MOQ 100m",
     badge: "In‑Stock Available",
   },
   {
-    title: "Rainbow Gradient Glitter Synthetic Leather Fabric",
-    description: "Reflective glitter finish, widely applied for bags, footwear and book‑covering materials.",
-    image: "/images/hot06.jpg",
-    webp: "/images/hot06.webp",
-    alt: "Rainbow Gradient Glitter Synthetic Leather Fabric",
-    href: "/products/rainbow-gradient-glitter-synthetic-leather/",
-    moq: "MOQ 200m",
-    badge: "3‑7 Days Lead Time",
+    slug: "sparkle-glitter-surface-solid-leather-fabric",
+    title: "Sparkle Glitter Surface Solid Leather Fabric",
+    description: "Bright glitter surface on a PU and PET leather base for notebook covers, DIY materials, bags, shoes and accessories.",
+    href: "/products/sparkle-glitter-surface-solid-leather-fabric/",
+    moq: "MOQ 100m",
+    badge: "17 Stock Colors",
   },
 ];
 
@@ -212,13 +203,17 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
       </div>
 
       <div class="grid fabric-series-grid">
-          {popularProducts.map((item) => (
+          {popularProducts.map((item) => {
+            const product = productMap.get(item.slug);
+            return (
             <a href={item.href} class="fabric-card fabric-card--split">
               <div class="fabric-card__visual">
-                <picture>
-                  {item.webp && <source srcset={item.webp} type="image/webp" />}
-                  <img src={item.image} alt={item.alt} width="1200" height="675" loading="lazy" decoding="async" />
-                </picture>
+                {product && (
+                  <picture>
+                    {product.mainImageWebp && <source srcset={product.mainImageWebp} type="image/webp" />}
+                    <img src={product.mainImageUrl} alt={product.mainImageAlt} width="1200" height="675" loading="lazy" decoding="async" />
+                  </picture>
+                )}
               </div>
               <div class="fabric-card__body">
                 <span class="fabric-card__tag fabric-card__tag--inline">BUYER PICK</span>
@@ -230,7 +225,8 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
                 </div>
               </div>
             </a>
-          ))}
+            );
+          })}
         </div>
     </div>
   </section>

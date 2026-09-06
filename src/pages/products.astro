@@ -7,6 +7,24 @@
 import Layout from "@layouts/Layout.astro";
 import { allProducts } from "@data/allProducts";
 
+const recommendedProductOrder = [
+  "coarse-glitter-pu-hot-stamping-fabric-cma-certified",
+  "iridescent-laser-hot-stamping-stretch-ice-silk",
+  "non-woven-glitter-fabric",
+  "iridescent-gradient-laser-ice-silk",
+  "plain-iridescent-laser-spandex-4-way-stretch",
+  "sparkle-glitter-surface-solid-leather-fabric",
+];
+
+const productOrderMap = new Map(recommendedProductOrder.map((slug, index) => [slug, index]));
+const sortedProducts = [...allProducts].sort((a, b) => {
+  const aOrder = productOrderMap.get(a.slug) ?? Number.MAX_SAFE_INTEGER;
+  const bOrder = productOrderMap.get(b.slug) ?? Number.MAX_SAFE_INTEGER;
+
+  if (aOrder !== bOrder) return aOrder - bOrder;
+  return allProducts.indexOf(a) - allProducts.indexOf(b);
+});
+
 /* ---- Application collections (aligned with home Applications section) ---- */
 const collections = [
   {
@@ -158,7 +176,7 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 
       <div class="product-grid" id="product-grid">
         {
-          allProducts.map((item) => (
+          sortedProducts.map((item) => (
             <div class="product-card" data-id={item.slug} data-tags={item.tags.join(",")} data-colors={item.colorCount ?? item.imageList.length} data-title={item.title}>
               <a href={`/products/${item.slug}/`} class="product-card__link" aria-label={`View ${item.title}`}>
                 <div class="product-card__image-wrap">
