@@ -13,7 +13,8 @@ export default defineConfig({
   },
   compressHTML: true,
   prefetch: {
-    prefetchAll: true,
+    // Avoid warming every internal page on mobile connections.
+    prefetchAll: false,
     defaultStrategy: 'hover',
   },
   integrations: [

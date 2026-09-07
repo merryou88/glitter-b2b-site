@@ -72,9 +72,9 @@ ol {
   --color-text-inverse: #ffffff;
 
   /* Typography */
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-heading: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  --font-heading: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, sans-serif;
 
   /* Font Sizes */

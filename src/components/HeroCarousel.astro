@@ -66,6 +66,8 @@ const slides: Slide[] = [
 
 const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 const toMobile = (src: string) => src.replace(/\.(png|jpe?g|webp)$/i, "-mobile.webp");
+const PLACEHOLDER_IMAGE =
+  "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
 ---
 
 <div class="hero-carousel-wrap">
@@ -94,10 +96,20 @@ const toMobile = (src: string) => src.replace(/\.(png|jpe?g|webp)$/i, "-mobile.w
               aria-label={slide.title}
             />
             <picture>
-              <source srcset={toMobile(slide.image)} media="(max-width: 768px)" type="image/webp" />
-              <source srcset={toWebp(slide.image)} type="image/webp" />
+              {idx === 0 ? (
+                <>
+                  <source srcset={toMobile(slide.image)} media="(max-width: 768px)" type="image/webp" />
+                  <source srcset={toWebp(slide.image)} type="image/webp" />
+                </>
+              ) : (
+                <>
+                  <source data-srcset={toMobile(slide.image)} media="(max-width: 768px)" type="image/webp" />
+                  <source data-srcset={toWebp(slide.image)} type="image/webp" />
+                </>
+              )}
               <img
-                src={slide.image}
+                src={idx === 0 ? slide.image : PLACEHOLDER_IMAGE}
+                data-src={idx === 0 ? undefined : slide.image}
                 alt="Glitter and foil-printed synthetic leather production at Nixia Fabric factory"
                 class="hero-carousel__image hero-carousel__image--mobile"
                 width="1920"
@@ -110,10 +122,20 @@ const toMobile = (src: string) => src.replace(/\.(png|jpe?g|webp)$/i, "-mobile.w
           </>
         ) : (
           <picture>
-            <source srcset={toMobile(slide.image)} media="(max-width: 768px)" type="image/webp" />
-            <source srcset={toWebp(slide.image)} type="image/webp" />
+            {idx === 0 ? (
+              <>
+                <source srcset={toMobile(slide.image)} media="(max-width: 768px)" type="image/webp" />
+                <source srcset={toWebp(slide.image)} type="image/webp" />
+              </>
+            ) : (
+              <>
+                <source data-srcset={toMobile(slide.image)} media="(max-width: 768px)" type="image/webp" />
+                <source data-srcset={toWebp(slide.image)} type="image/webp" />
+              </>
+            )}
             <img
-              src={slide.image}
+              src={idx === 0 ? slide.image : PLACEHOLDER_IMAGE}
+              data-src={idx === 0 ? undefined : slide.image}
               alt={idx === 0
                 ? "Model wearing an iridescent holographic dress made with Nixia foil fabric"
                 : idx === 1
@@ -527,11 +549,32 @@ const toMobile = (src: string) => src.replace(/\.(png|jpe?g|webp)$/i, "-mobile.w
     const nextBtn = document.getElementById("carousel-next");
     let current = 0;
     let autoTimer: ReturnType<typeof setInterval> | null = null;
+    let isInViewport = true;
     const INTERVAL = 5000;
+
+    function loadSlide(index: number) {
+      const slide = slides[index];
+      if (!slide || slide.dataset.loaded === "true") return;
+
+      slide.querySelectorAll<HTMLSourceElement>("source[data-srcset]").forEach((source) => {
+        const srcset = source.dataset.srcset;
+        if (srcset) source.srcset = srcset;
+        source.removeAttribute("data-srcset");
+      });
+
+      const image = slide.querySelector<HTMLImageElement>("img[data-src]");
+      if (image?.dataset.src) {
+        image.src = image.dataset.src;
+        image.removeAttribute("data-src");
+      }
+
+      slide.dataset.loaded = "true";
+    }
 
     function goTo(index: number) {
       const total = slides.length;
       current = ((index % total) + total) % total;
+      loadSlide(current);
 
       slides.forEach((slide, i) => {
         slide.classList.toggle("is-active", i === current);
@@ -554,7 +597,13 @@ const toMobile = (src: string) => src.replace(/\.(png|jpe?g|webp)$/i, "-mobile.w
 
     function startAuto() {
       stopAuto();
-      autoTimer = setInterval(next, INTERVAL);
+      if (
+        document.visibilityState === "visible" &&
+        isInViewport &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
+        autoTimer = setInterval(next, INTERVAL);
+      }
     }
 
     function stopAuto() {
@@ -592,6 +641,21 @@ const toMobile = (src: string) => src.replace(/\.(png|jpe?g|webp)$/i, "-mobile.w
     carousel.addEventListener("mouseenter", stopAuto);
     carousel.addEventListener("mouseleave", startAuto);
 
+    // Avoid animation work while the carousel is off-screen or the tab is hidden.
+    document.addEventListener("visibilitychange", startAuto);
+    const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    motionPreference.addEventListener?.("change", startAuto);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(
+        ([entry]) => {
+          isInViewport = entry.isIntersecting;
+          if (isInViewport) startAuto();
+          else stopAuto();
+        },
+        { threshold: 0.1 },
+      ).observe(carousel);
+    }
+
     // Keyboard navigation
     carousel.addEventListener("keydown", (e) => {
       if (e.key === "ArrowLeft") {
@@ -626,6 +690,7 @@ const toMobile = (src: string) => src.replace(/\.(png|jpe?g|webp)$/i, "-mobile.w
     }, { passive: true });
 
     // Start auto-play
+    loadSlide(0);
     startAuto();
   }
 </script>

@@ -166,10 +166,6 @@ const allStructuredData = structuredData
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Performance: Preconnect & DNS Prefetch -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     {isHomePage && (
       <>
         <!-- LCP: Preload hero image (desktop & mobile variants) -->
@@ -188,15 +184,6 @@ const allStructuredData = structuredData
         fetchpriority={img.fetchpriority}
       />
     ))}
-
-    <!-- Fonts: Inter (with font-display: swap via URL param) -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="preload"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
 
     <!-- Structured Data -->
     {allStructuredData.map((data) => (
