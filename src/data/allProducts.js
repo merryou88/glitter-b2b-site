@@ -522,7 +522,7 @@ export const allProducts = [
       },
     ],
     galleryMainPath: "/images/products/iridescent-gradient-laser-ice-silk/main/",
-    galleryImages: ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"],
+    galleryImages: ["1.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg"],
     detailImagePath: "/images/products/iridescent-gradient-laser-ice-silk/detail/",
     video: { src: "/images/products/iridescent-gradient-laser-ice-silk/video/1.mp4", poster: "1.jpg" },
     shortIntro:
