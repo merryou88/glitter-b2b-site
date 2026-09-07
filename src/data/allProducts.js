@@ -596,7 +596,7 @@ export const allProducts = [
       },
     ],
     skuImages: [],
-    detailImages: ["detail01.png"],
+    detailImages: ["detail01.jpg", "detail02.jpg"],
   },
   {
     slug: "rainbow-gradient-glitter-synthetic-leather",
