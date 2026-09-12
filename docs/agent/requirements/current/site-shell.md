@@ -65,12 +65,12 @@ status: current
 
 ### REQ-SHELL-007：首页轮播素材与响应式变体同步
 - 状态：active
-- 当前规则：首页 `slide2` 使用最新上传的主图，并同步提供桌面与移动端 WebP 变体；轮播组件通过源文件路径自动解析对应 WebP。
+- 当前规则：首页 `slide2` 使用最新上传的 `slide2_v2` 主图，并同步提供桌面与移动端 WebP 变体；轮播组件通过源文件路径自动解析对应 WebP。
 - 验收条件：首页第二张轮播显示最新素材，桌面和移动端均能加载对应图片，其他轮播内容不受影响。
 - 影响模块：`site-shell`
-- 代码路径：`src/components/HeroCarousel.astro`、`public/images/home/slide2.png`、`public/images/home/slide2.webp`、`public/images/home/slide2-mobile.webp`
+- 代码路径：`src/components/HeroCarousel.astro`、`public/images/home/slide2_v2.png`、`public/images/home/slide2_v2.webp`、`public/images/home/slide2_v2-mobile.webp`
 - 测试路径：`npm run build`，检查生成首页中的 `slide2` 素材引用
-- 最后变更编号：CHG-20260912-017-home-slide2-image
+- 最后变更编号：CHG-20260912-020-home-slide2-v2-image
 - 待确认事项：无
 
 ### REQ-SHELL-008：全站统一加载 Google Analytics
