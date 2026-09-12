@@ -2,7 +2,7 @@
 
 | 业务模块 | 当前需求文档 | 需求编号 | 最近变更 | 相关代码 |
 |---|---|---|---|---|
-| 站点壳 / SEO | `current/site-shell.md` | `REQ-SHELL-001~008` | CHG-20260912-020-home-slide2-v2-image | `src/layouts/Layout.astro`、`src/components/Header.astro`、`src/components/Footer.astro`、`src/components/HeroCarousel.astro`、`src/pages/index.astro` |
+| 站点壳 / SEO | `current/site-shell.md` | `REQ-SHELL-001~009` | CHG-20260912-022-home-capability-cards-full-width | `src/layouts/Layout.astro`、`src/components/Header.astro`、`src/components/Footer.astro`、`src/components/HeroCarousel.astro`、`src/pages/index.astro` |
 | 内容数据 | `current/content-data.md` | `REQ-DATA-001~003` | CHG-20260912-018-public-copy-alignment | `src/data/allProducts.js`、`src/data/blogArticles.js`、`src/data/products.json` |
 | 产品目录 | `current/product-catalog.md` | `REQ-PRODUCT-001~013` | CHG-20260912-018-public-copy-alignment | `src/pages/products.astro`、`src/pages/products/[slug].astro`、`src/components/ProductDetail.astro` |
 | 博客知识中心 | `current/blog.md` | `REQ-BLOG-001~004` | CHG-20260912-018-public-copy-alignment | `src/pages/blog/index.astro`、`src/pages/blog/[slug].astro`、`src/data/blogArticles.js` |

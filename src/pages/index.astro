@@ -27,6 +27,14 @@ const productMap = new Map(performanceProducts.map((product) => [product.slug, p
 
 const popularProducts = [
   {
+    slug: "full-print-hot-stamping-spandex-milk-silk",
+    title: "Full-Print Hot-Stamping Spandex Milk-Silk Fabric",
+    description: "Soft 4-way stretch milk-silk fabric with an all-over foil finish for stage costumes, dancewear and performance outfits.",
+    href: "/products/full-print-hot-stamping-spandex-milk-silk/",
+    moq: "MOQ 100m",
+    badge: "In-Stock Available",
+  },
+  {
     slug: "iridescent-laser-hot-stamping-stretch-ice-silk",
     title: "Iridescent Laser Hot‑Stamping Stretch Ice‑Silk Fabric",
     description: "Elastic, gradient multi-color finish for stage costumes, dancewear and performance outfits.",
@@ -888,7 +896,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
 
   .capability-bar {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--space-md);
   }
 

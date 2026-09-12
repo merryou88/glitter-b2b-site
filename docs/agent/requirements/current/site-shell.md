@@ -35,12 +35,12 @@ status: current
 
 ### REQ-SHELL-004：首页首屏与推荐内容按当前市场重点展示
 - 状态：active
-- 当前规则：首页轮播移除第 3 张 slide；Popular Products 移除 Coarse Glitter PU Hot Stamping Fabric、Non-Woven Glitter Fabric 和 Sparkle Glitter Surface Solid Leather Fabric；首页 Applications 区块整体移除。
-- 验收条件：首页不再显示上述轮播、产品卡片和 Applications 区块，剩余内容正常布局与跳转。
+- 当前规则：首页轮播移除第 3 张 slide；Popular Products 移除 Coarse Glitter PU Hot Stamping Fabric、Non-Woven Glitter Fabric 和 Sparkle Glitter Surface Solid Leather Fabric，并加入 Full-Print Hot-Stamping Spandex Milk-Silk Fabric；首页 Applications 区块整体移除。
+- 验收条件：首页不再显示上述轮播、产品卡片和 Applications 区块，同时显示 Full-Print Hot-Stamping Spandex Milk-Silk Fabric 卡片，且链接和主图正常。
 - 影响模块：`site-shell`
 - 代码路径：`src/components/HeroCarousel.astro`、`src/pages/index.astro`
 - 测试路径：`npm run build`，手动检查首页
-- 最后变更编号：CHG-20260912-019-home-remove-applications
+- 最后变更编号：CHG-20260912-021-home-popular-full-print
 - 待确认事项：无
 
 ### REQ-SHELL-005：首页不展示 Glitter 相关内容
@@ -81,4 +81,14 @@ status: current
 - 代码路径：`src/layouts/Layout.astro`
 - 测试路径：`npm run build`，检查生成页面源码
 - 最后变更编号：CHG-20260912-004-google-analytics-tag
+- 待确认事项：无
+
+### REQ-SHELL-009：首页制造能力卡片铺满整行
+- 状态：active
+- 当前规则：首页 `In-House Production, Full Control` 区块的 4 个制造能力卡片在桌面端使用 4 列等宽布局，占满内容区域；平板和移动端继续按响应式断点排列。
+- 验收条件：桌面端四张卡片均匀铺满整行，没有多余空列；平板和移动端布局正常。
+- 影响模块：`site-shell`
+- 代码路径：`src/pages/index.astro`
+- 测试路径：`npm run build`，手动检查首页制造能力区块
+- 最后变更编号：CHG-20260912-022-home-capability-cards-full-width
 - 待确认事项：无
