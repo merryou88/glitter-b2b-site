@@ -32,8 +32,8 @@ const breadcrumbData = {
 const factoryPageData = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Glitter & Foil Fabric Factory in Guangzhou | Nixia Fabric",
-  description: "Explore Nixia Fabric's Guangzhou production facility for glitter, foil, iridescent and stretch fabrics, with in-house finishing, batch QC, OEM/ODM and custom sample support.",
+  name: "Foil Fabric Factory in Guangzhou | Nixia Fabric",
+  description: "Explore Nixia Fabric's Guangzhou production facility for foil, iridescent and stretch fabrics, with in-house finishing, batch QC, OEM/ODM and custom sample support.",
   url: "https://nixiafabric.com/factory/",
   about: {
     "@type": "Organization",
@@ -53,12 +53,12 @@ const productionSteps = [
   {
     num: "02",
     title: "Surface Treatment",
-    desc: "Base fabric undergoes surface treatment to ensure optimal adhesion for glitter particles or metallic foil lamination.",
+    desc: "Base fabric undergoes surface treatment to ensure optimal adhesion for metallic foil lamination.",
   },
   {
     num: "03",
-    title: "Glitter Bonding / Foil Lamination",
-    desc: "Glitter particles are bonded to the fabric surface using specialized adhesive techniques. For foil fabric, metallic foil is laminated under controlled heat and pressure.",
+    title: "Foil Lamination",
+    desc: "Metallic foil is laminated onto the fabric surface under controlled heat and pressure for consistent adhesion and finish.",
   },
   {
     num: "04",
@@ -85,12 +85,12 @@ const qcItems = [
   },
   {
     title: "In-Process Quality Control",
-    desc: "During glitter bonding and foil lamination, our technicians monitor adhesion strength, glitter density, color consistency, and surface uniformity at each stage.",
+    desc: "During foil lamination, our technicians monitor adhesion strength, color consistency, and surface uniformity at each stage.",
     icon: "monitor",
   },
   {
     title: "Adhesion Testing",
-    desc: "Finished fabric undergoes adhesion testing — including rub tests and peel strength tests — to ensure glitter and foil particles remain firmly bonded.",
+    desc: "Finished fabric undergoes adhesion testing — including rub tests and peel strength tests — to ensure the foil surface remains firmly bonded.",
     icon: "shield",
   },
   {
@@ -112,13 +112,8 @@ const qcItems = [
 
 const capabilities = [
   {
-    title: "Chunky Glitter Synthetic Leather Production",
-    desc: "Elastic, PU, non-woven, and Oxford glitter fabrics with various glitter particle sizes and densities.",
-    items: ["Elastic Knitted Backing", "PU Coated Backing", "Non-woven Backing", "Oxford Woven Backing"],
-  },
-  {
-    title: "Foil-Printed Synthetic Leather Production",
-    desc: "Metallic foil lamination on fabric substrates — gold, silver, and custom metallic finishes.",
+    title: "Hot-Stamping Performance Fabric Production",
+    desc: "Hot-stamping foil finishing on stretch fabric substrates — iridescent, gradient and custom metallic effects.",
     items: ["Gold Foil Lamination", "Silver Foil Lamination", "Custom Metallic Colors", "Matte & Glossy Finishes"],
   },
   {
@@ -129,7 +124,7 @@ const capabilities = [
   {
     title: "Factory Direct & Custom Manufacturing",
     desc: "Full Factory Direct Supply capability — custom GSM, width, backing material, and special finishes tailored to client specifications.",
-    items: ["Custom GSM & Width", "Custom Backing Options", "Custom Glitter Density", "Special Finishes"],
+    items: ["Custom GSM & Width", "Custom Backing Options", "Special Finishes", "Buyer-Specific Requirements"],
   },
 ];
 
@@ -140,7 +135,7 @@ const packingSteps = [
   },
   {
     title: "Inner Protection",
-    desc: "Acid-free tissue paper or PE film is applied between layers for premium products to protect the glitter or foil surface.",
+    desc: "Acid-free tissue paper or PE film is applied between layers for premium products to protect the foil surface.",
   },
   {
     title: "Outer Packaging",
@@ -153,10 +148,6 @@ const packingSteps = [
 ];
 
 const productionLines = [
-  {
-    title: "Glitter Coating Line",
-    desc: "Glitter particle bonding on woven, knitted and non-woven substrates with adjustable particle density.",
-  },
   {
     title: "Hot-Stamping Foil Transfer Line",
     desc: "Metallic foil lamination under controlled heat and pressure for gold, silver and custom metallic finishes.",
@@ -172,15 +163,14 @@ const productionLines = [
 ];
 
 const workshopPhotos = [
-  { src: "/images/process/raw_material_preparation.jpg", alt: "Raw material preparation in the glitter fabric workshop" },
+  { src: "/images/process/raw_material_preparation.jpg", alt: "Raw material preparation in the fabric workshop" },
   { src: "/images/process/hot_stamping_foil_transfer.jpg", alt: "Hot-stamping foil transfer production line in operation" },
-  { src: "/images/process/on_line_visual_inspection.jpg", alt: "On-line visual inspection of glitter and foil fabric" },
-  { src: "/images/process/sample_confirmation.jpg", alt: "Sample confirmation of hot-pressed glitter fabric detail" },
-  { src: "/images/process/final_packing.jpg", alt: "Final packing area for glitter and foil fabric rolls" },
+  { src: "/images/process/on_line_visual_inspection.jpg", alt: "On-line visual inspection of foil fabric" },
+  { src: "/images/process/sample_confirmation.jpg", alt: "Sample confirmation of hot-pressed foil fabric detail" },
+  { src: "/images/process/final_packing.jpg", alt: "Final packing area for foil fabric rolls" },
 ];
 
 const equipment = [
-  "Glitter coating / bonding machines",
   "Hot-stamping foil transfer presses",
   "Color matching & development stations",
   "Curing & heat-setting equipment",
@@ -215,10 +205,11 @@ const auditSupport = [
 ---
 
 <Layout
-  title="Glitter & Foil Fabric Factory in Guangzhou | Nixia Fabric"
-  description="Explore Nixia Fabric's Guangzhou production facility for glitter, foil, iridescent and stretch fabrics, with in-house finishing, batch QC, OEM/ODM and custom sample support."
-  keywords="glitter fabric factory, foil fabric factory, fabric manufacturer china, Factory Direct Supply, Custom Color Matching, fabric quality control, OEM, ODM"
+  title="Foil Fabric Factory in Guangzhou | Nixia Fabric"
+  description="Explore Nixia Fabric's Guangzhou production facility for foil, iridescent and stretch fabrics, with in-house finishing, batch QC, OEM/ODM and custom sample support."
+  keywords="foil fabric factory, foil fabric manufacturer china, Factory Direct Supply, Custom Color Matching, fabric quality control, OEM, ODM"
   structuredData={[breadcrumbData, factoryPageData]}
+  footerFocus="foil"
 >
   <!-- Factory Hero -->
   <section class="factory-hero">
@@ -226,10 +217,10 @@ const auditSupport = [
       <span class="eyebrow">Manufacturing Facility</span>
       <h1>Our Factory</h1>
       <p class="factory-hero__desc">
-        We have specialized in glitter and foil-printed synthetic leather since 2013.
+        We have specialized in hot-stamping performance fabrics since 2013.
         With our own production facility and stable partnerships with qualified material
-        manufacturers, we deliver reliable fabrics for footwear, handbag and accessory
-        manufacturers worldwide.
+        manufacturers, we deliver reliable fabrics for stage costume, dancewear and
+        performance outfit manufacturers worldwide.
       </p>
       <div class="factory-hero__badges">
         <span class="factory-hero__badge">Manufacturer</span>
@@ -246,16 +237,16 @@ const auditSupport = [
       <div class="factory-intro">
         <div class="factory-intro__left">
           <span class="eyebrow">Factory Introduction</span>
-          <h2>Specialized in Glitter & Foil-Printed Manufacturing</h2>
+          <h2>Specialized in Foil-Printed Manufacturing</h2>
           <p>
-            We are a synthetic leather manufacturer since 2013, with in-house production
-            for glitter and foil-printed PU, plus qualified upstream material support
-            when a project needs it. Our production focuses on fabrics for shoes,
-            handbags and accessories.
+            We are a performance fabric manufacturer since 2013, with in-house production
+            for hot-stamping foil finishes, plus qualified upstream material support
+            when a project needs it. Our production focuses on fabrics for stage costumes,
+            dancewear and performance outfits.
           </p>
           <p>
             We control every step we run in-house — from raw material selection to color
-            development, from glitter bonding to final inspection. Our clients deal
+            development, from foil lamination to final inspection. Our clients deal
             directly with the people who make their fabric.
           </p>
         </div>
@@ -265,8 +256,7 @@ const auditSupport = [
               <span class="eyebrow">What We Produce</span>
             </div>
             <ul class="factory-intro__list">
-              <li>Chunky Glitter Synthetic Leather — Elastic, PU, Non-woven, Oxford</li>
-              <li>Foil-Printed Synthetic Leather — Metallic, Gold, Silver</li>
+              <li>Hot-Stamping Performance Fabric — Iridescent, Gradient, Metallic</li>
               <li>Custom Color Matching</li>
               <li>Factory Direct Supply</li>
               <li>Custom Backing & GSM</li>
@@ -294,12 +284,11 @@ const auditSupport = [
     <div class="container">
       <div class="section-header">
         <span class="eyebrow">Production Lines</span>
-        <h2>Dedicated Lines for Glitter &amp; Foil Fabric</h2>
+        <h2>Dedicated Lines for Foil Fabric</h2>
         <p>
-          Our factory is equipped with professional glitter coating and hot-stamping
-          foil-transfer production lines. We provide OEM &amp; ODM solutions, support
-          custom color matching and multiple base-fabric options for glitter &amp;
-          foil-printed fabrics.
+          Our factory is equipped with professional hot-stamping foil-transfer
+          production lines. We provide OEM &amp; ODM solutions, support custom color
+          matching and multiple base-fabric options for foil-printed fabrics.
         </p>
       </div>
       <div class="lines-grid">
@@ -320,7 +309,7 @@ const auditSupport = [
         <span class="eyebrow">Workshop</span>
         <h2>Real Workshop Scenes</h2>
         <p>
-          Photos of our production floor — coating, foil transfer, inspection and packing.
+          Photos of our production floor — foil transfer, inspection and packing.
         </p>
       </div>
       <div class="workshop-grid">
@@ -343,9 +332,8 @@ const auditSupport = [
         <span class="eyebrow">Manufacturing Capability</span>
         <h2>What We Can Produce</h2>
         <p>
-          Our factory is equipped for the full range of Chunky Glitter Synthetic Leather
-          and Foil-Printed Synthetic Leather production, from material preparation to Custom Color
-          Matching and Factory Direct manufacturing.
+          Our factory is equipped for hot-stamping performance fabric production, from
+          material preparation to Custom Color Matching and Factory Direct manufacturing.
         </p>
       </div>
 
@@ -417,7 +405,7 @@ const auditSupport = [
           <div class="process-step-img__media">
             <picture>
               <source srcset={toWebp('/images/process/raw_material_preparation.jpg')} type="image/webp" />
-              <img src="/images/process/raw_material_preparation.jpg" alt="Raw material preparation in glitter fabric production warehouse" width="1200" height="675" loading="lazy" decoding="async" />
+              <img src="/images/process/raw_material_preparation.jpg" alt="Raw material preparation in fabric production warehouse" width="1200" height="675" loading="lazy" decoding="async" />
             </picture>
           </div>
           <div class="process-step-img__info">
@@ -451,7 +439,7 @@ const auditSupport = [
           <div class="process-step-img__media">
             <picture>
               <source srcset={toWebp('/images/process/on_line_visual_inspection.jpg')} type="image/webp" />
-              <img src="/images/process/on_line_visual_inspection.jpg" alt="On-line visual inspection of glitter and foil-printed fabric quality" width="1200" height="675" loading="lazy" decoding="async" />
+              <img src="/images/process/on_line_visual_inspection.jpg" alt="On-line visual inspection of foil-printed fabric quality" width="1200" height="675" loading="lazy" decoding="async" />
             </picture>
           </div>
           <div class="process-step-img__info">
@@ -468,7 +456,7 @@ const auditSupport = [
           <div class="process-step-img__media">
             <picture>
               <source srcset={toWebp('/images/process/sample_confirmation.jpg')} type="image/webp" />
-              <img src="/images/process/sample_confirmation.jpg" alt="Sample confirmation close-up of hot-pressed glitter fabric detail" width="1200" height="675" loading="lazy" decoding="async" />
+              <img src="/images/process/sample_confirmation.jpg" alt="Sample confirmation close-up of hot-pressed foil fabric detail" width="1200" height="675" loading="lazy" decoding="async" />
             </picture>
           </div>
           <div class="process-step-img__info">
@@ -485,7 +473,7 @@ const auditSupport = [
           <div class="process-step-img__media">
             <picture>
               <source srcset={toWebp('/images/process/final_packing.jpg')} type="image/webp" />
-              <img src="/images/process/final_packing.jpg" alt="Factory exterior and final packing area for glitter and foil fabrics" width="1200" height="675" loading="lazy" decoding="async" />
+              <img src="/images/process/final_packing.jpg" alt="Factory exterior and final packing area for foil fabrics" width="1200" height="675" loading="lazy" decoding="async" />
             </picture>
           </div>
           <div class="process-step-img__info">
@@ -606,7 +594,7 @@ const auditSupport = [
         <span class="eyebrow">Packing Process</span>
         <h2>Careful Packing for International Shipping</h2>
         <p>
-          Every roll is packed to withstand international shipping — protecting the glitter
+          Every roll is packed to withstand international shipping — protecting the foil
           surface and ensuring the fabric arrives in perfect condition.
         </p>
       </div>

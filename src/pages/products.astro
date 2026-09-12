@@ -1,78 +1,48 @@
 ---
 /**
  * Products Listing Page — /products
- * Catalog-style layout: category tiles → filter chips + sort → product grid
+ * Catalog-style layout: filter chips + sort → product grid
  * Filter/sort implemented client-side on the static-rendered grid.
  */
 import Layout from "@layouts/Layout.astro";
-import { allProducts } from "@data/allProducts";
+import { performanceProducts } from "@data/allProducts";
+
+const catalogProducts = performanceProducts;
 
 const recommendedProductOrder = [
-  "coarse-glitter-pu-hot-stamping-fabric-cma-certified",
   "iridescent-laser-hot-stamping-stretch-ice-silk",
-  "non-woven-glitter-fabric",
   "iridescent-gradient-laser-ice-silk",
   "plain-iridescent-laser-spandex-4-way-stretch",
-  "sparkle-glitter-surface-solid-leather-fabric",
+  "full-print-hot-stamping-spandex-milk-silk",
 ];
 
 const productOrderMap = new Map(recommendedProductOrder.map((slug, index) => [slug, index]));
-const sortedProducts = [...allProducts].sort((a, b) => {
+const sortedProducts = [...catalogProducts].sort((a, b) => {
   const aOrder = productOrderMap.get(a.slug) ?? Number.MAX_SAFE_INTEGER;
   const bOrder = productOrderMap.get(b.slug) ?? Number.MAX_SAFE_INTEGER;
 
   if (aOrder !== bOrder) return aOrder - bOrder;
-  return allProducts.indexOf(a) - allProducts.indexOf(b);
+  return catalogProducts.indexOf(a) - catalogProducts.indexOf(b);
 });
-
-/* ---- Application collections (aligned with home Applications section) ---- */
-const collections = [
-  {
-    key: "swimwear",
-    label: "Fashion & Swimwear",
-    desc: "4-way stretch spandex and milk-silk bases with foil and laser finishes.",
-    image: "/shots/application-fashion-swimwear.jpg",
-    href: "/applications/foil-fabric-for-swimwear/",
-  },
-  {
-    key: "footwear,handbag",
-    label: "Shoes & Bags",
-    desc: "Structured glitter and synthetic-leather bases for uppers, handbags and trims.",
-    image: "/shots/application-shoes-bags.png",
-    href: "/applications/glitter-fabric-for-shoes/",
-  },
-  {
-    key: "stage-costume",
-    label: "Party & Stage Costumes",
-    desc: "Holographic and iridescent fabrics for dance, cosplay and performance outfits.",
-    image: "/shots/application-costume-glitter.jpg",
-    href: "/applications/holographic-fabric-for-stage-costumes/",
-  },
-  {
-    key: "decoration",
-    label: "Toys, Crafts & Decor",
-    desc: "Cut-clean glitter fabrics for toys, DIY crafts, backdrops and festive projects.",
-    image: "/shots/application-toys-crafts-decor.png",
-    href: "/applications/glitter-fabric-for-decoration/",
-  },
-];
-
-const collectionCount = (key: string) =>
-  allProducts.filter((p) => key.split(",").some((t) => p.tags.includes(t))).length;
 
 /* ---- Filter chips (application-based, with counts) ---- */
 const filters = [
   { key: "all", label: "All Products" },
-  { key: "swimwear", label: "Fashion & Swimwear" },
-  { key: "footwear,handbag", label: "Shoes & Bags" },
-  { key: "stage-costume", label: "Party & Stage" },
-  { key: "decoration", label: "Decor & Crafts" },
+  { key: "stage-costume", label: "Stage Costumes" },
+  { key: "dancewear", label: "Dancewear" },
+  { key: "performance-wear", label: "Performance Wear" },
+  { key: "cosplay", label: "Cosplay & Carnival" },
   { key: "metallic", label: "Metallic" },
   { key: "gradient", label: "Gradient" },
   { key: "printed", label: "Printed" },
 ].map((f) => ({
   ...f,
-  count: f.key === "all" ? allProducts.length : collectionCount(f.key),
+  count:
+    f.key === "all"
+      ? catalogProducts.length
+      : catalogProducts.filter((product) =>
+          f.key.split(",").some((tag) => product.tags.includes(tag)),
+        ).length,
 }));
 
 const breadcrumbData = {
@@ -87,18 +57,17 @@ const breadcrumbData = {
 const collectionPageData = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: "Wholesale Glitter, Foil & Iridescent Fabric Collection",
-  description: "Browse glitter, foil, iridescent and stretch fabrics for footwear, handbags, fashion, swimwear, stage costumes and decoration. Factory-direct supply with custom color matching and OEM/ODM support.",
+  name: "Wholesale Foil, Iridescent & Stretch Fabric Collection",
+  description: "Browse hot-stamping foil, iridescent and stretch fabrics for stage costumes, dancewear, performance outfits and cosplay. Factory-direct supply with custom color matching and OEM/ODM support.",
   url: "https://nixiafabric.com/products/",
 };
 
-const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 ---
 
 <Layout
-  title="Wholesale Glitter, Foil & Iridescent Fabrics | Nixia Fabric"
-  description="Browse wholesale glitter, foil, iridescent and stretch fabrics for shoes, handbags, fashion, swimwear, stage costumes and decoration. Factory-direct supply, custom options and sample support."
-  keywords="wholesale glitter fabric, foil fabric supplier, iridescent fabric manufacturer, stretch fabric wholesale, glitter synthetic leather"
+  title="Wholesale Foil, Iridescent & Stretch Fabrics | Nixia Fabric"
+  description="Browse wholesale hot-stamping foil, iridescent and stretch fabrics for stage costumes, dancewear, performance outfits and cosplay. Factory-direct supply, custom options and sample support."
+  keywords="foil fabric supplier, iridescent fabric manufacturer, stretch fabric wholesale, hot-stamping fabric, spandex fabric"
   canonical="https://nixiafabric.com/products/"
   structuredData={[breadcrumbData, collectionPageData]}
 >
@@ -106,35 +75,12 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
   <section class="page-hero">
     <div class="container">
       <span class="eyebrow">Wholesale Catalog</span>
-      <h1>Wholesale Glitter, Foil &amp; Iridescent Fabrics</h1>
+      <h1>Wholesale Foil, Iridescent &amp; Stretch Fabrics</h1>
       <p class="page-hero__desc">
-        Browse {allProducts.length} fabric options for shoes, handbags, fashion, swimwear,
-        stage costumes and decoration. Stock materials, OEM/ODM customization and buyer-specific
+        Browse {catalogProducts.length} fabric options for stage costumes, dancewear,
+        performance outfits and cosplay. Stock materials, OEM/ODM customization and buyer-specific
         testing support are available through our factory team.
       </p>
-    </div>
-  </section>
-
-  <!-- Application Collections -->
-  <section class="section section--flush">
-    <div class="container">
-      <div class="collections-grid">
-        {collections.map((c) => (
-          <a href={c.href} class="collection-card" data-filter={c.key}>
-            <picture class="collection-card__media">
-              <source srcset={toWebp(c.image)} type="image/webp" />
-              <img src={c.image} alt={`${c.label} fabric applications`} loading="lazy" width="1672" height="941" />
-            </picture>
-            <span class="collection-card__overlay" aria-hidden="true"></span>
-            <div class="collection-card__body">
-              <span class="collection-card__count">{collectionCount(c.key)} ITEMS</span>
-              <h2 class="collection-card__title">{c.label}</h2>
-              <p class="collection-card__desc">{c.desc}</p>
-              <span class="collection-card__cta">Browse Collection &gt;</span>
-            </div>
-          </a>
-        ))}
-      </div>
     </div>
   </section>
 
@@ -166,7 +112,7 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
       </div>
 
       <p class="catalog-count" id="catalog-count" aria-live="polite">
-        Showing {allProducts.length} products
+        Showing {catalogProducts.length} products
       </p>
 
       <div class="product-grid" id="product-grid">
@@ -274,105 +220,6 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
     color: rgba(255, 255, 255, 0.75);
     font-size: var(--text-lg);
     max-width: 640px;
-  }
-
-  /* ==================== Collection Tiles ==================== */
-  .section--flush {
-    padding-top: var(--space-3xl);
-    background: #f7f5ef;
-  }
-
-  .collections-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-lg);
-  }
-
-  .collection-card {
-    position: relative;
-    display: block;
-    height: 280px;
-    border-radius: 20px;
-    overflow: hidden;
-    text-decoration: none;
-    border: 1px solid rgba(22, 41, 77, 0.06);
-    box-shadow: 0 6px 20px rgba(22, 41, 77, 0.12);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-
-  .collection-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 34px rgba(22, 41, 77, 0.18);
-  }
-
-  .collection-card__media {
-    position: absolute;
-    inset: 0;
-  }
-
-  .collection-card__media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-  }
-
-  .collection-card__overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.78) 0%,
-      rgba(0, 0, 0, 0.38) 45%,
-      rgba(0, 0, 0, 0.32) 100%
-    );
-  }
-
-  .collection-card__body {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1.25rem;
-  }
-
-  .collection-card__count {
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    color: var(--color-accent-light);
-    border: 1px solid rgba(196, 160, 53, 0.45);
-    background: rgba(0, 0, 0, 0.35);
-    border-radius: 999px;
-    padding: 0.2rem 0.7rem;
-  }
-
-  .collection-card__title {
-    color: #fff;
-    font-size: 1.25rem;
-    font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    margin: 0.7rem 0 0;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
-  }
-
-  .collection-card__desc {
-    color: rgba(255, 255, 255, 0.92);
-    font-size: var(--text-sm);
-    line-height: 1.5;
-    margin: 0.35rem 0 0;
-    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
-  }
-
-  .collection-card__cta {
-    margin-top: auto;
-    color: var(--color-accent-light);
-    font-size: var(--text-sm);
-    font-weight: 700;
-    letter-spacing: 0.02em;
   }
 
   /* ==================== Catalog Toolbar ==================== */
@@ -649,10 +496,6 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
   }
 
   /* ==================== Responsive ==================== */
-  @media (max-width: 1199px) {
-    .collections-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-
   @media (max-width: 968px) {
     .product-grid { grid-template-columns: repeat(2, 1fr); }
     .catalog-toolbar { align-items: flex-start; flex-direction: column; }
@@ -660,7 +503,6 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 
   @media (max-width: 768px) {
     .product-grid { grid-template-columns: 1fr; }
-    .collections-grid { grid-template-columns: 1fr; }
 
     .product-card__body { padding: var(--space-md); }
 
@@ -720,19 +562,6 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
         chip.setAttribute("aria-selected", "true");
         currentFilter = chip.getAttribute("data-filter") || "all";
         applyFilter();
-      });
-    });
-
-    // Collection tiles scroll to catalog and activate the matching filter
-    document.querySelectorAll(".collection-card").forEach(function (tile) {
-      tile.addEventListener("click", function (e) {
-        var key = tile.getAttribute("data-filter");
-        var chip = document.querySelector('.catalog-chip[data-filter="' + key + '"]');
-        if (chip) {
-          e.preventDefault();
-          chip.click();
-        }
-        // default: anchor scroll to #catalog happens naturally
       });
     });
 

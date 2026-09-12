@@ -38,18 +38,20 @@ export interface Props {
     media?: string;
     fetchpriority?: string;
   }>;
+  footerFocus?: "default" | "foil";
 }
 
 const {
   title,
-  description = "Nixia Fabric is a China manufacturer specializing in Chunky Glitter Synthetic Leather and Foil-Printed Synthetic Leather for shoes, handbags, and fashion accessories. Factory Direct Supply and Custom Color Matching.",
-  keywords = "chunky glitter synthetic leather, foil-printed synthetic leather, glitter fabric manufacturer, foil fabric manufacturer, fabric factory china, metallic fabric factory, Custom Color Matching, Custom Backing Options",
+  description = "Nixia Fabric is a China manufacturer specializing in hot-stamping foil, iridescent and stretch fabrics for stage costumes, dancewear and performance outfits. Factory Direct Supply and Custom Color Matching.",
+  keywords = "hot-stamping foil fabric, stage costume fabric supplier, dancewear fabric manufacturer, performance costume fabric, iridescent stretch fabric, fabric factory china, Custom Color Matching",
   image = "/og-image.jpg",
   canonical,
   ogType = "website",
   structuredData,
   robots = "index, follow",
   preloadImages = [],
+  footerFocus = "default",
 } = Astro.props;
 
 const siteName = "Nixia Fabric";
@@ -59,7 +61,7 @@ const pageTitle = title
   ? title.includes(siteName)
     ? title
     : `${title} | ${siteName}`
-  : `${siteName} — Glitter & Foil-Printed Synthetic Leather Manufacturer`;
+    : `${siteName} — Stage & Performance Fabric Manufacturer`;
 const withTrailingSlash = (value: string) => {
   const url = new URL(value, siteUrl);
   if (url.pathname !== "/" && !url.pathname.endsWith("/")) {
@@ -76,7 +78,7 @@ const orgStructuredData = {
   "@type": "Organization",
   name: "Nixia Fabric",
   alternateName: "Nixia Fabric Manufacturer",
-  description: "China manufacturer of holographic, iridescent and glitter fabrics for fashion, footwear, bags and stage costumes. Factory direct supply, custom color matching and OEM/ODM support.",
+  description: "China manufacturer of hot-stamping foil, iridescent and stretch fabrics for stage costumes, dancewear and performance outfits. Factory direct supply, custom color matching and OEM/ODM support.",
   url: siteUrl,
   logo: `${siteUrl}/logo.png`,
   address: {
@@ -88,13 +90,14 @@ const orgStructuredData = {
   },
   areaServed: ["Worldwide"],
   knowsAbout: [
-    "Chunky Glitter Synthetic Leather",
-    "Foil-Printed Synthetic Leather",
-    "Composite Fabric",
+    "Hot-Stamping Performance Fabric",
+    "Iridescent Stretch Fabric",
     "Factory Direct Supply",
     "Custom Color Matching",
     "Custom Backing Options",
-    "Decorative Fabric Manufacturing",
+    "Stage Costume Fabric Manufacturing",
+    "Dancewear Fabric Manufacturing",
+    "Performance Costume Fabric Manufacturing",
   ],
 };
 
@@ -121,6 +124,15 @@ const allStructuredData = structuredData
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VDYGZBSQ62"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-VDYGZBSQ62");
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
@@ -199,7 +211,7 @@ const allStructuredData = structuredData
     <main id="main">
       <slot />
     </main>
-    <Footer />
+    <Footer focus={footerFocus} />
     <RFQQuoteModal />
     <FloatingContact />
 

@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { allProducts } from "../src/data/allProducts.js";
+import { performanceProducts } from "../src/data/allProducts.js";
 
 const root = process.cwd();
 const errors = [];
@@ -37,7 +37,7 @@ const requiredFields = [
 const slugs = new Set();
 const titles = new Set();
 
-for (const product of allProducts) {
+for (const product of performanceProducts) {
   if (slugs.has(product.slug)) errors.push(`${product.slug}: duplicate slug`);
   if (titles.has(product.title)) errors.push(`${product.slug}: duplicate title`);
   slugs.add(product.slug);
@@ -141,4 +141,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log(`Product validation passed: ${allProducts.length} product(s) checked.`);
+console.log(`Product validation passed: ${performanceProducts.length} public product(s) checked.`);

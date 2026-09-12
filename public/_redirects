@@ -5,7 +5,24 @@
 # Product URLs without the trailing slash (including legacy bookmarks)
 /products/full-print-hot-stamping-spandex-milk-silk /products/full-print-hot-stamping-spandex-milk-silk/ 301
 /products/iridescent-laser-hot-stamping-stretch-ice-silk /products/iridescent-laser-hot-stamping-stretch-ice-silk/ 301
-/products/non-woven-glitter-fabric /products/non-woven-glitter-fabric/ 301
 /products/iridescent-gradient-laser-ice-silk /products/iridescent-gradient-laser-ice-silk/ 301
 /products/plain-iridescent-laser-spandex-4-way-stretch /products/plain-iridescent-laser-spandex-4-way-stretch/ 301
-/products/rainbow-gradient-glitter-synthetic-leather /products/rainbow-gradient-glitter-synthetic-leather/ 301
+
+# Retired non-performance product pages
+/products/non-woven-glitter-fabric /products/ 301
+/products/rainbow-gradient-glitter-synthetic-leather /products/ 301
+/products/coarse-glitter-pu-hot-stamping-fabric-cma-certified /products/ 301
+/products/sparkle-glitter-surface-solid-leather-fabric /products/ 301
+
+# Retired non-performance application pages
+/applications/glitter-fabric-for-shoes /applications/holographic-fabric-for-stage-costumes/ 301
+/applications/glitter-fabric-for-handbags /applications/holographic-fabric-for-stage-costumes/ 301
+/applications/foil-fabric-for-swimwear /applications/holographic-fabric-for-stage-costumes/ 301
+/applications/glitter-fabric-for-decoration /applications/ 301
+/applications/custom-glitter-fabric /applications/custom-performance-fabric/ 301
+
+# Retired glitter-focused blog articles
+/blog/cnas-certification-coarse-glitter-pu-hot-stamping-fabric/ /blog/ 301
+/blog/what-is-glitter-fabric/ /blog/ 301
+/blog/glitter-vs-foil-comparison/ /blog/ 301
+/blog/how-to-choose-glitter-surface-solid-leather-fabric/ /blog/ 301

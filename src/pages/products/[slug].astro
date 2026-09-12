@@ -3,8 +3,8 @@
  * Product Detail Page — /products/[slug]
  * ---------------------------------------------------------------------------
  * Astro dynamic route. At build time it loops over every entry in
- * allProducts.js and generates one static page per product at
- * /products/{slug} (all 6 products).
+ * allProducts.js and generates one static page per public product at
+ * /products/{slug}.
  *
  * This page is responsible ONLY for:
  *   - <head> SEO: title, meta description, og:title, og:description,
@@ -13,28 +13,30 @@
  *
  * The visible UI lives entirely in <ProductDetail product={product} />.
  */
+import { existsSync } from "node:fs";
 import Layout from "@layouts/Layout.astro";
 import ProductDetail from "@components/ProductDetail.astro";
-import { allProducts } from "@data/allProducts";
+import { performanceProducts } from "@data/allProducts";
 
 export function getStaticPaths() {
-  return allProducts.map((product) => ({
+  return performanceProducts.map((product) => ({
     params: { slug: product.slug },
     props: { product },
   }));
 }
 
 const { product } = Astro.props as {
-  product: (typeof allProducts)[number];
+  product: (typeof performanceProducts)[number];
 };
 
 const productUrl = `https://nixiafabric.com/products/${product.slug}/`;
 const ogImage = `https://nixiafabric.com${product.mainImageUrl}`;
 
-const heroWebp = product.galleryImages[0]
-  ? product.galleryImages[0].replace(/\.(png|jpe?g)$/i, ".webp")
-  : product.mainImageWebp;
-const hero = `${product.galleryMainPath}${heroWebp}`;
+const heroImage = product.galleryImages[0]
+  ? `${product.galleryMainPath}${product.galleryImages[0]}`
+  : product.mainImageUrl;
+const heroWebp = heroImage.replace(/\.(png|jpe?g)$/i, ".webp");
+const hero = existsSync(`public${heroWebp}`) ? heroWebp : heroImage;
 
 const productImages = product.imageList.map((image) => `https://nixiafabric.com${image.src}`);
 const productProperties = [
@@ -102,7 +104,7 @@ const breadcrumbSchema = {
   image={ogImage}
   ogType="product"
   structuredData={[productSchema, faqSchema, breadcrumbSchema]}
-  preloadImages={[{ href: hero, type: "image/webp", fetchpriority: "high" }]}
+  preloadImages={[{ href: hero, type: hero.endsWith(".webp") ? "image/webp" : "image/jpeg", fetchpriority: "high" }]}
 >
   <ProductDetail product={product} />
 </Layout>

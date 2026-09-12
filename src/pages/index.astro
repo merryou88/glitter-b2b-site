@@ -3,58 +3,41 @@
  * index.astro — Nixia Fabric Home Page
  * Solution-oriented narrative (inspired by ecowoodplate.com)
  *
- * Module order: Hero → Our Main Fabric Series → Applications →
- *               Why Choose Nixia Fabric → Our Factory → Factory Trust →
- *               Final CTA
+ * Module order: Hero → Our Main Fabric Series → Why Choose Nixia Fabric →
+ *               Our Factory → Factory Trust → Final CTA
  */
 import Layout from "@layouts/Layout.astro";
 import HeroCarousel from "@components/HeroCarousel.astro";
 import CTAButton from "@components/CTAButton.astro";
-import { allProducts } from "@data/allProducts";
+import { performanceProducts } from "@data/allProducts";
 
 // WebPage structured data for SEO
 const webPageData = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Holographic & Glitter Fabric Manufacturer | Nixia Fabric",
+  name: "Stage & Performance Foil Fabric Manufacturer | Nixia Fabric",
   description:
-    "Factory-direct holographic, iridescent & glitter fabrics for fashion, footwear & stage costumes. Low MOQ, free samples, OEM/ODM, 24h quote. Buyer-specific testing support.",
+  "Factory-direct hot-stamping foil, iridescent and stretch fabrics for stage costumes, dancewear, performance outfits and cosplay. Low MOQ, free samples, OEM/ODM, 24h quote.",
   url: "https://nixiafabric.com",
 };
 
 const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 
-const productMap = new Map(allProducts.map((product) => [product.slug, product]));
+const productMap = new Map(performanceProducts.map((product) => [product.slug, product]));
 
 const popularProducts = [
   {
-    slug: "coarse-glitter-pu-hot-stamping-fabric-cma-certified",
-    title: "Coarse Glitter PU Hot Stamping Fabric – CMA Certified",
-    description: "Dimensional reflective coarse glitter on a structured PU backing for bows, bag panels, footwear uppers and accessories.",
-    href: "/products/coarse-glitter-pu-hot-stamping-fabric-cma-certified/",
-    moq: "MOQ 200m",
-    badge: "CMA Certified",
-  },
-  {
     slug: "iridescent-laser-hot-stamping-stretch-ice-silk",
     title: "Iridescent Laser Hot‑Stamping Stretch Ice‑Silk Fabric",
-    description: "Elastic, gradient multi‑color finish. Great for stage costumes and backdrop decoration.",
+    description: "Elastic, gradient multi-color finish for stage costumes, dancewear and performance outfits.",
     href: "/products/iridescent-laser-hot-stamping-stretch-ice-silk/",
     moq: "MOQ 100m",
     badge: "In‑Stock Available",
   },
   {
-    slug: "non-woven-glitter-fabric",
-    title: "Non‑Woven Glitter Fabric",
-    description: "Sparkling glitter surface, widely used for holiday decoration, stage props & performance costumes.",
-    href: "/products/non-woven-glitter-fabric/",
-    moq: "MOQ 200m",
-    badge: "In‑Stock Available",
-  },
-  {
     slug: "iridescent-gradient-laser-ice-silk",
     title: "Iridescent Gradient Laser Hot‑Stamping Ice‑Silk Fabric",
-    description: "Stretchy fabric with multi‑color iridescent finish, suitable for fashion apparel, stage costumes and backdrop decoration.",
+    description: "Stretchy fabric with a multi-color iridescent finish for dancewear, stage costumes and cosplay.",
     href: "/products/iridescent-gradient-laser-ice-silk/",
     moq: "MOQ 100m",
     badge: "In‑Stock Available",
@@ -62,50 +45,10 @@ const popularProducts = [
   {
     slug: "plain-iridescent-laser-spandex-4-way-stretch",
     title: "Plain Iridescent Laser Hot‑Stamping Spandex 4‑Way Stretch Fabric",
-    description: "High 4‑way stretch performance, ideal for western‑style bodysuits, swimwear and fashionable stage garments.",
+    description: "High 4-way stretch performance for fitted dancewear, stage garments and performance costumes.",
     href: "/products/plain-iridescent-laser-spandex-4-way-stretch/",
     moq: "MOQ 100m",
     badge: "In‑Stock Available",
-  },
-  {
-    slug: "sparkle-glitter-surface-solid-leather-fabric",
-    title: "Sparkle Glitter Surface Solid Leather Fabric",
-    description: "Bright glitter surface on a PU and PET leather base for notebook covers, DIY materials, bags, shoes and accessories.",
-    href: "/products/sparkle-glitter-surface-solid-leather-fabric/",
-    moq: "MOQ 100m",
-    badge: "17 Stock Colors",
-  },
-];
-
-// Applications — 4 end-use scenario cards
-const applications = [
-  {
-    title: "Fashion & Swimwear",
-    description: "4-way stretch spandex & milk-silk bases with foil and laser finishes — form-fitting shine that moves with the body.",
-    image: "/shots/application-fashion-swimwear.jpg",
-    alt: "Iridescent laser foil swimsuit made with Nixia stretch fabric",
-    href: "/applications/foil-fabric-for-swimwear/",
-  },
-  {
-    title: "Shoes & Bags",
-    description: "Structured glitter and synthetic-leather bases for footwear uppers, handbags and clutches — sparkle that holds its shape.",
-    image: "/shots/application-shoes-bags.png",
-    alt: "Glitter fabric used on footwear uppers",
-    href: "/applications/glitter-fabric-for-shoes/",
-  },
-  {
-    title: "Party & Stage Costumes",
-    description: "Holographic and iridescent fabrics built for the spotlight — dance costumes, cosplay, carnival and performance outfits.",
-    image: "/shots/application-costume-glitter.jpg",
-    alt: "Holographic stage costume and glitter fabric rolls",
-    href: "/applications/holographic-fabric-for-stage-costumes/",
-  },
-  {
-    title: "Toys, Crafts & Festive Decor",
-    description: "Cut-clean glitter fabrics for toy covers, DIY crafts, party backdrops and Christmas projects. Fire-retardant backing optional.",
-    image: "/shots/application-toys-crafts-decor.png",
-    alt: "Glitter fabric strips and rhinestone craft materials",
-    href: "/applications/glitter-fabric-for-decoration/",
   },
 ];
 
@@ -158,9 +101,9 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
 ---
 
 <Layout
-  title="Holographic & Glitter Fabric Manufacturer | Nixia Fabric"
-  description="Factory-direct holographic, iridescent & glitter fabrics for fashion, footwear & stage costumes. Low MOQ, free samples, OEM/ODM, 24h quote. Buyer-specific testing support."
-  keywords="glitter synthetic leather, foil-printed synthetic leather, synthetic leather manufacturer, China fabric factory, custom synthetic leather, OEM ODM fabric, SGS REACH testing"
+  title="Holographic & Foil Fabric Manufacturer | Nixia Fabric"
+  description="Factory-direct hot-stamping foil, iridescent and stretch fabrics for stage costumes, dancewear, performance outfits and cosplay. Low MOQ, free samples, OEM/ODM, 24h quote."
+  keywords="hot-stamping performance fabric, stage costume fabric manufacturer, dancewear fabric supplier, iridescent stretch fabric, cosplay costume fabric, OEM ODM fabric, SGS REACH testing"
   structuredData={[webPageData]}
 >
   <!-- ==================== HERO CAROUSEL ==================== -->
@@ -197,7 +140,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
         <div>
           <span class="eyebrow">HOT SELLING</span>
           <h2>Popular Products</h2>
-          <p>Premium fabrics for fashion, swimwear, stage costumes, footwear &amp; bags. OEM &amp; ODM available, sample service offered.</p>
+        <p>Hot-stamping foil and iridescent stretch fabrics for stage costumes, dancewear, performance outfits and cosplay. OEM &amp; ODM available.</p>
         </div>
         <a href="/products/" class="view-all-link">View All →</a>
       </div>
@@ -231,37 +174,6 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     </div>
   </section>
 
-  <!-- ==================== APPLICATIONS (4 scenario cards) ==================== -->
-  <section class="section section--alt" id="applications">
-    <div class="container">
-      <div class="section-header">
-        <span class="eyebrow">WHERE OUR FABRICS GO</span>
-        <h2>Applications</h2>
-        <p>One factory, four core markets — factory-direct glitter &amp; hot-stamping foil fabrics for fashion, footwear, entertainment and decoration buyers worldwide.</p>
-      </div>
-
-        <div class="grid grid--4 applications-grid applications-grid--stacked">
-          {applications.map((app) => (
-            <a href={app.href} class="app-card app-card--split">
-              <div class="app-card__visual">
-                <picture>
-                  <source srcset={toWebp(app.image)} type="image/webp" />
-                  <img src={app.image} alt={app.alt} width="1200" height="675" loading="lazy" decoding="async" />
-                </picture>
-                <div class="app-card__overlay">
-                  <span class="app-card__cta">View Fabrics →</span>
-                </div>
-              </div>
-            <div class="app-card__body">
-              <h3>{app.title}</h3>
-              <p>{app.description}</p>
-            </div>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- ==================== WHY NIXIA ==================== -->
   <section class="section" id="why-nixia">
     <div class="container">
@@ -269,7 +181,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
         <div class="why-nixia-copy">
           <span class="eyebrow">WHY NIXIA</span>
           <h2>Your Reliable Fabric Manufacturing Partner</h2>
-          <p>From raw base fabric to finished glitter &amp; hot-stamping material — full-service manufacturing with documented quality control.</p>
+          <p>From raw base fabric to finished foil and iridescent material — full-service manufacturing with documented quality control.</p>
 
           <div class="why-nixia-trust" aria-label="Company trust data">
             <span><strong>Est. 2013</strong></span>
@@ -281,10 +193,10 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
 
           <div class="why-nixia-quotes" aria-label="Customer reviews">
             <blockquote>
-              <p>&ldquo;Sample to bulk in three weeks — the holographic spandex matched our approved swatch exactly.&rdquo;<cite>Swimwear manufacturer, Thailand</cite></p>
+              <p>&ldquo;Sample to bulk in three weeks — the holographic spandex matched our approved swatch exactly.&rdquo;<cite>Performance costume manufacturer, Thailand</cite></p>
             </blockquote>
             <blockquote>
-              <p>&ldquo;Consistent glitter density across three repeat orders, and export documents were complete every time.&rdquo;<cite>Footwear &amp; bags brand, UAE</cite></p>
+              <p>&ldquo;Consistent surface finish across three repeat orders, and export documents were complete every time.&rdquo;<cite>Performance costume company, UAE</cite></p>
             </blockquote>
           </div>
 
@@ -369,20 +281,6 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
           <div>
             <h3>Custom Foil Stamping</h3>
             <p>Custom metallic foil patterns &amp; colors</p>
-          </div>
-        </div>
-
-        <div class="capability-item">
-          <span class="capability-item__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 16c1.5-5 3.5-8 6-8s4 3 8 8" />
-              <path d="M7 13l2-3 2 4 2-5 2 6" />
-              <path d="M4 19h16" />
-            </svg>
-          </span>
-          <div>
-            <h3>Glitter Coating</h3>
-            <p>Fine-particle glitter surface treatment</p>
           </div>
         </div>
 
@@ -482,7 +380,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
         <div class="rfq-card rfq-card--light">
           <span class="rfq-card__eyebrow rfq-card__eyebrow--warm">BUYER RESOURCE</span>
           <h2>Request Wholesale Fabric Catalog</h2>
-          <p>Use the catalog request to receive product range suggestions, OEM/ODM options, MOQ guidance and recommended SKUs for your market.</p>
+          <p>Use the catalog request to receive performance-fabric suggestions, OEM/ODM options, MOQ guidance and recommended SKUs.</p>
 
           <ul class="buyer-resource-list" aria-label="Buyer resources">
             <li>Full fabric product range</li>
@@ -511,7 +409,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
           <div class="workflow-timeline__head">
             <span class="workflow-timeline__eyebrow">Path A · Ready Stock</span>
             <h3>Fast Lane for Stock Fabric</h3>
-            <p>In-stock hot-stamping &amp; glitter synthetic leather — standard finishes, short lead time.</p>
+            <p>In-stock hot-stamping and iridescent performance fabrics — standard finishes, short lead time.</p>
             <span class="workflow-timeline__meta">Stock dispatch: 1–3 working days*</span>
           </div>
 
@@ -700,7 +598,6 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
   }
 
   .fabric-card__visual picture,
-  .app-card__visual picture,
   .why-nixia-media picture {
     display: block;
     width: 100%;
@@ -708,7 +605,6 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
   }
 
   .fabric-card__visual img,
-  .app-card__visual img,
   .why-nixia-media img {
     width: 100%;
     height: 100%;
@@ -818,108 +714,6 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
 
   .fabric-card:hover .fabric-card__cta {
     background: var(--color-accent-dark);
-  }
-
-  /* ==================== Applications ==================== */
-  .applications-grid--stacked {
-    gap: 2.7rem 2.25rem;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .app-card {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    background-color: var(--color-white);
-    border: 1px solid var(--color-border);
-    transition: all var(--transition-base);
-  }
-
-  .app-card--split {
-    display: flex;
-    align-items: stretch;
-    min-height: 100%;
-    width: 90%;
-    justify-self: center;
-  }
-
-  .app-card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-4px);
-  }
-
-  .app-card__visual {
-    aspect-ratio: 16 / 9;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .app-card--split .app-card__visual {
-    flex: 0 0 48%;
-    aspect-ratio: 16 / 9;
-  }
-
-  .app-card__visual img {
-    transition: transform var(--transition-slow);
-  }
-
-  .app-card:hover .app-card__visual img {
-    transform: scale(1.05);
-  }
-
-  .app-card__overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding-bottom: var(--space-md);
-    background: linear-gradient(to top, rgba(22, 41, 77, 0.7) 0%, transparent 50%);
-    opacity: 0;
-    transition: opacity var(--transition-base);
-  }
-
-  .app-card:hover .app-card__overlay {
-    opacity: 1;
-  }
-
-  .app-card__cta {
-    font-size: var(--text-sm);
-    font-weight: 700;
-    color: var(--color-white);
-    background-color: var(--color-accent);
-    padding: 0.5rem 1.25rem;
-    border-radius: var(--radius-full);
-  }
-
-  .app-card__body {
-    padding: var(--space-md) var(--space-lg);
-    text-align: center;
-  }
-
-  .app-card--split .app-card__body {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 1.62rem;
-    text-align: left;
-  }
-
-  .app-card__body h3 {
-    font-size: var(--text-lg);
-    margin-bottom: 0.25rem;
-  }
-
-  .app-card__body p {
-    font-size: var(--text-xs);
-    color: var(--color-text-muted);
-  }
-
-  .app-card--split .app-card__body p {
-    margin-bottom: 0;
   }
 
   /* ==================== Why Nixia ==================== */
@@ -1952,22 +1746,12 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .grid--4.applications-grid,
     .grid--3.factory-entry-grid {
       grid-template-columns: repeat(2, 1fr);
     }
 
     .rfq-inline-form__row {
       grid-template-columns: 1fr;
-    }
-
-    .applications-grid--stacked {
-      gap: 2rem;
-      grid-template-columns: 1fr;
-    }
-
-    .app-card--split {
-      width: 90%;
     }
 
     .advantage-grid {
@@ -2075,7 +1859,6 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
 
   @media (max-width: 768px) {
     .fabric-series-grid,
-    .applications-grid--stacked,
     .why-nixia-split,
     .rfq-grid,
     .workflow-timelines,
@@ -2086,14 +1869,12 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
       grid-template-columns: 1fr;
     }
 
-    .grid--4.applications-grid,
     .grid--4.fabric-series-grid,
     .grid--3.factory-entry-grid,
     .advantage-grid {
       grid-template-columns: 1fr;
     }
 
-    .app-card--split,
     .fabric-card--split {
       width: 100%;
     }
@@ -2163,7 +1944,6 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
       gap: var(--space-xl) var(--space-lg);
     }
 
-    .grid--4.applications-grid,
     .grid--4.fabric-series-grid,
     .advantage-grid {
       grid-template-columns: 1fr;

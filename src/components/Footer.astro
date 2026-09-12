@@ -4,6 +4,13 @@
  * Brand | Products | Company | Contact
  */
 const year = new Date().getFullYear();
+
+interface Props {
+  focus?: "default" | "foil";
+}
+
+const { focus = "default" } = Astro.props;
+const isFoilFocus = focus === "foil";
 ---
 
 <footer class="footer">
@@ -18,9 +25,9 @@ const year = new Date().getFullYear();
           </span>
         </a>
         <p class="footer__tagline">
-          With our own production facility and experienced manufacturing partners, we
-          provide reliable glitter &amp; foil-printed synthetic leather solutions for
-          global footwear and bag manufacturers.
+          {isFoilFocus
+            ? "With our own production facility and experienced manufacturing partners, we provide reliable hot-stamping foil and specialty fabric solutions for stage costume, dancewear and performance buyers."
+            : "With our own production facility and experienced manufacturing partners, we provide reliable hot-stamping foil and iridescent fabric solutions for stage costume, dancewear and performance buyers."}
         </p>
         <div class="footer__social">
           <a
@@ -52,10 +59,18 @@ const year = new Date().getFullYear();
       <div class="footer__col">
         <h3 class="footer__col-title">Products</h3>
         <ul class="footer__col-links">
-          <li><a href="/products/non-woven-glitter-fabric/" class="footer__link">Glitter Fabrics</a></li>
-          <li><a href="/products/iridescent-laser-hot-stamping-stretch-ice-silk/" class="footer__link">Hot-Stamping Foil Fabrics</a></li>
-          <li><a href="/products/plain-iridescent-laser-spandex-4-way-stretch/" class="footer__link">4-Way Stretch Spandex</a></li>
-          <li><a href="/products/rainbow-gradient-glitter-synthetic-leather/" class="footer__link">Glitter Synthetic Leather</a></li>
+          {isFoilFocus ? (
+            <>
+              <li><a href="/products/iridescent-laser-hot-stamping-stretch-ice-silk/" class="footer__link">Hot-Stamping Foil Fabrics</a></li>
+              <li><a href="/products/plain-iridescent-laser-spandex-4-way-stretch/" class="footer__link">4-Way Stretch Fabrics</a></li>
+            </>
+          ) : (
+            <>
+              <li><a href="/products/full-print-hot-stamping-spandex-milk-silk/" class="footer__link">Foil Fabrics</a></li>
+              <li><a href="/products/iridescent-laser-hot-stamping-stretch-ice-silk/" class="footer__link">Hot-Stamping Foil Fabrics</a></li>
+              <li><a href="/products/plain-iridescent-laser-spandex-4-way-stretch/" class="footer__link">4-Way Stretch Spandex</a></li>
+            </>
+          )}
           <li><a href="/products/" class="footer__link">View All Products</a></li>
         </ul>
       </div>

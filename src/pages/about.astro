@@ -2,11 +2,11 @@
 /**
  * About Page — /about
  * Sections: Brand Story, Nixia Fabric Background,
- *           Industry Experience, Focus on Decorative Fabric, Global Market Service
+ *           Industry Experience, Focus on Fabric Solutions, Global Market Service
  */
 import Layout from "@layouts/Layout.astro";
 import CTAButton from "@components/CTAButton.astro";
-import { allProducts } from "@data/allProducts";
+import { performanceProducts } from "@data/allProducts";
 
 const breadcrumbData = {
   "@context": "https://schema.org",
@@ -31,7 +31,7 @@ const aboutPageData = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
   name: "About Nixia Fabric",
-  description: "Learn about Nixia Fabric, a Guangzhou manufacturer of glitter, foil, iridescent and stretch fabrics for fashion, footwear, handbags, swimwear and stage costumes.",
+  description: "Learn about Nixia Fabric, a Guangzhou manufacturer of hot-stamping foil, iridescent and stretch fabrics for stage costumes, dancewear and performance outfits.",
   url: "https://nixiafabric.com/about/",
   mainEntity: {
     "@type": "Organization",
@@ -41,13 +41,14 @@ const aboutPageData = {
       addressCountry: "CN",
     },
     knowsAbout: [
-      "Glitter Fabric Manufacturing",
       "Hot-Stamping Foil Fabric Manufacturing",
       "Laser Iridescent Fabric Manufacturing",
       "Stretch Fabric Manufacturing",
       "Custom Color Matching",
       "Factory Direct Supply",
-      "Decorative Fabric",
+      "Stage Costume Fabric Manufacturing",
+      "Dancewear Fabric Manufacturing",
+      "Performance Costume Fabric Manufacturing",
     ],
   },
 };
@@ -56,17 +57,17 @@ const milestones = [
   {
     year: "2013",
     title: "Since 2013",
-    desc: "Started specializing in glitter and foil-printed synthetic leather for footwear, handbag and accessory applications.",
+    desc: "Started specializing in foil-printed materials for performance costume applications.",
   },
   {
     year: "Growth",
     title: "Product Line Expansion",
-    desc: "Expanded with multiple backing options and custom color matching for glitter and foil-printed PU materials.",
+    desc: "Expanded with multiple backing options and custom color matching for foil-printed PU materials.",
   },
   {
     year: "Today",
     title: "Global B2B Manufacturing",
-    desc: "Serve footwear, handbag and accessory manufacturers worldwide with our own factory and stable partnerships with qualified material manufacturers.",
+    desc: "Serve stage costume, dancewear and performance outfit buyers worldwide with our own factory and stable material partners.",
   },
   {
     year: "Future",
@@ -78,19 +79,19 @@ const milestones = [
 const globalMarkets = [
   {
     region: "North America",
-    desc: "Shoe brands, handbag manufacturers, and fashion accessory companies.",
+    desc: "Stage costume manufacturers, dancewear brands, and performance outfit companies.",
   },
   {
     region: "Europe",
-    desc: "Footwear brands, handbag manufacturers, and accessory companies.",
+    desc: "Costume production companies and dancewear brands.",
   },
   {
     region: "Asia Pacific",
-    desc: "Shoe manufacturers, bag producers, and regional fabric distributors.",
+    desc: "Performance costume manufacturers and regional fabric distributors.",
   },
   {
     region: "Middle East & Africa",
-    desc: "Footwear, handbag and accessory producers.",
+    desc: "Stagewear, dancewear and cosplay costume producers.",
   },
 ];
 
@@ -117,7 +118,7 @@ const brandValues = [
   },
 ];
 
-const currentProductCount = allProducts.length;
+const currentProductCount = performanceProducts.length;
 const buyerSteps = [
   {
     num: "01",
@@ -127,7 +128,7 @@ const buyerSteps = [
   {
     num: "02",
     title: "Compare material routes",
-    desc: "We recommend stock glitter, foil, iridescent or stretch options and confirm the key specifications.",
+    desc: "We recommend stock foil, iridescent or stretch options and confirm the key specifications.",
   },
   {
     num: "03",
@@ -138,9 +139,9 @@ const buyerSteps = [
 ---
 
 <Layout
-  title="About Nixia Fabric | Glitter & Foil Fabric Manufacturer"
-  description="Learn about Nixia Fabric, a Guangzhou manufacturer of glitter, foil, iridescent and stretch fabrics for fashion, footwear, handbags, swimwear and stage costumes."
-  keywords="nixia fabric, glitter fabric manufacturer, fabric manufacturer china, decorative fabric, Factory Direct Supply, Custom Color Matching"
+  title="About Nixia Fabric | Foil Fabric Manufacturer"
+  description="Learn about Nixia Fabric, a Guangzhou manufacturer of hot-stamping foil, iridescent and stretch fabrics for stage costumes, dancewear and performance outfits."
+  keywords="nixia fabric, stage costume fabric manufacturer, dancewear fabric supplier, performance costume fabric, foil fabric manufacturer, Factory Direct Supply"
   structuredData={[breadcrumbData, aboutPageData]}
 >
   <!-- About Hero -->
@@ -154,8 +155,8 @@ const buyerSteps = [
       <span class="eyebrow">About Nixia Fabric</span>
       <h1>Built for buyers who need decorative fabric to perform</h1>
       <p class="about-hero__desc">
-        Since 2013, we have supplied glitter, foil, iridescent and stretch materials for
-        footwear, handbags, fashion, swimwear and stage costumes. Our own production capability
+        Since 2013, we have supplied foil, iridescent and stretch materials for
+        stage costumes, dancewear and performance outfits. Our own production capability
         and qualified material partners help buyers move from material selection to approved sample
         with less uncertainty.
       </p>
@@ -179,17 +180,17 @@ const buyerSteps = [
           <span class="eyebrow">Brand Story</span>
           <h2>From a material brief to a production-ready solution</h2>
           <p>
-            Nixia Fabric was built around a practical sourcing problem: buyers need decorative
+            Nixia Fabric was built around a practical sourcing problem: buyers need specialty
             materials that look right in a photo and still work in cutting, sewing, bonding and
             shipment.
           </p>
           <p>
-            We own our in-house factory for glitter and foil-printed PU materials.
+            We own our in-house factory for foil-printed PU materials.
             Meanwhile, we keep stable partnerships with other qualified material manufacturers.
           </p>
           <p>
-            We are dedicated to supplying reliable synthetic textile materials for footwear,
-            handbag and accessory manufacturers worldwide.
+            We are dedicated to supplying reliable specialty fabrics for stage costume,
+            dancewear and performance outfit manufacturers worldwide.
           </p>
           <p>
             We support custom colors, different backing options and can arrange SGS / REACH
@@ -226,10 +227,10 @@ const buyerSteps = [
     <div class="container">
       <div class="section-header">
         <span class="eyebrow">Industry Experience</span>
-        <h2>Our Journey in Synthetic Leather</h2>
+      <h2>Our Journey in Performance Fabric</h2>
         <p>
           From our start in 2013 to today, our work has stayed focused on decorative materials
-          that help footwear, handbag, fashion and performance-product buyers make confident
+          that help stage costume, dancewear and performance-product buyers make confident
           production decisions.
         </p>
       </div>
@@ -249,27 +250,23 @@ const buyerSteps = [
     </div>
   </section>
 
-  <!-- Focus on Decorative Fabric -->
+  <!-- Focus on Fabric Solutions -->
   <section class="section">
     <div class="container">
       <div class="focus-section">
         <div class="focus-section__left">
           <span class="eyebrow">Our Focus</span>
-          <h2>Specialized in glitter, foil and iridescent materials</h2>
+          <h2>Specialized in foil and iridescent materials</h2>
           <p>
-            Our current range covers glitter, hot-stamping foil, laser-iridescent and stretch
-            materials — each selected for a specific end-use requirement rather than only for
-            surface appearance.
+            Our current range covers hot-stamping foil, laser-iridescent and stretch materials —
+            each selected for a specific end-use requirement rather than only for surface
+            appearance.
           </p>
           <p>
-            This focus means we pay attention to glitter adhesion, foil lamination, stretch
-            recovery, color consistency and the processing conditions buyers use in production.
+            This focus means we pay attention to foil lamination, stretch recovery, color
+            consistency and the processing conditions buyers use in production.
           </p>
           <ul class="focus-section__list">
-            <li>
-              <strong>Glitter Materials</strong> — Non-woven glitter and structured glitter synthetic
-              leather for decoration, footwear, handbags and accessories
-            </li>
             <li>
               <strong>Hot-Stamping &amp; Laser Foil</strong> — Full-print, plain iridescent, gradient
               and stretch finishes for garments and performance products
@@ -283,12 +280,8 @@ const buyerSteps = [
         <div class="focus-section__right">
           <div class="focus-section__products">
             <div class="focus-section__product">
-              <span class="focus-section__product-name">Chunky Glitter Synthetic Leather</span>
-              <span class="focus-section__product-types">4 Variations</span>
-            </div>
-            <div class="focus-section__product">
-              <span class="focus-section__product-name">Foil-Printed Synthetic Leather</span>
-              <span class="focus-section__product-types">3 Variations</span>
+              <span class="focus-section__product-name">Hot-Stamping Performance Fabric</span>
+              <span class="focus-section__product-types">Multiple Variations</span>
             </div>
             <div class="focus-section__product">
               <span class="focus-section__product-name">Custom Color Matching</span>
@@ -384,7 +377,7 @@ const buyerSteps = [
         <span class="eyebrow">Global Market Service</span>
         <h2>Serving Clients Worldwide</h2>
         <p>
-          Our glitter and foil-printed fabrics are used by footwear, handbag and accessory
+          Our foil-printed fabrics are used by stage costume, dancewear and performance outfit
           manufacturers across multiple regions. We understand the requirements of different
           markets — from quality standards to packaging specifications.
         </p>

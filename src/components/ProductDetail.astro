@@ -13,7 +13,7 @@
  * those are emitted by the dynamic route page pages/products/[slug].astro.
  */
 import { existsSync, readdirSync } from "node:fs";
-import { allProducts } from "../data/allProducts";
+import { performanceProducts } from "../data/allProducts";
 
 export interface Props {
   product: {
@@ -61,19 +61,13 @@ const showExpandedHeroDescription = [
   "plain-iridescent-laser-spandex-4-way-stretch",
   "full-print-hot-stamping-spandex-milk-silk",
   "iridescent-laser-hot-stamping-stretch-ice-silk",
-  "non-woven-glitter-fabric",
-  "rainbow-gradient-glitter-synthetic-leather",
-  "coarse-glitter-pu-hot-stamping-fabric-cma-certified",
-  "sparkle-glitter-surface-solid-leather-fabric",
+  "iridescent-gradient-laser-ice-silk",
 ].includes(product.slug);
+const isFullPrintHotStampingMilkSilk = product.slug === "full-print-hot-stamping-spandex-milk-silk";
 const hideProductDescription = [
   "iridescent-gradient-laser-ice-silk",
   "full-print-hot-stamping-spandex-milk-silk",
   "iridescent-laser-hot-stamping-stretch-ice-silk",
-  "non-woven-glitter-fabric",
-  "rainbow-gradient-glitter-synthetic-leather",
-  "coarse-glitter-pu-hot-stamping-fabric-cma-certified",
-  "sparkle-glitter-surface-solid-leather-fabric",
 ].includes(product.slug);
 const quoteButtonLabel = isInquiryFocusedProduct ? "Get a Quote" : "Add to Quotation List";
 const inquiryButtonLabel = isInquiryFocusedProduct ? "Send an Inquiry" : "WhatsApp";
@@ -132,7 +126,7 @@ const applicationImages = (() => {
 })();
 
 // Related products: up to 3 other items sharing at least one application tag
-const relatedProducts = allProducts
+const relatedProducts = performanceProducts
   .filter((p) => p.slug !== product.slug)
   .filter((p) =>
     p.applications.some((app) => product.applications.some((a) => a === app))
@@ -565,9 +559,9 @@ const heroVideo = product.video
             </span>
             <span>Product Details</span>
           </h2>
-          <div class="detail-images-grid">
-            {productDetailImages.map((img) => (
-              <picture>
+          <div class={isFullPrintHotStampingMilkSilk ? "detail-images-grid detail-images-grid--full-print" : "detail-images-grid"}>
+            {productDetailImages.map((img, index) => (
+              <picture class={isFullPrintHotStampingMilkSilk && index === 0 ? "detail-images-grid__item detail-images-grid__item--wide" : "detail-images-grid__item"}>
                 {img.webp && <source srcset={img.webp} type="image/webp" />}
                 <img src={img.src} alt={img.alt} loading="lazy" width="1200" height="1200" class="detail-image" decoding="async" onerror="this.style.display='none'" />
               </picture>
@@ -672,9 +666,9 @@ const heroVideo = product.video
             </ul>
           )}
           {applicationImages.length > 0 && (
-            <div class="detail-apps-grid">
-              {applicationImages.map((img) => (
-                <picture>
+            <div class="detail-apps-grid detail-apps-grid--full-print">
+              {applicationImages.map((img, index) => (
+                <picture class={isFullPrintHotStampingMilkSilk && index === 2 ? "detail-apps-grid__item detail-apps-grid__item--wide" : "detail-apps-grid__item"}>
                   {img.webp && <source srcset={img.webp} type="image/webp" />}
                   <img src={img.src} alt={product.mainImageAlt} loading="lazy" width="1672" height="941" class="detail-image" decoding="async" onerror="this.style.display='none'" />
                 </picture>
@@ -2285,11 +2279,18 @@ const heroVideo = product.video
     gap: var(--space-md);
   }
 
+  .detail-images-grid--full-print {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .detail-images-grid picture {
     display: block;
-    aspect-ratio: 1 / 1;
     overflow: hidden;
     background: var(--color-white);
+  }
+
+  .detail-images-grid__item--wide {
+    grid-column: 1 / -1;
   }
 
   /* Application scenario images */
@@ -2300,7 +2301,7 @@ const heroVideo = product.video
     margin-top: var(--space-lg);
   }
 
-  .detail-apps-grid picture {
+  .detail-apps-grid__item {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2308,6 +2309,10 @@ const heroVideo = product.video
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
     background: var(--color-white);
+  }
+
+  .detail-apps-grid__item--wide {
+    grid-column: 1 / -1;
   }
 
   .detail-image {
@@ -2321,7 +2326,6 @@ const heroVideo = product.video
   .detail-apps-grid .detail-image {
     width: 100%;
     height: auto;
-    max-height: 720px;
     aspect-ratio: auto;
     object-fit: contain;
     border: 0;
@@ -2330,8 +2334,9 @@ const heroVideo = product.video
   }
 
   .detail-images-grid .detail-image {
+    width: 100%;
     height: 100%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: auto;
     object-fit: contain;
     background: var(--color-white);
   }
@@ -2536,12 +2541,13 @@ const heroVideo = product.video
     padding: 0.375rem 0.875rem;
     border: 0;
     border-radius: var(--radius-full);
-    background-color: #e8eef7;
-    color: var(--color-primary);
+    background: linear-gradient(135deg, #17386f 0%, #2f5fa3 100%);
+    color: var(--color-white);
     font-size: var(--text-sm);
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0;
-    box-shadow: none;
+    box-shadow: 0 10px 24px rgba(23, 56, 111, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.16);
   }
 
   .p-hero-gallery__main {

@@ -4,125 +4,32 @@
  * Each page has one clear buying use case and links to relevant products.
  */
 import Layout from "@layouts/Layout.astro";
-import { allProducts } from "@data/allProducts";
+import { performanceProducts } from "@data/allProducts";
 
 const applicationPages = [
   {
-    slug: "glitter-fabric-for-shoes",
-    title: "Glitter Fabric for Shoes & Footwear",
-    metaTitle: "Glitter Fabric for Shoes & Footwear | Wholesale Supplier",
-    description:
-      "Source glitter synthetic leather, iridescent foil and structured decorative fabrics for footwear uppers, trims and fashion shoes. Factory-direct wholesale supply from Nixia Fabric.",
-    intro:
-      "Choose structured glitter and reflective materials for footwear uppers, trims and fashion shoe collections. We can confirm the suitable base, thickness, surface finish, MOQ and sample route for your production.",
-    image: "/shots/application-shoes-bags.png",
-    imageAlt: "Glitter fabric used for shoe and footwear applications",
-    tags: ["footwear"],
-    applications: ["Footwear"],
-    benefits: [
-      "Structured bases for footwear uppers and trims",
-      "Reflective glitter and gradient surface options",
-      "Sample approval before bulk production",
-      "Custom color, thickness and backing discussions",
-    ],
-    faqs: [
-      {
-        question: "Which glitter fabrics are suitable for shoes?",
-        answer:
-          "Structured glitter synthetic leather is the usual starting point for footwear uppers. We can compare the base, thickness, surface finish and construction method against your shoe design.",
-      },
-      {
-        question: "Can you provide a footwear sample?",
-        answer:
-          "Yes. Request a sample with your shoe type, target color, approximate quantity and destination market so we can recommend the closest available material.",
-      },
-    ],
-  },
-  {
-    slug: "glitter-fabric-for-handbags",
-    title: "Glitter Fabric for Handbags & Accessories",
-    metaTitle: "Glitter Fabric for Handbags & Accessories | Wholesale Supplier",
-    description:
-      "Wholesale glitter synthetic leather and foil-effect fabrics for handbags, clutches, wallets and fashion accessories. Compare structure, sparkle, color and backing with a factory supplier.",
-    intro:
-      "For handbags and accessories, the right material needs visual impact plus enough structure for cutting, bonding and assembly. Nixia Fabric can help compare glitter synthetic leather and foil-finished options for your collection.",
-    image: "/shots/application-shoes-bags.png",
-    imageAlt: "Glitter fabric and synthetic leather for handbags and accessories",
-    tags: ["handbag"],
-    applications: ["Bags", "Handbags"],
-    benefits: [
-      "Structured synthetic leather options for bags and clutches",
-      "Gradient, glitter and metallic surface finishes",
-      "Custom thickness, color and backing support",
-      "Factory quotation based on quantity and construction",
-    ],
-    faqs: [
-      {
-        question: "Can glitter synthetic leather be used for handbags?",
-        answer:
-          "Yes. A structured synthetic leather base is suitable for many handbag, clutch and accessory constructions. Final suitability should be checked with a physical sample and your bonding or sewing process.",
-      },
-      {
-        question: "What should I include in a handbag material RFQ?",
-        answer:
-          "Share the product type, approximate quantity, target color, preferred thickness, backing or construction method and delivery destination.",
-      },
-    ],
-  },
-  {
-    slug: "foil-fabric-for-swimwear",
-    title: "Foil Fabric for Swimwear & Bodywear",
-    metaTitle: "Foil Fabric for Swimwear & Bodywear | Wholesale Supplier",
-    description:
-      "Source 4-way stretch iridescent and hot-stamping foil fabrics for swimwear, dancewear and bodywear. Review stretch, recovery, width, weight and sample options with a factory supplier.",
-    intro:
-      "Stretch foil fabric for swimwear and bodywear needs more than a bright finish. Buyers should confirm stretch recovery, hand-feel, width, weight and performance on an approval sample before bulk production.",
-    image: "/shots/application-fashion-swimwear.jpg",
-    imageAlt: "Iridescent foil stretch fabric for swimwear and bodywear",
-    tags: ["swimwear"],
-    applications: ["Swimwear", "Dancewear"],
-    benefits: [
-      "4-way stretch bases for fitted garments",
-      "Iridescent laser and hot-stamping foil finishes",
-      "Width, weight and recovery details for review",
-      "Buyer-specific testing can be discussed by project",
-    ],
-    faqs: [
-      {
-        question: "What should I check before ordering stretch foil fabric?",
-        answer:
-          "Confirm the stretch direction, recovery, width, weight, surface finish and the fabric's behavior in your own cutting, sewing and wash-test process.",
-      },
-      {
-        question: "Can you arrange a swimwear fabric sample?",
-        answer:
-          "Yes. Send the target use, quantity, color reference and destination. We can recommend a stock option or discuss a custom finish for bulk orders.",
-      },
-    ],
-  },
-  {
     slug: "holographic-fabric-for-stage-costumes",
-    title: "Holographic Fabric for Stage Costumes",
+    title: "Foil Fabric for Stage & Dancewear",
     metaTitle: "Holographic Fabric for Stage Costumes | Wholesale Supplier",
     description:
-      "Wholesale holographic, iridescent and glitter fabrics for stage costumes, dancewear, performance outfits and event backdrops. Factory-direct supply with sample approval support.",
+      "Wholesale hot-stamping foil, holographic and iridescent stretch fabrics for stage costumes, dancewear and performance outfits. Factory-direct supply with sample approval support.",
     intro:
-      "Stage and performance buyers often need a strong color-shifting effect that reads under changing light while remaining practical to cut and sew. Compare iridescent foil, gradient laser and glitter options by application.",
-    image: "/shots/application-costume-glitter.jpg",
+      "Stage and performance buyers need a strong metallic or color-shifting effect that reads under changing light while remaining practical to cut and sew. Compare foil and stretch options by costume application.",
+    image: "/shots/application-costume-foil.jpg",
     imageAlt: "Holographic fabric for stage costumes and performance outfits",
     tags: ["stage-costume"],
     applications: ["Stage costumes", "Dancewear", "Performance costumes"],
     benefits: [
       "Holographic and iridescent finishes for stage lighting",
       "Stretch options for fitted costumes and dancewear",
-      "Gradient color-flow and glitter surface choices",
+      "Gradient color-flow and metallic surface choices",
       "Physical sample approval before a production run",
     ],
     faqs: [
       {
         question: "Which fabric finish works best under stage lights?",
         answer:
-          "Iridescent laser and gradient foil finishes shift with light and viewing angle, while glitter gives a more textured sparkle. The best choice depends on the costume distance, lighting and desired surface effect.",
+          "Iridescent laser and gradient foil finishes shift with light and viewing angle. The best choice depends on the costume distance, lighting and desired surface effect.",
       },
       {
         question: "Can you match a costume color or reference?",
@@ -132,42 +39,11 @@ const applicationPages = [
     ],
   },
   {
-    slug: "glitter-fabric-for-decoration",
-    title: "Glitter Fabric for Crafts, Toys & Decoration",
-    metaTitle: "Glitter Fabric for Crafts, Toys & Decoration | Wholesale Supplier",
+    slug: "custom-performance-fabric",
+    title: "Custom Performance Fabric Development",
+    metaTitle: "Custom Performance Foil Fabric Manufacturer | OEM Supplier",
     description:
-      "Wholesale non-woven glitter fabric and decorative materials for toys, crafts, festive projects, banners and stage props. Factory-direct supply with sample and custom color support.",
-    intro:
-      "Decorative buyers need a material that delivers consistent sparkle, cuts cleanly and fits the production budget. Compare non-woven glitter fabric and other decorative finishes by backing, width, color, quantity and end use.",
-    image: "/shots/application-toys-crafts-decor.png",
-    imageAlt: "Glitter fabric used for crafts, toys and festive decoration",
-    tags: ["decoration"],
-    applications: ["Holiday decoration", "Crafts", "Stage props"],
-    benefits: [
-      "Dense sparkle for festive and decorative projects",
-      "Cut-clean options for crafts, toys and banners",
-      "Stock colors for faster project planning",
-      "Custom glitter colors and width for bulk orders",
-    ],
-    faqs: [
-      {
-        question: "Is non-woven glitter fabric suitable for crafts and decoration?",
-        answer:
-          "Yes. Its stable non-woven backing and clean-cut behavior make it practical for many banners, stage props, craft pieces and festive decoration projects.",
-      },
-      {
-        question: "Can decorative glitter fabric be supplied in custom colors?",
-        answer:
-          "Custom glitter colors and width can be discussed for bulk orders. Share your color reference, required quantity and delivery destination for a quotation.",
-      },
-    ],
-  },
-  {
-    slug: "custom-glitter-fabric",
-    title: "Custom Glitter & Foil Fabric Manufacturing",
-    metaTitle: "Custom Glitter & Foil Fabric Manufacturer | OEM Supplier",
-    description:
-      "Develop custom glitter, foil, iridescent and stretch fabrics with a factory supplier. Discuss color, pattern, backing, width, thickness, quantity and testing requirements through an RFQ.",
+      "Develop custom foil, iridescent and stretch fabrics for stage costumes, dancewear and performance outfits with a factory supplier.",
     intro:
       "When a stock color or standard finish is not enough, our factory team can review your target appearance and end product before confirming a production route. Custom scope, sample timing and quotation are based on the actual requirement.",
     image: "/images/process/hot_stamping_foil_transfer.jpg",
@@ -197,20 +73,16 @@ const applicationPages = [
 
 export function getStaticPaths() {
   return [
-    "glitter-fabric-for-shoes",
-    "glitter-fabric-for-handbags",
-    "foil-fabric-for-swimwear",
     "holographic-fabric-for-stage-costumes",
-    "glitter-fabric-for-decoration",
-    "custom-glitter-fabric",
+    "custom-performance-fabric",
   ].map((slug) => ({ params: { slug } }));
 }
 
 const page = applicationPages.find((item) => item.slug === Astro.params.slug);
 if (!page) throw new Error(`Unknown application page: ${Astro.params.slug}`);
 const relatedProducts = page.tags.length === 0
-  ? allProducts
-  : allProducts.filter((product) => page.tags.some((tag) => product.tags.includes(tag)));
+  ? performanceProducts
+  : performanceProducts.filter((product) => page.tags.some((tag) => product.tags.includes(tag)));
 
 const breadcrumbData = {
   "@context": "https://schema.org",

@@ -1,4 +1,73 @@
-export const blogArticles = [
+const allBlogArticles = [
+  {
+    title: "Why CNAS Certification Matters for Export Buyers of Coarse Glitter PU Hot Stamping Fabric",
+    slug: "cnas-certification-coarse-glitter-pu-hot-stamping-fabric",
+    date: "2026-09-08",
+    readTime: "7 min read",
+    tags: ["CNAS Certification", "Buyer Guide"],
+    category: "Compliance Guide",
+    image: "/images/products/coarse-glitter-pu-hot-stamping-fabric-cma-certified/main/1.jpg",
+    imageWebp: "/images/products/coarse-glitter-pu-hot-stamping-fabric-cma-certified/main/1.webp",
+    imageAlt: "Coarse glitter PU hot stamping fabric rolls with reflective surface",
+    excerpt:
+      "Learn why CNAS certification is useful for export buyers, how it supports compliance conversations, and what to confirm before ordering coarse glitter PU hot stamping fabric.",
+    metaTitle: "Why CNAS Certification Matters for Export Buyers | Nixia Fabric",
+    metaDesc:
+      "A buyer-focused guide explaining how CNAS certification supports export sourcing, sample review and compliance discussions for coarse glitter PU hot stamping fabric.",
+    focusProducts: ["coarse-glitter-pu-hot-stamping-fabric-cma-certified"],
+    quoteAngle:
+      "Send your target market, application and order quantity. We can confirm the suitable product route and share the certification and sample details buyers usually ask for.",
+    intro:
+      "For export buyers, certification is not just a line on a product page. It is a practical signal that helps procurement teams, quality teams and overseas customers talk about testing, documentation and order risk in the same language. For coarse glitter PU hot stamping fabric, CNAS certification matters because it supports that conversation before sampling and bulk production begin.",
+    takeaways: [
+      "CNAS certification helps buyers discuss test reports and compliance expectations more clearly with suppliers and downstream customers.",
+      "A certificate should be reviewed together with the exact product construction, not separated from the backing, finish or final application.",
+      "For export orders, it is still important to confirm sample timing, MOQ, width, thickness and shipping terms alongside any document request.",
+    ],
+    sections: [
+      {
+        heading: "1. What CNAS certification tells an export buyer",
+        body:
+          "CNAS certification is useful because it gives buyers a recognized reference point when discussing laboratory capability and testing support. In practical sourcing work, that means your team can ask clearer questions about whether the supplier can arrange testing for the exact material route you are buying.\n\nFor export purchases, that clarity saves time. It also helps buyers separate marketing language from actual documentation support when comparing factories.",
+      },
+      {
+        heading: "2. Why the certificate should be read with the product, not alone",
+        body:
+          "A certificate only becomes useful when it is tied to the actual product construction. Coarse glitter PU hot stamping fabric is a structured material with a reflective surface and a PU backing, so the relevant checks are different from those for stretch apparel fabrics or soft woven bases.\n\nBefore moving forward, buyers should confirm the exact material name, surface finish, width, thickness and intended use. That way, the document request matches the product they are actually sourcing.",
+      },
+      {
+        heading: "3. Where CNAS support helps most in the buying process",
+        body:
+          "CNAS-supported testing discussion is especially helpful during sample approval and quotation review. Buyers often need to share product facts with their own compliance team, importer, retailer or brand customer before they release the bulk order.\n\nWhen the supplier can explain what document support is available, it becomes easier to quote the right material route and avoid late-stage changes after sample approval.",
+      },
+      {
+        heading: "4. What to confirm before placing an order",
+        body:
+          "For this product, buyers should confirm the final application, expected order quantity, preferred color range and whether the request is for stock supply or custom development. If the project needs testing support, the factory should know that at RFQ stage so timing and document scope can be discussed together.\n\nThis is especially important for export buyers who need to coordinate purchasing, quality review and shipment planning at the same time.",
+      },
+    ],
+    decisionChecklist: [
+      "Confirm the exact product name, backing and surface finish",
+      "Ask whether CNAS-related documentation can be shared with your buyer or compliance team",
+      "Check MOQ, width, thickness and sample timing together with the certification request",
+      "Align the document request with your destination market and end-use application",
+    ],
+    ctaHeading: "Need a quote with certification support?",
+    ctaText:
+      "Share your application, quantity and target market. We will confirm the right product route and explain the available certification and sampling details.",
+    faqs: [
+      {
+        question: "Why is CNAS certification useful for export buyers?",
+        answer:
+          "It gives procurement and quality teams a recognized reference point when discussing testing support, documentation and supplier capability for export orders.",
+      },
+      {
+        question: "What should I confirm besides the certificate?",
+        answer:
+          "Confirm the product construction, width, thickness, MOQ, sample timing and destination market so the certification discussion matches the real order.",
+      },
+    ],
+  },
   {
     title: "What Is Glitter Fabric? A Practical Buyer Guide for Bulk Orders",
     slug: "what-is-glitter-fabric",
@@ -85,7 +154,7 @@ export const blogArticles = [
       "Understand when to choose hot-stamping foil fabric, how the finish behaves on stretch bases, and what to confirm before custom production.",
     metaTitle: "Hot-Stamping Foil Fabric Guide | Nixia Fabric",
     metaDesc:
-      "A buyer-focused guide to hot-stamping foil fabric for swimwear, dancewear, stage costumes and decoration, with recommended Nixia Fabric products.",
+      "A buyer-focused guide to hot-stamping foil fabric for stage costumes, dancewear and performance outfits, with recommended Nixia Fabric products.",
     focusProducts: [
       "full-print-hot-stamping-spandex-milk-silk",
       "iridescent-laser-hot-stamping-stretch-ice-silk",
@@ -96,20 +165,20 @@ export const blogArticles = [
     intro:
       "Hot-stamping foil fabric uses heat and pressure to transfer a metallic, laser or iridescent finish onto a prepared fabric surface. For buyers, the value is not only shine. A good foil fabric should also match the base fabric, recover after movement and keep a stable appearance through the buyer's own cutting and sewing process.",
     takeaways: [
-      "Foil fabric is a strong choice when buyers want a smoother metallic or iridescent look than chunky glitter.",
-      "The base fabric decides whether the material works for swimwear, dancewear, costumes, stage decoration or fashion trim.",
+      "Foil fabric is a strong choice when buyers want a smooth metallic or iridescent surface.",
+      "The base fabric decides whether the material works for dancewear, stage costumes or performance outfits.",
       "Custom foil color, pattern, backing and width should be discussed before sampling to avoid rework.",
     ],
     sections: [
       {
         heading: "1. Why buyers choose hot-stamping foil",
         body:
-          "Compared with loose sparkle effects, foil finishes create a cleaner and more uniform surface. Full-print foil works for all-over metallic designs. Laser foil shifts color under light and is widely used for performance costumes, swimwear, dancewear and stage apparel. Gradient foil adds a flowing color story across the material, which is useful when a garment or backdrop needs visual movement.",
+          "Foil finishes create a clean and uniform surface. Full-print foil works for all-over metallic designs. Laser foil shifts color under light and is widely used for performance costumes, dancewear and stage apparel. Gradient foil adds a flowing color story across the material, which is useful when a costume needs visual movement.",
       },
       {
         heading: "2. Base fabric matters more than the foil name",
         body:
-          "A spandex or milk-silk base is selected when the final product needs 4-way stretch and a soft hand feel. Stretch ice-silk is lighter and works well for costumes, dancewear and decorative use. If the buyer's final product needs structure, a synthetic leather base may be a better option than a stretch foil fabric.",
+          "A spandex or milk-silk base is selected when the final product needs 4-way stretch and a soft hand feel. Stretch ice-silk is lighter and works well for costumes, dancewear and performance outfits. The base should be selected according to the garment structure and movement required.",
       },
       {
         heading: "3. What performance points to test",
@@ -155,18 +224,18 @@ export const blogArticles = [
     imageWebp: "/images/blog/sgs-reach-compliance-guide.webp",
     imageAlt: "Fabric compliance checklist for SGS and REACH testing support",
     excerpt:
-      "A practical checklist for buyers who need test reports, destination-market requirements and production samples before confirming glitter or foil fabric orders.",
+      "A practical checklist for buyers who need test reports, destination-market requirements and production samples before confirming foil or stretch fabric orders.",
     metaTitle: "SGS and REACH Fabric Testing Checklist | Nixia Fabric",
     metaDesc:
-      "A practical SGS and REACH testing checklist for B2B fabric buyers sourcing glitter, foil, stretch and synthetic leather materials.",
+      "A practical SGS and REACH testing checklist for B2B fabric buyers sourcing foil and stretch materials.",
     focusProducts: [
       "plain-iridescent-laser-spandex-4-way-stretch",
-      "rainbow-gradient-glitter-synthetic-leather",
-      "non-woven-glitter-fabric",
+      "full-print-hot-stamping-spandex-milk-silk",
+      "iridescent-laser-hot-stamping-stretch-ice-silk",
     ],
     quoteAngle: "Tell us your destination country, buyer standard and intended product. We will confirm which testing support should be prepared with your sample or bulk order.",
     intro:
-      "Compliance questions should be handled before price confirmation, not after goods are ready to ship. Different buyers may need different documents depending on destination market, end use, age group, skin contact, footwear use or retailer requirements. For glitter and foil fabrics, a clear testing checklist helps the supplier quote correctly and prevents delays later.",
+      "Compliance questions should be handled before price confirmation, not after goods are ready to ship. Different buyers may need different documents depending on destination market, end use, age group, skin contact or retailer requirements. For foil and stretch fabrics, a clear testing checklist helps the supplier quote correctly and prevents delays later.",
     takeaways: [
       "Do not ask only for a generic certificate. Explain the destination market and buyer standard if you have one.",
       "Testing needs can vary by product construction, color, finish, backing and final application.",
@@ -176,12 +245,12 @@ export const blogArticles = [
       {
         heading: "1. Start with the market and application",
         body:
-          "A costume fabric for adult stagewear, a shoe upper material and a children's decoration material may require different checks. Tell the factory where the finished goods will be sold and how the material will be used. This helps decide whether SGS, REACH-related testing or buyer-specific reports should be discussed at quotation stage.",
+          "A costume fabric for adult stagewear, dancewear or performance outfits may require different checks depending on the destination market, skin contact and buyer standard. Tell the factory how the material will be used so SGS, REACH-related testing or buyer-specific reports can be discussed at quotation stage.",
       },
       {
         heading: "2. Match the test request to the exact material",
         body:
-          "Reports are most useful when they match the material you are buying. Color, coating, glitter surface, foil finish, adhesive layer and backing can all affect the final requirement. If you change color or backing during development, confirm whether the previous report still applies or whether new testing is needed.",
+          "Reports are most useful when they match the material you are buying. Color, coating, foil finish, adhesive layer and backing can all affect the final requirement. If you change color or backing during development, confirm whether the previous report still applies or whether new testing is needed.",
       },
       {
         heading: "3. Decide the timing before placing the order",
@@ -196,7 +265,7 @@ export const blogArticles = [
     ],
     decisionChecklist: [
       "Destination country or sales region",
-      "End product: garment, footwear, handbag, toy, craft, decoration or accessory",
+      "End product: stage costume, dancewear, performance outfit or cosplay costume",
       "Required buyer standard, retailer checklist or test item list",
       "Whether testing is needed for sample approval, bulk shipment or both",
     ],
@@ -486,11 +555,19 @@ export const blogArticles = [
   },
 ];
 
+// Keep glitter-focused articles out of the public knowledge center while preserving
+// their historical data for reference and future content decisions.
+const excludedBlogSlugs = new Set([
+  "cnas-certification-coarse-glitter-pu-hot-stamping-fabric",
+  "what-is-glitter-fabric",
+  "glitter-vs-foil-comparison",
+  "how-to-choose-glitter-surface-solid-leather-fabric",
+]);
+
+export const blogArticles = allBlogArticles.filter(({ slug }) => !excludedBlogSlugs.has(slug));
+
 export const blogCategories = [
   "All",
-  "Material Guide",
   "Manufacturing Guide",
   "Compliance Guide",
-  "Decision Guide",
-  "Sourcing Guide",
 ];

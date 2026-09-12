@@ -6,9 +6,9 @@
  * Step 1 (Contact Info) implemented; Steps 2 & 3 reserved in the stepper.
  */
 import RfqQuoteForm from "@components/RfqQuoteForm.astro";
-import { allProducts } from "@data/allProducts";
+import { performanceProducts } from "@data/allProducts";
 
-const productLookup = allProducts.map((p) => ({
+const productLookup = performanceProducts.map((p) => ({
   name: p.title,
   weight: p.specs.weight,
   width: p.specs.width,

@@ -6,7 +6,7 @@
 import Layout from "@layouts/Layout.astro";
 import CTAButton from "@components/CTAButton.astro";
 import { blogArticles } from "@data/blogArticles";
-import { allProducts } from "@data/allProducts";
+import { performanceProducts } from "@data/allProducts";
 
 const formatDate = (value: string) =>
   new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(
@@ -22,7 +22,7 @@ export function getStaticPaths() {
 
 const { article } = Astro.props;
 const relatedProducts = article.focusProducts
-  .map((slug) => allProducts.find((product) => product.slug === slug))
+  .map((slug) => performanceProducts.find((product) => product.slug === slug))
   .filter(Boolean);
 const articleUrl = `https://nixiafabric.com/blog/${article.slug}/`;
 const contactHref = `/contact/?subject=${encodeURIComponent(`Question about ${article.title}`)}`;
@@ -81,7 +81,7 @@ const faqSchema = {
 <Layout
   title={article.metaTitle}
   description={article.metaDesc}
-  keywords={`${article.title}, ${article.tags.join(", ")}, glitter fabric manufacturer, foil fabric supplier`}
+  keywords={`${article.title}, ${article.tags.join(", ")}, foil fabric supplier, stretch fabric manufacturer`}
   image={article.image}
   canonical={articleUrl}
   ogType="article"

@@ -17,37 +17,28 @@ interface Slide {
 const slides: Slide[] = [
   {
     image: "/images/home/slide1.webp",
-    title: "Specialty Fabrics for Fashion & Creative Products",
+    title: "Specialty Fabrics for Stage & Performance Costumes",
     description:
-      "Iridescent, holographic, glitter and foil-effect fabrics for distinctive fashion collections.",
+      "Hot-stamping foil, iridescent and stretch fabrics for stage costumes, dancewear and performance outfits.",
     buttons: [
       { label: "Explore Fabrics", href: "/products/", variant: "primary" },
       { label: "Request Samples", href: "#rfq-buyer-resource", variant: "outline" },
     ],
   },
   {
-    image: "/images/home/slide2.webp",
-    title: "Stretch Fabrics for Swimwear & Bodywear",
-    description: "4-way stretch fabrics with holographic and metallic finishes.",
-    buttons: [
-      { label: "View Swimwear Fabrics", href: "/products/", variant: "primary" },
-      { label: "Send Your Design", href: "/contact/", variant: "outline" },
-    ],
-  },
-  {
-    image: "/images/home/slide3.webp",
-    title: "Glitter & Foil Fabrics for Shoes & Bags",
-    description: "Structured materials for footwear, handbags and fashion accessories.",
+    image: "/images/home/slide2.png",
+    title: "Stretch Fabrics for Dancewear & Performance",
+    description: "4-way stretch fabrics with hot-stamping foil and iridescent finishes.",
     buttons: [
       { label: "Explore Fabrics", href: "/products/", variant: "primary" },
-      { label: "Get a Quote", href: "/contact/", variant: "outline" },
+      { label: "Send Your Design", href: "/contact/", variant: "outline" },
     ],
   },
   {
     image: "/images/home/slide4.webp",
     title: "Made for the Spotlight",
     description:
-      "Holographic stretch fabrics for party wear, dance costumes and stage outfits — bright under the lights, comfortable on the body.",
+      "Holographic stretch fabrics for dancewear, stage costumes and performance outfits — bright under the lights, comfortable on the body.",
     buttons: [
       { label: "Explore Fabrics", href: "/products/", variant: "primary" },
     ],
@@ -110,7 +101,7 @@ const PLACEHOLDER_IMAGE =
               <img
                 src={idx === 0 ? slide.image : PLACEHOLDER_IMAGE}
                 data-src={idx === 0 ? undefined : slide.image}
-                alt="Glitter and foil-printed synthetic leather production at Nixia Fabric factory"
+                alt="Hot-stamping performance fabric production at Nixia Fabric factory"
                 class="hero-carousel__image hero-carousel__image--mobile"
                 width="1920"
                 height="1080"
@@ -141,7 +132,7 @@ const PLACEHOLDER_IMAGE =
                 : idx === 1
                 ? "Runway model in an iridescent gown with a close-up of the laser foil fabric"
                 : idx === 2
-                ? "Holographic shoes and accessories with rolls of pastel glitter fabric"
+                ? "Holographic stage costume fabric with rolls of iridescent stretch material"
                 : idx === 3
                 ? "Party outfits in lime holographic fabric with a close-up of the material"
                 : "Nixia Fabric in-house production line finishing rolls of foil fabric"}

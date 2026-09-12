@@ -2,7 +2,7 @@
   "name": "nixia-fabric",
   "type": "module",
   "version": "1.0.0",
-  "description": "Nixia Fabric - China Glitter Fabric Manufacturer B2B Website",
+  "description": "Nixia Fabric - China Stage and Performance Fabric Manufacturer B2B Website",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build && npm run validate:products",
