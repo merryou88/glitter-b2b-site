@@ -40,8 +40,8 @@ requirement_docs:
 - 详情页把 `focusProducts` 映射到产品数据，生成推荐产品卡
 
 ## 数据与状态
-- 当前公开文章数：2
-- 当前公开分类数：3
+- 当前公开文章数：3
+- 当前公开分类数：4
 - `buyerSummary` 只有部分文章有
 - `sectionNav` 由文章 headings 派生，不是手写目录
 

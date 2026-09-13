@@ -75,12 +75,12 @@ status: current
 
 ### REQ-SHELL-008：全站统一加载 Google Analytics
 - 状态：active
-- 当前规则：所有通过 `src/layouts/Layout.astro` 渲染的页面，在 `<head>` 开标签后统一加载一个 Google tag，Measurement ID 为 `G-VDYGZBSQ62`；不得在单独页面重复添加同一 Google tag。
-- 验收条件：每个公开页面源码包含一次 `googletagmanager.com/gtag/js?id=G-VDYGZBSQ62` 和一次 `gtag('config', 'G-VDYGZBSQ62')` 配置；页面之间不重复注入。
+- 当前规则：所有通过 `src/layouts/Layout.astro` 渲染的页面，在 `<head>` 开标签后统一配置 Google tag，Measurement ID 为 `G-VDYGZBSQ62`；不得在单独页面重复添加同一 Google tag。若访问者浏览器存在 `nixia_ga_optout=true` Cookie，则不请求 `googletagmanager.com`，也不发送 GA4 配置事件。
+- 验收条件：每个公开页面源码包含一次 `googletagmanager.com/gtag/js?id=G-VDYGZBSQ62` 和一次 `gtag("config", "G-VDYGZBSQ62")` 配置；页面之间不重复注入；设置 `nixia_ga_optout=true` Cookie 后，页面运行时跳过 GA4 加载。
 - 影响模块：`site-shell`
 - 代码路径：`src/layouts/Layout.astro`
 - 测试路径：`npm run build`，检查生成页面源码
-- 最后变更编号：CHG-20260912-004-google-analytics-tag
+- 最后变更编号：CHG-20260913-001-ga-cookie-optout
 - 待确认事项：无
 
 ### REQ-SHELL-009：首页制造能力卡片铺满整行

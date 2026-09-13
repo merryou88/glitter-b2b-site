@@ -93,6 +93,26 @@ status: current
 - 最后变更编号：CHG-20260912-003-iridescent-laser-color-count
 - 待确认事项：无
 
+### REQ-PRODUCT-014：Holographic Foil Stretch Spandex 产品列表颜色标签需准确
+- 状态：active
+- 当前规则：`iridescent-gradient-laser-ice-silk` 的产品列表卡片颜色标签显示为 `19 colors`，并使用 `colorCount: 19` 参与颜色数量排序；详情页颜色信息继续显示 19 色。
+- 验收条件：`/products/` 中该产品不再显示 `Standard Color`，而显示 `19 colors`；按颜色数量排序时使用 19。
+- 影响模块：`product-catalog`、`content-data`
+- 代码路径：`src/data/allProducts.js`、`src/pages/products.astro`
+- 测试路径：`npm run validate:products`、`npm run build`
+- 最后变更编号：CHG-20260913-004-holographic-color-badge
+- 待确认事项：无
+
+### REQ-PRODUCT-015：两款 Iridescent 产品颜色信息需准确
+- 状态：active
+- 当前规则：`plain-iridescent-laser-spandex-4-way-stretch` 和 `iridescent-laser-hot-stamping-stretch-ice-silk` 均只有 1 个标准颜色。两款产品的产品列表角标、颜色排序值和详情页 `Available Colors` 均显示为 `1 standard color`。
+- 验收条件：这两款产品列表页不显示 `31 colors`；详情页和列表页均显示 `1 standard color`，其他产品颜色信息不受影响。
+- 影响模块：`product-catalog`、`content-data`
+- 代码路径：`src/data/allProducts.js`、`src/pages/products.astro`、`src/components/ProductDetail.astro`
+- 测试路径：`npm run validate:products`、`npm run build`
+- 最后变更编号：CHG-20260913-005-iridescent-color-count-correction
+- 待确认事项：无
+
 ### REQ-PRODUCT-005：重点产品轮播角标需匹配品牌深蓝白字风格
 - 状态：active
 - 当前规则：`plain-iridescent-laser-spandex-4-way-stretch` 详情页轮播图右上角的 `WHOLESALE` 标签需使用深蓝底、白色文字，并保持与站点 logo 图标一致的品牌感。

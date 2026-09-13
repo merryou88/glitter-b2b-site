@@ -125,12 +125,23 @@ const allStructuredData = structuredData
 <html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VDYGZBSQ62"></script>
     <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag("js", new Date());
-      gtag("config", "G-VDYGZBSQ62");
+      (function () {
+        var analyticsOptOutCookie = "nixia_ga_optout=true";
+        if (document.cookie.split("; ").indexOf(analyticsOptOutCookie) !== -1) {
+          return;
+        }
+
+        var googleTag = document.createElement("script");
+        googleTag.async = true;
+        googleTag.src = "https://www.googletagmanager.com/gtag/js?id=G-VDYGZBSQ62";
+        document.head.appendChild(googleTag);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag("js", new Date());
+        gtag("config", "G-VDYGZBSQ62");
+      })();
     </script>
 
     <meta charset="UTF-8" />

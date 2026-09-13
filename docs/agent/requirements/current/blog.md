@@ -42,3 +42,13 @@ status: current
 - 测试路径：`npm run build`；检查公开博客生成页面文本
 - 最后变更编号：CHG-20260912-018-public-copy-alignment
 - 待确认事项：已排除的历史文章继续保留在源数据中
+
+### REQ-BLOG-005：Full-Print Hot-Stamping Spandex 采购指南
+- 状态：active
+- 当前规则：公开博客需要包含一篇围绕 `full-print-hot-stamping-spandex-milk-silk` 的采购指南，主题为如何为 dancewear、stage costumes、performance outfits 和 cosplay/carnival costume 选择 hot-stamping spandex fabric。
+- 验收条件：博客列表页展示该文章；详情页可生成；文章回链到 `full-print-hot-stamping-spandex-milk-silk` 及相关 stretch/foil 产品；正文包含规格、样品、颜色确认、RFQ 信息和批量前测试建议。
+- 影响模块：`blog-knowledge`、`content-data`、`product-catalog`
+- 代码路径：`src/data/blogArticles.js`
+- 测试路径：`npm run build`
+- 最后变更编号：CHG-20260913-002-hot-stamping-spandex-blog-guide
+- 待确认事项：无
