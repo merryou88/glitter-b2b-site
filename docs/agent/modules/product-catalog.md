@@ -41,7 +41,7 @@ requirement_docs:
 - `ProductDetail` 统一承载产品正文、图库、FAQ 和 CTA
 
 ## 数据与状态
-- 当前产品数据数：8；`/products/` 当前展示不含 `glitter` 标签的 4 个产品
+- 当前产品数据数：9；`/products/` 当前展示 `performanceProducts` 中的 5 个产品
 - `ProductDetail` 会根据产品对象读取 `specs`、`faqList`、`imageList`、`galleryImages`、`detailImages`
 - `src/pages/products/[slug].astro` 负责 Product / FAQ / Breadcrumb JSON-LD
 

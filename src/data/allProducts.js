@@ -296,6 +296,231 @@ export const allProducts = [
     detailImages: ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"],
   },
   {
+    slug: "shiny-foil-4-way-stretch-knit-fabric",
+    metaTitle: "Shiny Foil 4-Way Stretch Knit Fabric for Performance Wear | Nixia Fabric",
+    metaDesc:
+      "Discover shiny foil 4-way stretch knit fabric for stage costumes, dancewear, performance and party apparel. Ready stock and custom fabric development available from Nixia Fabric.",
+    title: "Shiny Foil 4-Way Stretch Knit Fabric for Performance & Party Wear",
+    sku: "H2013060105",
+    mainImageUrl: "/images/products/H2013060105/main/a1.png",
+    mainImageWebp: "/images/products/H2013060105/main/a1.webp",
+    mainImageAlt:
+      "Shiny foil 4-way stretch knit fabric for performance and party wear",
+    imageList: [
+      {
+        src: "/images/products/H2013060105/main/a1.png",
+        webp: "/images/products/H2013060105/main/a1.webp",
+        alt: "Shiny foil 4-way stretch knit fabric for performance and party wear",
+      },
+      {
+        src: "/images/products/H2013060105/main/a2.png",
+        webp: "/images/products/H2013060105/main/a2.webp",
+        alt: "Close-up of shiny foil stretch knit fabric surface",
+      },
+      {
+        src: "/images/products/H2013060105/main/a3.png",
+        webp: "/images/products/H2013060105/main/a3.webp",
+        alt: "Reflective foil knit fabric showing flexible drape",
+      },
+      {
+        src: "/images/products/H2013060105/main/a4.png",
+        webp: "/images/products/H2013060105/main/a4.webp",
+        alt: "Shiny foil stretch fabric for stage costume sourcing",
+      },
+      {
+        src: "/images/products/H2013060105/main/a5.png",
+        webp: "/images/products/H2013060105/main/a5.webp",
+        alt: "Foil-finished stretch knit fabric detail for apparel manufacturers",
+      },
+    ],
+    galleryMainPath: "/images/products/H2013060105/main/",
+    galleryImages: ["a1.png", "a2.png", "a3.png", "a4.png", "a5.png"],
+    detailImagePath: "/images/products/H2013060105/detail/",
+    video: null,
+    shortIntro:
+      "A shiny foil-finished 4-way stretch knit fabric designed for eye-catching performance costumes, dancewear and party apparel. The flexible stretch base provides comfort and freedom of movement, while the reflective foil surface creates a striking visual effect under stage and event lighting.",
+    fullDescription:
+      "A shiny foil-finished 4-way stretch knit fabric designed for eye-catching performance costumes, dancewear and party apparel. The flexible stretch base provides comfort and freedom of movement, while the reflective foil surface creates a striking visual effect under stage and event lighting.",
+    specs: {
+      width: "145cm",
+      weight: "150g",
+      baseMaterial: "100% Polyester",
+      thickness: "",
+      moq: "100",
+      leadTime: "1-3",
+    },
+    specTable: [
+      { label: "Product Type", value: "Foil Stretch Knit Fabric" },
+      { label: "Surface Effect", value: "Shiny Foil Finish" },
+      { label: "Base Fabric", value: "100% Polyester" },
+      { label: "Stretch", value: "4-Way Stretch" },
+      { label: "Width", value: "145cm" },
+      { label: "Weight", value: "150g" },
+      { label: "Color", value: "30 colors available; custom colors on request" },
+      { label: "MOQ", value: "100m" },
+      { label: "Yarn Count", value: "90S" },
+      { label: "Finishing", value: "Hot-stamping foil" },
+      { label: "Supply Type", value: "Ready Stock & Custom Development" },
+      { label: "Typical Applications", value: "Stage costumes, dancewear, performance wear, concert outfits, party wear, festival costumes, performance bodysuits" },
+    ],
+    b2bTable: [
+      { label: "MOQ", value: "100 Meters" },
+      { label: "Supply type", value: "Ready stock available; custom development available" },
+      { label: "Sample", value: "Sample available for stretch, surface effect and appearance review before production" },
+      { label: "Bulk Lead time", value: "1-3 working days after payment and stock confirmation for orders ≤500m; 7-15 working days when production is required" },
+      { label: "Port", value: "Ningbo / Shanghai" },
+      { label: "OEM / ODM", value: "Custom foil fabric development based on customer sample or requirements" },
+      { label: "Testing & Compliance", value: "SGS / REACH testing can be arranged according to buyer requirements" },
+      { label: "Package type", value: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement" },
+      { label: "Trade Terms", value: "FOB, CIF available, provide commercial invoice & packing list" },
+    ],
+    applications: [
+      "Stage Costumes",
+      "Dancewear",
+      "Performance Wear",
+      "Concert Outfits",
+      "Party Wear",
+      "Festival Costumes",
+      "Performance Bodysuits",
+    ],
+    inStock: true,
+    stockStatus: "In-Stock",
+    badge: "30 colors",
+    colorCount: 30,
+    tags: ["foil", "hot-stamping", "polyester", "knit", "stage-costume", "dancewear", "performance-wear", "party-wear"],
+    availableColors: "30 colors available; custom colors on request",
+    sampleNote: "Sample available for stretch, surface effect and appearance review",
+    customizationNote: "Custom foil fabric development based on your sample or requirements",
+    packaging: "Roll packing, export carton",
+    tradeTerms: "FOB, CIF upon quotation",
+    heroHighlights: [
+      "Shiny Foil Finish",
+      "4-Way Stretch",
+      "145 cm Width",
+      "150g Weight",
+      "30 Colors",
+      "MOQ 100 Meters",
+    ],
+    whyChooseHeading: "Key Features",
+    whyChoose: [
+      {
+        title: "Shiny Foil Surface",
+        desc: "Creates a bright and reflective visual effect.",
+      },
+      {
+        title: "4-Way Stretch",
+        desc: "Flexible stretch suitable for movement-focused garments.",
+      },
+      {
+        title: "Designed for Performance",
+        desc: "Ideal for costumes and apparel designed to stand out under lighting.",
+      },
+      {
+        title: "Suitable for Fitted Designs",
+        desc: "Works well for bodysuits and other close-fitting costume styles.",
+      },
+      {
+        title: "Strong Visual Impact",
+        desc: "The foil finish adds a bold and eye-catching appearance to garments.",
+      },
+      {
+        title: "Cool & Translucent Visual Effect",
+        desc: "Unlike standard shiny foil fabrics, this material offers a cooler, crisper look with a clearer, more translucent finish.",
+      },
+    ],
+    valueStory: {
+      title: "Why Choose This Foil Stretch Fabric?",
+      body: "Performance apparel needs more than ordinary fabric. This shiny foil stretch knit fabric combines flexibility with a bold reflective surface, helping costume manufacturers create garments with stronger visual impact for stage, dance and party environments.",
+    },
+    applicationsHeading: "Recommended Applications",
+    buyerApplications: [
+      {
+        title: "Stage Costumes",
+        desc: "Reflective foil surface helps costumes read clearly under stage lighting.",
+      },
+      {
+        title: "Dancewear",
+        desc: "4-way stretch supports fitted garments and movement-focused designs.",
+      },
+      {
+        title: "Performance Wear",
+        desc: "A strong shine effect for apparel that needs visual impact.",
+      },
+      {
+        title: "Concert Outfits",
+        desc: "Bold foil finish for statement looks under event lighting.",
+      },
+      {
+        title: "Party Wear",
+        desc: "Eye-catching surface effect for festive apparel collections.",
+      },
+      {
+        title: "Festival Costumes",
+        desc: "Bright reflective appearance for expressive costume production.",
+      },
+      {
+        title: "Performance Bodysuits",
+        desc: "Stretch knit base works well for close-fitting costume styles.",
+      },
+    ],
+    stockDevelopment: [
+      {
+        title: "Ready Stock for Faster Development",
+        desc: "We keep a selection of foil fabrics available in ready stock to support faster sampling and product development.",
+      },
+      {
+        title: "Custom Development Available",
+        desc: "Have a reference fabric or visual effect in mind? We can support custom foil fabric development based on your sample or requirements.",
+      },
+    ],
+    sampleCta: {
+      title: "Looking for Fabric for Your Next Costume Collection?",
+      body: "Request a sample to check the stretch, surface effect and appearance before production.",
+      buttonLabel: "Request a Sample",
+    },
+    samplePrompt:
+      "Request a sample to check the stretch, surface effect and appearance before production.",
+    faqList: [
+      {
+        question: "Is this fabric suitable for stage costumes?",
+        answer:
+          "Yes. The shiny foil surface creates a strong visual effect under stage and event lighting, while the 4-way stretch makes it suitable for movement-focused garments.",
+      },
+      {
+        question: "Does the fabric have 4-way stretch?",
+        answer:
+          "Yes, this fabric features 4-way stretch for improved flexibility and movement.",
+      },
+      {
+        question: "Can I order a sample before bulk production?",
+        answer:
+          "Yes. Samples are available so you can evaluate the fabric's stretch, surface effect and suitability for your application.",
+      },
+      {
+        question: "Do you offer custom development?",
+        answer:
+          "Yes. We can support foil fabric development based on customer samples or specific requirements.",
+      },
+    ],
+    skuImages: [],
+    detailImages: [
+      "x2.png",
+      "x3.png",
+      "x4.png",
+      "x5.png",
+      "x7.png",
+      "x8.png",
+      "x9.png",
+      "x10.png",
+      "x11.png",
+      "x111.png",
+      "x112.png",
+      "x113.png",
+      "x114.png",
+      "x115.png",
+    ],
+  },
+  {
     slug: "iridescent-laser-hot-stamping-stretch-ice-silk",
     metaTitle: "Iridescent Laser Stretch Ice-Silk Fabric | Wholesale Supplier",
     metaDesc:
@@ -1136,6 +1361,7 @@ export const allProducts = [
 export const performanceProductSlugs = [
   "plain-iridescent-laser-spandex-4-way-stretch",
   "full-print-hot-stamping-spandex-milk-silk",
+  "shiny-foil-4-way-stretch-knit-fabric",
   "iridescent-laser-hot-stamping-stretch-ice-silk",
   "iridescent-gradient-laser-ice-silk",
 ];

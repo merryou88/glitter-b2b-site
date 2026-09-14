@@ -1,0 +1,27 @@
+---
+const { productName, productImageUrl, productDescription, pageUrl } = Astro.props;
+
+const hasProductImage =
+  typeof productImageUrl === "string" && productImageUrl.trim().length > 0;
+
+const productSchema = hasProductImage
+  ? {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      name: productName,
+      image: productImageUrl,
+      description: productDescription,
+      offers: {
+        "@type": "Offer",
+        availability: "https://schema.org/InStock",
+        priceCurrency: "USD",
+        price: "",
+        url: pageUrl,
+      },
+    }
+  : null;
+---
+
+{productSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+)}

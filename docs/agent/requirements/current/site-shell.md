@@ -15,12 +15,12 @@ status: current
 
 ### REQ-SHELL-002：站点级 SEO 规则
 - 状态：active
-- 当前规则：`Layout` 负责 canonical、robots、Open Graph、Twitter Card、Organization/WebSite JSON-LD，以及首页 hero 预加载。
-- 验收条件：页面源代码能看到完整 head 信息，且 `thank-you` 不进入 sitemap。
+- 当前规则：`Layout` 负责 canonical、robots、Open Graph、Twitter Card、Organization/WebSite JSON-LD，以及首页 hero 预加载。Open Graph 图片类型需要按实际图片扩展名输出 PNG、WebP 或 JPEG MIME。
+- 验收条件：页面源代码能看到完整 head 信息，产品 PNG 主图的 `og:image:type` 输出为 `image/png`，且 `thank-you` 不进入 sitemap。
 - 影响模块：`site-shell`
 - 代码路径：`src/layouts/Layout.astro`、`astro.config.mjs`
 - 测试路径：`npm run build`
-- 最后变更编号：待确认
+- 最后变更编号：CHG-20260915-001-h2013060105-shiny-foil-product
 - 待确认事项：无
 
 ### REQ-SHELL-003：导航与浮窗一致

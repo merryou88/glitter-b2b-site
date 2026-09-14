@@ -16,6 +16,7 @@
 import { existsSync } from "node:fs";
 import Layout from "@layouts/Layout.astro";
 import ProductDetail from "@components/ProductDetail.astro";
+import ProductSchema from "@components/ProductSchema.astro";
 import { performanceProducts } from "@data/allProducts";
 
 export function getStaticPaths() {
@@ -38,40 +39,10 @@ const heroImage = product.galleryImages[0]
 const heroWebp = heroImage.replace(/\.(png|jpe?g)$/i, ".webp");
 const hero = existsSync(`public${heroWebp}`) ? heroWebp : heroImage;
 
-const productImages = product.imageList.map((image) => `https://nixiafabric.com${image.src}`);
-const productProperties = [
-  ["Base material", product.specs.baseMaterial],
-  ["Width", product.specs.width],
-  ["Weight", product.specs.weight],
-  ["Thickness", product.specs.thickness],
-  ["MOQ", `${product.specs.moq} meters`],
-  ["Lead time", `${product.specs.leadTime} working days`],
-].filter(([, value]) => value);
-
-// Keep the product schema factual for an RFQ site: no invented public price or rating.
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  name: product.title,
-  description: product.metaDesc,
-  image: productImages.length > 0 ? productImages : [ogImage],
-  brand: { "@type": "Brand", name: "Nixia Fabric" },
-  sku: product.slug,
-  url: productUrl,
-  category: product.tags.join(", "),
-  material: product.specs.baseMaterial,
-  color: product.availableColors,
-  manufacturer: {
-    "@type": "Organization",
-    name: "Nixia Fabric",
-    url: "https://nixiafabric.com/",
-  },
-  additionalProperty: productProperties.map(([name, value]) => ({
-    "@type": "PropertyValue",
-    name,
-    value,
-  })),
-  mainEntityOfPage: productUrl,
+const getImageMimeType = (src = "") => {
+  if (/\.png$/i.test(src)) return "image/png";
+  if (/\.webp$/i.test(src)) return "image/webp";
+  return "image/jpeg";
 };
 
 // JSON-LD: FAQPage schema (each product supplies its own Q&A list)
@@ -103,8 +74,14 @@ const breadcrumbSchema = {
   canonical={productUrl}
   image={ogImage}
   ogType="product"
-  structuredData={[productSchema, faqSchema, breadcrumbSchema]}
-  preloadImages={[{ href: hero, type: hero.endsWith(".webp") ? "image/webp" : "image/jpeg", fetchpriority: "high" }]}
+  structuredData={[faqSchema, breadcrumbSchema]}
+  preloadImages={[{ href: hero, type: getImageMimeType(hero), fetchpriority: "high" }]}
 >
+  <ProductSchema
+    productName={product.title}
+    productImageUrl={product.mainImageUrl ? `https://nixiafabric.com${product.mainImageUrl}` : ""}
+    productDescription={product.fullDescription || product.metaDesc}
+    pageUrl={productUrl}
+  />
   <ProductDetail product={product} />
 </Layout>

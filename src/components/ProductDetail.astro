@@ -49,8 +49,13 @@ export interface Props {
     skuImages: Array<{ src: string; alt: string }>;
     detailImages: string[];
     heroHighlights?: string[];
+    whyChooseHeading?: string;
     whyChoose?: Array<{ title: string; desc: string }>;
+    valueStory?: { title: string; body: string };
+    applicationsHeading?: string;
     buyerApplications?: Array<{ title: string; desc: string }>;
+    stockDevelopment?: Array<{ title: string; desc: string }>;
+    sampleCta?: { title: string; body: string; buttonLabel: string };
     samplePrompt?: string;
   };
 }
@@ -67,6 +72,7 @@ const isFullPrintHotStampingMilkSilk = product.slug === "full-print-hot-stamping
 const hideProductDescription = [
   "iridescent-gradient-laser-ice-silk",
   "full-print-hot-stamping-spandex-milk-silk",
+  "shiny-foil-4-way-stretch-knit-fabric",
   "iridescent-laser-hot-stamping-stretch-ice-silk",
 ].includes(product.slug);
 const quoteButtonLabel = isInquiryFocusedProduct ? "Get a Quote" : "Add to Quotation List";
@@ -74,6 +80,8 @@ const inquiryButtonLabel = isInquiryFocusedProduct ? "Send an Inquiry" : "WhatsA
 const samplePolicyIntro =
   product.samplePrompt ??
   "Free samples available, buyer covers international shipping cost. Shipping fee will be deducted from bulk orders.";
+const whyChooseHeading = product.whyChooseHeading ?? "Why Choose This Fabric?";
+const applicationsHeading = product.applicationsHeading ?? "Perfect For";
 
 // Available Colors — fall back to the factory default when not configured
 const availableColors =
@@ -136,6 +144,12 @@ const relatedProducts = performanceProducts
 const titleCase = (s: string) =>
   s.replace(/(^|[\s-])([a-z])/g, (_m, p1: string, p2: string) => p1 + p2.toUpperCase());
 
+const getImageMimeType = (src = "") => {
+  if (/\.png$/i.test(src)) return "image/png";
+  if (/\.webp$/i.test(src)) return "image/webp";
+  return "image/jpeg";
+};
+
 // Gallery images — files live in the product's main/ subdirectory.
 // JSON stores filenames only; here we build the full URL from galleryMainPath.
 const galleryMainPath = product.galleryMainPath ?? "";
@@ -195,8 +209,16 @@ const productSpecRows = [
   { label: "Width", value: product.specs.width },
   { label: "Weight", value: product.specs.weight },
   { label: "Thickness", value: product.specs.thickness },
-  { label: "Surface Finish", value: findRowValue(product.specTable, ["Surface Finish"]) },
+  {
+    label: "Surface Effect",
+    value: findRowValue(product.specTable, ["Surface Effect", "Surface Finish"]),
+  },
   { label: "Stretch", value: findRowValue(product.specTable, ["Stretch"]) },
+  { label: "Color", value: findRowValue(product.specTable, ["Color"]) },
+  { label: "MOQ", value: findRowValue(product.specTable, ["MOQ"]) },
+  { label: "Supply Type", value: findRowValue(product.specTable, ["Supply Type"]) },
+  { label: "Yarn Count", value: findRowValue(product.specTable, ["Yarn Count"]) },
+  { label: "Finishing", value: findRowValue(product.specTable, ["Finishing"]) },
   { label: "Hand-feel", value: findRowValue(product.specTable, ["Hand-feel"]) },
   { label: "Feature", value: findRowValue(product.specTable, ["Feature"]) },
   { label: "Quality Standard", value: findRowValue(product.specTable, ["Quality Standard"]) },
@@ -282,7 +304,7 @@ const heroVideo = product.video
                 <source id="p-hero-img-webp" srcset={galleryImages[0].webp} type="image/webp" />
               )
             }
-            <source srcset={galleryImages[0]?.src} type="image/jpeg" />
+            <source srcset={galleryImages[0]?.src} type={getImageMimeType(galleryImages[0]?.src)} />
             <img
               id="p-hero-img"
               src={galleryImages[0]?.src}
@@ -533,7 +555,7 @@ const heroVideo = product.video
                 <path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.8 6.4 20.2l1.1-6.2L3 9.6l6.2-.9L12 3z" />
               </svg>
             </span>
-            <span>Why Choose This Fabric?</span>
+            <span>{whyChooseHeading}</span>
           </h2>
           <div class="why-choose-grid">
             {product.whyChoose.map((item) => (
@@ -542,6 +564,22 @@ const heroVideo = product.video
                 <p>{item.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      )}
+
+      {product.valueStory && (
+        <div class="detail-body__section" id="fabric-value">
+          <h2 class="section-title-with-icon">
+            <span class="section-title-with-icon__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.8 6.4 20.2l1.1-6.2L3 9.6l6.2-.9L12 3z" />
+              </svg>
+            </span>
+            <span>{product.valueStory.title}</span>
+          </h2>
+          <div class="sample-policy-content">
+            <p>{product.valueStory.body}</p>
           </div>
         </div>
       )}
@@ -640,7 +678,7 @@ const heroVideo = product.video
                 <path d="M20 6 9 17l-5-5" />
               </svg>
             </span>
-            <span>Perfect For</span>
+            <span>{applicationsHeading}</span>
           </h2>
           {product.buyerApplications && product.buyerApplications.length > 0 ? (
             <div class="application-cards">
@@ -675,6 +713,53 @@ const heroVideo = product.video
               ))}
             </div>
           )}
+        </div>
+      )}
+
+      {product.stockDevelopment && product.stockDevelopment.length > 0 && (
+        <div class="detail-body__section detail-body__section--full" id="ready-stock-custom-development">
+          <h2 class="section-title-with-icon">
+            <span class="section-title-with-icon__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 20h18" />
+                <path d="M5 20V8l7-4 7 4v12" />
+                <path d="M9 20v-6h6v6" />
+              </svg>
+            </span>
+            <span>Ready Stock &amp; Custom Development</span>
+          </h2>
+          <div class="oem-grid">
+            {product.stockDevelopment.map((item) => (
+              <div class="oem-card">
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {product.sampleCta && (
+        <div class="detail-body__section detail-sample-policy" id="request-sample">
+          <h2 class="section-title-with-icon">
+            <span class="section-title-with-icon__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 3h12v18H6z" />
+                <path d="M9 8h6" />
+                <path d="M9 12h6" />
+                <path d="M9 16h4" />
+              </svg>
+            </span>
+            <span>{product.sampleCta.title}</span>
+          </h2>
+          <div class="sample-policy-content">
+            <p>{product.sampleCta.body}</p>
+          </div>
+          <div class="policy-cta">
+            <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} data-rfq-open data-rfq-sku={product.title} class="btn detail-cta__btn detail-cta__btn--gold policy-cta__btn">
+              {product.sampleCta.buttonLabel}
+            </a>
+          </div>
         </div>
       )}
 
@@ -1083,6 +1168,10 @@ const heroVideo = product.video
     grid-template-columns: minmax(0, 47%) minmax(0, 53%);
     gap: var(--space-3xl);
     align-items: start;
+  }
+
+  .detail-layout > * {
+    min-width: 0;
   }
 
   /* ===== Gallery ===== */
@@ -2529,6 +2618,7 @@ const heroVideo = product.video
   /* ===== Hero Gallery Viewer (plain-iridescent-laser) ===== */
   .p-hero-gallery {
     position: relative;
+    width: 100%;
     max-width: 560px;
     margin-inline: auto;
   }

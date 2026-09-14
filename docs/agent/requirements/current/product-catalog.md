@@ -5,12 +5,12 @@ status: current
 
 ### REQ-PRODUCT-001：产品列表页仅展示表演服装相关产品
 - 状态：active
-- 当前规则：`/products/` 只展示 `performanceProducts` 中适用于舞台服装、舞蹈服、表演服和 Cosplay/Carnival Costume 的产品；其他历史产品不得出现在产品卡片、推荐排序、产品总数、场景入口、筛选结果或询盘选择中。产品列表页不再展示应用场景入口，场景导航由独立应用页面承担。
-- 验收条件：当前目录页展示 4 个表演服装相关产品；筛选、排序和总数均基于这 4 个产品；页面无鞋材、手袋、泳装、装饰、工艺或玩具产品入口。
+- 当前规则：`/products/` 只展示 `performanceProducts` 中适用于舞台服装、舞蹈服、表演服、Performance & Party Wear 和 Cosplay/Carnival Costume 的产品；其他历史产品不得出现在产品卡片、推荐排序、产品总数、场景入口、筛选结果或询盘选择中。产品列表页不再展示应用场景入口，场景导航由独立应用页面承担。
+- 验收条件：当前目录页展示 5 个表演服装相关产品；筛选、排序和总数均基于这 5 个产品；页面无鞋材、手袋、泳装、装饰、工艺或玩具产品入口。
 - 影响模块：`product-catalog`
 - 代码路径：`src/pages/products.astro`
 - 测试路径：`npm run build`，手动检查 `/products/`
-- 最后变更编号：CHG-20260912-018-public-copy-alignment
+- 最后变更编号：CHG-20260915-001-h2013060105-shiny-foil-product
 - 待确认事项：无
 
 ### REQ-PRODUCT-002：每个公开产品生成独立静态详情页
@@ -111,6 +111,26 @@ status: current
 - 代码路径：`src/data/allProducts.js`、`src/pages/products.astro`、`src/components/ProductDetail.astro`
 - 测试路径：`npm run validate:products`、`npm run build`
 - 最后变更编号：CHG-20260913-005-iridescent-color-count-correction
+- 待确认事项：无
+
+### REQ-PRODUCT-016：产品详情页 Product JSON-LD 必须包含询价 Offer
+- 状态：active
+- 当前规则：所有公开产品详情页输出一个 `Product` JSON-LD，并包含 `Offer`；由于站点采用询价模式，`price` 固定为空字符串，不硬编码价格，`priceCurrency` 为 `USD`，`availability` 固定为 `https://schema.org/InStock`。
+- 验收条件：产品页的 Product JSON-LD 包含产品名称、英文描述、完整绝对主图 URL、canonical URL 和 `offers`；主图为空时不输出 Product JSON-LD；博客页不加载该产品 schema；原有页面 HTML、CSS、GA4 和图片渲染逻辑不受影响。
+- 影响模块：`product-catalog`
+- 代码路径：`src/components/ProductSchema.astro`、`src/pages/products/[slug].astro`
+- 测试路径：`npm run build`；检查生成产品页和博客页源码
+- 最后变更编号：CHG-20260914-001-product-offer-schema
+- 待确认事项：生产部署和 Google Search Console 复测需在具备部署/GSC权限后执行
+
+### REQ-PRODUCT-017：H2013060105 公开产品页聚焦 Performance & Party Wear
+- 状态：active
+- 当前规则：`shiny-foil-4-way-stretch-knit-fabric` 是 H2013060105 的公开详情页，H1 使用 `Shiny Foil 4-Way Stretch Knit Fabric for Performance & Party Wear`，SEO 标题和描述按当前 B2B Performance & Party Wear 定位输出。页面应用重点为 Stage Costumes、Dancewear、Performance Wear、Concert Outfits、Party Wear、Festival Costumes、Performance Bodysuits，不把 Shoes、Bags、Crafts 或 Hair Accessories 作为主要应用。详情页不展示独立 `Product Description` 模块，避免和统一详情页模板的信息层级冲突。产品规格只能使用已确认的 H2013060105 数据：145cm、150g、MOQ 100m、30 colors、100% Polyester、高弹/4-way stretch、90S、Hot-stamping foil。
+- 验收条件：详情页可生成并显示 Key Features、Recommended Applications、Why Choose、Ready Stock & Custom Development、Sample CTA 和 FAQ；CTA 带当前产品上下文进入现有询盘流程；页面主要定位不出现退出应用方向；规格不编造 Composition、Width、Weight、MOQ 或颜色信息；`Specifications Table for B2B Buyers` 前不出现 `Product Description` 模块。
+- 影响模块：`product-catalog`、`content-data`、`inquiry-forms`
+- 代码路径：`src/data/allProducts.js`、`src/components/ProductDetail.astro`
+- 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/shiny-foil-4-way-stretch-knit-fabric/`
+- 最后变更编号：CHG-20260915-001-h2013060105-shiny-foil-product
 - 待确认事项：无
 
 ### REQ-PRODUCT-005：重点产品轮播角标需匹配品牌深蓝白字风格
