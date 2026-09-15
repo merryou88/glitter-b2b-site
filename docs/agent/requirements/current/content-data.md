@@ -35,10 +35,10 @@ status: current
 
 ### REQ-DATA-004：指定产品展示图使用品牌水印
 - 状态：active
-- 当前规则：`iridescent-laser-hot-stamping-stretch-ice-silk` 和 `shiny-foil-4-way-stretch-knit-fabric` 的主图 1 不使用水印；`shiny-foil-4-way-stretch-knit-fabric` 只在 WebP 展示版本添加域名水印，PNG 原图保持无水印，除 `main/a1.webp` 外的其他主图、Application 图片和 Product Details 图片每张只放 3 个低透明度、逆时针 45 度倾斜域名水印 `nixiafabric.com`。
-- 验收条件：指定产品主图 1 保持无水印；`shiny-foil-4-way-stretch-knit-fabric` 的 PNG 原图不加水印，除 `main/a1.webp` 外的同名 WebP 每张包含且只包含 3 个低透明度、逆时针 45 度倾斜域名水印；图片尺寸和展示路径不变，面料主体仍清晰可辨，且不使用 Logo 图标水印或固定水印背景框。
+- 当前规则：`iridescent-laser-hot-stamping-stretch-ice-silk` 和 `shiny-foil-4-way-stretch-knit-fabric` 的主图 1 不使用水印；`shiny-foil-4-way-stretch-knit-fabric` 的主图与 Product Details 图只在 WebP 展示版本添加域名水印，PNG 原图保持无水印，除 `main/a1.webp` 外每张只放 3 个低透明度、逆时针 45 度倾斜域名水印 `nixiafabric.com`；Application 图片的 PNG 与 WebP 均不加水印。
+- 验收条件：指定产品主图 1 保持无水印；主图与 Product Details 图的 PNG 原图不加水印，除 `main/a1.webp` 外的同名 WebP 每张包含且只包含 3 个低透明度、逆时针 45 度倾斜域名水印；Application 图片的 PNG 与 WebP 均保持无水印；图片尺寸和展示路径不变，面料主体仍清晰可辨，且不使用 Logo 图标水印或固定水印背景框。
 - 影响模块：`content-data`、`product-catalog`
 - 代码路径：`public/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/`、`public/images/products/H2013060105/`
 - 测试路径：`npm run validate:products`、`npm run build`、人工抽查图片
-- 最后变更编号：CHG-20260915-001-h2013060105-shiny-foil-product
+- 最后变更编号：CHG-20260915-002-h2013060105-application-webp
 - 待确认事项：无

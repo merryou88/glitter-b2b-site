@@ -3,7 +3,7 @@
 | 业务模块 | 当前需求文档 | 需求编号 | 最近变更 | 相关代码 |
 |---|---|---|---|---|
 | 站点壳 / SEO | `current/site-shell.md` | `REQ-SHELL-001~009` | CHG-20260915-001-h2013060105-shiny-foil-product | `src/layouts/Layout.astro`、`src/components/Header.astro`、`src/components/Footer.astro`、`src/components/HeroCarousel.astro`、`src/pages/index.astro` |
-| 内容数据 | `current/content-data.md` | `REQ-DATA-001~004` | CHG-20260915-001-h2013060105-shiny-foil-product | `src/data/allProducts.js`、`src/data/blogArticles.js`、`src/data/products.json`、`public/images/**` |
+| 内容数据 | `current/content-data.md` | `REQ-DATA-001~004` | CHG-20260915-002-h2013060105-application-webp | `src/data/allProducts.js`、`src/data/blogArticles.js`、`src/data/products.json`、`public/images/**` |
 | 产品目录 | `current/product-catalog.md` | `REQ-PRODUCT-001~017` | CHG-20260915-001-h2013060105-shiny-foil-product | `src/pages/products.astro`、`src/pages/products/[slug].astro`、`src/components/ProductDetail.astro`、`src/components/ProductSchema.astro` |
 | 博客知识中心 | `current/blog.md` | `REQ-BLOG-001~005` | CHG-20260913-002-hot-stamping-spandex-blog-guide | `src/pages/blog/index.astro`、`src/pages/blog/[slug].astro`、`src/data/blogArticles.js` |
 | 联系 / RFQ 表单 | `current/inquiry-forms.md` | `REQ-FORM-001~003` | 待确认 | `src/components/ContactForm.astro`、`src/components/RfqQuoteForm.astro`、`src/components/RFQQuoteModal.astro` |
