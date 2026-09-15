@@ -57,6 +57,8 @@ export interface Props {
     stockDevelopment?: Array<{ title: string; desc: string }>;
     sampleCta?: { title: string; body: string; buttonLabel: string };
     samplePrompt?: string;
+    availability?: string;
+    customProjectMoq?: string;
   };
 }
 
@@ -74,6 +76,7 @@ const hideProductDescription = [
   "full-print-hot-stamping-spandex-milk-silk",
   "shiny-foil-4-way-stretch-knit-fabric",
   "iridescent-laser-hot-stamping-stretch-ice-silk",
+  "non-shedding-glitter-suede-look-laser-foil-fabric",
 ].includes(product.slug);
 const quoteButtonLabel = isInquiryFocusedProduct ? "Get a Quote" : "Add to Quotation List";
 const inquiryButtonLabel = isInquiryFocusedProduct ? "Send an Inquiry" : "WhatsApp";
@@ -236,9 +239,12 @@ const b2bRows = [
     label: "Product Name / SKU",
     value: `${product.title} / ${product.sku ?? ""}`.trim(),
   },
+  ...(product.availability
+    ? [{ label: "Availability", value: product.availability }]
+    : []),
   {
     label: "MOQ",
-    value: "Standard products: 100 meters minimum. Custom projects: MOQ to be confirmed based on customization requirements.",
+    value: `Standard products: 100 meters minimum. Custom projects: ${product.customProjectMoq ?? "MOQ to be confirmed based on customization requirements."}`,
   },
   { label: "Supply Type", value: b2bValue(["Supply type", "Supply Type"]) },
   {

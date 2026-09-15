@@ -733,6 +733,217 @@ export const allProducts = [
     detailImages: [],
   },
   {
+    slug: "non-shedding-glitter-suede-look-laser-foil-fabric",
+    metaTitle: "Non-Shedding Glitter Suede-Look Fabric with Laser Foil | Nixia Fabric",
+    metaDesc:
+      "A suede-look base with a dense, non-shedding glitter and laser foil effect for stagewear, props and decorative backdrops. Factory wholesale supply with OEM/ODM support for buyers and apparel manufacturers.",
+    title: "Dense Dot Foil Suede-Look Fabric",
+    sku: "H2013060106",
+    mainImageUrl: "/images/products/H2013060106/main/a1.jpg",
+    mainImageWebp: "/images/products/H2013060106/main/a1.webp",
+    mainImageAlt:
+      "Dense dot foil suede-look fabric with non-shedding glitter surface",
+    imageList: [
+      {
+        src: "/images/products/H2013060106/main/a1.jpg",
+        webp: "/images/products/H2013060106/main/a1.webp",
+        alt: "Dense dot foil suede-look fabric in a neutral color",
+      },
+      {
+        src: "/images/products/H2013060106/main/a2.jpg",
+        webp: "/images/products/H2013060106/main/a2.webp",
+        alt: "Dense dot foil suede-look fabric color and surface detail",
+      },
+      {
+        src: "/images/products/H2013060106/main/a3.jpg",
+        webp: "/images/products/H2013060106/main/a3.webp",
+        alt: "Dense dot foil suede-look fabric in a bright color",
+      },
+      {
+        src: "/images/products/H2013060106/main/a4.jpg",
+        webp: "/images/products/H2013060106/main/a4.webp",
+        alt: "Dense dot foil suede-look fabric color assortment",
+      },
+      {
+        src: "/images/products/H2013060106/main/a5.jpg",
+        webp: "/images/products/H2013060106/main/a5.webp",
+        alt: "Dense dot foil suede-look fabric for stagewear sourcing",
+      },
+    ],
+    galleryMainPath: "/images/products/H2013060106/main/",
+    galleryImages: ["a1.jpg", "a2.jpg", "a3.jpg", "a4.jpg", "a5.jpg"],
+    detailImagePath: "/images/products/H2013060106/detail/",
+    video: null,
+    shortIntro:
+      "Soft suede-like base paired with subtle scattered metallic sparkles for an elevated premium look. Wrinkle-resistant and more flexible than full-area hot stamping fabrics. Ideal for evening dresses, fashion apparel, handbags, upholstery, stage decor and photo backdrops.",
+    fullDescription:
+      "Soft suede-like base paired with subtle scattered metallic sparkles for an elevated premium look. Wrinkle-resistant and more flexible than full-area hot stamping fabrics. Ideal for evening dresses, fashion apparel, handbags, upholstery, stage decor and photo backdrops.",
+    specs: {
+      width: "150cm",
+      weight: "130g",
+      baseMaterial: "Suede-look fabric",
+      thickness: "",
+      moq: "100",
+      leadTime: "5-7",
+    },
+    specTable: [
+      { label: "Product Type", value: "Dense Dot Foil Suede-Look Fabric" },
+      { label: "Base Material", value: "Suede-look fabric" },
+      { label: "Width", value: "150cm" },
+      { label: "Weight", value: "130g" },
+      { label: "Surface Effect", value: "Dense non-shedding glitter with laser foil effect" },
+      { label: "Stretch", value: "Slight stretch" },
+      { label: "Color", value: "16 colors available; custom colors on request" },
+      { label: "MOQ", value: "100m" },
+      { label: "Density", value: "210T" },
+      { label: "Yarn Count", value: "75D*75DD" },
+      { label: "Finishing", value: "Foil" },
+      { label: "Pattern / Construction", value: "Foil embossing" },
+      { label: "Typical Applications", value: "Stage costumes, performance props, backdrops, event decoration" },
+    ],
+    b2bTable: [
+      { label: "MOQ", value: "100 Meters" },
+      { label: "Supply type", value: "In-stock availability; custom development available" },
+      { label: "Sample", value: "Sample available for surface effect, stretch and appearance review before production" },
+      { label: "Bulk Lead time", value: "5-7 working days for stock dispatch; custom production timing to be confirmed" },
+      { label: "Port", value: "Ningbo / Shanghai" },
+      { label: "OEM / ODM", value: "Custom color and fabric development based on customer requirements" },
+      { label: "Testing & Compliance", value: "To be confirmed according to buyer requirements" },
+      { label: "Package type", value: "Roll packing; export packing available upon quotation" },
+      { label: "Trade Terms", value: "FOB, CIF upon quotation" },
+    ],
+    applications: [
+      "Stage Costumes",
+      "Performance Props",
+      "Backdrops",
+      "Event Decoration",
+    ],
+    inStock: true,
+    stockStatus: "In-Stock",
+    availability: "In-Stock",
+    customProjectMoq: "MOQ 200 meters",
+    badge: "16 colors",
+    colorCount: 16,
+    tags: ["glitter", "foil", "suede-look", "embossed", "stage-costume", "performance-props", "backdrops", "event-decoration"],
+    availableColors: "16 colors available; custom colors on request",
+    sampleNote: "Sample available for surface effect, stretch and appearance review",
+    customizationNote: "Custom color and fabric development based on customer requirements",
+    packaging: "Roll packing; export packing available upon quotation",
+    tradeTerms: "FOB, CIF upon quotation",
+    heroHighlights: [
+      "Non-Shedding Glitter",
+      "Suede-Look Base",
+      "Laser Foil Effect",
+      "150 cm Width",
+      "130g Weight",
+      "MOQ 100 Meters",
+    ],
+    whyChooseHeading: "Key Features",
+    whyChoose: [
+      {
+        title: "Non-Shedding Glitter",
+        desc: "Dense glitter effect designed to maintain a clean surface during handling and use.",
+      },
+      {
+        title: "Suede-Look Base",
+        desc: "Soft visual texture gives costumes, props and decorative panels a richer appearance.",
+      },
+      {
+        title: "Foil Embossing",
+        desc: "Embossed foil effect adds visible texture and shine to the fabric surface.",
+      },
+      {
+        title: "Slight Stretch",
+        desc: "Offers limited flexibility for selected costume and decorative applications.",
+      },
+      {
+        title: "16 Color Options",
+        desc: "Available colors support coordinated stage, event and display projects.",
+      },
+      {
+        title: "Suitable for Visual Displays",
+        desc: "The dense glitter and laser foil effect creates strong visual impact under lighting.",
+      },
+    ],
+    valueStory: {
+      title: "Why Choose This Dense Dot Foil Fabric?",
+      body: "This suede-look foil fabric combines a dense glitter surface with embossed laser foil detail. It is designed for buyers who need a visually rich material for stage costumes, performance props, backdrops and event decoration.",
+    },
+    applicationsHeading: "Recommended Applications",
+    buyerApplications: [
+      {
+        title: "Stage Costumes",
+        desc: "Dense glitter and foil detail help costumes stand out under stage lighting.",
+      },
+      {
+        title: "Performance Props",
+        desc: "The textured surface supports visual props and display elements for performances.",
+      },
+      {
+        title: "Backdrops",
+        desc: "Reflective foil detail adds depth to decorative stage and event backdrops.",
+      },
+      {
+        title: "Event Decoration",
+        desc: "Suitable for eye-catching decorative panels and themed event displays.",
+      },
+    ],
+    stockDevelopment: [
+      {
+        title: "In-Stock Availability",
+        desc: "This product is available in stock for faster sample review and order preparation.",
+      },
+      {
+        title: "Custom Development Available",
+        desc: "Custom color and fabric development can be discussed based on project requirements.",
+      },
+    ],
+    sampleCta: {
+      title: "Need a Textured Foil Fabric for Your Project?",
+      body: "Request a sample to review the glitter surface, foil embossing and slight stretch before production.",
+      buttonLabel: "Request a Sample",
+    },
+    samplePrompt:
+      "Request a sample to review the glitter surface, foil embossing and slight stretch before production.",
+    faqList: [
+      {
+        question: "Does the glitter shed from the fabric?",
+        answer:
+          "The product is described as a non-shedding glitter suede-look fabric. Please request a sample to review the surface under your intended handling and application conditions.",
+      },
+      {
+        question: "What is the stretch level?",
+        answer:
+          "The source data describes the fabric as having slight stretch.",
+      },
+      {
+        question: "How many colors are available?",
+        answer:
+          "The source data lists 16 available colors, with custom colors available on request.",
+      },
+      {
+        question: "What applications is this fabric suitable for?",
+        answer:
+          "Recommended applications include stage costumes, performance props, backdrops and event decoration.",
+      },
+    ],
+    skuImages: [],
+    detailImages: [
+      "x1.jpg",
+      "x2.png",
+      "x3.jpg",
+      "x4.jpg",
+      "x5.jpg",
+      "x6.jpg",
+      "x7.jpg",
+      "x8.jpg",
+      "x9.jpg",
+      "x10.jpg",
+      "x11.jpg",
+      "x12.jpg",
+    ],
+  },
+  {
     slug: "iridescent-gradient-laser-ice-silk",
     metaTitle: "Holographic Foil Stretch Spandex Fabric, Iridescent Gradient for Dancewear & Costumes | Nixia Fabric",
     metaDesc:
@@ -1362,6 +1573,7 @@ export const performanceProductSlugs = [
   "plain-iridescent-laser-spandex-4-way-stretch",
   "full-print-hot-stamping-spandex-milk-silk",
   "shiny-foil-4-way-stretch-knit-fabric",
+  "non-shedding-glitter-suede-look-laser-foil-fabric",
   "iridescent-laser-hot-stamping-stretch-ice-silk",
   "iridescent-gradient-laser-ice-silk",
 ];
