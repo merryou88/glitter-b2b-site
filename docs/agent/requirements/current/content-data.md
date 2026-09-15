@@ -30,7 +30,7 @@ status: current
 - 影响模块：`content-data`、`product-catalog`、`inquiry-forms`
 - 代码路径：`src/data/allProducts.js`、`src/pages/products/[slug].astro`、`src/components/ProductDetail.astro`、`src/components/RFQQuoteModal.astro`
 - 测试路径：`npm run validate:products`、`npm run build`
-- 最后变更编号：CHG-20260915-007-h2013060106-availability-update
+- 最后变更编号：CHG-20260915-008-h2013060106-description-update
 - 待确认事项：历史产品图片和历史数据暂不删除
 
 ### REQ-DATA-004：指定产品展示图使用品牌水印
@@ -40,5 +40,5 @@ status: current
 - 影响模块：`content-data`、`product-catalog`
 - 代码路径：`public/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/`、`public/images/products/H2013060105/`、`public/images/products/H2013060106/`
 - 测试路径：`npm run validate:products`、`npm run build`、人工抽查图片
-- 最后变更编号：CHG-20260915-005-h2013060106-product-detail
+- 最后变更编号：CHG-20260915-008-h2013060106-description-update
 - 待确认事项：无

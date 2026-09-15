@@ -113,14 +113,14 @@ status: current
 - 最后变更编号：CHG-20260913-005-iridescent-color-count-correction
 - 待确认事项：无
 
-### REQ-PRODUCT-016：产品详情页 Product JSON-LD 必须包含询价 Offer
+### REQ-PRODUCT-016：产品详情页使用 Article 主 schema 并嵌套 Product 主题
 - 状态：active
-- 当前规则：所有公开产品详情页输出一个 `Product` JSON-LD，并包含 `Offer`；由于站点采用询价模式，`price` 固定为空字符串，不硬编码价格，`priceCurrency` 为 `USD`，`availability` 固定为 `https://schema.org/InStock`。
-- 验收条件：产品页的 Product JSON-LD 包含产品名称、英文描述、完整绝对主图 URL、canonical URL 和 `offers`；主图为空时不输出 Product JSON-LD；博客页不加载该产品 schema；原有页面 HTML、CSS、GA4 和图片渲染逻辑不受影响。
+- 当前规则：所有公开产品详情页通过公共组件输出一个 `Article` JSON-LD，保留产品名称、绝对主图 URL和英文描述，并包含 `publisher` 为 Nixia Fabric；通过 `about` 嵌套一个不含 Offer、Review 或 AggregateRating 的 `Product` 实体，表达文章介绍的面料产品。站点采用询盘模式，不输出虚构价格或报价结构化数据。
+- 验收条件：产品页的主产品 schema 类型为 `Article`，包含 `name`、`image`、`description`、`publisher` 和 `about.Product`；`about.Product` 包含产品名称、完整绝对主图 URL和英文描述；产品主 schema 不包含 `offers`、`review` 或 `aggregateRating`；主图为空时不输出该组件 schema；博客页不加载该产品组件；原有页面 HTML、CSS、GA4 和图片渲染逻辑不受影响。
 - 影响模块：`product-catalog`
 - 代码路径：`src/components/ProductSchema.astro`、`src/pages/products/[slug].astro`
 - 测试路径：`npm run build`；检查生成产品页和博客页源码
-- 最后变更编号：CHG-20260914-001-product-offer-schema
+- 最后变更编号：CHG-20260915-009-product-article-schema
 - 待确认事项：生产部署和 Google Search Console 复测需在具备部署/GSC权限后执行
 
 ### REQ-PRODUCT-017：H2013060105 公开产品页聚焦 Performance & Party Wear

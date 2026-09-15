@@ -6,11 +6,21 @@ const hasProductImage =
 
 const productSchema = hasProductImage
   ? {
-      "@context": "https://schema.org/",
-      "@type": "Product",
+      "@context": "https://schema.org",
+      "@type": "Article",
       name: productName,
       image: productImageUrl,
       description: productDescription,
+      publisher: {
+        "@type": "Organization",
+        name: "Nixia Fabric",
+      },
+      about: {
+        "@type": "Product",
+        name: productName,
+        image: productImageUrl,
+        description: productDescription,
+      },
     }
   : null;
 ---

@@ -1,7 +1,8 @@
 ---
 change_id: CHG-20260914-001-product-offer-schema
 date: 2026-09-14
-status: implemented
+status: superseded
+superseded_by: CHG-20260915-009-product-article-schema
 requirements:
   - REQ-PRODUCT-016
 modules:
