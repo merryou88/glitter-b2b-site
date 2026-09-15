@@ -258,7 +258,6 @@ const PLACEHOLDER_IMAGE =
     height: 100%;
     object-fit: cover;
     object-position: center;
-    filter: sepia(0.06) saturate(0.95) brightness(1.02) hue-rotate(5deg);
   }
 
   /* Video slide — desktop only, mobile falls back to image */
@@ -269,7 +268,6 @@ const PLACEHOLDER_IMAGE =
     height: 100%;
     object-fit: cover;
     object-position: center;
-    filter: sepia(0.06) saturate(0.95) brightness(1.02) hue-rotate(5deg);
   }
 
   .hero-carousel__image--mobile {
@@ -407,7 +405,17 @@ const PLACEHOLDER_IMAGE =
     color: #fff;
     cursor: pointer;
     transition: all 0.25s ease;
-    backdrop-filter: blur(4px);
+  }
+
+  @media (min-width: 769px) {
+    .hero-carousel__image,
+    .hero-carousel__video {
+      filter: sepia(0.06) saturate(0.95) brightness(1.02) hue-rotate(5deg);
+    }
+
+    .hero-carousel__arrow {
+      backdrop-filter: blur(4px);
+    }
   }
 
   .hero-carousel__arrow:hover {

@@ -92,3 +92,13 @@ status: current
 - 测试路径：`npm run build`，手动检查首页制造能力区块
 - 最后变更编号：CHG-20260912-022-home-capability-cards-full-width
 - 待确认事项：无
+
+### REQ-SHELL-010：移动端优先加载与渲染
+- 状态：active
+- 当前规则：全站 Analytics 在页面完成加载后的浏览器空闲期加载；移动端关闭导航和首页轮播的高成本模糊/图片滤镜；首屏以下区块允许浏览器延迟渲染。
+- 验收条件：移动端首屏不等待 Analytics；轮播、导航和页面滚动交互正常；桌面端既有视觉效果保留。
+- 影响模块：`site-shell`
+- 代码路径：`src/layouts/Layout.astro`、`src/components/Header.astro`、`src/components/HeroCarousel.astro`、`src/styles/global.css`
+- 测试路径：`npm run build`，移动端手动检查首页首屏、导航、轮播和滚动
+- 最后变更编号：CHG-20260915-003-mobile-performance
+- 待确认事项：需用真实手机网络和 Lighthouse/Chrome DevTools 采集优化前后指标

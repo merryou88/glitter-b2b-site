@@ -198,6 +198,8 @@ p {
 
 .section {
   padding-block: var(--space-4xl);
+  content-visibility: auto;
+  contain-intrinsic-size: 720px;
 }
 
 .section--tight {

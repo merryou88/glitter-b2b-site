@@ -117,10 +117,15 @@ const isProductSectionActive = currentPath.startsWith("/products");
     top: 0;
     z-index: var(--z-header);
     background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--color-border);
     transition: box-shadow var(--transition-base);
+  }
+
+  @media (min-width: 769px) {
+    .header {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
   }
 
   .header.is-scrolled {
