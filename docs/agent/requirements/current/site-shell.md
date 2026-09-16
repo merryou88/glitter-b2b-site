@@ -43,12 +43,22 @@ status: current
 - 最后变更编号：CHG-20260912-021-home-popular-full-print
 - 待确认事项：无
 
+### REQ-SHELL-011：首页与应用页 SEO 内链覆盖
+- 状态：active
+- 当前规则：首页热门产品区覆盖当前公开产品集合，并提供应用指南入口；应用索引页回链产品目录与博客知识中心。
+- 验收条件：首页包含当前公开产品详情页入口和 `/applications/` 入口；`/applications/` 包含 `/products/` 与 `/blog/` 内链。
+- 影响模块：`site-shell`、`product-catalog`、`blog-knowledge`
+- 代码路径：`src/pages/index.astro`、`src/pages/applications/index.astro`
+- 测试路径：`npm run build`，检查生成 HTML 内链
+- 最后变更编号：CHG-20260916-002-seo-page-optimization
+- 待确认事项：无
+
 ### REQ-SHELL-005：首页不展示 Glitter 相关内容
 - 状态：active
 - 当前规则：首页及其共享站点壳文案、SEO 元数据、替代文本、能力卡片与采购流程文案不使用 `glitter` 或 `sparkle` 表述；首页应用素材引用使用中性文件名。
 - 验收条件：首页源码与生成页面的可见内容不再出现 `glitter` 或 `sparkle` 相关表述，剩余 foil、iridescent 与 holographic 内容正常展示。
 - 影响模块：`site-shell`
-- 代码路径：`src/components/HeroCarousel.astro`、`src/pages/index.astro`、`public/shots/application-costume-foil.jpg`
+- 代码路径：`src/components/HeroCarousel.astro`、`src/pages/index.astro`、`public/shots/application-costume-foil.webp`
 - 测试路径：`npm run build`，检查首页源码关键字
 - 最后变更编号：CHG-20260912-015-home-remove-glitter-content
 - 待确认事项：无
@@ -68,7 +78,7 @@ status: current
 - 当前规则：首页 `slide2` 使用最新上传的 `slide2_v2` 主图，并同步提供桌面与移动端 WebP 变体；轮播组件通过源文件路径自动解析对应 WebP。
 - 验收条件：首页第二张轮播显示最新素材，桌面和移动端均能加载对应图片，其他轮播内容不受影响。
 - 影响模块：`site-shell`
-- 代码路径：`src/components/HeroCarousel.astro`、`public/images/home/slide2_v2.png`、`public/images/home/slide2_v2.webp`、`public/images/home/slide2_v2-mobile.webp`
+- 代码路径：`src/components/HeroCarousel.astro`、`public/images/home/slide2_v2.webp`、`public/images/home/slide2_v2-mobile.webp`
 - 测试路径：`npm run build`，检查生成首页中的 `slide2` 素材引用
 - 最后变更编号：CHG-20260912-020-home-slide2-v2-image
 - 待确认事项：无

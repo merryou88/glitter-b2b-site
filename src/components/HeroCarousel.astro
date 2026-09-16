@@ -17,40 +17,40 @@ interface Slide {
 const slides: Slide[] = [
   {
     image: "/images/home/slide1.webp",
-    title: "Specialty Fabrics for Stage & Performance Costumes",
+    title: "Specialist Foil Fabrics for Performance & Party Wear Manufacturers",
     description:
-      "Hot-stamping foil, iridescent and stretch fabrics for stage costumes, dancewear and performance outfits.",
+      "15+ years specializing in foil fabrics, with ready stock and custom development based on customer samples.",
     buttons: [
-      { label: "Explore Fabrics", href: "/products/", variant: "primary" },
-      { label: "Request Samples", href: "#rfq-buyer-resource", variant: "outline" },
+      { label: "Request Sample & Quote", href: "#rfq-buyer-resource", variant: "primary" },
+      { label: "Explore Foil Fabrics", href: "/products/", variant: "outline" },
     ],
   },
   {
-    image: "/images/home/slide2_v2.png",
-    title: "Stretch Fabrics for Dancewear & Performance",
-    description: "4-way stretch fabrics with hot-stamping foil and iridescent finishes.",
+    image: "/images/home/slide2_v2.webp",
+    title: "Foil Fabrics for Stage Costumes & Dancewear",
+    description: "Reflective foil surfaces and flexible bases for fitted costumes, dancewear and performance garments.",
     buttons: [
-      { label: "Explore Fabrics", href: "/products/", variant: "primary" },
-      { label: "Send Your Design", href: "/contact/", variant: "outline" },
+      { label: "Explore Foil Fabrics", href: "/products/", variant: "primary" },
+      { label: "Send Your Reference", href: "/contact/", variant: "outline" },
     ],
   },
   {
     image: "/images/home/slide4.webp",
-    title: "Made for the Spotlight",
+    title: "Built for Strong Visual Impact",
     description:
-      "Holographic stretch fabrics for dancewear, stage costumes and performance outfits — bright under the lights, comfortable on the body.",
+      "Foil fabrics designed for costumes and garments that need shine, movement and a distinctive visual effect.",
     buttons: [
-      { label: "Explore Fabrics", href: "/products/", variant: "primary" },
+      { label: "View Foil Fabrics", href: "/products/", variant: "primary" },
     ],
   },
   {
     image: "/images/home/slide5.webp",
-    title: "In-House Production, Batch-by-Batch QC",
+    title: "Custom Development From Your Sample",
     description:
-      "Every roll is finished and inspected in our own facility. SGS, REACH and buyer-specific testing can be arranged by project.",
+      "Send a fabric sample, photo or design reference. We help match the foil effect, base fabric and finish for production.",
     buttons: [
-      { label: "Tour Our Factory", href: "/factory/", variant: "primary" },
-      { label: "Get Custom Quotation", href: "/contact/", variant: "outline" },
+      { label: "Explore Our Production", href: "/factory/", variant: "primary" },
+      { label: "Request a Quote", href: "/contact/", variant: "outline" },
     ],
   },
 ];
@@ -128,13 +128,13 @@ const PLACEHOLDER_IMAGE =
               src={idx === 0 ? slide.image : PLACEHOLDER_IMAGE}
               data-src={idx === 0 ? undefined : slide.image}
               alt={idx === 0
-                ? "Model wearing an iridescent holographic dress made with Nixia foil fabric"
+                ? "Model wearing an iridescent foil fabric dress for performance and party wear"
                 : idx === 1
                 ? "Runway model in an iridescent gown with a close-up of the laser foil fabric"
                 : idx === 2
-                ? "Holographic stage costume fabric with rolls of iridescent stretch material"
+                ? "Stage costume fabric with rolls of iridescent foil stretch material"
                 : idx === 3
-                ? "Party outfits in lime holographic fabric with a close-up of the material"
+                ? "Party outfits in bright foil fabric with a close-up of the material"
                 : "Nixia Fabric in-house production line finishing rolls of foil fabric"}
               class="hero-carousel__image"
               width="1920"
@@ -158,7 +158,7 @@ const PLACEHOLDER_IMAGE =
                 {slide.buttons.map((btn) => (
                   <a
                     href={btn.href}
-                    data-rfq-open={btn.label === "Request Samples" || btn.label === "Send Your Design" || btn.label === "Get a Quote" || btn.label === "Get Custom Quotation" ? true : undefined}
+                    data-rfq-open={btn.label === "Request Sample & Quote" || btn.label === "Send Your Reference" || btn.label === "Request a Quote" ? true : undefined}
                     class:list={[
                       "hero-carousel__btn",
                       `hero-carousel__btn--${btn.variant}`,

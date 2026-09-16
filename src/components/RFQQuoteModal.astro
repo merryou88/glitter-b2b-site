@@ -382,7 +382,7 @@ const productLookup = performanceProducts.map((p) => ({
   );
   closers.forEach((button) => button.addEventListener("click", closeModal));
 
-  // Auto-open the modal on pages that carry a [data-rfq-autoopen] marker (e.g. /contact)
+  // Auto-open the modal on pages that intentionally carry a [data-rfq-autoopen] marker.
   if (document.querySelector("[data-rfq-autoopen]")) {
     window.addEventListener("load", openModal);
   }

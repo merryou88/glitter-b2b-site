@@ -8,19 +8,19 @@ import { performanceProducts } from "@data/allProducts";
 
 const applicationPages = [
   {
-    slug: "holographic-fabric-for-stage-costumes",
+    slug: "foil-fabric-for-stage-costumes",
     title: "Foil Fabric for Stage & Dancewear",
-    metaTitle: "Holographic Fabric for Stage Costumes | Wholesale Supplier",
+    metaTitle: "Foil Fabric for Stage Costumes | Nixia Fabric",
     description:
-      "Wholesale hot-stamping foil, holographic and iridescent stretch fabrics for stage costumes, dancewear and performance outfits. Factory-direct supply with sample approval support.",
+      "Hot-stamping foil and iridescent stretch fabrics for stage costumes and dancewear, with sample approval support.",
     intro:
       "Stage and performance buyers need a strong metallic or color-shifting effect that reads under changing light while remaining practical to cut and sew. Compare foil and stretch options by costume application.",
-    image: "/shots/application-costume-foil.jpg",
-    imageAlt: "Holographic fabric for stage costumes and performance outfits",
+    image: "/shots/application-costume-foil.webp",
+    imageAlt: "Foil fabric for stage costumes and performance outfits",
     tags: ["stage-costume"],
     applications: ["Stage costumes", "Dancewear", "Performance costumes"],
     benefits: [
-      "Holographic and iridescent finishes for stage lighting",
+      "Foil and iridescent finishes for stage lighting",
       "Stretch options for fitted costumes and dancewear",
       "Gradient color-flow and metallic surface choices",
       "Physical sample approval before a production run",
@@ -39,21 +39,21 @@ const applicationPages = [
     ],
   },
   {
-    slug: "custom-performance-fabric",
-    title: "Custom Performance Fabric Development",
-    metaTitle: "Custom Performance Foil Fabric Manufacturer | OEM Supplier",
+    slug: "custom-foil-fabric-development",
+    title: "Custom Foil Fabric Development",
+    metaTitle: "Custom Foil Fabric Development | Nixia Fabric",
     description:
-      "Develop custom foil, iridescent and stretch fabrics for stage costumes, dancewear and performance outfits with a factory supplier.",
+      "Develop custom foil, iridescent and stretch fabrics for stage costumes, dancewear, performance wear and party apparel.",
     intro:
-      "When a stock color or standard finish is not enough, our factory team can review your target appearance and end product before confirming a production route. Custom scope, sample timing and quotation are based on the actual requirement.",
-    image: "/images/process/hot_stamping_foil_transfer.jpg",
+      "When a stock color or standard finish is not enough, we can review your target appearance and end product before confirming a development route. Custom scope, sample timing and quotation are based on the actual requirement.",
+    image: "/images/process/hot_stamping_foil_transfer.webp",
     imageAlt: "Hot-stamping foil fabric production and custom finishing",
     tags: [],
     applications: [],
     benefits: [
       "Custom color, pattern and gradient discussions",
-      "Backing, width and thickness options",
-      "OEM/ODM sample and approval workflow",
+      "Base fabric, width and thickness discussions",
+      "Sample and approval workflow",
       "Testing support arranged according to buyer requirements",
     ],
     faqs: [
@@ -73,8 +73,8 @@ const applicationPages = [
 
 export function getStaticPaths() {
   return [
-    "holographic-fabric-for-stage-costumes",
-    "custom-performance-fabric",
+    "foil-fabric-for-stage-costumes",
+    "custom-foil-fabric-development",
   ].map((slug) => ({ params: { slug } }));
 }
 
@@ -83,6 +83,12 @@ if (!page) throw new Error(`Unknown application page: ${Astro.params.slug}`);
 const relatedProducts = page.tags.length === 0
   ? performanceProducts
   : performanceProducts.filter((product) => page.tags.some((tag) => product.tags.includes(tag)));
+const findRowValue = (rows, labels) =>
+  rows?.find((row) => labels.includes(row.label))?.value;
+const productMoq = (product) =>
+  findRowValue(product.specTable, ["MOQ"]) ||
+  findRowValue(product.b2bTable, ["MOQ"]) ||
+  product.specs.moq;
 
 const breadcrumbData = {
   "@context": "https://schema.org",
@@ -100,7 +106,7 @@ const pageSchema = {
   name: page.title,
   description: page.description,
   url: `https://nixiafabric.com/applications/${page.slug}/`,
-  about: page.applications.length > 0 ? page.applications : ["Custom fabric manufacturing"],
+  about: page.applications.length > 0 ? page.applications : ["Custom foil fabric development"],
 };
 
 const faqSchema = {
@@ -120,6 +126,7 @@ const faqSchema = {
   canonical={`https://nixiafabric.com/applications/${page.slug}/`}
   image={page.image}
   structuredData={[breadcrumbData, pageSchema, faqSchema]}
+  footerFocus="foil"
 >
   <section class="application-hero">
     <div class="container application-hero__grid">
@@ -190,7 +197,7 @@ const faqSchema = {
               <h3><a href={`/products/${product.slug}/`}>{product.title}</a></h3>
               <p>{product.shortIntro}</p>
               <div class="application-product__meta">
-                <span>MOQ {product.specs.moq}m</span>
+                <span>MOQ {productMoq(product)}</span>
                 <span>{product.specs.width}</span>
                 <span>{product.stockStatus}</span>
               </div>

@@ -3,24 +3,24 @@ module: product-catalog
 status: current
 ---
 
-### REQ-PRODUCT-001：产品列表页仅展示表演服装相关产品
+### REQ-PRODUCT-001：产品列表页仅展示当前定位相关产品
 - 状态：active
-- 当前规则：`/products/` 只展示 `performanceProducts` 中适用于舞台服装、舞蹈服、表演服、Performance & Party Wear、舞台道具、背景布和活动装饰的产品；其他历史产品不得出现在产品卡片、推荐排序、产品总数、场景入口、筛选结果或询盘选择中。产品列表页不再展示应用场景入口，场景导航由独立应用页面承担。
-- 验收条件：当前目录页展示 6 个公开产品；筛选、排序和总数均基于这 6 个产品；页面不出现鞋材、手袋、工艺或玩具等退出行业产品入口。
+- 当前规则：`/products/` 只展示 `performanceProducts` 中适用于 foil、holographic、iridescent、stretch、舞台服装、舞蹈服、表演服、Performance & Party Wear、舞台道具、背景布、活动装饰、泳装、cosplay 和 Halloween costumes 的产品；glitter leather、PU accessory、鞋材、手袋、工艺、玩具等退出定位产品不得出现在产品卡片、推荐排序、产品总数、场景入口、筛选结果或询盘选择中。产品列表页不再展示应用场景入口，场景导航由独立应用页面承担。
+- 验收条件：当前目录页展示 8 个公开产品；筛选、排序和总数均基于这 8 个产品；页面不出现鞋材、手袋、工艺或玩具等退出行业产品入口。
 - 影响模块：`product-catalog`
-- 代码路径：`src/pages/products.astro`
+- 代码路径：`src/data/allProducts.js`、`src/pages/products.astro`
 - 测试路径：`npm run build`，手动检查 `/products/`
-- 最后变更编号：CHG-20260915-007-h2013060106-availability-update
+- 最后变更编号：CHG-20260916-005-h2013090104-product-detail
 - 待确认事项：无
 
 ### REQ-PRODUCT-002：每个公开产品生成独立静态详情页
 - 状态：active
-- 当前规则：`/products/[slug]` 通过 `getStaticPaths()` 为 `performanceProducts` 中每个公开产品生成静态页，并渲染不含虚构价格的 Product schema、FAQ schema 和面包屑 schema。产品没有公开固定售价时，不输出不完整的 `offers`。
+- 当前规则：`/products/[slug]` 通过 `getStaticPaths()` 为 `performanceProducts` 中每个公开产品生成静态页，并渲染 WebPage、Product、FAQ 和面包屑结构化数据。产品没有公开固定售价时，不输出不完整的 `offers`、虚构价格或评分。
 - 验收条件：每个公开产品 slug 都能打开对应详情页；退出行业产品不生成新页面并通过 `_redirects` 迁移；元数据与产品事实一致。
 - 影响模块：`product-catalog`
 - 代码路径：`src/pages/products/[slug].astro`、`src/components/ProductSchema.astro`、`src/components/ProductDetail.astro`
 - 测试路径：`npm run build`
-- 最后变更编号：CHG-20260915-006-remove-empty-product-offers
+- 最后变更编号：CHG-20260916-002-seo-page-optimization
 - 待确认事项：无
 
 ### REQ-PRODUCT-003：询盘入口必须带着产品上下文
@@ -142,6 +142,36 @@ status: current
 - 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/non-shedding-glitter-suede-look-laser-foil-fabric/`
 - 最后变更编号：CHG-20260915-008-h2013060106-description-update
 - 待确认事项：自定义项目的具体生产交期需按项目询价确认
+
+### REQ-PRODUCT-019：H2013120102 公开产品页聚焦蓝紫渐变镭射弹力面料
+- 状态：active
+- 当前规则：`blue-purple-gradient-laser-foil-spandex-fabric` 是 H2013120102 的公开详情页，H1 使用 `Blue-Purple Gradient Laser Foil 4-Way Stretch Fabric`，SEO 标题、Meta Description、标题下方描述、应用和规格均以 `面料独立站产品数据.xlsx` 中 H2013120102 为准。详情页不展示独立 `Product Description` 模块。产品规格只能使用已确认数据：150cm、180g、MOQ 100m、1 standard color、4-way stretch、110T、120D*120D、Hot-stamping foil 和 98% Polyester 2% Spandex；库存状态、批量交期和测试合规未在来源数据确认时保持 to be confirmed。
+- 验收条件：详情页可生成并显示 Key Features、Recommended Applications、Why Choose、Ready Stock & Custom Development、Sample CTA 和 FAQ；详情图按内容顺序连续编号为 `x1`–`x9`；Application 拼图独立位于 `application/1`；PNG/JPG 原图保持无水印，主图首张 WebP 与 Application WebP 不加水印，其余主图和详情图 WebP 每张使用 3 个低透明度、逆时针 45 度倾斜域名水印；`Specifications Table for B2B Buyers` 前不出现 `Product Description` 模块。
+- 影响模块：`product-catalog`、`content-data`、`inquiry-forms`
+- 代码路径：`src/data/allProducts.js`、`src/components/ProductDetail.astro`、`public/images/products/H2013120102/`
+- 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/blue-purple-gradient-laser-foil-spandex-fabric/`
+- 最后变更编号：CHG-20260916-003-h2013120102-product-detail
+- 待确认事项：库存状态、批量交期和测试合规需按项目确认
+
+### REQ-PRODUCT-020：新增公开产品必须自带美国买家 SEO 与采购参数
+- 状态：active
+- 当前规则：新增公开产品写入 `src/data/allProducts.js` 时必须同时完成产品定位、SEO 标题、详情页 H1、Meta Description、采购参数和 FAQ 的优化，不允许先新增再二次补 SEO。产品必须符合当前 performance fabric 定位；不符合定位的 glitter leather、PU accessory、鞋材、手袋、工艺、玩具等产品不得加入当前主产品数据。新增产品的 `metaTitle` 应使用美国采购商搜索习惯，优先表达 `holographic`、`iridescent`、`foil`、`stretch`、`spandex`、`knit`、`fabric`、应用场景和 `Wholesale Supplier`；`title`/H1 以买家识别的材质、效果、弹性和用途开头，不以内部工艺词或 slug 开头。`hot-stamping` 可作为工艺说明或规格项出现，但不作为主要搜索词。`metaDesc` 必须包含应用场景、wholesale/supplier 采购意图、样品/定制/库存/MOQ 等已确认事实。规格和 FAQ 中的宽度、MOQ 等采购参数必须同时给出公制和美国买家易读单位，例如 `150 cm / 59 in`、`100 m / 109 yd`；未知字段必须写 `To be confirmed` 或省略，不能编造。
+- 验收条件：新增产品在第一次提交时已经具备美国买家搜索习惯的 `metaTitle`、`metaDesc`、H1、采购型 FAQ、样品/定制/MOQ/库存信息和中美单位表达；`npm run validate:products` 与 `npm run build` 通过；公开目录和 sitemap 只包含当前定位产品。
+- 影响模块：`product-catalog`、`content-data`
+- 代码路径：`src/data/allProducts.js`、`src/pages/products/[slug].astro`、`src/components/ProductDetail.astro`
+- 测试路径：`npm run validate:products`、`npm run build`
+- 最后变更编号：CHG-20260916-004-product-seo-add-rules
+- 待确认事项：真实库存、MOQ、颜色数、测试合规和交期需以产品来源资料或业务确认信息为准
+
+### REQ-PRODUCT-021：H2013090104 公开产品页聚焦彩虹圆点镭射针织面料
+- 状态：active
+- 当前规则：`rainbow-dot-laser-foil-knit-fabric` 是 H2013090104 的公开详情页，H1 使用 `Rainbow Dot Laser Foil Knit Fabric for Stage Costumes`，SEO 标题按美国采购商搜索习惯补充 `Wholesale Supplier`，标题下方描述、应用和规格以 `面料独立站产品数据.xlsx` 中 H2013090104 及业务确认信息为准。详情页不展示独立 `Product Description` 模块。产品规格只能使用已确认数据：150 cm / 59 in、90 GSM、MOQ 200 m / 219 yd、28 colors、bulk lead time 5-7 days、slight stretch、90S、hot-stamping foil、knit fabric 和 100% Polyester；测试合规未在来源数据确认时保持 to be confirmed。
+- 验收条件：详情页可生成并显示 Key Features、Recommended Applications、Why Choose、Ready Stock & Custom Development、Sample CTA 和 FAQ；详情图按内容顺序连续编号为 `x1`–`x23`；PNG/JPG 原图保持无水印，主图首张 WebP 不加水印，其余主图和详情图 WebP 每张使用 3 个低透明度、逆时针 45 度倾斜域名水印；`Specifications Table for B2B Buyers` 前不出现 `Product Description` 模块。
+- 影响模块：`product-catalog`、`content-data`、`inquiry-forms`
+- 代码路径：`src/data/allProducts.js`、`src/components/ProductDetail.astro`、`public/images/products/H2013090104/`
+- 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/rainbow-dot-laser-foil-knit-fabric/`
+- 最后变更编号：CHG-20260916-006-h2013090104-color-leadtime
+- 待确认事项：测试合规需按项目确认
 
 ### REQ-PRODUCT-005：重点产品轮播角标需匹配品牌深蓝白字风格
 - 状态：active

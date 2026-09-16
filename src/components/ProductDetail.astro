@@ -77,6 +77,8 @@ const hideProductDescription = [
   "shiny-foil-4-way-stretch-knit-fabric",
   "iridescent-laser-hot-stamping-stretch-ice-silk",
   "non-shedding-glitter-suede-look-laser-foil-fabric",
+  "blue-purple-gradient-laser-foil-spandex-fabric",
+  "rainbow-dot-laser-foil-knit-fabric",
 ].includes(product.slug);
 const quoteButtonLabel = isInquiryFocusedProduct ? "Get a Quote" : "Add to Quotation List";
 const inquiryButtonLabel = isInquiryFocusedProduct ? "Send an Inquiry" : "WhatsApp";
@@ -232,6 +234,11 @@ const productSpecRows = [
 ].filter((row) => row.value);
 
 const b2bValue = (labels: string[]) => findRowValue(product.b2bTable, labels);
+const productWidth = findRowValue(product.specTable, ["Width"]) || product.specs.width;
+const productWeight = findRowValue(product.specTable, ["Weight"]) || product.specs.weight;
+const productMoq = findRowValue(product.specTable, ["MOQ"]) || b2bValue(["MOQ"]) || product.specs.moq;
+const relatedMoq = (rel: (typeof performanceProducts)[number]) =>
+  findRowValue(rel.specTable, ["MOQ"]) || findRowValue(rel.b2bTable, ["MOQ"]) || rel.specs.moq;
 
 // B2B Specifications follows the buyer's quote, approval and shipment order.
 const b2bRows = [
@@ -244,7 +251,7 @@ const b2bRows = [
     : []),
   {
     label: "MOQ",
-    value: `Standard products: 100 meters minimum. Custom projects: ${product.customProjectMoq ?? "MOQ to be confirmed based on customization requirements."}`,
+    value: `Standard products: ${productMoq} minimum. Custom projects: ${product.customProjectMoq ?? "MOQ to be confirmed based on customization requirements."}`,
   },
   { label: "Supply Type", value: b2bValue(["Supply type", "Supply Type"]) },
   {
@@ -435,8 +442,8 @@ const heroVideo = product.video
         <div class="detail-offer-grid">
           <div class="detail-offer-card detail-offer-card--moq">
             <span class="detail-offer-card__label">MOQ</span>
-            <strong class="detail-offer-card__value">{product.specs.moq}</strong>
-            <span class="detail-offer-card__unit">Meters</span>
+            <strong class="detail-offer-card__value">{productMoq}</strong>
+            <span class="detail-offer-card__unit">Minimum</span>
           </div>
           <div class="detail-offer-card detail-offer-card--lead">
             <span class="detail-offer-card__label">STOCK DISPATCH</span>
@@ -806,7 +813,7 @@ const heroVideo = product.video
                 </span>
                 <h3>Key Specs</h3>
               </div>
-              <p>150 cm width, 180 GSM weight and 0.35-0.40 mm thickness.</p>
+              <p>{productWidth} width, {productWeight} weight{product.specs.thickness ? ` and ${product.specs.thickness} thickness` : ""}.</p>
             </div>
             <div class="buyer-confirm-card">
               <div class="buyer-confirm-card__head">
@@ -832,7 +839,7 @@ const heroVideo = product.video
                 </span>
                 <h3>Order Planning</h3>
               </div>
-              <p>MOQ starts from 100 meters with stock dispatch timing shown above.</p>
+              <p>MOQ starts from {productMoq} with stock dispatch timing shown above.</p>
             </div>
           </div>
         </div>
@@ -1051,7 +1058,7 @@ const heroVideo = product.video
           </span>
           <span>You May Also Like</span>
         </h2>
-        <p>Other stretch and holographic fabrics frequently ordered together with this item.</p>
+        <p>Other foil and stretch fabrics frequently ordered together with this item.</p>
       </div>
       <div class="related-grid">
         {relatedProducts.map((rel) => (
@@ -1064,7 +1071,7 @@ const heroVideo = product.video
             </div>
             <div class="related-card__body">
               <h3>{/^[a-z0-9-]+$/.test(rel.title) ? rel.metaTitle.replace(/ \| .+$/, "") : rel.title}</h3>
-              <span class="related-card__meta">MOQ {rel.specs.moq}m</span>
+              <span class="related-card__meta">MOQ {relatedMoq(rel)}</span>
               <span class="related-card__link">View Details ›</span>
             </div>
           </a>

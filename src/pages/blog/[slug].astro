@@ -24,6 +24,12 @@ const { article } = Astro.props;
 const relatedProducts = article.focusProducts
   .map((slug) => performanceProducts.find((product) => product.slug === slug))
   .filter(Boolean);
+const findRowValue = (rows, labels) =>
+  rows?.find((row) => labels.includes(row.label))?.value;
+const productMoq = (product) =>
+  findRowValue(product.specTable, ["MOQ"]) ||
+  findRowValue(product.b2bTable, ["MOQ"]) ||
+  product.specs.moq;
 const articleUrl = `https://nixiafabric.com/blog/${article.slug}/`;
 const contactHref = `/contact/?subject=${encodeURIComponent(`Question about ${article.title}`)}`;
 const toParagraphs = (body: string | string[]) =>
@@ -222,7 +228,7 @@ const faqSchema = {
                 </picture>
                 <span class="related-product__body">
                   <strong>{product.title}</strong>
-                  <small>{product.specs.width} · MOQ {product.specs.moq}m · {product.stockStatus}</small>
+                  <small>{product.specs.width} · MOQ {productMoq(product)} · {product.stockStatus}</small>
                 </span>
               </a>
             ))}

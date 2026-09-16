@@ -1,5 +1,5 @@
 ---
-const { productName, productImageUrl, productDescription } = Astro.props;
+const { productName, productImageUrl, productDescription, pageUrl } = Astro.props;
 
 const hasProductImage =
   typeof productImageUrl === "string" && productImageUrl.trim().length > 0;
@@ -7,19 +7,15 @@ const hasProductImage =
 const productSchema = hasProductImage
   ? {
       "@context": "https://schema.org",
-      "@type": "Article",
-      name: productName,
-      image: productImageUrl,
-      description: productDescription,
-      publisher: {
-        "@type": "Organization",
-        name: "Nixia Fabric",
-      },
-      about: {
+      "@type": "WebPage",
+      url: pageUrl,
+      mainEntity: {
         "@type": "Product",
+        "@id": `${pageUrl}#product`,
         name: productName,
         image: productImageUrl,
         description: productDescription,
+        url: pageUrl,
       },
     }
   : null;

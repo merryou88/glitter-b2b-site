@@ -52,3 +52,13 @@ status: current
 - 测试路径：`npm run build`
 - 最后变更编号：CHG-20260913-002-hot-stamping-spandex-blog-guide
 - 待确认事项：无
+
+### REQ-BLOG-006：博客首页使用采购资料库布局
+- 状态：active
+- 当前规则：`/blog/` 需要以 B2B 采购资料库方式呈现：紧凑标题区、一个 Featured Buying Guide、其余文章为横向 Buyer Guide 列表、按采购问题浏览的辅助区，以及单一工厂询盘 CTA。文章数量较少时不得使用生硬的等宽两列卡片网格或空泛分类筛选。
+- 验收条件：博客首页突出一篇主推指南；其余文章按列表展示；页面只保留一个主要询盘 CTA 区；移动端内容自然单列展示。
+- 影响模块：`blog-knowledge`、`site-shell`
+- 代码路径：`src/pages/blog/index.astro`
+- 测试路径：`npm run build`
+- 最后变更编号：CHG-20260916-009-blog-resource-center-layout
+- 待确认事项：无

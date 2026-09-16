@@ -32,3 +32,13 @@ status: current
 - 测试路径：`npm run build`，再配合 Worker 联调
 - 最后变更编号：待确认
 - 待确认事项：无
+
+### REQ-FORM-004：联系页不自动打开 RFQ 弹窗
+- 状态：active
+- 当前规则：访问 `/contact/` 时应直接显示页面内联系表单，不自动打开全站 RFQ 弹窗。
+- 验收条件：从导航菜单或直接访问 `/contact/` 后，页面可见联系表单且无自动弹窗遮挡。
+- 影响模块：`inquiry-forms`
+- 代码路径：`src/pages/contact.astro`、`src/components/RFQQuoteModal.astro`
+- 测试路径：`npm run build`，手动访问 `/contact/`
+- 最后变更编号：CHG-20260916-008-contact-page-no-rfq-autoopen
+- 待确认事项：无

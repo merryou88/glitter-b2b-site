@@ -31,7 +31,7 @@ const aboutPageData = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
   name: "About Nixia Fabric",
-  description: "Learn about Nixia Fabric, a Guangzhou manufacturer of hot-stamping foil, iridescent and stretch fabrics for stage costumes, dancewear and performance outfits.",
+  description: "Learn about Nixia Fabric, a specialist foil fabric supplier for stage costumes, performance wear, dancewear and party apparel.",
   url: "https://nixiafabric.com/about/",
   mainEntity: {
     "@type": "Organization",
@@ -41,14 +41,14 @@ const aboutPageData = {
       addressCountry: "CN",
     },
     knowsAbout: [
-      "Hot-Stamping Foil Fabric Manufacturing",
-      "Laser Iridescent Fabric Manufacturing",
-      "Stretch Fabric Manufacturing",
+      "Hot-Stamping Foil Fabric Supply",
+      "Laser Iridescent Foil Fabric",
+      "Foil Stretch Fabric",
       "Custom Color Matching",
-      "Factory Direct Supply",
-      "Stage Costume Fabric Manufacturing",
-      "Dancewear Fabric Manufacturing",
-      "Performance Costume Fabric Manufacturing",
+      "Custom Development",
+      "Stage Costume Fabric Supply",
+      "Dancewear Fabric Supply",
+      "Performance Wear Fabric Supply",
     ],
   },
 };
@@ -62,17 +62,17 @@ const milestones = [
   {
     year: "Growth",
     title: "Product Line Expansion",
-    desc: "Expanded with multiple backing options and custom color matching for foil-printed PU materials.",
+    desc: "Expanded with multiple base fabric options and custom color matching for foil fabric projects.",
   },
   {
     year: "Today",
-    title: "Global B2B Manufacturing",
-    desc: "Serve stage costume, dancewear and performance outfit buyers worldwide with our own factory and stable material partners.",
+    title: "Focused B2B Supply",
+    desc: "Serve stage costume, dancewear, performance wear and party apparel buyers with ready-stock styles and custom development support.",
   },
   {
     year: "Future",
     title: "Custom Color Matching Focus",
-    desc: "Continuing to invest in custom color development and factory direct supply flexibility to serve clients who need specific fabric solutions.",
+    desc: "Continuing to invest in color, foil effect and base fabric development for buyers who need specific fabric solutions.",
   },
 ];
 
@@ -91,19 +91,19 @@ const globalMarkets = [
   },
   {
     region: "Middle East & Africa",
-    desc: "Stagewear, dancewear and cosplay costume producers.",
+    desc: "Stagewear, dancewear, performance wear and event costume producers.",
   },
 ];
 
 const brandValues = [
   {
-    title: "Manufacturer First",
-    desc: "We are a manufacturer — not a trading company. You deal directly with the people who make your fabric.",
+    title: "Foil Fabric Focus",
+    desc: "We focus on foil fabric sourcing and development instead of positioning ourselves as a general decorative fabric supplier.",
     icon: "factory",
   },
   {
     title: "Custom Color Matching",
-    desc: "We invest in color development and factory direct supply capability. If you need a specific fabric, we can develop it.",
+    desc: "We invest in color and foil effect development. If you need a specific surface effect, we can help evaluate and develop it.",
     icon: "palette",
   },
   {
@@ -113,7 +113,7 @@ const brandValues = [
   },
   {
     title: "Direct Communication",
-    desc: "No middleman, no layers. You talk to our production team directly about your specifications.",
+    desc: "Clear communication around samples, specifications, quantity and production requirements.",
     icon: "chat",
   },
 ];
@@ -139,26 +139,25 @@ const buyerSteps = [
 ---
 
 <Layout
-  title="About Nixia Fabric | Foil Fabric Manufacturer"
-  description="Learn about Nixia Fabric, a Guangzhou manufacturer of hot-stamping foil, iridescent and stretch fabrics for stage costumes, dancewear and performance outfits."
-  keywords="nixia fabric, stage costume fabric manufacturer, dancewear fabric supplier, performance costume fabric, foil fabric manufacturer, Factory Direct Supply"
+  title="About Nixia Fabric | Specialist Foil Fabric Supplier"
+  description="Learn about Nixia Fabric, a specialist foil fabric supplier for stage costumes, performance wear, dancewear and party apparel."
+  keywords="nixia fabric, foil fabric supplier, stage costume fabric supplier, dancewear fabric supplier, performance wear fabric, iridescent foil fabric"
   structuredData={[breadcrumbData, aboutPageData]}
+  footerFocus="foil"
 >
   <!-- About Hero -->
   <section class="about-hero">
     <picture class="about-hero__media" aria-hidden="true">
-      <source srcset="/images/process/raw_material_preparation.webp" type="image/webp" />
-      <img src="/images/process/raw_material_preparation.jpg" alt="" width="1200" height="675" fetchpriority="high" />
+      <img src="/images/process/raw_material_preparation.webp" alt="" width="1200" height="675" fetchpriority="high" />
     </picture>
     <div class="about-hero__overlay" aria-hidden="true"></div>
     <div class="container about-hero__content">
       <span class="eyebrow">About Nixia Fabric</span>
-      <h1>Built for buyers who need decorative fabric to perform</h1>
+      <h1>Built for Buyers Who Need Foil Fabrics to Perform</h1>
       <p class="about-hero__desc">
-        Since 2013, we have supplied foil, iridescent and stretch materials for
-        stage costumes, dancewear and performance outfits. Our own production capability
-        and qualified material partners help buyers move from material selection to approved sample
-        with less uncertainty.
+        Since 2013, we have supplied foil fabrics for stage costumes, performance wear,
+        dancewear and party apparel. Ready-stock styles and custom development support
+        help buyers move from material selection to approved sample with less uncertainty.
       </p>
       <div class="about-hero__actions">
         <CTAButton href="/contact/" variant="primary" size="lg" rfq>Discuss Your Material</CTAButton>
@@ -167,7 +166,7 @@ const buyerSteps = [
       <div class="about-hero__proof">
         <span>Since 2013</span>
         <span>Guangzhou, China</span>
-        <span>Factory-direct support</span>
+        <span>Custom development support</span>
       </div>
     </div>
   </section>
@@ -180,22 +179,20 @@ const buyerSteps = [
           <span class="eyebrow">Brand Story</span>
           <h2>From a material brief to a production-ready solution</h2>
           <p>
-            Nixia Fabric was built around a practical sourcing problem: buyers need specialty
-            materials that look right in a photo and still work in cutting, sewing, bonding and
-            shipment.
+            Nixia Fabric was built around a practical sourcing problem: buyers need foil fabrics
+            that look right in a photo and still work in cutting, sewing, movement and shipment.
           </p>
           <p>
-            We own our in-house factory for foil-printed PU materials.
-            Meanwhile, we keep stable partnerships with other qualified material manufacturers.
+            We work with foil application processes and qualified material partners so buyers can
+            evaluate base fabric, surface effect and production fit before placing bulk orders.
           </p>
           <p>
-            We are dedicated to supplying reliable specialty fabrics for stage costume,
-            dancewear and performance outfit manufacturers worldwide.
+            We are dedicated to supplying foil fabrics for stage costume, dancewear, performance
+            wear and party apparel manufacturers.
           </p>
           <p>
-            We support custom colors, different backing options and can arrange SGS / REACH
-            testing according to buyer requirements. We offer free material samples — customers only
-            cover international shipping cost, and sample freight can be deducted from bulk orders.
+            We support custom colors, base fabric discussions and sample review before bulk
+            production. Buyers can send a physical sample, photo or design reference for matching.
           </p>
         </div>
         <div class="brand-story__right">
@@ -213,8 +210,8 @@ const buyerSteps = [
               <span class="brand-story__card-label">Current Product SKUs</span>
             </div>
             <div class="brand-story__card-item">
-              <span class="brand-story__card-num">Factory</span>
-              <span class="brand-story__card-label">Direct Supply</span>
+              <span class="brand-story__card-num">Custom</span>
+              <span class="brand-story__card-label">Development</span>
             </div>
           </div>
         </div>
@@ -227,10 +224,10 @@ const buyerSteps = [
     <div class="container">
       <div class="section-header">
         <span class="eyebrow">Industry Experience</span>
-      <h2>Our Journey in Performance Fabric</h2>
+      <h2>Our Journey in Foil Fabric Supply</h2>
         <p>
-          From our start in 2013 to today, our work has stayed focused on decorative materials
-          that help stage costume, dancewear and performance-product buyers make confident
+          From our start in 2013 to today, our work has stayed focused on foil fabrics
+          that help stage costume, dancewear and performance wear buyers make confident
           production decisions.
         </p>
       </div>
@@ -256,9 +253,9 @@ const buyerSteps = [
       <div class="focus-section">
         <div class="focus-section__left">
           <span class="eyebrow">Our Focus</span>
-          <h2>Specialized in foil and iridescent materials</h2>
+          <h2>Specialized in foil and iridescent fabrics</h2>
           <p>
-            Our current range covers hot-stamping foil, laser-iridescent and stretch materials —
+            Our current range covers hot-stamping foil, laser-iridescent and stretch foil fabrics —
             each selected for a specific end-use requirement rather than only for surface
             appearance.
           </p>
@@ -269,18 +266,18 @@ const buyerSteps = [
           <ul class="focus-section__list">
             <li>
               <strong>Hot-Stamping &amp; Laser Foil</strong> — Full-print, plain iridescent, gradient
-              and stretch finishes for garments and performance products
+              and stretch finishes for performance garments and party apparel
             </li>
             <li>
-              <strong>Custom Development</strong> — Color, GSM, width, backing, pattern and packaging
-              options tailored to client specifications
+              <strong>Custom Development</strong> — Color, base fabric, foil effect and pattern
+              options developed around buyer references
             </li>
           </ul>
         </div>
         <div class="focus-section__right">
           <div class="focus-section__products">
             <div class="focus-section__product">
-              <span class="focus-section__product-name">Hot-Stamping Performance Fabric</span>
+              <span class="focus-section__product-name">Hot-Stamping Foil Fabric</span>
               <span class="focus-section__product-types">Multiple Variations</span>
             </div>
             <div class="focus-section__product">
@@ -288,8 +285,8 @@ const buyerSteps = [
               <span class="focus-section__product-types">Unlimited Options</span>
             </div>
             <div class="focus-section__product">
-              <span class="focus-section__product-name">Factory Direct Supply</span>
-              <span class="focus-section__product-types">Full Customization</span>
+              <span class="focus-section__product-name">Ready Stock &amp; Development</span>
+              <span class="focus-section__product-types">B2B Support</span>
             </div>
           </div>
         </div>

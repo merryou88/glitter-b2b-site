@@ -43,8 +43,8 @@ export interface Props {
 
 const {
   title,
-  description = "Nixia Fabric is a China manufacturer specializing in hot-stamping foil, iridescent and stretch fabrics for stage costumes, dancewear and performance outfits. Factory Direct Supply and Custom Color Matching.",
-  keywords = "hot-stamping foil fabric, stage costume fabric supplier, dancewear fabric manufacturer, performance costume fabric, iridescent stretch fabric, fabric factory china, Custom Color Matching",
+  description = "Nixia Fabric is a specialist foil fabric supplier for stage costumes, performance wear, dancewear and party apparel, with ready-stock styles and custom development support.",
+  keywords = "foil fabric supplier, foil fabrics, hot-stamping foil fabric, laser foil fabric, iridescent foil fabric, stage costume fabric, dancewear fabric",
   image = "/og-image.jpg",
   canonical,
   ogType = "website",
@@ -61,7 +61,7 @@ const pageTitle = title
   ? title.includes(siteName)
     ? title
     : `${title} | ${siteName}`
-    : `${siteName} — Stage & Performance Fabric Manufacturer`;
+    : `${siteName} — Specialist Foil Fabric Supplier`;
 const withTrailingSlash = (value: string) => {
   const url = new URL(value, siteUrl);
   if (url.pathname !== "/" && !url.pathname.endsWith("/")) {
@@ -84,7 +84,7 @@ const orgStructuredData = {
   "@type": "Organization",
   name: "Nixia Fabric",
   alternateName: "Nixia Fabric Manufacturer",
-  description: "China manufacturer of hot-stamping foil, iridescent and stretch fabrics for stage costumes, dancewear and performance outfits. Factory direct supply, custom color matching and OEM/ODM support.",
+  description: "Specialist foil fabric supplier for stage costumes, performance wear, dancewear and party apparel, with ready-stock styles and custom development support.",
   url: siteUrl,
   logo: `${siteUrl}/logo.png`,
   address: {
@@ -98,12 +98,12 @@ const orgStructuredData = {
   knowsAbout: [
     "Hot-Stamping Performance Fabric",
     "Iridescent Stretch Fabric",
-    "Factory Direct Supply",
+    "Foil Fabric Supplier",
     "Custom Color Matching",
     "Custom Backing Options",
     "Stage Costume Fabric Manufacturing",
     "Dancewear Fabric Manufacturing",
-    "Performance Costume Fabric Manufacturing",
+    "Performance Costume Fabric Supply",
   ],
 };
 
@@ -193,7 +193,7 @@ const allStructuredData = structuredData
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content={ogImageType} />
-    <meta property="og:image:alt" content={`${siteName} — Decorative Fabric Manufacturer`} />
+    <meta property="og:image:alt" content={`${siteName} — Specialist Foil Fabric Supplier`} />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:locale" content="en_US" />
 
@@ -202,7 +202,7 @@ const allStructuredData = structuredData
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
-    <meta name="twitter:image:alt" content={`${siteName} — Decorative Fabric Manufacturer`} />
+    <meta name="twitter:image:alt" content={`${siteName} — Specialist Foil Fabric Supplier`} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

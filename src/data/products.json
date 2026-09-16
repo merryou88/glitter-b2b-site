@@ -1,286 +1,223 @@
 [
   {
-    "id": "full-print-hot-stamping-spandex-milk-silk",
-    "title": "Full-Print Hot-Stamping Spandex Milk-Silk Fabric",
-    "category": "Hot-Stamping Fabric",
-    "shortDesc": "Full-print hot-stamping foil on 4-way stretch milk-silk spandex. Soft hand-feel and elastic recovery for stage costumes, dancewear and performance outfits. MOQ 100m, in-stock available.",
-    "fullDescription": "Nixia Fabric brings you our full-print hot-stamping spandex milk-silk fabric — a stretchy base fabric finished with an all-over hot-stamping foil print. The milk-silk ground gives a soft, smooth hand-feel, while the foil surface delivers a bright metallic shine that holds up through wear.\n\nThe 4-way stretch construction recovers well after stretching, making it a practical choice for fitted dancewear, stage costumes and performance outfits. Manufactured in our own facility since 2013, with SGS and REACH testing support available according to product and buyer requirements, custom color matching and backing options are available for bulk orders.\n\nFree samples available — customer only bears international shipping cost, which will be deducted from your bulk order.",
-    "mainImage": "/images/products/full-print-hot-stamping-spandex-milk-silk/main/主图-1.jpg",
+    "id": "plain-iridescent-laser-spandex-4-way-stretch",
+    "title": "Iridescent Holographic 4-Way Stretch Fabric for Stage & Dancewear",
+    "category": "Holographic Stretch Fabric",
+    "shortDesc": "Iridescent holographic finish on a flexible 4-way stretch base for stage costumes, dancewear, cosplay and fitted performance outfits. MOQ 100 m / 109 yd.",
+    "fullDescription": "Iridescent holographic 4-way stretch fabric for costumes and performance apparel. The stretch base supports fitted garments and movement-based applications, while the reflective surface creates a strong stage effect.",
+    "mainImage": "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.webp",
     "skuImages": [],
-    "detailImages": ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"],
+    "detailImages": ["1.webp", "2.webp", "3.webp", "4.webp"],
     "videoLocal": "",
     "videoYoutubeUrl": "",
-    "tags": ["printed", "hot-stamping", "spandex", "dancewear", "stage-costume", "performance-wear"],
-    "moq": "MOQ 100m",
-    "leadTime": "In-Stock Available",
+    "tags": ["metallic", "hot-stamping", "spandex", "dancewear", "stage-costume", "performance-wear", "cosplay"],
+    "moq": "MOQ 100 m / 109 yd",
+    "leadTime": "In-Stock",
+    "specs": [
+      { "label": "Material", "value": "Spandex / stretch fabric" },
+      { "label": "Surface", "value": "Iridescent laser hot-stamping" },
+      { "label": "Width", "value": "150 cm / 59 in" },
+      { "label": "Weight", "value": "180 GSM" },
+      { "label": "Thickness", "value": "0.35-0.40 mm" },
+      { "label": "Stretch", "value": "4-way stretch" },
+      { "label": "MOQ", "value": "100 m / 109 yd" },
+      { "label": "Sample", "value": "Available" },
+      { "label": "Usage", "value": "Dancewear, stage costumes, performance outfits, cosplay" }
+    ],
+    "faq": [
+      { "q": "What is the MOQ?", "a": "The MOQ is 100 m / 109 yd." },
+      { "q": "Does the fabric have 4-way stretch?", "a": "Yes. The fabric is built on a stretch base with 4-way stretch performance." },
+      { "q": "Can I request a sample before bulk order?", "a": "Yes. Samples are available before bulk order for stretch, color and surface-effect review." }
+    ]
+  },
+  {
+    "id": "full-print-hot-stamping-spandex-milk-silk",
+    "title": "Full-Print Foil Spandex Milk-Silk Fabric",
+    "category": "Foil Spandex Fabric",
+    "shortDesc": "Full-print foil spandex milk-silk fabric with 4-way stretch for stage costumes, dancewear and performance outfits. MOQ 100 m / 109 yd per design.",
+    "fullDescription": "Full-print hot-stamping spandex milk-silk fabric pairs a soft milk-silk ground with an all-over foil print. The 4-way stretch base recovers well and the foil surface delivers a bright metallic shine for stage and performance use.",
+    "mainImage": "/images/products/full-print-hot-stamping-spandex-milk-silk/main/主图-1.webp",
+    "skuImages": [],
+    "detailImages": ["1.webp", "2.webp", "3.webp", "4.webp", "5.webp", "6.jpg"],
+    "videoLocal": "",
+    "videoYoutubeUrl": "",
+    "tags": ["printed", "hot-stamping", "spandex", "dancewear", "stage-costume", "performance-wear", "cosplay"],
+    "moq": "MOQ 100 m / 109 yd per design",
+    "leadTime": "In-Stock",
     "specs": [
       { "label": "Product Type", "value": "Full-print hot-stamping foil fabric" },
       { "label": "Base Fabric", "value": "Milk-silk spandex, 4-way stretch" },
+      { "label": "Width", "value": "150 cm / 59 in" },
+      { "label": "Weight", "value": "160 g/m²" },
       { "label": "Surface Finish", "value": "All-over hot-stamping foil print" },
       { "label": "Hand-feel", "value": "Soft, smooth, elastic recovery" },
-      { "label": "MOQ", "value": "100m per design" },
+      { "label": "MOQ", "value": "100 m / 109 yd per design" },
       { "label": "Stock Status", "value": "In-stock, ready to ship" },
-      { "label": "Sampling", "value": "Free sample, 3–7 working days" },
-      { "label": "Customization", "value": "Custom patterns, colors, width & backing on bulk orders" },
-      { "label": "Compliance", "value": "SGS and REACH testing can be arranged according to product and buyer requirements" },
-      { "label": "Typical Applications", "value": "Stage costumes, dancewear, performance outfits" },
-      { "label": "Trade Terms", "value": "FOB, CIF or buyer-forwarder handover" },
-      { "label": "Supply Type", "value": "Factory-direct, OEM & ODM welcome" }
+      { "label": "Sampling", "value": "Free sample, 3-7 working days" },
+      { "label": "Customization", "value": "Custom patterns, colors, width and backing on bulk orders" }
     ],
     "faq": [
-      {
-        "q": "What is the MOQ for this fabric?",
-        "a": "The MOQ is 100m per design for stock designs. Custom printed patterns start from higher quantities — send us your artwork and we will quote the exact minimum."
-      },
-      {
-        "q": "Can I get a sample before placing a bulk order?",
-        "a": "Yes. Samples are free — you only bear the international shipping cost, which is deducted from your bulk order. Samples are ready within 3–7 working days."
-      },
-      {
-        "q": "Can the print pattern and colors be customized?",
-        "a": "Yes. As a factory with OEM/ODM capability, we develop custom patterns, foil colors and finishes. Send us your design or reference and we will confirm feasibility and pricing."
-      },
-      {
-        "q": "Is the fabric certified for export markets?",
-        "a": "SGS and REACH testing can be arranged according to product and buyer requirements. Buyer-specific reports can be discussed by project."
-      }
+      { "q": "What is the MOQ for this fabric?", "a": "The MOQ is 100 m / 109 yd per design for stock designs." },
+      { "q": "Can the print pattern and colors be customized?", "a": "Yes. Custom patterns, foil colors and finishes can be developed for bulk orders." },
+      { "q": "Can I get a sample before placing a bulk order?", "a": "Yes. Samples are available so buyers can check color, hand feel, stretch and foil surface effect." }
+    ]
+  },
+  {
+    "id": "shiny-foil-4-way-stretch-knit-fabric",
+    "title": "Shiny Foil 4-Way Stretch Knit Fabric for Performance & Party Wear",
+    "category": "Foil Stretch Knit Fabric",
+    "shortDesc": "Shiny foil-finished 4-way stretch knit fabric for performance costumes, dancewear and party apparel. MOQ 100 m / 109 yd.",
+    "fullDescription": "A shiny foil-finished 4-way stretch knit fabric designed for eye-catching performance costumes, dancewear and party apparel. The flexible stretch base provides comfort and movement, while the reflective foil surface creates a strong stage effect.",
+    "mainImage": "/images/products/H2013060105/main/a1.webp",
+    "skuImages": [],
+    "detailImages": ["x2.png", "x3.jpg", "x4.jpg", "x5.jpg", "x6.jpg", "x7.jpg", "x8.jpg", "x9.jpg", "x10.jpg", "x11.jpg", "x12.jpg", "x13.jpg", "x14.jpg", "x15.jpg"],
+    "videoLocal": "",
+    "videoYoutubeUrl": "",
+    "tags": ["foil", "hot-stamping", "polyester", "knit", "stage-costume", "dancewear", "performance-wear", "party-wear"],
+    "moq": "MOQ 100 m / 109 yd",
+    "leadTime": "In-Stock",
+    "specs": [
+      { "label": "Product Type", "value": "Foil Stretch Knit Fabric" },
+      { "label": "Surface Effect", "value": "Shiny Foil Finish" },
+      { "label": "Base Fabric", "value": "100% Polyester" },
+      { "label": "Stretch", "value": "4-Way Stretch" },
+      { "label": "Width", "value": "145 cm / 57 in" },
+      { "label": "Weight", "value": "150 GSM" },
+      { "label": "Color", "value": "30 colors available; custom colors on request" },
+      { "label": "MOQ", "value": "100 m / 109 yd" },
+      { "label": "Typical Applications", "value": "Stage costumes, dancewear, performance wear, party wear and festival costumes" }
+    ],
+    "faq": [
+      { "q": "Is this fabric suitable for stage costumes?", "a": "Yes. The shiny foil surface creates a strong visual effect under stage and event lighting." },
+      { "q": "Does the fabric have 4-way stretch?", "a": "Yes. This fabric has 4-way stretch for flexibility and movement." },
+      { "q": "Can I order a sample before bulk production?", "a": "Yes. Samples are available for stretch, surface-effect and application review." }
+    ]
+  },
+  {
+    "id": "non-shedding-glitter-suede-look-laser-foil-fabric",
+    "title": "Dense Dot Foil Suede-Look Fabric for Stage Props & Backdrops",
+    "category": "Foil Suede-Look Fabric",
+    "shortDesc": "Soft suede-like base with scattered metallic foil sparkle for stage props, backdrops and event decoration. MOQ 100 m / 109 yd.",
+    "fullDescription": "Dense dot foil suede-look fabric combines a soft suede-like base with subtle metallic sparkle. It is positioned for stage props, photo backdrops and event decoration where surface effect and drape are important.",
+    "mainImage": "/images/products/H2013060106/main/a1.webp",
+    "skuImages": [],
+    "detailImages": ["x1.jpg", "x2.png", "x3.jpg", "x4.jpg", "x5.jpg", "x6.jpg", "x7.jpg", "x8.jpg", "x9.jpg", "x10.jpg", "x11.jpg", "x12.jpg"],
+    "videoLocal": "",
+    "videoYoutubeUrl": "",
+    "tags": ["glitter", "foil", "suede-look", "embossed", "stage-costume", "performance-props", "backdrops", "event-decoration"],
+    "moq": "MOQ 100 m / 109 yd",
+    "leadTime": "In-Stock",
+    "specs": [
+      { "label": "Product Type", "value": "Dense Dot Foil Suede-Look Fabric" },
+      { "label": "Base Material", "value": "Suede-look fabric" },
+      { "label": "Width", "value": "150 cm / 59 in" },
+      { "label": "Weight", "value": "130 GSM" },
+      { "label": "Surface Effect", "value": "Dense non-shedding glitter with laser foil effect" },
+      { "label": "Stretch", "value": "Slight stretch" },
+      { "label": "Color", "value": "16 colors available; custom colors on request" },
+      { "label": "MOQ", "value": "100 m / 109 yd" },
+      { "label": "Typical Applications", "value": "Stage costumes, performance props, backdrops, event decoration" }
+    ],
+    "faq": [
+      { "q": "Does the glitter shed from the fabric?", "a": "The product is described as a non-shedding glitter suede-look fabric. Please request a sample for handling review." },
+      { "q": "What is the stretch level?", "a": "The source data describes the fabric as having slight stretch." },
+      { "q": "What applications is this fabric suitable for?", "a": "Recommended applications include stage costumes, performance props, backdrops and event decoration." }
     ]
   },
   {
     "id": "iridescent-laser-hot-stamping-stretch-ice-silk",
-    "title": "Iridescent Laser Hot-Stamping Stretch Ice-Silk Fabric",
-    "category": "Hot-Stamping Fabric",
-    "shortDesc": "Iridescent laser foil on stretch ice-silk base with gradient multi-color finish. Elastic and eye-catching for stage costumes, dancewear and performance outfits. MOQ 100m.",
-    "fullDescription": "Our iridescent laser hot-stamping stretch ice-silk fabric pairs a light, elastic ice-silk ground with a laser foil surface that shifts through multiple colors as light and viewing angle change. The gradient rainbow effect makes it a strong choice for stage costumes, dancewear and performance outfits.\n\nThe stretch base drapes well and recovers after stretching, supporting fitted garments and expressive costume designs. Manufactured in-house since 2013; SGS and REACH testing can be arranged according to product and buyer requirements, with custom color matching available for bulk orders.\n\nFree samples available — customer only bears international shipping cost, which will be deducted from your bulk order.",
-    "mainImage": "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/main/1.jpg",
+    "title": "Iridescent Holographic Stretch Ice-Silk Fabric",
+    "category": "Iridescent Stretch Fabric",
+    "shortDesc": "Iridescent laser foil on stretch ice-silk base for stage costumes, dancewear and performance outfits. MOQ 100 m / 109 yd per color.",
+    "fullDescription": "Iridescent laser hot-stamping stretch ice-silk fabric pairs a light, elastic ground with a laser foil surface that shifts through multiple colors as light and viewing angle change.",
+    "mainImage": "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/main/1.webp",
     "skuImages": [],
-    "detailImages": [],
+    "detailImages": ["1.webp", "2.webp", "3.webp", "4.webp", "5.webp", "6.jpg"],
     "videoLocal": "",
     "videoYoutubeUrl": "",
     "tags": ["metallic", "gradient", "hot-stamping", "spandex", "stage-costume", "dancewear", "performance-wear"],
-    "moq": "MOQ 100m",
-    "leadTime": "In-Stock Available",
+    "moq": "MOQ 100 m / 109 yd per color",
+    "leadTime": "In-Stock",
     "specs": [
       { "label": "Product Type", "value": "Iridescent laser hot-stamping foil fabric" },
       { "label": "Base Fabric", "value": "Stretch ice-silk" },
+      { "label": "Width", "value": "150 cm / 59 in" },
+      { "label": "Weight", "value": "160 g/m²" },
       { "label": "Surface Finish", "value": "Laser foil, gradient multi-color iridescent" },
       { "label": "Stretch", "value": "Elastic with good recovery" },
-      { "label": "MOQ", "value": "100m per color" },
+      { "label": "MOQ", "value": "100 m / 109 yd per color" },
       { "label": "Stock Status", "value": "In-stock, ready to ship" },
-      { "label": "Sampling", "value": "Free sample, 3–7 working days" },
-      { "label": "Customization", "value": "Custom foil colors, width & backing on bulk orders" },
-      { "label": "Compliance", "value": "SGS and REACH testing can be arranged according to product and buyer requirements" },
-      { "label": "Typical Applications", "value": "Stage costumes, dancewear, performance outfits" },
-      { "label": "Trade Terms", "value": "FOB, CIF or buyer-forwarder handover" },
-      { "label": "Supply Type", "value": "Factory-direct, OEM & ODM welcome" }
+      { "label": "Sampling", "value": "Free sample, 3-7 working days" }
     ],
     "faq": [
-      {
-        "q": "What is the MOQ for this fabric?",
-        "a": "The MOQ is 100m per color from stock. Custom iridescent effects start from higher quantities — contact us for a quotation based on your requirement."
-      },
-      {
-        "q": "Can I get a sample before placing a bulk order?",
-        "a": "Yes. Samples are free — you only bear the international shipping cost, which is deducted from your bulk order. Samples are ready within 3–7 working days."
-      },
-      {
-        "q": "How does the iridescent effect behave in production?",
-        "a": "The laser foil shifts color with light and viewing angle. We recommend approving a physical sample before bulk production, since photos cannot fully reproduce the effect."
-      },
-      {
-        "q": "Is the fabric certified for export markets?",
-        "a": "The material is SGS and REACH testing can be arranged according to product and buyer requirements. Buyer-specific test reports can be arranged by project."
-      }
-    ]
-  },
-  {
-    "id": "non-woven-glitter-fabric",
-    "title": "Non-Woven Glitter Fabric",
-    "category": "Glitter Fabric",
-    "shortDesc": "Sparkling glitter surface on non-woven backing. A cost-effective choice for stage props and performance costumes. MOQ 200m.",
-    "fullDescription": "Our non-woven glitter fabric carries a dense, sparkling glitter surface on a stable non-woven backing. It is a cost-effective option for stage props and performance costume details.\n\nThe non-woven base cuts cleanly without fraying, making it practical for props, banners and costume components. Manufactured in our own facility since 2013; SGS and REACH testing can be arranged according to product and buyer requirements, with custom colors available for bulk orders.\n\nFree samples available — customer only bears international shipping cost, which will be deducted from your bulk order.",
-    "mainImage": "/images/products/non-woven-glitter-fabric/main/1.jpg",
-    "skuImages": [],
-    "detailImages": [],
-    "videoLocal": "",
-    "videoYoutubeUrl": "",
-    "tags": ["glitter", "decoration", "stage-costume", "non-woven"],
-    "moq": "MOQ 200m",
-    "leadTime": "In-Stock Available",
-    "specs": [
-      { "label": "Product Type", "value": "Glitter-coated non-woven fabric" },
-      { "label": "Base Fabric", "value": "Non-woven backing, cut-clean without fraying" },
-      { "label": "Surface Finish", "value": "Dense glitter coating, uniform sparkle" },
-      { "label": "MOQ", "value": "200m per color" },
-      { "label": "Stock Status", "value": "In-stock, ready to ship" },
-      { "label": "Sampling", "value": "Free sample, 3–7 working days" },
-      { "label": "Customization", "value": "Custom glitter colors & width on bulk orders" },
-      { "label": "Compliance", "value": "SGS and REACH testing can be arranged according to product and buyer requirements" },
-      { "label": "Typical Applications", "value": "Holiday decoration, stage props, banners, performance costumes" },
-      { "label": "Trade Terms", "value": "FOB, CIF or buyer-forwarder handover" },
-      { "label": "Supply Type", "value": "Factory-direct, OEM & ODM welcome" }
-    ],
-    "faq": [
-      {
-        "q": "What is the MOQ for this fabric?",
-        "a": "The MOQ is 200m per color from stock. Larger decoration projects benefit from tiered pricing — send us your required quantity for a quotation."
-      },
-      {
-        "q": "Can I get a sample before placing a bulk order?",
-        "a": "Yes. Samples are free — you only bear the international shipping cost, which is deducted from your bulk order. Samples are ready within 3–7 working days."
-      },
-      {
-        "q": "Does the glitter shed during cutting or use?",
-        "a": "The glitter coating is bonded to the non-woven base for good adhesion, and the base cuts cleanly without fraying. We still recommend approving a sample for your specific processing method."
-      },
-      {
-        "q": "What certifications are available?",
-        "a": "The material is SGS and REACH testing can be arranged according to product and buyer requirements. Buyer-specific test reports can be arranged by project."
-      }
+      { "q": "What is the MOQ for this fabric?", "a": "The MOQ is 100 m / 109 yd per color from stock." },
+      { "q": "How does the iridescent effect behave in production?", "a": "The laser foil shifts color with light and viewing angle. A physical sample is recommended before bulk production." },
+      { "q": "Can I get a sample before placing a bulk order?", "a": "Yes. Samples are available before bulk order." }
     ]
   },
   {
     "id": "iridescent-gradient-laser-ice-silk",
-    "title": "Iridescent Gradient Laser Hot-Stamping Ice-Silk Fabric",
-    "category": "Hot-Stamping Fabric",
-    "shortDesc": "Stretch ice-silk with multi-color iridescent gradient laser finish for stage costumes, dancewear and performance outfits. MOQ 100m.",
-    "fullDescription": "The iridescent gradient laser hot-stamping ice-silk fabric features a smooth gradient that flows across the width of the fabric, shifting through multiple colors under light. The stretch ice-silk base keeps it comfortable against the skin and easy to sew.\n\nThe flowing gradient gives dancewear, stage costumes and performance outfits a strong visual identity. Manufactured in our own facility since 2013; SGS and REACH testing can be arranged according to product and buyer requirements, with custom gradient directions and colors available on bulk orders.\n\nFree samples available — customer only bears international shipping cost, which will be deducted from your bulk order.",
-    "mainImage": "/images/products/iridescent-gradient-laser-ice-silk/main/1.jpg",
+    "title": "Iridescent Gradient Foil Stretch Fabric for Dancewear & Costumes",
+    "category": "Gradient Foil Stretch Fabric",
+    "shortDesc": "Iridescent gradient foil stretch fabric for dancewear, costumes and performance outfits. MOQ 100 m / 109 yd per colorway.",
+    "fullDescription": "Iridescent gradient laser hot-stamping ice-silk fabric features a smooth gradient that flows across the fabric width and shifts under light. The stretch ice-silk base keeps it comfortable and easy to sew.",
+    "mainImage": "/images/products/iridescent-gradient-laser-ice-silk/main/1.webp",
     "skuImages": [],
-    "detailImages": [],
+    "detailImages": ["detail01.jpg", "detail02.jpg"],
     "videoLocal": "",
     "videoYoutubeUrl": "",
-    "tags": ["gradient", "metallic", "hot-stamping", "spandex", "stage-costume", "dancewear", "performance-wear"],
-    "moq": "MOQ 100m",
-    "leadTime": "In-Stock Available",
+    "tags": ["gradient", "metallic", "hot-stamping", "spandex", "stage-costume", "dancewear", "performance-wear", "cosplay"],
+    "moq": "MOQ 100 m / 109 yd per colorway",
+    "leadTime": "In-Stock",
     "specs": [
       { "label": "Product Type", "value": "Gradient laser hot-stamping foil fabric" },
       { "label": "Base Fabric", "value": "Stretch ice-silk" },
+      { "label": "Width", "value": "150 cm / 59 in" },
+      { "label": "Weight", "value": "160 g/m²" },
       { "label": "Surface Finish", "value": "Gradient multi-color iridescent laser foil" },
       { "label": "Stretch", "value": "Elastic with good recovery" },
-      { "label": "MOQ", "value": "100m per colorway" },
+      { "label": "MOQ", "value": "100 m / 109 yd per colorway" },
       { "label": "Stock Status", "value": "In-stock, ready to ship" },
-      { "label": "Sampling", "value": "Free sample, 3–7 working days" },
-      { "label": "Customization", "value": "Custom gradient colors & direction on bulk orders" },
-      { "label": "Compliance", "value": "SGS and REACH testing can be arranged according to product and buyer requirements" },
-      { "label": "Typical Applications", "value": "Stage costumes, dancewear, performance outfits" },
-      { "label": "Trade Terms", "value": "FOB, CIF or buyer-forwarder handover" },
-      { "label": "Supply Type", "value": "Factory-direct, OEM & ODM welcome" }
+      { "label": "Sampling", "value": "Free sample, 3-7 working days" }
     ],
     "faq": [
-      {
-        "q": "What is the MOQ for this fabric?",
-        "a": "The MOQ is 100m per colorway from stock. Custom gradient color schemes start from higher quantities — contact us for details."
-      },
-      {
-        "q": "Can I get a sample before placing a bulk order?",
-        "a": "Yes. Samples are free — you only bear the international shipping cost, which is deducted from your bulk order. Samples are ready within 3–7 working days."
-      },
-      {
-        "q": "Can the gradient direction or colors be customized?",
-        "a": "Yes, on bulk orders we can develop custom gradient schemes and directions. A physical approval sample is always provided before mass production."
-      },
-      {
-        "q": "What certifications are available?",
-        "a": "The material is SGS and REACH testing can be arranged according to product and buyer requirements. Buyer-specific test reports can be arranged by project."
-      }
+      { "q": "What is the MOQ for this fabric?", "a": "The MOQ is 100 m / 109 yd per colorway from stock." },
+      { "q": "Can the gradient direction or colors be customized?", "a": "Yes. Custom gradient schemes and directions can be discussed for bulk orders." },
+      { "q": "Can I get a sample before placing a bulk order?", "a": "Yes. Samples are available for color, stretch and surface-effect review." }
     ]
   },
   {
-    "id": "plain-iridescent-laser-spandex-4-way-stretch",
-    "title": "Plain Iridescent Laser Hot-Stamping Spandex 4-Way Stretch Fabric",
-    "category": "Hot-Stamping Fabric",
-    "shortDesc": "Plain iridescent laser foil on high-performance 4-way stretch spandex. Ideal for dancewear, stage costumes and performance outfits. MOQ 100m.",
-    "fullDescription": "Our plain iridescent laser hot-stamping spandex fabric delivers uniform iridescent luster with excellent 4-way stretch-recovery. It is designed for dancewear, stage costumes and performance outfits.\n\nProduced in our self-owned factory, SGS and REACH testing can be arranged according to product and buyer requirements. Bulk custom colors are available. Free samples are offered; buyer covers international shipping cost, which will be deducted from bulk orders.",
-    "mainImage": "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.jpg",
+    "id": "blue-purple-gradient-laser-foil-spandex-fabric",
+    "title": "Blue-Purple Gradient Laser Foil 4-Way Stretch Fabric",
+    "category": "Gradient Laser Foil Spandex Fabric",
+    "shortDesc": "Blue-purple gradient laser foil on a 4-way stretch spandex base for costumes, swimwear and Halloween performance apparel. MOQ 100 m / 109 yd.",
+    "fullDescription": "Blue-purple gradient laser foil on a 4-way stretch spandex base for costumes, swimwear, stagewear, dancewear and Halloween costumes. Factory wholesale supply with OEM/ODM support.",
+    "mainImage": "/images/products/H2013120102/main/a1.webp",
     "skuImages": [],
-    "detailImages": [],
+    "detailImages": ["x1.png", "x2.png", "x3.png", "x4.png", "x5.png", "x6.png", "x7.png", "x8.png", "x9.png"],
     "videoLocal": "",
     "videoYoutubeUrl": "",
-    "tags": ["metallic", "hot-stamping", "spandex", "dancewear", "stage-costume", "performance-wear"],
-    "moq": "MOQ 100m",
-    "leadTime": "In-Stock Available",
+    "tags": ["gradient", "laser-foil", "spandex", "4-way-stretch", "costumes", "stagewear", "dancewear", "swimwear", "halloween-costumes"],
+    "moq": "MOQ 100 m / 109 yd",
+    "leadTime": "Availability to be confirmed",
     "specs": [
-      { "label": "Product Type", "value": "Plain laser hot-stamping foil fabric" },
-      { "label": "Base Fabric", "value": "Spandex, high 4-way stretch" },
-      { "label": "Surface Finish", "value": "Plain iridescent laser foil" },
-      { "label": "Stretch", "value": "4-way stretch with strong recovery" },
-      { "label": "Width", "value": "150cm" },
-      { "label": "Weight", "value": "180 g/m²" },
-      { "label": "Base Material", "value": "Polyester knitted base" },
-      { "label": "Thickness", "value": "0.35‑0.4mm" },
-      { "label": "MOQ", "value": "100m per color" },
-      { "label": "Stock Status", "value": "In-stock, ready to ship" },
-      { "label": "Sampling", "value": "Free sample, 3–7 working days" },
-      { "label": "Customization", "value": "Custom colors, width & backing on bulk orders" },
-      { "label": "Compliance", "value": "SGS and REACH testing can be arranged according to product and buyer requirements" },
-      { "label": "Typical Applications", "value": "Dancewear, stage costumes, performance outfits" },
-      { "label": "Trade Terms", "value": "FOB, CIF or buyer-forwarder handover" },
-      { "label": "Supply Type", "value": "Factory-direct, OEM & ODM welcome" }
+      { "label": "Product Type", "value": "Blue-Purple Gradient Laser Foil 4-Way Stretch Fabric" },
+      { "label": "Surface Effect", "value": "Blue-purple gradient laser foil" },
+      { "label": "Base Fabric", "value": "98% Polyester 2% Spandex" },
+      { "label": "Stretch", "value": "4-Way Stretch" },
+      { "label": "Width", "value": "150 cm / 59 in" },
+      { "label": "Weight", "value": "180 GSM" },
+      { "label": "Color", "value": "1 standard color; custom color development available" },
+      { "label": "MOQ", "value": "100 m / 109 yd" },
+      { "label": "Density", "value": "110T" },
+      { "label": "Yarn Count", "value": "120D*120D" },
+      { "label": "Finishing", "value": "Hot-stamping foil" },
+      { "label": "Typical Applications", "value": "Costumes, swimwear, stagewear, dancewear, Halloween costumes" }
     ],
     "faq": [
-      {
-        "q": "What is the MOQ for this fabric?",
-        "a": "The MOQ is 100m per color from stock. Custom colors start from higher quantities — contact us for a quotation."
-      },
-      {
-        "q": "Can I get a sample before placing a bulk order?",
-        "a": "Yes. Samples are free — you only bear the international shipping cost, which is deducted from your bulk order. Samples are ready within 3–7 working days."
-      },
-      {
-        "q": "How does the foil hold up on a high-stretch base?",
-        "a": "The foil finish is engineered to flex with the 4-way stretch base without cracking in normal wear. For demanding applications we recommend garment wash-testing on an approval sample first."
-      },
-      {
-        "q": "What certifications are available?",
-        "a": "The material is SGS and REACH testing can be arranged according to product and buyer requirements. Buyer-specific test reports can be arranged by project."
-      }
-    ]
-  },
-  {
-    "id": "rainbow-gradient-glitter-synthetic-leather",
-    "title": "Pastel Rainbow Iridescent Superfine Glitter Faux Leather Fabric for Crafts & Accessories",
-    "category": "Glitter Synthetic Leather",
-    "shortDesc": "Pastel rainbow iridescent superfine glitter faux leather with a reflective finish and structured base for crafts and accessories. Factory wholesale supply with custom options.",
-    "fullDescription": "The pastel rainbow iridescent superfine glitter faux leather combines a reflective glitter surface with a soft pastel rainbow finish on a durable faux leather base. Unlike stretch fabrics, the leather base gives structure and durability, holding its shape in crafts and accessories.\n\nThe iridescent rainbow shift gives the material a playful premium look that photographs well — popular with craft, accessory and small goods buyers. Manufactured in our own facility since 2013; SGS and REACH testing can be arranged according to product and buyer requirements, with custom colors available for bulk orders.\n\nFree samples available — customer only bears international shipping cost, which will be deducted from your bulk order.",
-    "mainImage": "/images/products/rainbow-gradient-glitter-synthetic-leather/main/1.jpg",
-    "skuImages": [],
-    "detailImages": ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"],
-    "videoLocal": "",
-    "videoYoutubeUrl": "",
-    "tags": ["pastel", "glitter", "faux-leather", "crafts", "accessories", "stationery"],
-    "moq": "MOQ 200m",
-    "leadTime": "3–7 Days Lead Time",
-    "specs": [
-      { "label": "Product Type", "value": "Pastel rainbow iridescent superfine glitter faux leather" },
-      { "label": "Base Fabric", "value": "Faux leather, structured & durable" },
-      { "label": "Surface Finish", "value": "Reflective superfine glitter, pastel rainbow iridescent" },
-      { "label": "MOQ", "value": "200m per color" },
-      { "label": "Lead Time", "value": "3–7 days" },
-      { "label": "Sampling", "value": "Free sample, 3–7 working days" },
-      { "label": "Customization", "value": "Custom rainbow colors, thickness & backing on bulk orders" },
-      { "label": "Compliance", "value": "SGS and REACH testing can be arranged according to product and buyer requirements" },
-      { "label": "Typical Applications", "value": "Crafts, accessories, gift packaging, stationery" },
-      { "label": "Trade Terms", "value": "FOB, CIF or buyer-forwarder handover" },
-      { "label": "Supply Type", "value": "Factory-direct, OEM & ODM welcome" }
-    ],
-    "faq": [
-      {
-        "q": "What is the MOQ for this material?",
-        "a": "The MOQ is 200m per color, with a lead time of 3–7 days. Volume orders benefit from tiered pricing — send us your quantity for a quotation."
-      },
-      {
-        "q": "Can I get a sample before placing a bulk order?",
-        "a": "Yes. Samples are free — you only bear the international shipping cost, which is deducted from your bulk order. Samples are ready within 3–7 working days."
-      },
-      {
-        "q": "Is it suitable for footwear and structured bags?",
-        "a": "Yes. The synthetic leather base provides structure and abrasion resistance for footwear uppers, bags and book covers, unlike stretch glitter fabrics."
-      },
-      {
-        "q": "What certifications are available?",
-        "a": "The material is SGS and REACH testing can be arranged according to product and buyer requirements. Buyer-specific test reports (e.g. abrasion for footwear) can be arranged by project."
-      }
+      { "q": "What is the MOQ for this fabric?", "a": "The confirmed MOQ is 100 m / 109 yd." },
+      { "q": "Does this fabric have 4-way stretch?", "a": "Yes. The source data confirms this is a 4-way stretch fabric." },
+      { "q": "What applications is this fabric suitable for?", "a": "Recommended applications include costumes, swimwear, stagewear, dancewear and Halloween costumes." }
     ]
   }
 ]

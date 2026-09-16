@@ -38,7 +38,7 @@ requirement_docs:
 - `src/legacy/[id].astro.bak` 仍引用 `src/data/products.json`，但不在当前路由图里
 
 ## 数据与状态
-- 当前产品数：9
+- 当前产品数：8
 - 当前博客文章数：5
 - 当前博客分类数：6
 - 产品 slug、文章 slug、图片路径都是强约束
@@ -46,12 +46,15 @@ requirement_docs:
 ## 外部依赖
 - `public/images/**`
 - `public/shots/**`
+- `../products-data/original-images/**` stores archived JPG/PNG originals that should not be deployed
 - 本地文件系统图片命名
 
 ## 修改约束
 - 新增/改名产品先改 `allProducts.js`
+- 新增产品必须符合当前 performance fabric 定位，不把 glitter leather、PU accessory、鞋材、手袋、工艺、玩具等退出定位产品写入当前主产品数据
+- 新增产品必须同步写好 SEO 和采购字段：美国采购商搜索型 `metaTitle`、自然可读 H1/title、采购型 `metaDesc`、样品/定制/MOQ/库存信息、FAQ 和中美单位表达
 - 新增博客先改 `blogArticles.js`
-- 图片变更要同步检查 `.webp` 与原图是否同时存在
+- 图片变更要同步检查线上 WebP 与归档原图是否对应；不要把已有 WebP 的 JPG/PNG 原图继续放在 `public`
 
 ## 验证方式
 - `npm run build`
