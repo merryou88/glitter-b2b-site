@@ -29,7 +29,7 @@ modules:
 `src/pages/products.astro`
 
 ## 验证结果
-`npm run build` 通过；产品校验通过，8 个公开产品已检查；静态页面抽查确认搜索、Finish、Stretch、Application、Stock、Grid/List 和 `Request Sample / Quote` 均已生成；本地浏览器验证确认 List 视图可横向展开 8 个产品卡片，未发现溢出。
+`npm run build` 通过；产品校验通过，8 个公开产品已检查；静态页面抽查确认搜索、Finish、Stretch、Application、Stock、Grid/List 和 `Request Sample / Quote` 均已生成；本地浏览器验证确认 List 视图可横向展开 8 个产品卡片，未发现溢出；随后修复桌面筛选工具栏换行造成的搜索框下沉和大面积空白问题。
 
 ## 来源
 用户要求按照美国面料采购商习惯优化产品列表页。

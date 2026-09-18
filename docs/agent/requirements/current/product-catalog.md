@@ -183,6 +183,26 @@ status: current
 - 最后变更编号：CHG-20260916-010-products-b2b-catalog-layout
 - 待确认事项：无
 
+### REQ-PRODUCT-023：产品列表 List 视图图片与内容不得重叠
+- 状态：active
+- 当前规则：产品列表切换为 List 视图时，图片列使用明确的固定范围，产品内容列允许收缩但不得被图片覆盖；产品标题、规格、应用和 CTA 必须从图片右侧完整开始。
+- 验收条件：桌面 List 视图中图片只占左侧图片列，标题与正文不被遮挡；平板和移动端继续按响应式单列规则显示；Grid 视图不受影响。
+- 影响模块：`product-catalog`
+- 代码路径：`src/pages/products.astro`
+- 测试路径：`npm run build`；手动检查产品列表 Grid/List 视图
+- 最后变更编号：CHG-20260918-001-products-list-image-overlap
+- 待确认事项：无
+
+### REQ-PRODUCT-024：产品卡片颜色数量与 MOQ 列对齐
+- 状态：active
+- 当前规则：产品卡片中的颜色数量与 MOQ 使用相同的两列规格网格，颜色数量从第二列左边界开始，不使用两端分布导致视觉偏移。
+- 验收条件：Grid 和 List 视图中，颜色数量与 MOQ 左边界对齐；库存状态位于第一列；其他规格和 CTA 不受影响。
+- 影响模块：`product-catalog`
+- 代码路径：`src/pages/products.astro`
+- 测试路径：`npm run build`；手动检查产品卡片 Grid/List 视图
+- 最后变更编号：CHG-20260918-002-products-color-moq-alignment
+- 待确认事项：无
+
 ### REQ-PRODUCT-005：重点产品轮播角标需匹配品牌深蓝白字风格
 - 状态：active
 - 当前规则：`plain-iridescent-laser-spandex-4-way-stretch` 详情页轮播图右上角的 `WHOLESALE` 标签需使用深蓝底、白色文字，并保持与站点 logo 图标一致的品牌感。
