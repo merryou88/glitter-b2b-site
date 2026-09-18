@@ -173,6 +173,16 @@ status: current
 - 最后变更编号：CHG-20260916-006-h2013090104-color-leadtime
 - 待确认事项：测试合规需按项目确认
 
+### REQ-PRODUCT-022：产品列表页采用 B2B 采购型目录布局
+- 状态：active
+- 当前规则：`/products/` 以美国面料采购商的比较需求组织信息，首屏展示采购摘要，目录区提供关键词搜索、Finish、Stretch、Application、Stock、排序控件和 Grid/List 视图切换；产品卡片必须直接展示宽幅、克重、底材、MOQ、库存状态、颜色数量和主要应用场景。
+- 验收条件：采购商无需进入详情页即可比较核心规格；搜索和筛选能联动更新结果数量；Grid 视图继续使用 1:1 产品图，List 视图可横向比较规格；询盘按钮文案为 `Request Sample / Quote`；页面不新增价格或虚构规格。
+- 影响模块：`product-catalog`
+- 代码路径：`src/pages/products.astro`
+- 测试路径：`npm run build`；手动检查 `/products/` 搜索、筛选、排序和移动端布局
+- 最后变更编号：CHG-20260916-010-products-b2b-catalog-layout
+- 待确认事项：无
+
 ### REQ-PRODUCT-005：重点产品轮播角标需匹配品牌深蓝白字风格
 - 状态：active
 - 当前规则：`plain-iridescent-laser-spandex-4-way-stretch` 详情页轮播图右上角的 `WHOLESALE` 标签需使用深蓝底、白色文字，并保持与站点 logo 图标一致的品牌感。

@@ -37,22 +37,53 @@ const productMoq = (product) =>
   findRowValue(product.b2bTable, ["MOQ"]) ||
   product.specs.moq;
 
-/* ---- Filter chips (simple foil category structure, with counts) ---- */
-const filters = [
-  { key: "all", label: "All Foil Fabrics" },
-  { key: "foil,hot-stamping", label: "Classic Foil" },
-  { key: "laser-foil,gradient,metallic", label: "Laser & Iridescent Foil" },
-  { key: "printed,gradient", label: "Patterned Laser Foil" },
-  { key: "suede-look,embossed", label: "Specialty Textured Foil" },
-].map((f) => ({
-  ...f,
-  count:
-    f.key === "all"
-      ? catalogProducts.length
-      : catalogProducts.filter((product) =>
-          f.key.split(",").some((tag) => product.tags.includes(tag)),
-        ).length,
-}));
+const productMoqDisplay = (product) => {
+  const moq = String(productMoq(product) || "").trim();
+  if (!moq) return "To be confirmed";
+  if (/[a-z]/i.test(moq)) return moq;
+  const yards = Math.round(Number(moq) * 1.09361);
+  return `${moq} m / ${yards || "—"} yd`;
+};
+
+const productFilterTags = (product) => {
+  const searchable = [
+    product.title,
+    product.shortIntro,
+    product.specs.baseMaterial,
+    ...(product.tags || []),
+  ]
+    .join(" ")
+    .toLowerCase();
+  const stretch =
+    searchable.includes("4-way") || searchable.includes("four-way")
+      ? "4-way stretch"
+      : searchable.includes("high stretch") || searchable.includes("highly elastic")
+        ? "high stretch"
+        : searchable.includes("stretch") || searchable.includes("elastic")
+          ? "stretch / knit"
+          : "structured";
+  const finish =
+    searchable.includes("laser") || searchable.includes("iridescent") || searchable.includes("holographic")
+      ? "laser / iridescent"
+      : searchable.includes("printed") || searchable.includes("print")
+        ? "printed foil"
+        : searchable.includes("suede") || searchable.includes("texture") || searchable.includes("emboss")
+          ? "textured foil"
+          : "foil";
+
+  return { stretch, finish };
+};
+
+const finishOptions = ["laser / iridescent", "printed foil", "textured foil", "foil"];
+const stretchOptions = ["4-way stretch", "high stretch", "stretch / knit", "structured"];
+const applicationOptions = [
+  "stage costumes",
+  "dancewear",
+  "performance wear",
+  "party wear",
+  "performance props",
+  "backdrops",
+];
 
 const breadcrumbData = {
   "@context": "https://schema.org",
@@ -84,13 +115,18 @@ const collectionPageData = {
   <!-- Page Hero (compact catalog header) -->
   <section class="page-hero">
     <div class="container">
-      <span class="eyebrow">Foil Fabric Catalog</span>
-      <h1>Foil Fabrics for Performance &amp; Party Wear</h1>
+      <span class="eyebrow">Performance Fabric Catalog</span>
+      <h1>Compare Foil &amp; Stretch Fabrics for Performance Wear</h1>
       <p class="page-hero__desc">
-        Browse {catalogProducts.length} foil fabric options for stage costumes, performance wear,
-        dancewear and party apparel. Selected styles support ready-stock sampling and custom
-        development based on buyer references.
+        Compare finish, width, weight, stretch, colors and MOQ across our performance fabric range.
+        Request samples or send a reference for custom development.
       </p>
+      <div class="catalog-quick-facts" aria-label="Catalog purchasing facts">
+        <span>{catalogProducts.length} products</span>
+        <span>MOQ from 100 m / 109 yd</span>
+        <span>Samples available</span>
+        <span>OEM / ODM support</span>
+      </div>
     </div>
   </section>
 
@@ -98,37 +134,77 @@ const collectionPageData = {
   <section class="section" id="catalog">
     <div class="container">
       <div class="catalog-toolbar">
-        <div class="catalog-chips" role="tablist" aria-label="Filter products">
-          {filters.map((f, i) => (
-            <button
-              type="button"
-              class:list={["catalog-chip", { "is-active": i === 0 }]}
-              data-filter={f.key}
-              role="tab"
-              aria-selected={i === 0 ? "true" : "false"}
-            >
-              {f.label} <span class="catalog-chip__count">{f.count}</span>
-            </button>
-          ))}
-        </div>
-        <label class="catalog-sort">
-          <span class="catalog-sort__label">Sort by</span>
-          <select id="catalog-sort" class="catalog-sort__select">
-            <option value="default">Recommended</option>
-            <option value="az">Name A–Z</option>
-            <option value="colors">Most Colors</option>
-          </select>
+        <label class="catalog-search">
+          <span class="sr-only">Search fabrics</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+          <input id="catalog-search" type="search" placeholder="Search fabric name, finish or application" autocomplete="off" />
         </label>
+        <div class="catalog-controls">
+          <label class="catalog-filter">
+            <span>Finish</span>
+            <select id="finish-filter">
+              <option value="all">All finishes</option>
+              {finishOptions.map((option) => <option value={option}>{option}</option>)}
+            </select>
+          </label>
+          <label class="catalog-filter">
+            <span>Stretch</span>
+            <select id="stretch-filter">
+              <option value="all">All stretch types</option>
+              {stretchOptions.map((option) => <option value={option}>{option}</option>)}
+            </select>
+          </label>
+          <label class="catalog-filter">
+            <span>Application</span>
+            <select id="application-filter">
+              <option value="all">All applications</option>
+              {applicationOptions.map((option) => <option value={option}>{option}</option>)}
+            </select>
+          </label>
+          <label class="catalog-filter">
+            <span>Stock</span>
+            <select id="stock-filter">
+              <option value="all">All stock status</option>
+              <option value="in-stock">In stock</option>
+              <option value="in-stock-color-options">In stock color options</option>
+              <option value="availability-to-be-confirmed">Availability to be confirmed</option>
+            </select>
+          </label>
+          <label class="catalog-sort">
+            <span>Sort</span>
+            <select id="catalog-sort" class="catalog-sort__select">
+              <option value="default">Recommended</option>
+              <option value="az">Name A–Z</option>
+              <option value="colors">Most Colors</option>
+            </select>
+          </label>
+        </div>
       </div>
 
-      <p class="catalog-count" id="catalog-count" aria-live="polite">
-        Showing {catalogProducts.length} products
-      </p>
+      <div class="catalog-summary">
+        <p class="catalog-count" id="catalog-count" aria-live="polite">Showing {catalogProducts.length} products</p>
+        <div class="catalog-summary__actions">
+          <div class="catalog-view-toggle" aria-label="Catalog view">
+            <button type="button" class="catalog-view-toggle__btn is-active" data-view="grid" aria-pressed="true">Grid</button>
+            <button type="button" class="catalog-view-toggle__btn" data-view="list" aria-pressed="false">List</button>
+          </div>
+          <button type="button" id="catalog-reset" class="catalog-reset" hidden>Clear filters</button>
+        </div>
+      </div>
 
       <div class="product-grid" id="product-grid">
         {
           sortedProducts.map((item) => (
-            <div class="product-card" data-id={item.slug} data-tags={item.tags.join(",")} data-colors={item.colorCount ?? item.imageList.length} data-title={item.title}>
+            <div
+              class="product-card"
+              data-id={item.slug}
+              data-search={[item.title, item.shortIntro, item.specs.baseMaterial, ...(item.tags || []), ...(item.applications || [])].join(" ").toLowerCase()}
+              data-filter-tags={JSON.stringify(productFilterTags(item))}
+              data-applications={(item.applications || []).join("|").toLowerCase()}
+              data-stock={(item.stockStatus || "").toLowerCase().replace(/\s+/g, "-")}
+              data-colors={item.colorCount ?? item.imageList.length}
+              data-title={item.title}
+            >
               <a href={`/products/${item.slug}/`} class="product-card__link" aria-label={`View ${item.title}`}>
                 <div class="product-card__image-wrap">
                   {item.mainImageUrl ? (
@@ -155,26 +231,24 @@ const collectionPageData = {
                 </a>
                 <p class="product-card__desc">{item.shortIntro}</p>
 
-                <div class="product-card__specs">
-                  {item.stockStatus ? (
-                    <span class="product-card__spec product-card__spec--stock" title="In stock">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                      {item.stockStatus}
-                    </span>
-                  ) : null}
-                  <span class="product-card__spec">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9l-2 2H4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1z"/></svg>
-                    MOQ {productMoq(item)}
-                  </span>
-                  <span class="product-card__spec">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    {item.specs.leadTime} days
-                  </span>
+                <div class="product-card__spec-grid" aria-label="Key product specifications">
+                  <div><span>Width</span><strong>{item.specs.width || "To be confirmed"}</strong></div>
+                  <div><span>Weight</span><strong>{item.specs.weight || "To be confirmed"}</strong></div>
+                  <div><span>Material</span><strong>{item.specs.baseMaterial || "To be confirmed"}</strong></div>
+                  <div><span>MOQ</span><strong>{productMoqDisplay(item)}</strong></div>
                 </div>
 
+                <div class="product-card__meta">
+                  <span class:list={{ "product-card__stock": item.stockStatus?.toLowerCase().includes("in-stock") }}>
+                    {item.stockStatus}
+                  </span>
+                  <span>{item.badge}</span>
+                </div>
+                <p class="product-card__applications"><strong>Applications:</strong> {(item.applications || []).slice(0, 4).join(" · ")}</p>
+
                 <div class="product-card__actions">
-                  <a href={`/products/${item.slug}/`} class="product-card__btn product-card__btn--outline">Details</a>
-                  <a href={`/contact/?sku=${encodeURIComponent(item.title)}`} data-rfq-open data-rfq-sku={item.title} class="product-card__btn product-card__btn--primary">Add Quote</a>
+                  <a href={`/products/${item.slug}/`} class="product-card__btn product-card__btn--outline">View Details</a>
+                  <a href={`/contact/?sku=${encodeURIComponent(item.title)}`} data-rfq-open data-rfq-sku={item.title} class="product-card__btn product-card__btn--primary">Request Sample / Quote</a>
                 </div>
               </div>
             </div>
@@ -232,85 +306,180 @@ const collectionPageData = {
     max-width: 640px;
   }
 
-  /* ==================== Catalog Toolbar ==================== */
-  .catalog-toolbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-lg);
-    flex-wrap: wrap;
-    margin-bottom: var(--space-md);
-  }
-
-  .catalog-chips {
+  .catalog-quick-facts {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .catalog-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.45rem 0.9rem;
-    border-radius: 999px;
-    border: 1px solid var(--color-border);
-    background: var(--color-white);
-    color: var(--color-text-muted);
+    gap: 0.5rem 1.25rem;
+    margin-top: var(--space-lg);
+    color: rgba(255, 255, 255, 0.82);
     font-size: var(--text-sm);
     font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    min-height: 38px;
   }
 
-  .catalog-chip:hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent-dark);
-  }
-
-  .catalog-chip.is-active {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-    color: #fff;
-  }
-
-  .catalog-chip__count {
-    font-size: 0.72rem;
-    font-weight: 700;
-    padding: 0.05rem 0.45rem;
-    border-radius: 999px;
-    background: rgba(22, 41, 77, 0.07);
-  }
-
-  .catalog-chip.is-active .catalog-chip__count {
-    background: rgba(255, 255, 255, 0.18);
-  }
-
-  .catalog-sort {
+  .catalog-quick-facts span {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
+    gap: 0.45rem;
   }
 
-  .catalog-sort__select {
-    padding: 0.45rem 0.75rem;
-    border-radius: 10px;
+  .catalog-quick-facts span::before {
+    content: "";
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background: var(--color-accent-light);
+  }
+
+  /* ==================== Catalog Toolbar ==================== */
+  .catalog-toolbar {
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) auto;
+    gap: var(--space-md);
+    align-items: end;
+    padding: var(--space-md);
     border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: var(--color-white);
+    box-shadow: 0 4px 16px rgba(22, 41, 77, 0.05);
+  }
+
+  .catalog-search {
+    position: relative;
+    display: block;
+  }
+
+  .catalog-search svg {
+    position: absolute;
+    left: 0.85rem;
+    top: 50%;
+    width: 1.05rem;
+    height: 1.05rem;
+    color: var(--color-text-muted);
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .catalog-search input {
+    width: 100%;
+    min-height: 42px;
+    padding: 0.6rem 0.8rem 0.6rem 2.45rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    color: var(--color-text);
+    background: var(--color-bg);
+    font: inherit;
+    font-size: var(--text-sm);
+  }
+
+  .catalog-search input:focus,
+  .catalog-filter select:focus,
+  .catalog-sort__select:focus {
+    outline: 2px solid rgba(196, 160, 53, 0.3);
+    outline-offset: 1px;
+    border-color: var(--color-accent);
+  }
+
+  .catalog-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    justify-content: flex-end;
+  }
+
+  .catalog-filter,
+  .catalog-sort {
+    display: grid;
+    gap: 0.25rem;
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+    font-weight: 700;
+  }
+
+  .catalog-filter select,
+  .catalog-sort__select {
+    min-height: 38px;
+    min-width: 132px;
+    padding: 0.45rem 1.9rem 0.45rem 0.65rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
     background: var(--color-white);
     color: var(--color-primary);
     font: inherit;
     font-size: var(--text-sm);
     font-weight: 600;
     cursor: pointer;
-    min-height: 38px;
   }
 
-  .catalog-sort__select:focus {
-    outline: none;
-    border-color: var(--color-accent);
+  .catalog-sort__select {
+    min-width: 128px;
+  }
+
+  .catalog-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    min-height: 48px;
+  }
+
+  .catalog-summary__actions {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .catalog-view-toggle {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0.2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: var(--color-bg);
+  }
+
+  .catalog-view-toggle__btn {
+    min-height: 30px;
+    padding: 0.25rem 0.7rem;
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    color: var(--color-text-muted);
+    font: inherit;
+    font-size: var(--text-xs);
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .catalog-view-toggle__btn.is-active {
+    background: var(--color-white);
+    color: var(--color-primary);
+    box-shadow: 0 1px 3px rgba(22, 41, 77, 0.12);
+  }
+
+  .catalog-reset {
+    border: 0;
+    background: transparent;
+    color: var(--color-accent-dark);
+    font: inherit;
+    font-size: var(--text-sm);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .catalog-reset:hover { text-decoration: underline; }
+
+  .catalog-reset[hidden] { display: none; }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   .catalog-count {
@@ -332,11 +501,17 @@ const collectionPageData = {
     gap: var(--space-lg);
   }
 
+  .product-grid.is-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
   /* ==================== Product Card ==================== */
   .product-card {
     background: var(--color-white);
     border: 1px solid var(--color-border);
-    border-radius: 16px;
+    border-radius: 8px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -436,6 +611,65 @@ const collectionPageData = {
     overflow: hidden;
   }
 
+  .product-card__spec-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-top: 0.2rem;
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .product-card__spec-grid div {
+    min-width: 0;
+  }
+
+  .product-card__spec-grid span {
+    display: block;
+    margin-bottom: 0.15rem;
+    color: var(--color-text-muted);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .product-card__spec-grid strong {
+    display: block;
+    overflow: hidden;
+    color: var(--color-primary);
+    font-size: var(--text-xs);
+    line-height: 1.35;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .product-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+    font-weight: 700;
+  }
+
+  .product-card__stock {
+    color: var(--color-accent-dark);
+  }
+
+  .product-card__applications {
+    min-height: 2.8em;
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+    line-height: 1.45;
+  }
+
+  .product-card__applications strong {
+    color: var(--color-primary);
+  }
+
   .product-card__specs {
     display: flex;
     flex-wrap: wrap;
@@ -505,10 +739,84 @@ const collectionPageData = {
     border-color: var(--color-accent-dark);
   }
 
+  .product-grid.is-list .product-card {
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .product-grid.is-list .product-card:hover {
+    transform: translateY(-1px);
+  }
+
+  .product-grid.is-list .product-card__image-wrap {
+    height: 100%;
+    min-height: 180px;
+  }
+
+  .product-grid.is-list .product-card__body {
+    display: grid;
+    grid-template-columns: minmax(220px, 1.2fr) minmax(320px, 1.4fr) minmax(180px, 0.8fr);
+    gap: var(--space-md);
+    align-items: center;
+  }
+
+  .product-grid.is-list .product-card__title-link,
+  .product-grid.is-list .product-card__desc {
+    grid-column: 1;
+  }
+
+  .product-grid.is-list .product-card__desc {
+    -webkit-line-clamp: 3;
+  }
+
+  .product-grid.is-list .product-card__spec-grid {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    margin-top: 0;
+    padding: 0;
+    border-top: 0;
+  }
+
+  .product-grid.is-list .product-card__meta,
+  .product-grid.is-list .product-card__applications,
+  .product-grid.is-list .product-card__actions {
+    grid-column: 3;
+  }
+
+  .product-grid.is-list .product-card__applications {
+    min-height: 0;
+  }
+
+  .product-grid.is-list .product-card__actions {
+    grid-template-columns: 1fr;
+  }
+
   /* ==================== Responsive ==================== */
   @media (max-width: 968px) {
     .product-grid { grid-template-columns: repeat(2, 1fr); }
-    .catalog-toolbar { align-items: flex-start; flex-direction: column; }
+    .catalog-toolbar { grid-template-columns: 1fr; }
+    .catalog-controls { justify-content: flex-start; }
+    .product-grid.is-list .product-card {
+      grid-template-columns: 150px minmax(0, 1fr);
+    }
+    .product-grid.is-list .product-card__body {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+    .product-grid.is-list .product-card__title-link,
+    .product-grid.is-list .product-card__desc,
+    .product-grid.is-list .product-card__spec-grid,
+    .product-grid.is-list .product-card__meta,
+    .product-grid.is-list .product-card__applications,
+    .product-grid.is-list .product-card__actions {
+      grid-column: auto;
+      grid-row: auto;
+    }
+    .product-grid.is-list .product-card__spec-grid {
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--color-border);
+    }
   }
 
   @media (max-width: 768px) {
@@ -518,32 +826,76 @@ const collectionPageData = {
 
     .page-hero { padding-block: var(--space-2xl) var(--space-3xl); }
     .page-hero__desc { font-size: var(--text-base); }
+    .catalog-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .catalog-filter select,
+    .catalog-sort__select { width: 100%; min-width: 0; }
+    .catalog-summary {
+      align-items: flex-start;
+      flex-direction: column;
+      padding-block: var(--space-sm);
+    }
+    .catalog-summary__actions {
+      justify-content: space-between;
+      width: 100%;
+    }
+    .catalog-quick-facts { display: grid; gap: 0.55rem; }
+    .product-grid.is-list .product-card { grid-template-columns: 1fr; }
+    .product-grid.is-list .product-card__image-wrap { min-height: auto; }
+    .product-card__actions { grid-template-columns: 1fr; }
   }
 </style>
 
 <script>
   (function () {
     var grid = document.getElementById("product-grid");
-    var chips = document.querySelectorAll(".catalog-chip");
+    var searchInput = document.getElementById("catalog-search");
+    var finishFilter = document.getElementById("finish-filter");
+    var stretchFilter = document.getElementById("stretch-filter");
+    var applicationFilter = document.getElementById("application-filter");
+    var stockFilter = document.getElementById("stock-filter");
     var sortSelect = document.getElementById("catalog-sort");
     var countEl = document.getElementById("catalog-count");
     var emptyEl = document.getElementById("catalog-empty");
-    if (!grid || !chips.length) return;
+    var resetButton = document.getElementById("catalog-reset");
+    var viewButtons = Array.prototype.slice.call(document.querySelectorAll(".catalog-view-toggle__btn"));
+    if (!grid) return;
 
     var cards = Array.prototype.slice.call(grid.querySelectorAll(".product-card"));
-    var currentFilter = "all";
+    var filterControls = [searchInput, finishFilter, stretchFilter, applicationFilter, stockFilter];
 
-    function applyFilter() {
+    function hasApplication(card, value) {
+      if (value === "all") return true;
+      return (card.getAttribute("data-applications") || "").split("|").some(function (application) {
+        return application === value;
+      });
+    }
+
+    function applyFilters() {
+      var search = (searchInput && searchInput.value || "").trim().toLowerCase();
+      var finish = finishFilter ? finishFilter.value : "all";
+      var stretch = stretchFilter ? stretchFilter.value : "all";
+      var application = applicationFilter ? applicationFilter.value : "all";
+      var stock = stockFilter ? stockFilter.value : "all";
       var visible = 0;
-      var activeTags = currentFilter === "all" ? [] : currentFilter.split(",");
+
       cards.forEach(function (card) {
-        var tags = (card.getAttribute("data-tags") || "").split(",");
-        var show = currentFilter === "all" || activeTags.some(function (t) { return tags.indexOf(t) !== -1; });
+        var tags = {};
+        try { tags = JSON.parse(card.getAttribute("data-filter-tags") || "{}"); } catch (error) {}
+        var cardStock = card.getAttribute("data-stock") || "";
+        var show =
+          (!search || (card.getAttribute("data-search") || "").indexOf(search) !== -1) &&
+          (finish === "all" || tags.finish === finish) &&
+          (stretch === "all" || tags.stretch === stretch) &&
+          hasApplication(card, application) &&
+          (stock === "all" || cardStock === stock);
         card.classList.toggle("is-hidden", !show);
         if (show) visible++;
       });
       if (countEl) countEl.textContent = "Showing " + visible + " products";
       if (emptyEl) emptyEl.hidden = visible !== 0;
+      if (resetButton) {
+        resetButton.hidden = !search && finish === "all" && stretch === "all" && application === "all" && stock === "all";
+      }
     }
 
     function applySort(mode) {
@@ -562,17 +914,26 @@ const collectionPageData = {
     // Preserve original order for "Recommended"
     cards.forEach(function (card, i) { card.setAttribute("data-order", String(i)); });
 
-    chips.forEach(function (chip) {
-      chip.addEventListener("click", function () {
-        chips.forEach(function (c) {
-          c.classList.remove("is-active");
-          c.setAttribute("aria-selected", "false");
-        });
-        chip.classList.add("is-active");
-        chip.setAttribute("aria-selected", "true");
-        currentFilter = chip.getAttribute("data-filter") || "all";
-        applyFilter();
+    function setView(mode) {
+      var nextMode = mode === "list" ? "list" : "grid";
+      grid.classList.toggle("is-list", nextMode === "list");
+      viewButtons.forEach(function (button) {
+        var active = button.getAttribute("data-view") === nextMode;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-pressed", active ? "true" : "false");
       });
+      try { window.localStorage.setItem("catalogView", nextMode); } catch (error) {}
+    }
+
+    viewButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        setView(button.getAttribute("data-view") || "grid");
+      });
+    });
+
+    filterControls.forEach(function (control) {
+      if (control) control.addEventListener("input", applyFilters);
+      if (control && control.tagName === "SELECT") control.addEventListener("change", applyFilters);
     });
 
     if (sortSelect) {
@@ -581,6 +942,21 @@ const collectionPageData = {
       });
     }
 
-    applyFilter();
+    if (resetButton) {
+      resetButton.addEventListener("click", function () {
+        if (searchInput) searchInput.value = "";
+        [finishFilter, stretchFilter, applicationFilter, stockFilter].forEach(function (control) {
+          if (control) control.value = "all";
+        });
+        if (sortSelect) sortSelect.value = "default";
+        applySort("default");
+        applyFilters();
+      });
+    }
+
+    var savedView = "grid";
+    try { savedView = window.localStorage.getItem("catalogView") || "grid"; } catch (error) {}
+    setView(savedView);
+    applyFilters();
   })();
 </script>
