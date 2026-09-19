@@ -34,6 +34,55 @@ const featuredArticle =
     (article) => article.slug === "how-to-choose-hot-stamping-spandex-fabric-for-dancewear-stage-costumes",
   ) ?? blogArticles[0];
 const latestArticles = blogArticles.filter((article) => article.slug !== featuredArticle.slug);
+const getArticlesBySlug = (slugs: string[]) =>
+  slugs
+    .map((slug) => blogArticles.find((article) => article.slug === slug))
+    .filter(Boolean);
+
+const guideGroups = [
+  {
+    label: "Fabric Selection",
+    title: "Choose the right fabric route",
+    copy: "Compare foil, holographic, iridescent and 4-way stretch options before sampling.",
+    articles: getArticlesBySlug([
+      "what-is-foil-fabric-wholesale-buyer-guide",
+      "hot-stamping-foil-finish-guide",
+      "holographic-fabric-for-dancewear-what-buyers-should-check",
+      "iridescent-vs-metallic-fabric-for-stage-costumes",
+      "how-to-choose-4-way-stretch-fabric-for-bodysuits",
+    ]),
+  },
+  {
+    label: "Applications",
+    title: "Match fabric to performance garments",
+    copy: "Use application guides for dancewear, cheerleading, bodysuits and stage costumes.",
+    articles: getArticlesBySlug([
+      "how-to-choose-hot-stamping-spandex-fabric-for-dancewear-stage-costumes",
+      "best-fabric-for-cheerleading-and-performance-costumes",
+      "holographic-fabric-for-dancewear-what-buyers-should-check",
+    ]),
+  },
+  {
+    label: "Sample & RFQ",
+    title: "Prepare a clearer sample request or quote",
+    copy: "Reduce back-and-forth with sample, MOQ, unit conversion and RFQ templates.",
+    articles: getArticlesBySlug([
+      "how-to-request-fabric-sample-from-china-supplier",
+      "foil-fabric-rfq-template-us-buyers",
+      "how-to-calculate-fabric-moq-yards-meters",
+      "fabric-gsm-vs-ounces-buyer-conversion-guide",
+    ]),
+  },
+  {
+    label: "Testing & Compliance",
+    title: "Control risk before bulk production",
+    copy: "Confirm testing support, approved samples, inspection points and shipment readiness.",
+    articles: getArticlesBySlug([
+      "sgs-reach-compliance-guide",
+      "what-to-include-in-a-custom-fabric-rfq",
+    ]),
+  },
+];
 
 const buyerQuestions = [
   {
@@ -121,8 +170,31 @@ const buyerQuestions = [
         </aside>
       </div>
 
+      <section class="guide-groups" aria-labelledby="guide-groups-heading">
+        <div class="section-heading">
+          <span class="eyebrow">Resource Topics</span>
+          <h2 id="guide-groups-heading">Browse guides by sourcing task</h2>
+        </div>
+        <div class="guide-group-grid">
+          {guideGroups.map((group) => (
+            <section class="guide-group">
+              <span>{group.label}</span>
+              <h3>{group.title}</h3>
+              <p>{group.copy}</p>
+              <ul>
+                {group.articles.map((article) => (
+                  <li>
+                    <a href={`/blog/${article.slug}/`}>{article.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+      </section>
+
       {latestArticles.length > 0 && (
-        <div class="latest-guides">
+        <section class="latest-guides">
           <div class="section-heading">
             <span class="eyebrow">Latest Buyer Guides</span>
             <h2>Find the answer closest to your sourcing question</h2>
@@ -150,7 +222,7 @@ const buyerQuestions = [
               </article>
             ))}
           </div>
-        </div>
+        </section>
       )}
 
       <section class="buyer-questions" aria-labelledby="buyer-questions-heading">
@@ -325,6 +397,7 @@ const buyerQuestions = [
   }
 
   .latest-guides,
+  .guide-groups,
   .buyer-questions,
   .resource-cta {
     margin-top: var(--space-3xl);
@@ -342,6 +415,56 @@ const buyerQuestions = [
   .guide-list {
     display: grid;
     gap: var(--space-md);
+  }
+
+  .guide-group-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .guide-group {
+    padding: var(--space-xl);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg-alt);
+  }
+
+  .guide-group > span {
+    color: var(--color-accent-dark);
+    font-size: var(--text-xs);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .guide-group h3 {
+    margin: var(--space-sm) 0;
+    font-size: var(--text-xl);
+  }
+
+  .guide-group p {
+    margin-bottom: var(--space-lg);
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+
+  .guide-group ul {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .guide-group li {
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .guide-group a {
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    line-height: 1.35;
   }
 
   .guide-row {
@@ -462,6 +585,10 @@ const buyerQuestions = [
 
     .question-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .guide-group-grid {
+      grid-template-columns: 1fr;
     }
   }
 

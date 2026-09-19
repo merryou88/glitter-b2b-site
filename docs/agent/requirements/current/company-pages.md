@@ -72,3 +72,33 @@ status: current
 - 测试路径：`npm run build`；检查生成页面文本与 meta
 - 最后变更编号：CHG-20260912-018-public-copy-alignment
 - 待确认事项：无
+
+### REQ-COMPANY-008：Factory 页面展示自有生产与可核验制造流程
+- 状态：active
+- 当前规则：`/factory/` 明确展示 Nixia 拥有自有生产车间，页面聚焦 foil fabric processing、色彩开发、质量检验、卷装包装和买家审厂支持；页面展示品牌化工厂实拍视频，并可安排项目相关的远程视频验厂。页面不得虚构未经确认的面积、设备数量、产能、员工数量、交期或证书归属。
+- 验收条件：Factory 页面首屏和生产介绍不再使用会弱化自有工厂定位的 `production partners` 表述；页面包含工厂能力概览、生产流程控制点、质量管理、品牌化工厂视频、视频验厂联系入口和审厂支持；页面仍不展示 glitter 专属内容。
+- 影响模块：`company-pages`、`site-shell`
+- 代码路径：`src/pages/factory.astro`
+- 测试路径：`npm run build`；检查 `/factory/` 生成页面文本、页面 SEO 元数据和移动端布局
+- 最后变更编号：CHG-20260919-001-factory-branded-video
+- 待确认事项：可公开的具体工厂数据和测试标准
+
+### REQ-COMPANY-009：Factory 地图使用稳定的懒加载与常驻备用入口
+- 状态：active
+- 当前规则：`/factory/` 的 Google Maps iframe 使用浏览器原生懒加载，不通过静态资源探测或固定超时判断地图是否可用；地图下方始终展示工厂地址和 Google Maps 外链，供网络受限或 iframe 加载失败时使用。
+- 验收条件：页面不会在 iframe 尚未进入视口时误判加载失败并隐藏地图；地图 iframe 有可访问名称；桌面端和移动端都能看到工厂地址及外部地图入口。
+- 影响模块：`company-pages`
+- 代码路径：`src/pages/factory.astro`
+- 测试路径：`npm run build`；检查 `/factory/` 生成页面不包含地图探测脚本，并检查移动端地图辅助信息布局
+- 最后变更编号：CHG-20260918-005-factory-map-loading
+- 待确认事项：中国大陆网络可能无法访问 Google Maps，此限制不由页面代码控制
+
+### REQ-COMPANY-010：Factory 页面展示品牌化工厂实拍视频
+- 状态：active
+- 当前规则：`/factory/` 嵌入品牌化工厂实拍视频，视频校正画面方向并使用 Nixia Fabric 片头、固定品牌水印、网站地址和片尾；页面播放器不自动播放，使用 poster、`preload="metadata"` 和 `playsinline`，兼顾移动端性能与内联播放。
+- 验收条件：Factory 页面可播放 `/images/factory/nixia-factory-branded.mp4`；成片为网页兼容的 H.264/AAC MP4，画面方向正确，片头、主画面水印和片尾可见；播放器保持 16:9 且移动端不发生布局位移；页面仍提供联系入口以安排项目相关的视频验厂。
+- 影响模块：`company-pages`、`content-data`
+- 代码路径：`src/pages/factory.astro`、`public/images/factory/nixia-factory-branded.mp4`、`public/images/factory/nixia-factory-poster.jpg`
+- 测试路径：`npm run build`；检查视频编码、时长、画面方向和 Factory 页面生成 HTML
+- 最后变更编号：CHG-20260919-001-factory-branded-video
+- 待确认事项：无

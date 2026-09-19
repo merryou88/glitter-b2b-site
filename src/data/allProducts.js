@@ -19,7 +19,7 @@
  *      performance wear, party apparel, props, backdrops or event decoration. Do not add glitter
  *      leather, PU accessory, shoes/bags/crafts or other off-position products.
  *   4. Write US-buyer SEO before saving:
- *      - metaTitle = buyer search term + " | Wholesale Supplier"
+ *      - metaTitle = one specific buyer search term + " | Nixia Fabric"
  *      - title/H1 starts with the product material/effect, not an internal process
  *      - metaDesc includes application, wholesale/supplier intent, samples/custom
  *        support, and key MOQ/stock facts when confirmed
@@ -33,7 +33,7 @@
 export const allProducts = [
   {
     slug: "plain-iridescent-laser-spandex-4-way-stretch",
-    metaTitle: "Iridescent Laser 4-Way Stretch Fabric | Foil Fabric Supplier",
+    metaTitle: "Iridescent 4-Way Stretch Foil Fabric | Nixia Fabric",
     metaDesc:
       "Iridescent laser 4-way stretch fabric for stage costumes, dancewear and performance wear. Foil fabric supply, samples, custom color support and 100 m / 109 yd MOQ.",
     title: "Iridescent Laser Foil 4-Way Stretch Fabric for Stage & Dancewear",
@@ -746,7 +746,7 @@ export const allProducts = [
 
   {
     slug: "iridescent-laser-hot-stamping-stretch-ice-silk",
-    metaTitle: "Iridescent Laser Foil Stretch Ice-Silk Fabric | Foil Fabric Supplier",
+    metaTitle: "Iridescent Stretch Foil Fabric | Nixia Fabric",
     metaDesc:
       "Iridescent stretch ice-silk fabric with a shifting multi-color foil finish for stage costumes, dancewear and performance outfits. Samples available.",
     title: "Iridescent Laser Foil Stretch Ice-Silk Fabric",
@@ -865,7 +865,7 @@ export const allProducts = [
 
   {
     slug: "iridescent-gradient-laser-ice-silk",
-    metaTitle: "Iridescent Gradient Foil Stretch Fabric | Wholesale Supplier",
+    metaTitle: "Gradient Iridescent Stretch Fabric | Nixia Fabric",
     metaDesc:
       "Iridescent gradient foil stretch fabric for dancewear, stage costumes, performance wear and party apparel. Samples and custom gradient color support.",
     title: "Iridescent Gradient Foil Stretch Fabric for Dancewear & Costumes",
@@ -961,9 +961,9 @@ export const allProducts = [
   },
   {
     slug: "rainbow-dot-laser-foil-knit-fabric",
-    metaTitle: "Rainbow Dot Laser Foil Knit Fabric for Stage Costumes | Wholesale Supplier",
+    metaTitle: "Rainbow Dot Foil Knit Fabric | Nixia Fabric",
     metaDesc:
-      "Rainbow dot laser foil knit fabric for stage costumes, performance outfits, dancewear and colorful costume panels. Wholesale supplier with 28 colors, 5-7 day bulk lead time and 200 m / 219 yd MOQ.",
+      "Rainbow dot foil knit fabric for stage costumes, dancewear and performance outfits. Available in 28 colors with a 200 m / 219 yd MOQ.",
     title: "Rainbow Dot Laser Foil Knit Fabric for Stage Costumes",
     sku: "H2013090104",
     mainImageUrl: "/images/products/H2013090104/main/a1.webp",
@@ -1181,7 +1181,7 @@ export const allProducts = [
   },
   {
     slug: "blue-purple-gradient-laser-foil-spandex-fabric",
-    metaTitle: "Blue-Purple Gradient Laser Foil Spandex Stretch Fabric | Nixia Fabric",
+    metaTitle: "Blue-Purple Gradient Foil Spandex | Nixia Fabric",
     metaDesc:
       "Blue-purple gradient laser foil on a 4-way stretch spandex base for stage costumes, dancewear and performance apparel. Foil fabric supply with custom color development support.",
     title: "Blue-Purple Gradient Laser Foil 4-Way Stretch Fabric",

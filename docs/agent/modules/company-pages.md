@@ -50,6 +50,7 @@ requirement_docs:
 - `privacy.astro` 有固定的 `lastUpdated = "August 2026"`
 - `thank-you.astro` 使用 `robots="noindex, follow"`
 - `404.astro` 使用 `robots="noindex"`
+- `factory.astro` 使用 `public/images/factory/nixia-factory-branded.mp4` 和对应 poster 展示品牌化工厂实拍视频
 
 ## 外部依赖
 - 仅依赖现有静态页面和局部组件

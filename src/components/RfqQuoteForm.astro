@@ -38,6 +38,16 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     </div>
 
     <div class="rfq-field">
+      <label for="rfq-inquiry-select" class="rfq-field__label">What do you need?</label>
+      <select id="rfq-inquiry-select" name="inquiryType" class="rfq-field__input">
+        <option value="sample-and-quote">Sample and bulk quote</option>
+        <option value="sample">Sample first</option>
+        <option value="quote">Bulk pricing</option>
+        <option value="custom-development">Custom development</option>
+      </select>
+    </div>
+
+    <div class="rfq-field">
       <label for="rfq-email" class="rfq-field__label">Email Address <span class="rfq-field__req">*</span></label>
       <input type="email" id="rfq-email" name="email" class="rfq-field__input rfq-field__input--required" placeholder="you@company.com" autocomplete="email" />
       <span class="rfq-field__error" id="rfq-email-error"></span>
@@ -55,8 +65,24 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     </div>
 
     <div class="rfq-field">
-      <label for="rfq-message" class="rfq-field__label">Message <span class="rfq-field__req">*</span></label>
-      <textarea id="rfq-message" name="message" rows="4" class="rfq-field__textarea rfq-field__input--required" placeholder="Please share any details you have, such as color, application or target delivery date."></textarea>
+      <label for="rfq-destination" class="rfq-field__label">Destination Country</label>
+      <input type="text" id="rfq-destination" name="destinationCountry" class="rfq-field__input" placeholder="e.g. United States (optional)" autocomplete="country-name" />
+    </div>
+
+    <div class="rfq-field">
+      <label for="rfq-application" class="rfq-field__label">Application / End Product</label>
+      <input type="text" id="rfq-application" name="application" class="rfq-field__input" placeholder="e.g. dancewear, stage costumes (optional)" />
+    </div>
+
+    <div class="rfq-field">
+      <label for="rfq-delivery-date" class="rfq-field__label">Target Delivery Date</label>
+      <input type="text" id="rfq-delivery-date" name="targetTimeline" class="rfq-field__input" placeholder="e.g. September 2026 (optional)" />
+    </div>
+
+    <div class="rfq-field">
+      <label for="rfq-message" class="rfq-field__label">Additional Message</label>
+      <span class="rfq-field__hint">Optional. The selected product and inquiry details will be included automatically.</span>
+      <textarea id="rfq-message" name="message" rows="4" class="rfq-field__textarea" placeholder="Please share color, surface effect, customization or any other details."></textarea>
       <span class="rfq-field__error" id="rfq-message-error"></span>
     </div>
 
@@ -100,6 +126,29 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
   const submitSpinner = submitBtn ? submitBtn.querySelector(".rfq-form__spinner") : null;
   const errorBanner = document.getElementById("rfq-form-error");
   const errorText = document.getElementById("rfq-form-error-text");
+  let formStarted = false;
+
+  function getAttribution() {
+    try {
+      return JSON.parse(window.sessionStorage.getItem("nixia_attribution") || "{}");
+    } catch {
+      return {};
+    }
+  }
+
+  function track(eventName, params) {
+    window.__nixiaTrack?.(eventName, {
+      product: document.getElementById("rfq-sku")?.value || "",
+      product_path: window.location.pathname,
+      ...params,
+    });
+  }
+
+  function markFormStarted() {
+    if (formStarted) return;
+    formStarted = true;
+    track("rfq_form_start");
+  }
 
   function showError(message) {
     if (errorText) errorText.textContent = message;
@@ -130,7 +179,6 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     const data = new FormData(form);
     const name = String(data.get("fullName") || "").trim();
     const email = String(data.get("email") || "").trim();
-    const message = String(data.get("message") || "").trim();
     const nameInput = document.getElementById("rfq-full-name");
     const emailInput = document.getElementById("rfq-email");
     const messageInput = document.getElementById("rfq-message");
@@ -157,11 +205,13 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
       setFieldError(emailInput, emailError, "");
     }
 
-    if (!message) {
-      setFieldError(messageInput, messageError, "Message is required.");
-      valid = false;
-    } else {
-      setFieldError(messageInput, messageError, "");
+    setFieldError(messageInput, messageError, "");
+
+    if (!valid) {
+      track("rfq_validation_error", {
+        missing_name: !name,
+        missing_or_invalid_email: !email || !/^\S+@\S+\.\S+$/.test(email),
+      });
     }
 
     return valid;
@@ -181,12 +231,18 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
   ["rfq-full-name", "rfq-email"].forEach((id) => {
     const input = document.getElementById(id);
     input?.addEventListener("input", () => {
+      markFormStarted();
       setFieldError(input, document.getElementById(`${id}-error`), "");
       hideError();
     });
   });
 
+  form?.querySelectorAll("input, select, textarea").forEach((input) => {
+    input.addEventListener("focus", markFormStarted, { once: true });
+  });
+
   document.getElementById("rfq-message")?.addEventListener("input", () => {
+    markFormStarted();
     const input = document.getElementById("rfq-message");
     setFieldError(input, document.getElementById("rfq-message-error"), "");
     hideError();
@@ -204,17 +260,42 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     const weight = document.getElementById("rfq-selected-weight")?.textContent || "—";
     const width = document.getElementById("rfq-selected-width")?.textContent || "—";
 
+    const inquiryType = String(formData.get("inquiryType") || "sample-and-quote").trim();
+    const estimatedQuantity = String(formData.get("estimatedQuantity") || "").trim();
+    const destinationCountry = String(formData.get("destinationCountry") || "").trim();
+    const application = String(formData.get("application") || "").trim();
+    const targetTimeline = String(formData.get("targetTimeline") || "").trim();
+    const enteredMessage = String(formData.get("message") || "").trim();
+    const generatedMessage = [
+      `Inquiry type: ${inquiryType}`,
+      estimatedQuantity ? `Estimated quantity: ${estimatedQuantity}` : "",
+      destinationCountry ? `Destination country: ${destinationCountry}` : "",
+      application ? `Application / end product: ${application}` : "",
+      targetTimeline ? `Target delivery date: ${targetTimeline}` : "",
+    ].filter(Boolean).join("\n");
+
     const payload = {
       name: String(formData.get("fullName") || "").trim(),
       company: String(formData.get("company") || "").trim(),
       email: String(formData.get("email") || "").trim(),
       phone,
-      message: String(formData.get("message") || "").trim(),
+      message: enteredMessage || generatedMessage,
       productSku: selectedName,
       productName: selectedName,
       productWeight: weight,
       productWidth: width,
-      estimatedQuantity: String(formData.get("estimatedQuantity") || "").trim(),
+      inquiryType,
+      estimatedQuantity,
+      destinationCountry,
+      application,
+      targetTimeline,
+      utmSource: getAttribution().utm_source || "",
+      utmMedium: getAttribution().utm_medium || "",
+      utmCampaign: getAttribution().utm_campaign || "",
+      utmContent: getAttribution().utm_content || "",
+      utmTerm: getAttribution().utm_term || "",
+      gclid: getAttribution().gclid || "",
+      landingPage: getAttribution().landing_page || "",
       website: String(formData.get("website") || "").trim(),
     };
 
@@ -239,11 +320,24 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
       }
 
       if (res.ok && data.success) {
+        track("generate_lead", {
+          product: selectedName,
+          inquiry_type: payload.inquiryType,
+          lead_method: "rfq",
+        });
         window.location.href = "/thank-you/";
       } else {
+        track("rfq_submit_error", {
+          status: res.status,
+          inquiry_type: payload.inquiryType,
+        });
         showError(data.message || "Submission failed. Please try again or contact us at info@nixiafabric.com.");
       }
     } catch (err) {
+      track("rfq_submit_error", {
+        status: "network_error",
+        inquiry_type: payload.inquiryType,
+      });
       showError("Unable to reach the server. Please check your internet connection and try again.");
     } finally {
       setLoading(false);

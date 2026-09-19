@@ -15,9 +15,9 @@ import { performanceProducts } from "@data/allProducts";
 const webPageData = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Foil Fabrics for Performance Wear Manufacturers | Nixia Fabric",
+  name: "Foil Fabric Supplier | Wholesale Foil Fabrics | Nixia Fabric",
   description:
-  "Specialist foil fabric supplier with 15+ years of experience. Ready-stock foil fabrics and custom development for stage costumes, performance wear, dancewear and party apparel.",
+  "Specialist foil fabric supplier with ready-stock and custom wholesale foil fabrics for stage costumes, performance wear, dancewear and party apparel.",
   url: "https://nixiafabric.com",
 };
 
@@ -103,29 +103,35 @@ const applications = [
   {
     title: "Stage Costumes",
     desc: "Stage costumes and show outfits that need strong shine and visual impact.",
+    href: "/applications/foil-fabric-for-stage-costumes/",
     featured: true,
   },
   {
     title: "Performance Wear",
     desc: "Performance garments designed for movement, lighting and visual effects.",
+    href: "/applications/cheerleading-performance-costume-fabric/",
     featured: true,
   },
   {
     title: "Dancewear",
     desc: "Stretch foil fabrics for dance costumes, competition wear and performance outfits.",
+    href: "/applications/dancewear-fabric-supplier/",
     featured: true,
   },
   {
     title: "Show Costumes",
     desc: "Distinctive fabrics for entertainment, show and event costume production.",
+    href: "/applications/holographic-fabric-wholesale/",
   },
   {
     title: "Party Wear",
     desc: "Eye-catching foil fabrics for party dresses, themed outfits and statement apparel.",
+    href: "/products/",
   },
   {
     title: "Festival & Carnival Costumes",
     desc: "Reflective and colorful fabrics for festival, carnival and themed costume designs.",
+    href: "/products/",
   },
 ];
 
@@ -174,9 +180,9 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
 ---
 
 <Layout
-  title="Foil Fabrics for Performance Wear Manufacturers | Nixia Fabric"
-  description="Specialist foil fabric supplier with 15+ years of experience. Ready-stock foil fabrics and custom development for stage costumes, performance wear, dancewear and party apparel."
-  keywords="foil fabric supplier, foil fabrics, foil stretch fabric, laser foil fabric, iridescent foil fabric, performance fabric, stage costume fabric"
+  title="Foil Fabric Supplier | Wholesale Foil Fabrics | Nixia Fabric"
+  description="Specialist foil fabric supplier with ready-stock and custom wholesale foil fabrics for stage costumes, performance wear, dancewear and party apparel."
+  keywords="foil fabric supplier, wholesale foil fabric, foil stretch fabric, laser foil fabric, iridescent foil fabric, performance fabric, stage costume fabric"
   structuredData={[webPageData]}
   footerFocus="foil"
 >
@@ -333,6 +339,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
           <article class:list={["application-card", { "application-card--featured": item.featured }]}>
             <h3>{item.title}</h3>
             <p>{item.desc}</p>
+            <a href={item.href}>View sourcing options</a>
           </article>
         ))}
       </div>
@@ -1094,10 +1101,16 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
   }
 
   .application-card p {
-    margin: 0;
+    margin: 0 0 var(--space-sm);
     color: var(--color-text-muted);
     font-size: var(--text-sm);
     line-height: 1.6;
+  }
+
+  .application-card a {
+    color: var(--color-accent-dark);
+    font-size: var(--text-sm);
+    font-weight: 700;
   }
 
   /* ==================== RFQ & Buyer Resource ==================== */

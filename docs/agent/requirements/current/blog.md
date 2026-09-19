@@ -62,3 +62,13 @@ status: current
 - 测试路径：`npm run build`
 - 最后变更编号：CHG-20260916-009-blog-resource-center-layout
 - 待确认事项：无
+
+### REQ-BLOG-007：博客内容集群、内链与采购模板
+- 状态：active
+- 当前规则：公开博客需要按 `Fabric Selection`、`Applications`、`Sample & RFQ`、`Testing & Compliance` 四类采购任务组织入口；文章详情页必须包含统一的采购动作模块、推荐产品和 Related Buyer Guides 内链。公开集合继续排除 glitter、鞋包配件等不符合当前定位的内容，并保留 RFQ、样品、MOQ、GSM、合规和质检类高意图文章。
+- 验收条件：`/blog/` 展示四个资源主题分组；公开文章详情页展示 Sample & RFQ Next Steps、Recommended Products 和 Related Buyer Guides；公开 Blog 路由不生成 glitter/shoes/bags 主题文章；构建成功。
+- 影响模块：`blog-knowledge`、`content-data`、`product-catalog`
+- 代码路径：`src/data/blogArticles.js`、`src/pages/blog/index.astro`、`src/pages/blog/[slug].astro`
+- 测试路径：`npm run build`
+- 最后变更编号：CHG-20260918-003-blog-content-seo-internal-links
+- 待确认事项：无

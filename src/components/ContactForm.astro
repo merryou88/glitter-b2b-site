@@ -107,6 +107,30 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
   const submitArrow = submitBtn ? submitBtn.querySelector(".form-submit__arrow") : null;
   const errorBanner = document.getElementById("form-error");
   const errorText = document.getElementById("form-error-text");
+  let formStarted = false;
+
+  function getAttribution() {
+    try {
+      return JSON.parse(window.sessionStorage.getItem("nixia_attribution") || "{}");
+    } catch {
+      return {};
+    }
+  }
+
+  function track(eventName, params) {
+    window.__nixiaTrack?.(eventName, {
+      form: "contact",
+      product: document.getElementById("product-sku")?.value || "",
+      product_path: window.location.pathname,
+      ...params,
+    });
+  }
+
+  function markFormStarted() {
+    if (formStarted) return;
+    formStarted = true;
+    track("contact_form_start");
+  }
 
   // Pre-fill subject/message from URL params (?subject=, ?sku=)
   try {
@@ -179,6 +203,9 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
   }
 
   form?.addEventListener("input", updateSubmitState);
+  form?.querySelectorAll("input, textarea").forEach((input) => {
+    input.addEventListener("focus", markFormStarted, { once: true });
+  });
 
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -196,6 +223,13 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
       estimatedQuantity: String(formData.get("estimatedQuantity") || "").trim(),
       phone: String(formData.get("phone") || "").trim(),
       message: String(formData.get("message") || "").trim(),
+      utmSource: getAttribution().utm_source || "",
+      utmMedium: getAttribution().utm_medium || "",
+      utmCampaign: getAttribution().utm_campaign || "",
+      utmContent: getAttribution().utm_content || "",
+      utmTerm: getAttribution().utm_term || "",
+      gclid: getAttribution().gclid || "",
+      landingPage: getAttribution().landing_page || "",
       website: String(formData.get("website") || "").trim(),
     };
 
@@ -220,11 +254,14 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
       }
 
       if (res.ok && data.success) {
+        track("generate_lead", { lead_method: "contact" });
         window.location.href = "/thank-you/";
       } else {
+        track("contact_submit_error", { status: res.status });
         showError(data.message || "Submission failed. Please try again or contact us at info@nixiafabric.com.");
       }
     } catch (err) {
+      track("contact_submit_error", { status: "network_error" });
       showError("Unable to reach the server. Please check your internet connection and try again.");
     } finally {
       setLoading(false);

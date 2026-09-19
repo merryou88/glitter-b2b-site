@@ -47,6 +47,7 @@ requirement_docs:
 - `public/images/**`
 - `public/shots/**`
 - `../products-data/original-images/**` stores archived JPG/PNG originals that should not be deployed
+- `../products-data/original-videos/**` stores archived source videos that should not be deployed
 - 本地文件系统图片命名
 
 ## 修改约束

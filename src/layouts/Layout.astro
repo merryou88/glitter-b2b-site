@@ -133,6 +133,32 @@ const allStructuredData = structuredData
     <!-- Google tag (gtag.js), loaded after the first render -->
     <script is:inline>
       (function () {
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+        window.__nixiaTrack = window.__nixiaTrack || function (eventName, params) {
+          window.gtag("event", eventName, params || {});
+        };
+
+        // Keep first-touch campaign data available to inquiry forms.
+        try {
+          var params = new URLSearchParams(window.location.search);
+          var keys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid"];
+          var attribution = {};
+          try {
+            attribution = JSON.parse(window.sessionStorage.getItem("nixia_attribution") || "{}");
+          } catch (error) {}
+          keys.forEach(function (key) {
+            var value = params.get(key);
+            if (value && !attribution[key]) attribution[key] = value;
+          });
+          var existingAttribution = window.sessionStorage.getItem("nixia_attribution");
+          if (Object.keys(attribution).length || !existingAttribution) {
+            attribution.landing_page = attribution.landing_page || window.location.href;
+            attribution.landing_at = attribution.landing_at || new Date().toISOString();
+            window.sessionStorage.setItem("nixia_attribution", JSON.stringify(attribution));
+          }
+        } catch (error) {}
+
         var analyticsOptOutCookie = "nixia_ga_optout=true";
         if (document.cookie.split("; ").indexOf(analyticsOptOutCookie) !== -1) {
           return;
@@ -147,10 +173,8 @@ const allStructuredData = structuredData
           googleTag.src = "https://www.googletagmanager.com/gtag/js?id=G-VDYGZBSQ62";
           document.head.appendChild(googleTag);
 
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag("js", new Date());
-          gtag("config", "G-VDYGZBSQ62");
+          window.gtag("js", new Date());
+          window.gtag("config", "G-VDYGZBSQ62");
         }
 
         window.addEventListener("load", function () {
@@ -170,6 +194,7 @@ const allStructuredData = structuredData
     <!-- Primary Meta Tags -->
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
     <link rel="canonical" href={canonicalUrl} />
 
     <!-- Robots -->

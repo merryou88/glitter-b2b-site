@@ -33,8 +33,8 @@ const productLookup = performanceProducts.map((p) => ({
         <span class="rfq-modal__brand-name">Nixia&nbsp;Fabric</span>
       </div>
 
-      <h2 class="rfq-modal__title" id="rfq-modal-title">Request a Custom Quote</h2>
-      <p class="rfq-modal__desc" id="rfq-modal-desc">Fill in your details and we&rsquo;ll prepare a personalised bulk pricing sheet within 24 hours.</p>
+      <h2 class="rfq-modal__title" id="rfq-modal-title">Request Sample &amp; Quote</h2>
+      <p class="rfq-modal__desc" id="rfq-modal-desc">Share your product requirements and we&rsquo;ll confirm sample options, pricing and next steps within 24 hours.</p>
 
       <div class="rfq-modal__product">
         <span class="rfq-modal__product-label">Selected Product</span>
@@ -346,6 +346,36 @@ const productLookup = performanceProducts.map((p) => ({
     if (widthEl) widthEl.textContent = rec?.width || "—";
   }
 
+  function setInquiryType(type) {
+    const select = document.getElementById("rfq-inquiry-select");
+    const allowed = ["sample-and-quote", "sample", "quote", "custom-development"];
+    const value = allowed.includes(type) ? type : "sample-and-quote";
+    if (select) select.value = value;
+
+    const titleEl = document.getElementById("rfq-modal-title");
+    const descEl = document.getElementById("rfq-modal-desc");
+    const copy = {
+      "sample-and-quote": {
+        title: "Request Sample & Quote",
+        desc: "Share your product requirements and we’ll confirm sample options, pricing and next steps within 24 hours.",
+      },
+      sample: {
+        title: "Request a Fabric Sample",
+        desc: "Tell us what you need to test and we’ll confirm sample options, shipping and the next step within 24 hours.",
+      },
+      quote: {
+        title: "Request Bulk Pricing",
+        desc: "Share your quantity and application so we can prepare the right bulk quotation within 24 hours.",
+      },
+      "custom-development": {
+        title: "Discuss Custom Development",
+        desc: "Send your target effect, application and quantity so our team can review the development route.",
+      },
+    }[value];
+    if (titleEl) titleEl.textContent = copy.title;
+    if (descEl) descEl.textContent = copy.desc;
+  }
+
   const openModal = (trigger = null) => {
     if (!modal) return;
     lastTrigger = trigger instanceof HTMLElement ? trigger : null;
@@ -377,10 +407,14 @@ const productLookup = performanceProducts.map((p) => ({
     element.addEventListener("click", (event) => {
       if (element.tagName === "A") event.preventDefault();
       setSelectedProduct(element.getAttribute("data-rfq-sku") || "");
+      setInquiryType(element.getAttribute("data-rfq-intent") || "sample-and-quote");
       openModal(element);
     })
   );
   closers.forEach((button) => button.addEventListener("click", closeModal));
+  document.getElementById("rfq-inquiry-select")?.addEventListener("change", (event) => {
+    setInquiryType(event.target?.value || "sample-and-quote");
+  });
 
   // Auto-open the modal on pages that intentionally carry a [data-rfq-autoopen] marker.
   if (document.querySelector("[data-rfq-autoopen]")) {

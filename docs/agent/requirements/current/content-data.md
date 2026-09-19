@@ -52,3 +52,13 @@ status: current
 - 测试路径：`npm run validate:products`、`npm run build`，扫描生成页面中的缺失图片引用
 - 最后变更编号：CHG-20260916-007-archive-original-images
 - 待确认事项：是否还需要为极旧浏览器保留少量 JPG/PNG fallback
+
+### REQ-DATA-006：工厂原始视频不得随站点公开部署
+- 状态：active
+- 当前规则：Factory 页面使用的原始视频归档在 `products-data/original-videos/`，不得保留在 `public/`；线上只部署经过方向校正、品牌片头、固定水印、网站地址和片尾处理的展示版本。
+- 验收条件：`public/images/factory/` 只包含页面实际使用的品牌版视频和 poster；未品牌化源视频保留在非公开归档目录，并可用于后续重新编码。
+- 影响模块：`content-data`、`company-pages`
+- 代码路径：`products-data/original-videos/images/factory/factory.mp4`、`public/images/factory/nixia-factory-branded.mp4`、`public/images/factory/nixia-factory-poster.jpg`
+- 测试路径：检查 `public/images/factory/` 文件清单；运行 `npm run build`
+- 最后变更编号：CHG-20260919-001-factory-branded-video
+- 待确认事项：无

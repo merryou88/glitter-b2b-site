@@ -6,8 +6,8 @@
  * reference page (nixiafabric.com/products/plain-iridescent-laser-spandex-4-way-stretch).
  *
  * All variable text/images are read from the `product` prop (see allProducts.js).
- * Fixed public content (Our Policy copy, SGS · REACH · Pre-shipment QC tags,
- * H2 headings) is hardcoded here — it must NOT be passed per product.
+ * Shared buyer guidance and section headings live here; product-specific
+ * sourcing facts are derived from the product data below.
  *
  * This component contains NO <head>, NO meta tags, and NO ld+json scripts;
  * those are emitted by the dynamic route page pages/products/[slug].astro.
@@ -58,6 +58,9 @@ export interface Props {
     sampleCta?: { title: string; body: string; buttonLabel: string };
     samplePrompt?: string;
     availability?: string;
+    inStock?: boolean;
+    stockStatus?: string;
+    sku?: string;
     customProjectMoq?: string;
   };
 }
@@ -80,8 +83,12 @@ const hideProductDescription = [
   "blue-purple-gradient-laser-foil-spandex-fabric",
   "rainbow-dot-laser-foil-knit-fabric",
 ].includes(product.slug);
-const quoteButtonLabel = isInquiryFocusedProduct ? "Get a Quote" : "Add to Quotation List";
-const inquiryButtonLabel = isInquiryFocusedProduct ? "Send an Inquiry" : "WhatsApp";
+const hasConfirmedDispatch =
+  product.inStock === true &&
+  Boolean(product.specs.leadTime) &&
+  product.specs.leadTime.toLowerCase() !== "to be confirmed";
+const dispatchLabel = hasConfirmedDispatch ? "READY STOCK DISPATCH" : "LEAD TIME";
+const dispatchUnit = hasConfirmedDispatch ? "Working Days After Confirmation" : "To Be Confirmed";
 const samplePolicyIntro =
   product.samplePrompt ??
   "Free samples available, buyer covers international shipping cost. Shipping fee will be deducted from bulk orders.";
@@ -142,9 +149,19 @@ const applicationImages = (() => {
 const relatedProducts = performanceProducts
   .filter((p) => p.slug !== product.slug)
   .filter((p) =>
-    p.applications.some((app) => product.applications.some((a) => a === app))
+    p.applications.some((app) =>
+      product.applications.some((a) => a.trim().toLowerCase() === app.trim().toLowerCase()),
+    )
   )
   .slice(0, 3);
+
+const whatsappMessage = [
+  "Hello, I am interested in:",
+  `Product: ${product.title}`,
+  `SKU: ${product.sku ?? "To be confirmed"}`,
+  "I would like to discuss a sample and bulk pricing.",
+].join("\n");
+const whatsappHref = `https://wa.me/8613616899303?text=${encodeURIComponent(whatsappMessage)}`;
 
 const titleCase = (s: string) =>
   s.replace(/(^|[\s-])([a-z])/g, (_m, p1: string, p2: string) => p1 + p2.toUpperCase());
@@ -237,6 +254,45 @@ const b2bValue = (labels: string[]) => findRowValue(product.b2bTable, labels);
 const productWidth = findRowValue(product.specTable, ["Width"]) || product.specs.width;
 const productWeight = findRowValue(product.specTable, ["Weight"]) || product.specs.weight;
 const productMoq = findRowValue(product.specTable, ["MOQ"]) || b2bValue(["MOQ"]) || product.specs.moq;
+const productMaterial =
+  findRowValue(product.specTable, ["Material", "Base Material", "Base Fabric"]) ||
+  product.specs.baseMaterial;
+const productSurface =
+  findRowValue(product.specTable, ["Surface Effect", "Surface Finish", "Surface", "Finishing"]) ||
+  "Confirm by sample";
+const productStretch = findRowValue(product.specTable, ["Stretch"]) || "Confirm by sample";
+const productSampleInfo = b2bValue(["Sample", "Sampling"]) || product.sampleNote;
+const productCustomizationInfo =
+  b2bValue(["OEM / ODM", "OEM/ODM", "Customization"]) || product.customizationNote;
+const productAvailability =
+  product.availability ||
+  product.stockStatus ||
+  (product.inStock ? "In-stock status shown; confirm before order" : "Availability to be confirmed");
+const productTestingInfo =
+  b2bValue(["Testing & Compliance", "Compliance"]) ||
+  "Testing scope to be confirmed according to buyer requirements";
+const buyerConfirmationItems = [
+  { title: "Fabric Build", value: productMaterial },
+  { title: "Surface Effect", value: productSurface },
+  { title: "Stretch / Hand-feel", value: productStretch },
+  { title: "Width & Weight", value: `${productWidth}, ${productWeight}` },
+  { title: "Color Options", value: availableColors },
+  { title: "MOQ", value: `${productMoq} minimum` },
+  { title: "Sample Route", value: productSampleInfo },
+  { title: "Availability", value: productAvailability },
+].filter((item) => item.value);
+const referenceSubject = encodeURIComponent(`Reference review for ${product.title}`);
+const referenceBody = encodeURIComponent(
+  `Hello Nixia Fabric,\n\nI would like to discuss a reference image or sample for:\nProduct: ${product.title}\nSKU: ${product.sku ?? "To be confirmed"}\n\nPlease review the reference and advise the closest available fabric, sample options and bulk MOQ.\n`,
+);
+const referenceEmailHref = `mailto:info@nixiafabric.com?subject=${referenceSubject}&body=${referenceBody}`;
+const referenceWhatsappMessage = [
+  "Hello, I have a reference image or sample to discuss.",
+  `Product: ${product.title}`,
+  `SKU: ${product.sku ?? "To be confirmed"}`,
+  "Please advise the closest available fabric, sample options and bulk MOQ.",
+].join("\n");
+const referenceWhatsappHref = `https://wa.me/8613616899303?text=${encodeURIComponent(referenceWhatsappMessage)}`;
 const relatedMoq = (rel: (typeof performanceProducts)[number]) =>
   findRowValue(rel.specTable, ["MOQ"]) || findRowValue(rel.b2bTable, ["MOQ"]) || rel.specs.moq;
 
@@ -255,8 +311,10 @@ const b2bRows = [
   },
   { label: "Supply Type", value: b2bValue(["Supply type", "Supply Type"]) },
   {
-    label: "Stock Dispatch",
-    value: `${product.specs.leadTime} working days after payment and stock confirmation`,
+    label: dispatchLabel.replace("READY STOCK ", ""),
+    value: hasConfirmedDispatch
+      ? `${product.specs.leadTime} working days after payment and stock confirmation`
+      : "Lead time to be confirmed with the production or stock plan",
   },
   { label: "Bulk Lead Time", value: b2bValue(["Bulk Lead time", "Bulk Lead Time"]) },
   { label: "Available Colors", value: availableColors },
@@ -446,9 +504,9 @@ const heroVideo = product.video
             <span class="detail-offer-card__unit">Minimum</span>
           </div>
           <div class="detail-offer-card detail-offer-card--lead">
-            <span class="detail-offer-card__label">STOCK DISPATCH</span>
+            <span class="detail-offer-card__label">{dispatchLabel}</span>
             <strong class="detail-offer-card__value">{product.specs.leadTime}</strong>
-            <span class="detail-offer-card__unit">Working Days</span>
+            <span class="detail-offer-card__unit">{dispatchUnit}</span>
           </div>
         </div>
 
@@ -492,7 +550,7 @@ const heroVideo = product.video
 
         <!-- Action Buttons -->
         <div class="detail-cta">
-          <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} data-rfq-open data-rfq-sku={product.title} class="btn detail-cta__btn detail-cta__btn--gold">
+          <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} data-rfq-open data-rfq-sku={product.title} data-rfq-intent="sample-and-quote" class="btn detail-cta__btn detail-cta__btn--gold">
             <svg class="detail-cta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
               <path d="M14 2v4a2 2 0 0 0 2 2h4" />
@@ -500,9 +558,9 @@ const heroVideo = product.video
               <path d="M16 13H8" />
               <path d="M16 17H8" />
             </svg>
-            {quoteButtonLabel}
+            Request Sample &amp; Quote
           </a>
-          <a href="/sample-policy/" data-rfq-open data-rfq-sku={product.title} class="btn detail-cta__btn detail-cta__btn--sample">
+          <a href="/sample-policy/" data-rfq-open data-rfq-sku={product.title} data-rfq-intent="sample" class="btn detail-cta__btn detail-cta__btn--sample">
             <svg class="detail-cta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
               <path d="m3.3 7 8.7 5 8.7-5" />
@@ -510,11 +568,11 @@ const heroVideo = product.video
             </svg>
             Get Sample
           </a>
-          <a href="https://wa.me/8613616899303" target="_blank" rel="noopener noreferrer" class="btn detail-cta__btn detail-cta__btn--wa">
+          <a href={whatsappHref} data-product-contact="whatsapp" target="_blank" rel="noopener noreferrer" class="btn detail-cta__btn detail-cta__btn--wa">
             <svg class="detail-cta__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
             </svg>
-            {inquiryButtonLabel}
+            WhatsApp
           </a>
           <button type="button" class="btn detail-cta__btn detail-cta__btn--sample detail-cta__btn--copy" id="copy-product-link">
             <svg class="detail-cta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -535,6 +593,31 @@ const heroVideo = product.video
     </div>
   </div>
 </section>
+
+<!-- Mobile inquiry bar -->
+<div class="mobile-inquiry-bar" aria-label="Product inquiry actions">
+  <a
+    href={`/contact/?sku=${encodeURIComponent(product.title)}`}
+    data-rfq-open
+    data-rfq-sku={product.title}
+    data-rfq-intent="sample-and-quote"
+    class="mobile-inquiry-bar__primary"
+  >
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+      <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+      <path d="M10 9H8" />
+      <path d="M16 13H8" />
+      <path d="M16 17H8" />
+    </svg>
+    Request Sample &amp; Quote
+  </a>
+  <a href={whatsappHref} data-product-contact="whatsapp" class="mobile-inquiry-bar__whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Contact Nixia Fabric on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.1-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
+    </svg>
+  </a>
+</div>
 
 <!-- Detail Body -->
 <section class="section detail-content-section--compact">
@@ -769,14 +852,110 @@ const heroVideo = product.video
             <p>{product.sampleCta.body}</p>
           </div>
           <div class="policy-cta">
-            <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} data-rfq-open data-rfq-sku={product.title} class="btn detail-cta__btn detail-cta__btn--gold policy-cta__btn">
+            <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} data-rfq-open data-rfq-sku={product.title} data-rfq-intent="sample" class="btn detail-cta__btn detail-cta__btn--gold policy-cta__btn">
               {product.sampleCta.buttonLabel}
             </a>
           </div>
         </div>
       )}
 
-      {isInquiryFocusedProduct && (
+      <div class="detail-body__section" id="buyer-confirm">
+        <h2 class="section-title-with-icon">
+          <span class="section-title-with-icon__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M9.5 12.5 11 14l3.5-4" />
+            </svg>
+          </span>
+          <span>Buyer Confirmation Checklist</span>
+        </h2>
+        <p class="detail-section-intro">Confirm these points with your team before approving a bulk order.</p>
+        <div class="buyer-confirm-grid">
+          {buyerConfirmationItems.map((item) => (
+            <div class="buyer-confirm-card">
+              <div class="buyer-confirm-card__head">
+                <span class="buyer-confirm-card__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m5 12 4 4L19 6" />
+                  </svg>
+                </span>
+                <h3>{item.title}</h3>
+              </div>
+              <p>{item.value}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="detail-body__section detail-sample-policy" id="sample-review-workflow">
+        <h2 class="section-title-with-icon">
+          <span class="section-title-with-icon__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 3h12v18H6z" />
+              <path d="M9 8h6" />
+              <path d="M9 12h6" />
+              <path d="M9 16h4" />
+            </svg>
+          </span>
+          <span>Sample Review &amp; Approval</span>
+        </h2>
+        <div class="sample-workflow">
+          <div class="sample-workflow__step">
+            <span class="sample-workflow__number">1</span>
+            <div><h3>Share your requirement</h3><p>Tell us the target color, application, estimated quantity and delivery plan.</p></div>
+          </div>
+          <div class="sample-workflow__step">
+            <span class="sample-workflow__number">2</span>
+            <div><h3>Review the sample</h3><p>{productSampleInfo}</p></div>
+          </div>
+          <div class="sample-workflow__step">
+            <span class="sample-workflow__number">3</span>
+            <div><h3>Confirm production details</h3><p>Check the surface effect, stretch, hand-feel, color and sewing performance with your own process before bulk approval.</p></div>
+          </div>
+        </div>
+        <div class="reference-request">
+          <div>
+            <h3>Have a reference image or fabric sample?</h3>
+            <p>{productCustomizationInfo} Send the reference with your product name, target quantity and application so the team can review the closest route.</p>
+          </div>
+          <div class="reference-request__actions">
+            <a href={referenceEmailHref} data-product-contact="reference-email" class="btn detail-cta__btn detail-cta__btn--sample">Email Reference</a>
+            <a href={referenceWhatsappHref} data-product-contact="reference-whatsapp" class="btn detail-cta__btn detail-cta__btn--wa" target="_blank" rel="noopener noreferrer">WhatsApp Reference</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-body__section" id="testing-buyer-documentation">
+        <h2 class="section-title-with-icon">
+          <span class="section-title-with-icon__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3 4 7v6c0 5 3.5 7.5 8 8 4.5-.5 8-3 8-8V7z" />
+              <path d="m9.5 12 1.8 1.8 3.7-4" />
+            </svg>
+          </span>
+          <span>Testing &amp; Buyer Documentation</span>
+        </h2>
+        <div class="sustainability-grid">
+          <div class="sustainability-card">
+            <h3>Testing Support</h3>
+            <p>{productTestingInfo}</p>
+          </div>
+          <div class="sustainability-card">
+            <h3>Product Scope</h3>
+            <p>Testing and document needs should be confirmed for this product, application and destination market before bulk order.</p>
+          </div>
+          <div class="sustainability-card">
+            <h3>Export Documents</h3>
+            <p>Commercial invoice, packing list and batch-related export documents can be confirmed before shipment.</p>
+          </div>
+          <div class="sustainability-card">
+            <h3>Custom Development</h3>
+            <p>{productCustomizationInfo}</p>
+          </div>
+        </div>
+      </div>
+
+      {false && isInquiryFocusedProduct && (
         <div class="detail-body__section" id="buyer-confirm">
           <h2 class="section-title-with-icon">
             <span class="section-title-with-icon__icon" aria-hidden="true">
@@ -845,7 +1024,7 @@ const heroVideo = product.video
         </div>
       )}
 
-      {isInquiryFocusedProduct && (
+      {false && isInquiryFocusedProduct && (
         <div class="detail-body__section" id="sustainability-certifications">
           <h2 class="section-title-with-icon">
             <span class="section-title-with-icon__icon" aria-hidden="true">
@@ -1024,13 +1203,13 @@ const heroVideo = product.video
           </p>
         </div>
         <div class="policy-cta">
-          <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} data-rfq-open data-rfq-sku={product.title} class="btn detail-cta__btn detail-cta__btn--gold policy-cta__btn">
+          <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} data-rfq-open data-rfq-sku={product.title} data-rfq-intent="sample" class="btn detail-cta__btn detail-cta__btn--gold policy-cta__btn">
             Get Sample
           </a>
-          <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} data-rfq-open data-rfq-sku={product.title} class="btn detail-cta__btn detail-cta__btn--sample policy-cta__btn">
+          <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} data-rfq-open data-rfq-sku={product.title} data-rfq-intent="quote" class="btn detail-cta__btn detail-cta__btn--sample policy-cta__btn">
             Get a Quote
           </a>
-          <a href="https://wa.me/8613616899303" target="_blank" rel="noopener noreferrer" class="btn detail-cta__btn detail-cta__btn--wa policy-cta__btn">
+          <a href={whatsappHref} data-product-contact="whatsapp" target="_blank" rel="noopener noreferrer" class="btn detail-cta__btn detail-cta__btn--wa policy-cta__btn">
             <svg class="detail-cta__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
             </svg>
@@ -1122,7 +1301,39 @@ const heroVideo = product.video
 </script>
 
 <script>
+  const trackProductEvent = (eventName, params = {}) => {
+    window.__nixiaTrack?.(eventName, {
+      product: document.querySelector("[data-rfq-sku]")?.getAttribute("data-rfq-sku") || "",
+      product_path: window.location.pathname,
+      ...params,
+    });
+  };
+
+  trackProductEvent("product_view");
+
+  document.querySelectorAll("[data-rfq-open]").forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const inquiryType = trigger.getAttribute("data-rfq-intent") || "sample-and-quote";
+      const cta = trigger.textContent?.trim() || "unknown";
+      trackProductEvent("product_cta_click", { inquiry_type: inquiryType, cta });
+      trackProductEvent("rfq_open", { inquiry_type: inquiryType, cta });
+    });
+  });
+
+  document.querySelectorAll("[data-product-contact]").forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const contactMethod = trigger.getAttribute("data-product-contact") || "unknown";
+      trackProductEvent("product_contact_click", {
+        contact_method: contactMethod,
+      });
+      if (contactMethod === "whatsapp" || contactMethod === "reference-whatsapp") {
+        trackProductEvent("whatsapp_click", { contact_method: contactMethod });
+      }
+    });
+  });
+
   document.getElementById("copy-product-link")?.addEventListener("click", async () => {
+    trackProductEvent("copy_product_link");
     try {
       await navigator.clipboard.writeText(window.location.href);
     } catch {
@@ -1494,6 +1705,10 @@ const heroVideo = product.video
     margin-top: var(--space-xl);
   }
 
+  .mobile-inquiry-bar {
+    display: none;
+  }
+
   /* Copy link toast */
   .rfq-toast {
     position: fixed;
@@ -1775,6 +1990,86 @@ const heroVideo = product.video
     font-size: var(--text-sm);
     color: var(--color-text-secondary);
     line-height: var(--leading-relaxed);
+  }
+
+  .detail-section-intro {
+    margin: calc(var(--space-sm) * -0.25) 0 var(--space-md);
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+  }
+
+  .sample-workflow {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-sm);
+  }
+
+  .sample-workflow__step {
+    display: flex;
+    gap: var(--space-sm);
+    min-width: 0;
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-white);
+  }
+
+  .sample-workflow__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 28px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #f7e9c8;
+    color: var(--color-accent-dark);
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .sample-workflow__step h3,
+  .reference-request h3 {
+    margin: 0 0 0.35rem;
+    color: var(--color-primary);
+    font-size: 0.95rem;
+    line-height: 1.35;
+  }
+
+  .sample-workflow__step p,
+  .reference-request p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.55;
+  }
+
+  .reference-request {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    margin-top: var(--space-md);
+    padding: var(--space-md);
+    border-left: 3px solid #c09a3e;
+    background: #f7f8fa;
+  }
+
+  .reference-request > div:first-child {
+    min-width: 0;
+  }
+
+  .reference-request__actions {
+    display: flex;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .reference-request__actions .btn {
+    min-height: 42px;
   }
 
   .sustainability-grid {
@@ -2561,6 +2856,24 @@ const heroVideo = product.video
       grid-template-columns: 1fr;
     }
 
+    .sample-workflow {
+      grid-template-columns: 1fr;
+    }
+
+    .reference-request {
+      align-items: stretch;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .reference-request__actions {
+      flex-direction: column;
+    }
+
+    .reference-request__actions .btn {
+      width: 100%;
+    }
+
     .detail-info__title {
       font-size: var(--text-2xl);
     }
@@ -2597,6 +2910,61 @@ const heroVideo = product.video
 
     .p-hero-gallery {
       position: static;
+    }
+
+    .mobile-inquiry-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 900;
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.625rem max(0.75rem, env(safe-area-inset-left)) calc(0.625rem + env(safe-area-inset-bottom)) max(0.75rem, env(safe-area-inset-right));
+      background: rgba(255, 255, 255, 0.97);
+      border-top: 1px solid var(--color-border);
+      box-shadow: 0 -8px 24px rgba(10, 32, 64, 0.12);
+    }
+
+    .mobile-inquiry-bar__primary,
+    .mobile-inquiry-bar__whatsapp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .mobile-inquiry-bar__primary {
+      flex: 1 1 auto;
+      gap: 0.45rem;
+      padding-inline: 0.75rem;
+      background: #b89430;
+      color: var(--color-white);
+    }
+
+    .mobile-inquiry-bar__primary svg {
+      width: 17px;
+      height: 17px;
+      flex: 0 0 auto;
+    }
+
+    .mobile-inquiry-bar__whatsapp {
+      flex: 0 0 48px;
+      background: #25d366;
+      color: var(--color-white);
+    }
+
+    .mobile-inquiry-bar__whatsapp svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    body:has(.mobile-inquiry-bar) {
+      padding-bottom: 76px;
     }
   }
 

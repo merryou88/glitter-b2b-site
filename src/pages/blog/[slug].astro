@@ -24,6 +24,54 @@ const { article } = Astro.props;
 const relatedProducts = article.focusProducts
   .map((slug) => performanceProducts.find((product) => product.slug === slug))
   .filter(Boolean);
+const relatedGuides = blogArticles
+  .filter((item) => item.slug !== article.slug)
+  .map((item) => {
+    const sharedTags = item.tags.filter((tag) => article.tags.includes(tag)).length;
+    const categoryMatch = item.category === article.category ? 1 : 0;
+    const productMatch = item.focusProducts.filter((slug) => article.focusProducts.includes(slug)).length;
+    return { article: item, score: sharedTags + categoryMatch + productMatch };
+  })
+  .filter((item) => item.score > 0)
+  .sort((a, b) => b.score - a.score)
+  .slice(0, 3)
+  .map((item) => item.article);
+const applicationLinks = [
+  {
+    slug: "holographic-fabric-for-dancewear-what-buyers-should-check",
+    href: "/applications/holographic-fabric-wholesale/",
+    label: "Wholesale Holographic Fabric",
+    description: "Compare holographic stretch and foil fabrics by shine, recovery, width, MOQ and samples.",
+  },
+  {
+    slug: "iridescent-vs-metallic-fabric-for-stage-costumes",
+    href: "/applications/foil-fabric-for-stage-costumes/",
+    label: "Foil Fabric for Stage Costumes",
+    description: "Shortlist foil and iridescent fabrics for stage costumes, dancewear and performance wear.",
+  },
+  {
+    slug: "how-to-choose-4-way-stretch-fabric-for-bodysuits",
+    href: "/applications/dancewear-fabric-supplier/",
+    label: "Dancewear Fabric Supplier",
+    description: "Review 4-way stretch foil fabrics for bodysuits, leotards and competition costumes.",
+  },
+  {
+    slug: "best-fabric-for-cheerleading-and-performance-costumes",
+    href: "/applications/cheerleading-performance-costume-fabric/",
+    label: "Cheerleading Fabric Wholesale",
+    description: "Compare recovery, color consistency, shine and sampling for team performance garments.",
+  },
+].filter((item) => item.slug !== article.slug);
+const primaryApplicationByArticle = {
+  "holographic-fabric-for-dancewear-what-buyers-should-check": "holographic-fabric-wholesale",
+  "iridescent-vs-metallic-fabric-for-stage-costumes": "foil-fabric-for-stage-costumes",
+  "how-to-choose-4-way-stretch-fabric-for-bodysuits": "dancewear-fabric-supplier",
+  "best-fabric-for-cheerleading-and-performance-costumes": "cheerleading-performance-costume-fabric",
+};
+const prioritizedApplicationLinks = applicationLinks.sort((a, b) => {
+  const primary = primaryApplicationByArticle[article.slug];
+  return Number(b.href.includes(primary ?? "")) - Number(a.href.includes(primary ?? ""));
+});
 const findRowValue = (rows, labels) =>
   rows?.find((row) => labels.includes(row.label))?.value;
 const productMoq = (product) =>
@@ -211,6 +259,45 @@ const faqSchema = {
           </ul>
         </section>
 
+        <section class="sourcing-next">
+          <span class="eyebrow">Sample &amp; RFQ Next Steps</span>
+          <h2>Turn this guide into a usable supplier request</h2>
+          <div class="sourcing-next__grid">
+            <div>
+              <strong>1. Confirm the application</strong>
+              <p>Share the garment type, target look, stretch requirement and expected use environment.</p>
+            </div>
+            <div>
+              <strong>2. Request samples</strong>
+              <p>Check color, hand feel, surface effect, stretch recovery and sewing behavior before bulk approval.</p>
+            </div>
+            <div>
+              <strong>3. Send RFQ details</strong>
+              <p>Include quantity, destination, timeline, custom needs and any testing or documentation requests.</p>
+            </div>
+          </div>
+        </section>
+
+        {applicationLinks.length > 0 && (
+          <section class="application-links">
+            <div class="related-section__heading">
+              <div>
+                <span class="eyebrow">Commercial Sourcing Pages</span>
+                <h2>Browse fabrics by application</h2>
+              </div>
+              <a href="/applications/" class="text-link">View all applications →</a>
+            </div>
+            <div class="application-links__grid">
+              {prioritizedApplicationLinks.slice(0, 2).map((application) => (
+                <a href={application.href} class="application-link">
+                  <strong>{application.label}</strong>
+                  <span>{application.description}</span>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+
         <section class="related-section">
           <div class="related-section__heading">
             <div>
@@ -234,6 +321,27 @@ const faqSchema = {
             ))}
           </div>
         </section>
+
+        {relatedGuides.length > 0 && (
+          <section class="related-guides">
+            <div class="related-section__heading">
+              <div>
+                <span class="eyebrow">Related Buyer Guides</span>
+                <h2>Continue the sourcing path</h2>
+              </div>
+              <a href="/blog/" class="text-link">View all guides →</a>
+            </div>
+            <div class="related-guide-list">
+              {relatedGuides.map((guide) => (
+                <a href={`/blog/${guide.slug}/`} class="related-guide">
+                  <span>{guide.category}</span>
+                  <strong>{guide.title}</strong>
+                  <small>{guide.readTime}</small>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section class="article-faq">
           <span class="eyebrow">Common Questions</span>
@@ -269,6 +377,51 @@ const faqSchema = {
 <style>
   .text-link:hover {
     color: var(--color-accent-dark);
+  }
+
+  .application-links {
+    margin-top: var(--space-3xl);
+    padding-top: var(--space-2xl);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .application-links__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+  }
+
+  .application-link {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-lg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .application-link:hover {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .application-link strong {
+    color: var(--color-primary);
+  }
+
+  .application-link span {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.55;
+  }
+
+  @media (max-width: 640px) {
+    .application-links__grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   .article-hero {
@@ -591,7 +744,8 @@ const faqSchema = {
     line-height: var(--leading-relaxed);
   }
 
-  .decision-section {
+  .decision-section,
+  .sourcing-next {
     margin-block: var(--space-3xl);
     padding: var(--space-xl);
     border-left: 4px solid var(--color-accent);
@@ -625,6 +779,37 @@ const faqSchema = {
 
   .related-section {
     margin-bottom: var(--space-3xl);
+  }
+
+  .sourcing-next h2 {
+    margin: var(--space-xs) 0 var(--space-lg);
+    color: var(--color-primary);
+    font-size: var(--text-2xl);
+  }
+
+  .sourcing-next__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-md);
+  }
+
+  .sourcing-next__grid div {
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-white);
+  }
+
+  .sourcing-next__grid strong {
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+  }
+
+  .sourcing-next__grid p {
+    margin-top: var(--space-xs);
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
   }
 
   .related-section__heading {
@@ -687,6 +872,36 @@ const faqSchema = {
   .related-product small {
     color: var(--color-text-muted);
     font-size: var(--text-xs);
+  }
+
+  .related-guides {
+    margin-bottom: var(--space-3xl);
+  }
+
+  .related-guide-list {
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .related-guide {
+    display: grid;
+    gap: var(--space-xs);
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg-alt);
+  }
+
+  .related-guide span,
+  .related-guide small {
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+    font-weight: 700;
+  }
+
+  .related-guide strong {
+    color: var(--color-primary);
+    line-height: 1.35;
   }
 
   .faq-list {
@@ -759,7 +974,8 @@ const faqSchema = {
 
     .article-aside,
     .related-products,
-    .article-summary__grid {
+    .article-summary__grid,
+    .sourcing-next__grid {
       grid-template-columns: 1fr;
     }
 

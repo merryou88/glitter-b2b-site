@@ -2,7 +2,7 @@
 /**
  * Factory Page — /factory
  * Showcases real manufacturing capability without fabricated numbers.
- * Sections: Factory Introduction, Production Lines, Workshop,
+ * Sections: Factory Introduction, Production Capability, Workshop,
  *           Manufacturing Capability, Equipment, Production Process,
  *           Quality Control, OEM & ODM, Packing Process, Factory Audit
  */
@@ -32,8 +32,8 @@ const breadcrumbData = {
 const factoryPageData = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Production & Quality Control | Nixia Fabric",
-  description: "Explore Nixia Fabric's foil fabric production and quality control support, from foil application to finished rolls and sample development.",
+  name: "Foil Fabric Manufacturing & Quality Control | Nixia Fabric",
+  description: "Explore Nixia Fabric's Guangzhou production facility, foil fabric processing, quality control, sample development and roll packing for performance apparel.",
   url: "https://nixiafabric.com/factory/",
   about: {
     "@type": "Organization",
@@ -47,33 +47,39 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 const productionSteps = [
   {
     num: "01",
-    title: "Material Preparation",
-    desc: "Raw fabric substrates are inspected and prepared — woven, knitted, or non-woven bases are selected based on product specifications.",
+    title: "Specification Review",
+    desc: "We confirm the application, base fabric, color direction, foil effect, usable width and packing requirements before production.",
+    checkpoint: "Approved product specification",
   },
   {
     num: "02",
-    title: "Surface Treatment",
-    desc: "Base fabric undergoes surface treatment to ensure optimal adhesion for metallic foil lamination.",
+    title: "Base Fabric Inspection",
+    desc: "The selected base fabric is checked for composition, weight, width, surface condition and suitability for the requested finish.",
+    checkpoint: "Incoming material inspection",
   },
   {
     num: "03",
     title: "Foil Lamination",
     desc: "Metallic foil is laminated onto the fabric surface under controlled heat and pressure for consistent adhesion and finish.",
+    checkpoint: "Temperature, pressure and surface uniformity",
   },
   {
     num: "04",
     title: "Color Development & Matching",
     desc: "Custom colors are developed and matched against client samples. Our color lab ensures consistency across production batches.",
+    checkpoint: "Approved color and surface reference",
   },
   {
     num: "05",
     title: "Curing & Setting",
     desc: "Bonded fabric passes through curing and heat-setting processes to ensure durability, adhesion strength, and dimensional stability.",
+    checkpoint: "Adhesion and dimensional stability review",
   },
   {
     num: "06",
     title: "Finishing & Inspection",
     desc: "Fabric is finished with edge treatment, inspected for quality, and prepared for packing and shipment.",
+    checkpoint: "Final roll inspection and release",
   },
 ];
 
@@ -201,30 +207,41 @@ const auditSupport = [
   "Business license and entity documents",
   "SGS / REACH testing arranged according to buyer requirements",
   "Production & packing documentation support",
+  "Factory video available for remote review",
+];
+
+const factorySnapshot = [
+  { label: "Production model", value: "Own production facility" },
+  { label: "Core capability", value: "Foil fabric processing and finishing" },
+  { label: "Quality control", value: "Incoming, in-process and final inspection" },
+  { label: "Development", value: "Color, backing, GSM and finish support" },
+  { label: "Packing", value: "Roll packing and batch labeling" },
+  { label: "Factory review", value: "Visit or video review available" },
 ];
 ---
 
 <Layout
-  title="Production & Quality Control | Nixia Fabric"
-  description="See Nixia Fabric's production and quality control support for foil fabrics, including foil application, sample matching, roll packing and custom development."
-  keywords="foil fabric production, foil fabric quality control, foil fabric supplier, custom foil fabric, hot-stamping foil fabric, sample matching"
+  title="Foil Fabric Manufacturing & Quality Control | Nixia Fabric"
+  description="See Nixia Fabric's Guangzhou production facility for foil fabric processing, color matching, quality inspection, roll packing and custom development."
+  keywords="foil fabric manufacturer, foil fabric factory, hot-stamping foil fabric factory, custom foil fabric development, foil fabric quality control, performance apparel fabric supplier"
   structuredData={[breadcrumbData, factoryPageData]}
   footerFocus="foil"
 >
   <!-- Factory Hero -->
   <section class="factory-hero">
     <div class="container">
-      <span class="eyebrow">Production &amp; Quality Control</span>
-      <h1>Foil Fabric Production Support</h1>
+      <span class="eyebrow">Foil Fabric Manufacturing</span>
+      <h1>Foil Fabric Manufacturing in Guangzhou</h1>
       <p class="factory-hero__desc">
-        We have specialized in foil fabrics since 2013. From foil application to finished
-        rolls, we work with experienced production partners to support stage costume,
-        performance wear, dancewear and party apparel manufacturers.
+        We operate our own production facility for foil fabric processing, color
+        development, quality inspection and roll packing. Since 2013, we have supported
+        stage costume, performance wear, dancewear and party apparel manufacturers.
       </p>
       <div class="factory-hero__badges">
+        <span class="factory-hero__badge">Own Production Facility</span>
         <span class="factory-hero__badge">Foil Application</span>
         <span class="factory-hero__badge">Sample Matching</span>
-        <span class="factory-hero__badge">Quality Review</span>
+        <span class="factory-hero__badge">Quality Inspection</span>
         <span class="factory-hero__badge">Custom Development</span>
       </div>
     </div>
@@ -236,16 +253,16 @@ const auditSupport = [
       <div class="factory-intro">
         <div class="factory-intro__left">
           <span class="eyebrow">Production Introduction</span>
-          <h2>Specialized in Foil Fabric Development</h2>
+          <h2>Production Controlled from Fabric Processing to Shipment</h2>
           <p>
-            We have focused on hot-stamping foil finishes since 2013, with qualified
-            production support when a project needs it. Our work centers on fabrics for
-            stage costumes, dancewear, performance wear and party apparel.
+            We have focused on hot-stamping foil finishes since 2013. Our own production
+            facility supports fabric processing, foil application, color development,
+            inspection and finished roll packing for performance apparel customers.
           </p>
           <p>
-            The buying process starts with application, fabric reference and target surface
-            effect. From there, we help review base fabric, foil effect, color direction,
-            sample approval and order requirements.
+            The buying process starts with the application, fabric reference and target
+            surface effect. We then review the base fabric, color direction, sample
+            approval, production specification and order requirements before bulk work.
           </p>
         </div>
         <div class="factory-intro__right">
@@ -269,10 +286,32 @@ const auditSupport = [
               <li>Start from buyer application and reference sample</li>
               <li>Confirm fabric and foil effect before bulk order</li>
               <li>Keep specifications, quantity and packing clear</li>
-              <li>Support practical B2B production requirements</li>
+              <li>Manage practical B2B production requirements</li>
             </ul>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Factory Snapshot -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header section-header--left">
+        <span class="eyebrow">Factory at a Glance</span>
+        <h2>Manufacturing Capability Buyers Can Review</h2>
+        <p>
+          Our production setup is organized around consistent foil effects, clear
+          specifications, inspection records and export-ready packing.
+        </p>
+      </div>
+      <div class="factory-snapshot">
+        {factorySnapshot.map((item) => (
+          <div class="factory-snapshot__item">
+            <span class="factory-snapshot__label">{item.label}</span>
+            <strong class="factory-snapshot__value">{item.value}</strong>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -307,7 +346,8 @@ const auditSupport = [
         <span class="eyebrow">Production Scenes</span>
         <h2>Foil Application, Inspection and Packing</h2>
         <p>
-          Real production-related images for foil transfer, inspection and packing.
+          Real production-related images for foil transfer, inspection and packing. A
+          factory video can also be provided for buyer review.
         </p>
       </div>
       <div class="workshop-grid">
@@ -319,6 +359,43 @@ const auditSupport = [
             </picture>
           </figure>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Factory Video -->
+  <section class="section section--dark factory-video">
+    <div class="container">
+      <div class="factory-video__content">
+        <div class="factory-video__copy">
+          <span class="eyebrow">Remote Factory Review</span>
+          <h2>See Our Production Facility in Operation</h2>
+          <p>
+            Watch a short overview of our material displays, production equipment and
+            workshop team. For project-specific review, buyers can also arrange a live
+            video factory tour.
+          </p>
+          <CTAButton href="/contact/" variant="primary" size="lg">Arrange a Video Factory Tour</CTAButton>
+        </div>
+        <div class="factory-video__media">
+          <video
+            controls
+            playsinline
+            preload="metadata"
+            poster="/images/factory/nixia-factory-poster.jpg"
+            aria-label="Nixia Fabric Guangzhou production facility video"
+          >
+            <source src="/images/factory/nixia-factory-branded.mp4" type="video/mp4" />
+            <p>
+              Your browser cannot play this video.
+              <a href="/images/factory/nixia-factory-branded.mp4">Open the factory video</a>.
+            </p>
+          </video>
+          <div class="factory-video__meta" aria-hidden="true">
+            <span>Guangzhou production facility</span>
+            <span>00:59</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -365,8 +442,8 @@ const auditSupport = [
         <span class="eyebrow">Equipment</span>
         <h2>Equipment We Run In-House</h2>
         <p>
-          Capability is driven by the equipment on our production floor — from coating to
-          final inspection.
+          Capability is supported by the equipment on our production floor — from foil
+          application and finishing to final inspection.
         </p>
       </div>
       <div class="equipment-grid">
@@ -386,15 +463,15 @@ const auditSupport = [
     </div>
   </section>
 
-  <!-- Production Process: 5-Step Workflow with Images -->
+  <!-- Production Process: Visual Workflow -->
   <section class="section section--alt">
     <div class="container">
       <div class="section-header">
         <span class="eyebrow">Production Process</span>
-        <h2>Production Process</h2>
+        <h2>Production Process and Control Points</h2>
         <p>
-          Our production follows a streamlined five-step process — from raw material
-          preparation to final packing — ensuring consistent quality at every stage.
+          Our production follows a documented process from specification review to final
+          packing, with a clear quality checkpoint at every stage.
         </p>
       </div>
 
@@ -487,10 +564,10 @@ const auditSupport = [
     <div class="container">
       <div class="section-header">
         <span class="eyebrow">Production Workflow</span>
-        <h2>From Raw Material to Finished Fabric</h2>
+        <h2>From Specification to Finished Roll</h2>
         <p>
-          Our production follows a systematic process to ensure consistent quality across
-          every production batch.
+          Each stage has a defined output and inspection point so buyers can review the
+          process from sample approval through final release.
         </p>
       </div>
 
@@ -503,6 +580,7 @@ const auditSupport = [
             <div class="process-step__content">
               <h3 class="process-step__title">{step.title}</h3>
               <p class="process-step__desc">{step.desc}</p>
+              <p class="process-step__checkpoint"><strong>QC checkpoint:</strong> {step.checkpoint}</p>
             </div>
           </div>
         ))}
@@ -515,11 +593,11 @@ const auditSupport = [
     <div class="container">
       <div class="section-header">
         <span class="eyebrow">Quality Control</span>
-        <h2>Quality Control</h2>
+        <h2>Quality Control at Every Production Stage</h2>
         <p>
-          Every production batch will go through strict manual inspection. We check
-          surface texture, gloss performance and printing details to guarantee
-          consistent fabric quality.
+          Every production batch goes through manual inspection. We check the base fabric,
+          surface texture, gloss performance, color consistency, printing details and
+          packing condition before release.
         </p>
       </div>
     </div>
@@ -532,8 +610,9 @@ const auditSupport = [
         <span class="eyebrow">Quality Management System</span>
         <h2>Six-Stage Quality Management</h2>
         <p>
-          Quality is not an afterthought — it is built into every stage of our production.
-          From raw material inspection to final grading, we maintain strict standards.
+          Quality is built into every stage of our production. Inspection records,
+          approved samples and batch labeling help keep specifications clear from
+          development through delivery.
         </p>
       </div>
 
@@ -611,8 +690,8 @@ const auditSupport = [
         <span class="eyebrow">OEM &amp; ODM</span>
         <h2>Custom Fabric Development</h2>
         <p>
-          We develop fabric to your specification — from color and backing to finish and
-          packing.
+          We develop fabric to your specification — from base fabric and color to foil
+          effect, finish and export-ready packing.
         </p>
       </div>
       <div class="oem-grid">
@@ -634,8 +713,8 @@ const auditSupport = [
           <span class="eyebrow">Factory Audit</span>
           <h2>Buyers Are Welcome to Visit</h2>
           <p>
-            We support buyer and agent factory visits, and provide the documents needed
-            for audit and compliance review.
+            We support buyer and agent factory visits, remote video review and the
+            documents needed for audit and compliance review.
           </p>
           <ul class="audit-list">
             {auditSupport.map((item) => (
@@ -657,8 +736,8 @@ const auditSupport = [
       <span class="eyebrow">Work With the Manufacturer</span>
       <h2>Ready to Start Your Fabric Project?</h2>
       <p style="max-width: 600px; margin: var(--space-lg) auto var(--space-2xl);">
-        Deal directly with the factory. No middleman, no trading company markup.
-        Request samples or get a custom quote for your specific requirements.
+        Work directly with our production facility. Request samples or get a custom
+        quote for your specific fabric, foil effect and packing requirements.
       </p>
       <div class="btn-group" style="justify-content: center;">
         <CTAButton href="/sample-policy/" variant="primary" size="lg" rfq>Request Free Sample</CTAButton>
@@ -734,33 +813,29 @@ const auditSupport = [
           </div>
         </div>
 
-        <!-- Right: Google Maps (with fallback) -->
-        <div class="visit-factory__map" id="factory-map-wrapper">
+        <!-- Right: Google Maps with a persistent direct-link fallback -->
+        <div class="visit-factory__map">
           <div class="map-iframe-wrap">
             <iframe
               src="https://maps.google.com/maps?q=No.63%20Chuangqi%20Road%2C%20Shilou%20Town%2C%20Panyu%20District%2C%20Guangzhou%2C%20China&t=&z=15&ie=UTF8&iwloc=&output=embed"
               loading="lazy"
+              title="Nixia Fabric factory location in Guangzhou"
               allowfullscreen
               referrerpolicy="no-referrer-when-downgrade"
-              id="factory-map-iframe"
             ></iframe>
           </div>
-        </div>
-        <!-- Fallback card (shown when Google Maps is unreachable) -->
-        <div class="visit-factory__fallback" id="factory-map-fallback">
-          <div class="visit-factory__fallback-icon">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
+          <div class="visit-factory__map-help">
+            <div>
+              <strong>Factory location</strong>
+              <span>No.63 Chuangqi Road, Shilou Town, Panyu District, Guangzhou, China</span>
+            </div>
+            <a href="https://maps.google.com/maps?q=No.63%20Chuangqi%20Road%2C%20Shilou%20Town%2C%20Panyu%20District%2C%20Guangzhou%2C%20China" target="_blank" rel="noopener noreferrer">
+              Open Google Maps
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+              </svg>
+            </a>
           </div>
-          <p class="visit-factory__fallback-text">No.63 Chuangqi Road, Shilou Town, Panyu District, Guangzhou, China</p>
-          <a class="visit-factory__fallback-link" href="https://maps.google.com/maps?q=No.63%20Chuangqi%20Road%2C%20Shilou%20Town%2C%20Panyu%20District%2C%20Guangzhou%2C%20China" target="_blank" rel="noopener noreferrer">
-            View on Google Maps
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
-            </svg>
-          </a>
         </div>
       </div>
     </div>
@@ -890,10 +965,100 @@ const auditSupport = [
     font-weight: 700;
   }
 
+  /* Factory Snapshot */
+  .factory-snapshot {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .factory-snapshot__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    min-height: 112px;
+    padding: var(--space-lg);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+  }
+
+  .factory-snapshot__label {
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .factory-snapshot__value {
+    color: var(--color-text);
+    font-size: var(--text-base);
+    line-height: 1.45;
+  }
+
+  /* Factory Video */
+  .factory-video__content {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.35fr);
+    align-items: center;
+    gap: var(--space-3xl);
+  }
+
+  .factory-video__copy {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .factory-video h2,
+  .factory-video p {
+    color: var(--color-white);
+  }
+
+  .factory-video p {
+    max-width: 680px;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: var(--leading-relaxed);
+  }
+
+  .factory-video__copy p {
+    margin-bottom: var(--space-xl);
+  }
+
+  .factory-video__media {
+    overflow: hidden;
+    background-color: var(--color-primary-dark);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .factory-video__media video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: var(--color-primary-dark);
+    object-fit: contain;
+  }
+
+  .factory-video__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    color: rgba(255, 255, 255, 0.68);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: var(--text-xs);
+    font-weight: 600;
+  }
+
   /* Capabilities Grid */
   .capabilities-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-xl);
   }
 
@@ -1025,6 +1190,13 @@ const auditSupport = [
   .process-step__desc {
     font-size: var(--text-sm);
     line-height: var(--leading-relaxed);
+  }
+
+  .process-step__checkpoint {
+    margin-top: var(--space-sm);
+    color: var(--color-accent-dark);
+    font-size: var(--text-xs);
+    line-height: 1.5;
   }
 
   /* QC Grid */
@@ -1351,6 +1523,15 @@ const auditSupport = [
       grid-template-columns: 1fr;
     }
 
+    .factory-snapshot {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .factory-video__content {
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+    }
+
     .qc-grid {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -1383,6 +1564,7 @@ const auditSupport = [
 
   @media (max-width: 768px) {
     .factory-intro,
+    .factory-snapshot,
     .qc-grid,
     .packing-grid,
     .capabilities-grid,
@@ -1399,9 +1581,6 @@ const auditSupport = [
       direction: ltr;
     }
 
-    .visit-factory__grid--map-failed {
-      grid-template-columns: 1fr;
-    }
   }
 
   @media (max-width: 640px) {
@@ -1433,6 +1612,10 @@ const auditSupport = [
     }
 
     .equipment-list {
+      grid-template-columns: 1fr;
+    }
+
+    .factory-snapshot {
       grid-template-columns: 1fr;
     }
   }
@@ -1521,6 +1704,8 @@ const auditSupport = [
   }
 
   .visit-factory__map {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     overflow: hidden;
   }
@@ -1539,68 +1724,44 @@ const auditSupport = [
     border: 0;
   }
 
-  /* Fallback card (shown when Google Maps is unreachable) */
-  .visit-factory__fallback {
-    display: none;
-    flex-direction: column;
+  .visit-factory__map-help {
+    display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    justify-content: space-between;
     gap: var(--space-lg);
-    min-height: 400px;
-    padding: var(--space-3xl);
-    border-radius: 12px;
-    background-color: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: var(--space-md) var(--space-lg);
   }
 
-  .visit-factory__fallback--visible {
+  .visit-factory__map-help div {
     display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    min-width: 0;
   }
 
-  .visit-factory__fallback-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: rgba(196, 160, 53, 0.12);
+  .visit-factory__map-help strong {
     color: var(--color-accent-light);
+    font-size: var(--text-sm);
   }
 
-  .visit-factory__fallback-text {
-    font-size: var(--text-base);
-    line-height: var(--leading-relaxed);
-    color: rgba(255, 255, 255, 0.72);
-    max-width: 360px;
+  .visit-factory__map-help span {
+    color: rgba(255, 255, 255, 0.68);
+    font-size: var(--text-xs);
+    line-height: 1.5;
   }
 
-  .visit-factory__fallback-link {
+  .visit-factory__map-help a {
     display: inline-flex;
     align-items: center;
     gap: var(--space-xs);
-    padding: 0.75rem 1.75rem;
-    border-radius: var(--radius-full);
+    flex-shrink: 0;
+    color: var(--color-accent-light);
     font-size: var(--text-sm);
     font-weight: 700;
-    color: var(--color-primary-dark);
-    background-color: var(--color-accent);
-    transition: all var(--transition-base);
   }
 
-  .visit-factory__fallback-link:hover {
-    background-color: var(--color-accent-light);
-    transform: translateY(-2px);
-  }
-
-  /* Map hidden state — collapse map column, let info take full width */
-  .visit-factory__map--hidden {
-    display: none;
-  }
-
-  .visit-factory__grid--map-failed {
-    grid-template-columns: 1fr;
+  .visit-factory__map-help a:hover {
+    color: var(--color-white);
   }
 
   @media (max-width: 767px) {
@@ -1616,47 +1777,10 @@ const auditSupport = [
     .visit-factory__title {
       font-size: var(--text-3xl);
     }
+
+    .visit-factory__map-help {
+      align-items: flex-start;
+      flex-direction: column;
+    }
   }
 </style>
-
-<script>
-  // Map fallback: probe Google Maps servers with a lightweight image.
-  // If the image fails (e.g. Google blocked in China), hide the iframe
-  // and show the fallback card so no blank frame appears.
-  (function () {
-    var iframe = document.getElementById('factory-map-iframe');
-    var wrapper = document.getElementById('factory-map-wrapper');
-    var fallback = document.getElementById('factory-map-fallback');
-    var grid = document.querySelector('.visit-factory__grid');
-    if (!iframe || !wrapper || !fallback || !grid) return;
-
-    function showFallback() {
-      wrapper.classList.add('visit-factory__map--hidden');
-      fallback.classList.add('visit-factory__fallback--visible');
-      grid.classList.add('visit-factory__grid--map-failed');
-    }
-
-    // Method 1: probe a Google Maps static asset
-    var probe = new Image();
-    probe.onload = function () {
-      // Google reachable — iframe should load, keep it
-    };
-    probe.onerror = function () {
-      // Google blocked — show fallback immediately
-      showFallback();
-    };
-    probe.src = 'https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-non-white3_hdpi.png?_=' + Date.now();
-
-    // Method 2: secondary timeout — if the iframe hasn't fired load
-    // within 6 seconds, show fallback as a safety net
-    var iframeLoaded = false;
-    iframe.addEventListener('load', function () {
-      iframeLoaded = true;
-    });
-    setTimeout(function () {
-      if (!iframeLoaded) {
-        showFallback();
-      }
-    }, 6000);
-  })();
-</script>

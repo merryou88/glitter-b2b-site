@@ -1205,7 +1205,7 @@ const allBlogArticles = [
     ],
   },
   {
-    title: "What to Include in a Custom Fabric RFQ",
+    title: "Pre-Shipment Quality Control Checklist for Foil Stretch Fabric",
     slug: "what-to-include-in-a-custom-fabric-rfq",
     date: "2026-09-16",
     readTime: "6 min read",
@@ -1215,10 +1215,10 @@ const allBlogArticles = [
     imageWebp: "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/detail/1.webp",
     imageAlt: "Pre-shipment quality control for foil and stretch fabric orders",
     excerpt:
-      "A practical custom fabric RFQ checklist covering application, specs, color target, sample needs, MOQ, testing, packing and delivery timeline.",
-    metaTitle: "What to Include in a Custom Fabric RFQ | Nixia Fabric",
+      "A practical quality control checklist for reviewing approved samples, color, foil effect, width, roll condition, packing and documents.",
+    metaTitle: "Foil Stretch Fabric Quality Control Checklist | Nixia Fabric",
     metaDesc:
-      "Write a better custom fabric RFQ with application, quantity, width, MOQ, samples, color references, testing needs and delivery timing.",
+      "Use this foil stretch fabric quality control checklist to review approved samples, color, foil effect, width, roll condition, packing and documents.",
     focusProducts: [
       "iridescent-laser-hot-stamping-stretch-ice-silk",
       "full-print-hot-stamping-spandex-milk-silk",
@@ -1270,7 +1270,7 @@ const allBlogArticles = [
       "Confirm packing method before shipment",
       "Discuss testing or documentation support before production starts",
     ],
-    ctaHeading: "Need help preparing a custom fabric RFQ?",
+    ctaHeading: "Need help checking foil stretch fabric before shipment?",
     ctaText:
       "Send your order details and buyer checklist. We can confirm relevant inspection and document points before shipment.",
     faqs: [
@@ -1729,7 +1729,6 @@ const excludedBlogSlugs = new Set([
   "how-to-choose-glitter-surface-solid-leather-fabric",
   "glitter-faux-leather-for-shoes-bags-accessories",
   "what-to-include-in-a-custom-fabric-rfq-extra",
-  "foil-fabric-rfq-template-us-buyers",
 ]);
 
 export const blogArticles = allBlogArticles.filter(({ slug }) => !excludedBlogSlugs.has(slug));

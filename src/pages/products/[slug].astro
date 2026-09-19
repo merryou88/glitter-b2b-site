@@ -33,6 +33,18 @@ const { product } = Astro.props as {
 const productUrl = `https://nixiafabric.com/products/${product.slug}/`;
 const ogImage = `https://nixiafabric.com${product.mainImageUrl}`;
 
+// Keep product-page search terms close to the product data so new products
+// inherit a useful buyer-intent keyword set without another page edit.
+const productKeywords = [
+  product.title,
+  ...(product.applications ?? []),
+  "foil fabric supplier",
+  "wholesale foil fabric",
+  "performance fabric manufacturer",
+]
+  .filter(Boolean)
+  .join(", ");
+
 const heroImage = product.galleryImages[0]
   ? `${product.galleryMainPath}${product.galleryImages[0]}`
   : product.mainImageUrl;
@@ -71,6 +83,7 @@ const breadcrumbSchema = {
 <Layout
   title={product.metaTitle}
   description={product.metaDesc}
+  keywords={productKeywords}
   canonical={productUrl}
   image={ogImage}
   ogType="product"
