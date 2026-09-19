@@ -296,6 +296,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
       utmTerm: getAttribution().utm_term || "",
       gclid: getAttribution().gclid || "",
       landingPage: getAttribution().landing_page || "",
+      inquiryPage: window.location.href,
       website: String(formData.get("website") || "").trim(),
     };
 

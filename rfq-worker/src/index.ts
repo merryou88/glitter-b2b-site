@@ -142,7 +142,8 @@ export function buildContactEmail(payload: Record<string, unknown>): EmailMessag
     ["UTM Content", payload.utmContent],
     ["UTM Term", payload.utmTerm],
     ["GCLID", payload.gclid],
-    ["Landing Page", payload.landingPage],
+    ["First Landing Page", payload.landingPage],
+    ["Inquiry Page", payload.inquiryPage],
     ["Message", payload.message],
   ];
   return {
@@ -181,7 +182,8 @@ export function buildRfqEmail(payload: Record<string, unknown>): EmailMessage {
     ["UTM Content", payload.utmContent],
     ["UTM Term", payload.utmTerm],
     ["GCLID", payload.gclid],
-    ["Landing Page", payload.landingPage],
+    ["First Landing Page", payload.landingPage],
+    ["Inquiry Page", payload.inquiryPage],
     ["Message", payload.message],
   ];
   return {

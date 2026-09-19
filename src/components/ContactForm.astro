@@ -230,6 +230,7 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
       utmTerm: getAttribution().utm_term || "",
       gclid: getAttribution().gclid || "",
       landingPage: getAttribution().landing_page || "",
+      inquiryPage: window.location.href,
       website: String(formData.get("website") || "").trim(),
     };
 
