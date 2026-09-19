@@ -574,13 +574,6 @@ const heroVideo = product.video
             </svg>
             WhatsApp
           </a>
-          <button type="button" class="btn detail-cta__btn detail-cta__btn--sample detail-cta__btn--copy" id="copy-product-link">
-            <svg class="detail-cta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-            </svg>
-            Copy Product Link
-          </button>
         </div>
         <p class="detail-cta__note">
           <svg class="detail-cta__note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -588,7 +581,6 @@ const heroVideo = product.video
           </svg>
           <span>Our factory team will reply within 24 hours.</span>
         </p>
-        <div class="rfq-toast" id="rfq-toast" role="status" aria-live="polite">Link copied</div>
       </div>
     </div>
   </div>
@@ -1331,26 +1323,6 @@ const heroVideo = product.video
       }
     });
   });
-
-  document.getElementById("copy-product-link")?.addEventListener("click", async () => {
-    trackProductEvent("copy_product_link");
-    try {
-      await navigator.clipboard.writeText(window.location.href);
-    } catch {
-      const t = document.createElement("textarea");
-      t.value = window.location.href;
-      t.style.cssText = "position:fixed;opacity:0";
-      document.body.appendChild(t);
-      t.select();
-      document.execCommand("copy");
-      document.body.removeChild(t);
-    }
-    const toast = document.getElementById("rfq-toast");
-    if (toast) {
-      toast.classList.add("is-visible");
-      setTimeout(() => toast.classList.remove("is-visible"), 2000);
-    }
-  });
 </script>
 
 <style>
@@ -1686,10 +1658,6 @@ const heroVideo = product.video
     box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
   }
 
-  .detail-cta__btn--copy {
-    grid-column: 1 / -1;
-  }
-
   .detail-cta__note {
     margin: 0;
     padding: 0.625rem var(--space-md);
@@ -1707,29 +1675,6 @@ const heroVideo = product.video
 
   .mobile-inquiry-bar {
     display: none;
-  }
-
-  /* Copy link toast */
-  .rfq-toast {
-    position: fixed;
-    bottom: 1.5rem;
-    left: 50%;
-    transform: translateX(-50%) translateY(8px);
-    background: #1a1a1a;
-    color: #fff;
-    padding: 0.6rem 1.25rem;
-    border-radius: 999px;
-    font-size: 13px;
-    font-weight: 600;
-    opacity: 0;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    pointer-events: none;
-    z-index: 2000;
-  }
-
-  .rfq-toast.is-visible {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
   }
 
   /* Quick Specs */
@@ -2886,8 +2831,7 @@ const heroVideo = product.video
       grid-template-columns: 1fr;
     }
 
-    .detail-cta__btn--gold,
-    .detail-cta__btn--copy {
+    .detail-cta__btn--gold {
       grid-column: auto;
     }
 

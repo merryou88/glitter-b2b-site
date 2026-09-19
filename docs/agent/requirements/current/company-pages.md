@@ -46,7 +46,7 @@ status: current
 ### REQ-COMPANY-005：Factory 页面不展示 glitter 专属内容
 - 状态：active
 - 当前规则：`/factory/` 以 foil、iridescent、stretch 和通用制造能力为主，不展示 glitter 专属产品、生产线、设备、工艺描述、SEO 关键词、图片替代文本或公共 Footer 中的 glitter 文案。
-- 验收条件：Factory 页面专属主体内容、页面 SEO 元数据和该页面可见 Footer 不包含 `glitter`、`chunky` 或 `sparkle` 相关内容；foil 转印、质量管理、包装、OEM/ODM 和工厂参观内容保持可用。站点级 Organization 结构化数据和询盘产品数据不在本规则范围内。
+- 验收条件：Factory 页面专属主体内容、页面 SEO 元数据和该页面可见 Footer 不包含 `glitter`、`chunky` 或 `sparkle` 相关内容；foil 转印、质量管理、包装、定制订单和工厂参观内容保持可用。站点级 Organization 结构化数据和询盘产品数据不在本规则范围内。
 - 影响模块：`company-pages`、`site-shell`
 - 代码路径：`src/pages/factory.astro`
 - 测试路径：`npm run build`；检查 `/factory/` 生成页面文本和源代码关键词
@@ -75,12 +75,12 @@ status: current
 
 ### REQ-COMPANY-008：Factory 页面展示自有生产与可核验制造流程
 - 状态：active
-- 当前规则：`/factory/` 明确展示 Nixia 拥有自有生产车间，页面聚焦 foil fabric processing、色彩开发、质量检验、卷装包装和买家审厂支持；页面展示品牌化工厂实拍视频，并可安排项目相关的远程视频验厂。页面不得虚构未经确认的面积、设备数量、产能、员工数量、交期或证书归属。
+- 当前规则：`/factory/` 明确展示 Nixia 拥有自有生产车间，页面聚焦 foil fabric processing、样品与效果匹配、质量检验、卷装包装和买家审厂支持；页面展示品牌化工厂实拍视频，并可安排项目相关的远程视频验厂。页面不得虚构未经确认的面积、设备数量、产能、员工数量、交期或证书归属。
 - 验收条件：Factory 页面首屏和生产介绍不再使用会弱化自有工厂定位的 `production partners` 表述；页面包含工厂能力概览、生产流程控制点、质量管理、品牌化工厂视频、视频验厂联系入口和审厂支持；页面仍不展示 glitter 专属内容。
 - 影响模块：`company-pages`、`site-shell`
 - 代码路径：`src/pages/factory.astro`
 - 测试路径：`npm run build`；检查 `/factory/` 生成页面文本、页面 SEO 元数据和移动端布局
-- 最后变更编号：CHG-20260919-001-factory-branded-video
+- 最后变更编号：CHG-20260919-003-factory-procurement-workflow
 - 待确认事项：可公开的具体工厂数据和测试标准
 
 ### REQ-COMPANY-009：Factory 地图使用稳定的懒加载与常驻备用入口
@@ -102,3 +102,13 @@ status: current
 - 测试路径：`npm run build`；检查视频编码、时长、画面方向和 Factory 页面生成 HTML
 - 最后变更编号：CHG-20260919-001-factory-branded-video
 - 待确认事项：无
+
+### REQ-COMPANY-011：Factory 页面说明标准化质量控制与订单执行边界
+- 状态：active
+- 当前规则：`/factory/` 说明从订单规格确认、来料检查、首件确认、烫金转印、过程检验、成品卷检到包装放行的通用生产与质量控制方法，并说明定制订单的可行性评估、打样、买家确认、批量生产和出货流程。Composition、GSM、width、stretch、颜色、MOQ 和交期等产品或订单特定信息由产品详情页及正式报价承载，不在 Factory 页面给出统一数值。摩擦、洗涤、尺寸变化、化学合规等测试仅作为可按买家和产品要求约定的项目，测试方法、费用、判定标准和报告方须在生产前确认；包装形式、标签和唛头同样按订单确认。
+- 验收条件：Factory 页面只保留一套生产流程和一套质量控制框架；采购商能看到定制订单、测试和包装如何执行；页面链接到产品、联系和认证支持页面；页面不声称具备未经确认的实验室、仪器、固定设备、默认证书或所有订单必过的测试，也不公开说明上游材料采购安排。
+- 影响模块：`company-pages`、`product-catalog`
+- 代码路径：`src/pages/factory.astro`、`src/pages/products/[slug].astro`、`src/data/allProducts.js`
+- 测试路径：`npm run build`；检查 `dist/factory/index.html` 的流程、测试、MOQ、交期和包装文案；检查 Factory 页面关键词
+- 最后变更编号：CHG-20260919-003-factory-procurement-workflow
+- 待确认事项：单个产品的最终规格、MOQ、交期、测试判定值和包装细节以对应产品数据及正式订单文件为准

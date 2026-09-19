@@ -3,8 +3,8 @@
  * Factory Page — /factory
  * Showcases real manufacturing capability without fabricated numbers.
  * Sections: Factory Introduction, Production Capability, Workshop,
- *           Manufacturing Capability, Equipment, Production Process,
- *           Quality Control, OEM & ODM, Packing Process, Factory Audit
+ *           Production Process, Quality Control, Testing, Custom Orders,
+ *           Packing, Commercial Conditions and Factory Audit
  */
 import Layout from "@layouts/Layout.astro";
 import CTAButton from "@components/CTAButton.astro";
@@ -47,71 +47,77 @@ const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
 const productionSteps = [
   {
     num: "01",
-    title: "Specification Review",
-    desc: "We confirm the application, base fabric, color direction, foil effect, usable width and packing requirements before production.",
-    checkpoint: "Approved product specification",
+    title: "Order Specification Review",
+    desc: "The product, application, approved reference, color or foil effect, quantity, usable width and packing requirements are recorded before production.",
+    checkpoint: "Order specification and approved reference confirmed",
   },
   {
     num: "02",
-    title: "Base Fabric Inspection",
-    desc: "The selected base fabric is checked for composition, weight, width, surface condition and suitability for the requested finish.",
-    checkpoint: "Incoming material inspection",
+    title: "Incoming Material Check",
+    desc: "Base fabric, foil and production materials are checked against the order requirements for identity, appearance, width and suitability for the requested finish.",
+    checkpoint: "Materials released for production",
   },
   {
     num: "03",
-    title: "Foil Lamination",
-    desc: "Metallic foil is laminated onto the fabric surface under controlled heat and pressure for consistent adhesion and finish.",
-    checkpoint: "Temperature, pressure and surface uniformity",
+    title: "Setup & First Production Check",
+    desc: "Heat, pressure, speed and alignment are adjusted for the selected fabric. The first acceptable length is compared with the approved reference before bulk continuation.",
+    checkpoint: "First production output approved",
   },
   {
     num: "04",
-    title: "Color Development & Matching",
-    desc: "Custom colors are developed and matched against client samples. Our color lab ensures consistency across production batches.",
-    checkpoint: "Approved color and surface reference",
+    title: "Hot-Stamping Foil Transfer",
+    desc: "Foil is transferred onto the fabric surface under controlled production settings, with operators checking coverage, alignment and surface consistency during the run.",
+    checkpoint: "Foil coverage and appearance remain consistent",
   },
   {
     num: "05",
-    title: "Curing & Setting",
-    desc: "Bonded fabric passes through curing and heat-setting processes to ensure durability, adhesion strength, and dimensional stability.",
-    checkpoint: "Adhesion and dimensional stability review",
+    title: "In-Process Inspection",
+    desc: "Production is compared with the approved reference for color direction, pattern, gloss, visible defects and foil transfer consistency.",
+    checkpoint: "Non-conforming sections identified before finishing",
   },
   {
     num: "06",
-    title: "Finishing & Inspection",
-    desc: "Fabric is finished with edge treatment, inspected for quality, and prepared for packing and shipment.",
-    checkpoint: "Final roll inspection and release",
+    title: "Final Roll Inspection",
+    desc: "Finished rolls are checked for appearance, usable width, roll quantity, labeling and the order-specific acceptance requirements.",
+    checkpoint: "Roll approved or held for review",
+  },
+  {
+    num: "07",
+    title: "Packing & Shipment Release",
+    desc: "Approved rolls are packed, labeled and matched with the packing list before shipment or customer collection.",
+    checkpoint: "Packing and shipping information verified",
   },
 ];
 
 const qcItems = [
   {
-    title: "Raw Material Inspection",
-    desc: "All incoming base fabrics and materials are tested for composition, weight, width, and visual defects before entering production.",
+    title: "Controlled Order Specification",
+    desc: "Every order starts from a confirmed product or approved reference, quantity, color or foil effect, usable width, packing method and buyer-specific requirements.",
     icon: "search",
   },
   {
-    title: "In-Process Quality Control",
-    desc: "During foil lamination, our technicians monitor adhesion strength, color consistency, and surface uniformity at each stage.",
+    title: "Approved Reference",
+    desc: "Stock orders are checked against the confirmed product reference. Custom orders proceed after the buyer approves the development sample or strike-off.",
     icon: "monitor",
   },
   {
-    title: "Adhesion Testing",
-    desc: "Finished fabric undergoes adhesion testing — including rub tests and peel strength tests — to ensure the foil surface remains firmly bonded.",
+    title: "First Production Approval",
+    desc: "The first acceptable production output is reviewed before the remaining quantity continues, reducing the risk of repeating an incorrect effect.",
     icon: "shield",
   },
   {
-    title: "Color Consistency Check",
-    desc: "Every production batch is checked against approved color standards using lightbox comparison and spectrophotometer measurement.",
+    title: "In-Process Appearance Checks",
+    desc: "Operators monitor foil coverage, alignment, gloss, color direction, surface marks and visible defects against the approved reference.",
     icon: "palette",
   },
   {
-    title: "Final Inspection & Grading",
-    desc: "Each roll is individually inspected, graded, and tagged with batch numbers for full traceability from production to delivery.",
+    title: "Final Roll Release",
+    desc: "Rolls are checked against the order requirements for appearance, usable width, quantity, labels and packing before shipment release.",
     icon: "clipboard",
   },
   {
-    title: "Sample Retention",
-    desc: "Production samples are retained for each batch, allowing us to reference and match future reorders with consistent quality.",
+    title: "Buyer-Specific Test Plan",
+    desc: "Required test methods, acceptance levels, reporting party and sample submission are agreed before production when third-party testing is needed.",
     icon: "archive",
   },
 ];
@@ -120,51 +126,36 @@ const capabilities = [
   {
     title: "Hot-Stamping Foil Fabric Production",
     desc: "Hot-stamping foil finishing on stretch fabric substrates — iridescent, gradient and custom metallic effects.",
-    items: ["Gold Foil Lamination", "Silver Foil Lamination", "Custom Metallic Colors", "Matte & Glossy Finishes"],
+    items: ["Metallic Foil Effects", "Iridescent & Gradient Effects", "Patterned Foil Transfer", "Matte & Glossy Finishes"],
   },
   {
-    title: "Custom Color Matching",
-    desc: "In-house color lab for developing and matching custom colors based on client requirements and Pantone references.",
-    items: ["Pantone Color Matching", "Custom Color Matching", "Metallic Tone Development", "Batch-to-Batch Consistency"],
+    title: "Sample & Effect Matching",
+    desc: "Development can start from a buyer sample, reference image, target color direction or required surface effect.",
+    items: ["Buyer Sample Review", "Reference Color Direction", "Foil Effect Development", "Approval Sample Before Bulk"],
   },
   {
     title: "Custom Development Support",
-    desc: "Custom GSM, width, base fabric and special finishes can be discussed according to buyer specifications.",
-    items: ["Custom GSM & Width", "Base Fabric Options", "Special Finishes", "Buyer-Specific Requirements"],
+    desc: "Base fabric, GSM, usable width and finish options are reviewed according to the application and order requirements.",
+    items: ["Base Fabric Options", "GSM & Usable Width", "Special Finishes", "Buyer-Specific Requirements"],
   },
 ];
 
 const packingSteps = [
   {
     title: "Roll Packing",
-    desc: "Fabric is rolled on sturdy cardboard tubes to prevent creasing, with plastic film wrapping for moisture protection.",
+    desc: "Finished fabric is prepared in rolls using an inner tube and protective outer wrapping suitable for the confirmed shipping method.",
   },
   {
-    title: "Inner Protection",
-    desc: "Acid-free tissue paper or PE film is applied between layers for premium products to protect the foil surface.",
+    title: "Surface Protection",
+    desc: "Additional protective layers or special roll requirements can be discussed when the foil surface or buyer handling process requires them.",
   },
   {
     title: "Outer Packaging",
-    desc: "Woven bags or strong carton tubes are used for outer packaging, with edge protectors for international shipping.",
+    desc: "Outer packing is selected according to roll size, shipment method and buyer requirements rather than using one format for every product.",
   },
   {
     title: "Labeling & Documentation",
-    desc: "Each package is labeled with product name, batch number, specifications, and quantity. Packing lists and quality certificates are included.",
-  },
-];
-
-const productionLines = [
-  {
-    title: "Hot-Stamping Foil Transfer Line",
-    desc: "Metallic foil lamination under controlled heat and pressure for gold, silver and custom metallic finishes.",
-  },
-  {
-    title: "Color Development & Matching Lab",
-    desc: "In-house lab for Pantone-based color development and batch-to-batch consistency checks.",
-  },
-  {
-    title: "Finishing & Inspection Station",
-    desc: "Surface finish, edge treatment, on-line inspection and roll grading before packing.",
+    desc: "Roll labels, shipping marks, packing lists and buyer-requested documentation are confirmed as part of the order.",
   },
 ];
 
@@ -176,29 +167,100 @@ const workshopPhotos = [
   { src: "/images/process/final_packing.webp", alt: "Final packing area for foil fabric rolls" },
 ];
 
-const equipment = [
-  "Hot-stamping foil transfer presses",
-  "Color matching & development stations",
-  "Curing & heat-setting equipment",
-  "Inspection & grading tables",
+const customOrderSteps = [
+  {
+    num: "01",
+    title: "Requirement Review",
+    desc: "Buyer provides the application, reference sample or image, target effect, expected quantity and required delivery market.",
+  },
+  {
+    num: "02",
+    title: "Feasibility & Quotation",
+    desc: "We review the base fabric, foil effect, usable width, MOQ, sampling route, testing needs, packing and estimated timing.",
+  },
+  {
+    num: "03",
+    title: "Development Sample",
+    desc: "A sample or strike-off is prepared when a stock reference cannot fully represent the requested result.",
+  },
+  {
+    num: "04",
+    title: "Buyer Approval",
+    desc: "The buyer approves the physical appearance, base fabric, color direction and foil effect before bulk production.",
+  },
+  {
+    num: "05",
+    title: "Order Confirmation",
+    desc: "Final quantity, unit, price, delivery term, production timing, test plan, labels and packing are confirmed in the order documents.",
+  },
+  {
+    num: "06",
+    title: "Bulk Production",
+    desc: "Materials are checked, the first production output is approved and the remaining quantity proceeds with in-process inspection.",
+  },
+  {
+    num: "07",
+    title: "Final Release",
+    desc: "Finished rolls are checked against the approved reference and order-specific requirements before packing.",
+  },
+  {
+    num: "08",
+    title: "Packing & Shipment",
+    desc: "Rolls, labels, packing list and shipping details are verified before dispatch or customer collection.",
+  },
 ];
 
-const oemOdm = [
+const orderConditions = [
   {
-    title: "Custom Colors",
-    desc: "Pantone reference or client swatch matched to production color standards.",
+    title: "Product Specifications",
+    desc: "Composition, GSM, width, stretch, available colors and other product-specific data are maintained on each product detail page.",
+    href: "/products/",
+    linkLabel: "Compare product specifications",
   },
   {
-    title: "Custom Backing & GSM",
-    desc: "Elastic, PU, non-woven and Oxford backing with adjustable GSM and width.",
+    title: "MOQ",
+    desc: "Standard-product MOQ follows the selected product page. Custom MOQ is confirmed after reviewing the base fabric, foil, color or pattern and development route.",
+    href: "/products/",
+    linkLabel: "View product MOQ",
   },
   {
-    title: "Custom Finishes",
-    desc: "Matte, glossy, embossed and special surface treatments per product requirement.",
+    title: "Lead Time",
+    desc: "Stock dispatch and production lead time are different. The applicable timing is shown on the product page when confirmed and finalized in the quotation.",
+    href: "/contact/",
+    linkLabel: "Confirm order timing",
   },
   {
-    title: "Sample-to-Bulk Process",
-    desc: "Prototype samples, buyer confirmation and pre-production samples before bulk production.",
+    title: "Testing & Packing",
+    desc: "Required test methods, reporting party, acceptance criteria, roll packing, labels and shipping marks are confirmed before order release.",
+    href: "/certifications/",
+    linkLabel: "Review testing support",
+  },
+];
+
+const testOptions = [
+  {
+    title: "Production Appearance",
+    desc: "Comparison with the approved reference for foil coverage, alignment, color direction, gloss and visible surface defects.",
+  },
+  {
+    title: "Order Measurements",
+    desc: "Usable width, roll quantity and other agreed product measurements are checked against the confirmed order specification.",
+  },
+  {
+    title: "Rubbing Performance",
+    desc: "Dry and wet rubbing tests can be arranged to an agreed method such as ISO 105-X12 when required by the buyer.",
+  },
+  {
+    title: "Washing & Dimensional Change",
+    desc: "Buyer-specific washing procedures and dimensional-change testing can be arranged using agreed methods such as ISO 6330 and ISO 5077.",
+  },
+  {
+    title: "Chemical Compliance",
+    desc: "SGS, REACH or market-specific restricted-substance testing can be arranged according to the product, destination and buyer protocol.",
+  },
+  {
+    title: "Pre-Production Agreement",
+    desc: "Test method, sample quantity, acceptance level, cost and reporting party should be confirmed before bulk production.",
   },
 ];
 
@@ -207,14 +269,14 @@ const auditSupport = [
   "Business license and entity documents",
   "SGS / REACH testing arranged according to buyer requirements",
   "Production & packing documentation support",
-  "Factory video available for remote review",
+  "Embedded factory video and live video review support",
 ];
 
 const factorySnapshot = [
   { label: "Production model", value: "Own production facility" },
   { label: "Core capability", value: "Foil fabric processing and finishing" },
   { label: "Quality control", value: "Incoming, in-process and final inspection" },
-  { label: "Development", value: "Color, backing, GSM and finish support" },
+  { label: "Development", value: "Sample, base fabric and foil effect review" },
   { label: "Packing", value: "Roll packing and batch labeling" },
   { label: "Factory review", value: "Visit or video review available" },
 ];
@@ -222,7 +284,7 @@ const factorySnapshot = [
 
 <Layout
   title="Foil Fabric Manufacturing & Quality Control | Nixia Fabric"
-  description="See Nixia Fabric's Guangzhou production facility for foil fabric processing, color matching, quality inspection, roll packing and custom development."
+  description="See Nixia Fabric's Guangzhou production facility for foil fabric processing, sample and foil-effect matching, quality inspection, roll packing and custom development."
   keywords="foil fabric manufacturer, foil fabric factory, hot-stamping foil fabric factory, custom foil fabric development, foil fabric quality control, performance apparel fabric supplier"
   structuredData={[breadcrumbData, factoryPageData]}
   footerFocus="foil"
@@ -233,9 +295,9 @@ const factorySnapshot = [
       <span class="eyebrow">Foil Fabric Manufacturing</span>
       <h1>Foil Fabric Manufacturing in Guangzhou</h1>
       <p class="factory-hero__desc">
-        We operate our own production facility for foil fabric processing, color
-        development, quality inspection and roll packing. Since 2013, we have supported
-        stage costume, performance wear, dancewear and party apparel manufacturers.
+        We operate our own production facility for foil fabric processing, sample and
+        effect matching, quality inspection and roll packing. Since 2013, we have
+        supported stage costume, performance wear, dancewear and party apparel manufacturers.
       </p>
       <div class="factory-hero__badges">
         <span class="factory-hero__badge">Own Production Facility</span>
@@ -253,11 +315,11 @@ const factorySnapshot = [
       <div class="factory-intro">
         <div class="factory-intro__left">
           <span class="eyebrow">Production Introduction</span>
-          <h2>Production Controlled from Fabric Processing to Shipment</h2>
+          <h2>Production Controlled from Foil Application to Shipment</h2>
           <p>
             We have focused on hot-stamping foil finishes since 2013. Our own production
-            facility supports fabric processing, foil application, color development,
-            inspection and finished roll packing for performance apparel customers.
+            facility supports foil application, sample and effect matching, inspection
+            and finished roll packing for performance apparel customers.
           </p>
           <p>
             The buying process starts with the application, fabric reference and target
@@ -272,7 +334,7 @@ const factorySnapshot = [
             </div>
             <ul class="factory-intro__list">
               <li>Hot-Stamping Foil Fabric — Iridescent, Gradient, Metallic</li>
-              <li>Custom Color Matching</li>
+              <li>Color Direction &amp; Foil Effect Matching</li>
               <li>Base Fabric Review</li>
               <li>Custom Pattern &amp; Foil Effect</li>
               <li>Roll Packing Requirements</li>
@@ -316,29 +378,6 @@ const factorySnapshot = [
     </div>
   </section>
 
-  <!-- Production Lines -->
-  <section class="section section--alt">
-    <div class="container">
-      <div class="section-header">
-        <span class="eyebrow">Production Process</span>
-        <h2>Foil Fabric Production Workflow</h2>
-        <p>
-          Foil fabric production requires the right base fabric, surface effect, color
-          direction and finish. We keep the process focused on sample approval before
-          bulk production.
-        </p>
-      </div>
-      <div class="lines-grid">
-        {productionLines.map((line) => (
-          <article class="line-card">
-            <h3>{line.title}</h3>
-            <p>{line.desc}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- Workshop Photos -->
   <section class="section">
     <div class="container">
@@ -346,8 +385,8 @@ const factorySnapshot = [
         <span class="eyebrow">Production Scenes</span>
         <h2>Foil Application, Inspection and Packing</h2>
         <p>
-          Real production-related images for foil transfer, inspection and packing. A
-          factory video can also be provided for buyer review.
+          Production scenes covering material preparation, foil transfer, inspection,
+          sample confirmation and roll packing.
         </p>
       </div>
       <div class="workshop-grid">
@@ -407,8 +446,8 @@ const factorySnapshot = [
         <span class="eyebrow">Production Capability</span>
         <h2>What We Can Produce</h2>
         <p>
-          We support hot-stamping foil fabric production from material preparation to
-          color matching, foil effect review and finished roll packing.
+          We support hot-stamping foil fabric production, sample and effect matching,
+          buyer-specific development and finished roll packing.
         </p>
       </div>
 
@@ -435,139 +474,15 @@ const factorySnapshot = [
     </div>
   </section>
 
-  <!-- Equipment -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header section-header--left">
-        <span class="eyebrow">Equipment</span>
-        <h2>Equipment We Run In-House</h2>
-        <p>
-          Capability is supported by the equipment on our production floor — from foil
-          application and finishing to final inspection.
-        </p>
-      </div>
-      <div class="equipment-grid">
-        <ul class="equipment-list">
-          {equipment.map((item) => (
-            <li class="equipment-item">
-              <span class="equipment-check" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-              </span>
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Production Process: Visual Workflow -->
+  <!-- Production Process -->
   <section class="section section--alt">
     <div class="container">
       <div class="section-header">
-        <span class="eyebrow">Production Process</span>
-        <h2>Production Process and Control Points</h2>
-        <p>
-          Our production follows a documented process from specification review to final
-          packing, with a clear quality checkpoint at every stage.
-        </p>
-      </div>
-
-      <div class="process-steps-with-images">
-        <div class="process-step-img">
-          <div class="process-step-img__media">
-            <picture>
-              <img src="/images/process/raw_material_preparation.webp" alt="Raw material preparation in fabric production warehouse" width="1200" height="675" loading="lazy" decoding="async" />
-            </picture>
-          </div>
-          <div class="process-step-img__info">
-            <span class="process-step-img__num">01</span>
-            <h3 class="process-step-img__title">Raw Material Preparation</h3>
-            <p class="process-step-img__desc">
-              Base fabrics and raw materials are inspected, sorted and prepared
-              according to production specifications.
-            </p>
-          </div>
-        </div>
-
-        <div class="process-step-img">
-          <div class="process-step-img__media">
-            <picture>
-              <img src="/images/process/hot_stamping_foil_transfer.webp" alt="Hot-stamping foil transfer production line for metallic foil fabrics" width="1200" height="675" loading="lazy" decoding="async" />
-            </picture>
-          </div>
-          <div class="process-step-img__info">
-            <span class="process-step-img__num">02</span>
-            <h3 class="process-step-img__title">Hot-Stamping Foil Transfer</h3>
-            <p class="process-step-img__desc">
-              Metallic foil is transferred onto the fabric surface under controlled
-              heat and pressure for consistent adhesion and finish.
-            </p>
-          </div>
-        </div>
-
-        <div class="process-step-img">
-          <div class="process-step-img__media">
-            <picture>
-              <img src="/images/process/on_line_visual_inspection.webp" alt="On-line visual inspection of foil-printed fabric quality" width="1200" height="675" loading="lazy" decoding="async" />
-            </picture>
-          </div>
-          <div class="process-step-img__info">
-            <span class="process-step-img__num">03</span>
-            <h3 class="process-step-img__title">On-Line Visual Inspection</h3>
-            <p class="process-step-img__desc">
-              Technicians monitor the production line in real time, checking surface
-              texture, gloss performance and printing details.
-            </p>
-          </div>
-        </div>
-
-        <div class="process-step-img">
-          <div class="process-step-img__media">
-            <picture>
-              <img src="/images/process/sample_confirmation.webp" alt="Sample confirmation close-up of hot-pressed foil fabric detail" width="1200" height="675" loading="lazy" decoding="async" />
-            </picture>
-          </div>
-          <div class="process-step-img__info">
-            <span class="process-step-img__num">04</span>
-            <h3 class="process-step-img__title">Sample Confirmation</h3>
-            <p class="process-step-img__desc">
-              Production samples are compared against approved standards to verify
-              color, texture and overall quality before bulk continuation.
-            </p>
-          </div>
-        </div>
-
-        <div class="process-step-img">
-          <div class="process-step-img__media">
-            <picture>
-              <img src="/images/process/final_packing.webp" alt="Factory exterior and final packing area for foil fabrics" width="1200" height="675" loading="lazy" decoding="async" />
-            </picture>
-          </div>
-          <div class="process-step-img__info">
-            <span class="process-step-img__num">05</span>
-            <h3 class="process-step-img__title">Final Packing</h3>
-            <p class="process-step-img__desc">
-              Inspected fabric rolls are carefully packed with protective wrapping
-              for domestic and international shipping.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Production Process: Detailed Timeline -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
         <span class="eyebrow">Production Workflow</span>
-        <h2>From Specification to Finished Roll</h2>
+        <h2>From Order Specification to Shipment Release</h2>
         <p>
-          Each stage has a defined output and inspection point so buyers can review the
-          process from sample approval through final release.
+          The same control method applies across products, while composition, GSM,
+          width, MOQ and lead time remain specific to the selected product and order.
         </p>
       </div>
 
@@ -588,31 +503,16 @@ const factorySnapshot = [
     </div>
   </section>
 
-  <!-- Quality Control Overview -->
-  <section class="section section--alt">
-    <div class="container">
-      <div class="section-header">
-        <span class="eyebrow">Quality Control</span>
-        <h2>Quality Control at Every Production Stage</h2>
-        <p>
-          Every production batch goes through manual inspection. We check the base fabric,
-          surface texture, gloss performance, color consistency, printing details and
-          packing condition before release.
-        </p>
-      </div>
-    </div>
-  </section>
-
   <!-- Quality Control Detail -->
   <section class="section">
     <div class="container">
       <div class="section-header">
-        <span class="eyebrow">Quality Management System</span>
-        <h2>Six-Stage Quality Management</h2>
+        <span class="eyebrow">Standardized Quality Control</span>
+        <h2>One Control Method, Product-Specific Acceptance Criteria</h2>
         <p>
-          Quality is built into every stage of our production. Inspection records,
-          approved samples and batch labeling help keep specifications clear from
-          development through delivery.
+          Quality is standardized through a confirmed order specification, approved
+          reference, first production check, in-process comparison and final roll release.
+          Product tolerances and test requirements are agreed for the selected item.
         </p>
       </div>
 
@@ -659,15 +559,38 @@ const factorySnapshot = [
     </div>
   </section>
 
-  <!-- Packing Process -->
+  <!-- Testing Options -->
   <section class="section section--alt">
     <div class="container">
       <div class="section-header">
-        <span class="eyebrow">Packing Process</span>
-        <h2>Careful Packing for International Shipping</h2>
+        <span class="eyebrow">Inspection &amp; Testing</span>
+        <h2>Testing Is Defined by the Product and Buyer Requirement</h2>
         <p>
-          Every roll is packed to withstand international shipping — protecting the foil
-          surface and ensuring the fabric arrives in perfect condition.
+          Routine production checks and third-party laboratory tests are different.
+          Required methods, acceptance criteria, reporting party and cost should be
+          agreed before production.
+        </p>
+      </div>
+      <div class="testing-grid">
+        {testOptions.map((item) => (
+          <article class="testing-item">
+            <h3>{item.title}</h3>
+            <p>{item.desc}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Packing Process -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Packing Process</span>
+        <h2>Order-Specific Roll Packing and Documentation</h2>
+        <p>
+          Packing is confirmed according to the product, roll size, transport method,
+          labels and buyer requirements instead of applying one format to every order.
         </p>
       </div>
 
@@ -683,22 +606,46 @@ const factorySnapshot = [
     </div>
   </section>
 
-  <!-- OEM & ODM -->
+  <!-- Custom Order Process -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Custom Order Execution</span>
+        <h2>How a Custom Foil Fabric Order Moves to Bulk Production</h2>
+        <p>
+          Custom work is controlled through feasibility review, physical sample approval,
+          written order confirmation and first production approval before full bulk output.
+        </p>
+      </div>
+      <div class="custom-order-grid">
+        {customOrderSteps.map((item) => (
+          <article class="custom-order-card">
+            <span class="custom-order-card__num">{item.num}</span>
+            <h3>{item.title}</h3>
+            <p>{item.desc}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Order Conditions -->
   <section class="section">
     <div class="container">
       <div class="section-header">
-        <span class="eyebrow">OEM &amp; ODM</span>
-        <h2>Custom Fabric Development</h2>
+        <span class="eyebrow">Commercial Conditions</span>
+        <h2>Specifications, MOQ and Lead Time Follow the Selected Product</h2>
         <p>
-          We develop fabric to your specification — from base fabric and color to foil
-          effect, finish and export-ready packing.
+          Factory controls are consistent, but product specifications and commercial
+          conditions vary by fabric, stock status and customization level.
         </p>
       </div>
-      <div class="oem-grid">
-        {oemOdm.map((item) => (
-          <article class="oem-card">
+      <div class="order-conditions-grid">
+        {orderConditions.map((item) => (
+          <article class="order-condition">
             <h3>{item.title}</h3>
             <p>{item.desc}</p>
+            <a href={item.href}>{item.linkLabel}<span aria-hidden="true"> →</span></a>
           </article>
         ))}
       </div>
@@ -724,7 +671,7 @@ const factorySnapshot = [
         </div>
         <div class="audit-cta">
           <CTAButton href="/contact/" variant="primary" size="lg">Book a Factory Visit</CTAButton>
-          <CTAButton href="/contact/" variant="outline" size="lg">View Certifications</CTAButton>
+          <CTAButton href="/certifications/" variant="outline" size="lg">View Testing Support</CTAButton>
         </div>
       </div>
     </div>
@@ -778,7 +725,7 @@ const factorySnapshot = [
               </div>
               <div class="visit-factory__item-content">
                 <h3 class="visit-factory__item-label">Business Hours</h3>
-                <p class="visit-factory__item-text">Mon&#8209;Sat, 8:00 AM&#8209;18:00 PM (CST, UTC+8)</p>
+                <p class="visit-factory__item-text">Mon&#8209;Sat, 08:00&#8209;18:00 (China Standard Time, UTC+8)</p>
               </div>
             </div>
 
@@ -1241,6 +1188,33 @@ const factorySnapshot = [
     line-height: var(--leading-relaxed);
   }
 
+  /* Testing */
+  .testing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .testing-item {
+    padding: var(--space-xl);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+  }
+
+  .testing-item h3 {
+    margin-bottom: var(--space-sm);
+    color: var(--color-primary);
+    font-size: var(--text-base);
+  }
+
+  .testing-item p {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+
   /* Packing Grid */
   .packing-grid {
     display: grid;
@@ -1279,109 +1253,77 @@ const factorySnapshot = [
     line-height: 1.6;
   }
 
-  /* Production Process Steps with Images */
-  .process-steps-with-images {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3xl);
-    max-width: 900px;
-    margin-inline: auto;
-  }
-
-  .process-step-img {
+  /* Custom Order Execution */
+  .custom-order-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-xl);
-    align-items: center;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-lg);
   }
 
-  .process-step-img:nth-child(even) {
-    direction: rtl;
-  }
-
-  .process-step-img:nth-child(even) > * {
-    direction: ltr;
-  }
-
-  .process-step-img__media {
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
-    aspect-ratio: 16 / 9;
-    background: var(--color-bg);
-  }
-
-  .process-step-img__media picture,
-  .process-step-img__media img {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-
-  .process-step-img__media img {
-    object-fit: cover;
-    filter: sepia(0.08) saturate(0.95) brightness(1.02) hue-rotate(5deg);
-  }
-
-  .process-step-img__info {
-    padding: var(--space-md);
-  }
-
-  .process-step-img__num {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background-color: var(--color-accent);
-    color: var(--color-white);
-    font-weight: 800;
-    font-size: var(--text-base);
-    margin-bottom: var(--space-md);
-  }
-
-  .process-step-img__title {
-    font-size: var(--text-lg);
-    margin-bottom: var(--space-sm);
-  }
-
-  .process-step-img__desc {
-    font-size: var(--text-sm);
-    line-height: var(--leading-relaxed);
-    color: var(--color-text-secondary);
-  }
-
-  /* Production Lines */
-  .lines-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-xl);
-  }
-
-  .line-card {
+  .custom-order-card {
+    min-height: 220px;
+    padding: var(--space-xl);
     background-color: var(--color-white);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    padding: var(--space-xl);
-    border-top: 3px solid var(--color-accent);
-    transition: all var(--transition-base);
   }
 
-  .line-card:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-4px);
+  .custom-order-card__num {
+    display: block;
+    margin-bottom: var(--space-lg);
+    color: var(--color-accent-dark);
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    line-height: 1;
   }
 
-  .line-card h3 {
-    font-size: var(--text-lg);
+  .custom-order-card h3 {
     margin-bottom: var(--space-sm);
+    color: var(--color-primary);
+    font-size: var(--text-base);
   }
 
-  .line-card p {
+  .custom-order-card p {
+    color: var(--color-text-secondary);
     font-size: var(--text-sm);
     line-height: var(--leading-relaxed);
+  }
+
+  /* Order Conditions */
+  .order-conditions-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .order-condition {
+    display: flex;
+    flex-direction: column;
+    min-height: 236px;
+    padding: var(--space-xl);
+    background-color: var(--color-bg-alt);
+    border-top: 3px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+  }
+
+  .order-condition h3 {
+    margin-bottom: var(--space-sm);
+    color: var(--color-primary);
+    font-size: var(--text-base);
+  }
+
+  .order-condition p {
     color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+
+  .order-condition a {
+    margin-top: auto;
+    padding-top: var(--space-lg);
+    color: var(--color-accent-dark);
+    font-size: var(--text-sm);
+    font-weight: 700;
   }
 
   /* Workshop Photos */
@@ -1410,74 +1352,6 @@ const factorySnapshot = [
   .workshop-photo img {
     object-fit: cover;
     filter: sepia(0.08) saturate(0.95) brightness(1.02) hue-rotate(5deg);
-  }
-
-  /* Equipment */
-  .equipment-grid {
-    max-width: 720px;
-  }
-
-  .equipment-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-md);
-  }
-
-  .equipment-item {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-md);
-    background-color: var(--color-bg-alt);
-    border-radius: var(--radius-sm);
-    font-size: var(--text-sm);
-    color: var(--color-text-secondary);
-    line-height: 1.5;
-  }
-
-  .equipment-check {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background-color: rgba(196, 160, 53, 0.12);
-    color: var(--color-accent-dark);
-    flex-shrink: 0;
-  }
-
-  /* OEM & ODM */
-  .oem-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-lg);
-  }
-
-  .oem-card {
-    background-color: var(--color-white);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: var(--space-xl);
-    text-align: center;
-    transition: all var(--transition-base);
-  }
-
-  .oem-card:hover {
-    background-color: var(--color-bg-alt);
-    transform: translateY(-4px);
-  }
-
-  .oem-card h3 {
-    font-size: var(--text-base);
-    margin-bottom: var(--space-sm);
-    color: var(--color-primary);
-  }
-
-  .oem-card p {
-    font-size: var(--text-sm);
-    line-height: var(--leading-relaxed);
-    color: var(--color-text-secondary);
   }
 
   /* Factory Audit */
@@ -1540,7 +1414,9 @@ const factorySnapshot = [
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .oem-grid {
+    .testing-grid,
+    .custom-order-grid,
+    .order-conditions-grid {
       grid-template-columns: repeat(2, 1fr);
     }
 
@@ -1552,14 +1428,6 @@ const factorySnapshot = [
       grid-template-columns: 1fr;
     }
 
-    .process-step-img {
-      grid-template-columns: 1fr;
-      gap: var(--space-md);
-    }
-
-    .process-step-img:nth-child(even) {
-      direction: ltr;
-    }
   }
 
   @media (max-width: 768px) {
@@ -1567,18 +1435,12 @@ const factorySnapshot = [
     .factory-snapshot,
     .qc-grid,
     .packing-grid,
+    .testing-grid,
+    .custom-order-grid,
+    .order-conditions-grid,
     .capabilities-grid,
     .visit-factory__grid {
       grid-template-columns: 1fr;
-    }
-
-    .process-step-img {
-      grid-template-columns: 1fr;
-      gap: var(--space-md);
-    }
-
-    .process-step-img:nth-child(even) {
-      direction: ltr;
     }
 
   }
@@ -1605,13 +1467,10 @@ const factorySnapshot = [
     .capabilities-grid,
     .qc-grid,
     .packing-grid,
-    .lines-grid,
-    .oem-grid,
+    .testing-grid,
+    .custom-order-grid,
+    .order-conditions-grid,
     .workshop-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .equipment-list {
       grid-template-columns: 1fr;
     }
 
@@ -1768,10 +1627,6 @@ const factorySnapshot = [
     .visit-factory__grid {
       grid-template-columns: 1fr;
       gap: 2rem;
-    }
-
-    .process-step-img__media {
-      aspect-ratio: 16 / 9;
     }
 
     .visit-factory__title {

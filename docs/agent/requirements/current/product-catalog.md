@@ -203,6 +203,16 @@ status: current
 - 最后变更编号：CHG-20260918-002-products-color-moq-alignment
 - 待确认事项：无
 
+### REQ-PRODUCT-025：产品详情页不显示复制产品链接按钮
+- 状态：active
+- 当前规则：所有产品详情页统一不显示 `Copy Product Link` 按钮，也不加载该按钮专用的复制事件、成功提示或样式；采购询盘、样品申请和 WhatsApp 联系入口继续保留。
+- 验收条件：当前及后续通过公共 `ProductDetail` 组件生成的产品详情页均不出现复制产品链接按钮；页面不残留 `copy-product-link`、`rfq-toast` 或 `copy_product_link` 逻辑；其他 CTA 行为不受影响。
+- 影响模块：`product-catalog`
+- 代码路径：`src/components/ProductDetail.astro`
+- 测试路径：`npm run build`；手动检查任一产品详情页 CTA 区域
+- 最后变更编号：CHG-20260919-002-remove-product-copy-link
+- 待确认事项：无
+
 ### REQ-PRODUCT-005：重点产品轮播角标需匹配品牌深蓝白字风格
 - 状态：active
 - 当前规则：`plain-iridescent-laser-spandex-4-way-stretch` 详情页轮播图右上角的 `WHOLESALE` 标签需使用深蓝底、白色文字，并保持与站点 logo 图标一致的品牌感。

@@ -136,12 +136,26 @@ const allStructuredData = structuredData
         window.dataLayer = window.dataLayer || [];
         window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
         window.__nixiaTrack = window.__nixiaTrack || function (eventName, params) {
-          window.gtag("event", eventName, params || {});
+          var eventParams = params || {};
+          if (window.__nixiaAnalyticsDebug) {
+            eventParams = Object.assign({ debug_mode: true }, eventParams);
+          }
+          window.gtag("event", eventName, eventParams);
         };
 
         // Keep first-touch campaign data available to inquiry forms.
         try {
           var params = new URLSearchParams(window.location.search);
+          var debugParam = params.get("ga_debug");
+          if (debugParam === "1") {
+            window.sessionStorage.setItem("nixia_ga_debug", "1");
+          } else if (debugParam === "0") {
+            window.sessionStorage.removeItem("nixia_ga_debug");
+          }
+          window.__nixiaAnalyticsDebug =
+            debugParam === "1" ||
+            window.sessionStorage.getItem("nixia_ga_debug") === "1";
+
           var keys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid"];
           var attribution = {};
           try {
@@ -174,7 +188,9 @@ const allStructuredData = structuredData
           document.head.appendChild(googleTag);
 
           window.gtag("js", new Date());
-          window.gtag("config", "G-VDYGZBSQ62");
+          window.gtag("config", "G-VDYGZBSQ62", window.__nixiaAnalyticsDebug
+            ? { debug_mode: true }
+            : {});
         }
 
         window.addEventListener("load", function () {

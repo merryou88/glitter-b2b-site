@@ -51,6 +51,7 @@ requirement_docs:
 - `thank-you.astro` 使用 `robots="noindex, follow"`
 - `404.astro` 使用 `robots="noindex"`
 - `factory.astro` 使用 `public/images/factory/nixia-factory-branded.mp4` 和对应 poster 展示品牌化工厂实拍视频
+- `factory.astro` 负责说明通用生产、质量控制、定制订单、测试和包装流程；具体产品规格、MOQ 和交期继续由产品详情页及正式报价承载
 
 ## 外部依赖
 - 仅依赖现有静态页面和局部组件
@@ -58,6 +59,7 @@ requirement_docs:
 ## 修改约束
 - 不要在这些页面里硬塞与当前事实无关的证书、政策或统计数值
 - 隐私页和认证页改动要先核对是否有对应代码事实
+- Factory 页面不得把可选第三方测试写成所有订单默认执行或默认通过，也不得虚构实验室、仪器和设备能力
 
 ## 验证方式
 - `npm run build`
