@@ -135,6 +135,7 @@ const allStructuredData = structuredData
       (function () {
         window.dataLayer = window.dataLayer || [];
         window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+        window.__nixiaAnalyticsReadyCallbacks = window.__nixiaAnalyticsReadyCallbacks || [];
         window.__nixiaTrack = window.__nixiaTrack || function (eventName, params) {
           var eventParams = params || {};
           if (window.__nixiaAnalyticsDebug) {
@@ -191,6 +192,10 @@ const allStructuredData = structuredData
           window.gtag("config", "G-VDYGZBSQ62", window.__nixiaAnalyticsDebug
             ? { debug_mode: true }
             : {});
+          window.__nixiaAnalyticsReady = true;
+          window.__nixiaAnalyticsReadyCallbacks.splice(0).forEach(function (callback) {
+            callback();
+          });
         }
 
         window.addEventListener("load", function () {

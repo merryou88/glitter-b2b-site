@@ -1301,7 +1301,18 @@ const heroVideo = product.video
     });
   };
 
-  trackProductEvent("product_view");
+  const sendProductView = () => {
+    if (window.__nixiaProductViewTracked) return;
+    window.__nixiaProductViewTracked = true;
+    trackProductEvent("product_view");
+  };
+
+  if (window.__nixiaAnalyticsReady) {
+    sendProductView();
+  } else {
+    window.__nixiaAnalyticsReadyCallbacks = window.__nixiaAnalyticsReadyCallbacks || [];
+    window.__nixiaAnalyticsReadyCallbacks.push(sendProductView);
+  }
 
   document.querySelectorAll("[data-rfq-open]").forEach((trigger) => {
     trigger.addEventListener("click", () => {
