@@ -38,7 +38,7 @@ requirement_docs:
 - `src/legacy/[id].astro.bak` 仍引用 `src/data/products.json`，但不在当前路由图里
 
 ## 数据与状态
-- 当前产品数：9
+- 当前产品数：10
 - 当前博客文章数：5
 - 当前博客分类数：6
 - 产品 slug、文章 slug、图片路径都是强约束

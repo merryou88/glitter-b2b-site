@@ -6,11 +6,11 @@ status: current
 ### REQ-PRODUCT-001：产品列表页仅展示当前定位相关产品
 - 状态：active
 - 当前规则：`/products/` 只展示 `performanceProducts` 中适用于 foil、holographic、iridescent、stretch、舞台服装、舞蹈服、表演服、Performance & Party Wear、舞台道具、背景布、活动装饰、泳装、cosplay 和 Halloween costumes 的产品；glitter leather、PU accessory、鞋材、手袋、工艺、玩具等退出定位产品不得出现在产品卡片、推荐排序、产品总数、场景入口、筛选结果或询盘选择中。产品列表页不再展示应用场景入口，场景导航由独立应用页面承担。
-- 验收条件：当前目录页展示 9 个公开产品；筛选、排序和总数均基于这 9 个产品；页面不出现鞋材、手袋、工艺或玩具等退出行业产品入口。
+- 验收条件：当前目录页展示 10 个公开产品；筛选、排序和总数均基于这 10 个产品；页面不出现鞋材、手袋、工艺或玩具等退出行业产品入口。
 - 影响模块：`product-catalog`
 - 代码路径：`src/data/allProducts.js`、`src/pages/products.astro`
 - 测试路径：`npm run build`，手动检查 `/products/`
-- 最后变更编号：CHG-20260920-002-h2013060104-product-detail
+- 最后变更编号：CHG-20260921-001-h2013060102-product-detail
 - 待确认事项：无
 
 ### REQ-PRODUCT-002：每个公开产品生成独立静态详情页
@@ -232,6 +232,26 @@ status: current
 - 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/double-layer-pleated-foil-knit-fabric/`
 - 最后变更编号：CHG-20260920-002-h2013060104-product-detail
 - 待确认事项：库存状态、批量交期、密度和测试合规需按项目确认；上线后需要复查 Search Console 索引、GA4 `product_view` 和 RFQ 产品归因
+
+### REQ-PRODUCT-028：H2013060102 公开产品页聚焦彩虹条纹四面弹烫金面料
+- 状态：active
+- 当前规则：`rainbow-stripe-foil-4-way-stretch-fabric` 是 H2013060102 的公开详情页，H1 使用 `Rainbow Stripe Foil 4-Way Stretch Fabric for Stage Costumes`，SEO 标题聚焦 `Rainbow Stripe Foil 4-Way Stretch Fabric` 与 `Wholesale Supplier`。产品规格以 `面料独立站产品数据.xlsx` 中 H2013060102 和用户上传图片为准，只使用已确认数据：150 cm / 59 in、180 GSM、MOQ 100 m / 109 yd、2 colors、4-way stretch、80T、300D*10S、hot-stamping foil、full-print effect 和 95% Polyester 5% Spandex。库存、样品准备时间、批量交期、包装、贸易条款和测试合规未确认时保持 `To be confirmed` 或项目报价确认表述。
+- 验收条件：详情页可生成并显示 Key Features、Recommended Applications、Why Choose、Ready Stock & Custom Development、Sample CTA 和 FAQ；主图读取 `public/images/products/H2013060102/main/a1.webp` 至 `a5.webp`；详情图连续读取 `x1.webp` 至 `x7.webp`；应用拼图独立读取 `application/1.webp`；PNG 原图归档到 `products-data/original-images/images/products/H2013060102/`，线上目录只保留 WebP 展示图；主图首张 WebP 不加水印，其余主图和详情图 WebP 添加 3 个低透明度、逆时针 45 度倾斜域名水印；应用图不加水印；`Specifications Table for B2B Buyers` 前不出现独立 `Product Description` 模块。
+- 影响模块：`product-catalog`、`content-data`、`inquiry-forms`
+- 代码路径：`src/data/allProducts.js`、`src/components/ProductDetail.astro`、`public/images/products/H2013060102/`、`products-data/original-images/images/products/H2013060102/`
+- 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/rainbow-stripe-foil-4-way-stretch-fabric/`
+- 最后变更编号：CHG-20260921-001-h2013060102-product-detail
+- 待确认事项：库存状态、样品准备时间、批量交期、包装、贸易条款和测试合规需按项目确认；上线后需要复查 Search Console 索引、GA4 `product_view` 和 RFQ 产品归因
+
+### REQ-PRODUCT-029：库存与采购交期按统一生产规则展示
+- 状态：active
+- 当前规则：公开产品详情页和产品目录必须使用统一采购规则。库存待确认或 `inStock !== true` 的产品对外显示 `Made to Order`；这类产品的样品准备时间显示 `3-5 working days`，批量交期显示 `7-15 working days`。所有产品的包装统一显示 `Roll packing with paper tube inside, plastic bag outside; can follow customer requirement`。已有明确现货状态的产品保留其现货标签和现货交期。
+- 验收条件：待确认库存产品的详情页、产品列表和应用页库存标签均为 `Made to Order`；详情页 B2B Buying Information、B2B Specifications 和交期卡显示统一样品准备时间与批量交期；所有公开产品详情页的包装字段显示统一内容；不改变已确认现货产品的现货交期。
+- 影响模块：`product-catalog`、`content-data`
+- 代码路径：`src/components/ProductDetail.astro`、`src/data/allProducts.js`、`src/pages/products.astro`
+- 测试路径：`npm run validate:products`、`npm run build`，抽查待确认库存和现货产品详情页及 `/products/`
+- 最后变更编号：CHG-20260921-002-procurement-display-rules
+- 待确认事项：具体订单的样品运费、批量生产排期和贸易条款仍按项目报价确认
 
 ### REQ-PRODUCT-005：重点产品 H2013090102 聚焦 Iridescent Spandex 搜索意图
 - 状态：active

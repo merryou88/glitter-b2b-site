@@ -74,6 +74,12 @@ const showExpandedHeroDescription = [
   "iridescent-gradient-laser-ice-silk",
 ].includes(product.slug);
 const isFullPrintHotStampingMilkSilk = product.slug === "full-print-hot-stamping-spandex-milk-silk";
+const isMadeToOrder = product.inStock !== true;
+const madeToOrderAvailability = "Made to Order";
+const madeToOrderSamplePreparation = "Sample preparation: 3-5 working days";
+const madeToOrderBulkLeadTime = "7-15 working days";
+const standardPackaging =
+  "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement";
 const hideProductDescription = [
   "iridescent-gradient-laser-ice-silk",
   "full-print-hot-stamping-spandex-milk-silk",
@@ -83,13 +89,20 @@ const hideProductDescription = [
   "blue-purple-gradient-laser-foil-spandex-fabric",
   "rainbow-dot-laser-foil-knit-fabric",
   "double-layer-pleated-foil-knit-fabric",
+  "rainbow-stripe-foil-4-way-stretch-fabric",
 ].includes(product.slug);
 const hasConfirmedDispatch =
   product.inStock === true &&
   Boolean(product.specs.leadTime) &&
   product.specs.leadTime.toLowerCase() !== "to be confirmed";
 const dispatchLabel = hasConfirmedDispatch ? "READY STOCK DISPATCH" : "LEAD TIME";
-const dispatchUnit = hasConfirmedDispatch ? "Working Days After Confirmation" : "To Be Confirmed";
+const dispatchUnit = hasConfirmedDispatch
+  ? "Working Days After Confirmation"
+  : isMadeToOrder
+    ? "Production Lead Time"
+    : "To Be Confirmed";
+const displayLeadTime = isMadeToOrder ? madeToOrderBulkLeadTime : product.specs.leadTime;
+const displaySampleNote = isMadeToOrder ? madeToOrderSamplePreparation : product.sampleNote;
 const samplePolicyIntro =
   product.samplePrompt ??
   "Free samples available, buyer covers international shipping cost. Shipping fee will be deducted from bulk orders.";
@@ -262,13 +275,17 @@ const productSurface =
   findRowValue(product.specTable, ["Surface Effect", "Surface Finish", "Surface", "Finishing"]) ||
   "Confirm by sample";
 const productStretch = findRowValue(product.specTable, ["Stretch"]) || "Confirm by sample";
-const productSampleInfo = b2bValue(["Sample", "Sampling"]) || product.sampleNote;
+const productSampleInfo = isMadeToOrder
+  ? madeToOrderSamplePreparation
+  : b2bValue(["Sample", "Sampling"]) || product.sampleNote;
 const productCustomizationInfo =
   b2bValue(["OEM / ODM", "OEM/ODM", "Customization"]) || product.customizationNote;
 const productAvailability =
-  product.availability ||
-  product.stockStatus ||
-  (product.inStock ? "In-stock status shown; confirm before order" : "Availability to be confirmed");
+  isMadeToOrder
+    ? madeToOrderAvailability
+    : product.availability ||
+      product.stockStatus ||
+      "In-stock status shown; confirm before order";
 const productTestingInfo =
   b2bValue(["Testing & Compliance", "Compliance"]) ||
   "Testing scope to be confirmed according to buyer requirements";
@@ -303,9 +320,7 @@ const b2bRows = [
     label: "Product Name / SKU",
     value: `${product.title} / ${product.sku ?? ""}`.trim(),
   },
-  ...(product.availability
-    ? [{ label: "Availability", value: product.availability }]
-    : []),
+  { label: "Availability", value: productAvailability },
   {
     label: "MOQ",
     value: `Standard products: ${productMoq} minimum. Custom projects: ${product.customProjectMoq ?? "MOQ to be confirmed based on customization requirements."}`,
@@ -314,14 +329,19 @@ const b2bRows = [
   {
     label: dispatchLabel.replace("READY STOCK ", ""),
     value: hasConfirmedDispatch
-      ? `${product.specs.leadTime} working days after payment and stock confirmation`
-      : "Lead time to be confirmed with the production or stock plan",
+      ? `${displayLeadTime} working days after payment and stock confirmation`
+      : displayLeadTime,
   },
-  { label: "Bulk Lead Time", value: b2bValue(["Bulk Lead time", "Bulk Lead Time"]) },
+  {
+    label: "Bulk Lead Time",
+    value: isMadeToOrder
+      ? madeToOrderBulkLeadTime
+      : b2bValue(["Bulk Lead time", "Bulk Lead Time"]),
+  },
   { label: "Available Colors", value: availableColors },
-  { label: "Sample", value: b2bValue(["Sample", "Sampling"]) || product.sampleNote },
+  { label: "Sample", value: isMadeToOrder ? madeToOrderSamplePreparation : b2bValue(["Sample", "Sampling"]) || product.sampleNote },
   { label: "OEM / ODM", value: b2bValue(["OEM / ODM", "OEM/ODM"]) },
-  { label: "Packaging", value: b2bValue(["Package type", "Packaging"]) || product.packaging },
+  { label: "Packaging", value: standardPackaging },
   {
     label: "Testing & Compliance",
     value: b2bValue(["Testing & Compliance", "Compliance"]),
@@ -506,7 +526,7 @@ const heroVideo = product.video
           </div>
           <div class="detail-offer-card detail-offer-card--lead">
             <span class="detail-offer-card__label">{dispatchLabel}</span>
-            <strong class="detail-offer-card__value">{product.specs.leadTime}</strong>
+            <strong class="detail-offer-card__value">{displayLeadTime}</strong>
             <span class="detail-offer-card__unit">{dispatchUnit}</span>
           </div>
         </div>
@@ -518,7 +538,7 @@ const heroVideo = product.video
             <div class="detail-buying__grid">
               <div class="detail-buying__item">
                 <h3 class="detail-buying__item-title">SAMPLE</h3>
-                <p class="detail-buying__item-text">{product.sampleNote}</p>
+                <p class="detail-buying__item-text">{displaySampleNote}</p>
               </div>
               <div class="detail-buying__item">
                 <h3 class="detail-buying__item-title">CUSTOMIZATION</h3>
@@ -526,7 +546,7 @@ const heroVideo = product.video
               </div>
               <div class="detail-buying__item">
                 <h3 class="detail-buying__item-title">PACKAGING</h3>
-                <p class="detail-buying__item-text">{product.packaging}</p>
+                <p class="detail-buying__item-text">{standardPackaging}</p>
               </div>
               <div class="detail-buying__item">
                 <h3 class="detail-buying__item-title">TRADE TERMS</h3>

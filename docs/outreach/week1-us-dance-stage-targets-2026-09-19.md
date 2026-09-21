@@ -58,17 +58,19 @@
 | A Wish Come True | Shiny foil 4-way stretch knit for recital and performance costumes; emphasize 30 colors and movement | H2013060105 |
 | Band Shoppe | Rainbow dot laser foil knit for color guard/dance team visual impact; emphasize stage-light effect and sample comparison | H2013090104 |
 
-## 发信身份处理建议
+## 已确认的发信方式
 
-当前不建议直接进入发送。正式外联前先完成：
+本阶段使用个人 Gmail，执行边界如下：
 
-1. 配置可发送的域名邮箱，例如 `name@nixiafabric.com` 或 `sales@nixiafabric.com`。
-2. 配置 SPF、DKIM、DMARC，避免 Gmail 个人邮箱与域名链接不一致造成信任问题。
-3. 如果短期只能用个人 Gmail，只建议用于 5 家小样本的人工、低频、非批量沟通，并在签名中透明说明公司和网站。
-4. 接收转发型企业邮箱只适合收信；如果没有 SMTP / Workspace / Zoho / Microsoft 365 / Cloudflare Email Routing outbound 等发信能力，通常不能作为主动开发发信邮箱。
+1. 先发送 5 家小样本，逐封人工发送，不群发。
+2. 不使用自动化群发工具，不隐藏真实发件人，不把 Gmail 的显示名称伪装成不存在的企业邮箱。
+3. 发件人显示名称使用 `Nixia Fabric` 或真实姓名 + `Nixia Fabric`。
+4. 邮件签名包含 Nixia Fabric、官网链接和 Gmail 回复地址。
+5. 接收转发型企业邮箱只作为收信/转发备份，不作为发件地址。
+6. 每封邮件使用对应产品页和 UTM 链接，记录发送时间、退信、回复、点击、样品请求和报价请求。
+7. 5 家小样本完成后，再根据质量信号决定是否扩展到每周 20-30 家。
 
 ## 下一步等待确认
 
 - 先人工审核这 5 家是否符合 Nixia 的目标客户。
-- 确认发信邮箱方案。
 - 确认是否把小样本文案逐家公司写成可审核草稿。

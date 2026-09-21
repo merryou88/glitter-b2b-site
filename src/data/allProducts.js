@@ -32,6 +32,197 @@
 
 export const allProducts = [
   {
+    slug: "rainbow-stripe-foil-4-way-stretch-fabric",
+    metaTitle: "Rainbow Stripe Foil 4-Way Stretch Fabric | Wholesale Supplier",
+    metaDesc:
+      "Rainbow stripe foil fabric with a flexible 4-way stretch base for stage costumes, dancewear, performance outfits and carnival costumes. Factory wholesale supply with OEM/ODM support, 100 m / 109 yd MOQ and sample details confirmed by project.",
+    title: "Rainbow Stripe Foil 4-Way Stretch Fabric for Stage Costumes",
+    sku: "H2013060102",
+    mainImageUrl: "/images/products/H2013060102/main/a1.webp",
+    mainImageWebp: "/images/products/H2013060102/main/a1.webp",
+    mainImageAlt:
+      "Rainbow stripe foil 4-way stretch fabric for stage costumes and performance garments",
+    imageList: [
+      {
+        src: "/images/products/H2013060102/main/a1.webp",
+        webp: "/images/products/H2013060102/main/a1.webp",
+        alt: "Rainbow stripe foil 4-way stretch fabric main view",
+      },
+      {
+        src: "/images/products/H2013060102/main/a2.webp",
+        webp: "/images/products/H2013060102/main/a2.webp",
+        alt: "Rainbow stripe foil fabric draped for costume production",
+      },
+      {
+        src: "/images/products/H2013060102/main/a3.webp",
+        webp: "/images/products/H2013060102/main/a3.webp",
+        alt: "Rainbow stripe foil fabric surface and stretch appearance",
+      },
+      {
+        src: "/images/products/H2013060102/main/a4.webp",
+        webp: "/images/products/H2013060102/main/a4.webp",
+        alt: "Rainbow stripe foil 4-way stretch fabric surface detail",
+      },
+      {
+        src: "/images/products/H2013060102/main/a5.webp",
+        webp: "/images/products/H2013060102/main/a5.webp",
+        alt: "Rainbow stripe foil fabric close-up for performance garments",
+      },
+    ],
+    galleryMainPath: "/images/products/H2013060102/main/",
+    galleryImages: ["a1.webp", "a2.webp", "a3.webp", "a4.webp", "a5.webp"],
+    detailImagePath: "/images/products/H2013060102/detail/",
+    video: null,
+    shortIntro:
+      "Rainbow stripe foil fabric with a flexible 4-way stretch base for colorful stage costumes and performance garments.",
+    fullDescription:
+      "Rainbow stripe foil fabric with a flexible 4-way stretch base for colorful stage costumes and performance garments. Factory wholesale supply with OEM/ODM support for buyers and apparel manufacturers.",
+    specs: {
+      width: "150 cm / 59 in",
+      weight: "180 GSM",
+      baseMaterial: "95% Polyester 5% Spandex",
+      thickness: "",
+      moq: "100 m / 109 yd",
+      leadTime: "To be confirmed",
+    },
+    specTable: [
+      { label: "Product Type", value: "Rainbow Stripe Foil 4-Way Stretch Fabric" },
+      { label: "Surface Effect", value: "Rainbow stripe foil; full-print effect" },
+      { label: "Base Fabric", value: "95% Polyester 5% Spandex" },
+      { label: "Stretch", value: "4-Way Stretch" },
+      { label: "Width", value: "150 cm / 59 in" },
+      { label: "Weight", value: "180 GSM" },
+      { label: "Color", value: "2 colors available; custom colors on request" },
+      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "Density", value: "80T" },
+      { label: "Yarn Count", value: "300D*10S" },
+      { label: "Finishing", value: "Hot-stamping foil" },
+      { label: "Typical Applications", value: "Stage costumes, dancewear, performance outfits, carnival costumes" },
+    ],
+    b2bTable: [
+      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "Supply type", value: "Factory wholesale supply with OEM/ODM support" },
+      { label: "Sample", value: "Availability, preparation time and shipping to be confirmed by project" },
+      { label: "Bulk Lead time", value: "To be confirmed according to order quantity and production requirements" },
+      { label: "Available Colors", value: "2 colors available; custom colors on request" },
+      { label: "OEM / ODM", value: "OEM/ODM support; custom color details to be confirmed" },
+      { label: "Testing & Compliance", value: "To be confirmed according to buyer requirements" },
+      { label: "Package type", value: "To be confirmed in quotation" },
+      { label: "Trade Terms", value: "To be confirmed in quotation" },
+    ],
+    applications: [
+      "Stage Costumes",
+      "Dancewear",
+      "Performance Outfits",
+      "Carnival Costumes",
+    ],
+    inStock: false,
+    stockStatus: "Made to Order",
+    badge: "2 colors",
+    colorCount: 2,
+    tags: ["rainbow-stripe", "foil", "spandex", "4-way-stretch", "stage-costume", "dancewear", "performance-outfit", "carnival-costume"],
+    availableColors: "2 colors available; custom colors on request",
+    sampleNote: "Sample availability, preparation time and shipping to be confirmed by project",
+    customizationNote: "OEM/ODM support; custom color details to be confirmed",
+    packaging: "To be confirmed in quotation",
+    tradeTerms: "To be confirmed in quotation",
+    heroHighlights: [
+      "Rainbow Stripe Foil",
+      "Full-Print Effect",
+      "4-Way Stretch",
+      "150 cm / 59 in Width",
+      "180 GSM Weight",
+      "MOQ 100 m / 109 yd",
+    ],
+    whyChooseHeading: "Key Features",
+    whyChoose: [
+      {
+        title: "Rainbow Stripe Surface",
+        desc: "A colorful stripe effect creates a strong visual direction for stage and performance garment designs.",
+      },
+      {
+        title: "Full-Print Foil Effect",
+        desc: "The foil surface provides a continuous reflective appearance across the fabric.",
+      },
+      {
+        title: "4-Way Stretch",
+        desc: "The flexible construction supports movement-focused performance garments and fitted costume designs.",
+      },
+      {
+        title: "Polyester-Spandex Base",
+        desc: "The confirmed 95% polyester and 5% spandex base combines a stable textile base with stretch.",
+      },
+      {
+        title: "Two Color Options",
+        desc: "Two colors are listed in the source data, with custom colors available on request.",
+      },
+      {
+        title: "OEM/ODM Support",
+        desc: "Factory wholesale and OEM/ODM support can be discussed for qualified buyer projects.",
+      },
+    ],
+    valueStory: {
+      title: "Why Choose This Rainbow Stripe Foil Fabric?",
+      body: "This rainbow stripe foil fabric combines a full-print visual effect with a 4-way stretch base, giving stage costume and performance garment buyers a colorful surface direction for movement-focused designs.",
+    },
+    applicationsHeading: "Recommended Applications",
+    buyerApplications: [
+      {
+        title: "Stage Costumes",
+        desc: "Rainbow stripe foil creates a high-visibility surface for stage costume production.",
+      },
+      {
+        title: "Dancewear",
+        desc: "4-way stretch supports dancewear designs that require movement and visual impact.",
+      },
+      {
+        title: "Performance Outfits",
+        desc: "The full-print foil effect gives performance garments a continuous colorful finish.",
+      },
+      {
+        title: "Carnival Costumes",
+        desc: "Colorful stripes suit carnival and event costume collections.",
+      },
+    ],
+    stockDevelopment: [
+      {
+        title: "Factory Wholesale Supply",
+        desc: "Wholesale supply is available for buyers and apparel manufacturers, subject to project confirmation.",
+      },
+      {
+        title: "OEM/ODM Support",
+        desc: "OEM/ODM and custom color requirements can be reviewed before quotation.",
+      },
+    ],
+    sampleCta: {
+      title: "Need Rainbow Stripe Foil Fabric?",
+      body: "Request a project review to confirm sample availability, color options and the surface effect before production.",
+      buttonLabel: "Request a Sample",
+    },
+    samplePrompt:
+      "Request a project review to confirm sample availability, color options and the surface effect before production.",
+    faqList: [
+      {
+        question: "What is the MOQ for this fabric?",
+        answer: "The confirmed MOQ is 100 m / 109 yd.",
+      },
+      {
+        question: "Does this fabric have 4-way stretch?",
+        answer: "Yes. The source data confirms this is a 4-way stretch fabric.",
+      },
+      {
+        question: "How many colors are available?",
+        answer: "The source data lists 2 colors, with custom colors available on request.",
+      },
+      {
+        question: "What applications is this fabric suitable for?",
+        answer: "Recommended applications include stage costumes, dancewear, performance outfits and carnival costumes.",
+      },
+    ],
+    skuImages: [],
+    detailImages: ["x1.webp", "x2.webp", "x3.webp", "x4.webp", "x5.webp", "x6.webp", "x7.webp"],
+  },
+  {
     slug: "plain-iridescent-laser-spandex-4-way-stretch",
     metaTitle: "Iridescent Spandex Fabric | 4-Way Stretch Foil Supplier",
     metaDesc:
@@ -395,7 +586,7 @@ export const allProducts = [
       "Dancewear",
     ],
     inStock: false,
-    stockStatus: "Availability to be confirmed",
+    stockStatus: "Made to Order",
     badge: "18 colors",
     colorCount: 18,
     tags: ["pleated-foil", "foil", "knit", "stage-costume", "performance-skirts", "dancewear", "formalwear"],
@@ -1482,7 +1673,7 @@ export const allProducts = [
       "Festival Costumes",
     ],
     inStock: false,
-    stockStatus: "Availability to be confirmed",
+    stockStatus: "Made to Order",
     badge: "1 color",
     colorCount: 1,
     tags: ["gradient", "laser-foil", "spandex", "4-way-stretch", "stage-costume", "performance-wear", "dancewear", "party-wear"],
@@ -1608,6 +1799,7 @@ export const allProducts = [
 ];
 
 export const performanceProductSlugs = [
+  "rainbow-stripe-foil-4-way-stretch-fabric",
   "plain-iridescent-laser-spandex-4-way-stretch",
   "full-print-hot-stamping-spandex-milk-silk",
   "double-layer-pleated-foil-knit-fabric",
