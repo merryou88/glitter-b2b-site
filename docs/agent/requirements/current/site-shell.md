@@ -53,6 +53,16 @@ status: current
 - 最后变更编号：CHG-20260916-002-seo-page-optimization
 - 待确认事项：无
 
+### REQ-SHELL-012：美国自然搜索聚焦当前 performance fabric 方向
+- 状态：active
+- 当前规则：公开 SEO 标题、描述、H1 和核心内链需要优先承接当前美国采购方向：`foil fabric supplier`、`holographic fabric wholesale`、`iridescent spandex fabric`、`dancewear fabric supplier` 和 `performance costume fabric`。`/products/` 作为当前产品总入口，必须强调 foil、holographic、iridescent、dancewear、performance costumes、samples、MOQ 和 custom support；`/applications/` 作为应用入口，必须强调 performance costume 与 dancewear fabric 应用。历史 glitter/leather 查询只做观察，不作为当前主推 SEO 方向。
+- 验收条件：`/products/`、`/applications/` 和重点应用页的 title、description、H1 与内部链接聚焦当前采购词；首页和公开入口不重新主推 glitter/leather。
+- 影响模块：`site-shell`、`product-catalog`
+- 代码路径：`src/pages/products.astro`、`src/pages/applications/index.astro`、`src/pages/applications/[slug].astro`
+- 测试路径：`npm run build`
+- 最后变更编号：CHG-20260920-001-us-search-baseline-seo-focus
+- 待确认事项：上线后需在 Google Search Console 观察美国查询、页面展示和“已发现 - 尚未编入索引”变化。
+
 ### REQ-SHELL-005：首页不展示 Glitter 相关内容
 - 状态：active
 - 当前规则：首页及其共享站点壳文案、SEO 元数据、替代文本、能力卡片与采购流程文案不使用 `glitter` 或 `sparkle` 表述；首页应用素材引用使用中性文件名。

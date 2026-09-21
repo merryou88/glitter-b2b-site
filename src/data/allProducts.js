@@ -33,46 +33,46 @@
 export const allProducts = [
   {
     slug: "plain-iridescent-laser-spandex-4-way-stretch",
-    metaTitle: "Iridescent 4-Way Stretch Foil Fabric | Nixia Fabric",
+    metaTitle: "Iridescent Spandex Fabric | 4-Way Stretch Foil Supplier",
     metaDesc:
-      "Iridescent laser 4-way stretch fabric for stage costumes, dancewear and performance wear. Foil fabric supply, samples, custom color support and 100 m / 109 yd MOQ.",
-    title: "Iridescent Laser Foil 4-Way Stretch Fabric for Stage & Dancewear",
-    sku: "P0001",
-    mainImageUrl: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.webp",
-    mainImageWebp: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.webp",
+      "Iridescent spandex fabric with laser foil finish and 4-way stretch for dancewear, stage costumes and performance wear. Wholesale samples, custom support and 100 m / 109 yd MOQ.",
+    title: "Iridescent Spandex Laser Foil 4-Way Stretch Fabric",
+    sku: "H2013090102",
+    mainImageUrl: "/images/products/H2013090102/main/1.webp",
+    mainImageWebp: "/images/products/H2013090102/main/1.webp",
     mainImageAlt:
       "Iridescent laser 4-way stretch fabric for stage costumes and dancewear",
     imageList: [
       {
-        src: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.webp",
-        webp: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.webp",
+        src: "/images/products/H2013090102/main/1.webp",
+        webp: "/images/products/H2013090102/main/1.webp",
         alt: "Iridescent laser 4-way stretch fabric for stage costumes and dancewear",
       },
       {
-        src: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/2.webp",
-        webp: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/2.webp",
+        src: "/images/products/H2013090102/main/2.webp",
+        webp: "/images/products/H2013090102/main/2.webp",
         alt: "Close-up of iridescent laser 4-way stretch fabric surface",
       },
       {
-        src: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/3.webp",
-        webp: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/3.webp",
+        src: "/images/products/H2013090102/main/3.webp",
+        webp: "/images/products/H2013090102/main/3.webp",
         alt: "Close-up of reflective iridescent laser foil stretch fabric surface",
       },
       {
-        src: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/4.webp",
-        webp: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/4.webp",
+        src: "/images/products/H2013090102/main/4.webp",
+        webp: "/images/products/H2013090102/main/4.webp",
         alt: "Close-up of iridescent laser hot-stamping stretch fabric texture",
       },
     ],
-    galleryMainPath: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/",
+    galleryMainPath: "/images/products/H2013090102/main/",
     galleryImages: ["1.webp", "2.webp", "3.webp", "4.webp"],
     detailImagePath:
-      "/images/products/plain-iridescent-laser-spandex-4-way-stretch/detail/",
+      "/images/products/H2013090102/detail/",
     video: null,
     shortIntro:
-      "Iridescent laser foil finish on a flexible 4-way stretch base, designed for stage costumes, dancewear and fitted performance outfits.",
+      "Iridescent spandex fabric with a laser foil finish on a flexible 4-way stretch base, designed for stage costumes, dancewear and fitted performance outfits.",
     fullDescription:
-      "This iridescent laser stretch fabric combines a reflective foil surface with a flexible 4-way stretch base. It is designed for fitted performance garments where visual impact and fabric movement both matter, including dancewear, stage costumes and performance outfits.",
+      "This iridescent spandex stretch fabric combines a reflective laser foil surface with a flexible 4-way stretch base. It is designed for fitted performance garments where visual impact and fabric movement both matter, including dancewear, stage costumes and performance outfits.",
     specs: {
       width: "150 cm / 59 in",
       weight: "180 GSM",
@@ -82,7 +82,7 @@ export const allProducts = [
       leadTime: "1-3",
     },
     specTable: [
-      { label: "Name", value: "Iridescent Laser 4-Way Stretch Fabric for Stage & Dancewear" },
+      { label: "Name", value: "Iridescent Spandex Laser Foil 4-Way Stretch Fabric" },
       { label: "Material", value: "Spandex / stretch fabric" },
       { label: "Surface", value: "Iridescent laser hot-stamping" },
       { label: "Width", value: "150 cm / 59 in" },
@@ -130,7 +130,7 @@ export const allProducts = [
     ],
     whyChoose: [
       {
-        title: "Iridescent Laser Effect",
+        title: "Iridescent Spandex Laser Effect",
         desc: "Reflective surface effect that changes with light and viewing angle.",
       },
       {
@@ -153,7 +153,7 @@ export const allProducts = [
       },
       {
         title: "Stage Costume Manufacturers",
-        desc: "Iridescent surface effect helps costumes stand out under stage lighting.",
+        desc: "Iridescent spandex surface effect helps costumes stand out under stage lighting.",
       },
       {
         title: "Festival & Carnival Costume Companies",
@@ -306,6 +306,221 @@ export const allProducts = [
     ],
     skuImages: [],
     detailImages: ["1.webp", "2.webp", "3.webp", "4.webp", "5.webp", "6.webp"],
+  },
+  {
+    slug: "double-layer-pleated-foil-knit-fabric",
+    metaTitle: "Pleated Foil Knit Fabric | Performance Skirt Supplier",
+    metaDesc:
+      "Double-layer pleated foil knit fabric with vertical texture for performance skirts, stage costumes, dresses and dancewear. Wholesale fabric supply, samples, custom colors and 100 m / 109 yd MOQ.",
+    title: "Double-Layer Pleated Foil Knit Fabric for Performance Skirts",
+    sku: "H2013060104",
+    mainImageUrl: "/images/products/H2013060104/main/a1.webp",
+    mainImageWebp: "/images/products/H2013060104/main/a1.webp",
+    mainImageAlt:
+      "Double-layer pleated foil knit fabric with vertical texture for performance skirts and costumes",
+    imageList: [
+      {
+        src: "/images/products/H2013060104/main/a1.webp",
+        webp: "/images/products/H2013060104/main/a1.webp",
+        alt: "Double-layer pleated foil knit fabric main view for performance skirts",
+      },
+      {
+        src: "/images/products/H2013060104/main/a2.webp",
+        webp: "/images/products/H2013060104/main/a2.webp",
+        alt: "Pleated foil knit fabric surface with vertical texture",
+      },
+      {
+        src: "/images/products/H2013060104/main/a3.webp",
+        webp: "/images/products/H2013060104/main/a3.webp",
+        alt: "Double-layer foil knit fabric showing pleated texture and shine",
+      },
+      {
+        src: "/images/products/H2013060104/main/a4.webp",
+        webp: "/images/products/H2013060104/main/a4.webp",
+        alt: "Pleated foil knit fabric for stage costume and dress production",
+      },
+      {
+        src: "/images/products/H2013060104/main/a5.webp",
+        webp: "/images/products/H2013060104/main/a5.webp",
+        alt: "Vertical pleated foil knit fabric detail for apparel manufacturers",
+      },
+    ],
+    galleryMainPath: "/images/products/H2013060104/main/",
+    galleryImages: ["a1.webp", "a2.webp", "a3.webp", "a4.webp", "a5.webp"],
+    detailImagePath: "/images/products/H2013060104/detail/",
+    video: null,
+    shortIntro:
+      "Double-layer pleated knit fabric with vertical texture and foil finish for performance skirts, stage costumes, dresses and dancewear.",
+    fullDescription:
+      "Double-layer pleated knit fabric with vertical texture and foil finish for performance skirts, stage costumes, dresses and dancewear.",
+    specs: {
+      width: "147 cm / 58 in",
+      weight: "200 GSM",
+      baseMaterial: "95% Polyester 5% Spandex",
+      thickness: "",
+      moq: "100",
+      leadTime: "To be confirmed",
+    },
+    specTable: [
+      { label: "Product Type", value: "Double-Layer Pleated Foil Knit Fabric" },
+      { label: "Surface Effect", value: "Foil finish with vertical pleated texture" },
+      { label: "Base Fabric", value: "95% Polyester 5% Spandex knit fabric" },
+      { label: "Stretch", value: "Slight stretch" },
+      { label: "Width", value: "147 cm / 58 in" },
+      { label: "Weight", value: "200 GSM" },
+      { label: "Color", value: "18 colors available; custom colors on request" },
+      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "Density", value: "To be confirmed" },
+      { label: "Yarn Count", value: "90S" },
+      { label: "Finishing", value: "Hot-stamping foil" },
+      { label: "Pattern / Construction", value: "Double-layer pleated knit fabric" },
+      { label: "Typical Applications", value: "Performance skirts, stage costumes, dresses, formalwear, dancewear" },
+    ],
+    b2bTable: [
+      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "Supply type", value: "18 colors available; stock status confirmed by quotation" },
+      { label: "Sample", value: "Sample available for pleated texture, surface effect and sewing review before production" },
+      { label: "Bulk Lead time", value: "To be confirmed according to order quantity and production requirements" },
+      { label: "Port", value: "Ningbo / Shanghai" },
+      { label: "OEM / ODM", value: "Custom colors and OEM/ODM development available" },
+      { label: "Testing & Compliance", value: "To be confirmed according to buyer requirements" },
+      { label: "Package type", value: "Roll packing; export packing available upon quotation" },
+      { label: "Trade Terms", value: "FOB, CIF upon quotation" },
+    ],
+    applications: [
+      "Performance Skirts",
+      "Stage Costumes",
+      "Dresses",
+      "Formalwear",
+      "Dancewear",
+    ],
+    inStock: false,
+    stockStatus: "Availability to be confirmed",
+    badge: "18 colors",
+    colorCount: 18,
+    tags: ["pleated-foil", "foil", "knit", "stage-costume", "performance-skirts", "dancewear", "formalwear"],
+    availableColors: "18 colors available; custom colors on request",
+    sampleNote: "Sample available for pleated texture and surface effect review",
+    customizationNote: "Custom colors and OEM/ODM development available",
+    packaging: "Roll packing; export packing available upon quotation",
+    tradeTerms: "FOB, CIF upon quotation",
+    heroHighlights: [
+      "Double-Layer Pleated Knit",
+      "Foil Finish",
+      "Slight Stretch",
+      "147 cm / 58 in Width",
+      "200 GSM Weight",
+      "MOQ 100 m / 109 yd",
+    ],
+    whyChooseHeading: "Key Features",
+    whyChoose: [
+      {
+        title: "Double-Layer Pleated Structure",
+        desc: "Vertical pleated texture creates stronger dimension for skirts, dresses and costume panels.",
+      },
+      {
+        title: "Foil Surface Effect",
+        desc: "A reflective foil finish adds visual impact for stage costumes and formalwear details.",
+      },
+      {
+        title: "Knit Fabric Base",
+        desc: "The polyester-spandex knit base gives the fabric slight stretch for apparel applications.",
+      },
+      {
+        title: "200 GSM Weight",
+        desc: "A heavier 200 GSM construction supports structured performance skirts and dress panels.",
+      },
+      {
+        title: "18 Color Options",
+        desc: "18 available colors support stage, costume, formalwear and dancewear development.",
+      },
+      {
+        title: "Custom Development Support",
+        desc: "Custom colors can be discussed for qualified wholesale and apparel manufacturing projects.",
+      },
+    ],
+    valueStory: {
+      title: "Why Choose This Pleated Foil Knit Fabric?",
+      body: "This double-layer pleated foil knit fabric gives performance apparel buyers a more dimensional surface than flat foil fabrics. The vertical texture, 200 GSM weight and slight stretch make it useful for performance skirts, stage costumes, dresses and dancewear.",
+    },
+    applicationsHeading: "Recommended Applications",
+    buyerApplications: [
+      {
+        title: "Performance Skirts",
+        desc: "Vertical pleats and foil shine create stronger movement and stage visibility.",
+      },
+      {
+        title: "Stage Costumes",
+        desc: "Reflective foil surface helps costume panels stand out under lighting.",
+      },
+      {
+        title: "Dresses & Formalwear",
+        desc: "Pleated texture and heavier weight support decorative dress and formalwear panels.",
+      },
+      {
+        title: "Dancewear",
+        desc: "Slight stretch supports movement-focused garment details and accents.",
+      },
+    ],
+    stockDevelopment: [
+      {
+        title: "18 Color Options",
+        desc: "18 colors are available, with selected colors confirmed before quotation.",
+      },
+      {
+        title: "Custom Color Development",
+        desc: "Custom colors can be discussed for project-based OEM/ODM requirements.",
+      },
+    ],
+    sampleCta: {
+      title: "Need a Pleated Foil Knit Fabric?",
+      body: "Request a sample to review the pleated texture, foil surface and weight before production.",
+      buttonLabel: "Request a Sample",
+    },
+    samplePrompt:
+      "Request a sample to review the pleated texture, foil surface and weight before production.",
+    faqList: [
+      {
+        question: "What is the MOQ for this fabric?",
+        answer:
+          "The confirmed MOQ is 100 m / 109 yd.",
+      },
+      {
+        question: "What is the fabric width and weight?",
+        answer:
+          "The fabric width is 147 cm / 58 in and the weight is 200 GSM.",
+      },
+      {
+        question: "Does this fabric stretch?",
+        answer:
+          "The source data describes this fabric as slight stretch.",
+      },
+      {
+        question: "What applications is this fabric suitable for?",
+        answer:
+          "Recommended applications include performance skirts, stage costumes, dresses, formalwear and dancewear.",
+      },
+      {
+        question: "Can the color be customized?",
+        answer:
+          "18 colors are available, and custom colors can be discussed for qualified wholesale projects.",
+      },
+    ],
+    skuImages: [],
+    detailImages: [
+      "x4.webp",
+      "x5.webp",
+      "x6.webp",
+      "x7.webp",
+      "x8.webp",
+      "x9.webp",
+      "x10.webp",
+      "x11.webp",
+      "x111.webp",
+      "x112.webp",
+      "x113.webp",
+      "x13.webp",
+    ],
   },
   {
     slug: "shiny-foil-4-way-stretch-knit-fabric",
@@ -1395,6 +1610,7 @@ export const allProducts = [
 export const performanceProductSlugs = [
   "plain-iridescent-laser-spandex-4-way-stretch",
   "full-print-hot-stamping-spandex-milk-silk",
+  "double-layer-pleated-foil-knit-fabric",
   "shiny-foil-4-way-stretch-knit-fabric",
   "non-shedding-glitter-suede-look-laser-foil-fabric",
   "iridescent-laser-hot-stamping-stretch-ice-silk",

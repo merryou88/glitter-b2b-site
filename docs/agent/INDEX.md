@@ -12,6 +12,7 @@
 | Cloudflare Functions / Worker | `modules/cloudflare-worker.md` | `workflows/worker-request-flow.md` | `requirements/current/cloudflare-worker.md` | `rfq-worker/src/index.ts`、`rfq-worker/wrangler.toml` |
 | Resend 邮件 | `modules/legacy-resend-api.md` | `workflows/legacy-resend-flow.md` | `requirements/current/legacy-resend-api.md` | `src/pages/api/rfq-submit.ts` |
 | SEO / Meta / Schema | `modules/site-shell.md` | `workflows/seo-metadata.md` | `requirements/current/site-shell.md` | `src/layouts/Layout.astro`、相关页面 frontmatter |
+| 候选产品 / 下一批上架 / 30 天产品计划 | `modules/product-catalog.md`、`modules/content-data.md` | `workflows/next-product-candidate-plan.md` | `requirements/current/product-catalog.md` | 用户确认后才涉及 `src/data/allProducts.js`、`public/images/products/**` |
 | 构建 / 部署 | `architecture.md` | `workflows/build-deploy.md` | `requirements/current/content-data.md`、`requirements/current/cloudflare-worker.md` | `package.json`、`rfq-worker/package.json` |
 | 测试 / 线上故障 | `conventions.md` | 相关 workflow 与模块文档 | 相关 current 需求 | 根目录脚本与目标代码 |
 | 需求新增 / 需求变更 | `requirements/INDEX.md`、`requirements/CHANGE_TEMPLATE.md` | 对应模块文档 | 对应 current 需求 | 相关代码路径 |

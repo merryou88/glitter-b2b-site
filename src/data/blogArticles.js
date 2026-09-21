@@ -473,8 +473,8 @@ const allBlogArticles = [
     readTime: "6 min read",
     tags: ["Holographic Fabric", "Stage Costumes"],
     category: "Sourcing Guide",
-    image: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.webp",
-    imageWebp: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/1.webp",
+    image: "/images/products/H2013090102/main/1.webp",
+    imageWebp: "/images/products/H2013090102/main/1.webp",
     imageAlt: "Holographic 4-way stretch fabric for stage costume sourcing",
     excerpt:
       "A practical sourcing guide for holographic fabric buyers comparing stretch, recovery, shine, width, MOQ and sample approval for dancewear.",
@@ -1129,8 +1129,8 @@ const allBlogArticles = [
     readTime: "6 min read",
     tags: ["Fabric Specs", "Buyer Guide"],
     category: "Sourcing Guide",
-    image: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/2.webp",
-    imageWebp: "/images/products/plain-iridescent-laser-spandex-4-way-stretch/main/2.webp",
+    image: "/images/products/H2013090102/main/2.webp",
+    imageWebp: "/images/products/H2013090102/main/2.webp",
     imageAlt: "Fabric width and GSM guide for stage costume buyers",
     excerpt:
       "Understand fabric GSM vs ounces for buyer communication, sample review, costing and comparing international textile specifications.",

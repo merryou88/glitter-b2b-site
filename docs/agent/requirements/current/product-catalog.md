@@ -6,11 +6,11 @@ status: current
 ### REQ-PRODUCT-001：产品列表页仅展示当前定位相关产品
 - 状态：active
 - 当前规则：`/products/` 只展示 `performanceProducts` 中适用于 foil、holographic、iridescent、stretch、舞台服装、舞蹈服、表演服、Performance & Party Wear、舞台道具、背景布、活动装饰、泳装、cosplay 和 Halloween costumes 的产品；glitter leather、PU accessory、鞋材、手袋、工艺、玩具等退出定位产品不得出现在产品卡片、推荐排序、产品总数、场景入口、筛选结果或询盘选择中。产品列表页不再展示应用场景入口，场景导航由独立应用页面承担。
-- 验收条件：当前目录页展示 8 个公开产品；筛选、排序和总数均基于这 8 个产品；页面不出现鞋材、手袋、工艺或玩具等退出行业产品入口。
+- 验收条件：当前目录页展示 9 个公开产品；筛选、排序和总数均基于这 9 个产品；页面不出现鞋材、手袋、工艺或玩具等退出行业产品入口。
 - 影响模块：`product-catalog`
 - 代码路径：`src/data/allProducts.js`、`src/pages/products.astro`
 - 测试路径：`npm run build`，手动检查 `/products/`
-- 最后变更编号：CHG-20260916-005-h2013090104-product-detail
+- 最后变更编号：CHG-20260920-002-h2013060104-product-detail
 - 待确认事项：无
 
 ### REQ-PRODUCT-002：每个公开产品生成独立静态详情页
@@ -213,14 +213,34 @@ status: current
 - 最后变更编号：CHG-20260919-002-remove-product-copy-link
 - 待确认事项：无
 
-### REQ-PRODUCT-005：重点产品轮播角标需匹配品牌深蓝白字风格
+### REQ-PRODUCT-026：下一批产品必须经过真实资料筛选和用户确认
 - 状态：active
-- 当前规则：`plain-iridescent-laser-spandex-4-way-stretch` 详情页轮播图右上角的 `WHOLESALE` 标签需使用深蓝底、白色文字，并保持与站点 logo 图标一致的品牌感。
-- 验收条件：该产品轮播角标显示为深蓝色背景与白字，视觉上与 header logo 的深蓝白字风格一致。
+- 当前规则：2026-09-19 至 2026-10-19 的下一批产品准备工作必须先盘点工厂供货、寄样、报价、规格、MOQ、交期、应用和素材，建立 3–5 款候选产品的优先级表，并区分 `可立即上架`、`待补资料`、`暂不上架`。候选必须对照 Search Console 查询、美国采购场景和现有公开产品完成搜索价值、询盘价值与定位去重。未知字段不得从同类产品推断。两个尚未满足正式上架条件的产品继续等待。只有获得用户明确确认的产品才能进入 `allProducts.js`、图片处理和页面制作。
+- 验收条件：候选表记录每款产品的真实来源、缺失字段、差异说明和状态；未获用户确认时不新增产品数据、图片目录或页面；经确认产品发布后逐项检查 Search Console 索引、GA4 `product_view` 和 RFQ 产品/SKU 归因。
+- 影响模块：`product-catalog`、`content-data`、`inquiry-forms`
+- 代码路径：`docs/agent/workflows/next-product-candidate-plan.md`；经确认后才涉及 `src/data/allProducts.js`、`public/images/products/**` 和产品静态路由
+- 测试路径：计划阶段检查候选表与资料来源；实施阶段运行 `npm run validate:products`、`npm run build`，并执行单款发布后检查
+- 最后变更编号：CHG-20260919-004-next-product-candidate-plan
+- 待确认事项：候选产品的工厂供货、样品、报价、交期、完整素材和 Search Console 数据需由用户或业务资料确认
+
+### REQ-PRODUCT-027：H2013060104 公开产品页聚焦双层褶皱烫金针织面料
+- 状态：active
+- 当前规则：`double-layer-pleated-foil-knit-fabric` 是 H2013060104 的公开详情页，H1 使用 `Double-Layer Pleated Foil Knit Fabric for Performance Skirts`，SEO 标题按美国采购商搜索习惯聚焦 `Pleated Foil Knit Fabric` 与 `Performance Skirt Supplier`。产品规格以 `面料独立站产品数据.xlsx` 中 H2013060104 和用户上传图片为准，只使用已确认数据：147 cm / 58 in、200 GSM、MOQ 100 m / 109 yd、18 colors、slight stretch、90S、hot-stamping foil、double-layer pleated knit fabric、95% Polyester 5% Spandex。密度、批量交期、库存状态和测试合规未确认时保持 `To be confirmed` 或报价确认表述。
+- 验收条件：详情页可生成并显示 Key Features、Recommended Applications、Why Choose、Ready Stock & Custom Development、Sample CTA 和 FAQ；主图读取 `public/images/products/H2013060104/main/a1.webp` 至 `a5.webp`；详情图读取 `x4.webp` 至 `x13.webp` 及 `x111.webp` 至 `x113.webp`；PNG 原图归档到 `products-data/original-images/images/products/H2013060104/`，线上目录只保留 WebP 展示图；主图首张 WebP 不加水印，其余主图和详情图 WebP 添加 3 个低透明度、逆时针 45 度倾斜域名水印；`Specifications Table for B2B Buyers` 前不出现独立 `Product Description` 模块。
+- 影响模块：`product-catalog`、`content-data`、`inquiry-forms`
+- 代码路径：`src/data/allProducts.js`、`src/components/ProductDetail.astro`、`public/images/products/H2013060104/`、`products-data/original-images/images/products/H2013060104/`
+- 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/double-layer-pleated-foil-knit-fabric/`
+- 最后变更编号：CHG-20260920-002-h2013060104-product-detail
+- 待确认事项：库存状态、批量交期、密度和测试合规需按项目确认；上线后需要复查 Search Console 索引、GA4 `product_view` 和 RFQ 产品归因
+
+### REQ-PRODUCT-005：重点产品 H2013090102 聚焦 Iridescent Spandex 搜索意图
+- 状态：active
+- 当前规则：`plain-iridescent-laser-spandex-4-way-stretch` 详情页产品标题为 `Iridescent Spandex Laser Foil 4-Way Stretch Fabric`，SEO 标题为 `Iridescent Spandex Fabric | 4-Way Stretch Foil Supplier`，用于承接美国 GSC 中接近当前方向的 `iridescent lycra` / `iridescent spandex fabric` 搜索意图。SKU 保持 `H2013090102`，图片统一读取 `public/images/products/H2013090102/`；详情页轮播图右上角的 `WHOLESALE` 标签需使用深蓝底、白色文字，并保持与站点 logo 图标一致的品牌感。
+- 验收条件：该产品详情页 H1 显示 `Iridescent Spandex Laser Foil 4-Way Stretch Fabric`；`Product Name / SKU` 显示 `Iridescent Spandex Laser Foil 4-Way Stretch Fabric / H2013090102`；meta title 包含 `Iridescent Spandex Fabric`；图片从 `H2013090102` 目录读取；轮播角标显示为深蓝色背景与白字，视觉上与 header logo 的深蓝白字风格一致。
 - 影响模块：`product-catalog`
-- 代码路径：`src/components/ProductDetail.astro`
-- 测试路径：`npm run build`
-- 最后变更编号：CHG-20260908-003-wholesale-badge-brand-style
+- 代码路径：`src/data/allProducts.js`、`src/components/ProductDetail.astro`、`public/images/products/H2013090102/`
+- 测试路径：`npm run validate:products`、`npm run build`
+- 最后变更编号：CHG-20260920-001-us-search-baseline-seo-focus
 - 待确认事项：无
 
 ### REQ-PRODUCT-006：Rainbow Gradient 产品标题与图片素材需同步更新
