@@ -54,33 +54,33 @@ status: current
 - 待确认事项：无
 
 ### REQ-PRODUCT-010：指定产品颜色数标签需同步更新
-- 状态：active
-- 当前规则：`non-woven-glitter-fabric` 的产品卡片角标与详情页 `Available Colors` 需要同步为 `31 colors`；`sparkle-glitter-surface-solid-leather-fabric` 的产品卡片角标与详情页 `Available Colors` 需要同步为 `35 colors`。
-- 验收条件：这两个产品的列表页角标和详情页可见颜色数一致，且分别显示为 `31 colors` 与 `35 colors`。
+- 状态：retired
+- 当前规则：该规则仅保留历史追溯；`non-woven-glitter-fabric` 与 `sparkle-glitter-surface-solid-leather-fabric` 已退出公开产品集合，不再生成列表卡片或详情页。
+- 验收条件：两个历史产品不出现在公开产品集合和构建路由中，旧地址返回404。
 - 影响模块：`product-catalog`
 - 代码路径：`src/data/allProducts.js`
 - 测试路径：`npm run build`
-- 最后变更编号：CHG-20260908-011-color-count-badge-sync
+- 最后变更编号：CHG-20260923-006-retired-products-404
 - 待确认事项：无
 
 ### REQ-PRODUCT-011：Coarse Glitter 产品需使用 CNAS 对外展示
-- 状态：active
-- 当前规则：`coarse-glitter-pu-hot-stamping-fabric-cma-certified` 的产品标题、首页推荐卡片角标、详情页文案与合规说明需要统一展示为 `CNAS Certified`，并避免对外使用 `CMA Certified` 表述。
-- 验收条件：该产品在首页、列表页与详情页都显示 `CNAS Certified`；相关合规说明不再出现 `CMA Certified`。
+- 状态：retired
+- 当前规则：该规则仅保留历史追溯；`coarse-glitter-pu-hot-stamping-fabric-cma-certified` 已退出公开产品集合，不再生成首页、列表页或详情页入口。
+- 验收条件：该历史产品不出现在公开产品集合和构建路由中，旧地址返回404。
 - 影响模块：`product-catalog`
 - 代码路径：`src/data/allProducts.js`、`src/pages/index.astro`
 - 测试路径：`npm run build`
-- 最后变更编号：待确认
-- 待确认事项：slug 保持不变，仍沿用现有产品地址
+- 最后变更编号：CHG-20260923-006-retired-products-404
+- 待确认事项：无
 
 ### REQ-PRODUCT-012：退出行业产品不再公开展示
 - 状态：active
-- 当前规则：非表演服装定位的历史产品不进入当前目录、详情静态路由、首页、应用页相关推荐或询盘产品列表；旧产品地址统一重定向到 `/products/`。
-- 验收条件：构建产物中不生成退出行业产品详情页，旧地址访问后进入当前产品目录。
+- 当前规则：非表演服装定位的历史产品不进入当前目录、详情静态路由、首页、应用页相关推荐或询盘产品列表；没有明确同类替代页面的旧产品地址不做栏目首页重定向，直接返回站点404。
+- 验收条件：构建产物中不生成退出行业产品详情页；`non-woven-glitter-fabric`、`rainbow-gradient-glitter-synthetic-leather`、`coarse-glitter-pu-hot-stamping-fabric-cma-certified` 和 `sparkle-glitter-surface-solid-leather-fabric` 的带斜杠及不带斜杠旧地址均不匹配重定向规则，并由站点返回404。
 - 影响模块：`product-catalog`、`content-data`
 - 代码路径：`src/data/allProducts.js`、`src/pages/products/[slug].astro`、`public/_redirects`
 - 测试路径：`npm run build`；检查旧地址重定向规则
-- 最后变更编号：CHG-20260912-018-public-copy-alignment
+- 最后变更编号：CHG-20260923-006-retired-products-404
 - 待确认事项：历史产品原始图片暂不删除
 
 ### REQ-PRODUCT-013：Iridescent Laser Stretch Ice-Silk 产品颜色信息需准确
@@ -256,11 +256,11 @@ status: current
 ### REQ-PRODUCT-030：H2013090101 公开产品页聚焦全息蛇皮纹弹力面料
 - 状态：active
 - 当前规则：`holographic-snakeskin-stretch-fabric` 是 H2013090101 的公开详情页，H1 使用 `Laser Foil Snakeskin Stretch Fabric`，SEO 标题聚焦 `Holographic Snakeskin Stretch Fabric` 与 `Swimwear & Dancewear`。产品规格以 `面料独立站产品数据.xlsx` 中 H2013090101 和用户提供图片为准，只使用已确认数据：147 cm / 58 in、160 GSM、MOQ 100 m / 109 yd、70 colors、slight stretch、90S 和 92% Polyester 8% Spandex。密度、后整理、花型结构、库存状态、样品准备时间、批量交期和测试合规未确认时保持 `To be confirmed` 或项目报价确认表述。
-- 验收条件：详情页可生成并显示 Key Features、Recommended Applications、Why Choose、Ready Stock & Custom Development、Sample CTA 和 FAQ；主图读取 `public/images/products/H2013090101/main/a1.webp` 至 `a5.webp`；详情图按实际素材读取 `1.webp` 至 `9.webp` 及 `11.webp`，不擅自补造缺失的 `10.webp`；PNG/JPG 原图归档到 `products-data/original-images/images/products/H2013090101/`，线上目录只保留 WebP 展示图；主图首张 WebP 不加水印，其余主图和详情图 WebP 添加 3 个分散、不重叠、低透明度、逆时针 45 度倾斜域名水印；没有独立 application 素材时不生成虚构应用图；`Specifications Table for B2B Buyers` 前不出现独立 `Product Description` 模块。
+- 验收条件：详情页可生成并显示 Key Features、Recommended Applications、Why Choose、Ready Stock & Custom Development、Sample CTA 和 FAQ；主图读取 `public/images/products/H2013090101/main/1.webp`、`2.webp`、`a1.webp`、`a2.webp`、`a3.webp`；详情图读取 `1.webp` 至 `8.webp`；PNG/JPG 原图归档到 `products-data/original-images/images/products/H2013090101/`，线上目录只保留 WebP 展示图；主图首张 WebP 不加水印，其余主图和详情图 WebP 添加 3 个分散、不重叠、低透明度、逆时针 45 度倾斜域名水印；所有公开 WebP 单张低于 500 KB；没有独立 application 素材时不生成虚构应用图；`Specifications Table for B2B Buyers` 前不出现独立 `Product Description` 模块。
 - 影响模块：`product-catalog`、`content-data`、`inquiry-forms`
 - 代码路径：`src/data/allProducts.js`、`src/components/ProductDetail.astro`、`public/images/products/H2013090101/`、`products-data/original-images/images/products/H2013090101/`
 - 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/holographic-snakeskin-stretch-fabric/`
-- 最后变更编号：CHG-20260922-001-h2013090101-product-detail
+- 最后变更编号：CHG-20260923-005-h2013090101-image-compression
 - 待确认事项：库存状态、样品准备时间、批量交期、密度、后整理、花型结构、测试合规和上线后 Search Console/GA4/RFQ 归因需按项目确认
 
 ### REQ-PRODUCT-005：重点产品 H2013090102 聚焦 Iridescent Spandex 搜索意图
@@ -274,31 +274,31 @@ status: current
 - 待确认事项：无
 
 ### REQ-PRODUCT-006：Rainbow Gradient 产品标题与图片素材需同步更新
-- 状态：active
-- 当前规则：`rainbow-gradient-glitter-synthetic-leather` 的展示标题应更新为 `Pastel Rainbow Iridescent Superfine Glitter Faux Leather Fabric for Crafts & Accessories`，并同步使用新的 main、application、detail 图片素材。
-- 验收条件：该产品详情页、列表页与 SEO 标题展示新名称；main、application、detail 图片路径均指向新素材。
+- 状态：retired
+- 当前规则：该规则仅保留历史追溯；`rainbow-gradient-glitter-synthetic-leather` 已退出公开产品集合，不再生成列表页或详情页入口。
+- 验收条件：该历史产品不出现在公开产品集合和构建路由中，旧地址返回404。
 - 影响模块：`product-catalog`
 - 代码路径：`src/data/allProducts.js`、`src/pages/products/[slug].astro`
 - 测试路径：`npm run build`、`npm run validate:products`
-- 最后变更编号：CHG-20260908-004-rainbow-product-refresh
+- 最后变更编号：CHG-20260923-006-retired-products-404
 - 待确认事项：无
 
 ### REQ-PRODUCT-007：Sparkle 产品 detail 与 application 图片需同步更新
-- 状态：active
-- 当前规则：`sparkle-glitter-surface-solid-leather-fabric` 使用新的 detail 与 application 图片素材；Product Details 图片按默认一行两列展示。
-- 验收条件：该产品 detail 图片引用连续编号图片；Product Details 图片包含第三张在内都按默认两列网格展示；application 图片按 `application/` 目录新素材自动展示。
+- 状态：retired
+- 当前规则：该规则仅保留历史追溯；`sparkle-glitter-surface-solid-leather-fabric` 已退出公开产品集合，不再生成详情页。
+- 验收条件：该历史产品不出现在公开产品集合和构建路由中，旧地址返回404。
 - 影响模块：`product-catalog`
 - 代码路径：`src/data/allProducts.js`、`src/components/ProductDetail.astro`
 - 测试路径：`npm run build`、`npm run validate:products`
-- 最后变更编号：CHG-20260908-007-sparkle-detail-two-column
+- 最后变更编号：CHG-20260923-006-retired-products-404
 - 待确认事项：无
 
 ### REQ-PRODUCT-008：Sparkle 图片目录需统一连续编号并补齐 WebP
-- 状态：active
-- 当前规则：`sparkle-glitter-surface-solid-leather-fabric` 的 `main`、`application`、`detail` 目录需要按连续编号从 `1` 开始命名；缺失的 WebP 需要补齐；详情页继续按新目录展示图片。
-- 验收条件：三个目录的文件名连续、可被产品数据直接引用，WebP 文件成对存在，详情页图片正常渲染。
+- 状态：retired
+- 当前规则：该规则仅保留历史追溯；`sparkle-glitter-surface-solid-leather-fabric` 已退出公开产品集合，其历史图片目录不再参与公开页面构建。
+- 验收条件：该历史产品不出现在公开产品集合和构建路由中，旧地址返回404。
 - 影响模块：`product-catalog`、`content-data`
 - 代码路径：`src/data/allProducts.js`、`src/components/ProductDetail.astro`
 - 测试路径：`npm run build`、`npm run validate:products`
-- 最后变更编号：CHG-20260908-006-sparkle-renumber-and-webp
+- 最后变更编号：CHG-20260923-006-retired-products-404
 - 待确认事项：无

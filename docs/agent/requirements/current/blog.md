@@ -25,12 +25,12 @@ status: current
 
 ### REQ-BLOG-003：公开博客内容不推广 glitter 主题
 - 状态：active
-- 当前规则：博客列表、公开静态文章路由及博客 SEO 不展示以 glitter 为核心主题的文章或关键词；保留 foil、iridescent、stretch 和合规采购内容。
-- 验收条件：`/blog/` 仅显示非 glitter 主题文章；旧 glitter 文章地址统一重定向到 `/blog/`；公开博客元数据不含 glitter 关键词。
+- 当前规则：博客列表、公开静态文章路由及博客 SEO 不展示以 glitter 为核心主题的文章或关键词；保留 foil、iridescent、stretch 和合规采购内容。没有明确同主题替代文章的旧 glitter 文章地址不重定向到博客首页，直接返回站点404。
+- 验收条件：`/blog/` 仅显示非 glitter 主题文章；`cnas-certification-coarse-glitter-pu-hot-stamping-fabric`、`what-is-glitter-fabric`、`glitter-vs-foil-comparison` 和 `how-to-choose-glitter-surface-solid-leather-fabric` 的旧地址不生成静态文章、不匹配重定向规则并返回404；公开博客元数据不含 glitter 关键词。
 - 影响模块：`blog-knowledge`、`product-catalog`
 - 代码路径：`src/data/blogArticles.js`、`src/pages/blog/index.astro`、`src/pages/blog/[slug].astro`、`public/_redirects`
 - 测试路径：`npm run build`
-- 最后变更编号：CHG-20260912-015-blog-remove-glitter-content
+- 最后变更编号：CHG-20260923-007-retired-blogs-404
 - 待确认事项：无
 
 ### REQ-BLOG-004：公开博客聚焦表演服装采购

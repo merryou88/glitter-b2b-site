@@ -45,12 +45,12 @@ status: current
 
 ### REQ-DATA-005：线上图片目录只保留必要展示资源
 - 状态：active
-- 当前规则：`public/images` 和 `public/shots` 中已有同名 WebP 展示版本的 JPG/PNG 原图不得继续随站点部署；这些原图按原 `public` 路径结构归档到仓库根目录的 `products-data/original-images/`。站点数据、页面和组件应优先引用 WebP，只有缺少 WebP 或确有兼容需求的图片才允许保留 JPG/PNG 在 `public`。
-- 验收条件：构建产物不引用已归档的 JPG/PNG；公开产品图片路径校验通过；归档目录保留原路径结构，便于后续回溯源素材。
+- 当前规则：`public/images` 和 `public/shots` 中已有同名 WebP 展示版本的 JPG/PNG 原图不得继续随站点部署；这些原图按原 `public` 路径结构归档到仓库根目录的 `products-data/original-images/`。站点数据、页面和组件应优先引用 WebP，只有缺少 WebP 或确有兼容需求的图片才允许保留 JPG/PNG 在 `public`。新生成或重新处理的产品展示 WebP 单张必须低于 500 KB。
+- 验收条件：构建产物不引用已归档的 JPG/PNG；公开产品图片路径校验通过；归档目录保留原路径结构，便于后续回溯源素材；本次新增或更新的产品展示 WebP 逐张检查均低于 500 KB。
 - 影响模块：`content-data`、`product-catalog`、`site-shell`、`blog-knowledge`
 - 代码路径：`src/data/allProducts.js`、`src/data/blogArticles.js`、`src/data/products.json`、`src/pages/**`、`src/components/**`、`public/images/**`、`public/shots/**`、`products-data/original-images/**`
 - 测试路径：`npm run validate:products`、`npm run build`，扫描生成页面中的缺失图片引用
-- 最后变更编号：CHG-20260916-007-archive-original-images
+- 最后变更编号：CHG-20260923-005-h2013090101-image-compression
 - 待确认事项：是否还需要为极旧浏览器保留少量 JPG/PNG fallback
 
 ### REQ-DATA-006：工厂原始视频不得随站点公开部署
