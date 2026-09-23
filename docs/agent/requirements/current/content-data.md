@@ -38,9 +38,9 @@ status: current
 - 当前规则：指定产品的主图 1 不使用水印；主图与 Product Details 图只在 WebP 展示版本添加域名水印，PNG/JPG 原图保持无水印，除每个产品首张主图（如 `main/1.webp` 或 `main/a1.webp`）外每张只放 3 个低透明度、逆时针 45 度倾斜域名水印 `nixiafabric.com`；3 个水印必须分散在不同画面区域，不得互相重叠或交叉遮挡；Application 图片的 PNG/JPG 与 WebP 均不加水印。
 - 验收条件：指定产品主图 1 保持无水印；主图与 Product Details 图的 PNG/JPG 原图不加水印，除首张主图外的同名 WebP 每张包含且只包含 3 个低透明度、逆时针 45 度倾斜域名水印，且 3 个水印位置分散、不互相重叠；Application 图片的 PNG/JPG 与 WebP 均保持无水印；图片尺寸和展示路径不变，面料主体仍清晰可辨，且不使用 Logo 图标水印或固定水印背景框。
 - 影响模块：`content-data`、`product-catalog`
-- 代码路径：`public/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/`、`public/images/products/H2013060102/`、`public/images/products/H2013060104/`、`public/images/products/H2013060105/`、`public/images/products/H2013060106/`、`public/images/products/iridescent-gradient-laser-ice-silk/`、`public/images/products/H2013120102/`、`public/images/products/H2013090104/`、`public/images/products/H2013090102/`
+- 代码路径：`public/images/products/H2013120107/`、`public/images/products/H2013060101/`、`public/images/products/H2013060102/`、`public/images/products/H2013060104/`、`public/images/products/H2013060105/`、`public/images/products/H2013060106/`、`public/images/products/H2013090101/`、`public/images/products/H2013120106/`、`public/images/products/H2013120102/`、`public/images/products/H2013090104/`、`public/images/products/H2013090102/`
 - 测试路径：`npm run validate:products`、`npm run build`、人工抽查图片
-- 最后变更编号：CHG-20260921-001-h2013060102-product-detail
+- 最后变更编号：CHG-20260923-003-h2013120107-image-path
 - 待确认事项：无
 
 ### REQ-DATA-005：线上图片目录只保留必要展示资源

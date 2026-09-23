@@ -44,7 +44,7 @@ Pinterest 比 Instagram 和 YouTube 更适合当前素材与本次目标：
 | P0001 | `plain-iridescent-laser-spandex-4-way-stretch` | 4 | 4 | 2 | 0 | 表面近景、4-way stretch 规格、舞台与舞蹈服应用 |
 | P0002 | `full-print-hot-stamping-spandex-milk-silk` | 7 | 6 | 3 | 0 | 全印花效果、图案选择、22 个现货颜色、每款图案 MOQ |
 | H2013060105 | `shiny-foil-4-way-stretch-knit-fabric` | 5 | 14 | 1 | 0 | 亮面 foil、145 cm / 57 in、4-way stretch、performance/party wear |
-| H2013060106 | `non-shedding-glitter-suede-look-laser-foil-fabric` | 5 | 12 | 1 | 0 | suede-look 近景、轻微弹力、舞台道具与背景布选择 |
+| H2013060106 | `dense-dot-foil-suede-look-fabric` | 5 | 12 | 1 | 0 | suede-look 近景、轻微弹力、舞台道具与背景布选择 |
 | P0003 | `iridescent-laser-hot-stamping-stretch-ice-silk` | 5 | 6 | 1 | 1 | 光线变化视频、iridescent 效果、样品确认 |
 | P0005 | `iridescent-gradient-laser-ice-silk` | 5 | 2 | 2 | 1 | 渐变方向、光线变化视频、舞蹈服与 costume 应用 |
 | H2013090104 | `rainbow-dot-laser-foil-knit-fabric` | 5 | 23 | 0 | 0 | 圆点 foil 近景、90 GSM、28 色、200 m / 219 yd MOQ |
@@ -200,7 +200,7 @@ https://nixiafabric.com/products/{slug}/
 | `w2_p3_sample` | `/products/iridescent-laser-hot-stamping-stretch-ice-silk/` |
 | `w2_p4_application` | `/products/shiny-foil-4-way-stretch-knit-fabric/` |
 | `w3_p5_gradient` | `/products/iridescent-gradient-laser-ice-silk/` |
-| `w3_p6_use_case` | `/products/non-shedding-glitter-suede-look-laser-foil-fabric/` |
+| `w3_p6_use_case` | `/products/dense-dot-foil-suede-look-fabric/` |
 | `w4_p7_moq` | `/products/rainbow-dot-laser-foil-knit-fabric/` |
 | `w4_p8_selection` | `/products/blue-purple-gradient-laser-foil-spandex-fabric/` |
 

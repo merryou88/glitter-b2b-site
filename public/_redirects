@@ -7,6 +7,11 @@
 /products/iridescent-laser-hot-stamping-stretch-ice-silk /products/iridescent-laser-hot-stamping-stretch-ice-silk/ 301
 /products/iridescent-gradient-laser-ice-silk /products/iridescent-gradient-laser-ice-silk/ 301
 /products/plain-iridescent-laser-spandex-4-way-stretch /products/plain-iridescent-laser-spandex-4-way-stretch/ 301
+/products/dense-dot-foil-suede-look-fabric /products/dense-dot-foil-suede-look-fabric/ 301
+
+# Renamed H2013060106 product URL
+/products/non-shedding-glitter-suede-look-laser-foil-fabric/ /products/dense-dot-foil-suede-look-fabric/ 301
+/products/non-shedding-glitter-suede-look-laser-foil-fabric /products/dense-dot-foil-suede-look-fabric/ 301
 
 # Retired non-performance product pages
 /products/non-woven-glitter-fabric /products/ 301

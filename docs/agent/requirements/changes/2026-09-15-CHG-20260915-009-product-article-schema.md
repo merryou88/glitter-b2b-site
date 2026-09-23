@@ -1,7 +1,7 @@
 ---
 change_id: CHG-20260915-009-product-article-schema
 date: 2026-09-15
-status: implemented
+status: superseded
 requirements:
   - REQ-PRODUCT-016
 modules:
@@ -9,6 +9,8 @@ modules:
 ---
 
 # 产品页主结构化数据改为 Article
+
+> 已由 `CHG-20260923-004-remove-product-schema` 取代。当前产品详情页不再输出 Product 实体。
 
 ## 变更原因
 产品页采用 B2B 询盘模式，没有公开售价。原 Product JSON-LD 缺少 `offers`、`review` 或 `aggregateRating`，触发 GSC 严重报错。

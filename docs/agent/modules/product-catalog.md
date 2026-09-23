@@ -25,7 +25,7 @@ requirement_docs:
 # product-catalog
 
 ## 职责
-产品目录和产品详情页。负责列表、筛选、排序、详情渲染、产品 schema 和询盘入口。
+产品目录和产品详情页。负责列表、筛选、排序、详情渲染和询盘入口。
 
 ## 不负责的范围
 不负责博客、公司页、Worker 实现或 Resend 旧端点。
@@ -42,10 +42,10 @@ requirement_docs:
 - `ProductDetail` 统一承载产品正文、图库、FAQ 和 CTA
 
 ## 数据与状态
-- 当前产品数据数：10；`/products/` 当前展示 `performanceProducts` 中的 10 个产品
+- 当前产品数据数：11；`/products/` 当前展示 `performanceProducts` 中的 11 个产品
 - `ProductDetail` 会根据产品对象读取 `specs`、`faqList`、`imageList`、`galleryImages`、`detailImages`
-- `src/pages/products/[slug].astro` 负责 Product / FAQ / Breadcrumb JSON-LD
-- 2026-09-19 至 2026-10-19 的下一批产品候选筛选记录在 `workflows/next-product-candidate-plan.md`；H2013060104 与 H2013060102 已由用户确认并进入公开产品集合，其余初筛对象仍按计划复核
+- `src/pages/products/[slug].astro` 负责 FAQ / Breadcrumb JSON-LD；询盘型产品页不输出 Product JSON-LD
+- 2026-09-19 至 2026-10-19 的下一批产品候选筛选记录在 `workflows/next-product-candidate-plan.md`；H2013060104、H2013060102 与 H2013090101 已由用户确认并进入公开产品集合，其余初筛对象仍按计划复核
 
 ## 外部依赖
 - `public/images/products/**`
@@ -55,7 +55,7 @@ requirement_docs:
 ## 修改约束
 - 先改 `allProducts.js`，再补图片和页面文案
 - 保持 slug、图片路径、规格字段和 FAQ 字段一致
-- 产品 schema 只能写代码里能确认的事实，不要补公开价格或评分
+- 询盘型产品页不输出 Product schema，也不补公开价格、评分或评论；保留 FAQ 与 Breadcrumb schema
 - 新增公开产品必须先确认符合当前 performance fabric 定位：foil、holographic、iridescent、stretch、stage costume、dancewear、cosplay、performance wear、props、backdrops 或 event decoration。glitter leather、PU accessory、鞋材、手袋、工艺、玩具等退出定位产品不得加入当前 `allProducts`
 - 新增公开产品必须一次性写好美国采购商 SEO：`metaTitle` 使用买家搜索词和 `Wholesale Supplier`；H1/title 以材质、效果、弹性和用途开头；`metaDesc` 包含应用、wholesale/supplier、样品/定制/库存/MOQ 等已确认采购事实；`hot-stamping` 作为辅助工艺词，不作为主要搜索词
 - 采购参数要同时给出公制和美国买家易读单位，例如 `150 cm / 59 in`、`100 m / 109 yd`；未知字段写 `To be confirmed` 或省略，不编造

@@ -6,7 +6,7 @@ status: current
 ### REQ-PRODUCT-001：产品列表页仅展示当前定位相关产品
 - 状态：active
 - 当前规则：`/products/` 只展示 `performanceProducts` 中适用于 foil、holographic、iridescent、stretch、舞台服装、舞蹈服、表演服、Performance & Party Wear、舞台道具、背景布、活动装饰、泳装、cosplay 和 Halloween costumes 的产品；glitter leather、PU accessory、鞋材、手袋、工艺、玩具等退出定位产品不得出现在产品卡片、推荐排序、产品总数、场景入口、筛选结果或询盘选择中。产品列表页不再展示应用场景入口，场景导航由独立应用页面承担。
-- 验收条件：当前目录页展示 10 个公开产品；筛选、排序和总数均基于这 10 个产品；页面不出现鞋材、手袋、工艺或玩具等退出行业产品入口。
+- 验收条件：当前目录页展示 11 个公开产品；筛选、排序和总数均基于这 11 个产品；页面不出现鞋材、手袋、工艺或玩具等退出行业产品入口。
 - 影响模块：`product-catalog`
 - 代码路径：`src/data/allProducts.js`、`src/pages/products.astro`
 - 测试路径：`npm run build`，手动检查 `/products/`
@@ -15,12 +15,12 @@ status: current
 
 ### REQ-PRODUCT-002：每个公开产品生成独立静态详情页
 - 状态：active
-- 当前规则：`/products/[slug]` 通过 `getStaticPaths()` 为 `performanceProducts` 中每个公开产品生成静态页，并渲染 WebPage、Product、FAQ 和面包屑结构化数据。产品没有公开固定售价时，不输出不完整的 `offers`、虚构价格或评分。
+- 当前规则：`/products/[slug]` 通过 `getStaticPaths()` 为 `performanceProducts` 中每个公开产品生成静态页，并渲染 FAQ 和面包屑结构化数据。询盘型产品页不输出 Product schema，也不输出不完整的 `offers`、虚构价格、评价或评分。
 - 验收条件：每个公开产品 slug 都能打开对应详情页；退出行业产品不生成新页面并通过 `_redirects` 迁移；元数据与产品事实一致。
 - 影响模块：`product-catalog`
-- 代码路径：`src/pages/products/[slug].astro`、`src/components/ProductSchema.astro`、`src/components/ProductDetail.astro`
+- 代码路径：`src/pages/products/[slug].astro`、`src/components/ProductDetail.astro`
 - 测试路径：`npm run build`
-- 最后变更编号：CHG-20260916-002-seo-page-optimization
+- 最后变更编号：CHG-20260923-004-remove-product-schema
 - 待确认事项：无
 
 ### REQ-PRODUCT-003：询盘入口必须带着产品上下文
@@ -113,14 +113,14 @@ status: current
 - 最后变更编号：CHG-20260913-005-iridescent-color-count-correction
 - 待确认事项：无
 
-### REQ-PRODUCT-016：产品详情页使用 Article 主 schema 并嵌套 Product 主题
+### REQ-PRODUCT-016：询盘型产品详情页不输出 Product schema
 - 状态：active
-- 当前规则：所有公开产品详情页通过公共组件输出一个 `Article` JSON-LD，保留产品名称、绝对主图 URL和英文描述，并包含 `publisher` 为 Nixia Fabric；通过 `about` 嵌套一个不含 Offer、Review 或 AggregateRating 的 `Product` 实体，表达文章介绍的面料产品。站点采用询盘模式，不输出虚构价格或报价结构化数据。
-- 验收条件：产品页的主产品 schema 类型为 `Article`，包含 `name`、`image`、`description`、`publisher` 和 `about.Product`；`about.Product` 包含产品名称、完整绝对主图 URL和英文描述；产品主 schema 不包含 `offers`、`review` 或 `aggregateRating`；主图为空时不输出该组件 schema；博客页不加载该产品组件；原有页面 HTML、CSS、GA4 和图片渲染逻辑不受影响。
+- 当前规则：所有公开产品详情页不输出 `Product` JSON-LD，也不输出 `offers`、`review` 或 `aggregateRating`。页面继续保留 `FAQPage`、`BreadcrumbList`、canonical、Meta 和 Open Graph 数据。站点采用 B2B 询盘模式，没有公开价格或真实评价时，不声明商品富媒体结果资格。
+- 验收条件：所有公开产品详情页生成源码中不存在 `"@type":"Product"`、`offers`、`review` 或 `aggregateRating`；FAQ 与 Breadcrumb schema 保持存在；博客页 schema 不受影响；页面可见内容、HTML 结构、CSS、GA4 和图片渲染逻辑不受影响。
 - 影响模块：`product-catalog`
-- 代码路径：`src/components/ProductSchema.astro`、`src/pages/products/[slug].astro`
+- 代码路径：`src/pages/products/[slug].astro`
 - 测试路径：`npm run build`；检查生成产品页和博客页源码
-- 最后变更编号：CHG-20260915-009-product-article-schema
+- 最后变更编号：CHG-20260923-004-remove-product-schema
 - 待确认事项：生产部署和 Google Search Console 复测需在具备部署/GSC权限后执行
 
 ### REQ-PRODUCT-017：H2013060105 公开产品页聚焦 Performance & Party Wear
@@ -135,12 +135,12 @@ status: current
 
 ### REQ-PRODUCT-018：H2013060106 公开产品页聚焦舞台与活动装饰应用
 - 状态：active
-- 当前规则：`non-shedding-glitter-suede-look-laser-foil-fabric` 是 H2013060106 的公开详情页，H1 使用 `Dense Dot Foil Suede-Look Fabric`，标题下方描述使用已确认的 Soft suede-like base、subtle scattered metallic sparkles、wrinkle-resistant 和 flexible performance 文案，并将应用扩展为 evening dresses、fashion apparel、handbags、upholstery、stage decor 和 photo backdrops。详情页不展示独立 `Product Description` 模块。产品规格只能使用已确认数据：150cm、130g、MOQ 100m、Custom projects MOQ 200 meters、16 colors、Slight Stretch、210T、75D*75DD、Foil、Foil embossing 和 Suede-look fabric；Availability 为 In-Stock，Stock Dispatch 为 5-7 days。
+- 当前规则：`dense-dot-foil-suede-look-fabric` 是 H2013060106 的公开详情页，旧地址 `non-shedding-glitter-suede-look-laser-foil-fabric` 永久 301 重定向到新地址。H1 使用 `Dense Dot Foil Suede-Look Fabric`，标题下方描述使用已确认的 Soft suede-like base、subtle scattered metallic sparkles、wrinkle-resistant 和 flexible performance 文案，并将应用扩展为 evening dresses、fashion apparel、handbags、upholstery、stage decor 和 photo backdrops。详情页不展示独立 `Product Description` 模块。产品规格只能使用已确认数据：150cm、130g、MOQ 100m、Custom projects MOQ 200 meters、16 colors、Slight Stretch、210T、75D*75DD、Foil、Foil embossing 和 Suede-look fabric；Availability 为 In-Stock，Stock Dispatch 为 5-7 days。
 - 验收条件：详情页可生成并显示 Availability: In-Stock、STOCK DISPATCH: 5-7 working days、Custom projects: MOQ 200 meters、Key Features、Recommended Applications、Why Choose、Ready Stock & Custom Development、Sample CTA 和 FAQ；详情图按内容顺序连续编号为 `x1`–`x12`，Application 拼图独立位于 `application/1`；PNG/JPG 原图保持无水印，主图首张 WebP 与 Application WebP 不加水印，其余主图和详情图 WebP 每张使用 3 个低透明度、逆时针 45 度倾斜域名水印。
 - 影响模块：`product-catalog`、`content-data`、`inquiry-forms`
 - 代码路径：`src/data/allProducts.js`、`src/components/ProductDetail.astro`、`public/images/products/H2013060106/`
-- 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/non-shedding-glitter-suede-look-laser-foil-fabric/`
-- 最后变更编号：CHG-20260915-008-h2013060106-description-update
+- 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/dense-dot-foil-suede-look-fabric/`，并确认旧地址 301 到新地址
+- 最后变更编号：CHG-20260923-001-h2013060106-product-url
 - 待确认事项：自定义项目的具体生产交期需按项目询价确认
 
 ### REQ-PRODUCT-019：H2013120102 公开产品页聚焦蓝紫渐变镭射弹力面料
@@ -252,6 +252,16 @@ status: current
 - 测试路径：`npm run validate:products`、`npm run build`，抽查待确认库存和现货产品详情页及 `/products/`
 - 最后变更编号：CHG-20260921-002-procurement-display-rules
 - 待确认事项：具体订单的样品运费、批量生产排期和贸易条款仍按项目报价确认
+
+### REQ-PRODUCT-030：H2013090101 公开产品页聚焦全息蛇皮纹弹力面料
+- 状态：active
+- 当前规则：`holographic-snakeskin-stretch-fabric` 是 H2013090101 的公开详情页，H1 使用 `Laser Foil Snakeskin Stretch Fabric`，SEO 标题聚焦 `Holographic Snakeskin Stretch Fabric` 与 `Swimwear & Dancewear`。产品规格以 `面料独立站产品数据.xlsx` 中 H2013090101 和用户提供图片为准，只使用已确认数据：147 cm / 58 in、160 GSM、MOQ 100 m / 109 yd、70 colors、slight stretch、90S 和 92% Polyester 8% Spandex。密度、后整理、花型结构、库存状态、样品准备时间、批量交期和测试合规未确认时保持 `To be confirmed` 或项目报价确认表述。
+- 验收条件：详情页可生成并显示 Key Features、Recommended Applications、Why Choose、Ready Stock & Custom Development、Sample CTA 和 FAQ；主图读取 `public/images/products/H2013090101/main/a1.webp` 至 `a5.webp`；详情图按实际素材读取 `1.webp` 至 `9.webp` 及 `11.webp`，不擅自补造缺失的 `10.webp`；PNG/JPG 原图归档到 `products-data/original-images/images/products/H2013090101/`，线上目录只保留 WebP 展示图；主图首张 WebP 不加水印，其余主图和详情图 WebP 添加 3 个分散、不重叠、低透明度、逆时针 45 度倾斜域名水印；没有独立 application 素材时不生成虚构应用图；`Specifications Table for B2B Buyers` 前不出现独立 `Product Description` 模块。
+- 影响模块：`product-catalog`、`content-data`、`inquiry-forms`
+- 代码路径：`src/data/allProducts.js`、`src/components/ProductDetail.astro`、`public/images/products/H2013090101/`、`products-data/original-images/images/products/H2013090101/`
+- 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/holographic-snakeskin-stretch-fabric/`
+- 最后变更编号：CHG-20260922-001-h2013090101-product-detail
+- 待确认事项：库存状态、样品准备时间、批量交期、密度、后整理、花型结构、测试合规和上线后 Search Console/GA4/RFQ 归因需按项目确认
 
 ### REQ-PRODUCT-005：重点产品 H2013090102 聚焦 Iridescent Spandex 搜索意图
 - 状态：active

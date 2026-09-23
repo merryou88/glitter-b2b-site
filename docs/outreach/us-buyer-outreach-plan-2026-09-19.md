@@ -73,7 +73,7 @@ https://nixiafabric.com/products/{slug}/?utm_source=outbound_email&utm_medium=em
 | P0001 | `/products/plain-iridescent-laser-spandex-4-way-stretch/` | dancewear、stage costume、performance wear、festival costumes | `plain_iridescent_stretch_stage_dance` |
 | P0002 | `/products/full-print-hot-stamping-spandex-milk-silk/` | dancewear、stage costume、custom print performance outfits | `full_print_foil_spandex` |
 | H2013060105 | `/products/shiny-foil-4-way-stretch-knit-fabric/` | performance wear、party wear、festival costumes、dancewear | `shiny_foil_4way_knit` |
-| H2013060106 | `/products/non-shedding-glitter-suede-look-laser-foil-fabric/` | stage props、photo backdrops、event decoration、costume accents | `dense_dot_foil_suede_stage_props` |
+| H2013060106 | `/products/dense-dot-foil-suede-look-fabric/` | stage props、photo backdrops、event decoration、costume accents | `dense_dot_foil_suede_stage_props` |
 | P0003 | `/products/iridescent-laser-hot-stamping-stretch-ice-silk/` | dancewear、performance outfits、stage costume | `iridescent_stretch_ice_silk` |
 | P0005 | `/products/iridescent-gradient-laser-ice-silk/` | dancewear、costumes、cosplay、gradient visual concepts | `iridescent_gradient_ice_silk` |
 | H2013090104 | `/products/rainbow-dot-laser-foil-knit-fabric/` | stage costumes、cheerleading/team performance、costume makers | `rainbow_dot_laser_knit` |

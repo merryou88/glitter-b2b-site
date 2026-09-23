@@ -400,18 +400,18 @@ export const allProducts = [
       "Full-print foil spandex milk-silk fabric with 4-way stretch for stage costumes, dancewear and performance outfits. Wholesale factory supply, samples and OEM support.",
     title: "Full-Print Foil Spandex Milk-Silk Fabric",
     sku: "P0002",
-    mainImageUrl: "/images/products/full-print-hot-stamping-spandex-milk-silk/main/主图-1.webp",
-    mainImageWebp: "/images/products/full-print-hot-stamping-spandex-milk-silk/main/主图-1.webp",
+    mainImageUrl: "/images/products/H2013060101/main/主图-1.webp",
+    mainImageWebp: "/images/products/H2013060101/main/主图-1.webp",
     mainImageAlt:
       "Full-print hot-stamping spandex milk-silk fabric with soft hand-feel and 4-way stretch",
     imageList: [
       {
-        src: "/images/products/full-print-hot-stamping-spandex-milk-silk/main/主图-1.webp",
-        webp: "/images/products/full-print-hot-stamping-spandex-milk-silk/main/主图-1.webp",
+        src: "/images/products/H2013060101/main/主图-1.webp",
+        webp: "/images/products/H2013060101/main/主图-1.webp",
         alt: "Full-print hot-stamping spandex milk-silk fabric with soft hand-feel and 4-way stretch",
       },
     ],
-    galleryMainPath: "/images/products/full-print-hot-stamping-spandex-milk-silk/main/",
+    galleryMainPath: "/images/products/H2013060101/main/",
     galleryImages: [
       "主图-1.webp",
       "主图-2.webp",
@@ -421,7 +421,7 @@ export const allProducts = [
       "主图-6.webp",
       "主图-7.webp",
     ],
-    detailImagePath: "/images/products/full-print-hot-stamping-spandex-milk-silk/detail/",
+    detailImagePath: "/images/products/H2013060101/detail/",
     video: null,
     shortIntro:
       "Full-print hot-stamping spandex milk-silk fabric pairs a soft milk-silk ground with an all-over foil print. The 4-way stretch base recovers well and the foil surface delivers a bright metallic shine that holds up through wear.",
@@ -939,7 +939,7 @@ export const allProducts = [
     ],
   },
   {
-    slug: "non-shedding-glitter-suede-look-laser-foil-fabric",
+    slug: "dense-dot-foil-suede-look-fabric",
     metaTitle: "Dense Dot Foil Suede-Look Fabric | Wholesale Supplier",
     metaDesc:
       "Dense dot foil suede-look fabric for stage costumes, performance props, backdrops and event decoration. Foil fabric supply, samples and custom color support.",
@@ -1157,42 +1157,42 @@ export const allProducts = [
       "Iridescent stretch ice-silk fabric with a shifting multi-color foil finish for stage costumes, dancewear and performance outfits. Samples available.",
     title: "Iridescent Laser Foil Stretch Ice-Silk Fabric",
     sku: "P0003",
-    mainImageUrl: "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/main/1.webp",
-    mainImageWebp: "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/main/1.webp",
+    mainImageUrl: "/images/products/H2013120107/main/1.webp",
+    mainImageWebp: "/images/products/H2013120107/main/1.webp",
     mainImageAlt:
       "Pink iridescent laser hot-stamping stretch ice-silk fabric with multi-color foil finish",
     imageList: [
       {
-        src: "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/main/1.webp",
-        webp: "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/main/1.webp",
+        src: "/images/products/H2013120107/main/1.webp",
+        webp: "/images/products/H2013120107/main/1.webp",
         alt: "Pink iridescent laser hot-stamping stretch ice-silk fabric draped for product display",
       },
       {
-        src: "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/main/2.webp",
-        webp: "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/main/2.webp",
+        src: "/images/products/H2013120107/main/2.webp",
+        webp: "/images/products/H2013120107/main/2.webp",
         alt: "Pink iridescent laser hot-stamping stretch ice-silk fabric gathered to show stretch and drape",
       },
       {
-        src: "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/main/3.webp",
-        webp: "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/main/3.webp",
+        src: "/images/products/H2013120107/main/3.webp",
+        webp: "/images/products/H2013120107/main/3.webp",
         alt: "Close-up of pink iridescent laser foil finish on stretch ice-silk fabric",
       },
       {
-        src: "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/main/4.webp",
-        webp: "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/main/4.webp",
+        src: "/images/products/H2013120107/main/4.webp",
+        webp: "/images/products/H2013120107/main/4.webp",
         alt: "Iridescent laser hot-stamping stretch ice-silk fabric texture in pink and purple tones",
       },
       {
-        src: "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/main/5.webp",
-        webp: "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/main/5.webp",
+        src: "/images/products/H2013120107/main/5.webp",
+        webp: "/images/products/H2013120107/main/5.webp",
         alt: "Detailed view of the reflective surface and fine weave of iridescent stretch ice-silk fabric",
       },
     ],
-    galleryMainPath: "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/main/",
+    galleryMainPath: "/images/products/H2013120107/main/",
     galleryImages: ["1.webp", "2.webp", "3.webp", "4.webp", "5.webp"],
-    detailImagePath: "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/detail/",
+    detailImagePath: "/images/products/H2013120107/detail/",
     video: {
-      src: "/images/products/iridescent-laser-hot-stamping-stretch-ice-silk/video/1.mp4",
+      src: "/images/products/H2013120107/video/1.mp4",
       poster: "1.webp",
     },
     shortIntro:
@@ -1276,21 +1276,21 @@ export const allProducts = [
       "Iridescent gradient foil stretch fabric for dancewear, stage costumes, performance wear and party apparel. Samples and custom gradient color support.",
     title: "Iridescent Gradient Foil Stretch Fabric for Dancewear & Costumes",
     sku: "P0005",
-    mainImageUrl: "/images/products/iridescent-gradient-laser-ice-silk/main/1.webp",
-    mainImageWebp: "/images/products/iridescent-gradient-laser-ice-silk/main/1.webp",
+    mainImageUrl: "/images/products/H2013120106/main/1.webp",
+    mainImageWebp: "/images/products/H2013120106/main/1.webp",
     mainImageAlt:
       "Iridescent gradient laser hot-stamping ice-silk fabric with smooth color-flow finish",
     imageList: [
       {
-        src: "/images/products/iridescent-gradient-laser-ice-silk/main/1.webp",
-        webp: "/images/products/iridescent-gradient-laser-ice-silk/main/1.webp",
+        src: "/images/products/H2013120106/main/1.webp",
+        webp: "/images/products/H2013120106/main/1.webp",
         alt: "Iridescent gradient laser hot-stamping ice-silk fabric with smooth color-flow finish",
       },
     ],
-    galleryMainPath: "/images/products/iridescent-gradient-laser-ice-silk/main/",
+    galleryMainPath: "/images/products/H2013120106/main/",
     galleryImages: ["1.webp", "02.webp", "03.webp", "04.webp", "05.webp"],
-    detailImagePath: "/images/products/iridescent-gradient-laser-ice-silk/detail/",
-    video: { src: "/images/products/iridescent-gradient-laser-ice-silk/video/1.mp4", poster: "1.webp" },
+    detailImagePath: "/images/products/H2013120106/detail/",
+    video: { src: "/images/products/H2013120106/video/1.mp4", poster: "1.webp" },
     shortIntro:
       "The iridescent gradient laser hot-stamping ice-silk fabric features a smooth gradient that flows across the width of the fabric, shifting through multiple colors under light. The stretch ice-silk base keeps it comfortable against the skin and easy to sew.",
     fullDescription:
@@ -1796,6 +1796,224 @@ export const allProducts = [
       "x9.webp",
     ],
   },
+  {
+    slug: "holographic-snakeskin-stretch-fabric",
+    metaTitle: "Holographic Snakeskin Stretch Fabric for Swimwear & Dancewear | Nixia Fabric",
+    metaDesc:
+      "Holographic snakeskin texture on a flexible stretch base for swimwear, leggings, dancewear and mermaid-inspired costumes. Factory wholesale supply with OEM/ODM support, 100 m / 109 yd MOQ and sample details confirmed by project.",
+    title: "Laser Foil Snakeskin Stretch Fabric",
+    sku: "H2013090101",
+    mainImageUrl: "/images/products/H2013090101/main/1.webp",
+    mainImageWebp: "/images/products/H2013090101/main/1.webp",
+    mainImageAlt:
+      "Holographic laser foil snakeskin stretch fabric for swimwear, leggings and dancewear",
+    imageList: [
+      {
+        src: "/images/products/H2013090101/main/1.webp",
+        webp: "/images/products/H2013090101/main/1.webp",
+        alt: "Holographic laser foil snakeskin stretch fabric main view",
+      },
+      {
+        src: "/images/products/H2013090101/main/2.webp",
+        webp: "/images/products/H2013090101/main/2.webp",
+        alt: "Laser foil snakeskin stretch fabric drape and reflective surface",
+      },
+      {
+        src: "/images/products/H2013090101/main/a1.webp",
+        webp: "/images/products/H2013090101/main/a1.webp",
+        alt: "Holographic snakeskin texture on stretch fabric",
+      },
+      {
+        src: "/images/products/H2013090101/main/a2.webp",
+        webp: "/images/products/H2013090101/main/a2.webp",
+        alt: "Color-shifting laser foil snakeskin fabric surface",
+      },
+      {
+        src: "/images/products/H2013090101/main/a3.webp",
+        webp: "/images/products/H2013090101/main/a3.webp",
+        alt: "Snakeskin foil stretch fabric detail for costume production",
+      },
+    ],
+    galleryMainPath: "/images/products/H2013090101/main/",
+    galleryImages: ["1.webp", "2.webp", "a1.webp", "a2.webp", "a3.webp"],
+    detailImagePath: "/images/products/H2013090101/detail/",
+    video: null,
+    shortIntro:
+      "Holographic snakeskin texture on a slight-stretch base for swimwear, leggings, dancewear and mermaid-inspired costume designs.",
+    fullDescription:
+      "This laser foil snakeskin stretch fabric combines a glossy holographic surface with a flexible 92% polyester and 8% spandex base. The raised snakeskin look creates strong visual movement under light, while the slight stretch supports fitted apparel and costume applications.\n\nIt is developed for swimwear, leggings, dancewear, stage costumes and mermaid-inspired performance designs. Request a physical sample to review the surface effect, color and sewing performance before bulk production.",
+    specs: {
+      width: "147 cm / 58 in",
+      weight: "160 GSM",
+      baseMaterial: "92% Polyester 8% Spandex",
+      thickness: "",
+      moq: "100 m / 109 yd",
+      leadTime: "To be confirmed",
+    },
+    specTable: [
+      { label: "Product Type", value: "Laser Foil Snakeskin Stretch Fabric" },
+      { label: "Surface Effect", value: "Holographic laser foil snakeskin texture" },
+      { label: "Base Fabric", value: "92% Polyester 8% Spandex" },
+      { label: "Stretch", value: "Slight stretch" },
+      { label: "Width", value: "147 cm / 58 in" },
+      { label: "Weight", value: "160 GSM" },
+      { label: "Color", value: "70 colors available; custom colors on request" },
+      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "Yarn Count", value: "90S" },
+      { label: "Finishing", value: "To be confirmed" },
+      { label: "Typical Applications", value: "Swimwear, leggings, dancewear, stage costumes, mermaid costumes" },
+    ],
+    b2bTable: [
+      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "Supply type", value: "Factory wholesale supply with OEM/ODM support" },
+      { label: "Sample", value: "Availability, preparation time and shipping to be confirmed by project" },
+      { label: "Bulk Lead time", value: "To be confirmed according to order quantity and production requirements" },
+      { label: "Available Colors", value: "70 colors available; custom colors on request" },
+      { label: "OEM / ODM", value: "OEM/ODM support; custom color details to be confirmed" },
+      { label: "Testing & Compliance", value: "To be confirmed according to buyer requirements" },
+      { label: "Package type", value: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement" },
+      { label: "Trade Terms", value: "To be confirmed in quotation" },
+    ],
+    applications: [
+      "Swimwear",
+      "Leggings",
+      "Dancewear",
+      "Stage Costumes",
+      "Mermaid Costumes",
+    ],
+    inStock: false,
+    stockStatus: "Made to Order",
+    badge: "70 colors",
+    colorCount: 70,
+    tags: ["holographic", "snakeskin", "laser-foil", "stretch", "swimwear", "leggings", "dancewear", "mermaid-costume"],
+    availableColors: "70 colors available; custom colors on request",
+    sampleNote: "Sample availability, preparation time and shipping to be confirmed by project",
+    customizationNote: "OEM/ODM support; custom color details to be confirmed",
+    packaging: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement",
+    tradeTerms: "To be confirmed in quotation",
+    heroHighlights: [
+      "Holographic Snakeskin Texture",
+      "Slight Stretch",
+      "147 cm / 58 in Width",
+      "160 GSM",
+      "70 Colors",
+      "MOQ 100 m / 109 yd",
+    ],
+    whyChooseHeading: "Key Features",
+    whyChoose: [
+      {
+        title: "Holographic Snakeskin Surface",
+        desc: "A glossy snakeskin texture creates a distinctive color-shifting effect under stage, studio and retail lighting.",
+      },
+      {
+        title: "Flexible Stretch Base",
+        desc: "The slight-stretch polyester-spandex construction supports fitted garments and costume panels.",
+      },
+      {
+        title: "Wide Color Selection",
+        desc: "The source data lists 70 colors, with custom color discussions available for qualified projects.",
+      },
+      {
+        title: "Costume-Ready Visual Impact",
+        desc: "The reflective surface works well when a garment needs a strong scale-like or mermaid-inspired appearance.",
+      },
+      {
+        title: "Wholesale Development Support",
+        desc: "Factory supply and OEM/ODM support can be discussed for swimwear, performancewear and costume programs.",
+      },
+    ],
+    valueStory: {
+      title: "Why Choose This Holographic Snakeskin Fabric?",
+      body: "This snakeskin stretch fabric gives buyers a distinctive surface direction for swimwear, leggings and performance costumes while keeping the confirmed width, weight, stretch and color information clear for sampling and bulk planning.",
+    },
+    applicationsHeading: "Recommended Applications",
+    buyerApplications: [
+      {
+        title: "Swimwear",
+        desc: "Holographic snakeskin texture adds a reflective, fashion-forward surface to fitted swimwear designs.",
+      },
+      {
+        title: "Leggings & Fitted Apparel",
+        desc: "The slight-stretch base supports close-fitting apparel and statement fashion pieces.",
+      },
+      {
+        title: "Dancewear",
+        desc: "The reflective finish helps dancewear remain visible under performance lighting.",
+      },
+      {
+        title: "Stage Costumes",
+        desc: "A scale-like holographic texture creates strong visual impact for stage and event costume programs.",
+      },
+      {
+        title: "Mermaid Costumes",
+        desc: "The snakeskin appearance is suitable for mermaid-inspired costumes, show pieces and themed performance wear.",
+      },
+    ],
+    stockDevelopment: [
+      {
+        title: "Factory Wholesale Supply",
+        desc: "Supply support is available for buyers and apparel manufacturers based on confirmed project requirements.",
+      },
+      {
+        title: "Sample Review",
+        desc: "Request a physical sample to review the snakeskin effect, color, stretch and sewing performance before bulk production.",
+      },
+      {
+        title: "Custom Color Discussion",
+        desc: "Custom color requirements can be reviewed for qualified OEM/ODM projects.",
+      },
+    ],
+    sampleCta: {
+      title: "Need a Holographic Snakeskin Stretch Fabric?",
+      body: "Request a sample to review the surface effect, color and stretch before production.",
+      buttonLabel: "Request a Sample",
+    },
+    samplePrompt:
+      "Request a sample to review the surface effect, color and stretch before production. Sample availability and preparation time are confirmed by project.",
+    faqList: [
+      {
+        question: "What is this holographic snakeskin fabric used for?",
+        answer:
+          "It is designed for swimwear, leggings, dancewear, stage costumes and mermaid-inspired costumes.",
+      },
+      {
+        question: "Does the fabric stretch?",
+        answer:
+          "The source data identifies it as a slight-stretch fabric with a 92% polyester and 8% spandex base. Approve a physical sample for your exact garment pattern.",
+      },
+      {
+        question: "How many colors are available?",
+        answer:
+          "The source data lists 70 available colors. Custom color requirements can be discussed by project.",
+      },
+      {
+        question: "What is the MOQ?",
+        answer:
+          "The confirmed MOQ is 100 m / 109 yd.",
+      },
+      {
+        question: "Can I request a sample before a bulk order?",
+        answer:
+          "Yes. Sample availability, preparation time and shipping are confirmed according to the project. We recommend checking the surface effect, color and sewing performance before bulk approval.",
+      },
+      {
+        question: "Can the fabric be developed for a custom program?",
+        answer:
+          "OEM/ODM support and custom color discussions are available for qualified buyer projects.",
+      },
+    ],
+    skuImages: [],
+    detailImages: [
+      "1.webp",
+      "2.webp",
+      "3.webp",
+      "4.webp",
+      "5.webp",
+      "6.webp",
+      "7.webp",
+      "8.webp",
+    ],
+  },
 ];
 
 export const performanceProductSlugs = [
@@ -1804,11 +2022,12 @@ export const performanceProductSlugs = [
   "full-print-hot-stamping-spandex-milk-silk",
   "double-layer-pleated-foil-knit-fabric",
   "shiny-foil-4-way-stretch-knit-fabric",
-  "non-shedding-glitter-suede-look-laser-foil-fabric",
+  "dense-dot-foil-suede-look-fabric",
   "iridescent-laser-hot-stamping-stretch-ice-silk",
   "iridescent-gradient-laser-ice-silk",
   "blue-purple-gradient-laser-foil-spandex-fabric",
   "rainbow-dot-laser-foil-knit-fabric",
+  "holographic-snakeskin-stretch-fabric",
 ];
 
 export const performanceProducts = allProducts.filter((product) =>

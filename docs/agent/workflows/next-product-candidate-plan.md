@@ -18,7 +18,7 @@ requirements:
 在不虚构产品资料、不以 SEO 数量为目标的前提下，从工厂实际可供应、可寄样、可报价的产品中筛选下一批 3–5 个候选产品。候选产品必须经过用户确认后，才能进入产品页制作。
 
 ## 当前基线
-- 当前公开产品集合为 `performanceProducts` 中的 10 款产品。
+- 当前公开产品集合为 `performanceProducts` 中的 11 款产品。
 - 本轮不质疑现有已公开产品及图片的真实性，不回退现有产品页。
 - 两个尚未满足正式上架条件的产品继续等待，不因本计划自动进入候选、制作或发布队列。
 - 当前本地资料源包括 `面料独立站产品数据.xlsx`、`产品分类.xlsx`、`关键词分析.xlsx`、现有产品图片目录、Search Console 查询和业务确认信息。
@@ -37,7 +37,7 @@ requirements:
 | 优先级 | 产品编号 | 来源名称 | 初筛价值 | 与现有 8 款的初步差异 | 当前缺失字段或证据 | 当前状态 |
 |---:|---|---|---|---|---|---|
 | 1 | H2013060104 | 千千叶满特 / Double-Layer Pleated Foil Knit Fabric | 双层褶皱、竖向纹理和 200 GSM，可覆盖 performance skirts、dresses、formalwear | 当前公开产品没有以双层褶皱结构为核心的产品 | 已补主图与详情图；密度、批量交期、库存状态、测试合规和上线后 Search Console 数据继续待确认 | 已确认制作 |
-| 2 | H2013090101 | 冰丝镭射蛇皮纹 / Laser Foil Snakeskin Stretch Fabric | 蛇皮纹理和 mermaid/swimwear 场景具有明确外观差异 | 当前公开产品没有 snakeskin texture 定位 | 工厂供货、报价、样品、交期、库存、密度、染整/花型工艺、可用图片/视频、Search Console 证据 | 待补资料 |
+| 2 | H2013090101 | 冰丝镭射蛇皮纹 / Laser Foil Snakeskin Stretch Fabric | 蛇皮纹理和 mermaid/swimwear 场景具有明确外观差异 | 当前公开产品没有 snakeskin texture 定位 | 工厂供货、报价、样品、交期、库存、密度、染整/花型工艺、可用应用图、Search Console 证据 | 已确认制作 |
 | 3 | H2013060103 | 美人条满版 / Ribbed Foil 4-Way Stretch Fabric | 立体抽条/坑条纹理、四面弹，适合 bodysuits 和 fitted costumes | 当前公开产品虽有 foil stretch，但没有 ribbed texture 核心定位 | 工厂供货、报价、样品、交期、库存、密度、花型结构、可用图片/视频、Search Console 证据 | 待补资料 |
 | 4 | H2013090103 | 七彩镭射指纹点 / Rainbow Fingerprint Laser Foil Knit Fabric | 90 GSM 轻量针织和 fingerprint pattern，可补充轻量 performance wear | 与现有 H2013090104 圆点镭射同属轻量图案箔面，必须先证明图案和采购用途差异足够 | 工厂供货、报价、样品、交期、库存、花型结构、可用图片/视频、差异对比、Search Console 证据 | 待补资料 |
 | 5 | H2013060102 | 七彩条纹烫金布 / Rainbow Stripe Foil 4-Way Stretch Fabric | 彩虹条纹、四面弹和 carnival costume 场景可形成明确长尾方向 | 与现有渐变、彩虹圆点和全版 foil 产品存在邻近定位，需持续观察关键词内耗 | 已获得用户确认并完成主图、详情图和应用拼图处理；库存、样品准备时间、交期、包装、贸易条款、测试合规和 Search Console 数据继续待确认 | 已确认制作 |
@@ -91,7 +91,8 @@ requirements:
 5. 记录发布后 7 天和 14 天的索引、展示、点击、`product_view`、RFQ 打开和有效询盘情况。
 
 ## 当前结论
-- 当前可以建立候选核验顺序；H2013060104 与 H2013060102 已由用户确认素材并新增公开产品页。
-- 初筛剩余产品仍缺少至少一类关键证据，继续保持 `待补资料`。
+- 当前可以建立候选核验顺序；H2013060104、H2013060102 与 H2013090101 已由用户确认素材并新增公开产品页。
+- H2013090101 的图片已补齐，规格来自产品数据表，页面已生成；工厂供货、报价、样品、交期、库存、密度、染整/花型工艺和 Search Console 证据仍按项目确认。
+- 初筛其余产品仍缺少至少一类关键证据，继续保持 `待补资料`。
 - 下一次决策点是用户提供或确认工厂供货、样品、报价、交期、素材及 Search Console 数据后，对优先级表进行复核。
 - 用户确认具体候选产品之前，不修改 `src/data/allProducts.js`，不新增图片目录，不生成产品页，不发布。

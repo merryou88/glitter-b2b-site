@@ -9,14 +9,13 @@
  * This page is responsible ONLY for:
  *   - <head> SEO: title, meta description, og:title, og:description,
  *     og:image, og:type
- *   - Product, FAQPage and BreadcrumbList structured data
+ *   - FAQPage and BreadcrumbList structured data
  *
  * The visible UI lives entirely in <ProductDetail product={product} />.
  */
 import { existsSync } from "node:fs";
 import Layout from "@layouts/Layout.astro";
 import ProductDetail from "@components/ProductDetail.astro";
-import ProductSchema from "@components/ProductSchema.astro";
 import { performanceProducts } from "@data/allProducts";
 
 export function getStaticPaths() {
@@ -90,11 +89,5 @@ const breadcrumbSchema = {
   structuredData={[faqSchema, breadcrumbSchema]}
   preloadImages={[{ href: hero, type: getImageMimeType(hero), fetchpriority: "high" }]}
 >
-  <ProductSchema
-    productName={product.title}
-    productImageUrl={product.mainImageUrl ? `https://nixiafabric.com${product.mainImageUrl}` : ""}
-    productDescription={product.fullDescription || product.metaDesc}
-    pageUrl={productUrl}
-  />
   <ProductDetail product={product} />
 </Layout>
