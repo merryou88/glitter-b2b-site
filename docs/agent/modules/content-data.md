@@ -38,7 +38,7 @@ requirement_docs:
 - `src/legacy/[id].astro.bak` 仍引用 `src/data/products.json`，但不在当前路由图里
 
 ## 数据与状态
-- 当前产品数：10
+- 当前产品数：15
 - 当前博客文章数：5
 - 当前博客分类数：6
 - 产品 slug、文章 slug、图片路径都是强约束
@@ -52,6 +52,7 @@ requirement_docs:
 
 ## 修改约束
 - 新增/改名产品先改 `allProducts.js`
+- 新增或修改产品详情页数据前，必须先读取 `products-data/面料独立站产品数据.xlsx` 的 `Independent Site Product Data` sheet，并以目标 `Product ID` 行作为产品事实第一来源；图片目录只用于补充展示素材
 - 新增产品必须符合当前 performance fabric 定位，不把 glitter leather、PU accessory、鞋材、手袋、工艺、玩具等退出定位产品写入当前主产品数据
 - 新增产品必须同步写好 SEO 和采购字段：美国采购商搜索型 `metaTitle`、自然可读 H1/title、采购型 `metaDesc`、样品/定制/MOQ/库存信息、FAQ 和中美单位表达
 - 新增博客先改 `blogArticles.js`

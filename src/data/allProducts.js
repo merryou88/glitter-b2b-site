@@ -13,12 +13,15 @@
  *
  * To add a new product (the 7th, 8th ... 100th):
  *   1. Copy one existing object below and paste it into the `allProducts` array.
- *   2. Fill in every field with that product's data (title, slug, images, ...).
- *   3. Only add products that match the current performance fabric positioning:
+ *   2. First read products-data/面料独立站产品数据.xlsx, sheet
+ *      "Independent Site Product Data", and fill product facts from that row
+ *      before using images or same-category assumptions.
+ *   3. Fill in every field with that product's data (title, slug, images, ...).
+ *   4. Only add products that match the current performance fabric positioning:
  *      foil, laser foil, iridescent, stretch, stage costume, dancewear,
  *      performance wear, party apparel, props, backdrops or event decoration. Do not add glitter
  *      leather, PU accessory, shoes/bags/crafts or other off-position products.
- *   4. Write US-buyer SEO before saving:
+ *   5. Write US-buyer SEO before saving:
  *      - metaTitle = one specific buyer search term + " | Nixia Fabric"
  *      - title/H1 starts with the product material/effect, not an internal process
  *      - metaDesc includes application, wholesale/supplier intent, samples/custom
@@ -26,7 +29,7 @@
  *      - keep hot-stamping as a supporting process term, not the primary phrase
  *      - include US-friendly units beside metric units, e.g. 150 cm / 59 in and
  *        100 m / 109 yd
- *   5. Save. The static site will automatically generate the new page at
+ *   6. Save. The static site will automatically generate the new page at
  *      /products/{slug} and add it to the catalog listing — no page file needed.
  */
 
@@ -392,6 +395,878 @@ export const allProducts = [
     ],
     skuImages: [],
     detailImages: ["1.webp", "2.webp", "3.webp", "4.webp"],
+  },
+  {
+    slug: "rainbow-iridescent-laser-foil-nylon-spandex-fabric",
+    metaTitle: "Rainbow Iridescent Laser Foil Nylon-Spandex 4-Way Stretch Fabric | Nixia Fabric",
+    metaDesc:
+      "Rainbow iridescent laser foil on a 4-way stretch nylon-spandex base for bodysuits, swimwear and stagewear. Factory wholesale supply with OEM/ODM support for buyers and apparel manufacturers.",
+    title: "Rainbow Iridescent Laser Foil Nylon-Spandex 4-Way Stretch Fabric",
+    sku: "H2013120101",
+    mainImageUrl: "/images/products/H2013120101/main/a1.webp",
+    mainImageWebp: "/images/products/H2013120101/main/a1.webp",
+    mainImageAlt:
+      "Rainbow iridescent laser foil nylon-spandex 4-way stretch fabric for bodysuits and swimwear",
+    imageList: [
+      {
+        src: "/images/products/H2013120101/main/a1.webp",
+        webp: "/images/products/H2013120101/main/a1.webp",
+        alt: "Rainbow iridescent laser foil nylon-spandex stretch fabric main view",
+      },
+      {
+        src: "/images/products/H2013120101/main/a2.webp",
+        webp: "/images/products/H2013120101/main/a2.webp",
+        alt: "Rainbow iridescent laser foil fabric drape and reflective surface",
+      },
+      {
+        src: "/images/products/H2013120101/main/a3.webp",
+        webp: "/images/products/H2013120101/main/a3.webp",
+        alt: "Nylon-spandex 4-way stretch laser foil fabric hand-feel and surface effect",
+      },
+      {
+        src: "/images/products/H2013120101/main/a4.webp",
+        webp: "/images/products/H2013120101/main/a4.webp",
+        alt: "Rainbow iridescent laser foil nylon-spandex fabric for bodysuits and swimwear",
+      },
+      {
+        src: "/images/products/H2013120101/main/a5.webp",
+        webp: "/images/products/H2013120101/main/a5.webp",
+        alt: "Close-up of rainbow iridescent laser foil fabric surface",
+      },
+    ],
+    galleryMainPath: "/images/products/H2013120101/main/",
+    galleryImages: ["a1.webp", "a2.webp", "a3.webp", "a4.webp", "a5.webp"],
+    detailImagePath: "/images/products/H2013120101/detail/",
+    video: null,
+    shortIntro:
+      "Rainbow iridescent laser foil on a 4-way stretch nylon-spandex base for bodysuits, swimwear and stagewear.",
+    fullDescription:
+      "Rainbow iridescent laser foil on a 4-way stretch nylon-spandex base for bodysuits, swimwear and stagewear.",
+    specs: {
+      width: "150 cm / 59 in",
+      weight: "180 GSM",
+      baseMaterial: "92% Polyester 8% Spandex",
+      thickness: "",
+      moq: "100 m / 109 yd",
+      leadTime: "To be confirmed",
+    },
+    specTable: [
+      { label: "Product Type", value: "Rainbow Iridescent Laser Foil Nylon-Spandex 4-Way Stretch Fabric" },
+      { label: "Surface Effect", value: "Rainbow iridescent laser foil" },
+      { label: "Base Fabric", value: "92% Polyester 8% Spandex" },
+      { label: "Stretch", value: "4-Way Stretch" },
+      { label: "Width", value: "150 cm / 59 in" },
+      { label: "Weight", value: "180 GSM" },
+      { label: "Color", value: "15 colors available; custom colors on request" },
+      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "Density", value: "110T" },
+      { label: "Yarn Count", value: "75D*70D" },
+      { label: "Finishing", value: "Hot-stamping foil" },
+      { label: "Pattern / Construction", value: "Hot-stamping foil" },
+      { label: "Typical Applications", value: "Bodysuits, swimwear, dancewear, stage costumes, performance outfits" },
+    ],
+    b2bTable: [
+      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "Supply type", value: "Factory wholesale supply with OEM/ODM support" },
+      { label: "Sample", value: "Sample preparation: 3-5 working days" },
+      { label: "Bulk Lead time", value: "7-15 working days" },
+      { label: "Available Colors", value: "15 colors available; custom colors on request" },
+      { label: "OEM / ODM", value: "Custom colors and OEM/ODM support available" },
+      { label: "Testing & Compliance", value: "To be confirmed according to buyer requirements" },
+      { label: "Package type", value: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement" },
+      { label: "Trade Terms", value: "To be confirmed in quotation" },
+    ],
+    applications: [
+      "Bodysuits",
+      "Swimwear",
+      "Dancewear",
+      "Stage Costumes",
+      "Performance Outfits",
+    ],
+    inStock: false,
+    stockStatus: "Made to Order",
+    badge: "15 colors",
+    colorCount: 15,
+    tags: ["rainbow", "iridescent", "laser-foil", "nylon-spandex", "4-way-stretch", "bodysuit", "swimwear", "dancewear", "stage-costume"],
+    availableColors: "15 colors available; custom colors on request",
+    sampleNote: "Sample preparation: 3-5 working days",
+    customizationNote: "Custom colors and OEM/ODM support available",
+    packaging: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement",
+    tradeTerms: "To be confirmed in quotation",
+    heroHighlights: [
+      "Rainbow Iridescent Laser Foil",
+      "Nylon-Spandex Blend",
+      "4-Way Stretch",
+      "150 cm / 59 in Width",
+      "180 GSM Weight",
+      "MOQ 100 m / 109 yd",
+    ],
+    whyChooseHeading: "Key Features",
+    whyChoose: [
+      {
+        title: "Iridescent Laser Foil",
+        desc: "A rainbow iridescent laser foil surface shifts with light and viewing angle for high-impact bodysuits, swimwear and stagewear.",
+      },
+      {
+        title: "4-Way Stretch",
+        desc: "The source data confirms a 4-way stretch construction for fitted apparel and movement-focused garments.",
+      },
+      {
+        title: "Nylon-Spandex Blend",
+        desc: "The source data lists a 92% polyester and 8% spandex base, suitable for stretch apparel development.",
+      },
+      {
+        title: "15 Color Options",
+        desc: "The product data lists 15 available colors, with custom color requirements available on request.",
+      },
+      {
+        title: "Factory Wholesale Support",
+        desc: "Factory wholesale supply and OEM/ODM support are available for buyers and apparel manufacturers.",
+      },
+    ],
+    valueStory: {
+      title: "Why Choose This Rainbow Iridescent Nylon-Spandex Fabric?",
+      body: "This product combines a rainbow iridescent laser foil surface with a 4-way stretch nylon-spandex base, giving bodysuit, swimwear and stagewear buyers a reflective fabric direction with confirmed width, weight, MOQ, density, yarn count and color policy from the product data sheet.",
+    },
+    applicationsHeading: "Recommended Applications",
+    buyerApplications: [
+      {
+        title: "Bodysuits",
+        desc: "4-way stretch supports fitted bodysuit development where shine and movement both matter.",
+      },
+      {
+        title: "Swimwear",
+        desc: "A stretch nylon-spandex base can be sampled for swimwear styles that need a reflective iridescent surface.",
+      },
+      {
+        title: "Dancewear",
+        desc: "The stretch construction and laser foil finish support dancewear with strong lighting response.",
+      },
+      {
+        title: "Stage Costumes",
+        desc: "Rainbow iridescent reflection helps stage costume panels stand out under show lighting.",
+      },
+    ],
+    stockDevelopment: [
+      {
+        title: "15 Color Options",
+        desc: "The product data lists 15 colors, with selected color availability confirmed before quotation.",
+      },
+      {
+        title: "Sample Review",
+        desc: "Request a sample to review the iridescent effect, stretch, hand-feel and sewing behavior.",
+      },
+      {
+        title: "Custom Development",
+        desc: "Custom colors and OEM/ODM requirements can be reviewed for qualified wholesale projects.",
+      },
+    ],
+    sampleCta: {
+      title: "Need a Rainbow Iridescent Nylon-Spandex Fabric?",
+      body: "Request a sample to review the rainbow iridescent foil effect, 4-way stretch, hand-feel and sewing performance before production.",
+      buttonLabel: "Request a Sample",
+    },
+    samplePrompt:
+      "Request a sample to review the rainbow iridescent foil effect, 4-way stretch, hand-feel and sewing performance before production.",
+    faqList: [
+      {
+        question: "What is this rainbow iridescent laser foil fabric used for?",
+        answer:
+          "The source data recommends bodysuits, swimwear, dancewear, stage costumes and performance outfits.",
+      },
+      {
+        question: "What is the MOQ?",
+        answer:
+          "The confirmed MOQ is 100 m / 109 yd.",
+      },
+      {
+        question: "Does this fabric have 4-way stretch?",
+        answer:
+          "Yes. The product data lists this as a 4-way stretch fabric.",
+      },
+      {
+        question: "How many colors are available?",
+        answer:
+          "The product data lists 15 colors available, with custom colors on request.",
+      },
+      {
+        question: "Can I request a sample before bulk production?",
+        answer:
+          "Yes. A physical sample is recommended so you can confirm the rainbow iridescent surface, 4-way stretch, hand-feel and sewing performance.",
+      },
+    ],
+    skuImages: [],
+    detailImages: [
+      "x1.webp",
+      "x2.webp",
+      "x3.webp",
+      "x4.webp",
+      "x5.webp",
+      "x6.webp",
+      "x7.webp",
+      "x8.webp",
+      "x9.webp",
+      "x10.webp",
+      "x11.webp",
+      "x12.webp",
+    ],
+  },
+  {
+    slug: "gradient-rainbow-dot-foil-knit-fabric",
+    metaTitle: "Gradient Rainbow Dot Foil Knit Fabric for Stage Costumes | Nixia Fabric",
+    metaDesc:
+      "Gradient rainbow dot foil on a lightweight knit fabric for stage costumes, performance wear and colorful costume accessories. Factory wholesale supply with OEM/ODM support for buyers and apparel manufacturers.",
+    title: "Gradient Rainbow Dot Foil Knit Fabric for Stage Costumes",
+    sku: "H2013120103",
+    mainImageUrl: "/images/products/H2013120103/main/a1.webp",
+    mainImageWebp: "/images/products/H2013120103/main/a1.webp",
+    mainImageAlt:
+      "Gradient rainbow dot foil knit fabric for stage costumes and performance wear",
+    imageList: [
+      {
+        src: "/images/products/H2013120103/main/a1.webp",
+        webp: "/images/products/H2013120103/main/a1.webp",
+        alt: "Gradient rainbow dot foil knit fabric main view",
+      },
+      {
+        src: "/images/products/H2013120103/main/a2.webp",
+        webp: "/images/products/H2013120103/main/a2.webp",
+        alt: "Gradient rainbow dot foil knit fabric close-up surface",
+      },
+      {
+        src: "/images/products/H2013120103/main/a3.webp",
+        webp: "/images/products/H2013120103/main/a3.webp",
+        alt: "Gradient rainbow dot foil knit fabric draped for costume production",
+      },
+      {
+        src: "/images/products/H2013120103/main/a4.webp",
+        webp: "/images/products/H2013120103/main/a4.webp",
+        alt: "Gradient rainbow foil knit fabric for stage costume panels",
+      },
+      {
+        src: "/images/products/H2013120103/main/a5.webp",
+        webp: "/images/products/H2013120103/main/a5.webp",
+        alt: "Lightweight gradient rainbow dot foil knit fabric surface detail",
+      },
+    ],
+    galleryMainPath: "/images/products/H2013120103/main/",
+    galleryImages: ["a1.webp", "a2.webp", "a3.webp", "a4.webp", "a5.webp"],
+    detailImagePath: "/images/products/H2013120103/detail/",
+    video: null,
+    shortIntro:
+      "Gradient rainbow dot foil on a lightweight knit fabric for stage costumes, performance wear and colorful costume accessories.",
+    fullDescription:
+      "Gradient rainbow dot foil on a lightweight knit fabric for stage costumes, performance wear and colorful costume accessories.",
+    specs: {
+      width: "150 cm / 59 in",
+      weight: "90 GSM",
+      baseMaterial: "92% Polyester 8% Spandex",
+      thickness: "",
+      moq: "200 m / 219 yd",
+      leadTime: "To be confirmed",
+    },
+    specTable: [
+      { label: "Product Type", value: "Gradient Rainbow Dot Foil Knit Fabric" },
+      { label: "Surface Effect", value: "Gradient rainbow dot foil" },
+      { label: "Base Fabric", value: "92% Polyester 8% Spandex" },
+      { label: "Stretch", value: "Slight stretch" },
+      { label: "Width", value: "150 cm / 59 in" },
+      { label: "Weight", value: "90 GSM" },
+      { label: "Color", value: "15 colors available; custom colors on request" },
+      { label: "MOQ", value: "200 m / 219 yd" },
+      { label: "Density", value: "To be confirmed" },
+      { label: "Yarn Count", value: "30D" },
+      { label: "Finishing", value: "Hot-stamping foil" },
+      { label: "Pattern / Construction", value: "Knit jacquard" },
+      { label: "Typical Applications", value: "Stage costumes, performance wear, dancewear, costume accessories" },
+    ],
+    b2bTable: [
+      { label: "MOQ", value: "200 m / 219 yd" },
+      { label: "Supply type", value: "Factory wholesale supply with OEM/ODM support" },
+      { label: "Sample", value: "Sample preparation: 3-5 working days" },
+      { label: "Bulk Lead time", value: "7-15 working days" },
+      { label: "Available Colors", value: "15 colors available; custom colors on request" },
+      { label: "OEM / ODM", value: "Custom colors and OEM/ODM support available" },
+      { label: "Testing & Compliance", value: "To be confirmed according to buyer requirements" },
+      { label: "Package type", value: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement" },
+      { label: "Trade Terms", value: "To be confirmed in quotation" },
+    ],
+    applications: [
+      "Stage Costumes",
+      "Performance Wear",
+      "Dancewear",
+      "Costume Accessories",
+    ],
+    inStock: false,
+    stockStatus: "Made to Order",
+    badge: "15 colors",
+    colorCount: 15,
+    tags: ["gradient", "rainbow-dot", "dot-foil", "knit-jacquard", "slight-stretch", "stage-costume", "performance-wear", "dancewear", "costume-accessories"],
+    availableColors: "15 colors available; custom colors on request",
+    sampleNote: "Sample preparation: 3-5 working days",
+    customizationNote: "Custom colors and OEM/ODM support available",
+    packaging: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement",
+    tradeTerms: "To be confirmed in quotation",
+    heroHighlights: [
+      "Gradient Rainbow Dot Foil",
+      "Knit Jacquard",
+      "Slight Stretch",
+      "150 cm / 59 in Width",
+      "90 GSM Weight",
+      "MOQ 200 m / 219 yd",
+    ],
+    whyChooseHeading: "Key Features",
+    whyChoose: [
+      {
+        title: "Gradient Rainbow Effect",
+        desc: "The source data describes a colorful gradient rainbow foil effect for strong stage and costume visibility.",
+      },
+      {
+        title: "Dot Foil Surface",
+        desc: "The dot foil finish creates a textured reflective look for performance apparel and accessories.",
+      },
+      {
+        title: "Lightweight Knit Fabric",
+        desc: "A 90 GSM knit fabric base supports lightweight costume panels and decorative apparel uses.",
+      },
+      {
+        title: "Knit Jacquard Construction",
+        desc: "The pattern construction is listed as knit jacquard in the product data sheet.",
+      },
+      {
+        title: "15 Color Options",
+        desc: "The product data lists 15 available colors, with custom colors available on request.",
+      },
+      {
+        title: "Factory Wholesale Support",
+        desc: "Factory wholesale supply and OEM/ODM support are available for buyers and apparel manufacturers.",
+      },
+    ],
+    valueStory: {
+      title: "Why Choose This Gradient Rainbow Dot Foil Fabric?",
+      body: "This product combines a gradient rainbow dot foil surface with a lightweight knit jacquard base, giving stage costume, performance wear and costume accessory buyers a colorful reflective fabric direction with confirmed width, weight, MOQ, yarn count and color policy from the product data sheet.",
+    },
+    applicationsHeading: "Recommended Applications",
+    buyerApplications: [
+      {
+        title: "Stage Costumes",
+        desc: "Gradient rainbow dot foil creates a bright surface for stage costume panels and showwear.",
+      },
+      {
+        title: "Performance Wear",
+        desc: "The lightweight knit base supports decorative performance apparel and event looks.",
+      },
+      {
+        title: "Dancewear",
+        desc: "Slight stretch and reflective dots can be sampled for movement-focused dancewear accents.",
+      },
+      {
+        title: "Costume Accessories",
+        desc: "The colorful foil effect suits bows, panels and accessory pieces for costume collections.",
+      },
+    ],
+    stockDevelopment: [
+      {
+        title: "15 Color Options",
+        desc: "The product data lists 15 colors, with selected color availability confirmed before quotation.",
+      },
+      {
+        title: "Sample Review",
+        desc: "Request a sample to review the gradient rainbow effect, dot foil surface, hand-feel and sewing behavior.",
+      },
+      {
+        title: "Custom Development",
+        desc: "Custom colors and OEM/ODM requirements can be reviewed for qualified wholesale projects.",
+      },
+    ],
+    sampleCta: {
+      title: "Need a Gradient Rainbow Dot Foil Fabric?",
+      body: "Request a sample to review the gradient rainbow dot foil effect, knit base, hand-feel and sewing performance before production.",
+      buttonLabel: "Request a Sample",
+    },
+    samplePrompt:
+      "Request a sample to review the gradient rainbow dot foil effect, knit base, hand-feel and sewing performance before production.",
+    faqList: [
+      {
+        question: "What is this gradient rainbow dot foil fabric used for?",
+        answer:
+          "The source data recommends stage costumes, performance wear, dancewear and costume accessories.",
+      },
+      {
+        question: "What is the MOQ?",
+        answer:
+          "The confirmed MOQ is 200 m / 219 yd.",
+      },
+      {
+        question: "How many colors are available?",
+        answer:
+          "The product data lists 15 colors available, with custom colors on request.",
+      },
+      {
+        question: "What is the base material?",
+        answer:
+          "The product data lists the base material as 92% polyester and 8% spandex.",
+      },
+      {
+        question: "Can I request a sample before bulk production?",
+        answer:
+          "Yes. A physical sample is recommended so you can confirm the gradient rainbow effect, dot foil surface, hand-feel and sewing performance.",
+      },
+    ],
+    skuImages: [],
+    detailImages: [
+      "x1.webp",
+      "x2.webp",
+      "x3.webp",
+      "x4.webp",
+      "x5.webp",
+      "x6.webp",
+      "x7.webp",
+      "x8.webp",
+      "x9.webp",
+      "x10.webp",
+      "x11.webp",
+    ],
+  },
+  {
+    slug: "rainbow-fingerprint-dot-foil-ice-silk-fabric",
+    metaTitle: "Rainbow Fingerprint Dot Foil Ice Silk Stretch Knit Fabric | Nixia Fabric",
+    metaDesc:
+      "Rainbow fingerprint-dot foil on an ice-silk knit base for dresses, tops, formalwear and performance garments. Factory wholesale supply with OEM/ODM support for buyers and apparel manufacturers.",
+    title: "Rainbow Fingerprint Dot Foil Stretch Knit Fabric",
+    sku: "H2013120104",
+    mainImageUrl: "/images/products/H2013120104/main/a1.webp",
+    mainImageWebp: "/images/products/H2013120104/main/a1.webp",
+    mainImageAlt:
+      "Rainbow fingerprint dot foil ice-silk stretch knit fabric for dresses and performance garments",
+    imageList: [
+      {
+        src: "/images/products/H2013120104/main/a1.webp",
+        webp: "/images/products/H2013120104/main/a1.webp",
+        alt: "Rainbow fingerprint dot foil ice-silk stretch knit fabric main view",
+      },
+      {
+        src: "/images/products/H2013120104/main/a2.webp",
+        webp: "/images/products/H2013120104/main/a2.webp",
+        alt: "Rainbow fingerprint dot foil fabric color stack for garment buyers",
+      },
+      {
+        src: "/images/products/H2013120104/main/a3.webp",
+        webp: "/images/products/H2013120104/main/a3.webp",
+        alt: "Rainbow fingerprint dot foil stretch knit fabric surface close-up",
+      },
+      {
+        src: "/images/products/H2013120104/main/a4.webp",
+        webp: "/images/products/H2013120104/main/a4.webp",
+        alt: "Fingerprint dot foil knit fabric back and surface detail",
+      },
+      {
+        src: "/images/products/H2013120104/main/a5.webp",
+        webp: "/images/products/H2013120104/main/a5.webp",
+        alt: "Ice-silk knit fabric with rainbow fingerprint dot foil finish",
+      },
+    ],
+    galleryMainPath: "/images/products/H2013120104/main/",
+    galleryImages: ["a1.webp", "a2.webp", "a3.webp", "a4.webp", "a5.webp"],
+    detailImagePath: "/images/products/H2013120104/detail/",
+    video: null,
+    shortIntro:
+      "Rainbow fingerprint-dot foil on an ice-silk knit base for dresses, tops, formalwear and performance garments.",
+    fullDescription:
+      "Rainbow fingerprint-dot foil on an ice-silk knit base for dresses, tops, formalwear and performance garments.",
+    specs: {
+      width: "To be confirmed",
+      weight: "To be confirmed",
+      baseMaterial: "To be confirmed",
+      thickness: "",
+      moq: "To be confirmed",
+      leadTime: "To be confirmed",
+    },
+    specTable: [
+      { label: "Product Type", value: "Rainbow Fingerprint Dot Foil Ice-Silk Knit Fabric" },
+      { label: "Surface Effect", value: "Rainbow fingerprint-dot foil" },
+      { label: "Base Fabric", value: "To be confirmed" },
+      { label: "Stretch", value: "Stretch construction; exact stretch level to be confirmed" },
+      { label: "Width", value: "To be confirmed" },
+      { label: "Weight", value: "To be confirmed" },
+      { label: "Color", value: "To be confirmed; custom colors on request" },
+      { label: "MOQ", value: "To be confirmed" },
+      { label: "Density", value: "To be confirmed" },
+      { label: "Yarn Count", value: "To be confirmed" },
+      { label: "Finishing", value: "Foil finish; production process to be confirmed" },
+      { label: "Pattern / Construction", value: "To be confirmed" },
+      { label: "Typical Applications", value: "Dresses, tops, formalwear, stage costumes, dancewear" },
+    ],
+    b2bTable: [
+      { label: "MOQ", value: "To be confirmed" },
+      { label: "Supply type", value: "Factory wholesale supply with OEM/ODM support" },
+      { label: "Sample", value: "Sample preparation: 3-5 working days" },
+      { label: "Bulk Lead time", value: "7-15 working days" },
+      { label: "Available Colors", value: "To be confirmed; custom colors on request" },
+      { label: "OEM / ODM", value: "Custom colors and OEM/ODM support available" },
+      { label: "Testing & Compliance", value: "To be confirmed according to buyer requirements" },
+      { label: "Package type", value: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement" },
+      { label: "Trade Terms", value: "To be confirmed in quotation" },
+    ],
+    applications: [
+      "Dresses",
+      "Tops",
+      "Formalwear",
+      "Stage Costumes",
+      "Dancewear",
+    ],
+    inStock: false,
+    stockStatus: "Made to Order",
+    badge: "Color TBC",
+    colorCount: 0,
+    tags: ["rainbow-fingerprint-dot", "dot-foil", "ice-silk-knit", "stretch-knit", "dresses", "tops", "formalwear", "stage-costume", "dancewear"],
+    availableColors: "To be confirmed; custom colors on request",
+    sampleNote: "Sample preparation: 3-5 working days",
+    customizationNote: "Custom colors and OEM/ODM support available",
+    packaging: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement",
+    tradeTerms: "To be confirmed in quotation",
+    heroHighlights: [
+      "Rainbow Fingerprint-Dot Foil",
+      "Ice-Silk Knit Base",
+      "Stretch Construction",
+      "Dresses & Tops",
+      "Formalwear",
+      "Specs To Be Confirmed",
+    ],
+    whyChooseHeading: "Key Features",
+    whyChoose: [
+      {
+        title: "Fingerprint Dot Foil",
+        desc: "The source data identifies a rainbow fingerprint-dot foil effect for a bright decorative garment surface.",
+      },
+      {
+        title: "Ice-Silk Knit Direction",
+        desc: "The product name and description position this fabric on an ice-silk knit base for apparel sampling.",
+      },
+      {
+        title: "Stretch Construction",
+        desc: "The source data lists stretch construction; the exact stretch level should be confirmed before bulk quotation.",
+      },
+      {
+        title: "Dress and Top Applications",
+        desc: "The source data recommends dresses, tops, formalwear and performance garments.",
+      },
+      {
+        title: "Custom Color Support",
+        desc: "Color availability is not confirmed in the source row, but custom colors can be reviewed on request.",
+      },
+      {
+        title: "Factory Wholesale Support",
+        desc: "Factory wholesale supply and OEM/ODM support are available for buyers and apparel manufacturers.",
+      },
+    ],
+    valueStory: {
+      title: "Why Choose This Rainbow Fingerprint Dot Foil Fabric?",
+      body: "This product adds a rainbow fingerprint-dot foil surface to an ice-silk knit direction for garment buyers developing dresses, tops, formalwear, stage costumes and dancewear. The source row is partial, so width, weight, MOQ, base material and construction details should be confirmed during sample and quotation review.",
+    },
+    applicationsHeading: "Recommended Applications",
+    buyerApplications: [
+      {
+        title: "Dresses",
+        desc: "The rainbow fingerprint-dot foil surface can be sampled for decorative dress panels and bright occasionwear.",
+      },
+      {
+        title: "Tops",
+        desc: "The ice-silk knit direction supports lightweight top concepts once hand-feel and stretch are confirmed.",
+      },
+      {
+        title: "Formalwear",
+        desc: "The reflective foil effect can be reviewed for formalwear accents and special-event apparel.",
+      },
+      {
+        title: "Stage Costumes",
+        desc: "The rainbow foil surface offers a visible stage look for performance costume projects.",
+      },
+      {
+        title: "Dancewear",
+        desc: "Sample review is recommended to confirm stretch, recovery and sewing performance for dancewear.",
+      },
+    ],
+    stockDevelopment: [
+      {
+        title: "Partial Source Data",
+        desc: "Width, weight, MOQ, base material, construction and color count are not confirmed in the source row.",
+      },
+      {
+        title: "Sample Review",
+        desc: "Request a sample to review the fingerprint-dot foil effect, ice-silk knit hand-feel and stretch behavior.",
+      },
+      {
+        title: "Custom Development",
+        desc: "Custom colors and OEM/ODM requirements can be reviewed for qualified wholesale projects.",
+      },
+    ],
+    sampleCta: {
+      title: "Need a Rainbow Fingerprint Dot Foil Fabric?",
+      body: "Request a sample to review the rainbow fingerprint-dot foil effect, ice-silk knit hand-feel, stretch and sewing performance before production.",
+      buttonLabel: "Request a Sample",
+    },
+    samplePrompt:
+      "Request a sample to review the rainbow fingerprint-dot foil effect, ice-silk knit hand-feel, stretch and sewing performance before production.",
+    faqList: [
+      {
+        question: "What is this rainbow fingerprint dot foil fabric used for?",
+        answer:
+          "The source data recommends dresses, tops, formalwear, stage costumes and dancewear.",
+      },
+      {
+        question: "What is the MOQ?",
+        answer:
+          "The MOQ is to be confirmed because the source row does not provide a confirmed MOQ.",
+      },
+      {
+        question: "How many colors are available?",
+        answer:
+          "Color availability is to be confirmed; custom colors can be reviewed on request.",
+      },
+      {
+        question: "What fabric specifications still need confirmation?",
+        answer:
+          "Width, weight, base material, pattern construction, yarn count and density should be confirmed before bulk quotation.",
+      },
+      {
+        question: "Can I request a sample before bulk production?",
+        answer:
+          "Yes. A physical sample is recommended so you can confirm the fingerprint-dot foil surface, hand-feel, stretch and sewing performance.",
+      },
+    ],
+    skuImages: [],
+    detailImages: [
+      "x1.webp",
+      "x2.webp",
+      "x3.webp",
+      "x4.webp",
+      "x5.webp",
+      "x6.webp",
+      "x7.webp",
+      "x8.webp",
+      "x9.webp",
+      "x10.webp",
+      "x11.webp",
+      "x12.webp",
+      "x13.webp",
+      "x14.webp",
+    ],
+  },
+  {
+    slug: "holographic-mermaid-scale-milk-silk-stretch-fabric",
+    metaTitle: "Holographic Mermaid Scale Milk Silk 4-Way Stretch Fabric for Stage Costumes | Nixia Fabric",
+    metaDesc:
+      "Holographic mermaid-scale foil on a high-stretch milk-silk base for mermaid skirts, stage costumes and dancewear. Factory wholesale supply with OEM/ODM support for buyers and apparel manufacturers.",
+    title: "Holographic Mermaid Scale Milk Silk 4-Way Stretch Fabric",
+    sku: "H2013120105",
+    mainImageUrl: "/images/products/H2013120105/main/a1.webp",
+    mainImageWebp: "/images/products/H2013120105/main/a1.webp",
+    mainImageAlt:
+      "Holographic mermaid scale milk silk 4-way stretch fabric for stage costumes and dancewear",
+    imageList: [
+      {
+        src: "/images/products/H2013120105/main/a1.webp",
+        webp: "/images/products/H2013120105/main/a1.webp",
+        alt: "Holographic mermaid scale milk silk stretch fabric main view",
+      },
+      {
+        src: "/images/products/H2013120105/main/a2.webp",
+        webp: "/images/products/H2013120105/main/a2.webp",
+        alt: "Pink holographic mermaid scale milk silk stretch fabric",
+      },
+      {
+        src: "/images/products/H2013120105/main/a3.webp",
+        webp: "/images/products/H2013120105/main/a3.webp",
+        alt: "Holographic mermaid scale fabric color stack",
+      },
+      {
+        src: "/images/products/H2013120105/main/a4.webp",
+        webp: "/images/products/H2013120105/main/a4.webp",
+        alt: "Holographic mermaid scale foil surface close-up",
+      },
+      {
+        src: "/images/products/H2013120105/main/a5.webp",
+        webp: "/images/products/H2013120105/main/a5.webp",
+        alt: "Gold holographic mermaid scale milk silk stretch fabric",
+      },
+    ],
+    galleryMainPath: "/images/products/H2013120105/main/",
+    galleryImages: ["a1.webp", "a2.webp", "a3.webp", "a4.webp", "a5.webp"],
+    detailImagePath: "/images/products/H2013120105/detail/",
+    video: null,
+    shortIntro:
+      "Holographic mermaid-scale foil on a high-stretch milk-silk base for mermaid skirts, stage costumes and dancewear.",
+    fullDescription:
+      "Holographic mermaid-scale foil on a high-stretch milk-silk base for mermaid skirts, stage costumes and dancewear.",
+    specs: {
+      width: "150 cm / 59 in",
+      weight: "180 GSM",
+      baseMaterial: "92% Polyester 8% Spandex",
+      thickness: "",
+      moq: "100 m / 109 yd",
+      leadTime: "To be confirmed",
+    },
+    specTable: [
+      { label: "Product Type", value: "Holographic Mermaid Scale Milk Silk 4-Way Stretch Fabric" },
+      { label: "Surface Effect", value: "Holographic mermaid-scale foil" },
+      { label: "Base Fabric", value: "92% Polyester 8% Spandex" },
+      { label: "Stretch", value: "High stretch / 4-way stretch" },
+      { label: "Width", value: "150 cm / 59 in" },
+      { label: "Weight", value: "180 GSM" },
+      { label: "Color", value: "11 colors available; custom colors on request" },
+      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "Density", value: "86T" },
+      { label: "Yarn Count", value: "To be confirmed" },
+      { label: "Finishing", value: "Hot-stamping foil" },
+      { label: "Pattern / Construction", value: "Hot-stamping foil mermaid-scale pattern" },
+      { label: "Typical Applications", value: "Mermaid skirts, stage costumes, dancewear, performance outfits" },
+    ],
+    b2bTable: [
+      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "Supply type", value: "Factory wholesale supply with OEM/ODM support" },
+      { label: "Sample", value: "Sample preparation: 3-5 working days" },
+      { label: "Bulk Lead time", value: "7-15 working days" },
+      { label: "Available Colors", value: "11 colors available; custom colors on request" },
+      { label: "OEM / ODM", value: "Custom colors and OEM/ODM support available" },
+      { label: "Testing & Compliance", value: "To be confirmed according to buyer requirements" },
+      { label: "Package type", value: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement" },
+      { label: "Trade Terms", value: "To be confirmed in quotation" },
+    ],
+    applications: [
+      "Mermaid Skirts",
+      "Stage Costumes",
+      "Dancewear",
+      "Performance Outfits",
+    ],
+    inStock: false,
+    stockStatus: "Made to Order",
+    badge: "11 colors",
+    colorCount: 11,
+    tags: ["holographic", "mermaid-scale", "milk-silk", "4-way-stretch", "high-stretch", "stage-costume", "dancewear", "performance-outfit", "mermaid-skirts"],
+    availableColors: "11 colors available; custom colors on request",
+    sampleNote: "Sample preparation: 3-5 working days",
+    customizationNote: "Custom colors and OEM/ODM support available",
+    packaging: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement",
+    tradeTerms: "To be confirmed in quotation",
+    heroHighlights: [
+      "Holographic Mermaid Scale Foil",
+      "Milk-Silk Stretch Base",
+      "High Stretch / 4-Way Stretch",
+      "150 cm / 59 in Width",
+      "180 GSM Weight",
+      "MOQ 100 m / 109 yd",
+    ],
+    whyChooseHeading: "Key Features",
+    whyChoose: [
+      {
+        title: "Mermaid-Scale Foil",
+        desc: "The source data identifies a holographic mermaid-scale foil effect for bright costume and dancewear projects.",
+      },
+      {
+        title: "High-Stretch Milk-Silk Base",
+        desc: "The product uses a milk-silk stretch base with high elasticity for fitted stage garments.",
+      },
+      {
+        title: "4-Way Stretch Direction",
+        desc: "The source title and H1 position this fabric as a 4-way stretch option for movement-focused apparel.",
+      },
+      {
+        title: "Confirmed B2B Specs",
+        desc: "Width, weight, MOQ, density, color policy and base material are confirmed in the source row.",
+      },
+      {
+        title: "11 Color Options",
+        desc: "The product data lists 11 available colors, with custom colors available on request.",
+      },
+      {
+        title: "Factory Wholesale Support",
+        desc: "Factory wholesale supply and OEM/ODM support are available for buyers and apparel manufacturers.",
+      },
+    ],
+    valueStory: {
+      title: "Why Choose This Holographic Mermaid Scale Fabric?",
+      body: "This fabric combines a holographic mermaid-scale foil surface with a high-stretch milk-silk base, giving buyers a strong visual option for mermaid skirts, stage costumes, dancewear and performance outfits. The source row confirms the key procurement facts: 150 cm / 59 in width, 180 GSM weight, 100 m / 109 yd MOQ, 11 colors, 86T density and 92% Polyester 8% Spandex composition.",
+    },
+    applicationsHeading: "Recommended Applications",
+    buyerApplications: [
+      {
+        title: "Mermaid Skirts",
+        desc: "The fish-scale holographic surface is suited to mermaid skirt concepts and fantasy costume styling.",
+      },
+      {
+        title: "Stage Costumes",
+        desc: "The reflective scale pattern creates strong stage visibility under performance lighting.",
+      },
+      {
+        title: "Dancewear",
+        desc: "High stretch supports movement-focused dancewear after sample review for recovery and sewing performance.",
+      },
+      {
+        title: "Performance Outfits",
+        desc: "The milk-silk stretch base and foil finish can be sampled for fitted performance garments.",
+      },
+    ],
+    stockDevelopment: [
+      {
+        title: "11 Color Options",
+        desc: "The product data lists 11 colors, with selected color availability confirmed before quotation.",
+      },
+      {
+        title: "Sample Review",
+        desc: "Request a sample to review the mermaid-scale foil effect, stretch, hand-feel and sewing behavior.",
+      },
+      {
+        title: "Custom Development",
+        desc: "Custom colors and OEM/ODM requirements can be reviewed for qualified wholesale projects.",
+      },
+    ],
+    sampleCta: {
+      title: "Need a Holographic Mermaid Scale Stretch Fabric?",
+      body: "Request a sample to review the mermaid-scale foil effect, milk-silk stretch base, hand-feel and sewing performance before production.",
+      buttonLabel: "Request a Sample",
+    },
+    samplePrompt:
+      "Request a sample to review the mermaid-scale foil effect, milk-silk stretch base, hand-feel and sewing performance before production.",
+    faqList: [
+      {
+        question: "What is this holographic mermaid scale fabric used for?",
+        answer:
+          "The source data recommends mermaid skirts, stage costumes, dancewear and performance outfits.",
+      },
+      {
+        question: "What is the MOQ?",
+        answer:
+          "The confirmed MOQ is 100 m / 109 yd.",
+      },
+      {
+        question: "How many colors are available?",
+        answer:
+          "The product data lists 11 colors available, with custom colors on request.",
+      },
+      {
+        question: "What is the base material?",
+        answer:
+          "The product data lists the base material as 92% polyester and 8% spandex.",
+      },
+      {
+        question: "Can I request a sample before bulk production?",
+        answer:
+          "Yes. A physical sample is recommended so you can confirm the mermaid-scale foil surface, 4-way stretch, hand-feel and sewing performance.",
+      },
+    ],
+    skuImages: [],
+    detailImages: [
+      "x1.webp",
+      "x2.webp",
+      "x3.webp",
+      "x4.webp",
+      "x5.webp",
+      "x6.webp",
+      "x7.webp",
+      "x8.webp",
+      "x9.webp",
+    ],
   },
   {
     slug: "full-print-hot-stamping-spandex-milk-silk",
@@ -2019,6 +2894,10 @@ export const allProducts = [
 export const performanceProductSlugs = [
   "rainbow-stripe-foil-4-way-stretch-fabric",
   "plain-iridescent-laser-spandex-4-way-stretch",
+  "rainbow-iridescent-laser-foil-nylon-spandex-fabric",
+  "gradient-rainbow-dot-foil-knit-fabric",
+  "rainbow-fingerprint-dot-foil-ice-silk-fabric",
+  "holographic-mermaid-scale-milk-silk-stretch-fabric",
   "full-print-hot-stamping-spandex-milk-silk",
   "double-layer-pleated-foil-knit-fabric",
   "shiny-foil-4-way-stretch-knit-fabric",

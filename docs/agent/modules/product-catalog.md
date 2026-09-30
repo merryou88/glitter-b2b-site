@@ -42,10 +42,10 @@ requirement_docs:
 - `ProductDetail` 统一承载产品正文、图库、FAQ 和 CTA
 
 ## 数据与状态
-- 当前产品数据数：11；`/products/` 当前展示 `performanceProducts` 中的 11 个产品
+- 当前产品数据数：15；`/products/` 当前展示 `performanceProducts` 中的 15 个产品
 - `ProductDetail` 会根据产品对象读取 `specs`、`faqList`、`imageList`、`galleryImages`、`detailImages`
 - `src/pages/products/[slug].astro` 负责 FAQ / Breadcrumb JSON-LD；询盘型产品页不输出 Product JSON-LD
-- 2026-09-19 至 2026-10-19 的下一批产品候选筛选记录在 `workflows/next-product-candidate-plan.md`；H2013060104、H2013060102 与 H2013090101 已由用户确认并进入公开产品集合，其余初筛对象仍按计划复核
+- 2026-09-19 至 2026-10-19 的下一批产品候选筛选记录在 `workflows/next-product-candidate-plan.md`；H2013060104、H2013060102、H2013090101、H2013120101、H2013120103、H2013120104 与 H2013120105 已由用户确认并进入公开产品集合，其余初筛对象仍按计划复核
 
 ## 外部依赖
 - `public/images/products/**`
@@ -57,6 +57,7 @@ requirement_docs:
 - 保持 slug、图片路径、规格字段和 FAQ 字段一致
 - 询盘型产品页不输出 Product schema，也不补公开价格、评分或评论；保留 FAQ 与 Breadcrumb schema
 - 新增公开产品必须先确认符合当前 performance fabric 定位：foil、holographic、iridescent、stretch、stage costume、dancewear、cosplay、performance wear、props、backdrops 或 event decoration。glitter leather、PU accessory、鞋材、手袋、工艺、玩具等退出定位产品不得加入当前 `allProducts`
+- 新增或修改公开产品详情页必须先读取 `products-data/面料独立站产品数据.xlsx` 的 `Independent Site Product Data` sheet，并以目标 `Product ID` 行作为标题、slug、SEO、应用、规格、MOQ、颜色和来源状态的第一数据源；图片只能补充素材展示，不得替代表格字段
 - 新增公开产品必须一次性写好美国采购商 SEO：`metaTitle` 使用买家搜索词和 `Wholesale Supplier`；H1/title 以材质、效果、弹性和用途开头；`metaDesc` 包含应用、wholesale/supplier、样品/定制/库存/MOQ 等已确认采购事实；`hot-stamping` 作为辅助工艺词，不作为主要搜索词
 - 采购参数要同时给出公制和美国买家易读单位，例如 `150 cm / 59 in`、`100 m / 109 yd`；未知字段写 `To be confirmed` 或省略，不编造
 - 统一采购展示规则：库存待确认或 `inStock !== true` 时显示 `Made to Order`，样品准备时间为 `3-5 working days`，批量交期为 `7-15 working days`；所有产品包装显示 `Roll packing with paper tube inside, plastic bag outside; can follow customer requirement`；已确认现货产品保留现货交期

@@ -5,12 +5,12 @@ status: current
 
 ### REQ-PRODUCT-001：产品列表页仅展示当前定位相关产品
 - 状态：active
-- 当前规则：`/products/` 只展示 `performanceProducts` 中适用于 foil、holographic、iridescent、stretch、舞台服装、舞蹈服、表演服、Performance & Party Wear、舞台道具、背景布、活动装饰、泳装、cosplay 和 Halloween costumes 的产品；glitter leather、PU accessory、鞋材、手袋、工艺、玩具等退出定位产品不得出现在产品卡片、推荐排序、产品总数、场景入口、筛选结果或询盘选择中。产品列表页不再展示应用场景入口，场景导航由独立应用页面承担。
-- 验收条件：当前目录页展示 11 个公开产品；筛选、排序和总数均基于这 11 个产品；页面不出现鞋材、手袋、工艺或玩具等退出行业产品入口。
+- 当前规则：`/products/` 只展示 `performanceProducts` 中适用于 foil、holographic、iridescent、stretch、舞台服装、舞蹈服、表演服、Performance & Party Wear、舞台道具、背景布、活动装饰、泳装、cosplay、dresses、tops、formalwear、mermaid skirts 和 Halloween costumes 的产品；glitter leather、PU accessory、鞋材、手袋、工艺、玩具等退出定位产品不得出现在产品卡片、推荐排序、产品总数、场景入口、筛选结果或询盘选择中。产品列表页不再展示应用场景入口，场景导航由独立应用页面承担。
+- 验收条件：当前目录页展示 15 个公开产品；筛选、排序和总数均基于这 15 个产品；页面不出现鞋材、手袋、工艺或玩具等退出行业产品入口。
 - 影响模块：`product-catalog`
 - 代码路径：`src/data/allProducts.js`、`src/pages/products.astro`
 - 测试路径：`npm run build`，手动检查 `/products/`
-- 最后变更编号：CHG-20260921-001-h2013060102-product-detail
+- 最后变更编号：CHG-20260929-004-h2013120105-product-detail
 - 待确认事项：无
 
 ### REQ-PRODUCT-002：每个公开产品生成独立静态详情页
@@ -156,6 +156,7 @@ status: current
 ### REQ-PRODUCT-020：新增公开产品必须自带美国买家 SEO 与采购参数
 - 状态：active
 - 当前规则：新增公开产品写入 `src/data/allProducts.js` 时必须同时完成产品定位、SEO 标题、详情页 H1、Meta Description、采购参数和 FAQ 的优化，不允许先新增再二次补 SEO。产品必须符合当前 performance fabric 定位；不符合定位的 glitter leather、PU accessory、鞋材、手袋、工艺、玩具等产品不得加入当前主产品数据。新增产品的 `metaTitle` 应使用美国采购商搜索习惯，优先表达 `holographic`、`iridescent`、`foil`、`stretch`、`spandex`、`knit`、`fabric`、应用场景和 `Wholesale Supplier`；`title`/H1 以买家识别的材质、效果、弹性和用途开头，不以内部工艺词或 slug 开头。`hot-stamping` 可作为工艺说明或规格项出现，但不作为主要搜索词。`metaDesc` 必须包含应用场景、wholesale/supplier 采购意图、样品/定制/库存/MOQ 等已确认事实。规格和 FAQ 中的宽度、MOQ 等采购参数必须同时给出公制和美国买家易读单位，例如 `150 cm / 59 in`、`100 m / 109 yd`；未知字段必须写 `To be confirmed` 或省略，不能编造。
+- 前置数据规则：新增或修改公开产品详情页必须先读取 `products-data/面料独立站产品数据.xlsx` 的 `Independent Site Product Data` sheet，并以目标 `Product ID` 行作为标题、slug、SEO、应用、规格、MOQ、颜色和来源状态的第一数据源；图片只能补充素材展示，不得替代表格字段。`metaTitle` 优先使用表格中 `SEO Title`，`title`/H1 优先使用表格中 `English Product Name/H1`，`metaDesc` 必须以表格中 `Meta Description`、`Applications2`、规格、MOQ 和颜色政策为基础；未知字段才允许写 `To be confirmed`。
 - 验收条件：新增产品在第一次提交时已经具备美国买家搜索习惯的 `metaTitle`、`metaDesc`、H1、采购型 FAQ、样品/定制/MOQ/库存信息和中美单位表达；`npm run validate:products` 与 `npm run build` 通过；公开目录和 sitemap 只包含当前定位产品。
 - 影响模块：`product-catalog`、`content-data`
 - 代码路径：`src/data/allProducts.js`、`src/pages/products/[slug].astro`、`src/components/ProductDetail.astro`
@@ -262,6 +263,46 @@ status: current
 - 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/holographic-snakeskin-stretch-fabric/`
 - 最后变更编号：CHG-20260923-005-h2013090101-image-compression
 - 待确认事项：库存状态、样品准备时间、批量交期、密度、后整理、花型结构、测试合规和上线后 Search Console/GA4/RFQ 归因需按项目确认
+
+### REQ-PRODUCT-031：H2013120101 公开产品页聚焦彩虹幻彩金属箔四面弹面料
+- 状态：active
+- 当前规则：`rainbow-iridescent-laser-foil-nylon-spandex-fabric` 是 H2013120101 的公开详情页，产品事实必须以 `面料独立站产品数据.xlsx` 的 `Independent Site Product Data` sheet 中 H2013120101 行为准。H1 使用 `Rainbow Iridescent Laser Foil Nylon-Spandex 4-Way Stretch Fabric`，SEO 标题使用 `Rainbow Iridescent Laser Foil Nylon-Spandex 4-Way Stretch Fabric | Nixia Fabric`，Meta Description、应用和规格均以表格为准。产品规格只能使用已确认数据：150 cm / 59 in、180 GSM、MOQ 100 m / 109 yd、15 colors、4-way stretch、110T、75D*70D、hot-stamping foil、hot-stamping foil construction 和 92% Polyester 8% Spandex。库存、测试合规和贸易条款未在来源数据确认时保持 `To be confirmed` 或项目确认表述。
+- 验收条件：详情页可生成并显示 Key Features、Recommended Applications、Why Choose、Ready Stock & Custom Development、Sample CTA 和 FAQ；主图读取 `public/images/products/H2013120101/main/a1.webp` 至 `a5.webp`；详情图连续读取 `x1.webp` 至 `x12.webp`；应用拼图独立读取 `application/1.webp`；PNG 原图归档到 `products-data/original-images/images/products/H2013120101/`，线上目录只保留 WebP 展示图；主图首张 WebP 不加水印，其余主图和详情图 WebP 添加 3 个低透明度、逆时针 45 度倾斜域名水印；应用图不加水印；`Specifications Table for B2B Buyers` 前不出现独立 `Product Description` 模块。
+- 影响模块：`product-catalog`、`content-data`、`inquiry-forms`
+- 代码路径：`src/data/allProducts.js`、`src/components/ProductDetail.astro`、`public/images/products/H2013120101/`、`products-data/original-images/images/products/H2013120101/`
+- 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/rainbow-iridescent-laser-foil-nylon-spandex-fabric/`
+- 最后变更编号：CHG-20260929-001-h2013120101-product-detail
+- 待确认事项：库存状态、测试合规、贸易条款和上线后 Search Console/GA4/RFQ 归因需按项目确认
+
+### REQ-PRODUCT-032：H2013120103 公开产品页聚焦渐变彩虹点箔针织提花面料
+- 状态：active
+- 当前规则：`gradient-rainbow-dot-foil-knit-fabric` 是 H2013120103 的公开详情页，产品事实必须以 `面料独立站产品数据.xlsx` 的 `Independent Site Product Data` sheet 中 H2013120103 行为准。H1 使用 `Gradient Rainbow Dot Foil Knit Fabric for Stage Costumes`，SEO 标题使用 `Gradient Rainbow Dot Foil Knit Fabric for Stage Costumes | Nixia Fabric`，Meta Description、应用和规格均以表格为准。产品规格只能使用已确认数据：150 cm / 59 in、90 GSM、MOQ 200 m / 219 yd、15 colors、slight stretch、30D、hot-stamping foil、knit jacquard 和 92% Polyester 8% Spandex。密度、库存、测试合规和贸易条款未在来源数据确认时保持 `To be confirmed` 或项目确认表述。
+- 验收条件：详情页可生成并显示 Key Features、Recommended Applications、Why Choose、Ready Stock & Custom Development、Sample CTA 和 FAQ；主图读取 `public/images/products/H2013120103/main/a1.webp` 至 `a5.webp`；详情图连续读取 `x1.webp` 至 `x11.webp`；应用拼图独立读取 `application/1.webp` 和 `application/2.webp`；PNG 原图归档到 `products-data/original-images/images/products/H2013120103/`，线上目录只保留 WebP 展示图；主图首张 WebP 不加水印，其余主图和详情图 WebP 添加 3 个低透明度、逆时针 45 度倾斜域名水印；应用图不加水印；`Specifications Table for B2B Buyers` 前不出现独立 `Product Description` 模块。
+- 影响模块：`product-catalog`、`content-data`、`inquiry-forms`
+- 代码路径：`src/data/allProducts.js`、`src/components/ProductDetail.astro`、`public/images/products/H2013120103/`、`products-data/original-images/images/products/H2013120103/`
+- 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/gradient-rainbow-dot-foil-knit-fabric/`
+- 最后变更编号：CHG-20260929-002-h2013120103-product-detail
+- 待确认事项：密度、库存状态、测试合规、贸易条款和上线后 Search Console/GA4/RFQ 归因需按项目确认
+
+### REQ-PRODUCT-033：H2013120104 公开产品页聚焦彩虹指纹点箔冰丝针织面料
+- 状态：active
+- 当前规则：`rainbow-fingerprint-dot-foil-ice-silk-fabric` 是 H2013120104 的公开详情页，产品事实必须以 `面料独立站产品数据.xlsx` 的 `Independent Site Product Data` sheet 中 H2013120104 行为准。H1 使用 `Rainbow Fingerprint Dot Foil Stretch Knit Fabric`，SEO 标题使用 `Rainbow Fingerprint Dot Foil Ice Silk Stretch Knit Fabric | Nixia Fabric`，Meta Description、应用和已确认特点均以表格为准。产品来源状态为 partial source data；宽度、克重、MOQ、弹性等级、密度、纱支、工艺、花型结构、底材、颜色数量、库存、测试合规和贸易条款未在来源数据确认时保持 `To be confirmed` 或项目确认表述。
+- 验收条件：详情页可生成并显示 Key Features、Recommended Applications、Why Choose、Ready Stock & Custom Development、Sample CTA 和 FAQ；主图读取 `public/images/products/H2013120104/main/a1.webp` 至 `a5.webp`；详情图连续读取 `x1.webp` 至 `x14.webp`；应用拼图独立读取 `application/1.webp`；PNG 原图归档到 `products-data/original-images/images/products/H2013120104/`，线上目录只保留 WebP 展示图；主图首张 WebP 不加水印，其余主图和详情图 WebP 添加 3 个低透明度、逆时针 45 度倾斜域名水印；应用图不加水印；`Specifications Table for B2B Buyers` 前不出现独立 `Product Description` 模块。
+- 影响模块：`product-catalog`、`content-data`、`inquiry-forms`
+- 代码路径：`src/data/allProducts.js`、`src/components/ProductDetail.astro`、`public/images/products/H2013120104/`、`products-data/original-images/images/products/H2013120104/`
+- 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/rainbow-fingerprint-dot-foil-ice-silk-fabric/`
+- 最后变更编号：CHG-20260929-003-h2013120104-product-detail
+- 待确认事项：宽度、克重、MOQ、弹性等级、密度、纱支、工艺、花型结构、底材、颜色数量、库存状态、测试合规、贸易条款和上线后 Search Console/GA4/RFQ 归因需按项目确认
+
+### REQ-PRODUCT-034：H2013120105 公开产品页聚焦全息鱼鳞牛奶丝四面弹面料
+- 状态：active
+- 当前规则：`holographic-mermaid-scale-milk-silk-stretch-fabric` 是 H2013120105 的公开详情页，产品事实必须以 `面料独立站产品数据.xlsx` 的 `Independent Site Product Data` sheet 中 H2013120105 行为准。H1 使用 `Holographic Mermaid Scale Milk Silk 4-Way Stretch Fabric`，SEO 标题使用 `Holographic Mermaid Scale Milk Silk 4-Way Stretch Fabric for Stage Costumes | Nixia Fabric`，Meta Description、应用和规格均以表格为准。产品规格只能使用已确认数据：150 cm / 59 in、180 GSM、MOQ 100 m / 109 yd、11 colors、high stretch / 4-way stretch、86T、hot-stamping foil mermaid-scale pattern 和 92% Polyester 8% Spandex。纱支、库存、测试合规和贸易条款未在来源数据确认时保持 `To be confirmed` 或项目确认表述。
+- 验收条件：详情页可生成并显示 Key Features、Recommended Applications、Why Choose、Ready Stock & Custom Development、Sample CTA 和 FAQ；主图读取 `public/images/products/H2013120105/main/a1.webp` 至 `a5.webp`；详情图连续读取 `x1.webp` 至 `x9.webp`；没有独立 application 素材时不生成虚构应用图；PNG 原图归档到 `products-data/original-images/images/products/H2013120105/`，线上目录只保留 WebP 展示图；主图首张 WebP 不加水印，其余主图和详情图 WebP 添加 3 个低透明度、逆时针 45 度倾斜域名水印；`Specifications Table for B2B Buyers` 前不出现独立 `Product Description` 模块。
+- 影响模块：`product-catalog`、`content-data`、`inquiry-forms`
+- 代码路径：`src/data/allProducts.js`、`src/components/ProductDetail.astro`、`public/images/products/H2013120105/`、`products-data/original-images/images/products/H2013120105/`
+- 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/holographic-mermaid-scale-milk-silk-stretch-fabric/`
+- 最后变更编号：CHG-20260929-004-h2013120105-product-detail
+- 待确认事项：纱支、库存状态、测试合规、贸易条款和上线后 Search Console/GA4/RFQ 归因需按项目确认
 
 ### REQ-PRODUCT-005：重点产品 H2013090102 聚焦 Iridescent Spandex 搜索意图
 - 状态：active
