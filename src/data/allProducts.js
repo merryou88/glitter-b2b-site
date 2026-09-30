@@ -2027,40 +2027,40 @@ export const allProducts = [
 
   {
     slug: "iridescent-laser-hot-stamping-stretch-ice-silk",
-    metaTitle: "Iridescent Stretch Foil Fabric | Nixia Fabric",
+    metaTitle: "Iridescent Laser Foil 4-Way Stretch Fabric Wholesale | Nixia Fabric",
     metaDesc:
-      "Iridescent stretch ice-silk fabric with a shifting multi-color foil finish for stage costumes, dancewear and performance outfits. Samples available.",
-    title: "Iridescent Laser Foil Stretch Ice-Silk Fabric",
-    sku: "P0003",
+      "Iridescent laser foil 4-way stretch fabric in 95% polyester and 5% spandex for stage costumes, performance wear, dancewear, party wear and show costumes. Wholesale supplier with samples, custom support and a 100 m / 109 yd MOQ.",
+    title: "Iridescent Laser Foil 4-Way Stretch Fabric",
+    sku: "H2013120107",
     mainImageUrl: "/images/products/H2013120107/main/1.webp",
     mainImageWebp: "/images/products/H2013120107/main/1.webp",
     mainImageAlt:
-      "Pink iridescent laser hot-stamping stretch ice-silk fabric with multi-color foil finish",
+      "Pink iridescent laser foil 4-way stretch fabric with a multi-color reflective finish",
     imageList: [
       {
         src: "/images/products/H2013120107/main/1.webp",
         webp: "/images/products/H2013120107/main/1.webp",
-        alt: "Pink iridescent laser hot-stamping stretch ice-silk fabric draped for product display",
+        alt: "Pink iridescent laser foil 4-way stretch fabric draped for product display",
       },
       {
         src: "/images/products/H2013120107/main/2.webp",
         webp: "/images/products/H2013120107/main/2.webp",
-        alt: "Pink iridescent laser hot-stamping stretch ice-silk fabric gathered to show stretch and drape",
+        alt: "Pink iridescent laser foil 4-way stretch fabric gathered to show stretch and drape",
       },
       {
         src: "/images/products/H2013120107/main/3.webp",
         webp: "/images/products/H2013120107/main/3.webp",
-        alt: "Close-up of pink iridescent laser foil finish on stretch ice-silk fabric",
+        alt: "Close-up of pink iridescent laser foil finish on 4-way stretch fabric",
       },
       {
         src: "/images/products/H2013120107/main/4.webp",
         webp: "/images/products/H2013120107/main/4.webp",
-        alt: "Iridescent laser hot-stamping stretch ice-silk fabric texture in pink and purple tones",
+        alt: "Iridescent laser foil 4-way stretch fabric texture in pink and purple tones",
       },
       {
         src: "/images/products/H2013120107/main/5.webp",
         webp: "/images/products/H2013120107/main/5.webp",
-        alt: "Detailed view of the reflective surface and fine weave of iridescent stretch ice-silk fabric",
+        alt: "Detailed view of the reflective surface and fine weave of iridescent laser foil stretch fabric",
       },
     ],
     galleryMainPath: "/images/products/H2013120107/main/",
@@ -2071,22 +2071,22 @@ export const allProducts = [
       poster: "1.webp",
     },
     shortIntro:
-      "Iridescent laser hot-stamping stretch ice-silk fabric pairs a light, elastic ice-silk ground with a laser foil surface that shifts through multiple colors as light and viewing angle change. The gradient rainbow effect makes it a strong choice for stage costumes, dancewear and performance outfits.",
+      "Iridescent laser foil 4-way stretch fabric combines a color-shifting reflective surface with a flexible 95% polyester / 5% spandex base. It is designed for stage costumes, performance wear, dancewear, party wear and show costumes.",
     fullDescription:
-      "Our iridescent laser hot-stamping stretch ice-silk fabric pairs a light, elastic ice-silk ground with a laser foil surface that shifts through multiple colors as light and viewing angle change. The gradient rainbow effect makes it a strong choice for stage costumes, dancewear and performance outfits.\n\nThe stretch base drapes well and recovers after stretching, so it works for fitted garments and expressive costume designs.",
+      "Our iridescent laser foil 4-way stretch fabric uses a 95% polyester / 5% spandex composition for flexible costume and apparel production. Its reflective surface changes with light and viewing angle, giving stage costumes and show costumes a strong visual effect.\n\nThe 4-way stretch construction supports fitted performance wear, dancewear and party wear while allowing movement and recovery. Request a physical sample to review the surface, hand feel and sewing performance before bulk production.",
     specs: {
       width: "150 cm / 59 in",
       weight: "160 g/m²",
-      baseMaterial: "Stretch ice-silk",
+      baseMaterial: "95% Polyester 5% Spandex",
       thickness: "0.3‑0.35mm",
       moq: "100",
       leadTime: "1-3",
     },
     specTable: [
-      { label: "Product Type", value: "Iridescent laser hot-stamping foil fabric" },
-      { label: "Base Fabric", value: "Stretch ice-silk" },
-      { label: "Surface Finish", value: "Laser foil, gradient multi-color iridescent" },
-      { label: "Stretch", value: "Elastic with good recovery" },
+      { label: "Product Type", value: "Iridescent Laser Foil 4-Way Stretch Fabric" },
+      { label: "Composition", value: "95% Polyester / 5% Spandex" },
+      { label: "Surface Finish", value: "Iridescent laser foil" },
+      { label: "Stretch", value: "4-Way Stretch" },
       { label: "MOQ", value: "100 m / 109 yd per color" },
       { label: "Stock Status", value: "In-stock, ready to ship" },
       { label: "Sampling", value: "Free sample, 3–7 working days" },
@@ -2105,14 +2105,16 @@ export const allProducts = [
     ],
     applications: [
       "Stage costumes",
+      "Performance wear",
       "Dancewear",
-      "Performance outfits",
+      "Party wear",
+      "Show costumes",
     ],
     inStock: true,
     stockStatus: "In-Stock",
     badge: "1 standard color",
     colorCount: 1,
-    tags: ["metallic", "gradient", "hot-stamping", "spandex", "stage-costume", "dancewear", "performance-wear"],
+    tags: ["iridescent", "laser-foil", "4-way-stretch", "spandex", "stage-costume", "performance-wear", "dancewear", "party-wear", "show-costume"],
     availableColors: "1 standard color",
     sampleNote: "Free sample available, customer bears shipping cost",
     customizationNote: "Custom foil colors & custom width",
@@ -2130,9 +2132,14 @@ export const allProducts = [
           "Yes. Samples are free — you only bear the international shipping cost, which is deducted from your bulk order. Samples are ready within 3–7 working days.",
       },
       {
-        question: "How does the iridescent effect behave in production?",
+        question: "What is the composition and stretch?",
         answer:
-          "The laser foil shifts color with light and viewing angle. We recommend approving a physical sample before bulk production, since photos cannot fully reproduce the effect.",
+          "The fabric is 95% polyester / 5% spandex with 4-way stretch. We recommend approving a physical sample before bulk production to confirm hand feel, recovery and sewing performance.",
+      },
+      {
+        question: "What applications is this fabric suitable for?",
+        answer:
+          "Recommended applications include stage costumes, performance wear, dancewear, party wear and show costumes.",
       },
       {
         question: "Is the fabric certified for export markets?",

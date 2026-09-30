@@ -10,7 +10,7 @@ status: current
 - 影响模块：`content-data`、`product-catalog`
 - 代码路径：`src/data/allProducts.js`
 - 测试路径：`npm run validate:products`、`npm run build`
-- 最后变更编号：CHG-20260929-001-h2013120101-product-detail
+- 最后变更编号：CHG-20260930-001-h2013120107-product-positioning
 - 待确认事项：无
 
 ### REQ-DATA-002：博客数据以 `blogArticles.js` 为准

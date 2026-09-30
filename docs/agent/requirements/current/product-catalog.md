@@ -304,6 +304,17 @@ status: current
 - 最后变更编号：CHG-20260929-004-h2013120105-product-detail
 - 待确认事项：纱支、库存状态、测试合规、贸易条款和上线后 Search Console/GA4/RFQ 归因需按项目确认
 
+### REQ-PRODUCT-035：H2013120107 产品页统一使用海外采购商易懂定位
+- 状态：active
+- 当前规则：`iridescent-laser-hot-stamping-stretch-ice-silk` 保持现有 URL，但产品 H1 统一为 `Iridescent Laser Foil 4-Way Stretch Fabric`，不再把 `Ice-Silk` 或 `Hot-Stamping` 放在核心产品名称中。页面明确展示 `95% Polyester / 5% Spandex` 和 `4-Way Stretch`，应用聚焦 `Stage Costumes`、`Performance Wear`、`Dancewear`、`Party Wear` 和 `Show Costumes`。产品页及首页对应产品卡片不得使用 Glitter、Shoes & Bags、Footwear 或 Synthetic Leather 等旧定位内容。
+- 前置数据与确认：产品对应 `H2013120107`；`Independent Site Product Data` sheet 提供产品英文名，95% Polyester / 5% Spandex、4-way stretch 及五类应用由用户本次确认后写入公开字段。
+- 验收条件：详情页 H1、Meta、描述、规格、FAQ、应用和首页产品卡片均使用新定位；详情页核心文案不出现旧的 Ice-Silk 核心命名或退出行业应用；询盘上下文使用 `H2013120107`。
+- 影响模块：`product-catalog`、`content-data`
+- 代码路径：`src/data/allProducts.js`、`src/pages/index.astro`
+- 测试路径：`npm run validate:products`、`npm run build`，检查 `/products/iridescent-laser-hot-stamping-stretch-ice-silk/`
+- 最后变更编号：CHG-20260930-001-h2013120107-product-positioning
+- 待确认事项：宽度、克重、MOQ、颜色、库存、交期和测试合规继续按现有业务资料与报价确认
+
 ### REQ-PRODUCT-005：重点产品 H2013090102 聚焦 Iridescent Spandex 搜索意图
 - 状态：active
 - 当前规则：`plain-iridescent-laser-spandex-4-way-stretch` 详情页产品标题为 `Iridescent Spandex Laser Foil 4-Way Stretch Fabric`，SEO 标题为 `Iridescent Spandex Fabric | 4-Way Stretch Foil Supplier`，用于承接美国 GSC 中接近当前方向的 `iridescent lycra` / `iridescent spandex fabric` 搜索意图。SKU 保持 `H2013090102`，图片统一读取 `public/images/products/H2013090102/`；详情页轮播图右上角的 `WHOLESALE` 标签需使用深蓝底、白色文字，并保持与站点 logo 图标一致的品牌感。

@@ -21,7 +21,10 @@ export default defineConfig({
     sitemap({
       changefreq: 'weekly',
       priority: 0.8,
-      filter: (page) => !page.includes('/thank-you'),
+      filter: (page) =>
+        !page.includes('/thank-you') &&
+        !page.includes('/privacy') &&
+        !page.endsWith('/404/'),
     }),
   ],
 });
