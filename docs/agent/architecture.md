@@ -13,7 +13,7 @@ Nixia Fabric 是一个面向 B2B 的静态站点，主站是 Astro，内容围�
 - 当前仓库未发现 Tailwind 配置或 Tailwind 依赖
 
 ## 目录职责
-- `src/pages/`：站点路由。首页、产品、博客、关于、工厂、认证、样品政策、隐私、感谢页、404、以及 `src/pages/api/rfq-submit.ts`
+- `src/pages/`：站点路由。首页、产品、博客、关于、工厂、认证、样品政策、隐私、感谢页和 404
 - `src/components/`：可复用 UI。`Header`、`Footer`、`HeroCarousel`、`ContactForm`、`RfqQuoteForm`、`RFQQuoteModal`、`ProductDetail`、`FloatingContact`、`CTAButton`
 - `src/layouts/`：全站壳与 SEO 入口，当前只有 `Layout.astro`
 - `src/data/`：静态业务数据。`allProducts.js`、`blogArticles.js`、`products.json`
@@ -29,7 +29,7 @@ Nixia Fabric 是一个面向 B2B 的静态站点，主站是 Astro，内容围�
 ## 浏览器端与 Worker 的边界
 前端表单不直接发邮件。`ContactForm.astro` 和 `RfqQuoteForm.astro` 只负责收集字段并 `fetch()` 到 `WORKER_URL`。
 真正的询盘处理在 `rfq-worker/src/index.ts`，包括校验、CORS、honeypot、邮件发送。
-仓库里没有 `functions/` 目录；唯一的 API 源文件是 `src/pages/api/rfq-submit.ts`，它走 Resend，属于单独的旧端点。
+仓库里没有 `functions/` 目录；主站不再保留 Astro API 端点。旧 Resend 端点 `/api/rfq-submit` 已废弃，当前询盘和联系表单只通过独立 Worker 处理。
 
 ## 构建与部署入口
 - 开发：`npm run dev`

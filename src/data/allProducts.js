@@ -875,30 +875,30 @@ export const allProducts = [
     fullDescription:
       "Rainbow fingerprint-dot foil on an ice-silk knit base for dresses, tops, formalwear and performance garments.",
     specs: {
-      width: "To be confirmed",
-      weight: "To be confirmed",
-      baseMaterial: "To be confirmed",
+      width: "145 cm / 57 in",
+      weight: "150 GSM",
+      baseMaterial: "98% Polyester 2% Spandex",
       thickness: "",
-      moq: "To be confirmed",
+      moq: "200",
       leadTime: "To be confirmed",
     },
     specTable: [
       { label: "Product Type", value: "Rainbow Fingerprint Dot Foil Ice-Silk Knit Fabric" },
       { label: "Surface Effect", value: "Rainbow fingerprint-dot foil" },
-      { label: "Base Fabric", value: "To be confirmed" },
-      { label: "Stretch", value: "Stretch construction; exact stretch level to be confirmed" },
-      { label: "Width", value: "To be confirmed" },
-      { label: "Weight", value: "To be confirmed" },
+      { label: "Base Fabric", value: "98% Polyester / 2% Spandex" },
+      { label: "Stretch", value: "4-Way Stretch" },
+      { label: "Width", value: "145 cm / 57 in" },
+      { label: "Weight", value: "150 GSM" },
       { label: "Color", value: "To be confirmed; custom colors on request" },
-      { label: "MOQ", value: "To be confirmed" },
+      { label: "MOQ", value: "200 m / 219 yd" },
       { label: "Density", value: "To be confirmed" },
-      { label: "Yarn Count", value: "To be confirmed" },
-      { label: "Finishing", value: "Foil finish; production process to be confirmed" },
-      { label: "Pattern / Construction", value: "To be confirmed" },
+      { label: "Yarn Count", value: "30s" },
+      { label: "Finishing", value: "Hot-stamping foil" },
+      { label: "Pattern / Construction", value: "Hot-stamping foil" },
       { label: "Typical Applications", value: "Dresses, tops, formalwear, stage costumes, dancewear" },
     ],
     b2bTable: [
-      { label: "MOQ", value: "To be confirmed" },
+      { label: "MOQ", value: "200 m / 219 yd" },
       { label: "Supply type", value: "Factory wholesale supply with OEM/ODM support" },
       { label: "Sample", value: "Sample preparation: 3-5 working days" },
       { label: "Bulk Lead time", value: "7-15 working days" },
@@ -928,10 +928,10 @@ export const allProducts = [
     heroHighlights: [
       "Rainbow Fingerprint-Dot Foil",
       "Ice-Silk Knit Base",
-      "Stretch Construction",
-      "Dresses & Tops",
-      "Formalwear",
-      "Specs To Be Confirmed",
+      "4-Way Stretch",
+      "145 cm / 57 in Width",
+      "150 GSM Weight",
+      "MOQ 200 m / 219 yd",
     ],
     whyChooseHeading: "Key Features",
     whyChoose: [
@@ -945,11 +945,19 @@ export const allProducts = [
       },
       {
         title: "Stretch Construction",
-        desc: "The source data lists stretch construction; the exact stretch level should be confirmed before bulk quotation.",
+        desc: "The source data confirms a 4-way stretch construction for fitted apparel and performance garments.",
       },
       {
         title: "Dress and Top Applications",
         desc: "The source data recommends dresses, tops, formalwear and performance garments.",
+      },
+      {
+        title: "Confirmed Composition",
+        desc: "The base material is confirmed as 98% polyester / 2% spandex.",
+      },
+      {
+        title: "Confirmed Production Details",
+        desc: "The source data confirms 145 cm width, 150 GSM weight, 200 m MOQ, 30s yarn count and hot-stamping foil finishing.",
       },
       {
         title: "Custom Color Support",
@@ -962,7 +970,7 @@ export const allProducts = [
     ],
     valueStory: {
       title: "Why Choose This Rainbow Fingerprint Dot Foil Fabric?",
-      body: "This product adds a rainbow fingerprint-dot foil surface to an ice-silk knit direction for garment buyers developing dresses, tops, formalwear, stage costumes and dancewear. The source row is partial, so width, weight, MOQ, base material and construction details should be confirmed during sample and quotation review.",
+      body: "This product combines a rainbow fingerprint-dot foil surface with a 98% polyester / 2% spandex, 4-way stretch knit base for dresses, tops, formalwear, stage costumes and dancewear. The confirmed 145 cm width, 150 GSM weight and 200 m MOQ support production planning, while color availability and compliance details can be confirmed during sampling and quotation review.",
     },
     applicationsHeading: "Recommended Applications",
     buyerApplications: [
@@ -984,17 +992,17 @@ export const allProducts = [
       },
       {
         title: "Dancewear",
-        desc: "Sample review is recommended to confirm stretch, recovery and sewing performance for dancewear.",
+        desc: "The 4-way stretch base supports dancewear concepts, with sample review recommended for recovery and sewing performance.",
       },
     ],
     stockDevelopment: [
       {
         title: "Partial Source Data",
-        desc: "Width, weight, MOQ, base material, construction and color count are not confirmed in the source row.",
+        desc: "Width, weight, MOQ, base material, stretch, yarn count and finishing are confirmed; color count, density and compliance details remain to be confirmed.",
       },
       {
         title: "Sample Review",
-        desc: "Request a sample to review the fingerprint-dot foil effect, ice-silk knit hand-feel and stretch behavior.",
+        desc: "Request a sample to review the fingerprint-dot foil effect, 4-way stretch recovery, hand-feel and sewing performance.",
       },
       {
         title: "Custom Development",
@@ -1003,11 +1011,11 @@ export const allProducts = [
     ],
     sampleCta: {
       title: "Need a Rainbow Fingerprint Dot Foil Fabric?",
-      body: "Request a sample to review the rainbow fingerprint-dot foil effect, ice-silk knit hand-feel, stretch and sewing performance before production.",
+      body: "Request a sample to review the rainbow fingerprint-dot foil effect, 4-way stretch recovery, hand-feel and sewing performance before production.",
       buttonLabel: "Request a Sample",
     },
     samplePrompt:
-      "Request a sample to review the rainbow fingerprint-dot foil effect, ice-silk knit hand-feel, stretch and sewing performance before production.",
+      "Request a sample to review the rainbow fingerprint-dot foil effect, 4-way stretch recovery, hand-feel and sewing performance before production.",
     faqList: [
       {
         question: "What is this rainbow fingerprint dot foil fabric used for?",
@@ -1017,7 +1025,7 @@ export const allProducts = [
       {
         question: "What is the MOQ?",
         answer:
-          "The MOQ is to be confirmed because the source row does not provide a confirmed MOQ.",
+          "The MOQ is 200 m / 219 yd.",
       },
       {
         question: "How many colors are available?",
@@ -1027,7 +1035,7 @@ export const allProducts = [
       {
         question: "What fabric specifications still need confirmation?",
         answer:
-          "Width, weight, base material, pattern construction, yarn count and density should be confirmed before bulk quotation.",
+          "Color count, density, testing and compliance details should be confirmed before bulk quotation. The source data confirms 145 cm width, 150 GSM weight, 98% polyester / 2% spandex, 4-way stretch, 30s yarn count and hot-stamping foil finishing.",
       },
       {
         question: "Can I request a sample before bulk production?",

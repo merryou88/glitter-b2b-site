@@ -24,13 +24,13 @@
 ## 环境变量与敏感信息
 - 前端环境：`WORKER_URL`、`TURNSTILE_SITE_KEY`
 - Worker 环境：`TURNSTILE_SECRET`、`RECIPIENT_EMAIL`、`ALLOWED_ORIGINS`
-- Resend 旧端点：`RESEND_API_KEY`、`RFQ_FROM_EMAIL`、`RFQ_TO_EMAIL`
+- Resend 旧端点已废弃；不要为主站新增 `RESEND_API_KEY`、`RFQ_FROM_EMAIL`、`RFQ_TO_EMAIL`
 - 真实值不要写入仓库；示例只放在 `.env.example` 和 `rfq-worker/.dev.vars.example`
 
 ## 修改范围
 - 改页面优先只动对应页面 + 直接依赖组件/数据文件
 - 改产品/博客内容先改数据文件，再看页面是否需要跟进
-- 改询盘流程时要同时检查前端表单、Worker、旧 Resend 端点是否仍应保留
+- 改询盘流程时要同时检查前端表单和 Worker；不要恢复旧 Resend 端点，除非用户明确要求兼容外部旧调用方
 
 ## 验证
 - 站点变更：`npm run build`

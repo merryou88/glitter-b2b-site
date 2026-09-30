@@ -72,3 +72,13 @@ status: current
 - 测试路径：`npm run build`
 - 最后变更编号：CHG-20260918-003-blog-content-seo-internal-links
 - 待确认事项：无
+
+### REQ-BLOG-008：Custom Foil Fabric Development 决策文章
+- 状态：active
+- 当前规则：公开博客需要包含一篇围绕 `Custom Foil Fabric Development: When Buyers Should Choose Custom Instead of Stock` 的采购决策文章，用来解释 stock foil fabric 与 custom foil fabric development 的适用场景，并从文章详情页优先内链到 `/applications/custom-foil-fabric-development/`。
+- 验收条件：`/blog/custom-foil-fabric-development-stock-vs-custom/` 可生成；文章聚焦 dancewear、stage costumes、performance apparel、cosplay/carnival costume；正文包含 stock vs custom 判断、可定制项目、样品流程、MOQ/lead time、常见错误和 FAQ；详情页展示指向 custom foil fabric development 应用页的内链模块。
+- 影响模块：`blog-knowledge`、`content-data`、`product-catalog`
+- 代码路径：`src/data/blogArticles.js`、`src/pages/blog/[slug].astro`
+- 测试路径：`npm run build`；检查生成页包含 `/applications/custom-foil-fabric-development/`
+- 最后变更编号：CHG-20260930-005-custom-foil-blog
+- 待确认事项：无

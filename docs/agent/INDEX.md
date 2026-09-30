@@ -10,7 +10,7 @@
 | 图片 / 静态资源 | `modules/content-data.md` | `modules/product-catalog.md`、`modules/blog-knowledge.md` | `requirements/current/content-data.md` | `public/**`、`src/data/**` |
 | 联系表单 | `modules/inquiry-forms.md` | `workflows/contact-form-submit.md`、`workflows/worker-request-flow.md` | `requirements/current/inquiry-forms.md`、`requirements/current/cloudflare-worker.md` | `src/components/ContactForm.astro`、`src/pages/contact.astro` |
 | Cloudflare Functions / Worker | `modules/cloudflare-worker.md` | `workflows/worker-request-flow.md` | `requirements/current/cloudflare-worker.md` | `rfq-worker/src/index.ts`、`rfq-worker/wrangler.toml` |
-| Resend 邮件 | `modules/legacy-resend-api.md` | `workflows/legacy-resend-flow.md` | `requirements/current/legacy-resend-api.md` | `src/pages/api/rfq-submit.ts` |
+| Resend 邮件 | `modules/legacy-resend-api.md` | `workflows/legacy-resend-flow.md` | `requirements/current/legacy-resend-api.md` | 已废弃，当前无代码入口 |
 | SEO / Meta / Schema | `modules/site-shell.md` | `workflows/seo-metadata.md` | `requirements/current/site-shell.md` | `src/layouts/Layout.astro`、相关页面 frontmatter |
 | 候选产品 / 下一批上架 / 30 天产品计划 | `modules/product-catalog.md`、`modules/content-data.md` | `workflows/next-product-candidate-plan.md` | `requirements/current/product-catalog.md` | 用户确认后才涉及 `src/data/allProducts.js`、`public/images/products/**` |
 | 构建 / 部署 | `architecture.md` | `workflows/build-deploy.md` | `requirements/current/content-data.md`、`requirements/current/cloudflare-worker.md` | `package.json`、`rfq-worker/package.json` |

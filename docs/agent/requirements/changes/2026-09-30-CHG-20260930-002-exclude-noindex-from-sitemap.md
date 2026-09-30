@@ -33,5 +33,7 @@ modules:
 - `docs/agent/requirements/current/site-shell.md`
 
 ## 验证结果
-- 待执行：`npm run build`。
-- 待检查：sitemap URL 数量与 noindex 页面排除结果。
+- 通过：`npm run build`，生成 45 个静态页面，产品校验通过。
+- 通过：构建后的 sitemap 保留 42 个可索引 URL，不包含 `/thank-you/`、`/privacy/` 或 `/404/`。
+- 通过：本地生成 HTML 中共有 42 个非 `noindex` 内容页；目标产品页和博客页均有站内链接入口。
+- 说明：本地构建无法读取生产环境 Google Search Console 的实际收录状态；“已发现，尚未编入索引”仍需在 Search Console 中按 URL 状态处理。

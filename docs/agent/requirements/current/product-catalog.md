@@ -286,13 +286,13 @@ status: current
 
 ### REQ-PRODUCT-033：H2013120104 公开产品页聚焦彩虹指纹点箔冰丝针织面料
 - 状态：active
-- 当前规则：`rainbow-fingerprint-dot-foil-ice-silk-fabric` 是 H2013120104 的公开详情页，产品事实必须以 `面料独立站产品数据.xlsx` 的 `Independent Site Product Data` sheet 中 H2013120104 行为准。H1 使用 `Rainbow Fingerprint Dot Foil Stretch Knit Fabric`，SEO 标题使用 `Rainbow Fingerprint Dot Foil Ice Silk Stretch Knit Fabric | Nixia Fabric`，Meta Description、应用和已确认特点均以表格为准。产品来源状态为 partial source data；宽度、克重、MOQ、弹性等级、密度、纱支、工艺、花型结构、底材、颜色数量、库存、测试合规和贸易条款未在来源数据确认时保持 `To be confirmed` 或项目确认表述。
+- 当前规则：`rainbow-fingerprint-dot-foil-ice-silk-fabric` 是 H2013120104 的公开详情页，产品事实必须以 `面料独立站产品数据.xlsx` 的 `Independent Site Product Data` sheet 中 H2013120104 行为准。H1 使用 `Rainbow Fingerprint Dot Foil Stretch Knit Fabric`，SEO 标题使用 `Rainbow Fingerprint Dot Foil Ice Silk Stretch Knit Fabric | Nixia Fabric`，Meta Description、应用和已确认特点均以表格为准。产品规格只能使用已确认数据：145 cm / 57 in、150 GSM、MOQ 200 m / 219 yd、4-way stretch、30s、hot-stamping foil、hot-stamping foil construction 和 98% Polyester 2% Spandex。颜色数量、密度、库存、测试合规和贸易条款未在来源数据确认时保持 `To be confirmed` 或项目确认表述。
 - 验收条件：详情页可生成并显示 Key Features、Recommended Applications、Why Choose、Ready Stock & Custom Development、Sample CTA 和 FAQ；主图读取 `public/images/products/H2013120104/main/a1.webp` 至 `a5.webp`；详情图连续读取 `x1.webp` 至 `x14.webp`；应用拼图独立读取 `application/1.webp`；PNG 原图归档到 `products-data/original-images/images/products/H2013120104/`，线上目录只保留 WebP 展示图；主图首张 WebP 不加水印，其余主图和详情图 WebP 添加 3 个低透明度、逆时针 45 度倾斜域名水印；应用图不加水印；`Specifications Table for B2B Buyers` 前不出现独立 `Product Description` 模块。
 - 影响模块：`product-catalog`、`content-data`、`inquiry-forms`
 - 代码路径：`src/data/allProducts.js`、`src/components/ProductDetail.astro`、`public/images/products/H2013120104/`、`products-data/original-images/images/products/H2013120104/`
 - 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/rainbow-fingerprint-dot-foil-ice-silk-fabric/`
-- 最后变更编号：CHG-20260929-003-h2013120104-product-detail
-- 待确认事项：宽度、克重、MOQ、弹性等级、密度、纱支、工艺、花型结构、底材、颜色数量、库存状态、测试合规、贸易条款和上线后 Search Console/GA4/RFQ 归因需按项目确认
+- 最后变更编号：CHG-20260930-003-h2013120104-parameter-refresh
+- 待确认事项：颜色数量、密度、库存状态、测试合规、贸易条款和上线后 Search Console/GA4/RFQ 归因需按项目确认
 
 ### REQ-PRODUCT-034：H2013120105 公开产品页聚焦全息鱼鳞牛奶丝四面弹面料
 - 状态：active

@@ -38,6 +38,12 @@ const relatedGuides = blogArticles
   .map((item) => item.article);
 const applicationLinks = [
   {
+    slug: "custom-foil-fabric-development",
+    href: "/applications/custom-foil-fabric-development/",
+    label: "Custom Foil Fabric Development",
+    description: "Decide when stock fabric is enough and when a custom foil effect, color or base fabric should be developed.",
+  },
+  {
     slug: "holographic-fabric-for-dancewear-what-buyers-should-check",
     href: "/applications/holographic-fabric-wholesale/",
     label: "Wholesale Holographic Fabric",
@@ -67,6 +73,7 @@ const primaryApplicationByArticle = {
   "iridescent-vs-metallic-fabric-for-stage-costumes": "foil-fabric-for-stage-costumes",
   "how-to-choose-4-way-stretch-fabric-for-bodysuits": "dancewear-fabric-supplier",
   "best-fabric-for-cheerleading-and-performance-costumes": "cheerleading-performance-costume-fabric",
+  "custom-foil-fabric-development-stock-vs-custom": "custom-foil-fabric-development",
 };
 const prioritizedApplicationLinks = applicationLinks.sort((a, b) => {
   const primary = primaryApplicationByArticle[article.slug];

@@ -42,7 +42,7 @@ requirements:
 | 4 | H2013090103 | 七彩镭射指纹点 / Rainbow Fingerprint Laser Foil Knit Fabric | 90 GSM 轻量针织和 fingerprint pattern，可补充轻量 performance wear | 与现有 H2013090104 圆点镭射同属轻量图案箔面，必须先证明图案和采购用途差异足够 | 工厂供货、报价、样品、交期、库存、花型结构、可用图片/视频、差异对比、Search Console 证据 | 待补资料 |
 | 5 | H2013060102 | 七彩条纹烫金布 / Rainbow Stripe Foil 4-Way Stretch Fabric | 彩虹条纹、四面弹和 carnival costume 场景可形成明确长尾方向 | 与现有渐变、彩虹圆点和全版 foil 产品存在邻近定位，需持续观察关键词内耗 | 已获得用户确认并完成主图、详情图和应用拼图处理；库存、样品准备时间、交期、包装、贸易条款、测试合规和 Search Console 数据继续待确认 | 已确认制作 |
 | 6 | H2013120103 | 彩虹渐变镭射指纹点 / Gradient Rainbow Dot Foil Knit Fabric | 渐变彩虹点箔、90 GSM 轻量针织提花，适合 stage costumes、performance wear、dancewear 和 costume accessories | 与 H2013090104 同属轻量点状箔面，但 H2013120103 使用渐变彩虹点和 15 色政策，已按用户指定素材生成独立详情页 | 已获得用户确认并完成主图、详情图和应用拼图处理；密度、库存、测试合规、贸易条款和 Search Console 数据继续待确认 | 已确认制作 |
-| 7 | H2013120104 | 冰丝镭射指纹点 / Rainbow Fingerprint Dot Foil Ice Silk Stretch Knit Fabric | 指纹点箔、冰丝针织方向，可覆盖 dresses、tops、formalwear 与 performance garments | 与 H2013120103 同属点状箔面，但 H2013120104 聚焦 fingerprint-dot、ice-silk knit 与女装/礼服方向；来源规格字段仍不完整 | 已获得用户确认并完成主图、详情图和应用拼图处理；宽度、克重、MOQ、底材、颜色数量、工艺、结构、库存、测试合规、贸易条款和 Search Console 数据继续待确认 | 已确认制作 |
+| 7 | H2013120104 | 冰丝镭射指纹点 / Rainbow Fingerprint Dot Foil Ice Silk Stretch Knit Fabric | 指纹点箔、冰丝针织方向，可覆盖 dresses、tops、formalwear 与 performance garments | 与 H2013120103 同属点状箔面，但 H2013120104 聚焦 fingerprint-dot、ice-silk knit 与女装/礼服方向；来源规格已补充宽幅、克重、MOQ、四面弹、纱支、工艺和成分 | 已获得用户确认并完成主图、详情图和应用拼图处理；145 cm、150 GSM、MOQ 200 m、98% Polyester 2% Spandex、4-way stretch、30s、hot-stamping foil 已确认；颜色数量、密度、库存、测试合规、贸易条款和 Search Console 数据继续待确认 | 已确认制作 |
 | 8 | H2013120105 | 高弹镭射鱼鳞布 / Holographic Mermaid Scale Milk Silk 4-Way Stretch Fabric | 鱼鳞全息箔面、高弹牛奶丝底布，可覆盖 mermaid skirts、stage costumes、dancewear 和 performance outfits | 当前公开产品没有以 mermaid-scale / fish-scale holographic surface 为核心定位的产品 | 已获得用户确认并完成主图、详情图处理；纱支、库存、测试合规、贸易条款和 Search Console 数据继续待确认 | 已确认制作 |
 
 ## 暂不进入本轮初筛
@@ -94,7 +94,7 @@ requirements:
 - 当前可以建立候选核验顺序；H2013060104、H2013060102、H2013090101、H2013120101、H2013120103、H2013120104 与 H2013120105 已由用户确认素材并新增公开产品页。
 - H2013120101 的图片已补齐并生成公开页面；产品标题、slug、SEO、应用、规格、MOQ 和颜色政策已按 `Independent Site Product Data` 中 H2013120101 行更新，库存、测试合规、贸易条款和 Search Console 证据仍按项目确认。
 - H2013120103 的图片已补齐并生成公开页面；产品标题、slug、SEO、应用、规格、MOQ 和颜色政策已按 `Independent Site Product Data` 中 H2013120103 行更新，密度、库存、测试合规、贸易条款和 Search Console 证据仍按项目确认。
-- H2013120104 的图片已补齐并生成公开页面；产品标题、slug、SEO、应用和已确认特点已按 `Independent Site Product Data` 中 H2013120104 行更新，宽度、克重、MOQ、底材、颜色数量、工艺、结构、库存、测试合规、贸易条款和 Search Console 证据仍按项目确认。
+- H2013120104 的图片已补齐并生成公开页面；产品标题、slug、SEO、应用和已确认特点已按 `Independent Site Product Data` 中 H2013120104 行更新，145 cm、150 GSM、MOQ 200 m、98% Polyester 2% Spandex、4-way stretch、30s 和 hot-stamping foil 已确认；颜色数量、密度、库存、测试合规、贸易条款和 Search Console 证据仍按项目确认。
 - H2013120105 的图片已补齐并生成公开页面；产品标题、slug、SEO、应用、规格、MOQ 和颜色政策已按 `Independent Site Product Data` 中 H2013120105 行更新，纱支、库存、测试合规、贸易条款和 Search Console 证据仍按项目确认。
 - H2013090101 的图片已补齐，规格来自产品数据表，页面已生成；工厂供货、报价、样品、交期、库存、密度、染整/花型工艺和 Search Console 证据仍按项目确认。
 - 初筛其余产品仍缺少至少一类关键证据，继续保持 `待补资料`。
