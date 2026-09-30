@@ -125,7 +125,7 @@ export const allProducts = [
     colorCount: 2,
     tags: ["rainbow-stripe", "foil", "spandex", "4-way-stretch", "stage-costume", "dancewear", "performance-outfit", "carnival-costume"],
     availableColors: "2 colors available; custom colors on request",
-    sampleNote: "Sample availability, preparation time and shipping to be confirmed by project",
+    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping.",
     customizationNote: "OEM/ODM support; custom color details to be confirmed",
     packaging: "To be confirmed in quotation",
     tradeTerms: "To be confirmed in quotation",
@@ -291,7 +291,7 @@ export const allProducts = [
     b2bTable: [
       { label: "MOQ", value: "100 m / 109 yd" },
       { label: "Supply type", value: "In-stock available" },
-      { label: "Sample", value: "Free sample, customer bears international freight; shipping cost deducted from bulk order" },
+      { label: "Sample", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "1-3 working days after payment and stock confirmation for orders ≤ 500 m / 547 yd; 7-15 working days when production is required" },
       { label: "OEM / ODM", value: "Custom color, width, new fabric development & private label available" },
       { label: "Testing & Compliance", value: "SGS / REACH on request" },
@@ -310,7 +310,7 @@ export const allProducts = [
     colorCount: 1,
     tags: ["metallic", "hot-stamping", "spandex", "dancewear", "stage-costume", "performance-wear", "party-wear"],
     availableColors: "1 standard color",
-    sampleNote: "Free sample available, customer bears shipping cost",
+    sampleNote: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping.",
     customizationNote: "OEM / ODM available for bulk development",
     packaging: "Roll packing, export carton",
     tradeTerms: "FOB, CIF upon quotation",
@@ -375,7 +375,7 @@ export const allProducts = [
       {
         question: "Can I request a sample before placing a bulk order?",
         answer:
-          "Yes. Samples are available before bulk order. Buyer covers international shipping, and the shipping cost can be deducted from the bulk order.",
+          "Yes. This is an in-stock product. The stock sample is free and prepared in 1-3 working days. The buyer covers international shipping.",
       },
       {
         question: "What is the fabric width and weight?",
@@ -468,7 +468,7 @@ export const allProducts = [
     b2bTable: [
       { label: "MOQ", value: "100 m / 109 yd" },
       { label: "Supply type", value: "Factory wholesale supply with OEM/ODM support" },
-      { label: "Sample", value: "Sample preparation: 3-5 working days" },
+      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "7-15 working days" },
       { label: "Available Colors", value: "15 colors available; custom colors on request" },
       { label: "OEM / ODM", value: "Custom colors and OEM/ODM support available" },
@@ -489,7 +489,7 @@ export const allProducts = [
     colorCount: 15,
     tags: ["rainbow", "iridescent", "laser-foil", "nylon-spandex", "4-way-stretch", "bodysuit", "swimwear", "dancewear", "stage-costume"],
     availableColors: "15 colors available; custom colors on request",
-    sampleNote: "Sample preparation: 3-5 working days",
+    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping.",
     customizationNote: "Custom colors and OEM/ODM support available",
     packaging: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement",
     tradeTerms: "To be confirmed in quotation",
@@ -683,7 +683,7 @@ export const allProducts = [
     b2bTable: [
       { label: "MOQ", value: "200 m / 219 yd" },
       { label: "Supply type", value: "Factory wholesale supply with OEM/ODM support" },
-      { label: "Sample", value: "Sample preparation: 3-5 working days" },
+      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "7-15 working days" },
       { label: "Available Colors", value: "15 colors available; custom colors on request" },
       { label: "OEM / ODM", value: "Custom colors and OEM/ODM support available" },
@@ -703,7 +703,7 @@ export const allProducts = [
     colorCount: 15,
     tags: ["gradient", "rainbow-dot", "dot-foil", "knit-jacquard", "slight-stretch", "stage-costume", "performance-wear", "dancewear", "costume-accessories"],
     availableColors: "15 colors available; custom colors on request",
-    sampleNote: "Sample preparation: 3-5 working days",
+    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping.",
     customizationNote: "Custom colors and OEM/ODM support available",
     packaging: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement",
     tradeTerms: "To be confirmed in quotation",
@@ -900,7 +900,7 @@ export const allProducts = [
     b2bTable: [
       { label: "MOQ", value: "200 m / 219 yd" },
       { label: "Supply type", value: "Factory wholesale supply with OEM/ODM support" },
-      { label: "Sample", value: "Sample preparation: 3-5 working days" },
+      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "7-15 working days" },
       { label: "Available Colors", value: "To be confirmed; custom colors on request" },
       { label: "OEM / ODM", value: "Custom colors and OEM/ODM support available" },
@@ -921,7 +921,7 @@ export const allProducts = [
     colorCount: 0,
     tags: ["rainbow-fingerprint-dot", "dot-foil", "ice-silk-knit", "stretch-knit", "dresses", "tops", "formalwear", "stage-costume", "dancewear"],
     availableColors: "To be confirmed; custom colors on request",
-    sampleNote: "Sample preparation: 3-5 working days",
+    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping.",
     customizationNote: "Custom colors and OEM/ODM support available",
     packaging: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement",
     tradeTerms: "To be confirmed in quotation",
@@ -1133,7 +1133,7 @@ export const allProducts = [
     b2bTable: [
       { label: "MOQ", value: "100 m / 109 yd" },
       { label: "Supply type", value: "Factory wholesale supply with OEM/ODM support" },
-      { label: "Sample", value: "Sample preparation: 3-5 working days" },
+      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "7-15 working days" },
       { label: "Available Colors", value: "11 colors available; custom colors on request" },
       { label: "OEM / ODM", value: "Custom colors and OEM/ODM support available" },
@@ -1153,7 +1153,7 @@ export const allProducts = [
     colorCount: 11,
     tags: ["holographic", "mermaid-scale", "milk-silk", "4-way-stretch", "high-stretch", "stage-costume", "dancewear", "performance-outfit", "mermaid-skirts"],
     availableColors: "11 colors available; custom colors on request",
-    sampleNote: "Sample preparation: 3-5 working days",
+    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping.",
     customizationNote: "Custom colors and OEM/ODM support available",
     packaging: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement",
     tradeTerms: "To be confirmed in quotation",
@@ -1326,19 +1326,42 @@ export const allProducts = [
       { label: "Hand-feel", value: "Soft, smooth, elastic recovery" },
       { label: "MOQ", value: "100 m / 109 yd per design" },
       { label: "Stock Status", value: "In-stock, ready to ship" },
-      { label: "Sampling", value: "Free sample, 3–7 working days" },
+      { label: "Sampling", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
       { label: "Customization", value: "Custom patterns, colors, width & backing on bulk orders" },
     ],
     b2bTable: [
       { label: "MOQ", value: "100 m / 109 yd" },
       { label: "Supply type", value: "In-stock available" },
-      { label: "Sample", value: "Free sample, customer bears international freight; shipping cost deducted from bulk order" },
+      { label: "Sample", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "1-3 working days after payment and stock confirmation for orders ≤ 500 m / 547 yd; 7-15 working days when production is required" },
       { label: "Port", value: "Ningbo / Shanghai" },
       { label: "OEM / ODM", value: "Custom color, width, new fabric development & private label available" },
       { label: "Testing & Compliance", value: "SGS / REACH testing can be arranged according to buyer requirements" },
       { label: "Package type", value: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement" },
       { label: "Trade Terms", value: "FOB, CIF available, provide commercial invoice & packing list" },
+    ],
+    whyChooseHeading: "What Makes This Full-Print Foil Fabric Different?",
+    whyChoose: [
+      {
+        title: "All-Over Foil Print",
+        desc: "The foil effect is printed across the fabric rather than limited to a small motif, giving garment panels a continuous metallic appearance.",
+      },
+      {
+        title: "Soft Milk-Silk Ground",
+        desc: "The milk-silk spandex base is described as soft and smooth, making it suitable for fitted dancewear, stage costumes and performance outfits.",
+      },
+      {
+        title: "4-Way Stretch With Recovery",
+        desc: "The documented 4-way stretch construction recovers after stretching for movement-focused apparel development.",
+      },
+      {
+        title: "Bright Metallic Shine",
+        desc: "The foil surface provides a bright metallic finish designed to remain visually strong through wear.",
+      },
+      {
+        title: "22 Stock Colors",
+        desc: "The product data lists 22 stock colors, with custom print patterns and foil colors available for bulk development.",
+      },
     ],
     applications: [
       "Stage costumes",
@@ -1352,7 +1375,7 @@ export const allProducts = [
     colorCount: 22,
     tags: ["printed", "hot-stamping", "spandex", "dancewear", "stage-costume", "performance-wear", "party-wear"],
     availableColors: "22 stock colors, support custom color",
-    sampleNote: "Free sample available, customer bears shipping cost",
+    sampleNote: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping.",
     customizationNote: "Custom print patterns & custom foil colors",
     packaging: "Roll packing, export carton",
     tradeTerms: "FOB, CIF upon quotation",
@@ -1365,7 +1388,7 @@ export const allProducts = [
       {
         question: "Can I get a sample before placing a bulk order?",
         answer:
-          "Yes. Samples are free — you only bear the international shipping cost, which is deducted from your bulk order. Samples are ready within 3–7 working days.",
+          "Yes. This is an in-stock product. The stock sample is free and prepared in 1-3 working days. The buyer covers international shipping.",
       },
       {
         question: "Can the print pattern and colors be customized?",
@@ -1453,7 +1476,7 @@ export const allProducts = [
     b2bTable: [
       { label: "MOQ", value: "100 m / 109 yd" },
       { label: "Supply type", value: "18 colors available; stock status confirmed by quotation" },
-      { label: "Sample", value: "Sample available for pleated texture, surface effect and sewing review before production" },
+      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "To be confirmed according to order quantity and production requirements" },
       { label: "Port", value: "Ningbo / Shanghai" },
       { label: "OEM / ODM", value: "Custom colors and OEM/ODM development available" },
@@ -1474,7 +1497,7 @@ export const allProducts = [
     colorCount: 18,
     tags: ["pleated-foil", "foil", "knit", "stage-costume", "performance-skirts", "dancewear", "formalwear"],
     availableColors: "18 colors available; custom colors on request",
-    sampleNote: "Sample available for pleated texture and surface effect review",
+    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping.",
     customizationNote: "Custom colors and OEM/ODM development available",
     packaging: "Roll packing; export packing available upon quotation",
     tradeTerms: "FOB, CIF upon quotation",
@@ -1667,7 +1690,7 @@ export const allProducts = [
     b2bTable: [
       { label: "MOQ", value: "100 m / 109 yd" },
       { label: "Supply type", value: "Ready stock available; custom development available" },
-      { label: "Sample", value: "Sample available for stretch, surface effect and appearance review before production" },
+      { label: "Sample", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "1-3 working days after payment and stock confirmation for orders ≤ 500 m / 547 yd; 7-15 working days when production is required" },
       { label: "Port", value: "Ningbo / Shanghai" },
       { label: "OEM / ODM", value: "Custom foil fabric development based on customer sample or requirements" },
@@ -1690,7 +1713,7 @@ export const allProducts = [
     colorCount: 30,
     tags: ["foil", "hot-stamping", "polyester", "knit", "stage-costume", "dancewear", "performance-wear", "party-wear"],
     availableColors: "30 colors available; custom colors on request",
-    sampleNote: "Sample available for stretch, surface effect and appearance review",
+    sampleNote: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping.",
     customizationNote: "Custom foil fabric development based on your sample or requirements",
     packaging: "Roll packing, export carton",
     tradeTerms: "FOB, CIF upon quotation",
@@ -1893,7 +1916,7 @@ export const allProducts = [
     b2bTable: [
       { label: "MOQ", value: "100 m / 109 yd" },
       { label: "Supply type", value: "In-stock availability; custom development available" },
-      { label: "Sample", value: "Sample available for surface effect, stretch and appearance review before production" },
+      { label: "Sample", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "5-7 working days for stock dispatch; custom production timing to be confirmed" },
       { label: "Port", value: "Ningbo / Shanghai" },
       { label: "OEM / ODM", value: "Custom color and fabric development based on customer requirements" },
@@ -1915,7 +1938,7 @@ export const allProducts = [
     colorCount: 16,
     tags: ["foil", "suede-look", "embossed", "stage-costume", "performance-props", "backdrops", "event-decoration"],
     availableColors: "16 colors available; custom colors on request",
-    sampleNote: "Sample available for surface effect, stretch and appearance review",
+    sampleNote: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping.",
     customizationNote: "Custom color and fabric development based on customer requirements",
     packaging: "Roll packing; export packing available upon quotation",
     tradeTerms: "FOB, CIF upon quotation",
@@ -2097,19 +2120,42 @@ export const allProducts = [
       { label: "Stretch", value: "4-Way Stretch" },
       { label: "MOQ", value: "100 m / 109 yd per color" },
       { label: "Stock Status", value: "In-stock, ready to ship" },
-      { label: "Sampling", value: "Free sample, 3–7 working days" },
+      { label: "Sampling", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
       { label: "Customization", value: "Custom foil colors, width & backing on bulk orders" },
     ],
     b2bTable: [
       { label: "MOQ", value: "100 m / 109 yd" },
       { label: "Supply type", value: "In-stock available" },
-      { label: "Sample", value: "Free sample, customer bears international freight; shipping cost deducted from bulk order" },
+      { label: "Sample", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "1-3 working days after payment and stock confirmation for orders ≤ 500 m / 547 yd; 7-15 working days when production is required" },
       { label: "Port", value: "Ningbo / Shanghai" },
       { label: "OEM / ODM", value: "Custom color, width, new fabric development & private label available" },
       { label: "Testing & Compliance", value: "SGS / REACH testing can be arranged according to buyer requirements" },
       { label: "Package type", value: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement" },
       { label: "Trade Terms", value: "FOB, CIF available, provide commercial invoice & packing list" },
+    ],
+    whyChooseHeading: "What Makes This Iridescent Laser Foil Fabric Different?",
+    whyChoose: [
+      {
+        title: "Color-Shifting Laser Foil",
+        desc: "The reflective surface changes with light and viewing angle, creating a stronger stage and show-costume effect than a single-tone foil finish.",
+      },
+      {
+        title: "95% Polyester / 5% Spandex Base",
+        desc: "The confirmed composition provides a clear base-fabric specification for fitted costume and performance apparel development.",
+      },
+      {
+        title: "4-Way Stretch Construction",
+        desc: "The documented 4-way stretch supports movement-focused garments while allowing buyers to review recovery and sewing performance by sample.",
+      },
+      {
+        title: "Lightweight 160 g/m² Build",
+        desc: "The 160 g/m² weight and 0.3–0.35 mm thickness give buyers a defined starting point for garment development and sampling.",
+      },
+      {
+        title: "Custom Foil Development",
+        desc: "The product data supports custom foil colors, width and backing on bulk orders in addition to the standard color.",
+      },
     ],
     applications: [
       "Stage costumes",
@@ -2124,7 +2170,7 @@ export const allProducts = [
     colorCount: 1,
     tags: ["iridescent", "laser-foil", "4-way-stretch", "spandex", "stage-costume", "performance-wear", "dancewear", "party-wear", "show-costume"],
     availableColors: "1 standard color",
-    sampleNote: "Free sample available, customer bears shipping cost",
+    sampleNote: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping.",
     customizationNote: "Custom foil colors & custom width",
     packaging: "Roll packing, export carton",
     tradeTerms: "FOB, CIF upon quotation",
@@ -2137,7 +2183,7 @@ export const allProducts = [
       {
         question: "Can I get a sample before placing a bulk order?",
         answer:
-          "Yes. Samples are free — you only bear the international shipping cost, which is deducted from your bulk order. Samples are ready within 3–7 working days.",
+          "Yes. This is an in-stock product. The stock sample is free and prepared in 1-3 working days. The buyer covers international shipping.",
       },
       {
         question: "What is the composition and stretch?",
@@ -2200,19 +2246,42 @@ export const allProducts = [
       { label: "Stretch", value: "Elastic with good recovery" },
       { label: "MOQ", value: "100 m / 109 yd per colorway" },
       { label: "Stock Status", value: "In-stock, ready to ship" },
-      { label: "Sampling", value: "Free sample, 3–7 working days" },
+      { label: "Sampling", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
       { label: "Customization", value: "Custom gradient colors & direction on bulk orders" },
     ],
     b2bTable: [
       { label: "MOQ", value: "100 m / 109 yd" },
       { label: "Supply type", value: "In-stock available" },
-      { label: "Sample", value: "Free sample, customer bears international freight; shipping cost deducted from bulk order" },
+      { label: "Sample", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "1-3 working days after payment and stock confirmation for orders ≤ 500 m / 547 yd; 7-15 working days when production is required" },
       { label: "Port", value: "Ningbo / Shanghai" },
       { label: "OEM / ODM", value: "Custom color, width, new fabric development & private label available" },
       { label: "Testing & Compliance", value: "SGS / REACH testing can be arranged according to buyer requirements" },
       { label: "Package type", value: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement" },
       { label: "Trade Terms", value: "FOB, CIF available, provide commercial invoice & packing list" },
+    ],
+    whyChooseHeading: "What Makes This Gradient Foil Fabric Different?",
+    whyChoose: [
+      {
+        title: "Gradient Across the Width",
+        desc: "The color transition flows across the width of the fabric, giving designers a continuous gradient direction for garment panels.",
+      },
+      {
+        title: "Multi-Color Iridescent Foil",
+        desc: "The laser foil shifts through multiple colors under light, creating a changing surface effect rather than a flat metallic finish.",
+      },
+      {
+        title: "Stretch Ice-Silk Base",
+        desc: "The stretch ice-silk base is described as comfortable against the skin and easy to sew for dancewear and costume development.",
+      },
+      {
+        title: "Elastic Recovery",
+        desc: "The product data specifies elastic stretch with good recovery for movement-focused apparel.",
+      },
+      {
+        title: "19 Colors and Custom Direction",
+        desc: "The product offers 19 colors with a color card available on request, plus custom gradient colors and direction for bulk orders.",
+      },
     ],
     applications: [
       "Stage costumes",
@@ -2226,7 +2295,7 @@ export const allProducts = [
     colorCount: 19,
     tags: ["gradient", "metallic", "hot-stamping", "spandex", "stage-costume", "dancewear", "performance-wear", "party-wear"],
     availableColors: "19 colors available, color card available on request",
-    sampleNote: "Free sample available, customer bears shipping cost",
+    sampleNote: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping.",
     customizationNote: "Custom gradient colors & direction",
     packaging: "Roll packing, export carton",
     tradeTerms: "FOB, CIF upon quotation",
@@ -2239,7 +2308,7 @@ export const allProducts = [
       {
         question: "Can I get a sample before placing a bulk order?",
         answer:
-          "Yes. Samples are free — you only bear the international shipping cost, which is deducted from your bulk order. Samples are ready within 3–7 working days.",
+          "Yes. This is an in-stock product. The stock sample is free and prepared in 1-3 working days. The buyer covers international shipping.",
       },
       {
         question: "Can the gradient direction or colors be customized?",
@@ -2327,7 +2396,7 @@ export const allProducts = [
     b2bTable: [
       { label: "MOQ", value: "200 m / 219 yd" },
       { label: "Supply type", value: "28 colors available; custom colors on request" },
-      { label: "Sample", value: "Sample available for color, surface effect and sewing review before production" },
+      { label: "Sample", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "5-7 working days after order confirmation" },
       { label: "Port", value: "Ningbo / Shanghai" },
       { label: "OEM / ODM", value: "Custom colors and OEM/ODM development available" },
@@ -2347,7 +2416,7 @@ export const allProducts = [
     colorCount: 28,
     tags: ["dot-foil", "laser-foil", "knit", "stage-costume", "performance-wear", "dancewear", "costume-panels"],
     availableColors: "28 colors available; custom colors on request",
-    sampleNote: "Sample available for color and surface effect review",
+    sampleNote: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping.",
     customizationNote: "Custom colors and OEM/ODM development available",
     packaging: "Roll packing; export packing available upon quotation",
     tradeTerms: "FOB, CIF upon quotation",
@@ -2547,7 +2616,7 @@ export const allProducts = [
     b2bTable: [
       { label: "MOQ", value: "100 m / 109 yd" },
       { label: "Supply type", value: "Foil fabric supply with custom development support" },
-      { label: "Sample", value: "Sample available for color, stretch and surface effect review before production" },
+      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "To be confirmed according to order quantity and production requirements" },
       { label: "Port", value: "Ningbo / Shanghai" },
       { label: "OEM / ODM", value: "Custom color development available" },
@@ -2568,7 +2637,7 @@ export const allProducts = [
     colorCount: 1,
     tags: ["gradient", "laser-foil", "spandex", "4-way-stretch", "stage-costume", "performance-wear", "dancewear", "party-wear"],
     availableColors: "1 standard color; custom color development available",
-    sampleNote: "Sample available for color, stretch and surface effect review",
+    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping.",
     customizationNote: "Custom color development available",
     packaging: "Roll packing; export packing available upon quotation",
     tradeTerms: "FOB, CIF upon quotation",
@@ -2777,7 +2846,7 @@ export const allProducts = [
     colorCount: 70,
     tags: ["holographic", "snakeskin", "laser-foil", "stretch", "swimwear", "leggings", "dancewear", "mermaid-costume"],
     availableColors: "70 colors available; custom colors on request",
-    sampleNote: "Sample availability, preparation time and shipping to be confirmed by project",
+    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping.",
     customizationNote: "OEM/ODM support; custom color details to be confirmed",
     packaging: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement",
     tradeTerms: "To be confirmed in quotation",
@@ -2884,7 +2953,7 @@ export const allProducts = [
       {
         question: "Can I request a sample before a bulk order?",
         answer:
-          "Yes. Sample availability, preparation time and shipping are confirmed according to the project. We recommend checking the surface effect, color and sewing performance before bulk approval.",
+          "Yes. This is a made-to-order product. A custom sample requires a customization fee and is prepared in 3-5 working days. The buyer covers international shipping. We recommend checking the surface effect, color and sewing performance before bulk approval.",
       },
       {
         question: "Can the fabric be developed for a custom program?",
@@ -2905,6 +2974,80 @@ export const allProducts = [
     ],
   },
 ];
+
+// Keep every public product page answer-ready for the core B2B buying questions.
+// Product-specific FAQs remain the source of detail; these additions only fill
+// missing commercial topics for products whose source row does not cover them.
+const hasFaqTopic = (faqList, pattern) =>
+  faqList.some((item) => pattern.test(item.question));
+
+const standardBuyerFaqs = (product) => {
+  const moq =
+    product.specTable?.find((row) => /^MOQ$/i.test(row.label))?.value ||
+    product.b2bTable?.find((row) => /^MOQ$/i.test(row.label))?.value ||
+    product.specs.moq;
+  const isStock = product.inStock === true;
+  const sampleAnswer = isStock
+    ? "Yes. This is an in-stock product. The stock sample is free and prepared in 1-3 working days. The buyer covers international shipping."
+    : "Yes. This is a made-to-order product. A custom sample requires a customization fee and is prepared in 3-5 working days. The buyer covers international shipping.";
+  const availabilityAnswer = isStock
+    ? "This product is listed as in stock. Final color availability and stock quantity are confirmed before quotation."
+    : "This product is made to order. Production timing and final availability are confirmed according to the quantity and customization requirements.";
+  const leadTimeAnswer = isStock
+    ? "Ready-stock dispatch is typically 3-5 working days after order and stock confirmation."
+    : "Made-to-order production is typically 7-15 working days after customization and production details are confirmed.";
+  const customizationAnswer =
+    product.customizationNote ||
+    "Custom color, finish or development requirements can be reviewed according to the project.";
+  const priceAnswer =
+    "Pricing is quoted according to quantity, color, customization requirements, destination and shipping method.";
+
+  return [
+    {
+      topic: /MOQ/i,
+      question: "What is the MOQ for this fabric?",
+      answer: `The confirmed MOQ is ${moq}.`,
+    },
+    {
+      topic: /sample|sampling|sampled/i,
+      question: "Can I request a sample before bulk production?",
+      answer: sampleAnswer,
+    },
+    {
+      topic: /stock status|in.stock|made.to.order|availability|ready.to.ship/i,
+      question: "Is this fabric in stock or made to order?",
+      answer: availabilityAnswer,
+    },
+    {
+      topic: /lead time|delivery|dispatch|production timing/i,
+      question: "What is the lead time?",
+      answer: leadTimeAnswer,
+    },
+    {
+      topic: /custom|customiz|oem|odm/i,
+      question: "Can the color, finish or construction be customized?",
+      answer: customizationAnswer,
+    },
+    {
+      topic: /application|used for|suitable|recommended/i,
+      question: "What applications is this fabric suitable for?",
+      answer: `Recommended applications include ${product.applications.join(", ")}.`,
+    },
+    {
+      topic: /price|pricing|quoted|quotation/i,
+      question: "How is the price quoted?",
+      answer: priceAnswer,
+    },
+  ];
+};
+
+allProducts.forEach((product) => {
+  const existingFaqs = product.faqList ?? [];
+  const additions = standardBuyerFaqs(product)
+    .filter((faq) => !hasFaqTopic(existingFaqs, faq.topic))
+    .map(({ topic: _topic, ...faq }) => faq);
+  product.faqList = [...existingFaqs, ...additions];
+});
 
 export const performanceProductSlugs = [
   "rainbow-stripe-foil-4-way-stretch-fabric",
