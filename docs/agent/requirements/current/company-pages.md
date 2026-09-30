@@ -112,3 +112,13 @@ status: current
 - 测试路径：`npm run build`；检查 `dist/factory/index.html` 的流程、测试、MOQ、交期和包装文案；检查 Factory 页面关键词
 - 最后变更编号：CHG-20260919-003-factory-procurement-workflow
 - 待确认事项：单个产品的最终规格、MOQ、交期、测试判定值和包装细节以对应产品数据及正式订单文件为准
+
+### REQ-COMPANY-012：About 页面作为产品与应用分流入口
+- 状态：active
+- 当前规则：`/about/` 不仅作为公司信任页，还需要在首屏和 Our Focus 区域提供明确入口，引导访客进入 `/products/`、`/applications/custom-foil-fabric-development/`、`/applications/foil-fabric-for-stage-costumes/` 和 `/applications/dancewear-fabric-supplier/`。
+- 验收条件：About 首屏包含产品目录入口、定制开发入口和询盘入口；Our Focus 区域的核心能力项为可点击内链；底部 CTA 引导用户比较产品、浏览应用或提交定制报价；页面继续聚焦 foil、holographic、iridescent stretch fabrics 及 stage costumes、dancewear、performance apparel。
+- 影响模块：`company-pages`、`product-catalog`、`blog-knowledge`
+- 代码路径：`src/pages/about.astro`
+- 测试路径：`npm run build`；检查 `/about/` 生成页面包含目标产品和应用页链接
+- 最后变更编号：CHG-20260930-007-about-product-application-links
+- 待确认事项：无

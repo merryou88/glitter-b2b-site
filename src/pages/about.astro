@@ -155,13 +155,15 @@ const buyerSteps = [
       <span class="eyebrow">About Nixia Fabric</span>
       <h1>Built for Buyers Who Need Foil Fabrics to Perform</h1>
       <p class="about-hero__desc">
-        Since 2013, we have supplied foil fabrics for stage costumes, performance wear,
-        dancewear and party apparel. Ready-stock styles and custom development support
-        help buyers move from material selection to approved sample with less uncertainty.
+        Since 2013, Nixia Fabric has supplied foil, holographic and iridescent stretch
+        fabrics for stage costumes, performance wear, dancewear and party apparel. Ready-stock
+        styles and custom development support help buyers move from material selection to
+        approved sample with less uncertainty.
       </p>
       <div class="about-hero__actions">
-        <CTAButton href="/contact/" variant="primary" size="lg" rfq>Discuss Your Material</CTAButton>
-        <CTAButton href="/factory/" variant="outline" size="lg">See Our Capability</CTAButton>
+        <CTAButton href="/products/" variant="primary" size="lg">View Foil Fabrics</CTAButton>
+        <CTAButton href="/applications/custom-foil-fabric-development/" variant="outline" size="lg">Custom Development</CTAButton>
+        <CTAButton href="/contact/" variant="secondary" size="lg" rfq>Discuss Your Material</CTAButton>
       </div>
       <div class="about-hero__proof">
         <span>Since 2013</span>
@@ -276,18 +278,22 @@ const buyerSteps = [
         </div>
         <div class="focus-section__right">
           <div class="focus-section__products">
-            <div class="focus-section__product">
+            <a href="/applications/foil-fabric-for-stage-costumes/" class="focus-section__product">
               <span class="focus-section__product-name">Hot-Stamping Foil Fabric</span>
-              <span class="focus-section__product-types">Multiple Variations</span>
-            </div>
-            <div class="focus-section__product">
-              <span class="focus-section__product-name">Custom Color Matching</span>
-              <span class="focus-section__product-types">Unlimited Options</span>
-            </div>
-            <div class="focus-section__product">
-              <span class="focus-section__product-name">Ready Stock &amp; Development</span>
-              <span class="focus-section__product-types">B2B Support</span>
-            </div>
+              <span class="focus-section__product-types">Stage Costumes</span>
+            </a>
+            <a href="/applications/custom-foil-fabric-development/" class="focus-section__product">
+              <span class="focus-section__product-name">Custom Foil Fabric Development</span>
+              <span class="focus-section__product-types">Color &amp; Base Fabric</span>
+            </a>
+            <a href="/applications/dancewear-fabric-supplier/" class="focus-section__product">
+              <span class="focus-section__product-name">Dancewear Fabric Supplier</span>
+              <span class="focus-section__product-types">Stretch &amp; Recovery</span>
+            </a>
+            <a href="/products/" class="focus-section__product focus-section__product--primary">
+              <span class="focus-section__product-name">Browse Current Foil Fabrics</span>
+              <span class="focus-section__product-types">Product Catalog</span>
+            </a>
           </div>
         </div>
       </div>
@@ -399,15 +405,15 @@ const buyerSteps = [
   <!-- CTA -->
   <section class="section section--dark">
     <div class="container text-center">
-      <span class="eyebrow">Let's Build Together</span>
-      <h2>Partner With a Manufacturer</h2>
+      <span class="eyebrow">Next Step</span>
+      <h2>Find the Right Foil Fabric for Your Costume Project</h2>
       <p style="max-width: 600px; margin: var(--space-lg) auto var(--space-2xl);">
-        Whether you need a standard stock material, a specific color and backing, or a custom
-        decorative finish, send us the project details and we will recommend the next practical step.
+        Compare current foil fabrics, review application routes, or send us your target effect,
+        base fabric requirement and order quantity for a practical recommendation.
       </p>
       <div class="btn-group" style="justify-content: center;">
-        <CTAButton href="/factory/" variant="outline" size="lg">View Manufacturing Capability</CTAButton>
-        <CTAButton href="/sample-policy/" variant="primary" size="lg" rfq>Request Free Sample</CTAButton>
+        <CTAButton href="/products/" variant="outline" size="lg">View Foil Fabrics</CTAButton>
+        <CTAButton href="/applications/" variant="primary" size="lg">Browse Applications</CTAButton>
         <CTAButton href="/contact/" variant="secondary" size="lg" rfq>Get Custom Quotation</CTAButton>
       </div>
     </div>
@@ -670,13 +676,28 @@ const buyerSteps = [
     background-color: var(--color-white);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
+    text-decoration: none;
     transition: all var(--transition-base);
   }
 
-  .focus-section__product:hover {
+  .focus-section__product:hover,
+  .focus-section__product:focus-visible {
     border-color: var(--color-accent);
     box-shadow: var(--shadow-sm);
     transform: translateX(4px);
+  }
+
+  .focus-section__product--primary {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .focus-section__product--primary .focus-section__product-name {
+    color: var(--color-white);
+  }
+
+  .focus-section__product--primary .focus-section__product-types {
+    color: var(--color-accent-light);
   }
 
   .focus-section__product-name {

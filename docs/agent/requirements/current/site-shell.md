@@ -25,12 +25,12 @@ status: current
 
 ### REQ-SHELL-003：导航与浮窗一致
 - 状态：active
-- 当前规则：桌面和移动导航链接必须一致；浮动联系入口保留 WhatsApp / WeChat 两条主要通道。
-- 验收条件：桌面、移动和浮窗的可点击入口都能到达当前真实页面。
+- 当前规则：桌面和移动导航链接必须一致；Footer 与浮动联系入口的外部社媒/联系链接只展示当前真实可访问的通道；浮动联系入口保留 WhatsApp / WeChat 两条主要通道。当前没有可访问的 LinkedIn 企业页时，Footer 不展示 LinkedIn 图标入口。
+- 验收条件：桌面、移动、Footer 和浮窗的可点击入口都能到达当前真实页面或真实联系通道；Footer 不出现失效的 LinkedIn 公司页链接。
 - 影响模块：`site-shell`
 - 代码路径：`src/components/Header.astro`、`src/components/FloatingContact.astro`、`src/components/Footer.astro`
 - 测试路径：手动检查首页、联系页、产品页
-- 最后变更编号：待确认
+- 最后变更编号：CHG-20260930-006-footer-remove-linkedin
 - 待确认事项：无
 
 ### REQ-SHELL-004：首页首屏与推荐内容按当前市场重点展示
