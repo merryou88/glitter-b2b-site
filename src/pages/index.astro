@@ -22,6 +22,7 @@ const webPageData = {
 };
 
 const toWebp = (src: string) => src.replace(/\.(png|jpe?g)$/i, ".webp");
+const toCardWebp = (src: string) => src.replace(/\.webp$/i, "-card.webp");
 
 const productMap = new Map(performanceProducts.map((product) => [product.slug, product]));
 
@@ -304,8 +305,15 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
               <div class="fabric-card__visual">
                 {product && (
                   <picture>
-                    {product.mainImageWebp && <source srcset={product.mainImageWebp} type="image/webp" />}
-                    <img src={product.mainImageUrl} alt={product.mainImageAlt} width="1200" height="675" loading="lazy" decoding="async" />
+                    <img
+                      src={toCardWebp(product.mainImageWebp ?? product.mainImageUrl)}
+                      alt={product.mainImageAlt}
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      decoding="async"
+                      sizes="(max-width: 768px) 100vw, 560px"
+                    />
                   </picture>
                 )}
               </div>

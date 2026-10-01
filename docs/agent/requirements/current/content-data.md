@@ -50,7 +50,7 @@ status: current
 - 影响模块：`content-data`、`product-catalog`、`site-shell`、`blog-knowledge`
 - 代码路径：`src/data/allProducts.js`、`src/data/blogArticles.js`、`src/data/products.json`、`src/pages/**`、`src/components/**`、`public/images/**`、`public/shots/**`、`products-data/original-images/**`
 - 测试路径：`npm run validate:products`、`npm run build`，扫描生成页面中的缺失图片引用
-- 最后变更编号：CHG-20260929-004-h2013120105-product-detail
+- 最后变更编号：CHG-20261001-001-pagespeed-mobile-performance
 - 待确认事项：是否还需要为极旧浏览器保留少量 JPG/PNG fallback
 
 ### REQ-DATA-006：工厂原始视频不得随站点公开部署

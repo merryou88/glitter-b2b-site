@@ -294,8 +294,8 @@ const allBlogArticles = [
     readTime: "8 min read",
     tags: ["Hot-Stamping Spandex", "Sourcing Guide"],
     category: "Sourcing Guide",
-    image: "/images/products/H2013060101/main/主图-1.webp",
-    imageWebp: "/images/products/H2013060101/main/主图-1.webp",
+    image: "/images/products/H2013060101/main/full-print-hot-stamping-spandex-milk-silk-main-1.webp",
+    imageWebp: "/images/products/H2013060101/main/full-print-hot-stamping-spandex-milk-silk-main-1.webp",
     imageAlt: "Full-print hot-stamping spandex milk-silk fabric for dancewear and stage costume sourcing",
     excerpt:
       "A practical B2B guide for choosing hot-stamping spandex fabric for dancewear, stage costumes, performance outfits and party/festival costume projects.",
@@ -338,8 +338,8 @@ const allBlogArticles = [
         heading: "2. Understand what hot-stamping spandex fabric means",
         body:
           "Hot-stamping spandex fabric uses heat and pressure to apply a foil finish onto a stretch fabric base. In this product route, the base is milk-silk spandex with 4-way stretch, and the surface uses a full-print hot-stamping foil effect.\n\nFor buyers, the important point is the combination: the spandex base supports movement and fit, while the foil surface creates a bright metallic look for stage and performance use.",
-        image: "/images/products/H2013060101/detail/1.webp",
-        imageWebp: "/images/products/H2013060101/detail/1.webp",
+        image: "/images/products/H2013060101/detail/full-print-hot-stamping-spandex-milk-silk-detail-1.webp",
+        imageWebp: "/images/products/H2013060101/detail/full-print-hot-stamping-spandex-milk-silk-detail-1.webp",
         imageAlt: "Close-up detail of full-print hot-stamping foil on spandex milk-silk fabric",
         caption:
           "Review both the foil surface and the stretch base before confirming a bulk order.",
@@ -475,8 +475,8 @@ const allBlogArticles = [
     readTime: "6 min read",
     tags: ["Holographic Fabric", "Stage Costumes"],
     category: "Sourcing Guide",
-    image: "/images/products/H2013090102/main/1.webp",
-    imageWebp: "/images/products/H2013090102/main/1.webp",
+    image: "/images/products/H2013090102/main/plain-iridescent-laser-spandex-4-way-stretch-main-1.webp",
+    imageWebp: "/images/products/H2013090102/main/plain-iridescent-laser-spandex-4-way-stretch-main-1.webp",
     imageAlt: "Holographic 4-way stretch fabric for stage costume sourcing",
     excerpt:
       "A practical sourcing guide for holographic fabric buyers comparing stretch, recovery, shine, width, MOQ and sample approval for dancewear.",
@@ -559,8 +559,8 @@ const allBlogArticles = [
     readTime: "6 min read",
     tags: ["Iridescent Fabric", "Holographic Fabric"],
     category: "Sourcing Guide",
-    image: "/images/products/H2013120107/main/1.webp",
-    imageWebp: "/images/products/H2013120107/main/1.webp",
+    image: "/images/products/H2013120107/main/iridescent-laser-hot-stamping-stretch-ice-silk-main-1.webp",
+    imageWebp: "/images/products/H2013120107/main/iridescent-laser-hot-stamping-stretch-ice-silk-main-1.webp",
     imageAlt: "Iridescent stretch fabric with holographic color shift for performance costumes",
     excerpt:
       "Compare iridescent and metallic fabric for stage costumes by shine, color shift, lighting behavior, stretch and sample approval.",
@@ -641,8 +641,8 @@ const allBlogArticles = [
     readTime: "6 min read",
     tags: ["Foil Spandex", "MOQ Guide"],
     category: "Sourcing Guide",
-    image: "/images/products/H2013060101/main/主图-2.webp",
-    imageWebp: "/images/products/H2013060101/main/主图-2.webp",
+    image: "/images/products/H2013060101/main/full-print-hot-stamping-spandex-milk-silk-main-2.webp",
+    imageWebp: "/images/products/H2013060101/main/full-print-hot-stamping-spandex-milk-silk-main-2.webp",
     imageAlt: "Foil spandex fabric sample and MOQ planning for bulk orders",
     excerpt:
       "Learn how to choose 4-way stretch fabric for bodysuits, including recovery, opacity, width, MOQ, sample testing and bulk production checks.",
@@ -725,8 +725,8 @@ const allBlogArticles = [
     readTime: "7 min read",
     tags: ["Dancewear Fabric", "RFQ Checklist"],
     category: "Sourcing Guide",
-    image: "/images/products/H2013120106/main/1.webp",
-    imageWebp: "/images/products/H2013120106/main/1.webp",
+    image: "/images/products/H2013120106/main/iridescent-gradient-laser-ice-silk-main-1.webp",
+    imageWebp: "/images/products/H2013120106/main/iridescent-gradient-laser-ice-silk-main-1.webp",
     imageAlt: "Dancewear fabric sourcing from China with iridescent stretch foil finish",
     excerpt:
       "Compare the best fabric options for cheerleading and performance costumes by stretch, shine, recovery, width, MOQ and sample approval.",
@@ -809,8 +809,8 @@ const allBlogArticles = [
     readTime: "6 min read",
     tags: ["Stage Costume Fabric", "Buyer Checklist"],
     category: "Sourcing Guide",
-    image: "/images/products/H2013060105/main/a1.webp",
-    imageWebp: "/images/products/H2013060105/main/a1.webp",
+    image: "/images/products/H2013060105/main/shiny-foil-4-way-stretch-knit-fabric-main-1.webp",
+    imageWebp: "/images/products/H2013060105/main/shiny-foil-4-way-stretch-knit-fabric-main-1.webp",
     imageAlt: "Shiny foil stretch knit fabric for stage costume fabric checklist",
     excerpt:
       "Learn what foil fabric is, how it is made, where wholesale buyers use it and what to check before samples and bulk orders.",
@@ -894,8 +894,8 @@ const allBlogArticles = [
     readTime: "6 min read",
     tags: ["4-Way Stretch", "Foil Fabric"],
     category: "Manufacturing Guide",
-    image: "/images/products/H2013060105/main/a2.webp",
-    imageWebp: "/images/products/H2013060105/main/a2.webp",
+    image: "/images/products/H2013060105/main/shiny-foil-4-way-stretch-knit-fabric-main-2.webp",
+    imageWebp: "/images/products/H2013060105/main/shiny-foil-4-way-stretch-knit-fabric-main-2.webp",
     imageAlt: "4-way stretch foil fabric for performance apparel buyers",
     excerpt:
       "A wholesale buyer guide to glitter faux leather for shoes, bags and accessories, including backing, thickness, samples, MOQ and QC checks.",
@@ -976,8 +976,8 @@ const allBlogArticles = [
     readTime: "6 min read",
     tags: ["Custom Foil Fabric", "Color Matching"],
     category: "Manufacturing Guide",
-    image: "/images/products/H2013060101/main/主图-3.webp",
-    imageWebp: "/images/products/H2013060101/main/主图-3.webp",
+    image: "/images/products/H2013060101/main/full-print-hot-stamping-spandex-milk-silk-main-3.webp",
+    imageWebp: "/images/products/H2013060101/main/full-print-hot-stamping-spandex-milk-silk-main-3.webp",
     imageAlt: "Custom foil fabric color matching for bulk production",
     excerpt:
       "Learn how to calculate fabric MOQ in yards and meters, convert common quantities and plan trial orders for wholesale fabric sourcing.",
@@ -1058,8 +1058,8 @@ const allBlogArticles = [
     readTime: "6 min read",
     tags: ["Gradient Foil Fabric", "Performance Apparel"],
     category: "Sourcing Guide",
-    image: "/images/products/H2013120102/main/a1.webp",
-    imageWebp: "/images/products/H2013120102/main/a1.webp",
+    image: "/images/products/H2013120102/main/blue-purple-gradient-laser-foil-spandex-fabric-main-1.webp",
+    imageWebp: "/images/products/H2013120102/main/blue-purple-gradient-laser-foil-spandex-fabric-main-1.webp",
     imageAlt: "Blue-purple gradient laser foil 4-way stretch fabric for performance apparel sourcing",
     excerpt:
       "Learn how to request a fabric sample from a China supplier with clear application, quantity, shipping, color and testing information.",
@@ -1142,8 +1142,8 @@ const allBlogArticles = [
     readTime: "6 min read",
     tags: ["Fabric Specs", "Buyer Guide"],
     category: "Sourcing Guide",
-    image: "/images/products/H2013090102/main/2.webp",
-    imageWebp: "/images/products/H2013090102/main/2.webp",
+    image: "/images/products/H2013090102/main/plain-iridescent-laser-spandex-4-way-stretch-main-2.webp",
+    imageWebp: "/images/products/H2013090102/main/plain-iridescent-laser-spandex-4-way-stretch-main-2.webp",
     imageAlt: "Fabric width and GSM guide for stage costume buyers",
     excerpt:
       "Understand fabric GSM vs ounces for buyer communication, sample review, costing and comparing international textile specifications.",
@@ -1226,8 +1226,8 @@ const allBlogArticles = [
     readTime: "6 min read",
     tags: ["Quality Control", "Foil Fabric"],
     category: "Compliance Guide",
-    image: "/images/products/H2013120107/detail/1.webp",
-    imageWebp: "/images/products/H2013120107/detail/1.webp",
+    image: "/images/products/H2013120107/detail/iridescent-laser-hot-stamping-stretch-ice-silk-detail-1.webp",
+    imageWebp: "/images/products/H2013120107/detail/iridescent-laser-hot-stamping-stretch-ice-silk-detail-1.webp",
     imageAlt: "Pre-shipment quality control for foil and stretch fabric orders",
     excerpt:
       "A practical quality control checklist for reviewing approved samples, color, foil effect, width, roll condition, packing and documents.",
@@ -1308,8 +1308,8 @@ const allBlogArticles = [
     readTime: "6 min read",
     tags: ["Ready Stock", "Custom Fabric"],
     category: "Sourcing Guide",
-    image: "/images/products/H2013120106/detail/detail01.webp",
-    imageWebp: "/images/products/H2013120106/detail/detail01.webp",
+    image: "/images/products/H2013120106/detail/iridescent-gradient-laser-ice-silk-detail-1.webp",
+    imageWebp: "/images/products/H2013120106/detail/iridescent-gradient-laser-ice-silk-detail-1.webp",
     imageAlt: "Ready-stock and custom foil fabric sourcing comparison",
     excerpt:
       "Compare ready-stock foil fabric and custom foil fabric by speed, MOQ, sample approval, color matching and bulk production risk.",
@@ -1390,8 +1390,8 @@ const allBlogArticles = [
     readTime: "6 min read",
     tags: ["RFQ Template", "US Buyers"],
     category: "Sourcing Guide",
-    image: "/images/products/H2013060101/detail/1.webp",
-    imageWebp: "/images/products/H2013060101/detail/1.webp",
+    image: "/images/products/H2013060101/detail/full-print-hot-stamping-spandex-milk-silk-detail-1.webp",
+    imageWebp: "/images/products/H2013060101/detail/full-print-hot-stamping-spandex-milk-silk-detail-1.webp",
     imageAlt: "Foil fabric RFQ template for US buyers sourcing stretch fabric",
     excerpt:
       "A practical RFQ template for US buyers sourcing foil, holographic and iridescent stretch fabrics for stage costumes and dancewear.",
@@ -1740,8 +1740,8 @@ const allBlogArticles = [
     readTime: "8 min read",
     tags: ["Custom Development", "Foil Fabric", "Buyer Guide"],
     category: "Sourcing Guide",
-    image: "/images/products/H2013120106/main/1.webp",
-    imageWebp: "/images/products/H2013120106/main/1.webp",
+    image: "/images/products/H2013120106/main/iridescent-gradient-laser-ice-silk-main-1.webp",
+    imageWebp: "/images/products/H2013120106/main/iridescent-gradient-laser-ice-silk-main-1.webp",
     imageAlt: "Iridescent gradient laser foil stretch fabric for custom foil fabric development review",
     excerpt:
       "A practical decision guide for buyers comparing stock foil fabric with custom foil fabric development for dancewear, stage costumes and performance apparel.",
@@ -1779,8 +1779,8 @@ const allBlogArticles = [
         heading: "1. Stock fabric is faster, but not always enough",
         body:
           "For many buyers, stock foil fabric is the right first step. It lets the design team review physical shine, stretch and hand feel quickly. It also helps the factory quote a realistic sample or small bulk order without waiting for a new development cycle.\n\nBut stock fabric has limits. If the collection needs a very specific color shift, an exact gradient direction, a branded pattern scale or a base fabric that matches a known garment construction, available stock may only be close, not correct. That is when custom foil fabric development should be discussed.",
-        image: "/images/products/H2013120106/main/02.webp",
-        imageWebp: "/images/products/H2013120106/main/02.webp",
+        image: "/images/products/H2013120106/main/iridescent-gradient-laser-ice-silk-main-2.webp",
+        imageWebp: "/images/products/H2013120106/main/iridescent-gradient-laser-ice-silk-main-2.webp",
         imageAlt: "Gradient laser foil fabric showing color shift for stock and custom comparison",
         caption:
           "Stock foil fabrics help buyers review real shine quickly, while custom development is used when the effect must match a specific design brief.",
@@ -1800,8 +1800,8 @@ const allBlogArticles = [
         heading: "3. When custom foil fabric development makes sense",
         body:
           "Custom development makes sense when the material is part of the product identity, not just a decorative option. If the fabric must match a specific stage concept, team color, brand palette, printed motif or performance requirement, the buyer may need development support instead of selecting from stock.\n\nCustom is also useful when the surface effect and base fabric must be matched together. A beautiful foil surface will not solve the project if the base fabric does not stretch, drape or recover correctly for the garment.",
-        image: "/images/products/H2013120107/main/1.webp",
-        imageWebp: "/images/products/H2013120107/main/1.webp",
+        image: "/images/products/H2013120107/main/iridescent-laser-hot-stamping-stretch-ice-silk-main-1.webp",
+        imageWebp: "/images/products/H2013120107/main/iridescent-laser-hot-stamping-stretch-ice-silk-main-1.webp",
         imageAlt: "Iridescent laser hot stamping stretch ice silk fabric for custom foil development",
         caption:
           "For performance apparel, the foil effect and the base fabric must be reviewed together before bulk production.",
@@ -1839,8 +1839,8 @@ const allBlogArticles = [
         heading: "6. Sample development process",
         body:
           "A practical custom route usually begins with the buyer's application and visual target. The factory then recommends a base fabric and foil process, prepares a sample direction and confirms whether the result is suitable for the buyer's garment construction.\n\nAfter the first sample, the buyer should review shine, stretch recovery, color shift, surface consistency, cutting behavior and sewing performance. If the project is for stage costumes or performance apparel, the sample should also be reviewed under strong light because foil effects can change dramatically between indoor lighting and stage lighting.",
-        image: "/images/products/H2013120106/main/03.webp",
-        imageWebp: "/images/products/H2013120106/main/03.webp",
+        image: "/images/products/H2013120106/main/iridescent-gradient-laser-ice-silk-main-3.webp",
+        imageWebp: "/images/products/H2013120106/main/iridescent-gradient-laser-ice-silk-main-3.webp",
         imageAlt: "Foil fabric sample review for color shift and performance apparel development",
         caption:
           "Physical sample review is the control point between a design idea and a reliable bulk fabric order.",
@@ -1933,8 +1933,8 @@ const allBlogArticles = [
     readTime: "7 min read",
     tags: ["Wholesale Foil Fabric", "Supplier Guide"],
     category: "Sourcing Guide",
-    image: "/images/products/H2013090102/main/1.webp",
-    imageWebp: "/images/products/H2013090102/main/1.webp",
+    image: "/images/products/H2013090102/main/plain-iridescent-laser-spandex-4-way-stretch-main-1.webp",
+    imageWebp: "/images/products/H2013090102/main/plain-iridescent-laser-spandex-4-way-stretch-main-1.webp",
     imageAlt: "Wholesale iridescent foil stretch fabric for dancewear and stage costumes",
     excerpt:
       "A practical guide for buyers comparing wholesale foil fabric suppliers for dancewear, stage costumes and performance apparel.",
@@ -2027,8 +2027,8 @@ const allBlogArticles = [
     readTime: "6 min read",
     tags: ["US Buyers", "RFQ Checklist"],
     category: "Sourcing Guide",
-    image: "/images/products/H2013120101/main/a4.webp",
-    imageWebp: "/images/products/H2013120101/main/a4.webp",
+    image: "/images/products/H2013120101/main/rainbow-iridescent-laser-foil-nylon-spandex-fabric-main-4.webp",
+    imageWebp: "/images/products/H2013120101/main/rainbow-iridescent-laser-foil-nylon-spandex-fabric-main-4.webp",
     imageAlt: "China foil fabric supplier sample for US costume and dancewear buyers",
     excerpt:
       "A practical RFQ checklist for US buyers sourcing foil stretch fabric from China, including samples, MOQ, units, shipping and approval details.",

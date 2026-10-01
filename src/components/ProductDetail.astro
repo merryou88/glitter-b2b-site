@@ -49,6 +49,7 @@ export interface Props {
     skuImages: Array<{ src: string; alt: string }>;
     detailImages: string[];
     detailImageAlts?: Record<string, string>;
+    detailImageContext?: string;
     applicationImageAlts?: Record<string, string>;
     heroHighlights?: string[];
     whyChooseHeading?: string;
@@ -763,6 +764,9 @@ const heroVideo = product.video
             </span>
             <span>Product Details</span>
           </h2>
+          {product.detailImageContext && (
+            <p class="detail-image-context">{product.detailImageContext}</p>
+          )}
           <div class={isFullPrintHotStampingMilkSilk ? "detail-images-grid detail-images-grid--full-print" : "detail-images-grid"}>
             {productDetailImages.map((img, index) => (
               <picture class={isFullPrintHotStampingMilkSilk && index === 0 ? "detail-images-grid__item detail-images-grid__item--wide" : "detail-images-grid__item"}>
@@ -2716,6 +2720,14 @@ const heroVideo = product.video
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-md);
+  }
+
+  .detail-image-context {
+    margin: calc(var(--space-xs) * -1) 0 var(--space-md);
+    max-width: 820px;
+    color: var(--color-text-muted);
+    font-size: 0.96rem;
+    line-height: 1.65;
   }
 
   .detail-images-grid--full-print {

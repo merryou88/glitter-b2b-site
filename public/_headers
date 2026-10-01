@@ -23,6 +23,12 @@
 /*.jpeg
   Cache-Control: public, max-age=2592000
 
+# Nested image paths on Cloudflare Pages
+/images/*
+  Cache-Control: public, max-age=2592000
+/shots/*
+  Cache-Control: public, max-age=2592000
+
 # SVG images - cache for 30 days
 /*.svg
   Cache-Control: public, max-age=2592000
