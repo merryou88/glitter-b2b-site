@@ -160,6 +160,8 @@ const allBlogArticles = [
       "iridescent-laser-hot-stamping-stretch-ice-silk",
       "iridescent-gradient-laser-ice-silk",
       "plain-iridescent-laser-spandex-4-way-stretch",
+      "double-layer-pleated-foil-knit-fabric",
+      "rainbow-dot-laser-foil-knit-fabric",
     ],
     quoteAngle: "Send your target color, stretch requirement and use case. We can check stock foil finishes or quote a custom hot-stamping solution.",
     intro:
@@ -485,6 +487,8 @@ const allBlogArticles = [
       "plain-iridescent-laser-spandex-4-way-stretch",
       "iridescent-laser-hot-stamping-stretch-ice-silk",
       "full-print-hot-stamping-spandex-milk-silk",
+      "holographic-mermaid-scale-milk-silk-stretch-fabric",
+      "holographic-snakeskin-stretch-fabric",
     ],
     quoteAngle:
       "Send your costume style, target color, quantity and sample needs. We can recommend a stock holographic fabric or quote custom development.",
@@ -649,6 +653,8 @@ const allBlogArticles = [
       "full-print-hot-stamping-spandex-milk-silk",
       "plain-iridescent-laser-spandex-4-way-stretch",
       "shiny-foil-4-way-stretch-knit-fabric",
+      "rainbow-iridescent-laser-foil-nylon-spandex-fabric",
+      "holographic-mermaid-scale-milk-silk-stretch-fabric",
     ],
     quoteAngle:
       "Send your estimated quantity, color target and sample needs. We will confirm stock route, MOQ and bulk timing.",
@@ -731,6 +737,8 @@ const allBlogArticles = [
       "iridescent-gradient-laser-ice-silk",
       "full-print-hot-stamping-spandex-milk-silk",
       "plain-iridescent-laser-spandex-4-way-stretch",
+      "rainbow-dot-laser-foil-knit-fabric",
+      "double-layer-pleated-foil-knit-fabric",
     ],
     quoteAngle:
       "Send your dancewear style, target color, quantity and sample needs. We will recommend stretch fabric options and next sample steps.",
@@ -813,6 +821,9 @@ const allBlogArticles = [
       "shiny-foil-4-way-stretch-knit-fabric",
       "plain-iridescent-laser-spandex-4-way-stretch",
       "blue-purple-gradient-laser-foil-spandex-fabric",
+      "dense-dot-foil-suede-look-fabric",
+      "gradient-rainbow-dot-foil-knit-fabric",
+      "rainbow-fingerprint-dot-foil-ice-silk-fabric",
     ],
     quoteAngle:
       "Send the costume style, performance setting and quantity. We can suggest foil or holographic stretch fabrics for sampling.",
@@ -1059,6 +1070,8 @@ const allBlogArticles = [
       "blue-purple-gradient-laser-foil-spandex-fabric",
       "iridescent-gradient-laser-ice-silk",
       "plain-iridescent-laser-spandex-4-way-stretch",
+      "rainbow-dot-laser-foil-knit-fabric",
+      "rainbow-fingerprint-dot-foil-ice-silk-fabric",
     ],
     quoteAngle:
       "Send your performance apparel use, quantity and color target. We can confirm sample availability and custom options.",
@@ -1141,6 +1154,8 @@ const allBlogArticles = [
       "plain-iridescent-laser-spandex-4-way-stretch",
       "shiny-foil-4-way-stretch-knit-fabric",
       "blue-purple-gradient-laser-foil-spandex-fabric",
+      "dense-dot-foil-suede-look-fabric",
+      "double-layer-pleated-foil-knit-fabric",
     ],
     quoteAngle:
       "Send the target fabric specs, garment use and quantity. We can confirm width, weight and sample options.",
@@ -1908,6 +1923,182 @@ const allBlogArticles = [
         question: "Should buyers approve a physical sample before bulk production?",
         answer:
           "Yes. Physical sample approval is strongly recommended because foil shine, color shift, stretch recovery and sewing behavior cannot be confirmed accurately from photos alone.",
+      },
+    ],
+  },
+  {
+    title: "Wholesale Foil Fabric Supplier for Dancewear and Stage Costumes",
+    slug: "wholesale-foil-fabric-supplier-dancewear-stage-costumes",
+    date: "2026-09-30",
+    readTime: "7 min read",
+    tags: ["Wholesale Foil Fabric", "Supplier Guide"],
+    category: "Sourcing Guide",
+    image: "/images/products/H2013090102/main/1.webp",
+    imageWebp: "/images/products/H2013090102/main/1.webp",
+    imageAlt: "Wholesale iridescent foil stretch fabric for dancewear and stage costumes",
+    excerpt:
+      "A practical guide for buyers comparing wholesale foil fabric suppliers for dancewear, stage costumes and performance apparel.",
+    metaTitle: "Wholesale Foil Fabric Supplier for Dancewear | Nixia Fabric",
+    metaDesc:
+      "How to compare a wholesale foil fabric supplier for dancewear and stage costumes: stretch, surface effect, MOQ, samples, lead time and custom support.",
+    focusProducts: [
+      "plain-iridescent-laser-spandex-4-way-stretch",
+      "rainbow-iridescent-laser-foil-nylon-spandex-fabric",
+      "holographic-mermaid-scale-milk-silk-stretch-fabric",
+      "rainbow-dot-laser-foil-knit-fabric",
+      "double-layer-pleated-foil-knit-fabric",
+      "dense-dot-foil-suede-look-fabric",
+    ],
+    quoteAngle:
+      "Send your end product, target effect, estimated quantity and destination. We can recommend stock foil fabrics, samples or a custom development route.",
+    intro:
+      "The right wholesale foil fabric supplier should help buyers compare more than surface shine. For dancewear and stage costumes, the practical decision includes stretch, recovery, sewing behavior, width, MOQ, sample timing and custom color support.",
+    takeaways: [
+      "Start with the finished garment and movement requirement before choosing a foil surface.",
+      "Compare physical samples under the lighting and sewing conditions used by the final product.",
+      "Ask for MOQ, stock status, sample terms and bulk lead time in the first quotation request.",
+      "Use a supplier that can explain both ready-stock and custom production routes.",
+    ],
+    sections: [
+      {
+        heading: "1. Define the end product first",
+        body:
+          "Dancewear, stage costumes, cheerleading uniforms and performance outfits do not require exactly the same construction. A fitted bodysuit usually needs a flexible stretch base, while a stage skirt or costume panel may prioritize drape, pleat structure or a stronger surface effect. Props and backdrops may need a more stable textured material.",
+      },
+      {
+        heading: "2. Compare the supplier's fabric range",
+        body:
+          "A focused foil fabric supplier should be able to show several surface routes: full-print foil, iridescent laser, holographic texture, gradient foil, dot foil and pleated foil. A broader range helps buyers compare the visual effect against the base fabric instead of selecting from one isolated sample.",
+      },
+      {
+        heading: "3. Confirm commercial details before comparing price",
+        body:
+          "Confirm MOQ, ready-stock or made-to-order status, sample terms, standard roll length, width, quotation unit and production timing. These details make supplier comparisons meaningful and help the factory recommend a practical route.",
+      },
+      {
+        heading: "4. Test the sample in the real production process",
+        body:
+          "Test the sample on the buyer's own pattern or a small production panel. Check stretch and recovery, cutting, stitching, seam appearance, hand feel, surface reflection and color under the intended lighting. Foil fabrics can behave differently after construction than they appear in a flat photo.",
+        bullets: [
+          "Stretch lengthwise and crosswise where the garment requires movement.",
+          "Check recovery after repeated stretching.",
+          "Test the foil surface after cutting, sewing and handling.",
+          "Compare the approved color under the final performance lighting.",
+        ],
+      },
+      {
+        heading: "5. Prepare a complete wholesale RFQ",
+        body:
+          "Include the end product, target surface, color or reference image, estimated quantity, required width, destination country, sample requirement and timeline. This allows the supplier to judge whether a stock item, sample-first route or custom development is appropriate.",
+      },
+    ],
+    decisionChecklist: [
+      "End product and movement requirement",
+      "Surface effect: metallic, laser, holographic, gradient, dot or pleated foil",
+      "Width, weight, stretch and base fabric requirement",
+      "MOQ, sample cost, stock status and lead time",
+      "Destination, quantity and expected delivery window",
+    ],
+    ctaHeading: "Need a wholesale foil fabric shortlist?",
+    ctaText:
+      "Share your application, target effect and quantity. We can recommend suitable foil fabrics and arrange samples before bulk quotation.",
+    faqs: [
+      {
+        question: "What should I ask a wholesale foil fabric supplier?",
+        answer:
+          "Ask about the base fabric, surface effect, width, stretch, MOQ, stock status, sample terms, bulk lead time, custom options and shipping details.",
+      },
+      {
+        question: "Can I request samples before a wholesale order?",
+        answer:
+          "Yes. Samples are recommended so buyers can check color, surface effect, stretch, sewing behavior and suitability for the final garment.",
+      },
+      {
+        question: "Is ready stock better than custom foil fabric?",
+        answer:
+          "Ready stock is usually faster for testing or urgent orders. Custom development is more suitable when the project requires a specific color, pattern, gradient or base fabric.",
+      },
+    ],
+  },
+  {
+    title: "China Foil Fabric Supplier for US Buyers: RFQ and Sample Checklist",
+    slug: "china-foil-fabric-supplier-us-buyers-rfq-checklist",
+    date: "2026-09-30",
+    readTime: "6 min read",
+    tags: ["US Buyers", "RFQ Checklist"],
+    category: "Sourcing Guide",
+    image: "/images/products/H2013120101/main/a4.webp",
+    imageWebp: "/images/products/H2013120101/main/a4.webp",
+    imageAlt: "China foil fabric supplier sample for US costume and dancewear buyers",
+    excerpt:
+      "A practical RFQ checklist for US buyers sourcing foil stretch fabric from China, including samples, MOQ, units, shipping and approval details.",
+    metaTitle: "China Foil Fabric Supplier for US Buyers | Nixia Fabric",
+    metaDesc:
+      "RFQ checklist for US buyers sourcing foil fabric from China: sample terms, MOQ in meters and yards, width, lead time, shipping and custom options.",
+    focusProducts: [
+      "rainbow-iridescent-laser-foil-nylon-spandex-fabric",
+      "plain-iridescent-laser-spandex-4-way-stretch",
+      "holographic-snakeskin-stretch-fabric",
+      "dense-dot-foil-suede-look-fabric",
+      "rainbow-fingerprint-dot-foil-ice-silk-fabric",
+    ],
+    quoteAngle:
+      "Send your US destination, application, quantity and target fabric. We can confirm sample, MOQ, production and shipping details for the RFQ.",
+    intro:
+      "US buyers sourcing foil fabric from China can save time by sending the commercial details a factory needs in the first message. A clear RFQ helps separate ready-stock options from custom production and makes sample, shipping and quotation terms easier to compare.",
+    takeaways: [
+      "Use both meters and yards when discussing MOQ with US purchasing teams.",
+      "Separate product price, sample cost, international freight and destination charges.",
+      "Request a physical sample before approving a bulk color or surface effect.",
+      "Include the destination, quantity and timeline so the factory can quote a practical route.",
+    ],
+    sections: [
+      {
+        heading: "1. Include the product application",
+        body:
+          "Start with the finished product: dancewear, stage costumes, swimwear, cheerleading uniforms, performance apparel, props or backdrops. Application helps the supplier recommend a stretch base, surface effect and construction that can be tested for the intended use.",
+      },
+      {
+        heading: "2. Ask for the same units your team uses",
+        body:
+          "Many textile suppliers quote in meters while US buyers may plan in yards. Ask the supplier to show both units in the MOQ and roll information. Nixia Fabric product pages use metric and US-friendly units together, such as 100 m / 109 yd, to reduce confusion during quotation review.",
+      },
+      {
+        heading: "3. Clarify samples, freight and timing",
+        body:
+          "For ready-stock products, the stock sample is free and normally prepared in 1–3 working days. For made-to-order products, a custom sample requires a customization fee and is normally prepared in 3–5 working days. The buyer covers international shipping. Ready-stock dispatch is typically 3–5 working days, while made-to-order production is typically 7–15 working days after details are confirmed.",
+      },
+      {
+        heading: "4. Use a simple RFQ structure",
+        body:
+          "Include the product or reference image, application, target color, required width, estimated quantity in meters or yards, sample requirement, US destination and expected delivery date. Add testing, packaging or private-label requirements before the quotation is finalized.",
+      },
+    ],
+    decisionChecklist: [
+      "Product application and target surface effect",
+      "Quantity in meters and yards",
+      "Width, weight, stretch and color target",
+      "Stock or custom route and sample requirement",
+      "US destination, shipping method and delivery deadline",
+    ],
+    ctaHeading: "Ready to send a foil fabric RFQ?",
+    ctaText:
+      "Share your application, target fabric, quantity, destination and sample requirement. We will confirm the practical sourcing route and quotation details.",
+    faqs: [
+      {
+        question: "What should a US buyer include in a China foil fabric RFQ?",
+        answer:
+          "Include the application, target effect and color, quantity, width, destination, sample requirement, timeline and any custom or testing needs.",
+      },
+      {
+        question: "Who pays for the fabric sample shipping?",
+        answer:
+          "The buyer covers international shipping. Stock samples are free, while custom samples may require a customization fee.",
+      },
+      {
+        question: "What is the typical lead time for foil fabric?",
+        answer:
+          "Ready-stock dispatch is typically 3–5 working days after confirmation. Made-to-order production is typically 7–15 working days after production details are confirmed.",
       },
     ],
   },

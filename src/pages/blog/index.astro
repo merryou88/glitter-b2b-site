@@ -33,7 +33,9 @@ const featuredArticle =
   blogArticles.find(
     (article) => article.slug === "how-to-choose-hot-stamping-spandex-fabric-for-dancewear-stage-costumes",
   ) ?? blogArticles[0];
-const latestArticles = blogArticles.filter((article) => article.slug !== featuredArticle.slug);
+const latestArticles = blogArticles
+  .filter((article) => article.slug !== featuredArticle.slug)
+  .sort((a, b) => new Date(`${b.date}T00:00:00`).getTime() - new Date(`${a.date}T00:00:00`).getTime());
 const getArticlesBySlug = (slugs: string[]) =>
   slugs
     .map((slug) => blogArticles.find((article) => article.slug === slug))

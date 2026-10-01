@@ -36,9 +36,9 @@
 export const allProducts = [
   {
     slug: "rainbow-stripe-foil-4-way-stretch-fabric",
-    metaTitle: "Rainbow Stripe Foil 4-Way Stretch Fabric | Wholesale Supplier",
+    metaTitle: "Rainbow Stripe Foil Stretch Fabric | Nixia Fabric",
     metaDesc:
-      "Rainbow stripe foil fabric with a flexible 4-way stretch base for stage costumes, dancewear, performance outfits and carnival costumes. Factory wholesale supply with OEM/ODM support, 100 m / 109 yd MOQ and sample details confirmed by project.",
+      "Rainbow stripe foil stretch fabric for stage costumes, dancewear and performance outfits. Made to order with a 100 m / 109 yd MOQ. Custom colors, samples and wholesale quotations are available.",
     title: "Rainbow Stripe Foil 4-Way Stretch Fabric for Stage Costumes",
     sku: "H2013060102",
     mainImageUrl: "/images/products/H2013060102/main/a1.webp",
@@ -227,9 +227,9 @@ export const allProducts = [
   },
   {
     slug: "plain-iridescent-laser-spandex-4-way-stretch",
-    metaTitle: "Iridescent Spandex Fabric | 4-Way Stretch Foil Supplier",
+    metaTitle: "Iridescent Laser Foil Spandex | Nixia Fabric",
     metaDesc:
-      "Iridescent spandex fabric with laser foil finish and 4-way stretch for dancewear, stage costumes and performance wear. Wholesale samples, custom support and 100 m / 109 yd MOQ.",
+      "Iridescent laser foil spandex with 4-way stretch for dancewear, stage costumes and performance wear. Ready stock, free stock samples and a 100 m / 109 yd MOQ. Custom development is available.",
     title: "Iridescent Spandex Laser Foil 4-Way Stretch Fabric",
     sku: "H2013090102",
     mainImageUrl: "/images/products/H2013090102/main/1.webp",
@@ -398,9 +398,9 @@ export const allProducts = [
   },
   {
     slug: "rainbow-iridescent-laser-foil-nylon-spandex-fabric",
-    metaTitle: "Rainbow Iridescent Laser Foil Nylon-Spandex 4-Way Stretch Fabric | Nixia Fabric",
+    metaTitle: "Rainbow Iridescent Laser Foil Fabric | Nixia Fabric",
     metaDesc:
-      "Rainbow iridescent laser foil on a 4-way stretch nylon-spandex base for bodysuits, swimwear and stagewear. Factory wholesale supply with OEM/ODM support for buyers and apparel manufacturers.",
+      "Rainbow iridescent laser foil on a 4-way stretch nylon-spandex base for bodysuits, swimwear and stagewear. Made to order with a 100 m / 109 yd MOQ. Custom colors and samples are available.",
     title: "Rainbow Iridescent Laser Foil Nylon-Spandex 4-Way Stretch Fabric",
     sku: "H2013120101",
     mainImageUrl: "/images/products/H2013120101/main/a1.webp",
@@ -613,9 +613,9 @@ export const allProducts = [
   },
   {
     slug: "gradient-rainbow-dot-foil-knit-fabric",
-    metaTitle: "Gradient Rainbow Dot Foil Knit Fabric for Stage Costumes | Nixia Fabric",
+    metaTitle: "Gradient Rainbow Dot Foil Fabric | Nixia Fabric",
     metaDesc:
-      "Gradient rainbow dot foil on a lightweight knit fabric for stage costumes, performance wear and colorful costume accessories. Factory wholesale supply with OEM/ODM support for buyers and apparel manufacturers.",
+      "Gradient rainbow dot foil knit fabric for stage costumes, performance wear and costume accessories. Made to order with a 200 m / 219 yd MOQ. Custom colors, samples and wholesale quotes are available.",
     title: "Gradient Rainbow Dot Foil Knit Fabric for Stage Costumes",
     sku: "H2013120103",
     mainImageUrl: "/images/products/H2013120103/main/a1.webp",
@@ -830,9 +830,9 @@ export const allProducts = [
   },
   {
     slug: "rainbow-fingerprint-dot-foil-ice-silk-fabric",
-    metaTitle: "Rainbow Fingerprint Dot Foil Ice Silk Stretch Knit Fabric | Nixia Fabric",
+    metaTitle: "Rainbow Fingerprint Dot Foil Fabric | Nixia Fabric",
     metaDesc:
-      "Rainbow fingerprint-dot foil on an ice-silk knit base for dresses, tops, formalwear and performance garments. Factory wholesale supply with OEM/ODM support for buyers and apparel manufacturers.",
+      "Rainbow fingerprint-dot foil on an ice-silk stretch knit base for dresses, tops, formalwear and performance garments. Made to order with a 200 m / 219 yd MOQ. Request a sample or custom quotation.",
     title: "Rainbow Fingerprint Dot Foil Stretch Knit Fabric",
     sku: "H2013120104",
     mainImageUrl: "/images/products/H2013120104/main/a1.webp",
@@ -1063,9 +1063,9 @@ export const allProducts = [
   },
   {
     slug: "holographic-mermaid-scale-milk-silk-stretch-fabric",
-    metaTitle: "Holographic Mermaid Scale Milk Silk 4-Way Stretch Fabric for Stage Costumes | Nixia Fabric",
+    metaTitle: "Holographic Mermaid Scale Stretch Fabric | Nixia Fabric",
     metaDesc:
-      "Holographic mermaid-scale foil on a high-stretch milk-silk base for mermaid skirts, stage costumes and dancewear. Factory wholesale supply with OEM/ODM support for buyers and apparel manufacturers.",
+      "Holographic mermaid scale foil on a high-stretch milk-silk base for mermaid skirts, stage costumes and dancewear. Made to order with a 100 m / 109 yd MOQ. Samples and custom colors are available.",
     title: "Holographic Mermaid Scale Milk Silk 4-Way Stretch Fabric",
     sku: "H2013120105",
     mainImageUrl: "/images/products/H2013120105/main/a1.webp",
@@ -1278,9 +1278,9 @@ export const allProducts = [
   },
   {
     slug: "full-print-hot-stamping-spandex-milk-silk",
-    metaTitle: "Full-Print Foil Spandex Fabric | Wholesale Supplier",
+    metaTitle: "Full-Print Foil Spandex Fabric | Nixia Fabric",
     metaDesc:
-      "Full-print foil spandex milk-silk fabric with 4-way stretch for stage costumes, dancewear and performance outfits. Wholesale factory supply, samples and OEM support.",
+      "Full-print foil spandex milk-silk fabric with 4-way stretch for stage costumes, dancewear and performance outfits. Ready stock, free stock samples and a 100 m / 109 yd MOQ per design. Custom prints are available.",
     title: "Full-Print Foil Spandex Milk-Silk Fabric",
     sku: "P0002",
     mainImageUrl: "/images/products/H2013060101/main/主图-1.webp",
@@ -1406,9 +1406,9 @@ export const allProducts = [
   },
   {
     slug: "double-layer-pleated-foil-knit-fabric",
-    metaTitle: "Pleated Foil Knit Fabric | Performance Skirt Supplier",
+    metaTitle: "Pleated Foil Knit Fabric | Nixia Fabric",
     metaDesc:
-      "Double-layer pleated foil knit fabric with vertical texture for performance skirts, stage costumes, dresses and dancewear. Wholesale fabric supply, samples, custom colors and 100 m / 109 yd MOQ.",
+      "Double-layer pleated foil knit fabric for performance skirts, stage costumes, dresses and dancewear. Made to order with a 100 m / 109 yd MOQ. Custom colors, samples and wholesale quotations are available.",
     title: "Double-Layer Pleated Foil Knit Fabric for Performance Skirts",
     sku: "H2013060104",
     mainImageUrl: "/images/products/H2013060104/main/a1.webp",
@@ -1621,9 +1621,9 @@ export const allProducts = [
   },
   {
     slug: "shiny-foil-4-way-stretch-knit-fabric",
-    metaTitle: "Shiny Foil 4-Way Stretch Knit Fabric | Wholesale Supplier",
+    metaTitle: "Shiny Foil Stretch Knit Fabric | Nixia Fabric",
     metaDesc:
-      "Shiny foil 4-way stretch knit fabric for stage costumes, dancewear, party apparel and performance wear. Wholesale supply, ready stock, samples and custom development.",
+      "Shiny foil 4-way stretch knit fabric for stage costumes, dancewear, party apparel and performance wear. Ready stock, free stock samples and a 100 m / 109 yd MOQ. Custom development is available.",
     title: "Shiny Foil 4-Way Stretch Knit Fabric for Performance & Party Wear",
     sku: "H2013060105",
     mainImageUrl: "/images/products/H2013060105/main/a1.webp",
@@ -1846,9 +1846,9 @@ export const allProducts = [
   },
   {
     slug: "dense-dot-foil-suede-look-fabric",
-    metaTitle: "Dense Dot Foil Suede-Look Fabric | Wholesale Supplier",
+    metaTitle: "Dense Dot Foil Suede-Look Fabric | Nixia Fabric",
     metaDesc:
-      "Dense dot foil suede-look fabric for stage costumes, performance props, backdrops and event decoration. Foil fabric supply, samples and custom color support.",
+      "Dense dot foil suede-look fabric for stage costumes, performance props, backdrops and event decoration. Ready stock, free stock samples and a 100 m / 109 yd MOQ. Custom colors are available.",
     title: "Dense Dot Foil Suede-Look Fabric for Stage Props & Backdrops",
     sku: "H2013060106",
     mainImageUrl: "/images/products/H2013060106/main/a1.webp",
@@ -2058,9 +2058,9 @@ export const allProducts = [
 
   {
     slug: "iridescent-laser-hot-stamping-stretch-ice-silk",
-    metaTitle: "Iridescent Laser Foil 4-Way Stretch Fabric Wholesale | Nixia Fabric",
+    metaTitle: "Iridescent Laser Foil Stretch Fabric | Nixia Fabric",
     metaDesc:
-      "Iridescent laser foil 4-way stretch fabric in 95% polyester and 5% spandex for stage costumes, performance wear, dancewear, party wear and show costumes. Wholesale supplier with samples, custom support and a 100 m / 109 yd MOQ.",
+      "Iridescent laser foil 4-way stretch fabric for stage costumes, performance wear, dancewear and party apparel. Ready stock, free stock samples and a 100 m / 109 yd MOQ per color. Custom colors are available.",
     title: "Iridescent Laser Foil 4-Way Stretch Fabric",
     sku: "H2013120107",
     mainImageUrl: "/images/products/H2013120107/main/1.webp",
@@ -2209,7 +2209,7 @@ export const allProducts = [
     slug: "iridescent-gradient-laser-ice-silk",
     metaTitle: "Gradient Iridescent Stretch Fabric | Nixia Fabric",
     metaDesc:
-      "Iridescent gradient foil stretch fabric for dancewear, stage costumes, performance wear and party apparel. Samples and custom gradient color support.",
+      "Gradient iridescent foil stretch fabric for dancewear, stage costumes, performance wear and party apparel. Ready stock, free stock samples and a 100 m / 109 yd MOQ per colorway. Custom gradients are available.",
     title: "Iridescent Gradient Foil Stretch Fabric for Dancewear & Costumes",
     sku: "P0005",
     mainImageUrl: "/images/products/H2013120106/main/1.webp",
@@ -2326,9 +2326,9 @@ export const allProducts = [
   },
   {
     slug: "rainbow-dot-laser-foil-knit-fabric",
-    metaTitle: "Rainbow Dot Foil Knit Fabric | Nixia Fabric",
+    metaTitle: "Rainbow Dot Laser Foil Knit Fabric | Nixia Fabric",
     metaDesc:
-      "Rainbow dot foil knit fabric for stage costumes, dancewear and performance outfits. Available in 28 colors with a 200 m / 219 yd MOQ.",
+      "Rainbow dot laser foil knit fabric for stage costumes, dancewear and performance outfits. Ready stock with 28 colors and a 200 m / 219 yd MOQ. Free stock samples and custom colors are available.",
     title: "Rainbow Dot Laser Foil Knit Fabric for Stage Costumes",
     sku: "H2013090104",
     mainImageUrl: "/images/products/H2013090104/main/a1.webp",
@@ -2548,7 +2548,7 @@ export const allProducts = [
     slug: "blue-purple-gradient-laser-foil-spandex-fabric",
     metaTitle: "Blue-Purple Gradient Foil Spandex | Nixia Fabric",
     metaDesc:
-      "Blue-purple gradient laser foil on a 4-way stretch spandex base for stage costumes, dancewear and performance apparel. Foil fabric supply with custom color development support.",
+      "Blue-purple gradient laser foil on a 4-way stretch spandex base for stage costumes, dancewear and performance apparel. Made to order with a 100 m / 109 yd MOQ. Custom colors and samples are available.",
     title: "Blue-Purple Gradient Laser Foil 4-Way Stretch Fabric",
     sku: "H2013120102",
     mainImageUrl: "/images/products/H2013120102/main/a1.webp",
@@ -2757,9 +2757,9 @@ export const allProducts = [
   },
   {
     slug: "holographic-snakeskin-stretch-fabric",
-    metaTitle: "Holographic Snakeskin Stretch Fabric for Swimwear & Dancewear | Nixia Fabric",
+    metaTitle: "Holographic Snakeskin Stretch Fabric | Nixia Fabric",
     metaDesc:
-      "Holographic snakeskin texture on a flexible stretch base for swimwear, leggings, dancewear and mermaid-inspired costumes. Factory wholesale supply with OEM/ODM support, 100 m / 109 yd MOQ and sample details confirmed by project.",
+      "Holographic snakeskin stretch fabric for swimwear, leggings, dancewear and mermaid-inspired costumes. Made to order with a 100 m / 109 yd MOQ. Custom development and samples are available.",
     title: "Laser Foil Snakeskin Stretch Fabric",
     sku: "H2013090101",
     mainImageUrl: "/images/products/H2013090101/main/1.webp",
