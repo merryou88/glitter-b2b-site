@@ -44,32 +44,32 @@ export const allProducts = [
     mainImageUrl: "/images/products/H2013060102/main/a1.webp",
     mainImageWebp: "/images/products/H2013060102/main/a1.webp",
     mainImageAlt:
-      "Rainbow stripe foil 4-way stretch fabric for stage costumes and performance garments",
+      "Rainbow stripe foil 4-way stretch fabric for dance costumes, stagewear and performance apparel",
     imageList: [
       {
         src: "/images/products/H2013060102/main/a1.webp",
         webp: "/images/products/H2013060102/main/a1.webp",
-        alt: "Rainbow stripe foil 4-way stretch fabric main view",
+        alt: "Rainbow stripe foil 4-way stretch fabric main view for dance costumes",
       },
       {
         src: "/images/products/H2013060102/main/a2.webp",
         webp: "/images/products/H2013060102/main/a2.webp",
-        alt: "Rainbow stripe foil fabric draped for costume production",
+        alt: "Rainbow stripe foil stretch fabric drape for stage costume production",
       },
       {
         src: "/images/products/H2013060102/main/a3.webp",
         webp: "/images/products/H2013060102/main/a3.webp",
-        alt: "Rainbow stripe foil fabric surface and stretch appearance",
+        alt: "Rainbow stripe foil fabric surface with 4-way stretch for performance apparel",
       },
       {
         src: "/images/products/H2013060102/main/a4.webp",
         webp: "/images/products/H2013060102/main/a4.webp",
-        alt: "Rainbow stripe foil 4-way stretch fabric surface detail",
+        alt: "Close-up of rainbow stripe foil 4-way stretch fabric surface",
       },
       {
         src: "/images/products/H2013060102/main/a5.webp",
         webp: "/images/products/H2013060102/main/a5.webp",
-        alt: "Rainbow stripe foil fabric close-up for performance garments",
+        alt: "Rainbow stripe foil stretch fabric close-up for dancewear and carnival costumes",
       },
     ],
     galleryMainPath: "/images/products/H2013060102/main/",
@@ -77,7 +77,7 @@ export const allProducts = [
     detailImagePath: "/images/products/H2013060102/detail/",
     video: null,
     shortIntro:
-      "Rainbow stripe foil fabric with a flexible 4-way stretch base for colorful stage costumes and performance garments.",
+      "Rainbow stripe foil stretch fabric with 4-way stretch, available in 2 colors for dance costumes, stagewear, performance apparel and carnival costumes.",
     fullDescription:
       "Rainbow stripe foil fabric with a flexible 4-way stretch base for colorful stage costumes and performance garments. Factory wholesale supply with OEM/ODM support for buyers and apparel manufacturers.",
     specs: {
@@ -223,6 +223,15 @@ export const allProducts = [
       },
     ],
     skuImages: [],
+    detailImageAlts: {
+      "x1.webp": "Rainbow stripe foil stretch fabric detail showing reflective stripe direction",
+      "x2.webp": "Close-up of rainbow stripe foil surface on 4-way stretch fabric",
+      "x3.webp": "Rainbow stripe foil fabric texture for dance costume and stagewear sampling",
+      "x4.webp": "Stretch polyester spandex fabric with colorful rainbow stripe foil finish",
+      "x5.webp": "Rainbow stripe foil 4-way stretch fabric detail for performance apparel",
+      "x6.webp": "Reflective rainbow stripe foil fabric surface for carnival costume production",
+      "x7.webp": "Wholesale rainbow stripe stretch fabric detail image for fabric buyers",
+    },
     detailImages: ["x1.webp", "x2.webp", "x3.webp", "x4.webp", "x5.webp", "x6.webp", "x7.webp"],
   },
   {
@@ -235,27 +244,27 @@ export const allProducts = [
     mainImageUrl: "/images/products/H2013090102/main/1.webp",
     mainImageWebp: "/images/products/H2013090102/main/1.webp",
     mainImageAlt:
-      "Iridescent laser 4-way stretch fabric for stage costumes and dancewear",
+      "Iridescent laser foil spandex 4-way stretch fabric for dancewear, stage costumes and performance apparel",
     imageList: [
       {
         src: "/images/products/H2013090102/main/1.webp",
         webp: "/images/products/H2013090102/main/1.webp",
-        alt: "Iridescent laser 4-way stretch fabric for stage costumes and dancewear",
+        alt: "Iridescent laser foil spandex 4-way stretch fabric main view for dancewear",
       },
       {
         src: "/images/products/H2013090102/main/2.webp",
         webp: "/images/products/H2013090102/main/2.webp",
-        alt: "Close-up of iridescent laser 4-way stretch fabric surface",
+        alt: "Close-up of iridescent laser foil 4-way stretch fabric surface",
       },
       {
         src: "/images/products/H2013090102/main/3.webp",
         webp: "/images/products/H2013090102/main/3.webp",
-        alt: "Close-up of reflective iridescent laser foil stretch fabric surface",
+        alt: "Reflective iridescent laser foil stretch fabric surface for stage costumes",
       },
       {
         src: "/images/products/H2013090102/main/4.webp",
         webp: "/images/products/H2013090102/main/4.webp",
-        alt: "Close-up of iridescent laser hot-stamping stretch fabric texture",
+        alt: "Iridescent laser foil spandex fabric texture for fitted performance apparel",
       },
     ],
     galleryMainPath: "/images/products/H2013090102/main/",
@@ -264,7 +273,7 @@ export const allProducts = [
       "/images/products/H2013090102/detail/",
     video: null,
     shortIntro:
-      "Iridescent spandex fabric with a laser foil finish on a flexible 4-way stretch base, designed for stage costumes, dancewear and fitted performance outfits.",
+      "Iridescent laser foil spandex fabric with 4-way stretch for dancewear, stage costumes, fitted performance apparel and carnival costumes.",
     fullDescription:
       "This iridescent spandex stretch fabric combines a reflective laser foil surface with a flexible 4-way stretch base. It is designed for fitted performance garments where visual impact and fabric movement both matter, including dancewear, stage costumes and performance outfits.",
     specs: {
@@ -394,6 +403,12 @@ export const allProducts = [
       },
     ],
     skuImages: [],
+    detailImageAlts: {
+      "1.webp": "Iridescent laser foil spandex fabric detail showing reflective surface",
+      "2.webp": "Close-up of 4-way stretch laser foil fabric for dancewear sampling",
+      "3.webp": "Iridescent spandex stretch fabric texture for stage costume production",
+      "4.webp": "Reflective laser foil surface on stretch spandex fabric for fitted apparel",
+    },
     detailImages: ["1.webp", "2.webp", "3.webp", "4.webp"],
   },
   {
@@ -406,32 +421,32 @@ export const allProducts = [
     mainImageUrl: "/images/products/H2013120101/main/a1.webp",
     mainImageWebp: "/images/products/H2013120101/main/a1.webp",
     mainImageAlt:
-      "Rainbow iridescent laser foil nylon-spandex 4-way stretch fabric for bodysuits and swimwear",
+      "Rainbow iridescent laser foil nylon-spandex 4-way stretch fabric for bodysuits, swimwear and dancewear",
     imageList: [
       {
         src: "/images/products/H2013120101/main/a1.webp",
         webp: "/images/products/H2013120101/main/a1.webp",
-        alt: "Rainbow iridescent laser foil nylon-spandex stretch fabric main view",
+        alt: "Rainbow iridescent laser foil nylon-spandex 4-way stretch fabric main view for bodysuits",
       },
       {
         src: "/images/products/H2013120101/main/a2.webp",
         webp: "/images/products/H2013120101/main/a2.webp",
-        alt: "Rainbow iridescent laser foil fabric drape and reflective surface",
+        alt: "Rainbow iridescent laser foil stretch fabric drape with reflective color-shifting surface",
       },
       {
         src: "/images/products/H2013120101/main/a3.webp",
         webp: "/images/products/H2013120101/main/a3.webp",
-        alt: "Nylon-spandex 4-way stretch laser foil fabric hand-feel and surface effect",
+        alt: "Nylon spandex 4-way stretch laser foil fabric for swimwear and fitted apparel",
       },
       {
         src: "/images/products/H2013120101/main/a4.webp",
         webp: "/images/products/H2013120101/main/a4.webp",
-        alt: "Rainbow iridescent laser foil nylon-spandex fabric for bodysuits and swimwear",
+        alt: "Rainbow iridescent laser foil nylon-spandex fabric surface for bodysuits and dancewear",
       },
       {
         src: "/images/products/H2013120101/main/a5.webp",
         webp: "/images/products/H2013120101/main/a5.webp",
-        alt: "Close-up of rainbow iridescent laser foil fabric surface",
+        alt: "Close-up of rainbow iridescent laser foil surface on 4-way stretch fabric",
       },
     ],
     galleryMainPath: "/images/products/H2013120101/main/",
@@ -439,7 +454,7 @@ export const allProducts = [
     detailImagePath: "/images/products/H2013120101/detail/",
     video: null,
     shortIntro:
-      "Rainbow iridescent laser foil on a 4-way stretch nylon-spandex base for bodysuits, swimwear and stagewear.",
+      "Rainbow iridescent laser foil nylon spandex fabric with 4-way stretch, available in 15 colors for bodysuits, swimwear, dancewear and stage costumes.",
     fullDescription:
       "Rainbow iridescent laser foil on a 4-way stretch nylon-spandex base for bodysuits, swimwear and stagewear.",
     specs: {
@@ -596,6 +611,23 @@ export const allProducts = [
       },
     ],
     skuImages: [],
+    applicationImageAlts: {
+      "1.webp": "Rainbow iridescent laser foil 4-way stretch fabric application for bodysuits and swimwear design",
+    },
+    detailImageAlts: {
+      "x1.webp": "Close-up detail of rainbow iridescent laser foil on nylon-spandex stretch fabric",
+      "x2.webp": "Reflective rainbow laser foil fabric surface for bodysuit and swimwear sampling",
+      "x3.webp": "4-way stretch nylon-spandex fabric with rainbow iridescent foil finish",
+      "x4.webp": "Rainbow iridescent foil stretch fabric detail for dancewear and stage costumes",
+      "x5.webp": "Color-shifting laser foil surface on stretch nylon-spandex base",
+      "x6.webp": "Rainbow iridescent laser foil fabric close-up for color and surface detail",
+      "x7.webp": "Wholesale nylon-spandex 4-way stretch laser foil fabric detail image",
+      "x8.webp": "Iridescent rainbow foil fabric texture for fitted performance garments",
+      "x9.webp": "Laser foil nylon-spandex stretch fabric surface for costume manufacturing",
+      "x10.webp": "Rainbow iridescent 4-way stretch fabric detail for swimwear buyers",
+      "x11.webp": "Reflective laser foil stretch fabric texture for bodysuits and dancewear",
+      "x12.webp": "Rainbow iridescent nylon spandex fabric detail for wholesale fabric sourcing",
+    },
     detailImages: [
       "x1.webp",
       "x2.webp",
@@ -621,32 +653,32 @@ export const allProducts = [
     mainImageUrl: "/images/products/H2013120103/main/a1.webp",
     mainImageWebp: "/images/products/H2013120103/main/a1.webp",
     mainImageAlt:
-      "Gradient rainbow dot foil knit fabric for stage costumes and performance wear",
+      "Gradient rainbow dot foil knit fabric for stage costumes, dancewear and performance apparel",
     imageList: [
       {
         src: "/images/products/H2013120103/main/a1.webp",
         webp: "/images/products/H2013120103/main/a1.webp",
-        alt: "Gradient rainbow dot foil knit fabric main view",
+        alt: "Gradient rainbow dot foil knit fabric main view for stage costumes",
       },
       {
         src: "/images/products/H2013120103/main/a2.webp",
         webp: "/images/products/H2013120103/main/a2.webp",
-        alt: "Gradient rainbow dot foil knit fabric close-up surface",
+        alt: "Close-up of gradient rainbow dot foil knit fabric surface",
       },
       {
         src: "/images/products/H2013120103/main/a3.webp",
         webp: "/images/products/H2013120103/main/a3.webp",
-        alt: "Gradient rainbow dot foil knit fabric draped for costume production",
+        alt: "Gradient rainbow dot foil knit fabric drape for dancewear and costume production",
       },
       {
         src: "/images/products/H2013120103/main/a4.webp",
         webp: "/images/products/H2013120103/main/a4.webp",
-        alt: "Gradient rainbow foil knit fabric for stage costume panels",
+        alt: "Gradient rainbow foil knit fabric for stage costume panels and performance apparel",
       },
       {
         src: "/images/products/H2013120103/main/a5.webp",
         webp: "/images/products/H2013120103/main/a5.webp",
-        alt: "Lightweight gradient rainbow dot foil knit fabric surface detail",
+        alt: "Lightweight gradient rainbow dot foil knit fabric texture detail",
       },
     ],
     galleryMainPath: "/images/products/H2013120103/main/",
@@ -654,7 +686,7 @@ export const allProducts = [
     detailImagePath: "/images/products/H2013120103/detail/",
     video: null,
     shortIntro:
-      "Gradient rainbow dot foil on a lightweight knit fabric for stage costumes, performance wear and colorful costume accessories.",
+      "Gradient rainbow dot foil knit fabric with 15 color options for stage costumes, dancewear, performance apparel and decorative costume panels.",
     fullDescription:
       "Gradient rainbow dot foil on a lightweight knit fabric for stage costumes, performance wear and colorful costume accessories.",
     specs: {
@@ -814,6 +846,19 @@ export const allProducts = [
       },
     ],
     skuImages: [],
+    detailImageAlts: {
+      "x1.webp": "Gradient rainbow dot foil knit fabric detail showing reflective dot surface",
+      "x2.webp": "Close-up of lightweight rainbow dot foil knit fabric texture",
+      "x3.webp": "Gradient rainbow foil dots on knit fabric for stage costume sampling",
+      "x4.webp": "Reflective gradient dot foil fabric surface for dancewear panels",
+      "x5.webp": "Lightweight polyester spandex knit fabric with rainbow dot foil finish",
+      "x6.webp": "Gradient rainbow dot foil knit fabric detail for performance apparel",
+      "x7.webp": "Rainbow dot foil fabric texture for costume accessory production",
+      "x8.webp": "Color-shifting dot foil surface on lightweight stretch knit fabric",
+      "x9.webp": "Wholesale gradient rainbow dot foil fabric detail image",
+      "x10.webp": "Knit jacquard base with reflective gradient rainbow foil dots",
+      "x11.webp": "Gradient rainbow dot foil knit fabric close-up for color and surface review",
+    },
     detailImages: [
       "x1.webp",
       "x2.webp",
@@ -838,32 +883,32 @@ export const allProducts = [
     mainImageUrl: "/images/products/H2013120104/main/a1.webp",
     mainImageWebp: "/images/products/H2013120104/main/a1.webp",
     mainImageAlt:
-      "Rainbow fingerprint dot foil ice-silk stretch knit fabric for dresses and performance garments",
+      "Rainbow fingerprint dot foil stretch knit fabric for dresses, tops, stage costumes and dancewear",
     imageList: [
       {
         src: "/images/products/H2013120104/main/a1.webp",
         webp: "/images/products/H2013120104/main/a1.webp",
-        alt: "Rainbow fingerprint dot foil ice-silk stretch knit fabric main view",
+        alt: "Rainbow fingerprint dot foil stretch knit fabric main view for dresses",
       },
       {
         src: "/images/products/H2013120104/main/a2.webp",
         webp: "/images/products/H2013120104/main/a2.webp",
-        alt: "Rainbow fingerprint dot foil fabric color stack for garment buyers",
+        alt: "Rainbow fingerprint dot foil stretch fabric color stack for apparel buyers",
       },
       {
         src: "/images/products/H2013120104/main/a3.webp",
         webp: "/images/products/H2013120104/main/a3.webp",
-        alt: "Rainbow fingerprint dot foil stretch knit fabric surface close-up",
+        alt: "Close-up of rainbow fingerprint dot foil stretch knit fabric surface",
       },
       {
         src: "/images/products/H2013120104/main/a4.webp",
         webp: "/images/products/H2013120104/main/a4.webp",
-        alt: "Fingerprint dot foil knit fabric back and surface detail",
+        alt: "Fingerprint dot foil knit fabric backing and reflective surface detail",
       },
       {
         src: "/images/products/H2013120104/main/a5.webp",
         webp: "/images/products/H2013120104/main/a5.webp",
-        alt: "Ice-silk knit fabric with rainbow fingerprint dot foil finish",
+        alt: "Ice-silk stretch knit fabric with rainbow fingerprint dot foil finish",
       },
     ],
     galleryMainPath: "/images/products/H2013120104/main/",
@@ -871,7 +916,7 @@ export const allProducts = [
     detailImagePath: "/images/products/H2013120104/detail/",
     video: null,
     shortIntro:
-      "Rainbow fingerprint-dot foil on an ice-silk knit base for dresses, tops, formalwear and performance garments.",
+      "Rainbow fingerprint dot foil stretch knit fabric for dresses, tops, formalwear, stage costumes and dancewear, with custom colors available on request.",
     fullDescription:
       "Rainbow fingerprint-dot foil on an ice-silk knit base for dresses, tops, formalwear and performance garments.",
     specs: {
@@ -1044,6 +1089,22 @@ export const allProducts = [
       },
     ],
     skuImages: [],
+    detailImageAlts: {
+      "x1.webp": "Rainbow fingerprint dot foil stretch knit fabric detail for dresses and tops",
+      "x2.webp": "Close-up of fingerprint dot foil surface on ice-silk stretch knit fabric",
+      "x3.webp": "Rainbow foil dot texture for formalwear and stage costume sampling",
+      "x4.webp": "Stretch knit fabric with rainbow fingerprint dot foil finish",
+      "x5.webp": "Reflective fingerprint dot foil surface for dancewear and apparel buyers",
+      "x6.webp": "Ice-silk knit fabric detail showing rainbow dot foil shine",
+      "x7.webp": "Rainbow fingerprint foil fabric texture for decorative garment panels",
+      "x8.webp": "Close-up of 4-way stretch knit fabric with rainbow foil dot effect",
+      "x9.webp": "Rainbow fingerprint dot foil fabric detail for wholesale sourcing",
+      "x10.webp": "Reflective dot foil stretch knit fabric for stage costume production",
+      "x11.webp": "Rainbow foil surface detail on polyester spandex stretch knit fabric",
+      "x12.webp": "Fingerprint dot foil knit fabric detail for color and hand-feel review",
+      "x13.webp": "Rainbow foil stretch fabric texture for dresses, tops and dancewear",
+      "x14.webp": "Wholesale rainbow fingerprint dot foil fabric detail image",
+    },
     detailImages: [
       "x1.webp",
       "x2.webp",
@@ -1071,32 +1132,32 @@ export const allProducts = [
     mainImageUrl: "/images/products/H2013120105/main/a1.webp",
     mainImageWebp: "/images/products/H2013120105/main/a1.webp",
     mainImageAlt:
-      "Holographic mermaid scale milk silk 4-way stretch fabric for stage costumes and dancewear",
+      "Holographic mermaid scale milk silk 4-way stretch fabric for stage costumes, dancewear and mermaid skirts",
     imageList: [
       {
         src: "/images/products/H2013120105/main/a1.webp",
         webp: "/images/products/H2013120105/main/a1.webp",
-        alt: "Holographic mermaid scale milk silk stretch fabric main view",
+        alt: "Holographic mermaid scale milk silk 4-way stretch fabric main view for stage costumes",
       },
       {
         src: "/images/products/H2013120105/main/a2.webp",
         webp: "/images/products/H2013120105/main/a2.webp",
-        alt: "Pink holographic mermaid scale milk silk stretch fabric",
+        alt: "Pink holographic mermaid scale stretch fabric with reflective foil surface for dancewear",
       },
       {
         src: "/images/products/H2013120105/main/a3.webp",
         webp: "/images/products/H2013120105/main/a3.webp",
-        alt: "Holographic mermaid scale fabric color stack",
+        alt: "Holographic mermaid scale stretch fabric color stack with 11 wholesale color options",
       },
       {
         src: "/images/products/H2013120105/main/a4.webp",
         webp: "/images/products/H2013120105/main/a4.webp",
-        alt: "Holographic mermaid scale foil surface close-up",
+        alt: "Close-up of holographic mermaid scale foil surface on stretch milk silk fabric",
       },
       {
         src: "/images/products/H2013120105/main/a5.webp",
         webp: "/images/products/H2013120105/main/a5.webp",
-        alt: "Gold holographic mermaid scale milk silk stretch fabric",
+        alt: "Gold holographic mermaid scale milk silk stretch fabric for mermaid skirts and costumes",
       },
     ],
     galleryMainPath: "/images/products/H2013120105/main/",
@@ -1104,7 +1165,7 @@ export const allProducts = [
     detailImagePath: "/images/products/H2013120105/detail/",
     video: null,
     shortIntro:
-      "Holographic mermaid-scale foil on a high-stretch milk-silk base for mermaid skirts, stage costumes and dancewear.",
+      "Holographic mermaid scale stretch fabric on a milk-silk spandex base, available in 11 colors for mermaid skirts, dance costumes, stagewear and performance apparel.",
     fullDescription:
       "Holographic mermaid-scale foil on a high-stretch milk-silk base for mermaid skirts, stage costumes and dancewear.",
     specs: {
@@ -1264,6 +1325,20 @@ export const allProducts = [
       },
     ],
     skuImages: [],
+    applicationImageAlts: {
+      "1.webp": "Holographic mermaid scale stretch fabric application for stage costume and dancewear design",
+    },
+    detailImageAlts: {
+      "x1.webp": "Close-up detail of holographic mermaid scale foil pattern on milk silk stretch fabric",
+      "x2.webp": "Holographic mermaid scale fabric surface showing reflective fish-scale texture",
+      "x3.webp": "Milk silk 4-way stretch fabric with holographic mermaid scale foil finish",
+      "x4.webp": "Mermaid scale foil fabric detail for stage costumes and performance outfits",
+      "x5.webp": "Holographic scale stretch fabric color and shine detail for dancewear buyers",
+      "x6.webp": "Reflective mermaid scale foil surface on polyester spandex milk silk base",
+      "x7.webp": "Holographic mermaid scale fabric close-up for color, shine and sewing tests",
+      "x8.webp": "Wholesale holographic mermaid scale stretch fabric detail image",
+      "x9.webp": "4-way stretch mermaid scale foil fabric texture for costume manufacturing",
+    },
     detailImages: [
       "x1.webp",
       "x2.webp",
@@ -1286,12 +1361,42 @@ export const allProducts = [
     mainImageUrl: "/images/products/H2013060101/main/主图-1.webp",
     mainImageWebp: "/images/products/H2013060101/main/主图-1.webp",
     mainImageAlt:
-      "Full-print hot-stamping spandex milk-silk fabric with soft hand-feel and 4-way stretch",
+      "Full-print foil spandex milk-silk fabric with 4-way stretch for dancewear and stage costumes",
     imageList: [
       {
         src: "/images/products/H2013060101/main/主图-1.webp",
         webp: "/images/products/H2013060101/main/主图-1.webp",
-        alt: "Full-print hot-stamping spandex milk-silk fabric with soft hand-feel and 4-way stretch",
+        alt: "Full-print foil spandex milk-silk fabric main view for dancewear and stage costumes",
+      },
+      {
+        src: "/images/products/H2013060101/main/主图-2.webp",
+        webp: "/images/products/H2013060101/main/主图-2.webp",
+        alt: "All-over foil print stretch fabric drape for performance costume production",
+      },
+      {
+        src: "/images/products/H2013060101/main/主图-3.webp",
+        webp: "/images/products/H2013060101/main/主图-3.webp",
+        alt: "Full-print metallic foil spandex fabric surface for stage apparel",
+      },
+      {
+        src: "/images/products/H2013060101/main/主图-4.webp",
+        webp: "/images/products/H2013060101/main/主图-4.webp",
+        alt: "Milk-silk spandex 4-way stretch fabric with printed foil finish",
+      },
+      {
+        src: "/images/products/H2013060101/main/主图-5.webp",
+        webp: "/images/products/H2013060101/main/主图-5.webp",
+        alt: "Full-print foil stretch fabric close-up for dancewear manufacturers",
+      },
+      {
+        src: "/images/products/H2013060101/main/主图-6.webp",
+        webp: "/images/products/H2013060101/main/主图-6.webp",
+        alt: "Reflective foil print spandex fabric for festival and carnival costumes",
+      },
+      {
+        src: "/images/products/H2013060101/main/主图-7.webp",
+        webp: "/images/products/H2013060101/main/主图-7.webp",
+        alt: "Wholesale full-print foil spandex fabric color and surface display",
       },
     ],
     galleryMainPath: "/images/products/H2013060101/main/",
@@ -1307,7 +1412,7 @@ export const allProducts = [
     detailImagePath: "/images/products/H2013060101/detail/",
     video: null,
     shortIntro:
-      "Full-print hot-stamping spandex milk-silk fabric pairs a soft milk-silk ground with an all-over foil print. The 4-way stretch base recovers well and the foil surface delivers a bright metallic shine that holds up through wear.",
+      "Full-print foil spandex milk-silk fabric with 4-way stretch, available in 22 stock colors for dancewear, stage costumes, performance costumes and festival apparel.",
     fullDescription:
       "Nixia Fabric brings you our full-print hot-stamping spandex milk-silk fabric — a stretchy base fabric finished with an all-over hot-stamping foil print. The milk-silk ground gives a soft, smooth hand-feel, while the foil surface delivers a bright metallic shine that holds up through wear.\n\nThe 4-way stretch construction recovers well after stretching, making it a practical choice for fitted dancewear, stage costumes and performance outfits.",
     specs: {
@@ -1402,6 +1507,14 @@ export const allProducts = [
       },
     ],
     skuImages: [],
+    detailImageAlts: {
+      "1.webp": "Full-print foil spandex milk-silk fabric detail showing metallic surface",
+      "2.webp": "Close-up of all-over foil print on 4-way stretch milk-silk fabric",
+      "3.webp": "Soft stretch spandex fabric with full-print foil finish for dancewear",
+      "4.webp": "Reflective foil print fabric texture for stage costume production",
+      "5.webp": "Full-print foil spandex fabric detail for performance apparel sourcing",
+      "6.webp": "Wholesale milk-silk spandex foil fabric detail image for fabric buyers",
+    },
     detailImages: ["1.webp", "2.webp", "3.webp", "4.webp", "5.webp", "6.webp"],
   },
   {
@@ -1604,6 +1717,20 @@ export const allProducts = [
       },
     ],
     skuImages: [],
+    detailImageAlts: {
+      "x4.webp": "Double-layer pleated foil knit fabric detail showing vertical texture",
+      "x5.webp": "Close-up of pleated foil surface for performance skirt sampling",
+      "x6.webp": "Reflective pleated knit fabric texture for stage costume production",
+      "x7.webp": "Double-layer foil knit fabric detail for dresses and dancewear",
+      "x8.webp": "Pleated foil fabric close-up showing dimensional vertical lines",
+      "x9.webp": "Polyester spandex knit fabric with foil pleated finish",
+      "x10.webp": "Pleated foil knit fabric detail for formalwear and costume panels",
+      "x11.webp": "Reflective vertical pleats on foil knit fabric for stagewear buyers",
+      "x111.webp": "Double-layer pleated foil fabric texture for apparel development",
+      "x112.webp": "Pleated foil knit fabric close-up for color and surface review",
+      "x113.webp": "Wholesale pleated foil knit fabric detail image for fabric sourcing",
+      "x13.webp": "Structured pleated foil fabric detail for performance skirts",
+    },
     detailImages: [
       "x4.webp",
       "x5.webp",
@@ -1629,12 +1756,12 @@ export const allProducts = [
     mainImageUrl: "/images/products/H2013060105/main/a1.webp",
     mainImageWebp: "/images/products/H2013060105/main/a1.webp",
     mainImageAlt:
-      "Shiny foil 4-way stretch knit fabric for performance and party wear",
+      "Shiny foil 4-way stretch knit fabric for stage costumes, dancewear and party apparel",
     imageList: [
       {
         src: "/images/products/H2013060105/main/a1.webp",
         webp: "/images/products/H2013060105/main/a1.webp",
-        alt: "Shiny foil 4-way stretch knit fabric for performance and party wear",
+        alt: "Shiny foil 4-way stretch knit fabric main view for stage costumes",
       },
       {
         src: "/images/products/H2013060105/main/a2.webp",
@@ -1644,17 +1771,17 @@ export const allProducts = [
       {
         src: "/images/products/H2013060105/main/a3.webp",
         webp: "/images/products/H2013060105/main/a3.webp",
-        alt: "Reflective foil knit fabric showing flexible drape",
+        alt: "Reflective foil knit fabric showing flexible drape for dancewear",
       },
       {
         src: "/images/products/H2013060105/main/a4.webp",
         webp: "/images/products/H2013060105/main/a4.webp",
-        alt: "Shiny foil stretch fabric for stage costume sourcing",
+        alt: "Shiny foil stretch fabric for stage costume and performance apparel sourcing",
       },
       {
         src: "/images/products/H2013060105/main/a5.webp",
         webp: "/images/products/H2013060105/main/a5.webp",
-        alt: "Foil-finished stretch knit fabric detail for apparel manufacturers",
+        alt: "Foil-finished 4-way stretch knit fabric detail for apparel manufacturers",
       },
     ],
     galleryMainPath: "/images/products/H2013060105/main/",
@@ -1662,7 +1789,7 @@ export const allProducts = [
     detailImagePath: "/images/products/H2013060105/detail/",
     video: null,
     shortIntro:
-      "A shiny foil-finished 4-way stretch knit fabric designed for eye-catching performance costumes, dancewear and party apparel. The flexible stretch base provides comfort and freedom of movement, while the reflective foil surface creates a striking visual effect under stage and event lighting.",
+      "Shiny foil 4-way stretch knit fabric available in 30 colors for stage costumes, dancewear, performance bodysuits, concert outfits and party apparel.",
     fullDescription:
       "A shiny foil-finished 4-way stretch knit fabric designed for eye-catching performance costumes, dancewear and party apparel. The flexible stretch base provides comfort and freedom of movement, while the reflective foil surface creates a striking visual effect under stage and event lighting.",
     specs: {
@@ -1827,6 +1954,22 @@ export const allProducts = [
       },
     ],
     skuImages: [],
+    detailImageAlts: {
+      "x2.webp": "Shiny foil 4-way stretch knit fabric detail showing reflective surface",
+      "x3.webp": "Close-up of shiny foil stretch knit fabric for dancewear sampling",
+      "x4.webp": "Reflective foil knit fabric texture for stage costume production",
+      "x5.webp": "4-way stretch polyester knit fabric with shiny foil finish",
+      "x7.webp": "Shiny foil fabric detail for performance bodysuit development",
+      "x8.webp": "Foil stretch knit fabric surface for concert outfit sourcing",
+      "x9.webp": "Close-up of shiny foil texture on lightweight stretch knit fabric",
+      "x10.webp": "Shiny foil 4-way stretch fabric detail for party apparel",
+      "x11.webp": "Reflective foil knit fabric detail for festival costume production",
+      "x111.webp": "Wholesale shiny foil stretch fabric close-up for color review",
+      "x112.webp": "Shiny foil surface detail on polyester knit performance fabric",
+      "x113.webp": "4-way stretch foil fabric texture for fitted stage garments",
+      "x114.webp": "Shiny foil knit fabric detail for apparel manufacturer sampling",
+      "x115.webp": "Wholesale shiny foil 4-way stretch knit fabric detail image",
+    },
     detailImages: [
       "x2.webp",
       "x3.webp",
@@ -1854,32 +1997,32 @@ export const allProducts = [
     mainImageUrl: "/images/products/H2013060106/main/a1.webp",
     mainImageWebp: "/images/products/H2013060106/main/a1.webp",
     mainImageAlt:
-      "Dense dot foil suede-look fabric with a small-dot foil surface",
+      "Dense dot foil suede-look fabric for stage props, backdrops and event decoration",
     imageList: [
       {
         src: "/images/products/H2013060106/main/a1.webp",
         webp: "/images/products/H2013060106/main/a1.webp",
-        alt: "Dense dot foil suede-look fabric in a neutral color",
+        alt: "Dense dot foil suede-look fabric main view for stage props and backdrops",
       },
       {
         src: "/images/products/H2013060106/main/a2.webp",
         webp: "/images/products/H2013060106/main/a2.webp",
-        alt: "Dense dot foil suede-look fabric color and surface detail",
+        alt: "Dense dot foil suede-look fabric color and small-dot surface detail",
       },
       {
         src: "/images/products/H2013060106/main/a3.webp",
         webp: "/images/products/H2013060106/main/a3.webp",
-        alt: "Dense dot foil suede-look fabric in a bright color",
+        alt: "Bright dense dot foil suede-look fabric for event decoration",
       },
       {
         src: "/images/products/H2013060106/main/a4.webp",
         webp: "/images/products/H2013060106/main/a4.webp",
-        alt: "Dense dot foil suede-look fabric color assortment",
+        alt: "Dense dot foil suede-look fabric color assortment for display projects",
       },
       {
         src: "/images/products/H2013060106/main/a5.webp",
         webp: "/images/products/H2013060106/main/a5.webp",
-        alt: "Dense dot foil suede-look fabric for stagewear sourcing",
+        alt: "Dense dot foil suede-look fabric for stage costume and backdrop sourcing",
       },
     ],
     galleryMainPath: "/images/products/H2013060106/main/",
@@ -1887,7 +2030,7 @@ export const allProducts = [
     detailImagePath: "/images/products/H2013060106/detail/",
     video: null,
     shortIntro:
-      "Soft suede-like base paired with a dense small-dot foil finish for an elevated visual effect. Wrinkle-resistant and more flexible than full-area hot stamping fabrics. Suitable for stage costumes, performance props, backdrops and event decoration.",
+      "Dense dot foil suede-look fabric with slight stretch, available in 16 colors for stage costumes, performance props, backdrops and event decoration.",
     fullDescription:
       "Soft suede-like base paired with a dense small-dot foil finish for an elevated visual effect. Wrinkle-resistant and more flexible than full-area hot stamping fabrics. Suitable for stage costumes, performance props, backdrops and event decoration.",
     specs: {
@@ -2040,6 +2183,20 @@ export const allProducts = [
       },
     ],
     skuImages: [],
+    detailImageAlts: {
+      "x1.webp": "Dense dot foil suede-look fabric detail showing small-dot reflective surface",
+      "x2.webp": "Close-up of suede-look base with dense foil dot finish",
+      "x3.webp": "Dense dot foil fabric texture for stage prop and backdrop sampling",
+      "x4.webp": "Suede-look foil fabric detail for event decoration panels",
+      "x5.webp": "Reflective small-dot foil surface for performance costume production",
+      "x6.webp": "Dense dot foil suede-look fabric close-up for color review",
+      "x7.webp": "Slight stretch suede-look fabric with embossed foil dot effect",
+      "x8.webp": "Dense dot foil fabric detail for stage backdrop sourcing",
+      "x9.webp": "Wholesale suede-look foil fabric texture for display projects",
+      "x10.webp": "Small-dot laser foil surface on suede-look fabric base",
+      "x11.webp": "Dense dot foil fabric close-up for props and event decoration",
+      "x12.webp": "Wholesale dense dot foil suede-look fabric detail image",
+    },
     detailImages: [
       "x1.webp",
       "x2.webp",
@@ -2066,17 +2223,17 @@ export const allProducts = [
     mainImageUrl: "/images/products/H2013120107/main/1.webp",
     mainImageWebp: "/images/products/H2013120107/main/1.webp",
     mainImageAlt:
-      "Pink iridescent laser foil 4-way stretch fabric with a multi-color reflective finish",
+      "Iridescent laser foil 4-way stretch fabric for stage costumes, dancewear and show costumes",
     imageList: [
       {
         src: "/images/products/H2013120107/main/1.webp",
         webp: "/images/products/H2013120107/main/1.webp",
-        alt: "Pink iridescent laser foil 4-way stretch fabric draped for product display",
+        alt: "Iridescent laser foil 4-way stretch fabric draped for stage costume sourcing",
       },
       {
         src: "/images/products/H2013120107/main/2.webp",
         webp: "/images/products/H2013120107/main/2.webp",
-        alt: "Pink iridescent laser foil 4-way stretch fabric gathered to show stretch and drape",
+        alt: "Iridescent laser foil 4-way stretch fabric gathered to show stretch and drape",
       },
       {
         src: "/images/products/H2013120107/main/3.webp",
@@ -2086,12 +2243,12 @@ export const allProducts = [
       {
         src: "/images/products/H2013120107/main/4.webp",
         webp: "/images/products/H2013120107/main/4.webp",
-        alt: "Iridescent laser foil 4-way stretch fabric texture in pink and purple tones",
+        alt: "Iridescent laser foil 4-way stretch fabric texture for dancewear and show costumes",
       },
       {
         src: "/images/products/H2013120107/main/5.webp",
         webp: "/images/products/H2013120107/main/5.webp",
-        alt: "Detailed view of the reflective surface and fine weave of iridescent laser foil stretch fabric",
+        alt: "Detailed view of reflective iridescent laser foil stretch fabric surface",
       },
     ],
     galleryMainPath: "/images/products/H2013120107/main/",
@@ -2102,7 +2259,7 @@ export const allProducts = [
       poster: "1.webp",
     },
     shortIntro:
-      "Iridescent laser foil 4-way stretch fabric combines a color-shifting reflective surface with a flexible 95% polyester / 5% spandex base. It is designed for stage costumes, performance wear, dancewear, party wear and show costumes.",
+      "Iridescent laser foil 4-way stretch fabric on a 95% polyester / 5% spandex base for stage costumes, dancewear, performance wear, party wear and show costumes.",
     fullDescription:
       "Our iridescent laser foil 4-way stretch fabric uses a 95% polyester / 5% spandex composition for flexible costume and apparel production. Its reflective surface changes with light and viewing angle, giving stage costumes and show costumes a strong visual effect.\n\nThe 4-way stretch construction supports fitted performance wear, dancewear and party wear while allowing movement and recovery. Request a physical sample to review the surface, hand feel and sewing performance before bulk production.",
     specs: {
@@ -2202,6 +2359,14 @@ export const allProducts = [
       },
     ],
     skuImages: [],
+    detailImageAlts: {
+      "1.webp": "Iridescent laser foil 4-way stretch fabric detail showing color-shifting surface",
+      "2.webp": "Close-up of reflective laser foil stretch fabric for dancewear sampling",
+      "3.webp": "Polyester spandex 4-way stretch fabric with iridescent foil finish",
+      "4.webp": "Iridescent laser foil fabric texture for stage costume production",
+      "5.webp": "Reflective stretch foil fabric detail for show costume buyers",
+      "6.webp": "Wholesale iridescent laser foil 4-way stretch fabric detail image",
+    },
     detailImages: ["1.webp", "2.webp", "3.webp", "4.webp", "5.webp", "6.webp"],
   },
 
@@ -2215,12 +2380,32 @@ export const allProducts = [
     mainImageUrl: "/images/products/H2013120106/main/1.webp",
     mainImageWebp: "/images/products/H2013120106/main/1.webp",
     mainImageAlt:
-      "Iridescent gradient laser hot-stamping ice-silk fabric with smooth color-flow finish",
+      "Iridescent gradient foil stretch ice-silk fabric for dancewear and stage costumes",
     imageList: [
       {
         src: "/images/products/H2013120106/main/1.webp",
         webp: "/images/products/H2013120106/main/1.webp",
-        alt: "Iridescent gradient laser hot-stamping ice-silk fabric with smooth color-flow finish",
+        alt: "Iridescent gradient foil stretch ice-silk fabric main view for dancewear",
+      },
+      {
+        src: "/images/products/H2013120106/main/02.webp",
+        webp: "/images/products/H2013120106/main/02.webp",
+        alt: "Gradient iridescent foil stretch fabric drape for stage costumes",
+      },
+      {
+        src: "/images/products/H2013120106/main/03.webp",
+        webp: "/images/products/H2013120106/main/03.webp",
+        alt: "Color-shifting gradient foil ice-silk fabric surface for performance outfits",
+      },
+      {
+        src: "/images/products/H2013120106/main/04.webp",
+        webp: "/images/products/H2013120106/main/04.webp",
+        alt: "Iridescent gradient stretch fabric close-up for dancewear manufacturers",
+      },
+      {
+        src: "/images/products/H2013120106/main/05.webp",
+        webp: "/images/products/H2013120106/main/05.webp",
+        alt: "Gradient laser foil stretch fabric for festival and carnival costumes",
       },
     ],
     galleryMainPath: "/images/products/H2013120106/main/",
@@ -2228,7 +2413,7 @@ export const allProducts = [
     detailImagePath: "/images/products/H2013120106/detail/",
     video: { src: "/images/products/H2013120106/video/1.mp4", poster: "1.webp" },
     shortIntro:
-      "The iridescent gradient laser hot-stamping ice-silk fabric features a smooth gradient that flows across the width of the fabric, shifting through multiple colors under light. The stretch ice-silk base keeps it comfortable against the skin and easy to sew.",
+      "Iridescent gradient foil stretch ice-silk fabric, available in 19 colors for dancewear, stage costumes, performance outfits and festival costumes.",
     fullDescription:
       "The iridescent gradient laser hot-stamping ice-silk fabric features a smooth gradient that flows across the width of the fabric, shifting through multiple colors under light. The stretch ice-silk base keeps it comfortable against the skin and easy to sew. The flowing gradient gives dancewear, stage costumes and performance outfits a strong visual identity.",
     specs: {
@@ -2322,6 +2507,10 @@ export const allProducts = [
       },
     ],
     skuImages: [],
+    detailImageAlts: {
+      "detail01.webp": "Iridescent gradient foil stretch ice-silk fabric detail showing smooth color flow",
+      "detail02.webp": "Close-up of gradient laser foil surface on stretch ice-silk fabric",
+    },
     detailImages: ["detail01.webp", "detail02.webp"],
   },
   {
@@ -2334,7 +2523,7 @@ export const allProducts = [
     mainImageUrl: "/images/products/H2013090104/main/a1.webp",
     mainImageWebp: "/images/products/H2013090104/main/a1.webp",
     mainImageAlt:
-      "Rainbow dot laser foil knit fabric for stage costumes and performance wear",
+      "Rainbow dot laser foil knit fabric for stage costumes, dancewear and performance wear",
     imageList: [
       {
         src: "/images/products/H2013090104/main/a1.webp",
@@ -2349,17 +2538,17 @@ export const allProducts = [
       {
         src: "/images/products/H2013090104/main/a3.webp",
         webp: "/images/products/H2013090104/main/a3.webp",
-        alt: "Yellow rainbow dot laser foil knit fabric drape and shine",
+        alt: "Yellow rainbow dot laser foil knit fabric drape and shine for stagewear",
       },
       {
         src: "/images/products/H2013090104/main/a4.webp",
         webp: "/images/products/H2013090104/main/a4.webp",
-        alt: "Pink rainbow dot foil knit fabric for stage and dancewear",
+        alt: "Pink rainbow dot foil knit fabric for stage costumes and dancewear",
       },
       {
         src: "/images/products/H2013090104/main/a5.webp",
         webp: "/images/products/H2013090104/main/a5.webp",
-        alt: "Green and yellow rainbow dot laser foil knit fabric detail",
+        alt: "Green and yellow rainbow dot laser foil knit fabric surface detail",
       },
     ],
     galleryMainPath: "/images/products/H2013090104/main/",
@@ -2367,7 +2556,7 @@ export const allProducts = [
     detailImagePath: "/images/products/H2013090104/detail/",
     video: null,
     shortIntro:
-      "Rainbow dot laser foil knit fabric for stage costumes, performance outfits and colorful decorative garment panels.",
+      "Rainbow dot laser foil knit fabric, available in 28 colors for stage costumes, dancewear, performance wear and decorative costume panels.",
     fullDescription:
       "Rainbow dot laser foil knit fabric for stage costumes, performance outfits and colorful decorative garment panels.",
     specs: {
@@ -2518,6 +2707,31 @@ export const allProducts = [
       },
     ],
     skuImages: [],
+    detailImageAlts: {
+      "x1.webp": "Rainbow dot laser foil knit fabric detail showing reflective dot surface",
+      "x2.webp": "Close-up of rainbow dot foil texture on lightweight knit fabric",
+      "x3.webp": "Rainbow dot laser foil fabric detail for stage costume sampling",
+      "x4.webp": "Polyester knit fabric with colorful dot laser foil finish",
+      "x5.webp": "Reflective rainbow dot foil surface for dancewear panels",
+      "x6.webp": "Rainbow dot laser foil knit fabric texture for performance wear",
+      "x7.webp": "Lightweight dot foil fabric close-up for costume production",
+      "x8.webp": "Rainbow foil dot knit fabric detail for apparel buyers",
+      "x9.webp": "Colorful laser dot foil fabric surface for decorative panels",
+      "x10.webp": "Wholesale rainbow dot foil knit fabric detail image",
+      "x11.webp": "Rainbow dot laser foil surface for stagewear sourcing",
+      "x12.webp": "Close-up of slight stretch knit fabric with dot foil effect",
+      "x13.webp": "Rainbow dot foil fabric texture for color and surface review",
+      "x14.webp": "Reflective laser foil dots on polyester knit fabric base",
+      "x15.webp": "Rainbow dot laser foil fabric detail for costume panel cutting",
+      "x16.webp": "Dot foil knit fabric close-up for dance costume production",
+      "x17.webp": "Color-shifting rainbow dot foil surface detail",
+      "x18.webp": "Lightweight rainbow dot foil knit fabric for performance apparel",
+      "x19.webp": "Wholesale dot laser foil fabric texture for fabric sourcing",
+      "x20.webp": "Rainbow dot foil knit fabric detail for stage costume manufacturers",
+      "x21.webp": "Reflective dot foil fabric close-up for decorative garment panels",
+      "x22.webp": "Rainbow dot laser foil knit fabric detail for sample review",
+      "x23.webp": "Wholesale rainbow dot laser foil knit fabric close-up image",
+    },
     detailImages: [
       "x1.webp",
       "x2.webp",
@@ -2554,32 +2768,32 @@ export const allProducts = [
     mainImageUrl: "/images/products/H2013120102/main/a1.webp",
     mainImageWebp: "/images/products/H2013120102/main/a1.webp",
     mainImageAlt:
-      "Blue-purple gradient laser foil 4-way stretch spandex fabric for costumes and performance apparel",
+      "Blue-purple gradient laser foil 4-way stretch spandex fabric for stage costumes and dancewear",
     imageList: [
       {
         src: "/images/products/H2013120102/main/a1.webp",
         webp: "/images/products/H2013120102/main/a1.webp",
-        alt: "Blue-purple gradient laser foil 4-way stretch fabric main view",
+        alt: "Blue-purple gradient laser foil 4-way stretch fabric main view for stage costumes",
       },
       {
         src: "/images/products/H2013120102/main/a2.webp",
         webp: "/images/products/H2013120102/main/a2.webp",
-        alt: "Blue-purple laser foil stretch fabric surface detail",
+        alt: "Blue-purple laser foil stretch fabric surface detail for dancewear",
       },
       {
         src: "/images/products/H2013120102/main/a3.webp",
         webp: "/images/products/H2013120102/main/a3.webp",
-        alt: "Gradient laser foil spandex fabric drape and shine",
+        alt: "Gradient laser foil spandex fabric drape and shine for performance apparel",
       },
       {
         src: "/images/products/H2013120102/main/a4.webp",
         webp: "/images/products/H2013120102/main/a4.webp",
-        alt: "Blue-purple gradient foil stretch fabric for stage costumes",
+        alt: "Blue-purple gradient foil stretch fabric for stage costumes and stagewear",
       },
       {
         src: "/images/products/H2013120102/main/a5.webp",
         webp: "/images/products/H2013120102/main/a5.webp",
-        alt: "Blue-purple laser foil spandex fabric for performance costumes",
+        alt: "Blue-purple laser foil spandex fabric for party and festival costumes",
       },
     ],
     galleryMainPath: "/images/products/H2013120102/main/",
@@ -2587,7 +2801,7 @@ export const allProducts = [
     detailImagePath: "/images/products/H2013120102/detail/",
     video: null,
     shortIntro:
-      "Blue-purple gradient laser foil on a 4-way stretch spandex base for stage costumes, dancewear and performance apparel.",
+      "Blue-purple gradient laser foil 4-way stretch spandex fabric for stage costumes, dancewear, performance apparel, party wear and festival costumes.",
     fullDescription:
       "Blue-purple gradient laser foil on a 4-way stretch spandex base for stage costumes, dancewear and performance apparel.",
     specs: {
@@ -2743,6 +2957,17 @@ export const allProducts = [
       },
     ],
     skuImages: [],
+    detailImageAlts: {
+      "x1.webp": "Blue-purple gradient laser foil spandex fabric detail showing color-shift surface",
+      "x2.webp": "Close-up of blue-purple laser foil on 4-way stretch fabric",
+      "x3.webp": "Gradient foil spandex fabric texture for stage costume sampling",
+      "x4.webp": "Blue-purple stretch foil fabric detail for dancewear production",
+      "x5.webp": "Reflective gradient laser foil surface on spandex fabric base",
+      "x6.webp": "4-way stretch spandex fabric with blue-purple foil finish",
+      "x7.webp": "Blue-purple gradient foil fabric detail for performance apparel buyers",
+      "x8.webp": "Wholesale gradient laser foil spandex fabric close-up image",
+      "x9.webp": "Blue-purple foil stretch fabric texture for party and festival costumes",
+    },
     detailImages: [
       "x1.webp",
       "x2.webp",
@@ -2765,32 +2990,32 @@ export const allProducts = [
     mainImageUrl: "/images/products/H2013090101/main/1.webp",
     mainImageWebp: "/images/products/H2013090101/main/1.webp",
     mainImageAlt:
-      "Holographic laser foil snakeskin stretch fabric for swimwear, leggings and dancewear",
+      "Holographic laser foil snakeskin stretch fabric for swimwear, leggings, dancewear and mermaid costumes",
     imageList: [
       {
         src: "/images/products/H2013090101/main/1.webp",
         webp: "/images/products/H2013090101/main/1.webp",
-        alt: "Holographic laser foil snakeskin stretch fabric main view",
+        alt: "Holographic laser foil snakeskin stretch fabric main view for swimwear and dancewear",
       },
       {
         src: "/images/products/H2013090101/main/2.webp",
         webp: "/images/products/H2013090101/main/2.webp",
-        alt: "Laser foil snakeskin stretch fabric drape and reflective surface",
+        alt: "Laser foil snakeskin stretch fabric drape with reflective holographic surface",
       },
       {
         src: "/images/products/H2013090101/main/a1.webp",
         webp: "/images/products/H2013090101/main/a1.webp",
-        alt: "Holographic snakeskin texture on stretch fabric",
+        alt: "Holographic snakeskin texture on stretch polyester spandex fabric for fitted apparel",
       },
       {
         src: "/images/products/H2013090101/main/a2.webp",
         webp: "/images/products/H2013090101/main/a2.webp",
-        alt: "Color-shifting laser foil snakeskin fabric surface",
+        alt: "Color-shifting laser foil snakeskin fabric surface for stage costumes and leggings",
       },
       {
         src: "/images/products/H2013090101/main/a3.webp",
         webp: "/images/products/H2013090101/main/a3.webp",
-        alt: "Snakeskin foil stretch fabric detail for costume production",
+        alt: "Snakeskin foil stretch fabric detail for mermaid-inspired costume production",
       },
     ],
     galleryMainPath: "/images/products/H2013090101/main/",
@@ -2798,7 +3023,7 @@ export const allProducts = [
     detailImagePath: "/images/products/H2013090101/detail/",
     video: null,
     shortIntro:
-      "Holographic snakeskin texture on a slight-stretch base for swimwear, leggings, dancewear and mermaid-inspired costume designs.",
+      "Holographic snakeskin stretch fabric on a polyester-spandex base, available in 70 colors for swimwear, leggings, dancewear and mermaid-inspired costumes.",
     fullDescription:
       "This laser foil snakeskin stretch fabric combines a glossy holographic surface with a flexible 92% polyester and 8% spandex base. The raised snakeskin look creates strong visual movement under light, while the slight stretch supports fitted apparel and costume applications.\n\nIt is developed for swimwear, leggings, dancewear, stage costumes and mermaid-inspired performance designs. Request a physical sample to review the surface effect, color and sewing performance before bulk production.",
     specs: {
@@ -2962,6 +3187,16 @@ export const allProducts = [
       },
     ],
     skuImages: [],
+    detailImageAlts: {
+      "1.webp": "Close-up of holographic laser foil snakeskin texture on stretch fabric",
+      "2.webp": "Reflective snakeskin foil fabric surface for swimwear and leggings",
+      "3.webp": "Holographic snakeskin stretch fabric detail for dancewear and stage costumes",
+      "4.webp": "Color-shifting laser foil snakeskin fabric close-up for surface and color detail",
+      "5.webp": "Polyester spandex snakeskin foil fabric texture for fitted apparel",
+      "6.webp": "Holographic scale-like snakeskin surface for mermaid costume fabric",
+      "7.webp": "Wholesale holographic snakeskin stretch fabric detail image",
+      "8.webp": "Laser foil snakeskin stretch fabric surface for costume manufacturing",
+    },
     detailImages: [
       "1.webp",
       "2.webp",

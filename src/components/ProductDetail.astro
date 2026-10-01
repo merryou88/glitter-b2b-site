@@ -48,6 +48,8 @@ export interface Props {
     faqList: Array<{ question: string; answer: string }>;
     skuImages: Array<{ src: string; alt: string }>;
     detailImages: string[];
+    detailImageAlts?: Record<string, string>;
+    applicationImageAlts?: Record<string, string>;
     heroHighlights?: string[];
     whyChooseHeading?: string;
     whyChoose?: Array<{ title: string; desc: string }>;
@@ -156,6 +158,7 @@ const applicationImages = (() => {
     .map((img) => ({
       src: img.src ?? (img.webp as string),
       webp: img.src ? img.webp : null,
+      alt: product.applicationImageAlts?.[img.sortName] ?? product.mainImageAlt,
     }));
 })();
 
@@ -194,10 +197,11 @@ const galleryImages = (product.galleryImages ?? [])
   .map((f: string) => {
     const src = galleryMainPath + f;
     const webp = src.replace(/\.(png|jpe?g)$/i, ".webp");
+    const configuredImage = product.imageList.find((image) => image.src === src || image.webp === src);
     return {
       src,
       webp: existsSync("public" + webp) ? webp : null,
-      alt: product.mainImageAlt,
+      alt: configuredImage?.alt ?? product.mainImageAlt,
     };
   });
 
@@ -211,7 +215,7 @@ const detailImages = (product.detailImages ?? [])
     return {
       src,
       webp: existsSync("public" + webp) ? webp : null,
-      alt: product.title,
+      alt: product.detailImageAlts?.[f] ?? product.title,
     };
   })
   .filter((img) => existsSync("public" + img.src));
@@ -514,7 +518,6 @@ const heroVideo = product.video
             ))}
           </div>
         )}
-
         <div class="detail-feature-tags">
           <span class="feature-tag feature-tag--green">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -871,7 +874,7 @@ const heroVideo = product.video
               {applicationImages.map((img, index) => (
                 <picture class={isFullPrintHotStampingMilkSilk && index === 2 ? "detail-apps-grid__item detail-apps-grid__item--wide" : "detail-apps-grid__item"}>
                   {img.webp && <source srcset={img.webp} type="image/webp" />}
-                  <img src={img.src} alt={product.mainImageAlt} loading="lazy" width="1672" height="941" class="detail-image" decoding="async" onerror="this.style.display='none'" />
+                  <img src={img.src} alt={img.alt} loading="lazy" width="1672" height="941" class="detail-image" decoding="async" onerror="this.style.display='none'" />
                 </picture>
               ))}
             </div>
