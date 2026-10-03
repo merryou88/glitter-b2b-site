@@ -549,7 +549,9 @@ const PLACEHOLDER_IMAGE =
     let current = 0;
     let autoTimer: ReturnType<typeof setInterval> | null = null;
     let isInViewport = true;
-    const INTERVAL = 5000;
+    const autoPlayMedia = window.matchMedia("(min-width: 769px)");
+    const reducedMotionMedia = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const INTERVAL = 7000;
 
     function loadSlide(index: number) {
       const slide = slides[index];
@@ -597,9 +599,10 @@ const PLACEHOLDER_IMAGE =
     function startAuto() {
       stopAuto();
       if (
+        autoPlayMedia.matches &&
         document.visibilityState === "visible" &&
         isInViewport &&
-        !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        !reducedMotionMedia.matches
       ) {
         autoTimer = setInterval(next, INTERVAL);
       }
@@ -642,8 +645,8 @@ const PLACEHOLDER_IMAGE =
 
     // Avoid animation work while the carousel is off-screen or the tab is hidden.
     document.addEventListener("visibilitychange", startAuto);
-    const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
-    motionPreference.addEventListener?.("change", startAuto);
+    autoPlayMedia.addEventListener?.("change", startAuto);
+    reducedMotionMedia.addEventListener?.("change", startAuto);
     if ("IntersectionObserver" in window) {
       new IntersectionObserver(
         ([entry]) => {
