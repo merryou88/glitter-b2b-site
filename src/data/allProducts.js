@@ -3202,6 +3202,456 @@ export const allProducts = [
       "holographic-snakeskin-stretch-fabric-detail-8.webp",
     ],
   },
+  {
+    slug: "gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric",
+    metaTitle: "Glitter Holographic Foil Nylon Spandex Swimsuit Bikini Fabric | Nixia Fabric",
+    metaDesc:
+      "Gold rainbow gradient metallic foil 4-way stretch nylon spandex fabric for swimwear, lingerie, dancewear, dresses and performance apparel. 41 stock colors, custom colors and a 200 m / 219 yd MOQ.",
+    title: "Gold Rainbow Gradient Metallic Foil 4-Way Stretch Fabric",
+    sku: "H2015030102",
+    mainImageUrl: "/images/products/H2015030102/main/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-main-1.webp",
+    mainImageWebp: "/images/products/H2015030102/main/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-main-1.webp",
+    mainImageAlt:
+      "Gold rainbow gradient metallic foil 4-way stretch nylon spandex fabric for swimwear and dancewear",
+    imageList: [
+      {
+        src: "/images/products/H2015030102/main/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-main-1.webp",
+        webp: "/images/products/H2015030102/main/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-main-1.webp",
+        alt: "Gold rainbow gradient metallic foil 4-way stretch fabric main view with color options",
+      },
+      {
+        src: "/images/products/H2015030102/main/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-main-2.webp",
+        webp: "/images/products/H2015030102/main/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-main-2.webp",
+        alt: "Rainbow metallic foil nylon spandex fabric color range for swimwear and performance apparel",
+      },
+      {
+        src: "/images/products/H2015030102/main/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-main-3.webp",
+        webp: "/images/products/H2015030102/main/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-main-3.webp",
+        alt: "4-way stretch waterproof metallic foil nylon spandex fabric feature detail",
+      },
+      {
+        src: "/images/products/H2015030102/main/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-main-4.webp",
+        webp: "/images/products/H2015030102/main/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-main-4.webp",
+        alt: "Ready stock metallic foil stretch fabric supply for wholesale buyers",
+      },
+    ],
+    galleryMainPath: "/images/products/H2015030102/main/",
+    galleryImages: [
+      "gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-main-1.webp",
+      "gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-main-2.webp",
+      "gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-main-3.webp",
+      "gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-main-4.webp",
+    ],
+    detailImagePath: "/images/products/H2015030102/detail/",
+    video: null,
+    shortIntro:
+      "Gold rainbow gradient metallic foil 4-way stretch nylon spandex fabric with 41 stock colors for swimwear, lingerie, dancewear, dresses and performance apparel.",
+    fullDescription:
+      "Gold rainbow gradient metallic foil 4-way stretch fabric uses an 80% nylon and 20% spandex base with a reflective foil surface. The source data lists 41 stock colors or customized colors for swimwear, lingerie, dancewear, dresses, skirts and performance apparel programs.",
+    specs: {
+      width: "150 cm / 59 in",
+      weight: "200 GSM",
+      baseMaterial: "80% Nylon 20% Spandex",
+      thickness: "",
+      moq: "200 m / 219 yd",
+      leadTime: "3-5",
+    },
+    specTable: [
+      { label: "Product Type", value: "Gold Rainbow Gradient Metallic Foil 4-Way Stretch Fabric" },
+      { label: "Surface Effect", value: "Gold rainbow gradient metallic foil" },
+      { label: "Base Fabric", value: "80% Nylon 20% Spandex" },
+      { label: "Stretch", value: "4-Way Stretch" },
+      { label: "Width", value: "150 cm / 59 in" },
+      { label: "Weight", value: "200 GSM" },
+      { label: "Color", value: "41 stock colors or customized colors" },
+      { label: "MOQ", value: "200 m / 219 yd" },
+      { label: "Yarn Count", value: "40D*40D" },
+      { label: "Finishing", value: "Foil" },
+      { label: "Pattern / Construction", value: "Foil" },
+      { label: "Typical Applications", value: "Swimwear, underwear, lingerie, dancewear, dresses, T-shirts, skirts, performance dress" },
+    ],
+    b2bTable: [
+      { label: "MOQ", value: "200 m / 219 yd" },
+      { label: "Supply type", value: "41 stock colors or customized colors" },
+      { label: "Sample", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
+      { label: "Bulk Lead time", value: "3-5 working days after order and stock confirmation" },
+      { label: "Available Colors", value: "41 stock colors or customized colors" },
+      { label: "OEM / ODM", value: "Custom colors available by project" },
+      { label: "Testing & Compliance", value: "To be confirmed according to buyer requirements" },
+      { label: "Package type", value: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement" },
+      { label: "Trade Terms", value: "To be confirmed in quotation" },
+    ],
+    applications: [
+      "Swimwear",
+      "Lingerie",
+      "Dancewear",
+      "Dresses",
+      "T-Shirts",
+      "Skirts",
+      "Performance Dress",
+    ],
+    inStock: true,
+    stockStatus: "In-Stock",
+    badge: "41 colors",
+    colorCount: 41,
+    tags: ["metallic-foil", "holographic", "nylon-spandex", "4-way-stretch", "swimwear", "dancewear", "lingerie", "dress"],
+    availableColors: "41 stock colors or customized colors",
+    sampleNote: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping.",
+    customizationNote: "Custom colors available by project",
+    packaging: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement",
+    tradeTerms: "To be confirmed in quotation",
+    heroHighlights: [
+      "Gold Rainbow Metallic Foil",
+      "4-Way Stretch",
+      "80% Nylon 20% Spandex",
+      "150 cm / 59 in Width",
+      "200 GSM",
+      "41 Stock Colors",
+    ],
+    whyChooseHeading: "Key Features",
+    whyChoose: [
+      {
+        title: "Metallic Rainbow Foil Surface",
+        desc: "A bright gold rainbow gradient foil effect creates a high-impact surface for swimwear, dancewear and performance apparel.",
+      },
+      {
+        title: "4-Way Stretch",
+        desc: "The confirmed 4-way stretch construction supports fitted garments that need flexibility and recovery.",
+      },
+      {
+        title: "Nylon-Spandex Base",
+        desc: "The 80% nylon and 20% spandex base gives buyers a clear composition for swimwear and apparel development.",
+      },
+      {
+        title: "Quick-Dry and Breathable Features",
+        desc: "The source data lists quick-dry, moisture-absorbent and breathable features for apparel programs.",
+      },
+      {
+        title: "41 Stock Colors",
+        desc: "The product offers 41 stock colors, with customized colors available for qualified projects.",
+      },
+    ],
+    valueStory: {
+      title: "Why Choose This Metallic Foil Stretch Fabric?",
+      body: "This nylon spandex metallic foil fabric combines 4-way stretch, a reflective rainbow foil surface and a wide stock color range, making it useful for swimwear, lingerie, dancewear, dresses and performance apparel programs.",
+    },
+    applicationsHeading: "Recommended Applications",
+    buyerApplications: [
+      {
+        title: "Swimwear & Bikini Fabric",
+        desc: "The nylon-spandex base and 4-way stretch support fitted swimwear and bikini designs.",
+      },
+      {
+        title: "Lingerie & Underwear",
+        desc: "Stretch and shine make the fabric suitable for statement lingerie and underwear panels.",
+      },
+      {
+        title: "Dancewear",
+        desc: "The reflective foil surface helps dancewear stand out under stage or studio lighting.",
+      },
+      {
+        title: "Dresses & Skirts",
+        desc: "Metallic rainbow colors work well for fashion dresses, skirts and decorative apparel pieces.",
+      },
+      {
+        title: "Performance Dress",
+        desc: "The bright foil finish gives performance garments a bold visual effect for show and event styling.",
+      },
+    ],
+    stockDevelopment: [
+      {
+        title: "41 Stock Colors",
+        desc: "Stock color options support faster sample review and color matching before bulk quotation.",
+      },
+      {
+        title: "Custom Color Support",
+        desc: "Customized colors can be discussed for qualified OEM/ODM projects.",
+      },
+    ],
+    sampleCta: {
+      title: "Need Metallic Foil Nylon Spandex Fabric?",
+      body: "Request a sample to review the metallic foil surface, color, stretch and hand feel before production.",
+      buttonLabel: "Request a Sample",
+    },
+    samplePrompt:
+      "Request a sample to review the metallic foil surface, color, stretch and hand feel before production.",
+    faqList: [
+      {
+        question: "What is this metallic foil stretch fabric used for?",
+        answer:
+          "Recommended applications include swimwear, underwear, lingerie, dancewear, dresses, T-shirts, skirts and performance dress programs.",
+      },
+      {
+        question: "What is the composition?",
+        answer:
+          "The source data lists the base material as 80% nylon and 20% spandex.",
+      },
+      {
+        question: "How many colors are available?",
+        answer:
+          "The source data lists 41 stock colors, with customized colors available by project.",
+      },
+      {
+        question: "What is the MOQ?",
+        answer:
+          "The confirmed MOQ is 200 m / 219 yd.",
+      },
+      {
+        question: "Is the fabric suitable for fitted garments?",
+        answer:
+          "Yes. The product is listed as a 4-way-stretch fabric, making it suitable for fitted swimwear, dancewear and apparel designs.",
+      },
+    ],
+    skuImages: [
+      { src: "/images/products/H2015030102/detail/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-color-01-shiny-black.webp", alt: "H2015030102 shiny black metallic foil nylon spandex fabric color swatch" },
+      { src: "/images/products/H2015030102/detail/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-color-02-shiny-white.webp", alt: "H2015030102 shiny white metallic foil nylon spandex fabric color swatch" },
+      { src: "/images/products/H2015030102/detail/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-color-03-shiny-neon-green.webp", alt: "H2015030102 shiny neon green metallic foil nylon spandex fabric color swatch" },
+      { src: "/images/products/H2015030102/detail/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-color-04-old-gold.webp", alt: "H2015030102 old gold metallic foil nylon spandex fabric color swatch" },
+      { src: "/images/products/H2015030102/detail/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-color-05-green-flash.webp", alt: "H2015030102 green flash metallic foil nylon spandex fabric color swatch" },
+      { src: "/images/products/H2015030102/detail/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-color-06-hawaiian-ocean.webp", alt: "H2015030102 Hawaiian ocean metallic foil nylon spandex fabric color swatch" },
+      { src: "/images/products/H2015030102/detail/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-color-07-red.webp", alt: "H2015030102 red metallic foil nylon spandex fabric color swatch" },
+      { src: "/images/products/H2015030102/detail/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-color-08-magenta.webp", alt: "H2015030102 magenta metallic foil nylon spandex fabric color swatch" },
+      { src: "/images/products/H2015030102/detail/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-color-09-very-berry.webp", alt: "H2015030102 very berry metallic foil nylon spandex fabric color swatch" },
+      { src: "/images/products/H2015030102/detail/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-color-10-deep-lavender.webp", alt: "H2015030102 deep lavender metallic foil nylon spandex fabric color swatch" },
+      { src: "/images/products/H2015030102/detail/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-color-11-klein-blue.webp", alt: "H2015030102 Klein blue metallic foil nylon spandex fabric color swatch" },
+      { src: "/images/products/H2015030102/detail/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-color-12-aqua.webp", alt: "H2015030102 aqua metallic foil nylon spandex fabric color swatch" },
+      { src: "/images/products/H2015030102/detail/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-color-13-golden.webp", alt: "H2015030102 golden metallic foil nylon spandex fabric color swatch" },
+      { src: "/images/products/H2015030102/detail/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-color-14-blue-jewel.webp", alt: "H2015030102 blue jewel metallic foil nylon spandex fabric color swatch" },
+      { src: "/images/products/H2015030102/detail/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-color-15-neon-vermillion-orange.webp", alt: "H2015030102 neon vermillion orange metallic foil nylon spandex fabric color swatch" },
+      { src: "/images/products/H2015030102/detail/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-color-16-neon-blazing-orange.webp", alt: "H2015030102 neon blazing orange metallic foil nylon spandex fabric color swatch" },
+      { src: "/images/products/H2015030102/detail/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-color-17-lemon.webp", alt: "H2015030102 lemon metallic foil nylon spandex fabric color swatch" },
+    ],
+    detailImages: [],
+  },
+  {
+    slug: "iridescent-mystic-metallic-foil-nylon-spandex-fabric",
+    metaTitle: "Shiny Metallic Foil 4 Way Stretch Nylon Spandex Fabric | Nixia Fabric",
+    metaDesc:
+      "Iridescent mystic metallic foil nylon spandex fabric for swimwear, lingerie, dancewear, dresses, skirts and apparel programs. 18 colors or customization, 150 cm width, 200 GSM and 200 m / 219 yd MOQ.",
+    title: "Iridescent Mystic Metallic Foil Nylon Spandex Fabric",
+    sku: "H2015030101",
+    mainImageUrl: "/images/products/H2015030101/main/iridescent-mystic-metallic-foil-nylon-spandex-fabric-main-1.webp",
+    mainImageWebp: "/images/products/H2015030101/main/iridescent-mystic-metallic-foil-nylon-spandex-fabric-main-1.webp",
+    mainImageAlt:
+      "Iridescent mystic metallic foil nylon spandex fabric for swimwear and dancewear",
+    imageList: [
+      {
+        src: "/images/products/H2015030101/main/iridescent-mystic-metallic-foil-nylon-spandex-fabric-main-1.webp",
+        webp: "/images/products/H2015030101/main/iridescent-mystic-metallic-foil-nylon-spandex-fabric-main-1.webp",
+        alt: "Iridescent mystic metallic foil nylon spandex fabric main view for swimwear",
+      },
+      {
+        src: "/images/products/H2015030101/main/iridescent-mystic-metallic-foil-nylon-spandex-fabric-main-2.webp",
+        webp: "/images/products/H2015030101/main/iridescent-mystic-metallic-foil-nylon-spandex-fabric-main-2.webp",
+        alt: "4-way stretch iridescent metallic foil fabric feature detail",
+      },
+      {
+        src: "/images/products/H2015030101/main/iridescent-mystic-metallic-foil-nylon-spandex-fabric-main-3.webp",
+        webp: "/images/products/H2015030101/main/iridescent-mystic-metallic-foil-nylon-spandex-fabric-main-3.webp",
+        alt: "80 percent nylon 20 percent spandex metallic foil fabric specification card",
+      },
+      {
+        src: "/images/products/H2015030101/main/iridescent-mystic-metallic-foil-nylon-spandex-fabric-main-4.webp",
+        webp: "/images/products/H2015030101/main/iridescent-mystic-metallic-foil-nylon-spandex-fabric-main-4.webp",
+        alt: "Iridescent mystic metallic foil nylon spandex fabric close-up surface",
+      },
+      {
+        src: "/images/products/H2015030101/main/iridescent-mystic-metallic-foil-nylon-spandex-fabric-main-5.webp",
+        webp: "/images/products/H2015030101/main/iridescent-mystic-metallic-foil-nylon-spandex-fabric-main-5.webp",
+        alt: "Factory warehouse and showroom supply for metallic foil stretch fabric buyers",
+      },
+    ],
+    galleryMainPath: "/images/products/H2015030101/main/",
+    galleryImages: [
+      "iridescent-mystic-metallic-foil-nylon-spandex-fabric-main-1.webp",
+      "iridescent-mystic-metallic-foil-nylon-spandex-fabric-main-2.webp",
+      "iridescent-mystic-metallic-foil-nylon-spandex-fabric-main-3.webp",
+      "iridescent-mystic-metallic-foil-nylon-spandex-fabric-main-4.webp",
+      "iridescent-mystic-metallic-foil-nylon-spandex-fabric-main-5.webp",
+    ],
+    detailImagePath: "/images/products/H2015030101/detail/",
+    video: null,
+    shortIntro:
+      "Iridescent mystic metallic foil nylon spandex fabric with 4-way stretch, quick-dry and breathable features for swimwear, lingerie, dancewear, dresses and apparel programs.",
+    fullDescription:
+      "Iridescent mystic metallic foil nylon spandex fabric uses an 80% nylon and 20% spandex base with a reflective foil surface. The source data lists 18 colors or customization for swimwear, lingerie, dancewear, dresses, skirts, T-shirts and bikini swimwear programs.",
+    specs: {
+      width: "150 cm / 59 in",
+      weight: "200 GSM",
+      baseMaterial: "80% Nylon 20% Spandex",
+      thickness: "",
+      moq: "200 m / 219 yd",
+      leadTime: "To be confirmed",
+    },
+    specTable: [
+      { label: "Product Type", value: "Iridescent Mystic Metallic Foil Nylon Spandex Fabric" },
+      { label: "Surface Effect", value: "Iridescent mystic metallic foil" },
+      { label: "Base Fabric", value: "80% Nylon 20% Spandex" },
+      { label: "Stretch", value: "4-Way Stretch" },
+      { label: "Width", value: "150 cm / 59 in" },
+      { label: "Weight", value: "200 GSM" },
+      { label: "Color", value: "18 colors or customization" },
+      { label: "MOQ", value: "200 m / 219 yd" },
+      { label: "Yarn Count", value: "40D*40D" },
+      { label: "Finishing", value: "Foil" },
+      { label: "Pattern / Construction", value: "Foil" },
+      { label: "Typical Applications", value: "Swimwear, underwear, lingerie, dancewear, dresses, T-shirts, skirts, bikini swimwear" },
+    ],
+    b2bTable: [
+      { label: "MOQ", value: "200 m / 219 yd" },
+      { label: "Supply type", value: "18 colors or customization" },
+      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping." },
+      { label: "Bulk Lead time", value: "7-15 working days" },
+      { label: "Available Colors", value: "18 colors or customization" },
+      { label: "OEM / ODM", value: "Custom colors available by project" },
+      { label: "Testing & Compliance", value: "To be confirmed according to buyer requirements" },
+      { label: "Package type", value: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement" },
+      { label: "Trade Terms", value: "To be confirmed in quotation" },
+    ],
+    applications: [
+      "Swimwear",
+      "Lingerie",
+      "Dancewear",
+      "Dresses",
+      "T-Shirts",
+      "Skirts",
+      "Bikini Swimwear",
+    ],
+    inStock: false,
+    stockStatus: "Made to Order",
+    badge: "18 colors",
+    colorCount: 18,
+    tags: ["metallic-foil", "iridescent", "nylon-spandex", "4-way-stretch", "swimwear", "dancewear", "lingerie", "dress"],
+    availableColors: "18 colors or customization",
+    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping.",
+    customizationNote: "Custom colors available by project",
+    packaging: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement",
+    tradeTerms: "To be confirmed in quotation",
+    heroHighlights: [
+      "Iridescent Mystic Metallic Foil",
+      "4-Way Stretch",
+      "80% Nylon 20% Spandex",
+      "150 cm / 59 in Width",
+      "200 GSM",
+      "18 Colors or Customization",
+    ],
+    whyChooseHeading: "Key Features",
+    whyChoose: [
+      {
+        title: "Iridescent Metallic Foil Surface",
+        desc: "A mystic reflective foil effect gives swimwear, dancewear and performance apparel a high-impact iridescent look.",
+      },
+      {
+        title: "4-Way Stretch",
+        desc: "The confirmed 4-way-stretch construction supports fitted garments that need flexibility and recovery.",
+      },
+      {
+        title: "Nylon-Spandex Base",
+        desc: "The 80% nylon and 20% spandex base gives buyers a clear composition for swimwear and apparel development.",
+      },
+      {
+        title: "Quick-Dry and Breathable Features",
+        desc: "The source data lists quick-dry, moisture-absorbent and breathable features for apparel programs.",
+      },
+      {
+        title: "18 Colors or Customization",
+        desc: "The product offers 18 colors, with custom colors available for qualified projects.",
+      },
+    ],
+    valueStory: {
+      title: "Why Choose This Iridescent Metallic Foil Stretch Fabric?",
+      body: "This nylon spandex metallic foil fabric combines 4-way stretch, a mystic iridescent surface and an apparel-focused specification set, making it useful for swimwear, lingerie, dancewear, dresses and bikini swimwear programs.",
+    },
+    applicationsHeading: "Recommended Applications",
+    buyerApplications: [
+      {
+        title: "Swimwear & Bikini Fabric",
+        desc: "The nylon-spandex base and 4-way stretch support fitted swimwear and bikini designs.",
+      },
+      {
+        title: "Lingerie & Underwear",
+        desc: "Stretch and shine make the fabric suitable for statement lingerie and underwear panels.",
+      },
+      {
+        title: "Dancewear",
+        desc: "The reflective foil surface helps dancewear stand out under stage or studio lighting.",
+      },
+      {
+        title: "Dresses & Skirts",
+        desc: "Iridescent mystic colors work well for fashion dresses, skirts and decorative apparel pieces.",
+      },
+      {
+        title: "T-Shirts & Apparel Panels",
+        desc: "The metallic foil surface can be used for fashion apparel panels that need a bright decorative finish.",
+      },
+    ],
+    stockDevelopment: [
+      {
+        title: "18 Colors or Customization",
+        desc: "Color options support sample review and project matching before bulk quotation.",
+      },
+      {
+        title: "Custom Color Support",
+        desc: "Customized colors can be discussed for qualified OEM/ODM projects.",
+      },
+    ],
+    sampleCta: {
+      title: "Need Iridescent Metallic Foil Nylon Spandex Fabric?",
+      body: "Request a sample to review the metallic foil surface, color, stretch and hand feel before production.",
+      buttonLabel: "Request a Sample",
+    },
+    samplePrompt:
+      "Request a sample to review the metallic foil surface, color, stretch and hand feel before production.",
+    faqList: [
+      {
+        question: "What is this iridescent metallic foil fabric used for?",
+        answer:
+          "Recommended applications include swimwear, underwear, lingerie, dancewear, dresses, T-shirts, skirts and bikini swimwear programs.",
+      },
+      {
+        question: "What is the composition?",
+        answer:
+          "The source data lists the base material as 80% nylon and 20% spandex.",
+      },
+      {
+        question: "How many colors are available?",
+        answer:
+          "The source data lists 18 colors or customization.",
+      },
+      {
+        question: "What is the MOQ?",
+        answer:
+          "The confirmed MOQ is 200 m / 219 yd.",
+      },
+      {
+        question: "Is the fabric suitable for fitted garments?",
+        answer:
+          "Yes. The product is listed as a 4-way-stretch fabric, making it suitable for fitted swimwear, dancewear and apparel designs.",
+      },
+    ],
+    skuImages: [
+      { src: "/images/products/H2015030101/detail/iridescent-mystic-metallic-foil-nylon-spandex-fabric-color-01.webp", alt: "H2015030101 iridescent mystic metallic foil nylon spandex fabric color swatch 01" },
+      { src: "/images/products/H2015030101/detail/iridescent-mystic-metallic-foil-nylon-spandex-fabric-color-02.webp", alt: "H2015030101 iridescent mystic metallic foil nylon spandex fabric color swatch 02" },
+      { src: "/images/products/H2015030101/detail/iridescent-mystic-metallic-foil-nylon-spandex-fabric-color-03.webp", alt: "H2015030101 iridescent mystic metallic foil nylon spandex fabric color swatch 03" },
+      { src: "/images/products/H2015030101/detail/iridescent-mystic-metallic-foil-nylon-spandex-fabric-color-04.webp", alt: "H2015030101 iridescent mystic metallic foil nylon spandex fabric color swatch 04" },
+      { src: "/images/products/H2015030101/detail/iridescent-mystic-metallic-foil-nylon-spandex-fabric-color-05.webp", alt: "H2015030101 iridescent mystic metallic foil nylon spandex fabric color swatch 05" },
+      { src: "/images/products/H2015030101/detail/iridescent-mystic-metallic-foil-nylon-spandex-fabric-color-06.webp", alt: "H2015030101 iridescent mystic metallic foil nylon spandex fabric color swatch 06" },
+      { src: "/images/products/H2015030101/detail/iridescent-mystic-metallic-foil-nylon-spandex-fabric-color-07.webp", alt: "H2015030101 iridescent mystic metallic foil nylon spandex fabric color swatch 07" },
+      { src: "/images/products/H2015030101/detail/iridescent-mystic-metallic-foil-nylon-spandex-fabric-color-08.webp", alt: "H2015030101 iridescent mystic metallic foil nylon spandex fabric color swatch 08" },
+      { src: "/images/products/H2015030101/detail/iridescent-mystic-metallic-foil-nylon-spandex-fabric-color-09.webp", alt: "H2015030101 iridescent mystic metallic foil nylon spandex fabric color swatch 09" },
+      { src: "/images/products/H2015030101/detail/iridescent-mystic-metallic-foil-nylon-spandex-fabric-color-10.webp", alt: "H2015030101 iridescent mystic metallic foil nylon spandex fabric color swatch 10" },
+      { src: "/images/products/H2015030101/detail/iridescent-mystic-metallic-foil-nylon-spandex-fabric-color-11.webp", alt: "H2015030101 iridescent mystic metallic foil nylon spandex fabric color swatch 11" },
+      { src: "/images/products/H2015030101/detail/iridescent-mystic-metallic-foil-nylon-spandex-fabric-color-12.webp", alt: "H2015030101 iridescent mystic metallic foil nylon spandex fabric color swatch 12" },
+      { src: "/images/products/H2015030101/detail/iridescent-mystic-metallic-foil-nylon-spandex-fabric-color-13.webp", alt: "H2015030101 iridescent mystic metallic foil nylon spandex fabric color swatch 13" },
+      { src: "/images/products/H2015030101/detail/iridescent-mystic-metallic-foil-nylon-spandex-fabric-color-14.webp", alt: "H2015030101 iridescent mystic metallic foil nylon spandex fabric color swatch 14" },
+      { src: "/images/products/H2015030101/detail/iridescent-mystic-metallic-foil-nylon-spandex-fabric-color-15.webp", alt: "H2015030101 iridescent mystic metallic foil nylon spandex fabric color swatch 15" },
+      { src: "/images/products/H2015030101/detail/iridescent-mystic-metallic-foil-nylon-spandex-fabric-color-16.webp", alt: "H2015030101 iridescent mystic metallic foil nylon spandex fabric color swatch 16" },
+      { src: "/images/products/H2015030101/detail/iridescent-mystic-metallic-foil-nylon-spandex-fabric-color-17.webp", alt: "H2015030101 iridescent mystic metallic foil nylon spandex fabric color swatch 17" },
+      { src: "/images/products/H2015030101/detail/iridescent-mystic-metallic-foil-nylon-spandex-fabric-color-18.webp", alt: "H2015030101 iridescent mystic metallic foil nylon spandex fabric color swatch 18" },
+    ],
+    detailImages: [],
+  },
+
 ];
 
 // Keep every public product page answer-ready for the core B2B buying questions.
@@ -3294,6 +3744,8 @@ export const performanceProductSlugs = [
   "blue-purple-gradient-laser-foil-spandex-fabric",
   "rainbow-dot-laser-foil-knit-fabric",
   "holographic-snakeskin-stretch-fabric",
+  "gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric",
+  "iridescent-mystic-metallic-foil-nylon-spandex-fabric",
 ];
 
 export const performanceProducts = allProducts.filter((product) =>

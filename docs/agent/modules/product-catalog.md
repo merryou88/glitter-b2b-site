@@ -42,7 +42,7 @@ requirement_docs:
 - `ProductDetail` 统一承载产品正文、图库、FAQ 和 CTA
 
 ## 数据与状态
-- 当前产品数据数：15；`/products/` 当前展示 `performanceProducts` 中的 15 个产品
+- 当前产品数据数：17；`/products/` 当前展示 `performanceProducts` 中的 17 个产品
 - `ProductDetail` 会根据产品对象读取 `specs`、`faqList`、`imageList`、`galleryImages`、`detailImages`
 - `src/pages/products/[slug].astro` 负责 FAQ / Breadcrumb JSON-LD；询盘型产品页不输出 Product JSON-LD
 - 2026-09-19 至 2026-10-19 的下一批产品候选筛选记录在 `workflows/next-product-candidate-plan.md`；H2013060104、H2013060102、H2013090101、H2013120101、H2013120103、H2013120104 与 H2013120105 已由用户确认并进入公开产品集合，其余初筛对象仍按计划复核

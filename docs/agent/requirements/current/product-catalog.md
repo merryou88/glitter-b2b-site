@@ -5,12 +5,12 @@ status: current
 
 ### REQ-PRODUCT-001：产品列表页仅展示当前定位相关产品
 - 状态：active
-- 当前规则：`/products/` 只展示 `performanceProducts` 中适用于 foil、holographic、iridescent、stretch、舞台服装、舞蹈服、表演服、Performance & Party Wear、舞台道具、背景布、活动装饰、泳装、cosplay、dresses、tops、formalwear、mermaid skirts 和 Halloween costumes 的产品；glitter leather、PU accessory、鞋材、手袋、工艺、玩具等退出定位产品不得出现在产品卡片、推荐排序、产品总数、场景入口、筛选结果或询盘选择中。产品列表页不再展示应用场景入口，场景导航由独立应用页面承担。
-- 验收条件：当前目录页展示 15 个公开产品；筛选、排序和总数均基于这 15 个产品；页面不出现鞋材、手袋、工艺或玩具等退出行业产品入口。
+- 当前规则：`/products/` 只展示 `performanceProducts` 中适用于 foil、holographic、iridescent、stretch、舞台服装、舞蹈服、表演服、Performance & Party Wear、舞台道具、背景布、活动装饰、泳装、cosplay、dresses、tops、formalwear、lingerie、mermaid skirts 和 Halloween costumes 的产品；glitter leather、PU accessory、鞋材、手袋、工艺、玩具等退出定位产品不得出现在产品卡片、推荐排序、产品总数、场景入口、筛选结果或询盘选择中。产品列表页不再展示应用场景入口，场景导航由独立应用页面承担。
+- 验收条件：当前目录页展示 17 个公开产品；筛选、排序和总数均基于这 17 个产品；页面不出现鞋材、手袋、工艺或玩具等退出行业产品入口。
 - 影响模块：`product-catalog`
 - 代码路径：`src/data/allProducts.js`、`src/pages/products.astro`
 - 测试路径：`npm run build`，手动检查 `/products/`
-- 最后变更编号：CHG-20260929-004-h2013120105-product-detail
+- 最后变更编号：CHG-20261005-003-h2015030101-product-detail
 - 待确认事项：无
 
 ### REQ-PRODUCT-002：每个公开产品生成独立静态详情页
@@ -314,6 +314,26 @@ status: current
 - 测试路径：`npm run validate:products`、`npm run build`，检查 `/products/iridescent-laser-hot-stamping-stretch-ice-silk/`
 - 最后变更编号：CHG-20260930-001-h2013120107-product-positioning
 - 待确认事项：宽度、克重、MOQ、颜色、库存、交期和测试合规继续按现有业务资料与报价确认
+
+### REQ-PRODUCT-036：H2015030102 公开产品页聚焦金色彩虹金属箔尼龙氨纶四面弹面料
+- 状态：active
+- 当前规则：`gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric` 是 H2015030102 的公开详情页，产品事实必须以 `面料独立站产品数据.xlsx` 的 `Independent Site Product Data` sheet 中 H2015030102 行为准。H1 使用 `Gold Rainbow Gradient Metallic Foil 4-Way Stretch Fabric`，SEO 标题使用 `Glitter Holographic Foil Nylon Spandex Swimsuit Bikini Fabric | Nixia Fabric`，应用和规格均以表格为准。产品规格只能使用已确认数据：150 cm / 59 in、200 GSM、MOQ 200 m / 219 yd、41 stock colors or customized colors、4-way stretch、40D*40D、foil finish、foil construction 和 80% Nylon 20% Spandex。测试合规和贸易条款未在来源数据确认时保持 `To be confirmed` 或项目确认表述。
+- 验收条件：详情页可生成并显示 Key Features、Recommended Applications、Why Choose、Ready Stock & Custom Development、Sample CTA、FAQ 和 Color Options；主图读取 `public/images/products/H2015030102/main/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-main-1.webp` 至 `main-4.webp`；色卡读取 17 张 WebP 色卡作为 SKU Color Gallery；JPG 原图归档到 `products-data/original-images/images/products/H2015030102/`，线上目录只保留 WebP 展示图；主图首张 WebP 不加水印，其余主图 WebP 添加 3 个低透明度、逆时针 45 度倾斜域名水印；色卡 WebP 不加水印；`Specifications Table for B2B Buyers` 前不出现独立 `Product Description` 模块。
+- 影响模块：`product-catalog`、`content-data`、`inquiry-forms`
+- 代码路径：`src/data/allProducts.js`、`src/components/ProductDetail.astro`、`public/images/products/H2015030102/`、`products-data/original-images/images/products/H2015030102/`
+- 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric/`
+- 最后变更编号：CHG-20261005-002-h2015030102-product-detail
+- 待确认事项：测试合规、贸易条款和上线后 Search Console/GA4/RFQ 归因需按项目确认
+
+### REQ-PRODUCT-037：H2015030101 公开产品页聚焦幻彩金属箔尼龙氨纶四面弹面料
+- 状态：active
+- 当前规则：`iridescent-mystic-metallic-foil-nylon-spandex-fabric` 是 H2015030101 的公开详情页，产品事实必须以 `面料独立站产品数据.xlsx` 的 `Independent Site Product Data` sheet 中 H2015030101 行为准。H1 使用 `Iridescent Mystic Metallic Foil Nylon Spandex Fabric`，SEO 标题使用 `Shiny Metallic Foil 4 Way Stretch Nylon Spandex Fabric | Nixia Fabric`，应用和规格均以表格为准。产品规格只能使用已确认数据：150 cm / 59 in、200 GSM、MOQ 200 m / 219 yd、18 colors or customization、4-way stretch、40D*40D、foil finish、foil construction 和 80% Nylon 20% Spandex。库存状态、测试合规和贸易条款未在来源数据确认时保持 `Made to Order`、`To be confirmed` 或项目确认表述。
+- 验收条件：详情页可生成并显示 Key Features、Recommended Applications、Why Choose、Ready Stock & Custom Development、Sample CTA、FAQ 和 Color Options；主图读取 `public/images/products/H2015030101/main/iridescent-mystic-metallic-foil-nylon-spandex-fabric-main-1.webp` 至 `main-5.webp`；色卡读取 18 张 WebP 色卡作为 SKU Color Gallery；JPG 原图归档到 `products-data/original-images/images/products/H2015030101/`，线上目录只保留 WebP 展示图；主图首张 WebP 不加水印，其余主图 WebP 添加 3 个低透明度、逆时针 45 度倾斜域名水印；色卡 WebP 不加水印；`Specifications Table for B2B Buyers` 前不出现独立 `Product Description` 模块。
+- 影响模块：`product-catalog`、`content-data`、`inquiry-forms`
+- 代码路径：`src/data/allProducts.js`、`src/components/ProductDetail.astro`、`public/images/products/H2015030101/`、`products-data/original-images/images/products/H2015030101/`
+- 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/iridescent-mystic-metallic-foil-nylon-spandex-fabric/`
+- 最后变更编号：CHG-20261005-003-h2015030101-product-detail
+- 待确认事项：库存状态、测试合规、贸易条款和上线后 Search Console/GA4/RFQ 归因需按项目确认
 
 ### REQ-PRODUCT-005：重点产品 H2013090102 聚焦 Iridescent Spandex 搜索意图
 - 状态：active

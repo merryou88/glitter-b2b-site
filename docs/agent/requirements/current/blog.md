@@ -82,3 +82,23 @@ status: current
 - 测试路径：`npm run build`；检查生成页包含 `/applications/custom-foil-fabric-development/`
 - 最后变更编号：CHG-20260930-005-custom-foil-blog
 - 待确认事项：无
+
+### REQ-BLOG-009：Foil Stretch Fabric 出货前质检文章
+- 状态：active
+- 当前规则：公开博客保留 `Pre-Shipment Quality Control Checklist for Foil Stretch Fabric`，内容面向面料采购经理，必须覆盖 approved sample 对照、颜色与 foil 表面、usable width、数量与卷装、拉伸/缝制抽查、包装与文件、异常记录和放行决定。文章应提供可执行的表格或清单，不得使用无法验证的绝对质量承诺。
+- 验收条件：文章使用独立 URL `/blog/pre-shipment-quality-control-checklist-foil-stretch-fabric/`；`/blog/what-to-include-in-a-custom-fabric-rfq/` 保留给 Custom Fabric RFQ 文章；标题、摘要和正文均围绕出货前质检；正文包含实际检查顺序、异常处理方式、FAQ 和询盘入口；构建成功。
+- 影响模块：`blog-knowledge`、`content-data`
+- 代码路径：`src/data/blogArticles.js`
+- 测试路径：`npm run build`
+- 最后变更编号：CHG-20261005-001-pre-shipment-qc-guide
+- 待确认事项：无
+
+### REQ-BLOG-010：三篇面料样品与批量前测试指南
+- 状态：active
+- 当前规则：公开博客新增三篇面向采购经理的实操指南：`How to Compare Foil Fabric Samples from Different Suppliers`、`Stretch Recovery vs. Stretch Amount: What Fabric Buyers Should Check` 和 `How to Evaluate Foil Adhesion Before Bulk Production`。文章必须围绕真实采购流程展开，提供样品对比、拉伸/回复、裁剪缝制、表面检查、过程测试、记录和批量放行建议，不得把内部筛查步骤描述为认证测试或绝对性能保证。
+- 验收条件：三篇文章都能生成独立静态路由；每篇包含详细正文、至少一张采购表格或可执行清单、FAQ、真实产品回链和询盘 CTA；首页资源分组能找到三篇文章；公开文章不引入 glitter、鞋包或无关行业内容；构建或页面生成检查通过。
+- 影响模块：`blog-knowledge`、`content-data`、`product-catalog`
+- 代码路径：`src/data/blogArticles.js`、`src/pages/blog/index.astro`
+- 测试路径：`npm run build`；文章数据检查；公开产品校验
+- 最后变更编号：CHG-20261005-002-sample-testing-buyer-guides
+- 待确认事项：无
