@@ -38,7 +38,7 @@ export const allProducts = [
     slug: "rainbow-stripe-foil-4-way-stretch-fabric",
     metaTitle: "Rainbow Stripe Foil Stretch Fabric | Nixia Fabric",
     metaDesc:
-      "Rainbow stripe foil stretch fabric for stage costumes, dancewear and performance outfits. Made to order with a 100 m / 109 yd MOQ. Custom colors, samples and wholesale quotations are available.",
+      "Rainbow stripe foil stretch fabric for stage costumes and dancewear. Made to order, 100 m / 109 yd MOQ. Samples and custom colors available.",
     title: "Rainbow Stripe Foil 4-Way Stretch Fabric for Stage Costumes",
     sku: "H2013060102",
     mainImageUrl: "/images/products/H2013060102/main/rainbow-stripe-foil-4-way-stretch-fabric-main-1.webp",
@@ -238,7 +238,7 @@ export const allProducts = [
     slug: "plain-iridescent-laser-spandex-4-way-stretch",
     metaTitle: "Iridescent Laser Foil Spandex | Nixia Fabric",
     metaDesc:
-      "Iridescent laser foil spandex with 4-way stretch for dancewear, stage costumes and performance wear. Ready stock, free stock samples and a 100 m / 109 yd MOQ. Custom development is available.",
+      "Iridescent laser foil spandex with 4-way stretch for dancewear and stage costumes. Ready stock, samples and 100 m / 109 yd MOQ. Custom development available.",
     title: "Iridescent Spandex Laser Foil 4-Way Stretch Fabric",
     sku: "H2013090102",
     mainImageUrl: "/images/products/H2013090102/main/plain-iridescent-laser-spandex-4-way-stretch-main-1.webp",
@@ -415,7 +415,7 @@ export const allProducts = [
     slug: "rainbow-iridescent-laser-foil-nylon-spandex-fabric",
     metaTitle: "Rainbow Iridescent Laser Foil Fabric | Nixia Fabric",
     metaDesc:
-      "Rainbow iridescent laser foil on a 4-way stretch nylon-spandex base for bodysuits, swimwear and stagewear. Made to order with a 100 m / 109 yd MOQ. Custom colors and samples are available.",
+      "Rainbow iridescent laser foil on 4-way stretch nylon-spandex for bodysuits, swimwear and stagewear. Made to order, 100 m / 109 yd MOQ. Samples available.",
     title: "Rainbow Iridescent Laser Foil Nylon-Spandex 4-Way Stretch Fabric",
     sku: "H2013120101",
     mainImageUrl: "/images/products/H2013120101/main/rainbow-iridescent-laser-foil-nylon-spandex-fabric-main-1.webp",
@@ -647,7 +647,7 @@ export const allProducts = [
     slug: "gradient-rainbow-dot-foil-knit-fabric",
     metaTitle: "Gradient Rainbow Dot Foil Fabric | Nixia Fabric",
     metaDesc:
-      "Gradient rainbow dot foil knit fabric for stage costumes, performance wear and costume accessories. Made to order with a 200 m / 219 yd MOQ. Custom colors, samples and wholesale quotes are available.",
+      "Gradient rainbow dot foil knit fabric for stage costumes and performance wear. Made to order with a 200 m / 219 yd MOQ. Samples and custom colors are available.",
     title: "Gradient Rainbow Dot Foil Knit Fabric for Stage Costumes",
     sku: "H2013120103",
     mainImageUrl: "/images/products/H2013120103/main/gradient-rainbow-dot-foil-knit-fabric-main-1.webp",
@@ -877,7 +877,7 @@ export const allProducts = [
     slug: "rainbow-fingerprint-dot-foil-ice-silk-fabric",
     metaTitle: "Rainbow Fingerprint Dot Foil Fabric | Nixia Fabric",
     metaDesc:
-      "Rainbow fingerprint-dot foil on an ice-silk stretch knit base for dresses, tops, formalwear and performance garments. Made to order with a 200 m / 219 yd MOQ. Request a sample or custom quotation.",
+      "Rainbow fingerprint-dot foil on ice-silk stretch knit for formalwear and performance garments. Made to order, 200 m / 219 yd MOQ. Samples available.",
     title: "Rainbow Fingerprint Dot Foil Stretch Knit Fabric",
     sku: "H2013120104",
     mainImageUrl: "/images/products/H2013120104/main/rainbow-fingerprint-dot-foil-ice-silk-fabric-main-1.webp",
@@ -1126,7 +1126,7 @@ export const allProducts = [
     slug: "holographic-mermaid-scale-milk-silk-stretch-fabric",
     metaTitle: "Holographic Mermaid Scale Stretch Fabric | Nixia Fabric",
     metaDesc:
-      "Holographic mermaid scale foil on a high-stretch milk-silk base for mermaid skirts, stage costumes and dancewear. Made to order with a 100 m / 109 yd MOQ. Samples and custom colors are available.",
+      "Holographic mermaid scale foil on high-stretch milk-silk for skirts, stage costumes and dancewear. Made to order, 100 m / 109 yd MOQ. Samples available.",
     title: "Holographic Mermaid Scale Milk Silk 4-Way Stretch Fabric",
     sku: "H2013120105",
     mainImageUrl: "/images/products/H2013120105/main/holographic-mermaid-scale-milk-silk-stretch-fabric-main-1.webp",
@@ -1357,7 +1357,7 @@ export const allProducts = [
     slug: "full-print-hot-stamping-spandex-milk-silk",
     metaTitle: "Full-Print Foil Spandex Fabric | Nixia Fabric",
     metaDesc:
-      "Full-print foil spandex milk-silk fabric with 4-way stretch for stage costumes, dancewear and performance outfits. Ready stock, free stock samples and a 100 m / 109 yd MOQ per design. Custom prints are available.",
+      "Full-print foil spandex milk-silk with 4-way stretch for stage costumes and dancewear. Ready stock, samples and 100 m / 109 yd MOQ. Custom prints available.",
     title: "Full-Print Foil Spandex Milk-Silk Fabric",
     sku: "P0002",
     mainImageUrl: "/images/products/H2013060101/main/full-print-hot-stamping-spandex-milk-silk-main-1.webp",
@@ -1515,7 +1515,7 @@ export const allProducts = [
     slug: "double-layer-pleated-foil-knit-fabric",
     metaTitle: "Pleated Foil Knit Fabric | Nixia Fabric",
     metaDesc:
-      "Double-layer pleated foil knit fabric for performance skirts, stage costumes, dresses and dancewear. Made to order with a 100 m / 109 yd MOQ. Custom colors, samples and wholesale quotations are available.",
+      "Double-layer pleated foil knit for performance skirts, stage costumes and dancewear. Made to order, 100 m / 109 yd MOQ. Samples and custom colors available.",
     title: "Double-Layer Pleated Foil Knit Fabric for Performance Skirts",
     sku: "H2013060104",
     mainImageUrl: "/images/products/H2013060104/main/double-layer-pleated-foil-knit-fabric-main-1.webp",
@@ -1744,7 +1744,7 @@ export const allProducts = [
     slug: "shiny-foil-4-way-stretch-knit-fabric",
     metaTitle: "Shiny Foil Stretch Knit Fabric | Nixia Fabric",
     metaDesc:
-      "Shiny foil 4-way stretch knit fabric for stage costumes, dancewear, party apparel and performance wear. Ready stock, free stock samples and a 100 m / 109 yd MOQ. Custom development is available.",
+      "Shiny foil 4-way stretch knit for stage costumes, dancewear and party apparel. Ready stock, samples and 100 m / 109 yd MOQ. Custom development available.",
     title: "Shiny Foil 4-Way Stretch Knit Fabric for Performance & Party Wear",
     sku: "H2013060105",
     mainImageUrl: "/images/products/H2013060105/main/shiny-foil-4-way-stretch-knit-fabric-main-1.webp",
@@ -1985,7 +1985,7 @@ export const allProducts = [
     slug: "dense-dot-foil-suede-look-fabric",
     metaTitle: "Dense Dot Foil Suede-Look Fabric | Nixia Fabric",
     metaDesc:
-      "Dense dot foil suede-look fabric for stage costumes, performance props, backdrops and event decoration. Ready stock, free stock samples and a 100 m / 109 yd MOQ. Custom colors are available.",
+      "Dense dot foil suede-look fabric for stage props, backdrops and event decoration. Ready stock, samples and 100 m / 109 yd MOQ. Custom colors available.",
     title: "Dense Dot Foil Suede-Look Fabric for Stage Props & Backdrops",
     sku: "H2013060106",
     mainImageUrl: "/images/products/H2013060106/main/dense-dot-foil-suede-look-fabric-main-1.webp",
@@ -2211,7 +2211,7 @@ export const allProducts = [
     slug: "iridescent-laser-hot-stamping-stretch-ice-silk",
     metaTitle: "Iridescent Laser Foil Stretch Fabric | Nixia Fabric",
     metaDesc:
-      "Iridescent laser foil 4-way stretch fabric for stage costumes, performance wear, dancewear and party apparel. Ready stock, free stock samples and a 100 m / 109 yd MOQ per color. Custom colors are available.",
+      "Iridescent laser foil 4-way stretch fabric for stage costumes and dancewear. Ready stock, samples and 100 m / 109 yd MOQ per color. Custom colors available.",
     title: "Iridescent Laser Foil 4-Way Stretch Fabric",
     sku: "H2013120107",
     mainImageUrl: "/images/products/H2013120107/main/iridescent-laser-hot-stamping-stretch-ice-silk-main-1.webp",
@@ -2368,7 +2368,7 @@ export const allProducts = [
     slug: "iridescent-gradient-laser-ice-silk",
     metaTitle: "Gradient Iridescent Stretch Fabric | Nixia Fabric",
     metaDesc:
-      "Gradient iridescent foil stretch fabric for dancewear, stage costumes, performance wear and party apparel. Ready stock, free stock samples and a 100 m / 109 yd MOQ per colorway. Custom gradients are available.",
+      "Gradient iridescent foil stretch fabric for dancewear and stage costumes. Ready stock, samples and 100 m / 109 yd MOQ per colorway. Custom gradients available.",
     title: "Iridescent Gradient Foil Stretch Fabric for Dancewear & Costumes",
     sku: "P0005",
     mainImageUrl: "/images/products/H2013120106/main/iridescent-gradient-laser-ice-silk-main-1.webp",
@@ -2511,7 +2511,7 @@ export const allProducts = [
     slug: "rainbow-dot-laser-foil-knit-fabric",
     metaTitle: "Rainbow Dot Laser Foil Knit Fabric | Nixia Fabric",
     metaDesc:
-      "Rainbow dot laser foil knit fabric for stage costumes, dancewear and performance outfits. Ready stock with 28 colors and a 200 m / 219 yd MOQ. Free stock samples and custom colors are available.",
+      "Rainbow dot laser foil knit for stage costumes and dancewear. Ready stock, 28 colors and 200 m / 219 yd MOQ. Samples and custom colors available.",
     title: "Rainbow Dot Laser Foil Knit Fabric for Stage Costumes",
     sku: "H2013090104",
     mainImageUrl: "/images/products/H2013090104/main/rainbow-dot-laser-foil-knit-fabric-main-1.webp",
@@ -2756,7 +2756,7 @@ export const allProducts = [
     slug: "blue-purple-gradient-laser-foil-spandex-fabric",
     metaTitle: "Blue-Purple Gradient Foil Spandex | Nixia Fabric",
     metaDesc:
-      "Blue-purple gradient laser foil on a 4-way stretch spandex base for stage costumes, dancewear and performance apparel. Made to order with a 100 m / 109 yd MOQ. Custom colors and samples are available.",
+      "Blue-purple gradient laser foil on 4-way stretch spandex for stage costumes and dancewear. Made to order, 100 m MOQ. Samples and custom colors available.",
     title: "Blue-Purple Gradient Laser Foil 4-Way Stretch Fabric",
     sku: "H2013120102",
     mainImageUrl: "/images/products/H2013120102/main/blue-purple-gradient-laser-foil-spandex-fabric-main-1.webp",
@@ -2978,7 +2978,7 @@ export const allProducts = [
     slug: "holographic-snakeskin-stretch-fabric",
     metaTitle: "Holographic Snakeskin Stretch Fabric | Nixia Fabric",
     metaDesc:
-      "Holographic snakeskin stretch fabric for swimwear, leggings, dancewear and mermaid-inspired costumes. Made to order with a 100 m / 109 yd MOQ. Custom development and samples are available.",
+      "Holographic snakeskin stretch fabric for swimwear, leggings and dancewear. Made to order, 100 m / 109 yd MOQ. Samples and custom development available.",
     title: "Laser Foil Snakeskin Stretch Fabric",
     sku: "H2013090101",
     mainImageUrl: "/images/products/H2013090101/main/holographic-snakeskin-stretch-fabric-main-1.webp",
@@ -3204,9 +3204,9 @@ export const allProducts = [
   },
   {
     slug: "gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric",
-    metaTitle: "Glitter Holographic Foil Nylon Spandex Swimsuit Bikini Fabric | Nixia Fabric",
+    metaTitle: "Gold Rainbow Metallic Foil Stretch Fabric | Nixia Fabric",
     metaDesc:
-      "Gold rainbow gradient metallic foil 4-way stretch nylon spandex fabric for swimwear, lingerie, dancewear, dresses and performance apparel. 41 stock colors, custom colors and a 200 m / 219 yd MOQ.",
+      "Gold rainbow metallic foil 4-way stretch nylon spandex for swimwear, dancewear and performance apparel. 41 stock colors, custom colors and a 200 m / 219 yd MOQ.",
     title: "Gold Rainbow Gradient Metallic Foil 4-Way Stretch Fabric",
     sku: "H2015030102",
     mainImageUrl: "/images/products/H2015030102/main/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-main-1.webp",
@@ -3425,9 +3425,9 @@ export const allProducts = [
   },
   {
     slug: "iridescent-mystic-metallic-foil-nylon-spandex-fabric",
-    metaTitle: "Shiny Metallic Foil 4 Way Stretch Nylon Spandex Fabric | Nixia Fabric",
+    metaTitle: "Iridescent Mystic Metallic Foil Fabric | Nixia Fabric",
     metaDesc:
-      "Iridescent mystic metallic foil nylon spandex fabric for swimwear, lingerie, dancewear, dresses, skirts and apparel programs. 18 colors or customization, 150 cm width, 200 GSM and 200 m / 219 yd MOQ.",
+      "Iridescent mystic metallic foil nylon spandex for swimwear, dancewear and apparel. 18 colors or custom options, 150 cm width, 200 GSM and a 200 m / 219 yd MOQ.",
     title: "Iridescent Mystic Metallic Foil Nylon Spandex Fabric",
     sku: "H2015030101",
     mainImageUrl: "/images/products/H2015030101/main/iridescent-mystic-metallic-foil-nylon-spandex-fabric-main-1.webp",
@@ -3652,6 +3652,139 @@ export const allProducts = [
     detailImages: [],
   },
 
+  {
+    slug: "shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric",
+    metaTitle: "Shattered Glass Foil Dot Stretch Fabric | Nixia Fabric",
+    metaDesc:
+      "Wholesale shattered glass foil dot nylon spandex for swimwear, lingerie and dancewear. 4-way stretch, 150 cm width, 200 GSM, 22 colors and 200 m / 219 yd MOQ.",
+    title: "Shattered Glass Metallic Foil Dot 4-Way Stretch Nylon Spandex Fabric",
+    sku: "H2015030103",
+    mainImageUrl: "/images/products/H2015030103/main/shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric-main-1.webp",
+    mainImageWebp: "/images/products/H2015030103/main/shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric-main-1.webp",
+    mainImageAlt: "Shattered glass metallic foil dot 4-way stretch nylon spandex fabric for swimwear and dancewear",
+    imageList: [
+      {
+        src: "/images/products/H2015030103/main/shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric-main-1.webp",
+        webp: "/images/products/H2015030103/main/shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric-main-1.webp",
+        alt: "Shattered glass metallic foil dot fabric main view with color range",
+      },
+      {
+        src: "/images/products/H2015030103/main/shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric-main-2.webp",
+        webp: "/images/products/H2015030103/main/shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric-main-2.webp",
+        alt: "Shattered glass metallic foil dot nylon spandex fabric close-up",
+      },
+      {
+        src: "/images/products/H2015030103/main/shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric-main-3.webp",
+        webp: "/images/products/H2015030103/main/shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric-main-3.webp",
+        alt: "4-way stretch and high color fastness metallic foil dot fabric feature card",
+      },
+      {
+        src: "/images/products/H2015030103/main/shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric-main-4.webp",
+        webp: "/images/products/H2015030103/main/shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric-main-4.webp",
+        alt: "Shattered glass metallic foil dot stretch fabric surface detail",
+      },
+    ],
+    galleryMainPath: "/images/products/H2015030103/main/",
+    galleryImages: [
+      "shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric-main-1.webp",
+      "shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric-main-2.webp",
+      "shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric-main-3.webp",
+      "shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric-main-4.webp",
+    ],
+    detailImagePath: "/images/products/H2015030103/detail/",
+    video: null,
+    shortIntro:
+      "Shattered glass metallic foil dot nylon spandex fabric with 4-way stretch, quick-dry and breathable features for swimwear, lingerie, dancewear, dresses and performance apparel.",
+    fullDescription:
+      "Shattered glass metallic foil dot 4-way stretch fabric uses an 80% nylon and 20% spandex base with a reflective foil surface. The source data lists 22 stock colors or customized colors for swimwear, lingerie, dancewear, dresses, skirts, T-shirts and performance dress programs.",
+    specs: {
+      width: "150 cm / 59 in",
+      weight: "200 GSM",
+      baseMaterial: "80% Nylon 20% Spandex",
+      thickness: "",
+      moq: "200 m / 219 yd",
+      leadTime: "To be confirmed",
+    },
+    specTable: [
+      { label: "Product Type", value: "Shattered Glass Metallic Foil Dot 4-Way Stretch Nylon Spandex Fabric" },
+      { label: "Surface Effect", value: "Shattered glass metallic foil dot" },
+      { label: "Base Fabric", value: "80% Nylon 20% Spandex" },
+      { label: "Stretch", value: "4-Way Stretch" },
+      { label: "Width", value: "150 cm / 59 in" },
+      { label: "Weight", value: "200 GSM" },
+      { label: "Color", value: "22 stock colors or customized colors" },
+      { label: "MOQ", value: "200 m / 219 yd" },
+      { label: "Yarn Count", value: "40D*40D" },
+      { label: "Finishing", value: "Foil" },
+      { label: "Pattern / Construction", value: "Foil" },
+      { label: "Typical Applications", value: "Swimwear, underwear, lingerie, dancewear, dresses, T-shirts, skirts, performance dress" },
+    ],
+    b2bTable: [
+      { label: "MOQ", value: "200 m / 219 yd" },
+      { label: "Supply type", value: "22 stock colors or customized colors" },
+      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping." },
+      { label: "Bulk Lead time", value: "7-15 working days" },
+      { label: "Available Colors", value: "22 stock colors or customized colors" },
+      { label: "OEM / ODM", value: "Custom colors available by project" },
+      { label: "Testing & Compliance", value: "To be confirmed according to buyer requirements" },
+      { label: "Package type", value: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement" },
+      { label: "Trade Terms", value: "To be confirmed in quotation" },
+    ],
+    applications: ["Swimwear", "Lingerie", "Dancewear", "Dresses", "T-Shirts", "Skirts", "Performance Dress"],
+    inStock: false,
+    stockStatus: "Made to Order",
+    badge: "22 colors",
+    colorCount: 22,
+    tags: ["metallic-foil", "shattered-glass", "nylon-spandex", "4-way-stretch", "swimwear", "dancewear", "lingerie", "dress"],
+    availableColors: "22 stock colors or customized colors",
+    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping.",
+    customizationNote: "Custom colors available by project",
+    packaging: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement",
+    tradeTerms: "To be confirmed in quotation",
+    heroHighlights: ["Shattered Glass Foil Dot", "4-Way Stretch", "80% Nylon 20% Spandex", "150 cm / 59 in Width", "200 GSM", "22 Stock Colors"],
+    whyChooseHeading: "Key Features",
+    whyChoose: [
+      { title: "Shattered Glass Foil Dot Surface", desc: "A reflective shattered-glass dot effect creates a distinctive surface for swimwear, dancewear and performance apparel." },
+      { title: "4-Way Stretch", desc: "The confirmed 4-way-stretch construction supports fitted garments that need flexibility and recovery." },
+      { title: "Nylon-Spandex Base", desc: "The 80% nylon and 20% spandex base gives buyers a clear composition for swimwear and apparel development." },
+      { title: "Quick-Dry and Breathable Features", desc: "The source data lists quick-dry, moisture-absorbent and breathable features for apparel programs." },
+      { title: "22 Stock Colors", desc: "The product offers 22 stock colors, with customized colors available for qualified projects." },
+    ],
+    valueStory: {
+      title: "Why Choose This Shattered Glass Foil Stretch Fabric?",
+      body: "This nylon spandex foil dot fabric combines 4-way stretch, a reflective shattered-glass surface and a broad stock color range for swimwear, lingerie, dancewear, dresses and performance apparel programs.",
+    },
+    applicationsHeading: "Recommended Applications",
+    buyerApplications: [
+      { title: "Swimwear & Bikini Fabric", desc: "The nylon-spandex base and 4-way stretch support fitted swimwear and bikini designs." },
+      { title: "Lingerie & Underwear", desc: "Stretch and shine make the fabric suitable for statement lingerie and underwear panels." },
+      { title: "Dancewear", desc: "The reflective foil dot surface helps dancewear stand out under stage or studio lighting." },
+      { title: "Dresses & Skirts", desc: "The shattered glass effect adds a decorative finish to fashion dresses, skirts and apparel pieces." },
+      { title: "Performance Dress", desc: "The bright foil finish gives performance garments a bold visual effect for show and event styling." },
+    ],
+    stockDevelopment: [
+      { title: "22 Stock Colors", desc: "Stock color options support faster sample review and color matching before bulk quotation." },
+      { title: "Custom Color Support", desc: "Customized colors can be discussed for qualified OEM/ODM projects." },
+    ],
+    sampleCta: { title: "Need Shattered Glass Metallic Foil Fabric?", body: "Request a sample to review the foil dot surface, color, stretch and hand feel before production.", buttonLabel: "Request a Sample" },
+    samplePrompt: "Request a sample to review the foil dot surface, color, stretch and hand feel before production.",
+    faqList: [
+      { question: "What is this shattered glass foil fabric used for?", answer: "Recommended applications include swimwear, underwear, lingerie, dancewear, dresses, T-shirts, skirts and performance dress programs." },
+      { question: "What is the composition?", answer: "The source data lists the base material as 80% nylon and 20% spandex." },
+      { question: "How many colors are available?", answer: "The source data lists 22 stock colors, with customized colors available by project." },
+      { question: "What is the MOQ?", answer: "The confirmed MOQ is 200 m / 219 yd." },
+      { question: "Is the fabric suitable for fitted garments?", answer: "Yes. The product is listed as a 4-way-stretch fabric, making it suitable for fitted swimwear, dancewear and apparel designs." },
+    ],
+    skuImages: [],
+    detailImageAlts: {
+      "shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric-detail-1.webp":
+        "H2015030103 shattered glass metallic foil dot fabric detail",
+    },
+    detailImages: [
+      "shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric-detail-1.webp",
+    ],
+  },
+
 ];
 
 // Keep every public product page answer-ready for the core B2B buying questions.
@@ -3746,6 +3879,7 @@ export const performanceProductSlugs = [
   "holographic-snakeskin-stretch-fabric",
   "gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric",
   "iridescent-mystic-metallic-foil-nylon-spandex-fabric",
+  "shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric",
 ];
 
 export const performanceProducts = allProducts.filter((product) =>

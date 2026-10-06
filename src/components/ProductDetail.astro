@@ -14,6 +14,8 @@
  */
 import { existsSync, readdirSync } from "node:fs";
 import { performanceProducts } from "../data/allProducts";
+import { getApplicationClustersForProduct } from "../data/applicationClusters";
+import { productDecisionGuides } from "../data/productDecisionGuides";
 
 export interface Props {
   product: {
@@ -105,6 +107,7 @@ const hideProductDescription = [
   "holographic-snakeskin-stretch-fabric",
   "gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric",
   "iridescent-mystic-metallic-foil-nylon-spandex-fabric",
+  "shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric",
 ].includes(product.slug);
 const dispatchLabel = isMadeToOrder ? "PRODUCTION LEAD TIME" : "READY STOCK DISPATCH";
 const dispatchUnit = "Working Days After Confirmation";
@@ -174,6 +177,8 @@ const relatedProducts = performanceProducts
     )
   )
   .slice(0, 3);
+const applicationClusters = getApplicationClustersForProduct(product.slug);
+const decisionGuide = productDecisionGuides[product.slug] ?? [];
 
 const whatsappMessage = [
   "Hello, I am interested in:",
@@ -737,6 +742,29 @@ const heroVideo = product.video
         </div>
       )}
 
+      {decisionGuide.length > 0 && (
+        <div class="detail-body__section" id="buyer-decision">
+          <h2 class="section-title-with-icon">
+            <span class="section-title-with-icon__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 5h16v14H4z" />
+                <path d="M8 9h8M8 13h5" />
+                <path d="m15 17 2 2 3-3" />
+              </svg>
+            </span>
+            <span>Buyer Decision Guide</span>
+          </h2>
+          <div class="why-choose-grid">
+            {decisionGuide.map((item) => (
+              <div class="why-choose-card">
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {product.valueStory && (
         <div class="detail-body__section" id="fabric-value">
           <h2 class="section-title-with-icon">
@@ -885,6 +913,30 @@ const heroVideo = product.video
               ))}
             </div>
           )}
+        </div>
+      )}
+
+      {applicationClusters.length > 0 && (
+        <div class="detail-body__section" id="application-guides">
+          <h2 class="section-title-with-icon">
+            <span class="section-title-with-icon__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 5h16v14H4z" />
+                <path d="M8 9h8M8 13h5" />
+                <path d="m15 17 2 2 3-3" />
+              </svg>
+            </span>
+            <span>Application Buying Guides</span>
+          </h2>
+          <p class="detail-section-intro">Compare this fabric with the sourcing considerations for its main end uses.</p>
+          <div class="application-cluster-links">
+            {applicationClusters.map((cluster) => (
+              <a href={`/applications/${cluster.slug}/`} class="application-cluster-link">
+                <span>{cluster.title}</span>
+                <span aria-hidden="true">View guide &#8594;</span>
+              </a>
+            ))}
+          </div>
         </div>
       )}
 
@@ -1990,6 +2042,47 @@ const heroVideo = product.video
     background: #fbfcfe;
   }
 
+  .detail-section-intro {
+    margin: calc(var(--space-sm) * -0.25) 0 var(--space-md);
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+
+  .application-cluster-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-sm);
+  }
+
+  .application-cluster-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    font-weight: 700;
+    line-height: 1.35;
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+  }
+
+  .application-cluster-link span:last-child {
+    flex: 0 0 auto;
+    color: var(--color-accent-dark);
+    font-size: var(--text-xs);
+    white-space: nowrap;
+  }
+
+  .application-cluster-link:hover {
+    border-color: var(--color-accent);
+    background: var(--color-bg-alt);
+  }
+
   .buyer-confirm-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -2878,6 +2971,7 @@ const heroVideo = product.video
     .detail-highlights,
     .why-choose-grid,
     .application-cards,
+    .application-cluster-links,
     .sustainability-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -2907,6 +3001,7 @@ const heroVideo = product.video
     .detail-highlights,
     .why-choose-grid,
     .application-cards,
+    .application-cluster-links,
     .buyer-confirm-grid,
     .sustainability-grid {
       grid-template-columns: 1fr;

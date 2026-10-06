@@ -6,11 +6,11 @@ status: current
 ### REQ-PRODUCT-001：产品列表页仅展示当前定位相关产品
 - 状态：active
 - 当前规则：`/products/` 只展示 `performanceProducts` 中适用于 foil、holographic、iridescent、stretch、舞台服装、舞蹈服、表演服、Performance & Party Wear、舞台道具、背景布、活动装饰、泳装、cosplay、dresses、tops、formalwear、lingerie、mermaid skirts 和 Halloween costumes 的产品；glitter leather、PU accessory、鞋材、手袋、工艺、玩具等退出定位产品不得出现在产品卡片、推荐排序、产品总数、场景入口、筛选结果或询盘选择中。产品列表页不再展示应用场景入口，场景导航由独立应用页面承担。
-- 验收条件：当前目录页展示 17 个公开产品；筛选、排序和总数均基于这 17 个产品；页面不出现鞋材、手袋、工艺或玩具等退出行业产品入口。
+- 验收条件：当前目录页展示 17 个公开产品；筛选、排序和总数均基于这 18 个产品；页面不出现鞋材、手袋、工艺或玩具等退出行业产品入口。
 - 影响模块：`product-catalog`
 - 代码路径：`src/data/allProducts.js`、`src/pages/products.astro`
 - 测试路径：`npm run build`，手动检查 `/products/`
-- 最后变更编号：CHG-20261005-003-h2015030101-product-detail
+- 最后变更编号：CHG-20261006-001-h2015030103-product-detail
 - 待确认事项：无
 
 ### REQ-PRODUCT-002：每个公开产品生成独立静态详情页
@@ -332,7 +332,7 @@ status: current
 - 影响模块：`product-catalog`、`content-data`、`inquiry-forms`
 - 代码路径：`src/data/allProducts.js`、`src/components/ProductDetail.astro`、`public/images/products/H2015030101/`、`products-data/original-images/images/products/H2015030101/`
 - 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/iridescent-mystic-metallic-foil-nylon-spandex-fabric/`
-- 最后变更编号：CHG-20261005-003-h2015030101-product-detail
+- 最后变更编号：CHG-20261006-001-h2015030103-product-detail
 - 待确认事项：库存状态、测试合规、贸易条款和上线后 Search Console/GA4/RFQ 归因需按项目确认
 
 ### REQ-PRODUCT-005：重点产品 H2013090102 聚焦 Iridescent Spandex 搜索意图
@@ -374,3 +374,23 @@ status: current
 - 测试路径：`npm run build`、`npm run validate:products`
 - 最后变更编号：CHG-20260923-006-retired-products-404
 - 待确认事项：无
+
+### REQ-PRODUCT-038：第一批公开页面 SEO 元数据长度与主题校验
+- 状态：active
+- 当前规则：公开产品、产品列表、应用、博客和工厂页面的生成 title 控制在 60 个字符以内，meta description 控制在 160 个字符以内。产品 SEO title 必须与页面 H1 和实际产品主题一致；H2015030102 使用 `Gold Rainbow Metallic Foil Stretch Fabric | Nixia Fabric`，H2015030101 使用 `Iridescent Mystic Metallic Foil Fabric | Nixia Fabric`。
+- 验收条件：生成 sitemap 中所有可索引页面通过 title/description 长度扫描；两个目标产品不存在旧产品主题 title；产品正文、H1、图片和样式不因元数据修复而改变。
+- 影响模块：`product-catalog`、`site-shell`、`blog-knowledge`
+- 代码路径：`src/data/allProducts.js`、`src/data/blogArticles.js`、`src/pages/products.astro`、`src/pages/applications/[slug].astro`、`src/pages/applications/index.astro`、`src/pages/factory.astro`
+- 测试路径：`npm run build`、`npm run validate:products`、生成 sitemap 页面元数据扫描
+- 最后变更编号：CHG-20261006-002-seo-metadata-first-batch
+- 待确认事项：部署后需在 Google Search Console 观察摘要和查询点击率变化
+
+### REQ-PRODUCT-039：产品页与应用页建立双向主题集群并提供差异化采购决策
+- 状态：active
+- 当前规则：应用页通过推荐材料链接到对应产品详情页；产品详情页必须根据产品用途回链到相关应用指南，形成产品与应用之间的双向主题集群。每个公开产品页同时提供至少两条针对该产品材质、表面效果、结构、用途、颜色、MOQ 或样品审批条件的独立采购决策内容，不使用所有相近产品通用的泛化卖点替代。
+- 验收条件：18 个公开产品页均包含应用指南回链和采购决策区；`/applications/swimwear-fabric-supplier/` 包含 H2015030103；应用集群链接不指向旧产品或不存在页面；采购决策内容与当前产品事实一致，不新增未经确认的性能承诺。
+- 影响模块：`product-catalog`、`site-shell`、`content-data`
+- 代码路径：`src/components/ProductDetail.astro`、`src/data/applicationClusters.js`、`src/data/productDecisionGuides.js`、`src/pages/applications/[slug].astro`
+- 测试路径：`npm run build`、`npm run validate:products`，检查所有产品页和应用页的互链及生成内容
+- 最后变更编号：CHG-20261006-003-topic-cluster-buyer-decisions
+- 待确认事项：部署后观察应用页与产品页的自然搜索入口和页面路径表现

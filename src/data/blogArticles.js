@@ -564,7 +564,7 @@ const allBlogArticles = [
     imageAlt: "Iridescent stretch fabric with holographic color shift for performance costumes",
     excerpt:
       "Compare iridescent and metallic fabric for stage costumes by shine, color shift, lighting behavior, stretch and sample approval.",
-    metaTitle: "Iridescent vs Metallic Fabric for Stage Costumes | Nixia Fabric",
+    metaTitle: "Iridescent vs Metallic Fabric | Nixia Fabric",
     metaDesc:
       "Compare iridescent vs metallic fabric for stage costumes. Learn when to choose color-shift effects, smooth foil shine and stretch bases.",
     focusProducts: [
@@ -646,7 +646,7 @@ const allBlogArticles = [
     imageAlt: "Foil spandex fabric sample and MOQ planning for bulk orders",
     excerpt:
       "Learn how to choose 4-way stretch fabric for bodysuits, including recovery, opacity, width, MOQ, sample testing and bulk production checks.",
-    metaTitle: "How to Choose 4-Way Stretch Fabric for Bodysuits | Nixia Fabric",
+    metaTitle: "4-Way Stretch Fabric for Bodysuits | Nixia Fabric",
     metaDesc:
       "Choose 4-way stretch fabric for bodysuits with clear checks for recovery, comfort, width, MOQ, samples and sewing performance.",
     focusProducts: [
@@ -730,7 +730,7 @@ const allBlogArticles = [
     imageAlt: "Dancewear fabric sourcing from China with iridescent stretch foil finish",
     excerpt:
       "Compare the best fabric options for cheerleading and performance costumes by stretch, shine, recovery, width, MOQ and sample approval.",
-    metaTitle: "Best Fabric for Cheerleading and Performance Costumes | Nixia Fabric",
+    metaTitle: "Cheerleading Costume Fabric Guide | Nixia Fabric",
     metaDesc:
       "Choose fabric for cheerleading and performance costumes with clear checks for stretch, shine, recovery, samples, MOQ and bulk production.",
     focusProducts: [
@@ -981,7 +981,7 @@ const allBlogArticles = [
     imageAlt: "Custom foil fabric color matching for bulk production",
     excerpt:
       "Learn how to calculate fabric MOQ in yards and meters, convert common quantities and plan trial orders for wholesale fabric sourcing.",
-    metaTitle: "How to Calculate Fabric MOQ in Yards and Meters | Nixia Fabric",
+    metaTitle: "Fabric MOQ: Yards and Meters | Nixia Fabric",
     metaDesc:
       "Calculate fabric MOQ in yards and meters for wholesale sourcing. Includes 100 m / 109 yd and 500 m / 547 yd planning examples.",
     focusProducts: [
@@ -1063,7 +1063,7 @@ const allBlogArticles = [
     imageAlt: "Blue-purple gradient laser foil 4-way stretch fabric for performance apparel sourcing",
     excerpt:
       "Learn how to request a fabric sample from a China supplier with clear application, quantity, shipping, color and testing information.",
-    metaTitle: "How to Request a Fabric Sample from a China Supplier | Nixia Fabric",
+    metaTitle: "How to Request Fabric Samples from China | Nixia Fabric",
     metaDesc:
       "Request fabric samples from a China supplier with clear RFQ details, shipping information, sample goals, MOQ and bulk order planning.",
     focusProducts: [
@@ -1821,9 +1821,9 @@ const allBlogArticles = [
     imageAlt: "Iridescent gradient laser foil stretch fabric for custom foil fabric development review",
     excerpt:
       "A practical decision guide for buyers comparing stock foil fabric with custom foil fabric development for dancewear, stage costumes and performance apparel.",
-    metaTitle: "Custom Foil Fabric Development vs Stock Fabric | Nixia Fabric",
+    metaTitle: "Custom Foil Fabric: Stock vs Custom | Nixia Fabric",
     metaDesc:
-      "Learn when to choose custom foil fabric development instead of stock foil fabric for dancewear, stage costumes and performance apparel, including MOQ, samples, colors and production timing.",
+      "Compare custom and stock foil fabric for dancewear and stage costumes by MOQ, samples, colors and production timing.",
     focusProducts: [
       "full-print-hot-stamping-spandex-milk-silk",
       "iridescent-gradient-laser-ice-silk",
@@ -2190,7 +2190,7 @@ const allBlogArticles = [
     imageAlt: "Rainbow iridescent laser foil fabric detail for supplier sample comparison",
     excerpt:
       "A practical sample comparison method for buyers reviewing foil, holographic and iridescent stretch fabrics from multiple suppliers.",
-    metaTitle: "How to Compare Foil Fabric Samples | Buyer Guide",
+    metaTitle: "Compare Foil Fabric Samples | Nixia Fabric",
     metaDesc:
       "Learn how to compare foil fabric samples from different suppliers by surface effect, stretch, hand feel, width, MOQ, sample terms and production fit.",
     focusProducts: [
@@ -2339,7 +2339,7 @@ const allBlogArticles = [
     imageAlt: "Iridescent 4-way stretch spandex fabric detail for stretch recovery review",
     excerpt:
       "Understand the difference between stretch amount and stretch recovery, and learn how to check both before using foil fabric for fitted garments.",
-    metaTitle: "Stretch Recovery vs Stretch Amount | Fabric Buyer Guide",
+    metaTitle: "Stretch Recovery vs Stretch Amount | Nixia Fabric",
     metaDesc:
       "Learn the difference between stretch amount and stretch recovery for foil stretch fabric used in dancewear, bodysuits and performance garments.",
     focusProducts: [
@@ -2471,7 +2471,7 @@ const allBlogArticles = [
     imageAlt: "Iridescent laser hot-stamping stretch ice-silk fabric application for pre-production review",
     excerpt:
       "A practical pre-production method for checking foil surface behavior after stretching, folding, sewing and the buyer's planned garment process.",
-    metaTitle: "How to Evaluate Foil Adhesion Before Bulk Production",
+    metaTitle: "Evaluate Foil Adhesion Before Bulk Production | Nixia Fabric",
     metaDesc:
       "Learn how to evaluate foil stretch fabric before bulk production with practical checks for stretching, folding, sewing, heat, washing and surface changes.",
     focusProducts: [
