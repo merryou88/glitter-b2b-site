@@ -80,7 +80,7 @@ status: current
 - 影响模块：`site-shell`、`product-catalog`、`blog-knowledge`
 - 代码路径：`src/pages/applications/[slug].astro`、`src/data/applicationClusters.js`
 - 测试路径：`npm run build`，检查 6 个生成应用页及其产品/博客内链
-- 最后变更编号：CHG-20261008-003-application-commercial-topic-hubs
+- 最后变更编号：CHG-20261008-010-application-hero-product-images
 - 待确认事项：上线后在 Google Search Console 按应用页观察非品牌查询、展示、点击与平均排名变化
 
 ### REQ-SHELL-015：应用页常见采购场景

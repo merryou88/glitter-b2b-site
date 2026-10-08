@@ -2,7 +2,7 @@
 
 | 业务模块 | 当前需求文档 | 需求编号 | 最近变更 | 相关代码 |
 |---|---|---|---|---|
-| 站点壳 / SEO | `current/site-shell.md` | `REQ-SHELL-001~016` | CHG-20261008-009-applications-navigation-entry | `src/layouts/Layout.astro`、`src/components/Header.astro`、`src/components/Footer.astro`、`src/components/HeroCarousel.astro`、`src/pages/index.astro`、`src/pages/products.astro`、`src/pages/applications/index.astro`、`src/pages/applications/[slug].astro`、`scripts/validate-seo.mjs` |
+| 站点壳 / SEO | `current/site-shell.md` | `REQ-SHELL-001~016` | CHG-20261008-010-application-hero-product-images | `src/layouts/Layout.astro`、`src/components/Header.astro`、`src/components/Footer.astro`、`src/components/HeroCarousel.astro`、`src/pages/index.astro`、`src/pages/products.astro`、`src/pages/applications/index.astro`、`src/pages/applications/[slug].astro`、`scripts/validate-seo.mjs` |
 | 内容数据 | `current/content-data.md` | `REQ-DATA-001~006` | CHG-20261006-001-h2015030103-product-detail | `src/data/allProducts.js`、`src/data/blogArticles.js`、`src/data/products.json`、`public/images/**`、`products-data/original-images/**`、`products-data/original-videos/**` |
 | 产品目录 | `current/product-catalog.md` | `REQ-PRODUCT-001~039` | CHG-20261006-003-topic-cluster-buyer-decisions | `src/data/allProducts.js`、`src/data/applicationClusters.js`、`src/data/productDecisionGuides.js`、`src/pages/products.astro`、`src/pages/products/[slug].astro`、`src/components/ProductDetail.astro`、`workflows/next-product-candidate-plan.md` |
 | 博客知识中心 | `current/blog.md` | `REQ-BLOG-001~016` | CHG-20261008-007-blog-publication-update-dates | `src/pages/blog/index.astro`、`src/pages/blog/[slug].astro`、`src/data/blogArticles.js`、`src/components/ProductDetail.astro` |
