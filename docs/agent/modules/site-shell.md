@@ -7,6 +7,7 @@ paths:
   - src/components/FloatingContact.astro
   - src/components/RFQQuoteModal.astro
   - src/styles/global.css
+  - scripts/validate-seo.mjs
 triggers:
   - layout
   - header
@@ -61,6 +62,7 @@ requirement_docs:
 
 ## 验证方式
 - `npm run build`
+- `npm run validate:seo`
 - 手动检查首页、产品页、博客页、联系页的头尾一致性
 
 ## 常见问题

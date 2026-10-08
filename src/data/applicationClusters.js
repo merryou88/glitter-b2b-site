@@ -15,6 +15,7 @@ const productApplicationSlugs = {
     "cheerleading-performance-costume-fabric",
   ],
   "plain-iridescent-laser-spandex-4-way-stretch": [
+    "custom-foil-fabric-development",
     "holographic-fabric-wholesale",
     "dancewear-fabric-supplier",
     "cheerleading-performance-costume-fabric",
@@ -38,6 +39,7 @@ const productApplicationSlugs = {
     "dancewear-fabric-supplier",
   ],
   "full-print-hot-stamping-spandex-milk-silk": [
+    "custom-foil-fabric-development",
     "foil-fabric-for-stage-costumes",
     "dancewear-fabric-supplier",
     "cheerleading-performance-costume-fabric",
@@ -59,6 +61,7 @@ const productApplicationSlugs = {
     "cheerleading-performance-costume-fabric",
   ],
   "iridescent-gradient-laser-ice-silk": [
+    "custom-foil-fabric-development",
     "holographic-fabric-wholesale",
     "dancewear-fabric-supplier",
     "cheerleading-performance-costume-fabric",
@@ -75,6 +78,7 @@ const productApplicationSlugs = {
     "cheerleading-performance-costume-fabric",
   ],
   "holographic-snakeskin-stretch-fabric": [
+    "custom-foil-fabric-development",
     "holographic-fabric-wholesale",
     "dancewear-fabric-supplier",
     "swimwear-fabric-supplier",
@@ -90,4 +94,3 @@ export const getApplicationClustersForProduct = (productSlug) =>
     slug,
     title: applicationTitles[slug],
   }));
-

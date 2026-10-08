@@ -21,6 +21,8 @@ export function getStaticPaths() {
 }
 
 const { article } = Astro.props;
+const modifiedDate = article.updatedDate ?? article.date;
+const showUpdatedDate = modifiedDate !== article.date;
 const relatedProducts = article.focusProducts
   .map((slug) => performanceProducts.find((product) => product.slug === slug))
   .filter(Boolean)
@@ -123,7 +125,7 @@ const articleSchema = {
   description: article.metaDesc,
   image: `https://nixiafabric.com${article.image}`,
   datePublished: article.date,
-  dateModified: article.date,
+  dateModified: modifiedDate,
   mainEntityOfPage: articleUrl,
   author: { "@type": "Organization", name: "Nixia Fabric" },
   publisher: {
@@ -174,7 +176,15 @@ const faqSchema = {
           <h1>{article.title}</h1>
           <p class="article-hero__intro">{article.intro}</p>
           <div class="article-meta">
+            <span>Written by Nixia Fabric Editorial Team</span>
+            <span aria-hidden="true">·</span>
             <span>Published {formatDate(article.date)}</span>
+            {showUpdatedDate && (
+              <>
+                <span aria-hidden="true">·</span>
+                <span>Updated {formatDate(modifiedDate)}</span>
+              </>
+            )}
             <span aria-hidden="true">·</span>
             <span>{article.readTime}</span>
           </div>

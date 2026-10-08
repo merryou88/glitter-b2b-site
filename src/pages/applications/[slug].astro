@@ -5,6 +5,7 @@
  */
 import Layout from "@layouts/Layout.astro";
 import { performanceProducts } from "@data/allProducts";
+import { blogArticles } from "@data/blogArticles";
 
 const applicationPages = [
   {
@@ -41,6 +42,39 @@ const applicationPages = [
       "Gradient color-flow and metallic surface choices",
       "Physical sample approval before a production run",
     ],
+    selectionCriteria: [
+      { title: "Audience distance and lighting", desc: "Fine foil details suit close viewing, while larger scales and stronger contrast usually read more clearly across a stage. Review the sample under the intended lighting rather than judging one studio photo." },
+      { title: "Stretch and recovery", desc: "Match the stretch direction to the costume pattern and check whether the fabric returns after repeated movement. A high stretch figure alone does not confirm recovery." },
+      { title: "Surface direction", desc: "Gradient, stripe and scale effects may have a clear roll direction. Confirm panel orientation and cutting yield before approving the fabric for mirrored costume pieces." },
+      { title: "Weight and drape", desc: "Light fabrics can move freely in skirts and overlays; heavier constructions can provide more body for fitted or structured panels. Approve against the actual garment silhouette." },
+    ],
+    shortlist: [
+      { slug: "iridescent-laser-hot-stamping-stretch-ice-silk", fit: "A fluid stretch option when the costume needs an iridescent surface and movement." },
+      { slug: "full-print-hot-stamping-spandex-milk-silk", fit: "An all-over foil option for fitted performance pieces that require 4-way stretch." },
+      { slug: "iridescent-gradient-laser-ice-silk", fit: "Useful when color flow and a gradient surface are central to the stage design." },
+      { slug: "holographic-mermaid-scale-milk-silk-stretch-fabric", fit: "A defined scale pattern for costumes that need a readable themed surface." },
+    ],
+    sampleChecks: [
+      "View the fabric under the intended warm, cool and moving stage lights.",
+      "Stretch and release it repeatedly, then inspect recovery and surface change.",
+      "Cut and sew panels in the planned direction to confirm matching and yield.",
+      "Approve the production color or batch against the signed physical sample.",
+    ],
+    blogSlugs: [
+      "how-to-choose-hot-stamping-spandex-fabric-for-dancewear-stage-costumes",
+      "iridescent-vs-metallic-fabric-for-stage-costumes",
+      "metallic-vs-iridescent-vs-holographic-fabric",
+    ],
+    sourcingScenario: {
+      buyer: "Performance costume manufacturer",
+      brief: "A costume program includes fitted bodysuits and flowing stage panels that must remain visually clear under changing performance lights.",
+      decisions: [
+        "Separate the fitted and flowing garment panels instead of forcing one fabric construction across the full costume.",
+        "Compare smooth, gradient and patterned foil effects at the expected audience distance.",
+        "Test panel direction, stretch recovery and a representative seam on physical swatches.",
+      ],
+      rfq: "The RFQ should identify each garment panel, target color, estimated quantity, stage-lighting reference and launch date.",
+    },
     faqs: [
       {
         question: "Which fabric finish works best under stage lights?",
@@ -66,6 +100,12 @@ const applicationPages = [
     image: "/images/process/hot_stamping_foil_transfer.webp",
     imageAlt: "Hot-stamping foil fabric production and custom finishing",
     tags: [],
+    productSlugs: [
+      "plain-iridescent-laser-spandex-4-way-stretch",
+      "full-print-hot-stamping-spandex-milk-silk",
+      "iridescent-gradient-laser-ice-silk",
+      "holographic-snakeskin-stretch-fabric",
+    ],
     applications: [],
     benefits: [
       "Custom color, pattern and gradient discussions",
@@ -73,6 +113,39 @@ const applicationPages = [
       "Sample and approval workflow",
       "Testing support arranged according to buyer requirements",
     ],
+    selectionCriteria: [
+      { title: "Stock or custom route", desc: "Start with a stock construction when timing, lower development risk or a smaller trial matters most. Choose custom development when the target color, pattern, base or hand feel cannot be met by an approved stock option." },
+      { title: "Reference quality", desc: "A physical swatch is the strongest visual reference. If only an image is available, provide the lighting context, Pantone target, pattern scale and the elements that must be matched." },
+      { title: "Base and construction", desc: "Define fiber preference, stretch direction, recovery, width, weight and end use before surface development. The same foil can behave differently on different bases." },
+      { title: "MOQ and timing economics", desc: "Development rounds, custom materials and production setup affect MOQ, cost and lead time. Share the launch date and realistic quantity before sampling begins." },
+    ],
+    shortlist: [
+      { slug: "plain-iridescent-laser-spandex-4-way-stretch", fit: "A useful 4-way stretch reference for discussing a custom iridescent effect." },
+      { slug: "full-print-hot-stamping-spandex-milk-silk", fit: "A reference for custom all-over foil patterns on a stretch milk-silk base." },
+      { slug: "iridescent-gradient-laser-ice-silk", fit: "A starting point for gradient color-flow and custom colorway discussions." },
+      { slug: "holographic-snakeskin-stretch-fabric", fit: "A patterned holographic reference when texture scale or motif is part of the brief." },
+    ],
+    sampleChecks: [
+      "Sign off the physical visual reference, Pantone target and acceptable variation.",
+      "Confirm base composition, stretch, width and weight on the development sample.",
+      "Record pattern scale, repeat, face direction and roll direction before bulk production.",
+      "Complete buyer-required sewing, wear and compliance tests before final approval.",
+    ],
+    blogSlugs: [
+      "custom-foil-fabric-development-stock-vs-custom",
+      "what-to-include-in-a-custom-fabric-rfq",
+      "compare-foil-fabric-samples-from-different-suppliers",
+    ],
+    sourcingScenario: {
+      buyer: "Apparel product developer",
+      brief: "A developer has a reference garment and target foil appearance, but the original base fabric and production specification are unknown.",
+      decisions: [
+        "Document the non-negotiable visual features and the end-product construction before discussing color matching.",
+        "Compare the reference with available stock bases to decide whether stock selection or custom development is the practical route.",
+        "Confirm width, weight, stretch, pattern scale, MOQ and development timing before requesting a custom sample.",
+      ],
+      rfq: "The RFQ should include the physical reference or clear images, intended garment, target composition, quantity range and required delivery window.",
+    },
     faqs: [
       {
         question: "What information is needed for a custom fabric quote?",
@@ -114,6 +187,39 @@ const applicationPages = [
       "Metric and US-friendly width and MOQ specifications",
       "Physical samples for shine, stretch and sewing review",
     ],
+    selectionCriteria: [
+      { title: "Smooth or patterned effect", desc: "Smooth laser surfaces create a continuous color shift; snakeskin, scale and dot patterns create a more defined visual texture. Select by garment concept and viewing distance." },
+      { title: "Stretch and recovery", desc: "Confirm stretch direction and return for the finished pattern. Fitted dancewear normally needs a different construction from loose costume panels or decorative inserts." },
+      { title: "Base and weight", desc: "Polyester-spandex, milk-silk and ice-silk bases differ in hand feel, drape and sewing response. Compare physical swatches at the target garment tension." },
+      { title: "Stock, MOQ and color route", desc: "Check whether an available color can meet the launch schedule or whether a custom colorway and its MOQ should be planned into development." },
+    ],
+    shortlist: [
+      { slug: "plain-iridescent-laser-spandex-4-way-stretch", fit: "A smooth 4-way stretch surface for fitted holographic dancewear." },
+      { slug: "iridescent-gradient-laser-ice-silk", fit: "A gradient option for buyers prioritizing color transition and fluid drape." },
+      { slug: "holographic-snakeskin-stretch-fabric", fit: "A textured snakeskin effect for designs that need a visible pattern." },
+      { slug: "holographic-mermaid-scale-milk-silk-stretch-fabric", fit: "A high-stretch scale pattern for themed performance garments." },
+    ],
+    sampleChecks: [
+      "Compare color shift under daylight and the performance lighting in the brief.",
+      "Measure stretch direction and inspect recovery after repeated extension.",
+      "Sew a representative seam and inspect the foil at the planned garment tension.",
+      "Confirm color, width, MOQ and production-batch approval terms in the quotation.",
+    ],
+    blogSlugs: [
+      "holographic-fabric-for-dancewear-what-buyers-should-check",
+      "metallic-vs-iridescent-vs-holographic-fabric",
+      "compare-foil-fabric-samples-from-different-suppliers",
+    ],
+    sourcingScenario: {
+      buyer: "Performance fabric wholesaler",
+      brief: "A wholesaler is building a focused holographic range for dancewear and costume customers without carrying several visually similar constructions.",
+      decisions: [
+        "Choose distinct smooth, gradient and patterned effects so each stocked option serves a clear visual need.",
+        "Compare base fabric, stretch direction, recovery, weight and MOQ rather than selecting by surface color alone.",
+        "Approve representative swatches under daylight and performance lighting before setting the range.",
+      ],
+      rfq: "The RFQ should state the target customer applications, preferred constructions, color range, quantity by option and replenishment expectations.",
+    },
     faqs: [
       {
         question: "Is holographic fabric suitable for fitted dancewear?",
@@ -161,6 +267,39 @@ const applicationPages = [
       "Samples for stretch, sewing, comfort and lighting tests",
       "Custom colors and surface development for bulk programs",
     ],
+    selectionCriteria: [
+      { title: "Recovery for fitted patterns", desc: "Test how quickly the fabric returns after extension and whether knees, elbows or high-tension panels retain shape. Recovery is a separate buying decision from maximum stretch." },
+      { title: "Opacity and lining plan", desc: "Inspect the fabric at the intended stretch ratio, not only while relaxed. Decide whether the garment requires lining and test both layers together." },
+      { title: "Weight and hand feel", desc: "Balance support, comfort and drape against the garment pattern. The best weight for a fitted bodysuit may not be the best choice for a flowing dance panel." },
+      { title: "Surface under stretch", desc: "Foil coverage can look different as the base opens. Sew and stretch a sample to confirm the intended visual effect at performance tension." },
+    ],
+    shortlist: [
+      { slug: "plain-iridescent-laser-spandex-4-way-stretch", fit: "A 4-way stretch choice for fitted pieces needing a smooth iridescent effect." },
+      { slug: "full-print-hot-stamping-spandex-milk-silk", fit: "An all-over foil surface on a 4-way stretch base for high-impact costumes." },
+      { slug: "shiny-foil-4-way-stretch-knit-fabric", fit: "A lighter shiny option to compare where movement and drape matter." },
+      { slug: "iridescent-gradient-laser-ice-silk", fit: "A gradient stretch option for color-led dance and competition designs." },
+    ],
+    sampleChecks: [
+      "Test stretch and recovery at the garment's intended pattern tension.",
+      "Check opacity in both relaxed and stretched states, with the planned lining.",
+      "Sew a curved and high-tension seam using the production needle and thread.",
+      "Inspect comfort, hand feel and surface appearance during a movement trial.",
+    ],
+    blogSlugs: [
+      "how-to-choose-hot-stamping-spandex-fabric-for-dancewear-stage-costumes",
+      "how-to-choose-4-way-stretch-fabric-for-bodysuits",
+      "stretch-recovery-vs-stretch-amount-fabric-buyers",
+    ],
+    sourcingScenario: {
+      buyer: "Competition dancewear brand",
+      brief: "A fitted dancewear collection needs a reflective surface while preserving recovery, opacity and sewing behavior across high-movement garment areas.",
+      decisions: [
+        "Set the intended garment stretch ratio before comparing maximum stretch figures.",
+        "Check opacity with the planned lining and inspect the foil while the sample is held at pattern tension.",
+        "Sew curved and high-tension seams using the production needle, thread and stitch settings.",
+      ],
+      rfq: "The RFQ should include garment type, stretch direction, color, lining plan, estimated quantity, size range and sample-testing requirements.",
+    },
     faqs: [
       {
         question: "What fabric works best for dancewear and bodysuits?",
@@ -200,6 +339,40 @@ const applicationPages = [
       "Physical samples for stretch, recovery, opacity and sewing review",
       "Width, color, MOQ and custom development discussions before bulk production",
     ],
+    selectionCriteria: [
+      { title: "Confirmed base construction", desc: "Verify the exact fiber composition, weight, width and stretch construction for the selected item. A metallic appearance alone does not establish suitability for a swimwear program." },
+      { title: "Recovery and opacity", desc: "Review return after repeated stretch and inspect opacity at the pattern's intended tension. Test with the planned lining because it can change fit and support." },
+      { title: "Surface after sewing", desc: "Use the production seam, elastic and stitch settings on a sample. Inspect the foil around needle lines and high-tension curves before approval." },
+      { title: "Buyer-specific wet-use tests", desc: "Define the required wet-use, colorfastness and market tests in the RFQ. These properties must be confirmed for the exact material and test method, not assumed from the product category." },
+    ],
+    shortlist: [
+      { slug: "rainbow-iridescent-laser-foil-nylon-spandex-fabric", fit: "A stretch iridescent option to evaluate for fitted swimwear concepts." },
+      { slug: "holographic-snakeskin-stretch-fabric", fit: "A patterned holographic surface for statement panels after project testing." },
+      { slug: "gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric", fit: "A nylon-spandex 4-way stretch option with a gold gradient effect." },
+      { slug: "iridescent-mystic-metallic-foil-nylon-spandex-fabric", fit: "A nylon-spandex option for a smoother mystic metallic appearance." },
+      { slug: "shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric", fit: "A 4-way stretch nylon-spandex base with a defined foil-dot texture." },
+    ],
+    sampleChecks: [
+      "Confirm the exact composition, width, weight and stretch direction supplied.",
+      "Test recovery and opacity at garment tension with the intended lining.",
+      "Sew representative curves and elastic edges, then inspect the foil surface.",
+      "Run the buyer's required wet-use and colorfastness tests on the exact material.",
+    ],
+    blogSlugs: [
+      "best-foil-fabric-for-swimwear-and-bikinis",
+      "metallic-vs-iridescent-vs-holographic-fabric",
+      "stretch-recovery-vs-stretch-amount-fabric-buyers",
+    ],
+    sourcingScenario: {
+      buyer: "Swimwear product developer",
+      brief: "A developer is considering a metallic or iridescent stretch fabric for a bikini capsule, but wet-use and colorfastness requirements have not yet been confirmed.",
+      decisions: [
+        "Shortlist by exact base composition, stretch, recovery, weight and opacity before choosing the surface effect.",
+        "Test the material with the intended lining, elastic and seam construction at garment tension.",
+        "Define the buyer's required wet-use and colorfastness methods before treating any option as production-ready.",
+      ],
+      rfq: "The RFQ should state the garment construction, target color, lining, quantity, destination market and exact buyer-required test standards.",
+    },
     faqs: [
       {
         question: "Can foil or holographic fabric be used for swimwear?",
@@ -248,6 +421,39 @@ const applicationPages = [
       "Sample approval for color and repeat-order comparison",
       "Custom color discussions for team or collection programs",
     ],
+    selectionCriteria: [
+      { title: "Stretch recovery", desc: "Evaluate return after repeated movement at the uniform's working tension. Reliable recovery is especially important where multiple sizes share one coordinated construction." },
+      { title: "Team color consistency", desc: "Approve color under the event lighting and record the signed standard. Confirm how later production lots will be compared when a team needs replacements or repeat orders." },
+      { title: "Pattern scale and visibility", desc: "Dots, stripes, gradients and holographic textures read differently from floor level and spectator distance. Review full-size panels, not only close-up swatches." },
+      { title: "Repeat-order continuity", desc: "Record product code, base, approved color and batch details. Discuss forecast quantity and replenishment timing before committing a collection to one effect." },
+    ],
+    shortlist: [
+      { slug: "plain-iridescent-laser-spandex-4-way-stretch", fit: "A smooth iridescent 4-way stretch base for coordinated fitted uniforms." },
+      { slug: "full-print-hot-stamping-spandex-milk-silk", fit: "An all-over foil option when broad stage visibility is the priority." },
+      { slug: "rainbow-stripe-foil-4-way-stretch-fabric", fit: "A bold stripe effect for team panels that need clear long-distance impact." },
+      { slug: "blue-purple-gradient-laser-foil-spandex-fabric", fit: "A gradient color direction for teams working within a blue-purple palette." },
+    ],
+    sampleChecks: [
+      "Stretch and release the sample repeatedly at the uniform's working tension.",
+      "Approve team color under competition and photography lighting.",
+      "Review pattern scale and panel placement from expected audience distance.",
+      "Record the approved product, color and batch standard for repeat orders.",
+    ],
+    blogSlugs: [
+      "best-fabric-for-cheerleading-and-performance-costumes",
+      "stretch-recovery-vs-stretch-amount-fabric-buyers",
+      "pre-shipment-quality-control-checklist-foil-stretch-fabric",
+    ],
+    sourcingScenario: {
+      buyer: "Team uniform supplier",
+      brief: "A supplier is planning coordinated performance uniforms that need a consistent team color, readable foil effect and a practical route for later replenishment.",
+      decisions: [
+        "Review color and pattern scale under competition lighting and from spectator distance.",
+        "Test recovery and surface appearance at the working tension of the uniform pattern.",
+        "Record the selected construction and color reference so future quotation requests use the same starting point.",
+      ],
+      rfq: "The RFQ should include team color reference, garment panels, size range, initial quantity, replenishment estimate and event deadline.",
+    },
     faqs: [
       {
         question: "What should buyers check for cheerleading fabric?",
@@ -283,8 +489,19 @@ const relatedProducts = page.productSlugs?.length
   : page.tags.length === 0
     ? performanceProducts
     : performanceProducts.filter((product) => page.tags.some((tag) => product.tags.includes(tag)));
-const findRowValue = (rows, labels) =>
-  rows?.find((row) => labels.includes(row.label))?.value;
+const shortlistProducts = page.shortlist.map((item) => ({
+  ...item,
+  product: performanceProducts.find((product) => product.slug === item.slug),
+})).filter((item) => item.product);
+const relatedGuides = page.blogSlugs
+  .map((slug) => blogArticles.find((article) => article.slug === slug))
+  .filter(Boolean);
+const findRowValue = (rows, labels) => {
+  const normalizedLabels = labels.map((label) => label.toLowerCase());
+  return rows?.find((row) => normalizedLabels.includes(row.label.toLowerCase()))?.value;
+};
+const productField = (product, labels, fallback = "Confirm by sample") =>
+  findRowValue(product.specTable, labels) || fallback;
 const productMoq = (product) =>
   findRowValue(product.specTable, ["MOQ"]) ||
   findRowValue(product.b2bTable, ["MOQ"]) ||
@@ -384,6 +601,83 @@ const faqSchema = {
   <section class="section section--alt">
     <div class="container">
       <div class="section-header section-header--left">
+        <span class="eyebrow">SELECTION CRITERIA</span>
+        <h2>How to shortlist fabric for this application</h2>
+        <p>Use the end product and production method to narrow the material route before comparing color or price.</p>
+      </div>
+      <div class="criteria-grid">
+        {page.selectionCriteria.map((criterion, index) => (
+          <article class="criterion">
+            <span class="criterion__number">{String(index + 1).padStart(2, "0")}</span>
+            <div>
+              <h3>{criterion.title}</h3>
+              <p>{criterion.desc}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section scenario-band">
+    <div class="container scenario-grid">
+      <div class="scenario-summary">
+        <span class="eyebrow">COMMON SOURCING SCENARIO</span>
+        <h2>{page.sourcingScenario.buyer}</h2>
+        <p>{page.sourcingScenario.brief}</p>
+        <small>Illustrative scenario based on recurring buyer requirements. It is not a named customer case or a performance claim.</small>
+      </div>
+      <div class="scenario-decisions">
+        <h3>Practical decision path</h3>
+        <ol>
+          {page.sourcingScenario.decisions.map((decision) => <li>{decision}</li>)}
+        </ol>
+        <p><strong>Prepare the RFQ:</strong> {page.sourcingScenario.rfq}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header section-header--left">
+        <span class="eyebrow">BUYER SHORTLIST</span>
+        <h2>Compare practical starting points</h2>
+        <p>These products represent different surface and construction routes. Final approval should be based on a physical sample and the requirements of your project.</p>
+      </div>
+      <div class="comparison-table" tabindex="0" role="region" aria-label={`Product comparison for ${page.title}`}>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Surface</th>
+              <th scope="col">Base</th>
+              <th scope="col">Stretch</th>
+              <th scope="col">Weight</th>
+              <th scope="col">MOQ</th>
+              <th scope="col">Why shortlist it</th>
+            </tr>
+          </thead>
+          <tbody>
+            {shortlistProducts.map(({ product, fit }) => (
+              <tr>
+                <th scope="row"><a href={`/products/${product.slug}/`}>{product.title}</a></th>
+                <td>{productField(product, ["Surface Effect", "Surface Finish", "Surface"])}</td>
+                <td>{productField(product, ["Base Fabric", "Base Material", "Material"], product.specs.baseMaterial || "Confirm by sample")}</td>
+                <td>{productField(product, ["Stretch"])}</td>
+                <td>{productField(product, ["Weight"], product.specs.weight || "Confirm by sample")}</td>
+                <td>{productMoq(product)}</td>
+                <td>{fit}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header section-header--left">
         <span class="eyebrow">RECOMMENDED MATERIALS</span>
         <h2>Products for {page.title.replace(" | Wholesale Supplier", "")}</h2>
         <p>Review the specifications and request a sample or quotation for the material closest to your project.</p>
@@ -404,6 +698,48 @@ const faqSchema = {
               </div>
               <a href={`/products/${product.slug}/`} class="application-product__link">View product specifications</a>
             </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container approval-grid">
+      <div>
+        <span class="eyebrow">SAMPLE APPROVAL</span>
+        <h2>Checks to complete before bulk production</h2>
+        <p class="approval-intro">Record the approved sample and test it in the intended garment construction so the quotation, sample and production standard stay aligned.</p>
+        <ol class="sample-checks">
+          {page.sampleChecks.map((item) => <li>{item}</li>)}
+        </ol>
+      </div>
+      <aside class="commercial-path">
+        <span class="eyebrow">PROJECT RFQ</span>
+        <h2>Move from shortlist to quotation</h2>
+        <p>Send the product links you are comparing together with your application, quantity, target color, destination and required test standards. We will confirm the relevant sample and quotation route.</p>
+        <div class="commercial-path__actions">
+          <a href="/contact/" data-rfq-open class="btn btn--primary">Request Samples & Quote</a>
+          <a href="/sample-policy/" class="text-link">Review sample policy</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header section-header--left">
+        <span class="eyebrow">RELATED BUYER GUIDES</span>
+        <h2>Plan the next sourcing decision</h2>
+        <p>Use these guides to prepare sample comparisons, testing questions and a clearer RFQ.</p>
+      </div>
+      <div class="guide-grid">
+        {relatedGuides.map((guide) => (
+          <article class="guide-item">
+            <span>{guide.category} · {guide.readTime}</span>
+            <h3><a href={`/blog/${guide.slug}/`}>{guide.title}</a></h3>
+            <p>{guide.excerpt}</p>
+            <a href={`/blog/${guide.slug}/`} class="text-link">Read buyer guide</a>
           </article>
         ))}
       </div>
@@ -543,6 +879,95 @@ const faqSchema = {
     background: var(--color-bg-alt);
   }
 
+  .criteria-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg) var(--space-2xl);
+  }
+
+  .criterion {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    gap: var(--space-md);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .criterion__number {
+    color: var(--color-accent-dark);
+    font-size: var(--text-sm);
+    font-weight: 700;
+  }
+
+  .criterion h3,
+  .guide-item h3 {
+    margin: 0 0 var(--space-sm);
+    color: var(--color-primary);
+    font-size: var(--text-lg);
+    line-height: 1.35;
+  }
+
+  .criterion p,
+  .guide-item p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+  }
+
+  .comparison-table {
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+  }
+
+  .comparison-table:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  .comparison-table table {
+    width: 100%;
+    min-width: 1120px;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+    text-align: left;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .comparison-table thead th {
+    background: var(--color-bg-alt);
+    color: var(--color-primary);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+  }
+
+  .comparison-table tbody tr:last-child th,
+  .comparison-table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .comparison-table tbody th {
+    min-width: 220px;
+    color: var(--color-primary);
+  }
+
+  .comparison-table tbody th a,
+  .guide-item h3 a {
+    color: inherit;
+  }
+
+  .comparison-table td:last-child {
+    min-width: 260px;
+  }
+
   .application-products {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -620,6 +1045,189 @@ const faqSchema = {
     font-weight: 700;
   }
 
+  .scenario-band {
+    background: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: var(--space-3xl);
+    align-items: start;
+  }
+
+  .scenario-band .eyebrow {
+    color: var(--color-accent-light);
+  }
+
+  .scenario-summary h2,
+  .scenario-decisions h3 {
+    color: var(--color-white);
+  }
+
+  .scenario-summary h2 {
+    margin: var(--space-sm) 0 var(--space-md);
+  }
+
+  .scenario-summary p,
+  .scenario-decisions > p {
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.7;
+  }
+
+  .scenario-summary small {
+    display: block;
+    margin-top: var(--space-xl);
+    color: rgba(255, 255, 255, 0.58);
+    font-size: var(--text-xs);
+    line-height: 1.6;
+  }
+
+  .scenario-decisions h3 {
+    margin: 0 0 var(--space-lg);
+    font-size: var(--text-xl);
+  }
+
+  .scenario-decisions ol {
+    display: grid;
+    gap: var(--space-md);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: scenario-step;
+  }
+
+  .scenario-decisions li {
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: var(--space-md);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    counter-increment: scenario-step;
+  }
+
+  .scenario-decisions li::before {
+    content: counter(scenario-step);
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.36);
+    border-radius: 50%;
+    color: var(--color-accent-light);
+    font-size: var(--text-xs);
+    font-weight: 700;
+  }
+
+  .scenario-decisions > p {
+    margin: var(--space-xl) 0 0;
+    padding-top: var(--space-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .scenario-decisions strong {
+    color: var(--color-white);
+  }
+
+  .approval-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+    gap: var(--space-3xl);
+    align-items: start;
+  }
+
+  .approval-grid h2,
+  .commercial-path h2 {
+    margin: var(--space-sm) 0 var(--space-md);
+    color: var(--color-primary);
+  }
+
+  .approval-intro,
+  .commercial-path p {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  .sample-checks {
+    display: grid;
+    gap: var(--space-md);
+    margin: var(--space-xl) 0 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: sample-check;
+  }
+
+  .sample-checks li {
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: var(--space-md);
+    align-items: start;
+    color: var(--color-text);
+    line-height: 1.6;
+    counter-increment: sample-check;
+  }
+
+  .sample-checks li::before {
+    content: counter(sample-check);
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
+    border: 1px solid var(--color-accent);
+    border-radius: 50%;
+    color: var(--color-accent-dark);
+    font-size: var(--text-xs);
+    font-weight: 700;
+  }
+
+  .commercial-path {
+    padding: var(--space-xl);
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-accent);
+    background: var(--color-bg-alt);
+  }
+
+  .commercial-path__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+  }
+
+  .text-link {
+    color: var(--color-accent-dark);
+    font-weight: 700;
+  }
+
+  .guide-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .guide-item {
+    min-width: 0;
+    padding-top: var(--space-lg);
+    border-top: 2px solid var(--color-accent);
+  }
+
+  .guide-item > span {
+    display: block;
+    margin-bottom: var(--space-sm);
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .guide-item .text-link {
+    display: inline-block;
+    margin-top: var(--space-md);
+    font-size: var(--text-sm);
+  }
+
   .application-faq {
     max-width: 900px;
   }
@@ -668,7 +1276,9 @@ const faqSchema = {
 
   @media (max-width: 900px) {
     .application-hero__grid,
-    .application-content {
+    .application-content,
+    .scenario-grid,
+    .approval-grid {
       grid-template-columns: 1fr;
     }
 
@@ -677,6 +1287,10 @@ const faqSchema = {
     }
 
     .application-products {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .guide-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
@@ -696,6 +1310,20 @@ const faqSchema = {
 
     .application-products {
       grid-template-columns: 1fr;
+    }
+
+    .criteria-grid,
+    .guide-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .commercial-path__actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .commercial-path__actions .btn {
+      width: 100%;
     }
   }
 </style>

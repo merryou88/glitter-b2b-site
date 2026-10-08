@@ -112,3 +112,53 @@ status: current
 - 测试路径：`npm run build`、`npm run validate:products`；检查公开 Blog 的产品 slug、应用页映射和图片资源
 - 最后变更编号：CHG-20261006-004-blog-application-product-links
 - 待确认事项：既有文章的应用页如缺少明确语义映射，应后续按文章主题补齐，不依赖默认排序选择
+
+### REQ-BLOG-012：Blog 最终渲染标题长度校验
+- 状态：active
+- 当前规则：Blog SEO title 必须按 Layout 完成品牌名处理后的最终 `<title>` 计算长度，并控制在 60 个字符以内；压缩 title 时不修改文章 URL、canonical、H1 或正文主题。
+- 验收条件：生成的公开 Blog 页面 title 均不超过 60 个字符；`metallic-vs-iridescent-vs-holographic-fabric` 与 `best-foil-fabric-for-swimwear-and-bikinis` 的 URL、canonical 和 H1 保持不变。
+- 影响模块：`blog-knowledge`、`site-shell`
+- 代码路径：`src/data/blogArticles.js`、`src/layouts/Layout.astro`
+- 测试路径：`npm run build`；扫描生成 Blog 页面的最终 `<title>`
+- 最后变更编号：CHG-20261008-001-blog-final-title-length
+- 待确认事项：部署后 Google 可能短期保留旧标题或根据查询自行改写标题
+
+### REQ-BLOG-013：核心 Blog 文章专业深度升级
+- 状态：active
+- 当前规则：核心公开 Blog 文章应采用面向美国 B2B fabric buyers 的深度采购指南结构，围绕材料/工艺原理、基布差异、应用判断、样品测试、商业采购信息和真实产品承接展开；不得为了增强专业感而虚构未确认性能、认证、测试结果或贸易承诺。
+- 验收条件：`hot-stamping-foil-finish-guide`、`what-is-foil-fabric-wholesale-buyer-guide`、`metallic-vs-iridescent-vs-holographic-fabric` 和 `best-foil-fabric-for-swimwear-and-bikinis` 保持原 URL 不变；正文包含可执行的采购判断、表格或清单、真实产品回链和询盘 CTA；泳装类文章继续避免未经确认的 chlorine、UV、saltwater、colorfastness 等性能承诺。
+- 影响模块：`blog-knowledge`、`content-data`、`product-catalog`
+- 代码路径：`src/data/blogArticles.js`
+- 测试路径：`npm run build`、公开 Blog 数据检查
+- 最后变更编号：CHG-20261008-004-core-blog-depth-upgrade
+- 待确认事项：后续可按同一结构继续升级其他薄内容文章
+
+### REQ-BLOG-014：下一批 Blog 真实内容缺口选题
+- 状态：active
+- 当前规则：下一批优先 Blog 选题必须填补真实 B2B 面料采购缺口，每篇只服务一个搜索意图，并且每篇文章只链接一个语义匹配的应用页和 2–4 个真实相关产品。优先选题为：`Nylon Spandex vs Polyester Spandex for Foil Fabric`、`90 vs 150 vs 180 vs 200 GSM Performance Fabric`、`Dot vs Scale vs Snakeskin vs Gradient Foil Finish`、`How to Test Foil Fabric After Sewing and Stretching`、`How Much Fabric Is Needed for Dancewear or Costume Production`。
+- 验收条件：新增上述文章时不得把多个搜索意图混写在一篇文章中；正文需围绕实际采购判断、样品测试、规格选择或用量估算展开；每篇推荐产品必须来自真实公开产品 slug，并避免所有文章链接同一批产品。
+- 影响模块：`blog-knowledge`、`content-data`、`product-catalog`
+- 代码路径：`src/data/blogArticles.js`、`src/pages/blog/index.astro`、`src/pages/blog/[slug].astro`
+- 测试路径：`npm run build`、公开 Blog 数据检查
+- 最后变更编号：CHG-20261008-005-blog-content-gap-backlog
+- 待确认事项：具体写作顺序、每篇对应应用页和产品清单可在实际写作前逐篇确认
+
+### REQ-BLOG-015：公开 Blog 统一机构署名
+- 状态：active
+- 当前规则：所有公开 Blog 文章在标题区统一显示 `Written by Nixia Fabric Editorial Team`；Article Schema 的作者继续使用真实机构 `Organization: Nixia Fabric`。当前不设置个人作者或独立技术审核人，不得为了 E-E-A-T 虚构姓名或审核关系。
+- 验收条件：每篇公开 Blog 页面显示一次统一机构署名；JSON-LD 的 `author.@type` 为 `Organization` 且 `author.name` 为 `Nixia Fabric`；不出现虚构的 `reviewedBy`。
+- 影响模块：`blog-knowledge`
+- 代码路径：`src/pages/blog/[slug].astro`
+- 测试路径：`npm run build`；检查生成 Blog 页面可见署名和 Article JSON-LD
+- 最后变更编号：CHG-20261008-006-blog-organization-byline
+- 待确认事项：如未来公开真实个人作者，再单独增加 Person 资料与作者页
+
+### REQ-BLOG-016：Blog 发布与实质更新日期
+- 状态：active
+- 当前规则：`date` 表示文章首次正式上线日期；可选 `updatedDate` 只在正文、规格、测试记录、图片证据或采购结论发生实质变化时设置。仅修改标点、样式或普通内链时不得刷新更新日期。一天发布多篇文章时保留真实日期，不人为错开或回填日期。
+- 验收条件：Article Schema 的 `datePublished` 使用 `date`，`dateModified` 使用 `updatedDate` 或回退到 `date`；页面仅在 `updatedDate` 与发布日期不同时显示 `Updated`；未配置更新日期的既有文章视觉不变。
+- 影响模块：`blog-knowledge`、`content-data`
+- 代码路径：`src/pages/blog/[slug].astro`、`src/data/blogArticles.js`
+- 测试路径：`npm run build`；检查生成 Article JSON-LD 和文章元信息
+- 最后变更编号：CHG-20261008-007-blog-publication-update-dates
+- 待确认事项：后续每次实质更新文章时由内容维护者同时填写 `updatedDate`

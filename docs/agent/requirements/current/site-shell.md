@@ -63,6 +63,46 @@ status: current
 - 最后变更编号：CHG-20260920-001-us-search-baseline-seo-focus
 - 待确认事项：上线后需在 Google Search Console 观察美国查询、页面展示和“已发现 - 尚未编入索引”变化。
 
+### REQ-SHELL-013：全站 SEO 构建门禁
+- 状态：active
+- 当前规则：`npm run build` 在 Astro 构建和产品校验后必须运行全站 SEO 校验，以最终生成的 HTML 和 sitemap 为准检查 title、meta description、重复元数据、canonical、H1、站内页面链接、sitemap 索引状态和图片 alt。任何错误必须使构建返回失败状态，禁止带错误部署。
+- 验收条件：title 必须存在且不超过 60 个可见字符；meta description 必须存在且不超过 160 个可见字符；sitemap 页面不得重复 title/description，必须使用唯一匹配自身 URL 的 canonical、恰好一个 H1 和 `index, follow`；所有 indexable 页面必须进入 sitemap；站内页面链接必须指向生成路由；所有 img 必须包含 alt 属性。`privacy`、`thank-you` 和 404 等 noindex 页面不得被误要求进入 sitemap。
+- 影响模块：`site-shell`、`product-catalog`、`blog-knowledge`
+- 代码路径：`scripts/validate-seo.mjs`、`package.json`、`dist/**/*.html`、`dist/sitemap-*.xml`
+- 测试路径：`npm run validate:seo`、`npm run build`
+- 最后变更编号：CHG-20261008-002-sitewide-seo-build-gate
+- 待确认事项：门禁验证静态构建产物，不替代部署后的 HTTP 状态、Core Web Vitals 或 Google Search Console 检查
+
+### REQ-SHELL-014：应用页作为商业主题中心
+- 状态：active
+- 当前规则：6 个公开应用页必须围绕各自采购场景提供独立的选材标准、重点产品参数对比、样品验收清单、相关采购指南和带应用上下文的 RFQ 路径。内容不得只替换关键词形成重复模板，不得声明产品数据未确认的性能；泳装应用尤其不得默认声明抗氯、UV、盐水或湿态色牢度表现。重点产品与应用页之间保持双向主题内链。
+- 验收条件：每个应用页包含 4 项独立选材标准、有效产品对比表、4 项样品检查、3 篇有效 buyer guide 和询盘入口；表格在移动端可横向滚动；所有产品和博客链接通过 SEO 构建门禁；定制开发页只展示经过筛选的代表产品。
+- 影响模块：`site-shell`、`product-catalog`、`blog-knowledge`
+- 代码路径：`src/pages/applications/[slug].astro`、`src/data/applicationClusters.js`
+- 测试路径：`npm run build`，检查 6 个生成应用页及其产品/博客内链
+- 最后变更编号：CHG-20261008-003-application-commercial-topic-hubs
+- 待确认事项：上线后在 Google Search Console 按应用页观察非品牌查询、展示、点击与平均排名变化
+
+### REQ-SHELL-015：应用页常见采购场景
+- 状态：active
+- 当前规则：6 个公开应用页分别展示与该应用匹配的常见采购场景，说明买方需求、判断路径和 RFQ 准备方式。场景基于重复出现的采购需求总���，不得描述为具名客户案例，不得加入虚构成交结果、订单数据、客户评价或产品性能结果。
+- 验收条件：每个应用页包含一个独立场景、3 项决策步骤和 RFQ 提示；页面明确显示场景不是具名客户案例或性能声明；泳装场景继续要求按具体材料确认湿态与色牢度标准。
+- 影响模块：`site-shell`、`product-catalog`
+- 代码路径：`src/pages/applications/[slug].astro`
+- 测试路径：`npm run build`；检查 6 个应用页场景内容和免责声明
+- 最后变更编号：CHG-20261008-008-common-sourcing-scenarios
+- 待确认事项：无
+
+### REQ-SHELL-016：全站 Applications 导航入口
+- 状态：active
+- 当前规则：桌面主导航在 `Products` 后展示 `Applications` 并链接 `/applications/`；由于右侧已有 `Request Sample & Quote` 联系入口，桌面主导航不重复展示 `Contact`。移动导航同时保留 `Applications`、`Contact` 和询盘按钮；Footer 的 Company 分组提供 `Applications` 入口。
+- 验收条件：桌面、移动端和 Footer 均可直接进入应用中心；应用索引及详情页正确显示导航 active 状态；桌面导航在现有响应式断点内不溢出。
+- 影响模块：`site-shell`
+- 代码路径：`src/components/Header.astro`、`src/components/Footer.astro`
+- 测试路径：`npm run build`；检查桌面与移动导航和 `/applications/` active 状态
+- 最后变更编号：CHG-20261008-009-applications-navigation-entry
+- 待确认事项：无
+
 ### REQ-SHELL-005：首页不展示 Glitter 相关内容
 - 状态：active
 - 当前规则：首页及其共享站点壳文案、SEO 元数据、替代文本、能力卡片与采购流程文案不使用 `glitter` 或 `sparkle` 表述；首页应用素材引用使用中性文件名。
