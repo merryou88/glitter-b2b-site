@@ -23,7 +23,8 @@ export function getStaticPaths() {
 const { article } = Astro.props;
 const relatedProducts = article.focusProducts
   .map((slug) => performanceProducts.find((product) => product.slug === slug))
-  .filter(Boolean);
+  .filter(Boolean)
+  .slice(0, 4);
 const relatedGuides = blogArticles
   .filter((item) => item.slug !== article.slug)
   .map((item) => {
@@ -67,13 +68,27 @@ const applicationLinks = [
     label: "Cheerleading Fabric Wholesale",
     description: "Compare recovery, color consistency, shine and sampling for team performance garments.",
   },
-].filter((item) => item.slug !== article.slug);
+  {
+    slug: "metallic-vs-iridescent-vs-holographic-fabric",
+    href: "/applications/foil-fabric-for-stage-costumes/",
+    label: "Foil Fabric for Stage Costumes",
+    description: "Choose metallic, iridescent and holographic surfaces for stage and performance garments.",
+  },
+  {
+    slug: "best-foil-fabric-for-swimwear-and-bikinis",
+    href: "/applications/swimwear-fabric-supplier/",
+    label: "Iridescent Swimwear Fabric",
+    description: "Review stretch foil options for swimwear and bikinis, including sample and construction checks.",
+  },
+];
 const primaryApplicationByArticle = {
   "holographic-fabric-for-dancewear-what-buyers-should-check": "holographic-fabric-wholesale",
   "iridescent-vs-metallic-fabric-for-stage-costumes": "foil-fabric-for-stage-costumes",
   "how-to-choose-4-way-stretch-fabric-for-bodysuits": "dancewear-fabric-supplier",
   "best-fabric-for-cheerleading-and-performance-costumes": "cheerleading-performance-costume-fabric",
   "custom-foil-fabric-development-stock-vs-custom": "custom-foil-fabric-development",
+  "metallic-vs-iridescent-vs-holographic-fabric": "foil-fabric-for-stage-costumes",
+  "best-foil-fabric-for-swimwear-and-bikinis": "swimwear-fabric-supplier",
 };
 const prioritizedApplicationLinks = applicationLinks.sort((a, b) => {
   const primary = primaryApplicationByArticle[article.slug];
@@ -295,7 +310,7 @@ const faqSchema = {
               <a href="/applications/" class="text-link">View all applications →</a>
             </div>
             <div class="application-links__grid">
-              {prioritizedApplicationLinks.slice(0, 2).map((application) => (
+              {prioritizedApplicationLinks.slice(0, 1).map((application) => (
                 <a href={application.href} class="application-link">
                   <strong>{application.label}</strong>
                   <span>{application.description}</span>

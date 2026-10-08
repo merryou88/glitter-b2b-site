@@ -33,14 +33,14 @@ status: current
 - 最后变更编号：CHG-20260923-007-retired-blogs-404
 - 待确认事项：无
 
-### REQ-BLOG-004：公开博客聚焦表演服装采购
+### REQ-BLOG-004：公开博客聚焦面料采购场景
 - 状态：active
-- 当前规则：公开博客文章只围绕 hot-stamping foil、iridescent、stretch fabric 及其在舞台服装、舞蹈服、表演服和 Cosplay/Carnival Costume 中的采购与合规判断，不推广其他行业。
-- 验收条件：博客列表、公开文章正文、SEO 和 RFQ 文案不出现鞋材、手袋、泳装、装饰、工艺或玩具行业引导。
+- 当前规则：公开博客文章围绕 hot-stamping foil、iridescent、stretch fabric 及已确认的服装应用采购与合规判断，包括舞台服装、舞蹈服、表演服、Cosplay/Carnival Costume 和泳装；不推广鞋包配件、工艺或玩具行业。
+- 验收条件：博客列表、公开文章正文、SEO 和 RFQ 文案服务于上述面料及服装采购场景，不引导鞋包配件、工艺或玩具采购。
 - 影响模块：`blog-knowledge`、`content-data`
 - 代码路径：`src/data/blogArticles.js`、`src/pages/blog/index.astro`、`src/pages/blog/[slug].astro`
 - 测试路径：`npm run build`；检查公开博客生成页面文本
-- 最后变更编号：CHG-20260912-018-public-copy-alignment
+- 最后变更编号：CHG-20261006-004-blog-application-product-links
 - 待确认事项：已排除的历史文章继续保留在源数据中
 
 ### REQ-BLOG-005：Full-Print Hot-Stamping Spandex 采购指南
@@ -102,3 +102,13 @@ status: current
 - 测试路径：`npm run build`；文章数据检查；公开产品校验
 - 最后变更编号：CHG-20261005-002-sample-testing-buyer-guides
 - 待确认事项：无
+
+### REQ-BLOG-011：文章与应用页、产品页导流
+- 状态：active
+- 当前规则：每篇公开 Blog 文章配置一个语义匹配的主应用页入口，并推荐 2–4 个真实、相关的产品；不得把全部产品泛化地挂到所有文章。被文章关联的产品详情页可展示最多两条简短 Related Buyer Guides 延伸阅读入口，不复制 Blog 长篇正文。
+- 验收条件：文章详情页每篇最多展示一个主应用页入口和 2–4 个有效产品；文章关联产品页只出现简短 Blog 标题、分类与阅读时长链接；Blog 首页主题分组能发现新增文章。
+- 影响模块：`blog-knowledge`、`product-catalog`
+- 代码路径：`src/data/blogArticles.js`、`src/pages/blog/index.astro`、`src/pages/blog/[slug].astro`、`src/components/ProductDetail.astro`
+- 测试路径：`npm run build`、`npm run validate:products`；检查公开 Blog 的产品 slug、应用页映射和图片资源
+- 最后变更编号：CHG-20261006-004-blog-application-product-links
+- 待确认事项：既有文章的应用页如缺少明确语义映射，应后续按文章主题补齐，不依赖默认排序选择
