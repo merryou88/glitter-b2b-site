@@ -474,3 +474,13 @@ status: current
 - 测试路径：`npm run build`；手动检查 `/products/` 移动端卡片
 - 最后变更编号：CHG-20261011-034-mobile-swatch-note-style
 - 待确认事项：无
+
+### REQ-PRODUCT-048：移动端产品页 Hero 优点两列展示
+- 状态：active
+- 当前规则：产品列表页移动端 Hero 下方的四个采购优点以两列两行展示；桌面端继续使用原有横向排列。
+- 验收条件：移动端产品页 Hero 中四个优点不再逐行排列，而是同一行展示两个；四项文案完整可见，桌面端布局不变。
+- 影响模块：`product-catalog`
+- 代码路径：`src/pages/products.astro`
+- 测试路径：`npm run build`；手动检查 `/products/` 移动端布局
+- 最后变更编号：CHG-20261011-035-mobile-products-hero-facts-grid
+- 待确认事项：无

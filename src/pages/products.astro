@@ -1020,7 +1020,12 @@ const sourcingLinks = [
       justify-content: space-between;
       width: 100%;
     }
-    .catalog-quick-facts { display: grid; gap: 0.55rem; }
+    /* Mobile products hero: keep the four purchasing facts in two rows. */
+    .catalog-quick-facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.55rem 0.8rem;
+    }
     .product-grid.is-list .product-card { grid-template-columns: 1fr; }
     .product-grid.is-list .product-card__image-wrap { min-height: auto; }
     .product-card__actions { grid-template-columns: 1fr; }
