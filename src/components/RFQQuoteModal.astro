@@ -274,6 +274,19 @@ const productLookup = performanceProducts.map((p) => ({
   }
 
   @media (max-width: 767px) {
+    .rfq-modal__close {
+      position: fixed;
+      top: 0.875rem;
+      right: 0.875rem;
+      z-index: 20;
+      width: 44px;
+      height: 44px;
+      background: #ffffff;
+      color: var(--color-primary);
+      box-shadow: 0 4px 14px rgba(9, 17, 34, 0.2);
+      touch-action: manipulation;
+    }
+
     .rfq-modal__wrap {
       flex-direction: column;
       width: calc(100vw - 1rem);

@@ -42,3 +42,13 @@ status: current
 - 测试路径：`npm run build`，手动访问 `/contact/`
 - 最后变更编号：CHG-20260916-008-contact-page-no-rfq-autoopen
 - 待确认事项：无
+
+### REQ-FORM-005：RFQ 弹窗移动端关闭按钮可见可用
+- 状态：active
+- 当前规则：RFQ 弹窗在移动端显示高对比度、固定在视口右上方的关闭按钮，按钮保持至少 44px 触控区域，不受弹窗滚动内容遮挡。
+- 验收条件：移动端打开 RFQ 弹窗后始终能看到并点击关闭按钮，点击后关闭弹窗并恢复页面滚动；桌面端关闭按钮保持原有表现。
+- 影响模块：`inquiry-forms`
+- 代码路径：`src/components/RFQQuoteModal.astro`
+- 测试路径：`npm run build`；手动在移动端打开、关闭 RFQ 弹窗
+- 最后变更编号：CHG-20261011-020-mobile-rfq-close-button
+- 待确认事项：无
