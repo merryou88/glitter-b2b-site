@@ -162,3 +162,13 @@ status: current
 - 测试路径：`npm run build`；检查生成 Article JSON-LD 和文章元信息
 - 最后变更编号：CHG-20261008-007-blog-publication-update-dates
 - 待确认事项：后续每次实质更新文章时由内容维护者同时填写 `updatedDate`
+
+### REQ-BLOG-017：Blog 详情页 Hero 收紧上下间距
+- 状态：active
+- 当前规则：Blog 详情页 Hero 在桌面端和移动端均使用紧凑的上下间距，为正文内容保留更多首屏空间；Blog 列表页和其他页面不受影响。
+- 验收条件：桌面端 Hero 上下 padding 使用紧凑尺寸，移动端进一步收紧；标题、摘要、标签、署名和 Hero 图片完整显示，正文内容更早进入首屏。
+- 影响模块：`blog-knowledge`
+- 代码路径：`src/pages/blog/[slug].astro`
+- 测试路径：`npm run build`；手动检查桌面端和移动端任一 Blog 详情页
+- 最后变更编号：CHG-20261011-036-blog-detail-hero-spacing
+- 待确认事项：无
