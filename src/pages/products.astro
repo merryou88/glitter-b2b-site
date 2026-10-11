@@ -1,8 +1,8 @@
 ---
 /**
  * Products Listing Page — /products
- * Catalog-style layout: filter chips + sort → product grid
- * Filter/sort implemented client-side on the static-rendered grid.
+ * Catalog-style layout with desktop controls and mobile application tabs.
+ * Filtering and sorting are implemented client-side on the static-rendered grid.
  */
 import Layout from "@layouts/Layout.astro";
 import { performanceProducts } from "@data/allProducts";
@@ -89,6 +89,13 @@ const applicationOptions = [
   "backdrops",
 ];
 
+const mobileApplicationOptions = [
+  { value: "dancewear", label: "Dancewear" },
+  { value: "stage costumes", label: "Stage Costumes" },
+  { value: "performance apparel", label: "Performance Apparel" },
+  { value: "swimwear", label: "Swimwear" },
+];
+
 const breadcrumbData = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -138,7 +145,7 @@ const sourcingLinks = [
   <section class="page-hero">
     <div class="container">
       <span class="eyebrow">Performance Fabric Catalog</span>
-      <h1>Foil Fabric Supplier for Dancewear & Performance Costumes</h1>
+      <h1>Foil Fabrics for Dancewear & Performance Costumes</h1>
       <p class="page-hero__desc">
         Source wholesale foil fabric, holographic stretch fabric and iridescent spandex fabric
         for dancewear, stage costumes and performance apparel. Compare samples, MOQ and custom options.
@@ -148,20 +155,6 @@ const sourcingLinks = [
         <span>MOQ from 100 m / 109 yd</span>
         <span>Samples available</span>
         <span>OEM / ODM support</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--compact">
-    <div class="container">
-      <div class="sourcing-paths" aria-label="Fabric sourcing paths">
-        {sourcingLinks.map((link) => (
-          <a href={link.href} class="sourcing-path">
-            <span class="sourcing-path__eyebrow">Buyer guide</span>
-            <strong>{link.title}</strong>
-            <span>{link.desc}</span>
-          </a>
-        ))}
       </div>
     </div>
   </section>
@@ -217,6 +210,14 @@ const sourcingLinks = [
         </div>
       </div>
 
+      <div class="catalog-mobile-filters" aria-label="Filter products by application">
+        {mobileApplicationOptions.map((option) => (
+          <button type="button" class="catalog-mobile-filter" data-mobile-application={option.value} aria-pressed="false">
+            {option.label}
+          </button>
+        ))}
+      </div>
+
       <div class="catalog-summary">
         <p class="catalog-count" id="catalog-count" aria-live="polite">Showing {catalogProducts.length} products</p>
         <div class="catalog-summary__actions">
@@ -270,7 +271,17 @@ const sourcingLinks = [
                 <div class="product-card__spec-grid" aria-label="Key product specifications">
                   <div><span>Width</span><strong>{item.specs.width || "To be confirmed"}</strong></div>
                   <div><span>Weight</span><strong>{item.specs.weight || "To be confirmed"}</strong></div>
-                  <div><span>Material</span><strong>{item.specs.baseMaterial || "To be confirmed"}</strong></div>
+                  <div>
+                    <span>Material</span>
+                    {item.specs.baseMaterial === "95% Polyester 5% Spandex" ? (
+                      <>
+                        <strong class="material-value--desktop">95% Polyester 5% Spandex</strong>
+                        <strong class="material-value--mobile">95% Polyester / 5% Spandex</strong>
+                      </>
+                    ) : (
+                      <strong>{item.specs.baseMaterial || "To be confirmed"}</strong>
+                    )}
+                  </div>
                   <div><span>MOQ</span><strong>{productMoqDisplay(item)}</strong></div>
                 </div>
 
@@ -278,6 +289,9 @@ const sourcingLinks = [
                   <span class:list={{ "product-card__stock": item.stockStatus?.toLowerCase().includes("in-stock") }}>
                     {item.stockStatus}
                   </span>
+                  {item.stockStatus?.toLowerCase().includes("in-stock") && (
+                    <span class="product-card__swatch-note">✅ Free swatch card available</span>
+                  )}
                   <span>{item.badge}</span>
                 </div>
                 <p class="product-card__applications"><strong>Applications:</strong> {(item.applications || []).slice(0, 4).join(" · ")}</p>
@@ -293,6 +307,20 @@ const sourcingLinks = [
       </div>
 
       <p class="catalog-empty" id="catalog-empty" hidden>No products match this filter.</p>
+    </div>
+  </section>
+
+  <section class="section section--compact">
+    <div class="container">
+      <div class="sourcing-paths" aria-label="Fabric sourcing paths">
+        {sourcingLinks.map((link) => (
+          <a href={link.href} class="sourcing-path">
+            <span class="sourcing-path__eyebrow">Buyer guide</span>
+            <strong>{link.title}</strong>
+            <span>{link.desc}</span>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -316,7 +344,7 @@ const sourcingLinks = [
   .page-hero {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: var(--color-white);
-    padding-block: var(--space-3xl) var(--space-2xl);
+    padding-block: var(--space-xl) var(--space-lg);
     position: relative;
     overflow: hidden;
   }
@@ -339,7 +367,7 @@ const sourcingLinks = [
   .page-hero__desc {
     color: rgba(255, 255, 255, 0.75);
     font-size: var(--text-lg);
-    max-width: 640px;
+    width: 100%;
   }
 
   .catalog-quick-facts {
@@ -418,7 +446,7 @@ const sourcingLinks = [
 
   /* ==================== Catalog Toolbar ==================== */
   #catalog {
-    padding-top: var(--space-2xl);
+    padding-top: var(--space-md);
   }
 
   .catalog-toolbar {
@@ -431,6 +459,10 @@ const sourcingLinks = [
     border-radius: 8px;
     background: var(--color-white);
     box-shadow: 0 4px 16px rgba(22, 41, 77, 0.05);
+  }
+
+  .catalog-mobile-filters {
+    display: none;
   }
 
   .catalog-search {
@@ -576,7 +608,7 @@ const sourcingLinks = [
   .catalog-count {
     font-size: var(--text-sm);
     color: var(--color-text-muted);
-    margin: 0 0 var(--space-lg);
+    margin: 0 0 var(--space-sm);
   }
 
   .catalog-empty {
@@ -738,6 +770,11 @@ const sourcingLinks = [
     line-height: 1.35;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  .material-value--mobile,
+  .product-card__swatch-note {
+    display: none;
   }
 
   .product-card__meta {
@@ -938,16 +975,53 @@ const sourcingLinks = [
 
     .product-card__body { padding: var(--space-md); }
 
-    .page-hero { padding-block: var(--space-2xl) var(--space-3xl); }
+    .page-hero { padding-block: var(--space-lg) var(--space-md); }
     .page-hero__desc { font-size: var(--text-base); }
-    .catalog-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .catalog-filter select,
-    .catalog-sort__select { width: 100%; min-width: 0; }
+    #catalog { padding-top: var(--space-sm); }
+    .catalog-toolbar { display: none; }
+    .catalog-mobile-filters {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding: 0.25rem 0 0.75rem;
+      scrollbar-width: none;
+    }
+
+    .catalog-mobile-filters::-webkit-scrollbar {
+      display: none;
+    }
+
+    .catalog-mobile-filter {
+      flex: 0 0 auto;
+      min-height: 38px;
+      padding: 0.45rem 0.8rem;
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      background: var(--color-white);
+      color: var(--color-primary);
+      font: inherit;
+      font-size: var(--text-xs);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .catalog-mobile-filter.is-active {
+      border-color: var(--color-accent);
+      background: var(--color-accent);
+      color: var(--color-white);
+    }
+
     .catalog-summary {
       align-items: flex-start;
       flex-direction: column;
       padding-block: var(--space-sm);
     }
+
+    .catalog-view-toggle,
+    .catalog-reset {
+      display: none;
+    }
+
     .catalog-summary__actions {
       justify-content: space-between;
       width: 100%;
@@ -956,6 +1030,38 @@ const sourcingLinks = [
     .product-grid.is-list .product-card { grid-template-columns: 1fr; }
     .product-grid.is-list .product-card__image-wrap { min-height: auto; }
     .product-card__actions { grid-template-columns: 1fr; }
+
+    .product-card__spec-grid div:nth-child(3) strong {
+      overflow: visible;
+      text-overflow: clip;
+      white-space: normal;
+    }
+
+    .material-value--desktop {
+      display: none;
+    }
+
+    .material-value--mobile {
+      display: block;
+    }
+
+    .product-card__meta {
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: start;
+    }
+
+    .product-card__meta span:nth-child(2) {
+      grid-column: auto;
+      text-align: left;
+    }
+
+    .product-card__swatch-note {
+      display: inline;
+      color: var(--color-accent-dark);
+      font-size: 0.68rem;
+      line-height: 1.35;
+      font-weight: 600;
+    }
   }
 </style>
 
@@ -972,15 +1078,31 @@ const sourcingLinks = [
     var emptyEl = document.getElementById("catalog-empty");
     var resetButton = document.getElementById("catalog-reset");
     var viewButtons = Array.prototype.slice.call(document.querySelectorAll(".catalog-view-toggle__btn"));
+    var mobileApplicationButtons = Array.prototype.slice.call(document.querySelectorAll(".catalog-mobile-filter"));
     if (!grid) return;
 
     var cards = Array.prototype.slice.call(grid.querySelectorAll(".product-card"));
     var filterControls = [searchInput, finishFilter, stretchFilter, applicationFilter, stockFilter];
+    var mobileApplicationValue = "all";
 
     function hasApplication(card, value) {
       if (value === "all") return true;
       return (card.getAttribute("data-applications") || "").split("|").some(function (application) {
         return application === value;
+      });
+    }
+
+    function hasMobileApplication(card, value) {
+      if (value === "all") return true;
+      var aliases = {
+        dancewear: ["dancewear"],
+        "stage costumes": ["stage costumes"],
+        "performance apparel": ["performance wear", "performance outfits", "performance apparel", "performance dress"],
+        swimwear: ["swimwear", "bikini swimwear"],
+      };
+      var applications = (card.getAttribute("data-applications") || "").split("|");
+      return (aliases[value] || []).some(function (alias) {
+        return applications.indexOf(alias) !== -1;
       });
     }
 
@@ -1001,6 +1123,7 @@ const sourcingLinks = [
           (finish === "all" || tags.finish === finish) &&
           (stretch === "all" || tags.stretch === stretch) &&
           hasApplication(card, application) &&
+          hasMobileApplication(card, mobileApplicationValue) &&
           (stock === "all" || cardStock === stock);
         card.classList.toggle("is-hidden", !show);
         if (show) visible++;
@@ -1029,7 +1152,8 @@ const sourcingLinks = [
     cards.forEach(function (card, i) { card.setAttribute("data-order", String(i)); });
 
     function setView(mode) {
-      var nextMode = mode === "list" ? "list" : "grid";
+      var isMobile = window.matchMedia && window.matchMedia("(max-width: 768px)").matches;
+      var nextMode = !isMobile && mode === "list" ? "list" : "grid";
       grid.classList.toggle("is-list", nextMode === "list");
       viewButtons.forEach(function (button) {
         var active = button.getAttribute("data-view") === nextMode;
@@ -1042,6 +1166,19 @@ const sourcingLinks = [
     viewButtons.forEach(function (button) {
       button.addEventListener("click", function () {
         setView(button.getAttribute("data-view") || "grid");
+      });
+    });
+
+    mobileApplicationButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        var nextValue = button.getAttribute("data-mobile-application") || "all";
+        mobileApplicationValue = mobileApplicationValue === nextValue ? "all" : nextValue;
+        mobileApplicationButtons.forEach(function (item) {
+          var active = item.getAttribute("data-mobile-application") === mobileApplicationValue;
+          item.classList.toggle("is-active", active);
+          item.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        applyFilters();
       });
     });
 

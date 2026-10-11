@@ -293,7 +293,7 @@ const factorySnapshot = [
   <section class="factory-hero">
     <div class="container">
       <span class="eyebrow">Foil Fabric Manufacturing</span>
-      <h1>Foil Fabric Manufacturing in Guangzhou</h1>
+      <h1>Foil Fabric Manufacturing in China</h1>
       <p class="factory-hero__desc">
         We operate our own production facility for foil fabric processing, sample and
         effect matching, quality inspection and roll packing. Since 2013, we have
@@ -794,7 +794,7 @@ const factorySnapshot = [
   .factory-hero {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
     color: var(--color-white);
-    padding-block: var(--space-3xl) var(--space-4xl);
+    padding-block: var(--space-2xl);
     position: relative;
     overflow: hidden;
   }
@@ -820,24 +820,24 @@ const factorySnapshot = [
 
   .factory-hero h1 {
     color: var(--color-white);
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-sm);
   }
 
   .factory-hero__desc {
     color: rgba(255, 255, 255, 0.75);
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
     max-width: 680px;
-    margin-bottom: var(--space-2xl);
+    margin-bottom: var(--space-lg);
   }
 
   .factory-hero__badges {
     display: flex;
-    gap: var(--space-md);
+    gap: var(--space-sm);
     flex-wrap: wrap;
   }
 
   .factory-hero__badge {
-    padding: 0.5rem 1.25rem;
+    padding: 0.4rem 0.85rem;
     border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: var(--radius-full);
     font-size: var(--text-sm);
@@ -1431,6 +1431,10 @@ const factorySnapshot = [
   }
 
   @media (max-width: 768px) {
+    .factory-hero {
+      padding-block: var(--space-xl);
+    }
+
     .factory-intro,
     .factory-snapshot,
     .qc-grid,
@@ -1446,6 +1450,15 @@ const factorySnapshot = [
   }
 
   @media (max-width: 640px) {
+    .factory-hero__badges {
+      gap: 0.45rem;
+    }
+
+    .factory-hero__badge {
+      padding: 0.35rem 0.7rem;
+      font-size: var(--text-xs);
+    }
+
     .process-timeline::before {
       left: 24px;
     }

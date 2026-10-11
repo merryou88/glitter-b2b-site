@@ -275,8 +275,14 @@ const PLACEHOLDER_IMAGE =
   }
 
   @media (max-width: 768px) {
+    .hero-carousel-wrap {
+      max-width: none;
+      padding-inline: 0;
+    }
+
     .hero-carousel {
-      height: clamp(280px, 62vw, 440px);
+      height: clamp(300px, 68vw, 460px);
+      border-radius: 0;
     }
 
     .hero-carousel__video {
@@ -488,7 +494,7 @@ const PLACEHOLDER_IMAGE =
 
     .hero-carousel__actions {
       flex-direction: column;
-      align-items: stretch;
+      align-items: center;
       width: 100%;
     }
 
@@ -498,10 +504,14 @@ const PLACEHOLDER_IMAGE =
     }
 
     .hero-carousel__btn {
+      width: fit-content;
+      max-width: 100%;
       text-align: center;
-      padding: 0.75rem 1.5rem;
-      font-size: 0.9rem;
-      min-height: 48px;
+      padding: 0.65rem clamp(0.9rem, 4vw, 1.5rem);
+      font-size: clamp(0.78rem, 3.8vw, 0.9rem);
+      line-height: 1.25;
+      white-space: normal;
+      min-height: 44px;
     }
 
     .hero-carousel__content {

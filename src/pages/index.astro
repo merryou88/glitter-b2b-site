@@ -79,8 +79,8 @@ const popularProducts = [
 
 const whyNixiaBenefits = [
   {
-    title: "15+ Years of Foil Fabric Experience",
-    desc: "Focused on foil fabric development and supply for more than 15 years.",
+    title: "10+ Years of Foil Fabric Experience",
+    desc: "Focused on foil fabric development and supply for more than 10 years.",
     icon: "boxes",
   },
   {
@@ -200,7 +200,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     <div class="container">
       <div class="hero-trust__grid">
         <div class="hero-trust__item">
-          <span class="hero-trust__value">15+ Years</span>
+          <span class="hero-trust__value">10+ Years</span>
           <span class="hero-trust__label">Foil Fabric Experience</span>
         </div>
         <div class="hero-trust__item">
@@ -303,7 +303,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
       </div>
 
       <div class="grid fabric-series-grid">
-          {popularProducts.map((item) => {
+          {popularProducts.map((item, index) => {
             const product = productMap.get(item.slug);
             return (
             <a href={item.href} class="fabric-card fabric-card--split">
@@ -330,6 +330,9 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
                   <span>{item.moq}</span>
                   <span>View Details</span>
                 </div>
+                {index < 3 && (
+                  <span class="fabric-card__mobile-details">View Details →</span>
+                )}
               </div>
             </a>
             );
@@ -839,6 +842,10 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     padding: 0.35rem 0.55rem;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
+  }
+
+  .fabric-card__mobile-details {
+    display: none;
   }
 
   .fabric-card__cta {
@@ -2086,6 +2093,42 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
   }
 
   @media (max-width: 768px) {
+    /* Homepage Popular Products cards only: stack image above text on mobile. */
+    .fabric-card--split {
+      width: 100%;
+      flex-direction: column;
+    }
+
+    .fabric-card--split .fabric-card__visual {
+      width: 100%;
+      flex: 0 0 auto;
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+    }
+
+    .fabric-card--split .fabric-card__visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    .fabric-card--split .fabric-card__body {
+      flex: 0 0 auto;
+      padding: var(--space-lg);
+    }
+
+    .fabric-card--split .fabric-card__body h3 {
+      line-height: 1.45;
+    }
+
+    .fabric-card--split .fabric-card__body p {
+      overflow: visible;
+      display: block;
+      -webkit-line-clamp: unset;
+      line-clamp: unset;
+    }
+
     .fabric-series-grid,
     .why-nixia-split,
     .rfq-grid,
@@ -2094,9 +2137,31 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     .credential-card-grid,
     .applications-grid,
     .sample-process-grid,
-    .hero-trust__grid,
     .final-cta__tags {
       grid-template-columns: 1fr;
+    }
+
+    /* Homepage Hero trust points only: keep two equal columns on mobile. */
+    .hero-trust {
+      padding-block: 1rem;
+    }
+
+    .hero-trust__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem 0.4rem;
+    }
+
+    .hero-trust__value {
+      font-size: clamp(1.05rem, 4.5vw, 1.4rem);
+      line-height: 1.15;
+    }
+
+    .hero-trust__label {
+      max-width: none;
+      font-size: clamp(0.58rem, 2.35vw, 0.72rem);
+      line-height: 1.2;
+      letter-spacing: 0;
+      white-space: nowrap;
     }
 
     .grid--4.fabric-series-grid,
@@ -2105,8 +2170,13 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
       grid-template-columns: 1fr;
     }
 
-    .fabric-card--split {
-      width: 100%;
+    .fabric-card__mobile-details {
+      display: inline-flex;
+      align-items: center;
+      margin-top: var(--space-sm);
+      color: var(--color-accent-dark);
+      font-size: var(--text-sm);
+      font-weight: 700;
     }
 
     .workflow-timeline--path-b .workflow-timeline__track {
@@ -2169,9 +2239,13 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
   }
 
   @media (max-width: 640px) {
+    .hero-trust {
+      padding-block: 0.8rem;
+    }
+
     .hero-trust__grid {
-      grid-template-columns: 1fr;
-      gap: var(--space-xl) var(--space-lg);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.55rem 0.25rem;
     }
 
     .grid--4.fabric-series-grid,

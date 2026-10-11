@@ -480,6 +480,11 @@ p {
 }
 
 @media (max-width: 768px) {
+  /* Reserved for the mobile-only Products section title when present. */
+  h2.products-mobile-title {
+    display: none;
+  }
+
   .grid--2,
   .grid--3,
   .grid--4,

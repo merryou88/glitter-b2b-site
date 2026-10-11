@@ -423,7 +423,7 @@ const buyerSteps = [
 <style>
   /* About Hero */
   .about-hero {
-    min-height: 560px;
+    min-height: 420px;
     display: flex;
     align-items: center;
     color: var(--color-white);
@@ -453,7 +453,7 @@ const buyerSteps = [
   .about-hero__content {
     position: relative;
     z-index: 1;
-    padding-block: var(--space-4xl);
+    padding-block: var(--space-2xl);
   }
 
   .about-hero__content h1 {
@@ -464,14 +464,14 @@ const buyerSteps = [
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-sm);
-    margin-top: var(--space-xl);
+    margin-top: var(--space-lg);
   }
 
   .about-hero__proof {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-lg);
-    margin-top: var(--space-2xl);
+    margin-top: var(--space-lg);
     color: rgba(255, 255, 255, 0.8);
     font-size: var(--text-sm);
     font-weight: 600;
@@ -875,7 +875,7 @@ const buyerSteps = [
     }
 
     .about-hero__content {
-      padding-block: var(--space-3xl);
+      padding-block: var(--space-xl);
     }
 
     .about-hero__content h1 {
@@ -885,11 +885,22 @@ const buyerSteps = [
     .about-hero__proof {
       flex-direction: column;
       gap: var(--space-sm);
+      margin-top: var(--space-md);
     }
 
     .brand-story__card {
-      grid-template-columns: 1fr;
-      gap: var(--space-xl);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-lg) var(--space-sm);
+      padding: var(--space-xl) var(--space-md);
+    }
+
+    .brand-story__card-num {
+      font-size: var(--text-3xl);
+    }
+
+    .brand-story__card-label {
+      font-size: var(--text-xs);
+      line-height: 1.35;
     }
 
     .values-grid {

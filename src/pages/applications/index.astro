@@ -74,11 +74,6 @@ const breadcrumbData = {
 >
   <section class="applications-index-hero">
     <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a>
-        <span>/</span>
-        <span aria-current="page">Applications</span>
-      </nav>
       <span class="eyebrow">B2B SOURCING GUIDES</span>
       <h1>Choose Performance Costume & Dancewear Fabrics by Application</h1>
       <p>
@@ -115,23 +110,18 @@ const breadcrumbData = {
 
 <style>
   .applications-index-hero {
-    padding-block: var(--space-3xl);
-    background: var(--color-bg-alt);
+    padding-block: var(--space-xl);
+    background: var(--color-primary);
     border-bottom: 1px solid var(--color-border);
   }
 
-  .applications-index-hero .breadcrumb {
-    margin-bottom: var(--space-xl);
-    color: var(--color-text-muted);
-  }
-
-  .applications-index-hero .breadcrumb a {
-    color: var(--color-text-secondary);
+  .applications-index-hero .eyebrow {
+    color: var(--color-accent-light);
   }
 
   .applications-index-hero h1 {
     margin: var(--space-sm) 0 var(--space-md);
-    color: var(--color-primary);
+    color: var(--color-white);
     font-size: clamp(2rem, 4vw, 3.25rem);
     line-height: 1.12;
   }
@@ -139,7 +129,7 @@ const breadcrumbData = {
   .applications-index-hero p {
     max-width: 720px;
     margin: 0;
-    color: var(--color-text-secondary);
+    color: rgba(255, 255, 255, 0.78);
     font-size: var(--text-lg);
     line-height: 1.7;
   }
@@ -207,6 +197,22 @@ const breadcrumbData = {
   @media (max-width: 900px) {
     .applications-index-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .applications-index-hero {
+      padding-block: var(--space-md);
+    }
+
+    .applications-index-hero h1 {
+      margin-top: var(--space-xs);
+      margin-bottom: var(--space-sm);
+    }
+
+    .applications-index-hero p {
+      font-size: var(--text-base);
+      line-height: 1.5;
     }
   }
 

@@ -122,3 +122,23 @@ status: current
 - 测试路径：`npm run build`；检查 `/about/` 生成页面包含目标产品和应用页链接
 - 最后变更编号：CHG-20260930-007-about-product-application-links
 - 待确认事项：无
+
+### REQ-COMPANY-013：About Hero 高度保持紧凑
+- 状态：active
+- 当前规则：About 页 Hero 保留完整标题、描述、三个 CTA 和三项信任信息，但桌面端与移动端均使用紧凑高度，避免 Hero 占用过多首屏空间。
+- 验收条件：About 页桌面和移动端 Hero 高度明显低于原有版本；完整文案、按钮和背景图仍可见，下一内容区块更早进入首屏。
+- 影响模块：`company-pages`
+- 代码路径：`src/pages/about.astro`
+- 测试路径：`npm run build`；检查桌面与移动端 `/about/` 首屏
+- 最后变更编号：CHG-20261011-016-about-hero-compact
+- 待确认事项：无
+
+### REQ-COMPANY-014：About 移动端特性卡片双列展示
+- 状态：active
+- 当前规则：About 页 Brand Story 的四项特性数据在移动端使用两列网格展示，缩小卡片内边距、数字和标签字号；桌面端保持原有布局。
+- 验收条件：移动端 `2013`、`4`、当前产品 SKU 数量和 `Custom` 四项特性以每行两项显示；四项内容完整可读；桌面端样式不变。
+- 影响模块：`company-pages`
+- 代码路径：`src/pages/about.astro`
+- 测试路径：`npm run build`；检查 375px 和 768px `/about/` 视口
+- 最后变更编号：CHG-20261011-017-about-mobile-stats-grid
+- 待确认事项：无

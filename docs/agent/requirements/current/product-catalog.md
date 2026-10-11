@@ -394,3 +394,13 @@ status: current
 - 测试路径：`npm run build`、`npm run validate:products`，检查所有产品页和应用页的互链及生成内容
 - 最后变更编号：CHG-20261006-003-topic-cluster-buyer-decisions
 - 待确认事项：部署后观察应用页与产品页的自然搜索入口和页面路径表现
+
+### REQ-PRODUCT-040：移动端产品目录使用应用标签过滤
+- 状态：active
+- 当前规则：`/products/` 在 `max-width: 768px` 下隐藏关键词搜索、Finish、Stretch、Application、Stock、Sort 控件以及 Grid/List 视图切换；移动端直接显示四个应用标签 `Dancewear`、`Stage Costumes`、`Performance Apparel`、`Swimwear`，点击标签过滤产品卡片。移动端产品卡固定使用网格卡片布局；桌面端现有搜索、筛选、排序和 Grid/List 能力保持不变。
+- 验收条件：375px、390px 和 768px 视口下不显示搜索框、下拉筛选或 Grid/List 切换；四个应用标签可点击并更新产品数量和卡片结果；再次点击当前标签可恢复全部产品；产品卡保持网格展示。
+- 影响模块：`product-catalog`
+- 代码路径：`src/pages/products.astro`
+- 测试路径：`npm run build`；手动检查 `/products/` 在 375px、390px、768px 和桌面视口下的筛选与卡片布局
+- 最后变更编号：CHG-20261011-014-mobile-products-application-tabs
+- 待确认事项：Performance Apparel 标签覆盖产品数据中的 `Performance Wear`、`Performance Outfits`、`Performance Apparel` 和 `Performance Dress` 应用名称。

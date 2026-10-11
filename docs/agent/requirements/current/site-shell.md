@@ -25,22 +25,22 @@ status: current
 
 ### REQ-SHELL-003：导航与浮窗一致
 - 状态：active
-- 当前规则：桌面和移动导航链接必须一致；Footer 与浮动联系入口的外部社媒/联系链接只展示当前真实可访问的通道；浮动联系入口保留 WhatsApp / WeChat 两条主要通道。Footer 的 Facebook 图标使用当前可访问的 Facebook 公共主页 ID 链接；当前没有可访问的 LinkedIn 企业页时，Footer 不展示 LinkedIn 图标入口。
-- 验收条件：桌面、移动、Footer 和浮窗的可点击入口都能到达当前真实页面或真实联系通道；Footer Facebook 图标指向当前可访问的公共主页；Footer 不出现失效的 LinkedIn 公司页链接。
+- 当前规则：桌面和移动导航链接必须一致；移动导航收起时必须完全隐藏菜单内容，不得在 Header 下方残留任何菜单项；Footer 与浮动联系入口的外部社媒/联系链接只展示当前真实可访问的通道；浮动联系入口保留 WhatsApp / WeChat 两条主要通道，当前 WeChat ID 为 `merryou`。Footer 的 Facebook 图标使用当前可访问的 Facebook 公共主页 ID 链接；当前没有可访问的 LinkedIn 企业页时，Footer 不展示 LinkedIn 图标入口。
+- 验收条件：桌面、移动、Footer 和浮窗的可点击入口都能到达当前真实页面或真实联系通道；移动菜单展开和收起正常，收起后不显示 Products 等菜单项；浮窗 WeChat 展示和复制值为 `merryou`；Footer Facebook 图标指向当前可访问的公共主页；Footer 不出现失效的 LinkedIn 公司页链接。
 - 影响模块：`site-shell`
 - 代码路径：`src/components/Header.astro`、`src/components/FloatingContact.astro`、`src/components/Footer.astro`
 - 测试路径：手动检查首页、联系页、产品页
-- 最后变更编号：CHG-20260930-008-footer-facebook-page-id
+- 最后变更编号：CHG-20261011-010-mobile-nav-collapse
 - 待确认事项：无
 
 ### REQ-SHELL-004：首页首屏与推荐内容按当前市场重点展示
 - 状态：active
-- 当前规则：首页轮播移除第 3 张 slide；Popular Products 移除 Coarse Glitter PU Hot Stamping Fabric、Non-Woven Glitter Fabric 和 Sparkle Glitter Surface Solid Leather Fabric，并加入 Full-Print Hot-Stamping Spandex Milk-Silk Fabric；首页 Applications 区块整体移除。
-- 验收条件：首页不再显示上述轮播、产品卡片和 Applications 区块，同时显示 Full-Print Hot-Stamping Spandex Milk-Silk Fabric 卡片，且链接和主图正常。
+- 当前规则：首页轮播移除第 3 张 slide；Popular Products 移除 Coarse Glitter PU Hot Stamping Fabric、Non-Woven Glitter Fabric 和 Sparkle Glitter Surface Solid Leather Fabric，并加入 Full-Print Hot-Stamping Spandex Milk-Silk Fabric；首页 Applications 区块整体移除；全站首页经验描述统一使用 `10+ Years` 和 “more than 10 years”。
+- 验收条件：首页不再显示上述轮播、产品卡片和 Applications 区块，同时显示 Full-Print Hot-Stamping Spandex Milk-Silk Fabric 卡片，且链接和主图正常；首页经验描述不再出现 `15+ Years`。
 - 影响模块：`site-shell`
 - 代码路径：`src/components/HeroCarousel.astro`、`src/pages/index.astro`
 - 测试路径：`npm run build`，手动检查首页
-- 最后变更编号：CHG-20260912-021-home-popular-full-print
+- 最后变更编号：CHG-20261011-015-years-description-update
 - 待确认事项：无
 
 ### REQ-SHELL-011：首页与应用页 SEO 内链覆盖
@@ -162,3 +162,123 @@ status: current
 - 测试路径：`npm run build`，移动端手动检查首页首屏、导航、轮播和滚动
 - 最后变更编号：CHG-20261003-001-mobile-pagespeed-followup
 - 待确认事项：需用真实手机网络和 Lighthouse/Chrome DevTools 采集优化前后指标
+
+### REQ-SHELL-017：Products 页目录首屏与产品卡片局部优化
+- 状态：active
+- 当前规则：仅 Products 页 Hero 压缩上下内边距，并使用标题 `Foil Fabrics for Dancewear & Performance Costumes`；Hero 描述文字铺满容器可用宽度，不使用窄栏最大宽度限制；Hero 与目录筛选区之间使用紧凑间距，目录结果行与产品网格之间也减少额外留白；保留原有深蓝渐变背景和其他 Hero 文字。Buyer Guide 三卡片位于产品网格之后，卡片样式、文字和颜色保持不变。首页不修改 Hero。首页前三张 Featured Foil Fabrics 卡片在移动端保留左侧缩略图并显示 `View Details →` 辅助链接。产品目录移动端完整显示 `95% Polyester / 5% Spandex`，并在 In-Stock 标签旁显示 `✅ Free swatch card available`。
+- 验收条件：访问 `/products/` 时，压缩后的 Hero 显示指定短标题并直接进入产品目录；滚动经过产品列表后才出现 Buyer Guide 三卡片；Products 页桌面和移动端均满足该顺序；首页 Hero、其他页面和产品卡片既有样式不受影响。
+- 影响模块：`site-shell`、`product-catalog`
+- 代码路径：`src/pages/products.astro`、`src/pages/index.astro`、`src/styles/global.css`、`public/images/products/H2013120107/main/iridescent-laser-hot-stamping-stretch-ice-silk-main-1.webp`
+- 测试路径：`npm run build`；桌面与 375px/768px 视口手动检查首页和 `/products/`
+- 最后变更编号：CHG-20261011-009-products-catalog-compact-spacing
+- 待确认事项：当前源码未发现字面量 `<h2>Products</h2>`，因此仅保留可恢复的 CSS 选择器，不添加或删除该标题。
+
+### REQ-SHELL-018：首页热销产品卡片移动端单列展示
+- 状态：active
+- 当前规则：仅首页 Popular Products 卡片在 `max-width: 768px` 下切换为图片在上、文字在下的单列布局；图片容器宽度为 100%，使用 `aspect-ratio: 4 / 3`、`object-fit: cover` 和居中裁切；桌面端左右分栏、图片、文字和按钮保持不变。
+- 验收条件：移动端首页热销卡片图片不变形并完整填满卡片宽度，产品描述完整展示，MOQ 与 View Details 的样式和顺序保持不变，卡片间距和圆角保持原有表现。
+- 影响模块：`site-shell`
+- 代码路径：`src/pages/index.astro`
+- 测试路径：`npm run build`；检查 375px、768px 和桌面端首页热销产品卡片
+- 最后变更编号：CHG-20261011-003-home-mobile-popular-cards
+- 待确认事项：无
+
+### REQ-SHELL-019：移动端导航显示 Home
+- 状态：active
+- 当前规则：移动端及窄屏导航展开后显示 Home、Products、Applications、Factory、About Us、Blog 和 Contact；Home 位于 Products 之前，并链接到 `/`。
+- 验收条件：在移动端展开菜单时可看到 Home 菜单项，点击后返回首页；其他导航项和桌面导航不受影响。
+- 影响模块：`site-shell`
+- 代码路径：`src/components/Header.astro`
+- 测试路径：`npm run build`；手动检查移动端菜单展开状态
+- 最后变更编号：CHG-20261011-004-mobile-nav-home
+- 待确认事项：无
+
+### REQ-SHELL-020：首页 Hero CTA 移动端自适应
+- 状态：active
+- 当前规则：仅首页 Hero 在移动端 `max-width: 768px` 下，CTA 按钮按内容自适应宽度并居中显示，不强制铺满整行；按钮允许长文案换行，保留不低于 44px 的触控高度。
+- 验收条件：移动端 Hero CTA 不再被拉伸为整行宽度，按钮在 Hero 内容区域内完整显示且不会溢出；桌面端按钮尺寸和布局保持不变。
+- 影响模块：`site-shell`
+- 代码路径：`src/components/HeroCarousel.astro`
+- 测试路径：`npm run build`；手动检查 375px、390px 和 768px 首页 Hero
+- 最后变更编号：CHG-20261011-005-home-mobile-hero-cta
+- 待确认事项：无
+
+### REQ-SHELL-022：移动端展开菜单控制在视口约 45%
+- 状态：active
+- 当前规则：移动端 `max-width: 768px` 下，展开的站点导航面板最大高度约为视口高度的 45%；菜单项和询盘按钮使用紧凑间距与响应式字号，内容超出时在面板内部滚动。
+- 验收条件：手机端展开菜单后，面板约占视口 45%，Home 至 Contact 和询盘按钮仍可访问；菜单文字不溢出，桌面导航不受影响。
+- 影响模块：`site-shell`
+- 代码路径���`src/components/Header.astro`
+- 测试路径：`npm run build`；手动检查 375px、390px 和 768px 视口的菜单展开状态
+- 最后变更编号：CHG-20261011-013-mobile-nav-45vh
+- 待确认事项：无
+
+### REQ-SHELL-021：首页 Hero 特点移动端两列展示
+- 状态：active
+- 当前规则：首页 Hero 下方的 4 个特点在移动端使用两列等宽布局，每行展示 2 个特点；数值和说明文字使用响应式字号并保持在各自网格单元内，桌面端四列布局保持不变。
+- 验收条件：移动端 375px、390px 和 768px 宽度下，四个特点按两行两列展示，文字不溢出或重叠；桌面端布局不变。
+- ��响模块：`site-shell`
+- 代码路径：`src/pages/index.astro`
+- 测试路径：`npm run build`；手动检查首页移动端 Hero 下方特点区块
+- 最后变更编号：CHG-20261011-012-home-mobile-hero-trust-grid
+- 待确认事项：无
+
+### REQ-SHELL-023：首页 Hero 与特点区移动端高度优化
+- 状态：active
+- 当前规则：首页 Hero 在移动端略微增加高度；Hero 下方四个特点仍按两列展示，同时缩小区块上下内边距、列间距、特点数值和说明文字字号，降低整体高度占比。
+- 验收条件：移动端 Hero 比原来略高，四个特点区域更紧凑且文字不溢出；桌面端 Hero 和特点布局保持不变。
+- 影响模块：`site-shell`
+- 代码路径：`src/components/HeroCarousel.astro`、`src/pages/index.astro`
+- 测试路径：`npm run build`；手动检查 375px、390px 和 768px 首页
+- 最后变更编号：CHG-20261011-014-home-mobile-hero-trust-height
+- 待确认事项：无
+
+### REQ-SHELL-024：首页移动端 Hero 与特点区高度比例
+- 状态：superseded
+- 当前规则：由 `REQ-SHELL-025` 替代。
+- 验收条件：由 `REQ-SHELL-025` 替代。
+- 影响模块：`site-shell`
+- 代码路径：`src/components/HeroCarousel.astro`、`src/pages/index.astro`
+- 测试路径：`npm run build`；手动检查 375px、390px 和 768px 首页
+- 最后变更编号：CHG-20261011-016-home-mobile-hero-trust-ratio
+- 待确认事项：已被用户后续要求替代。
+
+### REQ-SHELL-025：首页移动端 Hero 恢复适中高度
+- 状态：active
+- 当前规则：首页移动端 Hero 高度恢复为 `clamp(300px, 68vw, 460px)`，避免过高导致图片构图显示变形；Hero 下方特点区继续保持两列和紧凑字号。
+- 验收条件：移动端 Hero 图片构图恢复正常，375px、390px 和 768px 视口下不出现明显拉伸或异常裁切；桌面端布局保持不变。
+- 影响模块：`site-shell`
+- 代码路径：`src/components/HeroCarousel.astro`
+- 测试路径：`npm run build`；手动检查首页移动端 Hero
+- 最后变更编号：CHG-20261011-017-restore-home-mobile-hero-height
+- 待确认事项：无
+
+### REQ-SHELL-026：首页移动端 Hero 铺满屏幕宽度
+- 状态：active
+- 当前规则：首页 Hero 在移动端 `max-width: 768px` 下取消组件左右内边距，使用完整视口宽度展示；移动端 Hero 高度和图片比例保持现有规则，桌面端容器宽度与圆角不变。
+- 验收条件：手机端 Hero 左右边缘与视口对齐，不再出现两侧留白；Hero 图片正常覆盖，桌面端布局不受影响。
+- 影响模块：`site-shell`
+- 代码路径：`src/components/HeroCarousel.astro`
+- 测试路径：`npm run build`；手动检查 375px、390px 和 768px 首页 Hero
+- 最后变更编号：CHG-20261011-018-home-mobile-hero-full-width
+- 待确认事项：无
+
+### REQ-SHELL-027：首页 Hero 特点说明移动端单行显示
+- 状态：active
+- 当前规则：首页 Hero 下方四个特点的说明文字在移动端保持单行，不设置字符宽度限制；使用响应式小字号和紧凑行高，适配两列布局。
+- 验收条件：移动端 375px、390px 和 768px 下，四个特点说明不换行、不重叠、不溢出；桌面端说明文字保持原有样式。
+- 影响模块：`site-shell`
+- 代码路径：`src/pages/index.astro`
+- 测试路径：`npm run build`；手动检查首页移动端特点区块
+- 最后变更编号：CHG-20261011-019-home-mobile-hero-trust-label-nowrap
+- 待确认事项：无
+
+### REQ-SHELL-020：应用索引页 Hero 保持紧凑
+- 状态：active
+- 当前规则：`/applications/` 页面依赖全站头部导航，不在 Hero 内重复显示 `Home / Applications` 面包屑；Hero 使用本站主色深蓝背景，标题使用白色、eyebrow 使用金色强调色、正文使用高对比度浅色；Hero 保持原有容器宽度，桌面端使用较紧凑的上下内边距，移动端进一步压缩上下内边距、标题间距和正文行高。
+- 验收条件：访问 `/applications/` 时，Hero 内不出现 `Home / Applications`; 页面头部导航仍提供 Applications 入口；桌面端和移动端 Hero 内容宽度保持不变，整体高度均较原来降低。
+- 影响模块：`site-shell`
+- 代码路径：`src/pages/applications/index.astro`
+- 测试路径：`npm run build`；检查 `/applications/` 桌面和移动端 Hero
+- 最后变更编号：CHG-20261011-016-applications-hero-primary-color
+- 待确认事项：无
