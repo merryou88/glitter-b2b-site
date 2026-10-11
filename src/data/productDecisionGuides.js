@@ -10,7 +10,7 @@ export const productDecisionGuides = {
   ],
   "rainbow-iridescent-laser-foil-nylon-spandex-fabric": [
     { title: "Choose the nylon-spandex route for fitted swimwear", desc: "The nylon-spandex base is the closer comparison when a buyer is developing bodysuits, swimwear or other close-fitting garments." },
-    { title: "Balance color range against MOQ", desc: "The 15-color range supports color selection, while the 100 m / 109 yd MOQ should be checked against the planned size run." },
+    { title: "Balance color range against MOQ", desc: "The 15-color range supports color selection, while the 109 yd MOQ should be checked against the planned size run." },
   ],
   "gradient-rainbow-dot-foil-knit-fabric": [
     { title: "Choose for a lightweight dot effect", desc: "Its lightweight knit direction suits costume surfaces where a visible dot effect is needed without moving to a heavier structured fabric." },
@@ -41,7 +41,7 @@ export const productDecisionGuides = {
     { title: "Confirm flexibility instead of assuming garment stretch", desc: "The slight-stretch construction should be checked for the actual display, drape or costume-prop shape before cutting." },
   ],
   "iridescent-laser-hot-stamping-stretch-ice-silk": [
-    { title: "Choose for lightweight color shift", desc: "This option fits buyers prioritizing a light 160 g/m² build and a changing laser effect for stage and dancewear." },
+    { title: "Choose for lightweight color shift", desc: "This option fits buyers prioritizing a light 160 GSM build and a changing laser effect for stage and dancewear." },
     { title: "Discuss custom foil development early", desc: "When the visual target is not covered by the standard direction, confirm the custom foil route before finalizing the garment pattern." },
   ],
   "iridescent-gradient-laser-ice-silk": [
@@ -73,4 +73,3 @@ export const productDecisionGuides = {
     { title: "Compare surface scale on the finished silhouette", desc: "Request a sample to check how the dot scale, 4-way stretch and foil reflection read on curved swimwear, lingerie or dress panels." },
   ],
 };
-

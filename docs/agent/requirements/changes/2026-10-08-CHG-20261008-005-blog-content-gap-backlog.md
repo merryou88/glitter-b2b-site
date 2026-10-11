@@ -45,7 +45,7 @@ Blog 内容规划与后续 `src/data/blogArticles.js` 新增文章。
 `docs/agent/requirements/current/blog.md` 和需求变更记录。
 
 ## 验证结果
-文档规则已更新；本次未改业务代码，未运行构建。
+2026-10-11：已按 backlog 首篇要求新增 `nylon-spandex-vs-polyester-spandex-foil-fabric`，并加入 Blog 首页、应用页和 4 个真实产品推荐；其余四篇仍保留为待写选题。
 
 ## 来源
 用户 2026-10-08 关于下一批 Blog 真实内容缺口与导流规则的要求。

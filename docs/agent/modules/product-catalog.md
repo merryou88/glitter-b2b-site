@@ -61,8 +61,8 @@ requirement_docs:
 - 新增公开产品必须先确认符合当前 performance fabric 定位：foil、holographic、iridescent、stretch、stage costume、dancewear、cosplay、performance wear、props、backdrops 或 event decoration。glitter leather、PU accessory、鞋材、手袋、工艺、玩具等退出定位产品不得加入当前 `allProducts`
 - 新增或修改公开产品详情页必须先读取 `products-data/面料独立站产品数据.xlsx` 的 `Independent Site Product Data` sheet，并以目标 `Product ID` 行作为标题、slug、SEO、应用、规格、MOQ、颜色和来源状态的第一数据源；图片只能补充素材展示，不得替代表格字段
 - 新增公开产品必须一次性写好美国采购商 SEO：`metaTitle` 使用买家搜索词和 `Wholesale Supplier`；H1/title 以材质、效果、弹性和用途开头；`metaDesc` 包含应用、wholesale/supplier、样品/定制/库存/MOQ 等已确认采购事实；`hot-stamping` 作为辅助工艺词，不作为主要搜索词
-- 采购参数要同时给出公制和美国买家易读单位，例如 `150 cm / 59 in`、`100 m / 109 yd`；未知字段写 `To be confirmed` 或省略，不编造
-- 统一采购展示规则：库存待确认或 `inStock !== true` 时显示 `Made to Order`，样品准备时间为 `3-5 working days`，批量交期为 `7-15 working days`；所有产品包装显示 `Roll packing with paper tube inside, plastic bag outside; can follow customer requirement`；已确认现货产品保留现货交期
+- 采购参数中 Width 只使用 inch 写法，例如 `59"`；MOQ 对外统一使用 `yd` 缩写，例如 `109 yd`；不要在产品列表、详情页、FAQ 或摘要中保留 `100 m / 109 yd` 这类双单位 MOQ；未知字段写 `To be confirmed` 或省略，不编造
+- 统一采购展示规则：库存待确认或 `inStock !== true` 时显示 `Made to Order`，自定义样品准备时间为 `3-5 days`，批量生产交期为 `LEAD TIME`、`7-15 days`、`production`；所有产品包装显示 `Roll packing with paper tube inside, plastic bag outside; can follow customer requirement`；已确认现货产品保留现货样品规则
 - 候选产品必须先确认可供应、可寄样、可报价，并完成现有产品去重；用户确认前不得修改产品数据、处理上架图片或制作页面
 
 ## 验证方式

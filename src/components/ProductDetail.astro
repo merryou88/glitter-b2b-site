@@ -86,9 +86,8 @@ const stockAvailability = "In Stock";
 const stockSamplePolicy =
   "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping.";
 const customSamplePolicy =
-  "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping.";
-const stockBulkLeadTime = "3-5 working days";
-const madeToOrderBulkLeadTime = "7-15 working days";
+  "Custom sample; customization fee applies; preparation in 3-5 days. Buyer covers international shipping.";
+const standardBulkLeadTime = "7-15 days";
 const standardPackaging =
   "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement";
 const hideProductDescription = [
@@ -110,9 +109,9 @@ const hideProductDescription = [
   "iridescent-mystic-metallic-foil-nylon-spandex-fabric",
   "shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric",
 ].includes(product.slug);
-const dispatchLabel = isMadeToOrder ? "PRODUCTION LEAD TIME" : "READY STOCK DISPATCH";
-const dispatchUnit = "Working Days After Confirmation";
-const displayLeadTime = isMadeToOrder ? madeToOrderBulkLeadTime : stockBulkLeadTime;
+const dispatchLabel = "LEAD TIME";
+const dispatchUnit = "production";
+const displayLeadTime = standardBulkLeadTime;
 const displaySampleNote = isMadeToOrder ? customSamplePolicy : stockSamplePolicy;
 const samplePolicyIntro = displaySampleNote;
 const whyChooseHeading = product.whyChooseHeading ?? "Why Choose This Fabric?";
@@ -246,6 +245,16 @@ const findRowValue = (
   return rows.find((row) => aliases.has(normalizeLabel(row.label)))?.value ?? "";
 };
 
+const formatMoqYd = (value = "") => {
+  const moq = String(value).trim();
+  if (!moq) return "";
+  const dualUnitMatch = moq.match(/\b\d+\s*m\s*\/\s*(\d+)\s*yd\b/i);
+  if (dualUnitMatch) return moq.replace(dualUnitMatch[0], `${dualUnitMatch[1]} yd`);
+  if (/[a-z]/i.test(moq)) return moq;
+  const ydQuantity = Math.round(Number(moq) * 1.09361);
+  return `${ydQuantity || moq} yd`;
+};
+
 // Product Specifications follows the buyer's technical review order.
 const productSpecRows = [
   {
@@ -267,7 +276,7 @@ const productSpecRows = [
   },
   { label: "Stretch", value: findRowValue(product.specTable, ["Stretch"]) },
   { label: "Color", value: findRowValue(product.specTable, ["Color"]) },
-  { label: "MOQ", value: findRowValue(product.specTable, ["MOQ"]) },
+  { label: "MOQ", value: formatMoqYd(findRowValue(product.specTable, ["MOQ"])) },
   { label: "Supply Type", value: findRowValue(product.specTable, ["Supply Type"]) },
   { label: "Yarn Count", value: findRowValue(product.specTable, ["Yarn Count"]) },
   { label: "Finishing", value: findRowValue(product.specTable, ["Finishing"]) },
@@ -283,7 +292,10 @@ const productSpecRows = [
 const b2bValue = (labels: string[]) => findRowValue(product.b2bTable, labels);
 const productWidth = findRowValue(product.specTable, ["Width"]) || product.specs.width;
 const productWeight = findRowValue(product.specTable, ["Weight"]) || product.specs.weight;
-const productMoq = findRowValue(product.specTable, ["MOQ"]) || b2bValue(["MOQ"]) || product.specs.moq;
+const productMoq = formatMoqYd(
+  findRowValue(product.specTable, ["MOQ"]) || b2bValue(["MOQ"]) || product.specs.moq,
+);
+const hasProductMoqOverride = product.slug === "iridescent-laser-hot-stamping-stretch-ice-silk";
 const productMaterial =
   findRowValue(product.specTable, ["Material", "Base Material", "Base Fabric"]) ||
   product.specs.baseMaterial;
@@ -321,7 +333,7 @@ const buyerConfirmationItems = [
   { title: "Hand-feel", value: productHandFeel },
   { title: "Width & Weight", value: `${productWidth}, ${productWeight}` },
   { title: "Color Options", value: availableColors },
-  { title: "MOQ", value: `${productMoq} minimum` },
+  { title: "MOQ", value: hasProductMoqOverride ? productMoq : `${productMoq} minimum` },
   { title: "Sample Route", value: productSampleInfo },
   { title: "Availability", value: productAvailability },
   { title: "Roll Length", value: "50 m per standard roll" },
@@ -353,7 +365,7 @@ const referenceWhatsappMessage = [
 ].join("\n");
 const referenceWhatsappHref = `https://wa.me/8613616899303?text=${encodeURIComponent(referenceWhatsappMessage)}`;
 const relatedMoq = (rel: (typeof performanceProducts)[number]) =>
-  findRowValue(rel.specTable, ["MOQ"]) || findRowValue(rel.b2bTable, ["MOQ"]) || rel.specs.moq;
+  formatMoqYd(findRowValue(rel.specTable, ["MOQ"]) || findRowValue(rel.b2bTable, ["MOQ"]) || rel.specs.moq);
 
 // B2B Specifications follows the buyer's quote, approval and shipment order.
 const b2bRows = [
@@ -364,18 +376,12 @@ const b2bRows = [
   { label: "Availability", value: productAvailability },
   {
     label: "MOQ",
-    value: `Standard products: ${productMoq} minimum. Custom projects: ${product.customProjectMoq ?? "MOQ to be confirmed based on customization requirements."}`,
+    value: `Standard products: ${productMoq} minimum. Custom projects: MOQ to be confirmed based on customization requirements.`,
   },
   { label: "Supply Type", value: b2bValue(["Supply type", "Supply Type"]) },
   {
-    label: dispatchLabel.replace("READY STOCK ", ""),
-    value: `${displayLeadTime} after order and stock/customization confirmation`,
-  },
-  {
-    label: "Bulk Lead Time",
-    value: isMadeToOrder
-      ? madeToOrderBulkLeadTime
-      : b2bValue(["Bulk Lead time", "Bulk Lead Time"]),
+    label: "Lead Time",
+    value: `${displayLeadTime} ${dispatchUnit}`,
   },
   { label: "Available Colors", value: availableColors },
   { label: "Sample", value: displaySampleNote },
@@ -568,7 +574,7 @@ const heroVideo = product.video
           <div class="detail-offer-card detail-offer-card--moq">
             <span class="detail-offer-card__label">MOQ</span>
             <strong class="detail-offer-card__value">{productMoq}</strong>
-            <span class="detail-offer-card__unit">Minimum</span>
+            {!hasProductMoqOverride && <span class="detail-offer-card__unit">Minimum</span>}
           </div>
           <div class="detail-offer-card detail-offer-card--lead">
             <span class="detail-offer-card__label">{dispatchLabel}</span>

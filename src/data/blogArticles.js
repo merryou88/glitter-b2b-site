@@ -373,10 +373,10 @@ const allBlogArticles = [
       heading: "At a glance for B2B buyers",
       items: [
         { label: "Fabric Route", value: "Full-print hot-stamping foil on milk-silk spandex" },
-        { label: "Reference Specs", value: "150 cm / 59 in width, 160 g/m², 0.35-0.40mm thickness" },
+        { label: "Reference Specs", value: "59\" width, 160 GSM, 0.35-0.40mm thickness" },
         { label: "Stretch", value: "4-way stretch base for fitted performance garments" },
         { label: "Best Applications", value: "Dancewear, stage costumes, performance costumes and party/festival costumes" },
-        { label: "MOQ", value: "100 m / 109 yd per stock design" },
+        { label: "MOQ", value: "109 yd per stock design" },
         { label: "Color Review", value: "22 stock colors; request color card or samples before bulk order" },
       ],
     },
@@ -428,10 +428,10 @@ const allBlogArticles = [
           rows: [
             ["Product Type", "Full-print hot-stamping foil fabric", "Confirms the surface route and quotation category."],
             ["Base Fabric", "Milk-silk spandex, 4-way stretch", "Supports fitted performance garments and body movement."],
-            ["Width", "150 cm / 59 in", "Affects cutting layout and material usage."],
-            ["Weight", "160 g/m²", "Helps estimate garment feel and bulk handling."],
+            ["Width", "59\"", "Affects cutting layout and material usage."],
+            ["Weight", "160 GSM", "Helps estimate garment feel and bulk handling."],
             ["Thickness", "0.35-0.40mm", "Helps buyers judge sewing, layering and drape."],
-            ["MOQ", "100 m / 109 yd per stock design", "Useful for sample-to-bulk planning."],
+            ["MOQ", "109 yd per stock design", "Useful for sample-to-bulk planning."],
             ["Sample", "Free sample; buyer covers international freight", "Lets buyers approve color, stretch and surface effect first."],
             ["Bulk Lead Time", "1-3 working days after payment and stock confirmation for orders <= 500 m / 547 yd; 7-15 working days when production is required", "Helps buyers plan launch dates and production windows."],
           ],
@@ -469,7 +469,7 @@ const allBlogArticles = [
           rows: [
             ["End product", "Shows how much stretch and shine the garment needs.", "Dance leotard, stage costume, festival outfit"],
             ["Target color", "Speeds up stock color matching or custom foil discussion.", "Silver, blue, pink, reference image"],
-            ["Estimated quantity", "Decides stock quote versus production quote.", "100 m / 109 yd trial order or 500 m / 547 yd team costume order"],
+            ["Estimated quantity", "Decides stock quote versus production quote.", "109 yd trial order or 500 m / 547 yd team costume order"],
             ["Sample need", "Helps arrange color card or fabric sample first.", "Need sample before bulk order"],
             ["Destination", "Supports shipping and documentation planning.", "United States, EU, Middle East"],
             ["Timeline", "Shows whether stock dispatch or production scheduling is needed.", "Sample this week, bulk order next month"],
@@ -479,7 +479,7 @@ const allBlogArticles = [
     ],
     decisionChecklist: [
       "End use: dancewear, stage costume, performance outfit, party or carnival costume",
-      "Specifications: 150 cm / 59 in width, 160 g/m² weight, 0.35-0.40mm thickness and 4-way stretch base",
+      "Specifications: 59\" width, 160 GSM weight, 0.35-0.40mm thickness and 4-way stretch base",
       "Color approval: request color card or physical samples for the 22 stock colors",
       "Processing test: stretch, cutting, sewing, lighting review and fit test before bulk production",
       "RFQ basics: application, color target, estimated quantity, sample need, destination and timeline",
@@ -556,8 +556,8 @@ const allBlogArticles = [
       items: [
         { label: "Search Intent", value: "Wholesale holographic fabric for stage costumes" },
         { label: "Best Fit", value: "Dancewear, stage costumes, fitted performance outfits" },
-        { label: "Reference Width", value: "150 cm / 59 in on key stretch options" },
-        { label: "MOQ", value: "100 m / 109 yd for many stock options" },
+        { label: "Reference Width", value: "59\" on key stretch options" },
+        { label: "MOQ", value: "109 yd for many stock options" },
       ],
     },
     sections: [
@@ -574,7 +574,7 @@ const allBlogArticles = [
       {
         heading: "3. Confirm width, MOQ and stock status",
         body:
-          "For wholesale buying, width and MOQ directly affect costing. A 150 cm / 59 in fabric can improve cutting efficiency for many costume panels. MOQ such as 100 m / 109 yd is also important when planning a first trial order or team costume production.\n\nStock fabric is the fastest route for urgent events, while custom colors or surface effects need more approval time.",
+          "For wholesale buying, width and MOQ directly affect costing. A 59\" fabric can improve cutting efficiency for many costume panels. MOQ such as 109 yd is also important when planning a first trial order or team costume production.\n\nStock fabric is the fastest route for urgent events, while custom colors or surface effects need more approval time.",
       },
       {
         heading: "4. Request samples before bulk order",
@@ -639,7 +639,7 @@ const allBlogArticles = [
         { label: "Plain Holographic", value: "Uniform reflective look for bold stage impact" },
         { label: "Iridescent Laser", value: "Multi-color shift that changes with viewing angle" },
         { label: "Gradient Foil", value: "Flowing color effect across the fabric surface" },
-        { label: "Common MOQ", value: "100 m / 109 yd on many stock options" },
+        { label: "Common MOQ", value: "109 yd on many stock options" },
       ],
     },
     sections: [
@@ -713,14 +713,14 @@ const allBlogArticles = [
     intro:
       "Bodysuit buyers need fabric that stretches in both directions, recovers after movement and keeps the surface effect stable after sewing. The answer depends on whether the order uses stock material, custom color, custom pattern or a special backing. A clear sample-to-bulk plan helps buyers avoid delays and compare supplier quotes more fairly.",
     takeaways: [
-      "For many stock foil stretch fabrics, MOQ can start from 100 m / 109 yd.",
+      "For many stock foil stretch fabrics, MOQ can start from 109 yd.",
       "Custom colors, print patterns or backing changes may require a higher project minimum.",
       "Samples should be approved before bulk production, especially for reflective surface effects.",
     ],
     buyerSummary: {
       heading: "Order planning basics",
       items: [
-        { label: "Stock MOQ", value: "Often starts from 100 m / 109 yd" },
+        { label: "Stock MOQ", value: "Often starts from 109 yd" },
         { label: "Sample", value: "Used to confirm color, stretch and foil effect" },
         { label: "Custom Route", value: "MOQ depends on color, pattern, width and backing" },
         { label: "Best For", value: "Dancewear, stage costumes and performance outfits" },
@@ -740,7 +740,7 @@ const allBlogArticles = [
       {
         heading: "3. Confirm commercial details early",
         body:
-          "Ask for MOQ, available width, stock color options, sample timing, packing and estimated bulk lead time. For example, a buyer may compare 100 m / 109 yd trial order options before committing to larger team costume production.",
+          "Ask for MOQ, available width, stock color options, sample timing, packing and estimated bulk lead time. For example, a buyer may compare 109 yd trial order options before committing to larger team costume production.",
       },
       {
         heading: "4. Give suppliers enough RFQ context",
@@ -750,7 +750,7 @@ const allBlogArticles = [
     ],
     decisionChecklist: [
       "Ask whether the fabric is stock or custom",
-      "Confirm MOQ in both meters and yards",
+      "Confirm MOQ in yd and share any internal meter conversion separately",
       "Approve a physical sample before bulk production",
       "Share application, quantity, color target and delivery timing in the first RFQ",
     ],
@@ -761,7 +761,7 @@ const allBlogArticles = [
       {
         question: "What is the MOQ for foil spandex fabric?",
         answer:
-          "Many stock options start around 100 m / 109 yd, while custom projects may require a higher minimum depending on the requirement.",
+          "Many stock options start around 109 yd, while custom projects may require a higher minimum depending on the requirement.",
       },
       {
         question: "Should I approve a sample before ordering bulk fabric?",
@@ -806,7 +806,7 @@ const allBlogArticles = [
       items: [
         { label: "End Product", value: "Leotard, skirt panel, team outfit or stage costume" },
         { label: "Key Spec", value: "Stretch, recovery, width, weight and surface effect" },
-        { label: "MOQ", value: "Use 100 m / 109 yd as a common stock-order reference" },
+        { label: "MOQ", value: "Use 109 yd as a common stock-order reference" },
         { label: "Sample Review", value: "Color, hand feel, sewing and stage lighting" },
       ],
     },
@@ -819,7 +819,7 @@ const allBlogArticles = [
       {
         heading: "2. Ask for technical details",
         body:
-          "A useful quotation should include width, weight, base material, stretch, MOQ, stock status and sample timing. For US buyers, dual units such as 150 cm / 59 in and 100 m / 109 yd make internal planning easier.",
+          "A useful quotation should include width, weight, base material, stretch, MOQ, stock status and sample timing. For US buyers, dual units such as 59\" and 109 yd make internal planning easier.",
       },
       {
         heading: "3. Compare stock and custom options",
@@ -904,7 +904,7 @@ const allBlogArticles = [
           rows: [
             ["Surface finish", "Controls shine, color shift and visual impact", "Metallic, holographic, iridescent, laser, gradient or printed foil"],
             ["Base fabric", "Controls hand feel, stretch, recovery and sewing behavior", "Spandex, milk-silk, stretch ice-silk, knit or other base"],
-            ["Width and weight", "Affects cutting yield, garment feel and costing", "Width in cm/in, GSM, thickness if available"],
+            ["Width and weight", "Affects cutting yield, garment feel and costing", "Width in inches, GSM, thickness if available"],
             ["Commercial route", "Affects MOQ, sample timing and lead time", "Stock, made-to-order or custom development"],
           ],
         },
@@ -1085,7 +1085,7 @@ const allBlogArticles = [
       "Learn how to calculate fabric MOQ in yards and meters, convert common quantities and plan trial orders for wholesale fabric sourcing.",
     metaTitle: "Fabric MOQ: Yards and Meters | Nixia Fabric",
     metaDesc:
-      "Calculate fabric MOQ in yards and meters for wholesale sourcing. Includes 100 m / 109 yd and 500 m / 547 yd planning examples.",
+      "Calculate fabric MOQ in yards and meters for wholesale sourcing. Includes 109 yd and 500 m / 547 yd planning examples.",
     focusProducts: [
       "full-print-hot-stamping-spandex-milk-silk",
       "iridescent-laser-hot-stamping-stretch-ice-silk",
@@ -1182,15 +1182,15 @@ const allBlogArticles = [
     takeaways: [
       "Gradient direction and garment panel placement should be reviewed before bulk cutting.",
       "4-way stretch is useful for fitted performance apparel and movement-based designs.",
-      "The confirmed reference MOQ is 100 m / 109 yd for the current product data.",
+      "The confirmed reference MOQ is 109 yd for the current product data.",
     ],
     buyerSummary: {
       heading: "Product sourcing notes",
       items: [
         { label: "Surface", value: "Blue-purple gradient laser foil" },
         { label: "Base", value: "98% Polyester 2% Spandex" },
-        { label: "Width", value: "150 cm / 59 in" },
-        { label: "MOQ", value: "100 m / 109 yd" },
+        { label: "Width", value: "59\"" },
+        { label: "MOQ", value: "109 yd" },
       ],
     },
     sections: [
@@ -1207,7 +1207,7 @@ const allBlogArticles = [
       {
         heading: "3. Review specifications before quotation",
         body:
-          "Key confirmed details include 150 cm / 59 in width, 180 GSM weight and 100 m / 109 yd MOQ. If the project needs custom color development, confirm timing and minimums before sampling.",
+          "Key confirmed details include 59\" width, 180 GSM weight and 109 yd MOQ. If the project needs custom color development, confirm timing and minimums before sampling.",
       },
       {
         heading: "4. Use samples for final approval",
@@ -1218,7 +1218,7 @@ const allBlogArticles = [
     decisionChecklist: [
       "Confirm gradient direction and garment panel use",
       "Check 4-way stretch and recovery from a physical sample",
-      "Use 150 cm / 59 in width and 100 m / 109 yd MOQ for initial planning",
+      "Use 59\" width and 109 yd MOQ for initial planning",
       "Ask about custom color development if the blue-purple tone needs adjustment",
     ],
     ctaHeading: "Need to request fabric samples from China?",
@@ -1228,7 +1228,7 @@ const allBlogArticles = [
       {
         question: "What is the MOQ for this blue-purple gradient foil fabric?",
         answer:
-          "The confirmed MOQ in the current product data is 100 m / 109 yd.",
+          "The confirmed MOQ in the current product data is 109 yd.",
       },
       {
         question: "Does this fabric have 4-way stretch?",
@@ -1271,10 +1271,10 @@ const allBlogArticles = [
     buyerSummary: {
       heading: "Spec examples",
       items: [
-        { label: "Common Width", value: "150 cm / 59 in" },
-        { label: "Alternate Width", value: "145 cm / 57 in on selected foil knit" },
+        { label: "Common Width", value: "59\"" },
+        { label: "Alternate Width", value: "57\" on selected foil knit" },
         { label: "Weight Range", value: "130-180 GSM across current examples" },
-        { label: "MOQ Planning", value: "100 m / 109 yd for many stock items" },
+        { label: "MOQ Planning", value: "109 yd for many stock items" },
       ],
     },
     sections: [
@@ -1291,7 +1291,7 @@ const allBlogArticles = [
       {
         heading: "3. Read specs as a group",
         body:
-          "Width, GSM, stretch, base material and surface finish should be reviewed together. For example, 150 cm / 59 in width and 180 GSM may be suitable for one fitted costume, while another design may need a lighter drape.",
+          "Width, GSM, stretch, base material and surface finish should be reviewed together. For example, 59\" width and 180 GSM may be suitable for one fitted costume, while another design may need a lighter drape.",
       },
       {
         heading: "4. Confirm with sample testing",
@@ -1312,7 +1312,7 @@ const allBlogArticles = [
       {
         question: "Why do US buyers need both cm and inches?",
         answer:
-          "Dual units such as 150 cm / 59 in make it easier for international suppliers and US buying teams to review the same specification.",
+          "Dual units such as 59\" make it easier for international suppliers and US buying teams to review the same specification.",
       },
       {
         question: "Is GSM enough to choose a costume fabric?",
@@ -1513,7 +1513,7 @@ const allBlogArticles = [
       items: [
         { label: "Ready Stock", value: "Faster sampling and simpler trial orders" },
         { label: "Custom", value: "Better control over color, pattern, width or backing" },
-        { label: "MOQ", value: "Stock can start from 100 m / 109 yd on many items" },
+        { label: "MOQ", value: "Stock can start from 109 yd on many items" },
         { label: "Risk Control", value: "Physical approval sample before bulk order" },
       ],
     },
@@ -1531,7 +1531,7 @@ const allBlogArticles = [
       {
         heading: "3. Compare MOQ and timing",
         body:
-          "Stock orders may allow a lower starting MOQ such as 100 m / 109 yd. Custom projects can require higher minimums and longer sampling because the supplier needs to test color, base and finish before bulk production.",
+          "Stock orders may allow a lower starting MOQ such as 109 yd. Custom projects can require higher minimums and longer sampling because the supplier needs to test color, base and finish before bulk production.",
       },
       {
         heading: "4. Keep sample approval clear",
@@ -1587,7 +1587,7 @@ const allBlogArticles = [
       "A clear RFQ helps suppliers respond faster and recommend the right foil fabric. US buyers often need both metric and familiar units, a clear application, sample request and delivery timeline. The more complete the first message is, the fewer rounds are needed before quotation.",
     takeaways: [
       "Include end product, quantity, color target, destination and target delivery date.",
-      "Ask for width and MOQ in dual units such as 150 cm / 59 in and 100 m / 109 yd.",
+      "Ask for width and MOQ in dual units such as 59\" and 109 yd.",
       "State whether you need stock fabric, custom development, samples or testing support.",
     ],
     buyerSummary: {
@@ -1608,7 +1608,7 @@ const allBlogArticles = [
       {
         heading: "2. Share quantity and units clearly",
         body:
-          "Write the estimated quantity in a way both teams understand. For example, 100 m / 109 yd trial order or 500 m / 547 yd bulk order gives a clearer planning reference than a vague small order.",
+          "Write the estimated quantity in a way both teams understand. For example, 109 yd trial order or 500 m / 547 yd bulk order gives a clearer planning reference than a vague small order.",
       },
       {
         heading: "3. Include color and sample needs",
@@ -1751,9 +1751,9 @@ const allBlogArticles = [
       heading: "At a glance for B2B fabric buyers",
       items: [
         { label: "Material Route", value: "Sparkle glitter surface on PET + PU leather texture" },
-        { label: "Reference Specs", value: "140 cm / 55 in width, 200 g/m² weight, about 0.6mm thickness" },
+        { label: "Reference Specs", value: "55\" width, 200 GSM weight, about 0.6mm thickness" },
         { label: "Best Applications", value: "Bags, shoes, notebook covers, DIY materials, decoration and accessories" },
-        { label: "MOQ", value: "100 m / 109 yd for this item" },
+        { label: "MOQ", value: "109 yd for this item" },
         { label: "Sample Review", value: "Check color, cutting edge, backing feel, surface shedding and bonding route" },
         { label: "RFQ Basics", value: "Application, quantity, color target, destination, timing and testing needs" },
       ],
@@ -1789,16 +1789,16 @@ const allBlogArticles = [
       {
         heading: "3. Check the core specifications first",
         body:
-          "For this item, the current reference specification is 140 cm / 55 in width, 200 g/m² weight and about 0.6mm thickness. These three numbers help a buyer estimate yield, roll handling, shipping volume and processing behavior.\n\nWidth affects cutting efficiency and material usage. Weight affects freight cost and finished product feel. Thickness affects folding, gluing, sewing, edge finishing and whether the material feels suitable for the target product.",
+          "For this item, the current reference specification is 55\" width, 200 GSM weight and about 0.6mm thickness. These three numbers help a buyer estimate yield, roll handling, shipping volume and processing behavior.\n\nWidth affects cutting efficiency and material usage. Weight affects freight cost and finished product feel. Thickness affects folding, gluing, sewing, edge finishing and whether the material feels suitable for the target product.",
         table: {
           headers: ["Specification", "Current Reference", "Why Buyers Should Check It"],
           rows: [
-            ["Width", "140 cm / 55 in", "Impacts cutting layout, yield and roll planning."],
-            ["Weight", "200 g/m²", "Helps estimate freight, handling and product feel."],
+            ["Width", "55\"", "Impacts cutting layout, yield and roll planning."],
+            ["Weight", "200 GSM", "Helps estimate freight, handling and product feel."],
             ["Thickness", "About 0.6mm", "Affects folding, stitching, gluing and edge finishing."],
             ["Texture", "PET + PU leather", "Confirms this is a structured glitter leather route, not a stretch fabric."],
             ["Technology", "Dusting powder", "Creates the sparkle surface and should be sample-checked for shedding and consistency."],
-            ["MOQ", "100 m / 109 yd", "Useful for sample-to-bulk planning and first purchase decisions."],
+            ["MOQ", "109 yd", "Useful for sample-to-bulk planning and first purchase decisions."],
           ],
         },
       },
@@ -1858,7 +1858,7 @@ const allBlogArticles = [
           headers: ["RFQ Detail", "Why It Helps", "Example"],
           rows: [
             ["Application", "Lets the factory judge whether glitter leather is suitable.", "Notebook cover, shoe upper, bag panel, hair bow"],
-            ["Quantity", "Decides stock quote versus production quote.", "100 m / 109 yd trial order or 500 m / 547 yd bulk order"],
+            ["Quantity", "Decides stock quote versus production quote.", "109 yd trial order or 500 m / 547 yd bulk order"],
             ["Color target", "Speeds up stock matching or custom color discussion.", "Pink glitter, gold glitter, black glitter, reference photo"],
             ["Destination", "Helps discuss shipping and possible documentation needs.", "United States, EU, Middle East"],
             ["Timing", "Shows whether stock dispatch or production scheduling is required.", "Sample this week, bulk order next month"],
@@ -1880,7 +1880,7 @@ const allBlogArticles = [
     ],
     decisionChecklist: [
       "Application: bags, shoes, notebook covers, DIY materials, hair accessories, glitter wallpaper or book covers",
-      "Specification: 140 cm / 55 in width, 200 g/m² weight, about 0.6mm thickness and PET + PU leather texture",
+      "Specification: 55\" width, 200 GSM weight, about 0.6mm thickness and PET + PU leather texture",
       "Processing test: cutting, stitching, folding, glue bonding, edge finishing and packing",
       "Color control: approve a physical sample and keep it as the reference for bulk inspection",
       "RFQ basics: quantity, color target, destination market, delivery timing and any testing needs",
@@ -1897,7 +1897,7 @@ const allBlogArticles = [
       {
         question: "What are the reference specifications for this fabric?",
         answer:
-          "The reference specification is 140 cm / 55 in width, 200 g/m² weight and about 0.6mm thickness, with PET + PU leather texture and dusting powder technology.",
+          "The reference specification is 55\" width, 200 GSM weight and about 0.6mm thickness, with PET + PU leather texture and dusting powder technology.",
       },
       {
         question: "Can I request samples before bulk production?",
@@ -2212,7 +2212,7 @@ const allBlogArticles = [
       "A practical RFQ checklist for US buyers sourcing foil stretch fabric from China, including samples, MOQ, units, shipping and approval details.",
     metaTitle: "China Foil Fabric Supplier for US Buyers | Nixia Fabric",
     metaDesc:
-      "RFQ checklist for US buyers sourcing foil fabric from China: sample terms, MOQ in meters and yards, width, lead time, shipping and custom options.",
+      "RFQ checklist for US buyers sourcing foil fabric from China: sample terms, yd MOQ, width, lead time, shipping and custom options.",
     focusProducts: [
       "rainbow-iridescent-laser-foil-nylon-spandex-fabric",
       "plain-iridescent-laser-spandex-4-way-stretch",
@@ -2225,7 +2225,7 @@ const allBlogArticles = [
     intro:
       "US buyers sourcing foil fabric from China can save time by sending the commercial details a factory needs in the first message. A clear RFQ helps separate ready-stock options from custom production and makes sample, shipping and quotation terms easier to compare.",
     takeaways: [
-      "Use both meters and yards when discussing MOQ with US purchasing teams.",
+      "Use yd MOQ consistently when discussing product minimums with US purchasing teams.",
       "Separate product price, sample cost, international freight and destination charges.",
       "Request a physical sample before approving a bulk color or surface effect.",
       "Include the destination, quantity and timeline so the factory can quote a practical route.",
@@ -2239,7 +2239,7 @@ const allBlogArticles = [
       {
         heading: "2. Ask for the same units your team uses",
         body:
-          "Many textile suppliers quote in meters while US buyers may plan in yards. Ask the supplier to show both units in the MOQ and roll information. Nixia Fabric product pages use metric and US-friendly units together, such as 100 m / 109 yd, to reduce confusion during quotation review.",
+          "Many textile suppliers quote in meters while US buyers may plan in yards. For Nixia Fabric product pages, MOQ is shown in yd, such as 109 yd, so quotation review stays consistent. If your internal purchasing sheet uses meters, share that conversion separately in the RFQ.",
       },
       {
         heading: "3. Clarify samples, freight and timing",
@@ -2696,6 +2696,201 @@ const allBlogArticles = [
         question: "What should I do if the foil changes after stretching?",
         answer:
           "Compare the change with the approved sample and intended garment movement, document it with photos and ask the supplier whether another base, finish or construction should be sampled.",
+      },
+    ],
+  },
+  {
+    title: "Nylon Spandex vs Polyester Spandex for Foil Fabric: Which Base Should Buyers Choose?",
+    slug: "nylon-spandex-vs-polyester-spandex-foil-fabric",
+    date: "2026-10-11",
+    readTime: "10 min read",
+    tags: ["Nylon Spandex", "Polyester Spandex", "Foil Fabric", "Buyer Guide"],
+    category: "Fabric Selection",
+    image: "/images/products/H2013090101/main/holographic-snakeskin-stretch-fabric-main-1.webp",
+    imageWebp: "/images/products/H2013090101/main/holographic-snakeskin-stretch-fabric-main-1.webp",
+    imageAlt: "Nylon spandex and polyester spandex foil fabric comparison for garment buyers",
+    excerpt:
+      "Compare nylon-spandex and polyester-spandex foil fabrics by hand feel, stretch, recovery, surface appearance, sewing behavior and application fit.",
+    metaTitle: "Nylon vs Polyester Foil Fabric | Nixia Fabric",
+    metaDesc:
+      "Compare nylon-spandex and polyester-spandex foil fabrics by stretch, hand feel, recovery, sewing behavior, applications and sample testing.",
+    focusProducts: [
+      "holographic-snakeskin-stretch-fabric",
+      "iridescent-mystic-metallic-foil-nylon-spandex-fabric",
+      "shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric",
+      "rainbow-stripe-foil-4-way-stretch-fabric",
+    ],
+    quoteAngle:
+      "Send your garment type, target foil effect, preferred base, estimated quantity and required width. We can recommend a focused set of samples for comparison before bulk production.",
+    intro:
+      "When buyers source foil, laser, iridescent or holographic stretch fabric, the surface effect is only half of the decision. The base fabric influences hand feel, stretch response, recovery, drape, sewing behavior and how the finished garment looks under light. Nylon-spandex and polyester-spandex are both used for foil apparel, but they should not be treated as interchangeable materials.\n\nThe practical question is not which fiber is always better. It is which base gives the right combination of surface appearance, garment movement, construction behavior and commercial fit for the project.",
+    takeaways: [
+      "Nylon-spandex and polyester-spandex can both be suitable for foil stretch garments; the actual ratio and knit construction matter.",
+      "A fiber name does not confirm stretch amount, recovery, chlorine resistance, UV performance or colorfastness.",
+      "Buyers should compare like-for-like samples by width, GSM, stretch direction, surface effect and garment construction.",
+      "The safest decision comes from a physical sample that has been stretched, sewn and reviewed under the intended lighting.",
+    ],
+    buyerSummary: {
+      heading: "What buyers should compare first",
+      items: [
+        { label: "Base", value: "Nylon-spandex or polyester-spandex composition and knit construction" },
+        { label: "Movement", value: "Stretch direction, recovery and response after sewing" },
+        { label: "Surface", value: "Foil appearance when flat, angled, stretched and under real lighting" },
+        { label: "Commercial", value: "Width, GSM, MOQ, sample route and repeat-order planning" },
+      ],
+    },
+    sections: [
+      {
+        heading: "1. Why the base fabric matters in foil sourcing",
+        body:
+          "Foil fabric combines a textile base with a reflective, metallic, laser, iridescent or holographic surface. The surface creates the visual effect, but the base fabric supports the garment. It affects how the material feels against the skin, how it moves with the body, how it behaves at a seam and how much the appearance changes when the fabric is stretched.\n\nThis is why a buyer should not compare two foil fabrics only by website photos or meter price. A softer base may be more suitable for a close-fitting garment, while another base may give the surface a different structure or visual read. Width, GSM, thickness, spandex ratio and finishing also need to be reviewed together.",
+        table: {
+          headers: ["Buyer area", "Why it matters", "What to confirm"],
+          rows: [
+            ["Fiber base", "Influences hand feel, movement and garment behavior", "Nylon-spandex or polyester-spandex composition"],
+            ["Knit construction", "Changes stretch, recovery, drape and sewing response", "Stretch direction and actual sample behavior"],
+            ["Foil surface", "Controls shine, color shift and pattern appearance", "Effect flat, angled, stretched and under intended light"],
+            ["Commercial specification", "Changes yield, costing and order planning", "Width, GSM, MOQ, stock or custom route"],
+          ],
+        },
+      },
+      {
+        heading: "2. Nylon-spandex vs polyester-spandex: the practical difference",
+        body:
+          "Nylon-spandex fabrics are often considered when a buyer wants a smooth, flexible hand feel for fitted apparel. Polyester-spandex fabrics can also provide stretch and may be selected for their particular surface appearance, structure or application fit. Neither description is enough to approve a fabric without checking the actual product.\n\nThe ratio matters. An 80% nylon 20% spandex fabric and a different nylon-spandex blend will not necessarily stretch or recover in the same way. The same applies to polyester-spandex. A 95% polyester 5% spandex foil knit will have a different movement profile from a fabric with a higher spandex content.\n\nFor that reason, the fiber comparison should be used to create a sample shortlist, not to replace sample approval.",
+        table: {
+          headers: ["Buyer check", "Nylon-spandex starting point", "Polyester-spandex starting point"],
+          rows: [
+            ["Hand feel", "Often shortlisted for a smooth, flexible touch", "May offer a more structured or stable feel depending on construction"],
+            ["Stretch", "Depends on nylon/spandex ratio and knit structure", "Depends on polyester/spandex ratio and knit structure"],
+            ["Recovery", "Must be checked from the actual sample", "Must be checked from the actual sample"],
+            ["Foil appearance", "Can support smooth or patterned foil effects", "Can support metallic, stripe, laser or other foil effects"],
+            ["Sewing", "Check seam tension, needle marks and edge behavior", "Check seam tension, needle marks and edge behavior"],
+          ],
+        },
+      },
+      {
+        heading: "3. How the fiber base changes the foil surface",
+        body:
+          "The surface of the base fabric affects how the foil reflects light. A smooth surface may give a cleaner visual read, while a textured or patterned construction can create more variation across the fabric. When the material is stretched, the knit structure opens and the foil effect may become brighter, lighter, darker or less even.\n\nThis matters most for iridescent, holographic and laser finishes. A color that looks balanced on a flat swatch may behave differently across a curved bodysuit, a bikini panel or a stage costume under LED lighting. Buyers should review both the relaxed and stretched fabric before choosing the base.",
+        bullets: [
+          "View the sample flat under neutral room light.",
+          "Tilt the sample to check reflection and color shift.",
+          "Lightly stretch the sample in the garment direction.",
+          "Compare the surface near a fold or representative seam.",
+          "Record the lighting and viewing conditions with the approved sample.",
+        ],
+      },
+      {
+        heading: "4. Compare stretch and recovery, not just the phrase 4-way stretch",
+        body:
+          "The phrase 4-way stretch describes movement in both lengthwise and crosswise directions, but it does not tell the buyer how much the fabric stretches or how well it returns after release. Those are separate checks. The result also depends on the spandex ratio, knit construction, finishing and the way the garment is cut.\n\nUse a marked section of equal length on each sample. Record the relaxed length, the extended length and what happens after release. Repeat the check in both directions if the garment requires movement across the body. Then repeat the review on a sewn panel because a seam can change the fabric's response.",
+        table: {
+          headers: ["Test", "Practical method", "What to record"],
+          rows: [
+            ["Lengthwise stretch", "Mark a fixed section and stretch in the length direction", "Starting and extended length"],
+            ["Crosswise stretch", "Repeat the same method across the width", "Directional difference"],
+            ["Recovery", "Release after a consistent stretch and rest period", "Whether the fabric returns close to its starting size"],
+            ["Foil response", "Compare relaxed and stretched sections under the same light", "Color shift, unevenness or surface change"],
+            ["Sewn recovery", "Test a representative seam or panel", "Seam waviness and post-sewing recovery"],
+          ],
+        },
+      },
+      {
+        heading: "5. When nylon-spandex may be the better starting point",
+        body:
+          "Nylon-spandex may be a useful starting point when the buyer prioritizes a smooth, flexible hand feel and a close-fitting garment construction. It can be shortlisted for bodysuits, leggings, fitted dancewear and some swimwear development programs. The final choice still depends on the exact product and the buyer's required testing.\n\nFor example, the current nylon-spandex product range includes an 80% nylon 20% spandex snakeskin foil fabric at 58\" and 160 GSM, as well as 80% nylon 20% spandex metallic foil fabrics at 59\" and 200 GSM. These differences in surface, width and weight are important when comparing garment use and cutting plans.",
+        bullets: [
+          "Close-fitting dancewear and bodysuits",
+          "Leggings and performance garments requiring body movement",
+          "Swimwear development where the buyer will test lining, elastic and care requirements",
+          "Projects where a softer or smoother hand feel is part of the brief",
+        ],
+      },
+      {
+        heading: "6. When polyester-spandex may be the better starting point",
+        body:
+          "Polyester-spandex may be a useful starting point when the buyer is comparing foil surface appearance, garment structure and a specific performance or costume construction. The actual product still needs to be tested for stretch, recovery, hand feel and sewing behavior.\n\nThe current product range includes a 95% polyester 5% spandex rainbow stripe foil fabric at 59\" and 180 GSM. It is positioned for stage costumes, dancewear and performance outfits. Other foil products use polyester-spandex or stretch ice-silk bases with different weights and finishes, so buyers should compare the complete specification rather than applying one general rule to every polyester fabric.",
+        bullets: [
+          "Stage costumes and performance apparel where surface appearance is central",
+          "Foil stripe, full-print or patterned fabric projects",
+          "Costume panels where width, weight and visual direction affect cutting",
+          "Projects where the approved sample shows the required sewn and lighting behavior",
+        ],
+      },
+      {
+        heading: "7. Match the base to the application",
+        body:
+          "Application should decide the shortlist. A buyer developing swimwear may need to compare nylon-spandex and polyester-spandex samples with the intended lining, elastic and seam construction. A stage costume buyer may prioritize how the foil reads under performance lighting and whether the fabric can be cut and sewn into the design. A dancewear buyer may prioritize recovery and comfort during movement.\n\nThe fiber name is a useful filter, but it should not be the final decision. The final decision belongs to the sample that meets the garment's movement, appearance, construction and commercial requirements.",
+        table: {
+          headers: ["Application", "First question", "Must test"],
+          rows: [
+            ["Dancewear", "Does the fabric support close fit and repeated movement?", "Recovery, seam behavior, hand feel and comfort"],
+            ["Swimwear", "What construction and buyer-specific performance requirements apply?", "Lining, elastic, stretch, seams and required testing"],
+            ["Stage costumes", "How does the surface read under the final lighting?", "Lighting, surface consistency, cutting and sewing"],
+            ["Bodysuits", "Does the fabric recover in the actual pattern direction?", "Lengthwise/crosswise stretch and sewn panel behavior"],
+            ["Fashion apparel", "Is hand feel, drape or surface effect the main priority?", "Drape, comfort, panel placement and photo appearance"],
+          ],
+        },
+      },
+      {
+        heading: "8. How to compare two supplier samples",
+        body:
+          "Make the comparison like-for-like before choosing a supplier. Ideally, compare samples with similar GSM, width, color, surface effect and stretch requirement. Record the supplier, product code, fiber composition, width, GSM, MOQ, sample date and any quotation notes.\n\nThen use the same test sequence for every sample: flat visual check, hand feel, stretch and recovery, small cutting and sewing trial, lighting review and commercial comparison. Keep the labels with the fabric and save the approved sample for future bulk inspection. A structured record is more useful than a general note such as 'sample A feels better'.",
+        bullets: [
+          "Compare samples under the same lighting and viewing angle.",
+          "Use the same marked length and similar test force for stretch checks.",
+          "Sew a representative seam with the intended production method.",
+          "Compare MOQ, width, sample route and lead time after the fabric is comparable.",
+          "Keep the approved sample and written specification for pre-shipment review.",
+        ],
+      },
+      {
+        heading: "9. Build the RFQ around the decision you need to make",
+        body:
+          "A useful RFQ does not need to be long, but it should explain the decision. For example: 'We are sourcing a 4-way stretch foil fabric for fitted stage costumes. Please recommend one nylon-spandex and one polyester-spandex option, and confirm composition, width, GSM, MOQ, sample availability, bulk lead time and available testing support.'\n\nAdd the target color or surface reference, estimated quantity, destination and production timeline. If the project is swimwear, state the lining, elastic and buyer-specific care or performance requirements. If the project is stagewear, state the lighting environment and whether the surface needs to remain directional across panels.",
+      },
+    ],
+    decisionChecklist: [
+      "Use nylon-spandex and polyester-spandex as sample-shortlisting directions, not automatic performance claims",
+      "Compare like-for-like width, GSM, surface effect and stretch requirement",
+      "Test relaxed stretch, recovery, foil response and a representative sewn panel",
+      "Review the sample under the lighting and garment construction that matter to the buyer",
+      "Confirm MOQ, sample route, bulk lead time and any application-specific testing before approval",
+    ],
+    ctaHeading: "Need help comparing nylon-spandex and polyester-spandex foil fabric?",
+    ctaText:
+      "Send your garment type, target surface effect, preferred base, estimated quantity and required width. We can recommend a focused set of samples for comparison before bulk production.",
+    faqs: [
+      {
+        question: "Is nylon-spandex always better than polyester-spandex for foil fabric?",
+        answer:
+          "No. Both can be suitable. The better option depends on the garment, stretch requirement, hand feel, surface effect, sewing process and buyer-specific testing.",
+      },
+      {
+        question: "Which base is better for swimwear?",
+        answer:
+          "Neither base should be approved by fiber name alone. Buyers should test stretch, recovery, lining, elastic, seams and any required performance standards on the actual fabric.",
+      },
+      {
+        question: "Which base is better for stage costumes?",
+        answer:
+          "Both can work. Compare how the foil reads under stage lighting, how the fabric moves, how it sews and whether the hand feel fits the costume.",
+      },
+      {
+        question: "Does nylon-spandex stretch more than polyester-spandex?",
+        answer:
+          "Not automatically. Stretch depends on the spandex ratio, knit construction and finishing. Compare the actual product sample in both directions.",
+      },
+      {
+        question: "Can I approve foil color from a photo?",
+        answer:
+          "Use photos for initial screening, but approve final color and surface effect from a physical sample because light, angle and stretch can change the appearance.",
+      },
+      {
+        question: "What should I include in the quotation request?",
+        answer:
+          "Include the application, target surface effect, base preference, width, estimated quantity, MOQ, sample request, destination, timeline and any testing or documentation needs.",
       },
     ],
   },

@@ -27,8 +27,8 @@
  *      - metaDesc includes application, wholesale/supplier intent, samples/custom
  *        support, and key MOQ/stock facts when confirmed
  *      - keep hot-stamping as a supporting process term, not the primary phrase
- *      - include US-friendly units beside metric units, e.g. 150 cm / 59 in and
- *        100 m / 109 yd
+ *      - include US-friendly units beside metric units, e.g. 59\" and
+ *        109 yd
  *   6. Save. The static site will automatically generate the new page at
  *      /products/{slug} and add it to the catalog listing — no page file needed.
  */
@@ -38,7 +38,7 @@ export const allProducts = [
     slug: "rainbow-stripe-foil-4-way-stretch-fabric",
     metaTitle: "Rainbow Stripe Foil Stretch Fabric | Nixia Fabric",
     metaDesc:
-      "Rainbow stripe foil stretch fabric for stage costumes and dancewear. Made to order, 100 m / 109 yd MOQ. Samples and custom colors available.",
+      "Rainbow stripe foil stretch fabric for stage costumes and dancewear. Made to order, 109 yd MOQ. Samples and custom colors available.",
     title: "Rainbow Stripe Foil 4-Way Stretch Fabric for Stage Costumes",
     sku: "H2013060102",
     mainImageUrl: "/images/products/H2013060102/main/rainbow-stripe-foil-4-way-stretch-fabric-main-1.webp",
@@ -81,11 +81,11 @@ export const allProducts = [
     fullDescription:
       "Rainbow stripe foil fabric with a flexible 4-way stretch base for colorful stage costumes and performance garments. Factory wholesale supply with OEM/ODM support for buyers and apparel manufacturers.",
     specs: {
-      width: "150 cm / 59 in",
+      width: "59\"",
       weight: "180 GSM",
       baseMaterial: "95% Polyester 5% Spandex",
       thickness: "",
-      moq: "100 m / 109 yd",
+      moq: "109 yd",
       leadTime: "To be confirmed",
     },
     specTable: [
@@ -93,17 +93,17 @@ export const allProducts = [
       { label: "Surface Effect", value: "Rainbow stripe foil; full-print effect" },
       { label: "Base Fabric", value: "95% Polyester 5% Spandex" },
       { label: "Stretch", value: "4-Way Stretch" },
-      { label: "Width", value: "150 cm / 59 in" },
+      { label: "Width", value: "59\"" },
       { label: "Weight", value: "180 GSM" },
       { label: "Color", value: "2 colors available; custom colors on request" },
-      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Density", value: "80T" },
       { label: "Yarn Count", value: "300D*10S" },
       { label: "Finishing", value: "Hot-stamping foil" },
       { label: "Typical Applications", value: "Stage costumes, dancewear, performance outfits, carnival costumes" },
     ],
     b2bTable: [
-      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Supply type", value: "Factory wholesale supply with OEM/ODM support" },
       { label: "Sample", value: "Availability, preparation time and shipping to be confirmed by project" },
       { label: "Bulk Lead time", value: "To be confirmed according to order quantity and production requirements" },
@@ -125,7 +125,7 @@ export const allProducts = [
     colorCount: 2,
     tags: ["rainbow-stripe", "foil", "spandex", "4-way-stretch", "stage-costume", "dancewear", "performance-outfit", "carnival-costume"],
     availableColors: "2 colors available; custom colors on request",
-    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping.",
+    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 days. Buyer covers international shipping.",
     customizationNote: "OEM/ODM support; custom color details to be confirmed",
     packaging: "To be confirmed in quotation",
     tradeTerms: "To be confirmed in quotation",
@@ -133,9 +133,9 @@ export const allProducts = [
       "Rainbow Stripe Foil",
       "Full-Print Effect",
       "4-Way Stretch",
-      "150 cm / 59 in Width",
+      "59\" Width",
       "180 GSM Weight",
-      "MOQ 100 m / 109 yd",
+      "MOQ 109 yd",
     ],
     whyChooseHeading: "Key Features",
     whyChoose: [
@@ -207,7 +207,7 @@ export const allProducts = [
     faqList: [
       {
         question: "What is the MOQ for this fabric?",
-        answer: "The confirmed MOQ is 100 m / 109 yd.",
+        answer: "The confirmed MOQ is 109 yd.",
       },
       {
         question: "Does this fabric have 4-way stretch?",
@@ -238,7 +238,7 @@ export const allProducts = [
     slug: "plain-iridescent-laser-spandex-4-way-stretch",
     metaTitle: "Iridescent Laser Foil Spandex | Nixia Fabric",
     metaDesc:
-      "Iridescent laser foil spandex with 4-way stretch for dancewear and stage costumes. Ready stock, samples and 100 m / 109 yd MOQ. Custom development available.",
+      "Iridescent laser foil spandex with 4-way stretch for dancewear and stage costumes. Ready stock, samples and 109 yd MOQ. Custom development available.",
     title: "Iridescent Spandex Laser Foil 4-Way Stretch Fabric",
     sku: "H2013090102",
     mainImageUrl: "/images/products/H2013090102/main/plain-iridescent-laser-spandex-4-way-stretch-main-1.webp",
@@ -277,7 +277,7 @@ export const allProducts = [
     fullDescription:
       "This iridescent spandex stretch fabric combines a reflective laser foil surface with a flexible 4-way stretch base. It is designed for fitted performance garments where visual impact and fabric movement both matter, including dancewear, stage costumes and performance outfits.",
     specs: {
-      width: "150 cm / 59 in",
+      width: "59\"",
       weight: "180 GSM",
       baseMaterial: "Spandex / stretch fabric",
       thickness: "0.35–0.40 mm",
@@ -288,17 +288,17 @@ export const allProducts = [
       { label: "Name", value: "Iridescent Spandex Laser Foil 4-Way Stretch Fabric" },
       { label: "Material", value: "Spandex / stretch fabric" },
       { label: "Surface", value: "Iridescent laser hot-stamping" },
-      { label: "Width", value: "150 cm / 59 in" },
+      { label: "Width", value: "59\"" },
       { label: "Weight", value: "180 GSM" },
       { label: "Thickness", value: "0.35–0.40 mm" },
       { label: "Stretch", value: "4-way stretch" },
       { label: "Color", value: "One standard color" },
-      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Sample", value: "Available" },
       { label: "Usage", value: "Dancewear, stage costumes, performance outfits" },
     ],
     b2bTable: [
-      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Supply type", value: "In-stock available" },
       { label: "Sample", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "1-3 working days after payment and stock confirmation for orders ≤ 500 m / 547 yd; 7-15 working days when production is required" },
@@ -326,9 +326,9 @@ export const allProducts = [
     heroHighlights: [
       "4-Way Stretch",
       "Iridescent Laser Finish",
-      "150 cm / 59 in Width",
+      "59\" Width",
       "180 GSM",
-      "MOQ 100 m / 109 yd",
+      "MOQ 109 yd",
       "Sample Available",
     ],
     whyChoose: [
@@ -379,7 +379,7 @@ export const allProducts = [
       {
         question: "What is the MOQ?",
         answer:
-          "The MOQ is 100 m / 109 yd.",
+          "The MOQ is 109 yd.",
       },
       {
         question: "Can I request a sample before placing a bulk order?",
@@ -389,7 +389,7 @@ export const allProducts = [
       {
         question: "What is the fabric width and weight?",
         answer:
-          "The fabric width is 150 cm / 59 in and the weight is 180 GSM.",
+          "The fabric width is 59\" and the weight is 180 GSM.",
       },
       {
         question: "Can you provide custom development?",
@@ -415,7 +415,7 @@ export const allProducts = [
     slug: "rainbow-iridescent-laser-foil-nylon-spandex-fabric",
     metaTitle: "Rainbow Iridescent Laser Foil Fabric | Nixia Fabric",
     metaDesc:
-      "Rainbow iridescent laser foil on 4-way stretch nylon-spandex for bodysuits, swimwear and stagewear. Made to order, 100 m / 109 yd MOQ. Samples available.",
+      "Rainbow iridescent laser foil on 4-way stretch nylon-spandex for bodysuits, swimwear and stagewear. Made to order, 109 yd MOQ. Samples available.",
     title: "Rainbow Iridescent Laser Foil Nylon-Spandex 4-Way Stretch Fabric",
     sku: "H2013120101",
     mainImageUrl: "/images/products/H2013120101/main/rainbow-iridescent-laser-foil-nylon-spandex-fabric-main-1.webp",
@@ -458,11 +458,11 @@ export const allProducts = [
     fullDescription:
       "Rainbow iridescent laser foil on a 4-way stretch nylon-spandex base for bodysuits, swimwear and stagewear.",
     specs: {
-      width: "150 cm / 59 in",
+      width: "59\"",
       weight: "180 GSM",
       baseMaterial: "92% Polyester 8% Spandex",
       thickness: "",
-      moq: "100 m / 109 yd",
+      moq: "109 yd",
       leadTime: "To be confirmed",
     },
     specTable: [
@@ -470,10 +470,10 @@ export const allProducts = [
       { label: "Surface Effect", value: "Rainbow iridescent laser foil" },
       { label: "Base Fabric", value: "92% Polyester 8% Spandex" },
       { label: "Stretch", value: "4-Way Stretch" },
-      { label: "Width", value: "150 cm / 59 in" },
+      { label: "Width", value: "59\"" },
       { label: "Weight", value: "180 GSM" },
       { label: "Color", value: "15 colors available; custom colors on request" },
-      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Density", value: "110T" },
       { label: "Yarn Count", value: "75D*70D" },
       { label: "Finishing", value: "Hot-stamping foil" },
@@ -481,9 +481,9 @@ export const allProducts = [
       { label: "Typical Applications", value: "Bodysuits, swimwear, dancewear, stage costumes, performance outfits" },
     ],
     b2bTable: [
-      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Supply type", value: "Factory wholesale supply with OEM/ODM support" },
-      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping." },
+      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "7-15 working days" },
       { label: "Available Colors", value: "15 colors available; custom colors on request" },
       { label: "OEM / ODM", value: "Custom colors and OEM/ODM support available" },
@@ -504,7 +504,7 @@ export const allProducts = [
     colorCount: 15,
     tags: ["rainbow", "iridescent", "laser-foil", "nylon-spandex", "4-way-stretch", "bodysuit", "swimwear", "dancewear", "stage-costume"],
     availableColors: "15 colors available; custom colors on request",
-    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping.",
+    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 days. Buyer covers international shipping.",
     customizationNote: "Custom colors and OEM/ODM support available",
     packaging: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement",
     tradeTerms: "To be confirmed in quotation",
@@ -512,9 +512,9 @@ export const allProducts = [
       "Rainbow Iridescent Laser Foil",
       "Nylon-Spandex Blend",
       "4-Way Stretch",
-      "150 cm / 59 in Width",
+      "59\" Width",
       "180 GSM Weight",
-      "MOQ 100 m / 109 yd",
+      "MOQ 109 yd",
     ],
     whyChooseHeading: "Key Features",
     whyChoose: [
@@ -592,7 +592,7 @@ export const allProducts = [
       {
         question: "What is the MOQ?",
         answer:
-          "The confirmed MOQ is 100 m / 109 yd.",
+          "The confirmed MOQ is 109 yd.",
       },
       {
         question: "Does this fabric have 4-way stretch?",
@@ -647,7 +647,7 @@ export const allProducts = [
     slug: "gradient-rainbow-dot-foil-knit-fabric",
     metaTitle: "Gradient Rainbow Dot Foil Fabric | Nixia Fabric",
     metaDesc:
-      "Gradient rainbow dot foil knit fabric for stage costumes and performance wear. Made to order with a 200 m / 219 yd MOQ. Samples and custom colors are available.",
+      "Gradient rainbow dot foil knit fabric for stage costumes and performance wear. Made to order with a 219 yd MOQ. Samples and custom colors are available.",
     title: "Gradient Rainbow Dot Foil Knit Fabric for Stage Costumes",
     sku: "H2013120103",
     mainImageUrl: "/images/products/H2013120103/main/gradient-rainbow-dot-foil-knit-fabric-main-1.webp",
@@ -690,11 +690,11 @@ export const allProducts = [
     fullDescription:
       "Gradient rainbow dot foil on a lightweight knit fabric for stage costumes, performance wear and colorful costume accessories.",
     specs: {
-      width: "150 cm / 59 in",
+      width: "59\"",
       weight: "90 GSM",
       baseMaterial: "92% Polyester 8% Spandex",
       thickness: "",
-      moq: "200 m / 219 yd",
+      moq: "219 yd",
       leadTime: "To be confirmed",
     },
     specTable: [
@@ -702,10 +702,10 @@ export const allProducts = [
       { label: "Surface Effect", value: "Gradient rainbow dot foil" },
       { label: "Base Fabric", value: "92% Polyester 8% Spandex" },
       { label: "Stretch", value: "Slight stretch" },
-      { label: "Width", value: "150 cm / 59 in" },
+      { label: "Width", value: "59\"" },
       { label: "Weight", value: "90 GSM" },
       { label: "Color", value: "15 colors available; custom colors on request" },
-      { label: "MOQ", value: "200 m / 219 yd" },
+      { label: "MOQ", value: "219 yd" },
       { label: "Density", value: "To be confirmed" },
       { label: "Yarn Count", value: "30D" },
       { label: "Finishing", value: "Hot-stamping foil" },
@@ -713,9 +713,9 @@ export const allProducts = [
       { label: "Typical Applications", value: "Stage costumes, performance wear, dancewear, costume accessories" },
     ],
     b2bTable: [
-      { label: "MOQ", value: "200 m / 219 yd" },
+      { label: "MOQ", value: "219 yd" },
       { label: "Supply type", value: "Factory wholesale supply with OEM/ODM support" },
-      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping." },
+      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "7-15 working days" },
       { label: "Available Colors", value: "15 colors available; custom colors on request" },
       { label: "OEM / ODM", value: "Custom colors and OEM/ODM support available" },
@@ -735,7 +735,7 @@ export const allProducts = [
     colorCount: 15,
     tags: ["gradient", "rainbow-dot", "dot-foil", "knit-jacquard", "slight-stretch", "stage-costume", "performance-wear", "dancewear", "costume-accessories"],
     availableColors: "15 colors available; custom colors on request",
-    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping.",
+    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 days. Buyer covers international shipping.",
     customizationNote: "Custom colors and OEM/ODM support available",
     packaging: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement",
     tradeTerms: "To be confirmed in quotation",
@@ -743,9 +743,9 @@ export const allProducts = [
       "Gradient Rainbow Dot Foil",
       "Knit Jacquard",
       "Slight Stretch",
-      "150 cm / 59 in Width",
+      "59\" Width",
       "90 GSM Weight",
-      "MOQ 200 m / 219 yd",
+      "MOQ 219 yd",
     ],
     whyChooseHeading: "Key Features",
     whyChoose: [
@@ -827,7 +827,7 @@ export const allProducts = [
       {
         question: "What is the MOQ?",
         answer:
-          "The confirmed MOQ is 200 m / 219 yd.",
+          "The confirmed MOQ is 219 yd.",
       },
       {
         question: "How many colors are available?",
@@ -877,7 +877,7 @@ export const allProducts = [
     slug: "rainbow-fingerprint-dot-foil-ice-silk-fabric",
     metaTitle: "Rainbow Fingerprint Dot Foil Fabric | Nixia Fabric",
     metaDesc:
-      "Rainbow fingerprint-dot foil on ice-silk stretch knit for formalwear and performance garments. Made to order, 200 m / 219 yd MOQ. Samples available.",
+      "Rainbow fingerprint-dot foil on ice-silk stretch knit for formalwear and performance garments. Made to order, 219 yd MOQ. Samples available.",
     title: "Rainbow Fingerprint Dot Foil Stretch Knit Fabric",
     sku: "H2013120104",
     mainImageUrl: "/images/products/H2013120104/main/rainbow-fingerprint-dot-foil-ice-silk-fabric-main-1.webp",
@@ -920,7 +920,7 @@ export const allProducts = [
     fullDescription:
       "Rainbow fingerprint-dot foil on an ice-silk knit base for dresses, tops, formalwear and performance garments.",
     specs: {
-      width: "145 cm / 57 in",
+      width: "57\"",
       weight: "150 GSM",
       baseMaterial: "98% Polyester 2% Spandex",
       thickness: "",
@@ -930,12 +930,12 @@ export const allProducts = [
     specTable: [
       { label: "Product Type", value: "Rainbow Fingerprint Dot Foil Ice-Silk Knit Fabric" },
       { label: "Surface Effect", value: "Rainbow fingerprint-dot foil" },
-      { label: "Base Fabric", value: "98% Polyester / 2% Spandex" },
+      { label: "Base Fabric", value: "98% Polyester 2% Spandex" },
       { label: "Stretch", value: "4-Way Stretch" },
-      { label: "Width", value: "145 cm / 57 in" },
+      { label: "Width", value: "57\"" },
       { label: "Weight", value: "150 GSM" },
       { label: "Color", value: "To be confirmed; custom colors on request" },
-      { label: "MOQ", value: "200 m / 219 yd" },
+      { label: "MOQ", value: "219 yd" },
       { label: "Density", value: "To be confirmed" },
       { label: "Yarn Count", value: "30s" },
       { label: "Finishing", value: "Hot-stamping foil" },
@@ -943,9 +943,9 @@ export const allProducts = [
       { label: "Typical Applications", value: "Dresses, tops, formalwear, stage costumes, dancewear" },
     ],
     b2bTable: [
-      { label: "MOQ", value: "200 m / 219 yd" },
+      { label: "MOQ", value: "219 yd" },
       { label: "Supply type", value: "Factory wholesale supply with OEM/ODM support" },
-      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping." },
+      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "7-15 working days" },
       { label: "Available Colors", value: "To be confirmed; custom colors on request" },
       { label: "OEM / ODM", value: "Custom colors and OEM/ODM support available" },
@@ -966,7 +966,7 @@ export const allProducts = [
     colorCount: 0,
     tags: ["rainbow-fingerprint-dot", "dot-foil", "ice-silk-knit", "stretch-knit", "dresses", "tops", "formalwear", "stage-costume", "dancewear"],
     availableColors: "To be confirmed; custom colors on request",
-    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping.",
+    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 days. Buyer covers international shipping.",
     customizationNote: "Custom colors and OEM/ODM support available",
     packaging: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement",
     tradeTerms: "To be confirmed in quotation",
@@ -974,9 +974,9 @@ export const allProducts = [
       "Rainbow Fingerprint-Dot Foil",
       "Ice-Silk Knit Base",
       "4-Way Stretch",
-      "145 cm / 57 in Width",
+      "57\" Width",
       "150 GSM Weight",
-      "MOQ 200 m / 219 yd",
+      "MOQ 219 yd",
     ],
     whyChooseHeading: "Key Features",
     whyChoose: [
@@ -998,11 +998,11 @@ export const allProducts = [
       },
       {
         title: "Confirmed Composition",
-        desc: "The base material is confirmed as 98% polyester / 2% spandex.",
+        desc: "The base material is confirmed as 98% polyester 2% spandex.",
       },
       {
         title: "Confirmed Production Details",
-        desc: "The source data confirms 145 cm width, 150 GSM weight, 200 m MOQ, 30s yarn count and hot-stamping foil finishing.",
+        desc: "The source data confirms 145 cm width, 150 GSM weight, 219 yd MOQ, 30s yarn count and hot-stamping foil finishing.",
       },
       {
         title: "Custom Color Support",
@@ -1015,7 +1015,7 @@ export const allProducts = [
     ],
     valueStory: {
       title: "Why Choose This Rainbow Fingerprint Dot Foil Fabric?",
-      body: "This product combines a rainbow fingerprint-dot foil surface with a 98% polyester / 2% spandex, 4-way stretch knit base for dresses, tops, formalwear, stage costumes and dancewear. The confirmed 145 cm width, 150 GSM weight and 200 m MOQ support production planning, while color availability and compliance details can be confirmed during sampling and quotation review.",
+      body: "This product combines a rainbow fingerprint-dot foil surface with a 98% polyester 2% spandex, 4-way stretch knit base for dresses, tops, formalwear, stage costumes and dancewear. The confirmed 145 cm width, 150 GSM weight and 219 yd MOQ support production planning, while color availability and compliance details can be confirmed during sampling and quotation review.",
     },
     applicationsHeading: "Recommended Applications",
     buyerApplications: [
@@ -1070,7 +1070,7 @@ export const allProducts = [
       {
         question: "What is the MOQ?",
         answer:
-          "The MOQ is 200 m / 219 yd.",
+          "The MOQ is 219 yd.",
       },
       {
         question: "How many colors are available?",
@@ -1080,7 +1080,7 @@ export const allProducts = [
       {
         question: "What fabric specifications still need confirmation?",
         answer:
-          "Color count, density, testing and compliance details should be confirmed before bulk quotation. The source data confirms 145 cm width, 150 GSM weight, 98% polyester / 2% spandex, 4-way stretch, 30s yarn count and hot-stamping foil finishing.",
+          "Color count, density, testing and compliance details should be confirmed before bulk quotation. The source data confirms 145 cm width, 150 GSM weight, 98% polyester 2% spandex, 4-way stretch, 30s yarn count and hot-stamping foil finishing.",
       },
       {
         question: "Can I request a sample before bulk production?",
@@ -1126,7 +1126,7 @@ export const allProducts = [
     slug: "holographic-mermaid-scale-milk-silk-stretch-fabric",
     metaTitle: "Holographic Mermaid Scale Stretch Fabric | Nixia Fabric",
     metaDesc:
-      "Holographic mermaid scale foil on high-stretch milk-silk for skirts, stage costumes and dancewear. Made to order, 100 m / 109 yd MOQ. Samples available.",
+      "Holographic mermaid scale foil on high-stretch milk-silk for skirts, stage costumes and dancewear. Made to order, 109 yd MOQ. Samples available.",
     title: "Holographic Mermaid Scale Milk Silk 4-Way Stretch Fabric",
     sku: "H2013120105",
     mainImageUrl: "/images/products/H2013120105/main/holographic-mermaid-scale-milk-silk-stretch-fabric-main-1.webp",
@@ -1169,11 +1169,11 @@ export const allProducts = [
     fullDescription:
       "Holographic mermaid-scale foil on a high-stretch milk-silk base for mermaid skirts, stage costumes and dancewear.",
     specs: {
-      width: "150 cm / 59 in",
+      width: "59\"",
       weight: "180 GSM",
       baseMaterial: "92% Polyester 8% Spandex",
       thickness: "",
-      moq: "100 m / 109 yd",
+      moq: "109 yd",
       leadTime: "To be confirmed",
     },
     specTable: [
@@ -1181,10 +1181,10 @@ export const allProducts = [
       { label: "Surface Effect", value: "Holographic mermaid-scale foil" },
       { label: "Base Fabric", value: "92% Polyester 8% Spandex" },
       { label: "Stretch", value: "High stretch / 4-way stretch" },
-      { label: "Width", value: "150 cm / 59 in" },
+      { label: "Width", value: "59\"" },
       { label: "Weight", value: "180 GSM" },
       { label: "Color", value: "11 colors available; custom colors on request" },
-      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Density", value: "86T" },
       { label: "Yarn Count", value: "To be confirmed" },
       { label: "Finishing", value: "Hot-stamping foil" },
@@ -1192,9 +1192,9 @@ export const allProducts = [
       { label: "Typical Applications", value: "Mermaid skirts, stage costumes, dancewear, performance outfits" },
     ],
     b2bTable: [
-      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Supply type", value: "Factory wholesale supply with OEM/ODM support" },
-      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping." },
+      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "7-15 working days" },
       { label: "Available Colors", value: "11 colors available; custom colors on request" },
       { label: "OEM / ODM", value: "Custom colors and OEM/ODM support available" },
@@ -1214,7 +1214,7 @@ export const allProducts = [
     colorCount: 11,
     tags: ["holographic", "mermaid-scale", "milk-silk", "4-way-stretch", "high-stretch", "stage-costume", "dancewear", "performance-outfit", "mermaid-skirts"],
     availableColors: "11 colors available; custom colors on request",
-    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping.",
+    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 days. Buyer covers international shipping.",
     customizationNote: "Custom colors and OEM/ODM support available",
     packaging: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement",
     tradeTerms: "To be confirmed in quotation",
@@ -1222,9 +1222,9 @@ export const allProducts = [
       "Holographic Mermaid Scale Foil",
       "Milk-Silk Stretch Base",
       "High Stretch / 4-Way Stretch",
-      "150 cm / 59 in Width",
+      "59\" Width",
       "180 GSM Weight",
-      "MOQ 100 m / 109 yd",
+      "MOQ 109 yd",
     ],
     whyChooseHeading: "Key Features",
     whyChoose: [
@@ -1255,7 +1255,7 @@ export const allProducts = [
     ],
     valueStory: {
       title: "Why Choose This Holographic Mermaid Scale Fabric?",
-      body: "This fabric combines a holographic mermaid-scale foil surface with a high-stretch milk-silk base, giving buyers a strong visual option for mermaid skirts, stage costumes, dancewear and performance outfits. The source row confirms the key procurement facts: 150 cm / 59 in width, 180 GSM weight, 100 m / 109 yd MOQ, 11 colors, 86T density and 92% Polyester 8% Spandex composition.",
+      body: "This fabric combines a holographic mermaid-scale foil surface with a high-stretch milk-silk base, giving buyers a strong visual option for mermaid skirts, stage costumes, dancewear and performance outfits. The source row confirms the key procurement facts: 59\" width, 180 GSM weight, 109 yd MOQ, 11 colors, 86T density and 92% Polyester 8% Spandex composition.",
     },
     applicationsHeading: "Recommended Applications",
     buyerApplications: [
@@ -1306,7 +1306,7 @@ export const allProducts = [
       {
         question: "What is the MOQ?",
         answer:
-          "The confirmed MOQ is 100 m / 109 yd.",
+          "The confirmed MOQ is 109 yd.",
       },
       {
         question: "How many colors are available?",
@@ -1357,7 +1357,7 @@ export const allProducts = [
     slug: "full-print-hot-stamping-spandex-milk-silk",
     metaTitle: "Full-Print Foil Spandex Fabric | Nixia Fabric",
     metaDesc:
-      "Full-print foil spandex milk-silk with 4-way stretch for stage costumes and dancewear. Ready stock, samples and 100 m / 109 yd MOQ. Custom prints available.",
+      "Full-print foil spandex milk-silk with 4-way stretch for stage costumes and dancewear. Ready stock, samples and 109 yd MOQ. Custom prints available.",
     title: "Full-Print Foil Spandex Milk-Silk Fabric",
     sku: "P0002",
     mainImageUrl: "/images/products/H2013060101/main/full-print-hot-stamping-spandex-milk-silk-main-1.webp",
@@ -1410,8 +1410,8 @@ export const allProducts = [
     fullDescription:
       "Nixia Fabric brings you our full-print hot-stamping spandex milk-silk fabric — a stretchy base fabric finished with an all-over hot-stamping foil print. The milk-silk ground gives a soft, smooth hand-feel, while the foil surface delivers a bright metallic shine that holds up through wear.\n\nThe 4-way stretch construction recovers well after stretching, making it a practical choice for fitted dancewear, stage costumes and performance outfits.",
     specs: {
-      width: "150 cm / 59 in",
-      weight: "160 g/m²",
+      width: "59\"",
+      weight: "160 GSM",
       baseMaterial: "Milk-silk spandex, 4-way stretch",
       thickness: "0.35‑0.4mm",
       moq: "100",
@@ -1420,16 +1420,16 @@ export const allProducts = [
     specTable: [
       { label: "Product Type", value: "Full-print hot-stamping foil fabric" },
       { label: "Base Fabric", value: "Milk-silk spandex, 4-way stretch" },
-      { label: "Weight", value: "160 g/m²" },
+      { label: "Weight", value: "160 GSM" },
       { label: "Surface Finish", value: "All-over hot-stamping foil print" },
       { label: "Hand-feel", value: "Soft, smooth, elastic recovery" },
-      { label: "MOQ", value: "100 m / 109 yd per design" },
+      { label: "MOQ", value: "109 yd per design" },
       { label: "Stock Status", value: "In-stock, ready to ship" },
       { label: "Sampling", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
       { label: "Customization", value: "Custom patterns, colors, width & backing on bulk orders" },
     ],
     b2bTable: [
-      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Supply type", value: "In-stock available" },
       { label: "Sample", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "1-3 working days after payment and stock confirmation for orders ≤ 500 m / 547 yd; 7-15 working days when production is required" },
@@ -1482,7 +1482,7 @@ export const allProducts = [
       {
         question: "What is the MOQ for this fabric?",
         answer:
-          "The MOQ is 100 m / 109 yd per design for stock designs. Custom printed patterns start from higher quantities; send us your artwork and we will quote the exact minimum.",
+          "The MOQ is 109 yd per design for stock designs. Custom printed patterns start from higher quantities; send us your artwork and we will quote the exact minimum.",
       },
       {
         question: "Can I get a sample before placing a bulk order?",
@@ -1515,7 +1515,7 @@ export const allProducts = [
     slug: "double-layer-pleated-foil-knit-fabric",
     metaTitle: "Pleated Foil Knit Fabric | Nixia Fabric",
     metaDesc:
-      "Double-layer pleated foil knit for performance skirts, stage costumes and dancewear. Made to order, 100 m / 109 yd MOQ. Samples and custom colors available.",
+      "Double-layer pleated foil knit for performance skirts, stage costumes and dancewear. Made to order, 109 yd MOQ. Samples and custom colors available.",
     title: "Double-Layer Pleated Foil Knit Fabric for Performance Skirts",
     sku: "H2013060104",
     mainImageUrl: "/images/products/H2013060104/main/double-layer-pleated-foil-knit-fabric-main-1.webp",
@@ -1558,7 +1558,7 @@ export const allProducts = [
     fullDescription:
       "Double-layer pleated knit fabric with vertical texture and foil finish for performance skirts, stage costumes, dresses and dancewear.",
     specs: {
-      width: "147 cm / 58 in",
+      width: "58\"",
       weight: "200 GSM",
       baseMaterial: "95% Polyester 5% Spandex",
       thickness: "",
@@ -1570,10 +1570,10 @@ export const allProducts = [
       { label: "Surface Effect", value: "Foil finish with vertical pleated texture" },
       { label: "Base Fabric", value: "95% Polyester 5% Spandex knit fabric" },
       { label: "Stretch", value: "Slight stretch" },
-      { label: "Width", value: "147 cm / 58 in" },
+      { label: "Width", value: "58\"" },
       { label: "Weight", value: "200 GSM" },
       { label: "Color", value: "18 colors available; custom colors on request" },
-      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Density", value: "To be confirmed" },
       { label: "Yarn Count", value: "90S" },
       { label: "Finishing", value: "Hot-stamping foil" },
@@ -1581,9 +1581,9 @@ export const allProducts = [
       { label: "Typical Applications", value: "Performance skirts, stage costumes, dresses, formalwear, dancewear" },
     ],
     b2bTable: [
-      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Supply type", value: "18 colors available; stock status confirmed by quotation" },
-      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping." },
+      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "To be confirmed according to order quantity and production requirements" },
       { label: "Port", value: "Ningbo / Shanghai" },
       { label: "OEM / ODM", value: "Custom colors and OEM/ODM development available" },
@@ -1604,7 +1604,7 @@ export const allProducts = [
     colorCount: 18,
     tags: ["pleated-foil", "foil", "knit", "stage-costume", "performance-skirts", "dancewear", "formalwear"],
     availableColors: "18 colors available; custom colors on request",
-    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping.",
+    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 days. Buyer covers international shipping.",
     customizationNote: "Custom colors and OEM/ODM development available",
     packaging: "Roll packing; export packing available upon quotation",
     tradeTerms: "FOB, CIF upon quotation",
@@ -1612,9 +1612,9 @@ export const allProducts = [
       "Double-Layer Pleated Knit",
       "Foil Finish",
       "Slight Stretch",
-      "147 cm / 58 in Width",
+      "58\" Width",
       "200 GSM Weight",
-      "MOQ 100 m / 109 yd",
+      "MOQ 109 yd",
     ],
     whyChooseHeading: "Key Features",
     whyChoose: [
@@ -1687,12 +1687,12 @@ export const allProducts = [
       {
         question: "What is the MOQ for this fabric?",
         answer:
-          "The confirmed MOQ is 100 m / 109 yd.",
+          "The confirmed MOQ is 109 yd.",
       },
       {
         question: "What is the fabric width and weight?",
         answer:
-          "The fabric width is 147 cm / 58 in and the weight is 200 GSM.",
+          "The fabric width is 58\" and the weight is 200 GSM.",
       },
       {
         question: "Does this fabric stretch?",
@@ -1744,7 +1744,7 @@ export const allProducts = [
     slug: "shiny-foil-4-way-stretch-knit-fabric",
     metaTitle: "Shiny Foil Stretch Knit Fabric | Nixia Fabric",
     metaDesc:
-      "Shiny foil 4-way stretch knit for stage costumes, dancewear and party apparel. Ready stock, samples and 100 m / 109 yd MOQ. Custom development available.",
+      "Shiny foil 4-way stretch knit for stage costumes, dancewear and party apparel. Ready stock, samples and 109 yd MOQ. Custom development available.",
     title: "Shiny Foil 4-Way Stretch Knit Fabric for Performance & Party Wear",
     sku: "H2013060105",
     mainImageUrl: "/images/products/H2013060105/main/shiny-foil-4-way-stretch-knit-fabric-main-1.webp",
@@ -1787,7 +1787,7 @@ export const allProducts = [
     fullDescription:
       "A shiny foil-finished 4-way stretch knit fabric designed for eye-catching performance costumes, dancewear and party apparel. The flexible stretch base provides comfort and freedom of movement, while the reflective foil surface creates a striking visual effect under stage and event lighting.",
     specs: {
-      width: "145 cm / 57 in",
+      width: "57\"",
       weight: "150 GSM",
       baseMaterial: "100% Polyester",
       thickness: "",
@@ -1799,17 +1799,17 @@ export const allProducts = [
       { label: "Surface Effect", value: "Shiny Foil Finish" },
       { label: "Base Fabric", value: "100% Polyester" },
       { label: "Stretch", value: "4-Way Stretch" },
-      { label: "Width", value: "145 cm / 57 in" },
+      { label: "Width", value: "57\"" },
       { label: "Weight", value: "150 GSM" },
       { label: "Color", value: "30 colors available; custom colors on request" },
-      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Yarn Count", value: "90S" },
       { label: "Finishing", value: "Hot-stamping foil" },
       { label: "Supply Type", value: "Ready Stock & Custom Development" },
       { label: "Typical Applications", value: "Stage costumes, dancewear, performance wear, concert outfits, party wear, festival costumes, performance bodysuits" },
     ],
     b2bTable: [
-      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Supply type", value: "Ready stock available; custom development available" },
       { label: "Sample", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "1-3 working days after payment and stock confirmation for orders ≤ 500 m / 547 yd; 7-15 working days when production is required" },
@@ -1841,10 +1841,10 @@ export const allProducts = [
     heroHighlights: [
       "Shiny Foil Finish",
       "4-Way Stretch",
-      "145 cm / 57 in Width",
+      "57\" Width",
       "150 GSM Weight",
       "30 Colors",
-      "MOQ 100 m / 109 yd",
+      "MOQ 109 yd",
     ],
     whyChooseHeading: "Key Features",
     whyChoose: [
@@ -1985,7 +1985,7 @@ export const allProducts = [
     slug: "dense-dot-foil-suede-look-fabric",
     metaTitle: "Dense Dot Foil Suede-Look Fabric | Nixia Fabric",
     metaDesc:
-      "Dense dot foil suede-look fabric for stage props, backdrops and event decoration. Ready stock, samples and 100 m / 109 yd MOQ. Custom colors available.",
+      "Dense dot foil suede-look fabric for stage props, backdrops and event decoration. Ready stock, samples and 109 yd MOQ. Custom colors available.",
     title: "Dense Dot Foil Suede-Look Fabric for Stage Props & Backdrops",
     sku: "H2013060106",
     mainImageUrl: "/images/products/H2013060106/main/dense-dot-foil-suede-look-fabric-main-1.webp",
@@ -2028,7 +2028,7 @@ export const allProducts = [
     fullDescription:
       "Soft suede-like base paired with a dense small-dot foil finish for an elevated visual effect. Wrinkle-resistant and more flexible than full-area hot stamping fabrics. Suitable for stage costumes, performance props, backdrops and event decoration.",
     specs: {
-      width: "150 cm / 59 in",
+      width: "59\"",
       weight: "130 GSM",
       baseMaterial: "Suede-look fabric",
       thickness: "",
@@ -2038,12 +2038,12 @@ export const allProducts = [
     specTable: [
       { label: "Product Type", value: "Dense Dot Foil Suede-Look Fabric" },
       { label: "Base Material", value: "Suede-look fabric" },
-      { label: "Width", value: "150 cm / 59 in" },
+      { label: "Width", value: "59\"" },
       { label: "Weight", value: "130 GSM" },
       { label: "Surface Effect", value: "Dense small-dot foil with laser foil effect" },
       { label: "Stretch", value: "Slight stretch" },
       { label: "Color", value: "16 colors available; custom colors on request" },
-      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Density", value: "210T" },
       { label: "Yarn Count", value: "75D*75DD" },
       { label: "Finishing", value: "Foil" },
@@ -2051,7 +2051,7 @@ export const allProducts = [
       { label: "Typical Applications", value: "Stage costumes, performance props, backdrops, event decoration" },
     ],
     b2bTable: [
-      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Supply type", value: "In-stock availability; custom development available" },
       { label: "Sample", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "5-7 working days for stock dispatch; custom production timing to be confirmed" },
@@ -2070,7 +2070,7 @@ export const allProducts = [
     inStock: true,
     stockStatus: "In-Stock",
     availability: "In-Stock",
-    customProjectMoq: "MOQ 200 m / 219 yd",
+    customProjectMoq: "MOQ 219 yd",
     badge: "16 colors",
     colorCount: 16,
     tags: ["foil", "suede-look", "embossed", "stage-costume", "performance-props", "backdrops", "event-decoration"],
@@ -2083,9 +2083,9 @@ export const allProducts = [
       "Dense Dot Foil",
       "Suede-Look Base",
       "Laser Foil Effect",
-      "150 cm / 59 in Width",
+      "59\" Width",
       "130 GSM Weight",
-      "MOQ 100 m / 109 yd",
+      "MOQ 109 yd",
     ],
     whyChooseHeading: "Key Features",
     whyChoose: [
@@ -2211,7 +2211,7 @@ export const allProducts = [
     slug: "iridescent-laser-hot-stamping-stretch-ice-silk",
     metaTitle: "Iridescent Laser Foil Stretch Fabric | Nixia Fabric",
     metaDesc:
-      "Iridescent laser foil 4-way stretch fabric for stage costumes and dancewear. Ready stock, samples and 100 m / 109 yd MOQ per color. Custom colors available.",
+      "Iridescent laser foil 4-way stretch fabric for stage costumes and dancewear. Samples, 109 yd MOQ and 7-15 days production lead time.",
     title: "Iridescent Laser Foil 4-Way Stretch Fabric",
     sku: "H2013120107",
     mainImageUrl: "/images/products/H2013120107/main/iridescent-laser-hot-stamping-stretch-ice-silk-main-1.webp",
@@ -2253,32 +2253,32 @@ export const allProducts = [
       poster: "iridescent-laser-hot-stamping-stretch-ice-silk-main-1.webp",
     },
     shortIntro:
-      "Iridescent laser foil 4-way stretch fabric on a 95% polyester / 5% spandex base for stage costumes, dancewear, performance wear, party wear and show costumes.",
+      "Iridescent laser foil 4-way stretch fabric on a 95% polyester 5% spandex base for stage costumes, dancewear, performance wear, party wear and show costumes.",
     fullDescription:
-      "Our iridescent laser foil 4-way stretch fabric uses a 95% polyester / 5% spandex composition for flexible costume and apparel production. Its reflective surface changes with light and viewing angle, giving stage costumes and show costumes a strong visual effect.\n\nThe 4-way stretch construction supports fitted performance wear, dancewear and party wear while allowing movement and recovery. Request a physical sample to review the surface, hand feel and sewing performance before bulk production.",
+      "Our iridescent laser foil 4-way stretch fabric uses a 95% polyester 5% spandex composition for flexible costume and apparel production. Its reflective surface changes with light and viewing angle, giving stage costumes and show costumes a strong visual effect.\n\nThe 4-way stretch construction supports fitted performance wear, dancewear and party wear while allowing movement and recovery. Request a physical sample to review the surface, hand feel and sewing performance before bulk production.",
     specs: {
-      width: "150 cm / 59 in",
-      weight: "160 g/m²",
+      width: "59\"",
+      weight: "160 GSM",
       baseMaterial: "95% Polyester 5% Spandex",
       thickness: "0.3‑0.35mm",
-      moq: "100",
-      leadTime: "1-3",
+      moq: "109 yd",
+      leadTime: "7-15 days",
     },
     specTable: [
       { label: "Product Type", value: "Iridescent Laser Foil 4-Way Stretch Fabric" },
-      { label: "Composition", value: "95% Polyester / 5% Spandex" },
+      { label: "Composition", value: "95% Polyester 5% Spandex" },
       { label: "Surface Finish", value: "Iridescent laser foil" },
       { label: "Stretch", value: "4-Way Stretch" },
-      { label: "MOQ", value: "100 m / 109 yd per color" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Stock Status", value: "In-stock, ready to ship" },
       { label: "Sampling", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
       { label: "Customization", value: "Custom foil colors, width & backing on bulk orders" },
     ],
     b2bTable: [
-      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Supply type", value: "In-stock available" },
       { label: "Sample", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
-      { label: "Bulk Lead time", value: "1-3 working days after payment and stock confirmation for orders ≤ 500 m / 547 yd; 7-15 working days when production is required" },
+      { label: "Bulk Lead time", value: "7-15 days production" },
       { label: "Port", value: "Ningbo / Shanghai" },
       { label: "OEM / ODM", value: "Custom color, width, new fabric development & private label available" },
       { label: "Testing & Compliance", value: "SGS / REACH testing can be arranged according to buyer requirements" },
@@ -2292,7 +2292,7 @@ export const allProducts = [
         desc: "The reflective surface changes with light and viewing angle, creating a stronger stage and show-costume effect than a single-tone foil finish.",
       },
       {
-        title: "95% Polyester / 5% Spandex Base",
+        title: "95% Polyester 5% Spandex Base",
         desc: "The confirmed composition provides a clear base-fabric specification for fitted costume and performance apparel development.",
       },
       {
@@ -2300,8 +2300,8 @@ export const allProducts = [
         desc: "The documented 4-way stretch supports movement-focused garments while allowing buyers to review recovery and sewing performance by sample.",
       },
       {
-        title: "Lightweight 160 g/m² Build",
-        desc: "The 160 g/m² weight and 0.3–0.35 mm thickness give buyers a defined starting point for garment development and sampling.",
+        title: "Lightweight 160 GSM Build",
+        desc: "The 160 GSM weight and 0.3–0.35 mm thickness give buyers a defined starting point for garment development and sampling.",
       },
       {
         title: "Custom Foil Development",
@@ -2328,8 +2328,7 @@ export const allProducts = [
     faqList: [
       {
         question: "What is the MOQ for this fabric?",
-        answer:
-          "The MOQ is 100 m / 109 yd per color from stock. Custom iridescent effects start from higher quantities; contact us for a quotation based on your requirement.",
+        answer: "109 yd.",
       },
       {
         question: "Can I get a sample before placing a bulk order?",
@@ -2337,9 +2336,13 @@ export const allProducts = [
           "Yes. This is an in-stock product. The stock sample is free and prepared in 1-3 working days. The buyer covers international shipping.",
       },
       {
+        question: "What is the lead time?",
+        answer: "7-15 days production.",
+      },
+      {
         question: "What is the composition and stretch?",
         answer:
-          "The fabric is 95% polyester / 5% spandex with 4-way stretch. We recommend approving a physical sample before bulk production to confirm hand feel, recovery and sewing performance.",
+          "The fabric is 95% polyester 5% spandex with 4-way stretch. We recommend approving a physical sample before bulk production to confirm hand feel, recovery and sewing performance.",
       },
       {
         question: "What applications is this fabric suitable for?",
@@ -2368,7 +2371,7 @@ export const allProducts = [
     slug: "iridescent-gradient-laser-ice-silk",
     metaTitle: "Gradient Iridescent Stretch Fabric | Nixia Fabric",
     metaDesc:
-      "Gradient iridescent foil stretch fabric for dancewear and stage costumes. Ready stock, samples and 100 m / 109 yd MOQ per colorway. Custom gradients available.",
+      "Gradient iridescent foil stretch fabric for dancewear and stage costumes. Ready stock, samples and 109 yd MOQ per colorway. Custom gradients available.",
     title: "Iridescent Gradient Foil Stretch Fabric for Dancewear & Costumes",
     sku: "P0005",
     mainImageUrl: "/images/products/H2013120106/main/iridescent-gradient-laser-ice-silk-main-1.webp",
@@ -2411,8 +2414,8 @@ export const allProducts = [
     fullDescription:
       "The iridescent gradient laser hot-stamping ice-silk fabric features a smooth gradient that flows across the width of the fabric, shifting through multiple colors under light. The stretch ice-silk base keeps it comfortable against the skin and easy to sew. The flowing gradient gives dancewear, stage costumes and performance outfits a strong visual identity.",
     specs: {
-      width: "150 cm / 59 in",
-      weight: "160 g/m²",
+      width: "59\"",
+      weight: "160 GSM",
       baseMaterial: "Stretch ice-silk",
       thickness: "0.3‑0.35mm",
       moq: "100",
@@ -2423,13 +2426,13 @@ export const allProducts = [
       { label: "Base Fabric", value: "Stretch ice-silk" },
       { label: "Surface Finish", value: "Gradient multi-color iridescent laser foil" },
       { label: "Stretch", value: "Elastic with good recovery" },
-      { label: "MOQ", value: "100 m / 109 yd per colorway" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Stock Status", value: "In-stock, ready to ship" },
       { label: "Sampling", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
       { label: "Customization", value: "Custom gradient colors & direction on bulk orders" },
     ],
     b2bTable: [
-      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Supply type", value: "In-stock available" },
       { label: "Sample", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "1-3 working days after payment and stock confirmation for orders ≤ 500 m / 547 yd; 7-15 working days when production is required" },
@@ -2482,7 +2485,7 @@ export const allProducts = [
       {
         question: "What is the MOQ for this fabric?",
         answer:
-          "The MOQ is 100 m / 109 yd per colorway from stock. Custom gradient color schemes start from higher quantities; contact us for details.",
+          "The MOQ is 109 yd per colorway from stock. Custom gradient color schemes start from higher quantities; contact us for details.",
       },
       {
         question: "Can I get a sample before placing a bulk order?",
@@ -2511,7 +2514,7 @@ export const allProducts = [
     slug: "rainbow-dot-laser-foil-knit-fabric",
     metaTitle: "Rainbow Dot Laser Foil Knit Fabric | Nixia Fabric",
     metaDesc:
-      "Rainbow dot laser foil knit for stage costumes and dancewear. Ready stock, 28 colors and 200 m / 219 yd MOQ. Samples and custom colors available.",
+      "Rainbow dot laser foil knit for stage costumes and dancewear. Ready stock, 28 colors and 219 yd MOQ. Samples and custom colors available.",
     title: "Rainbow Dot Laser Foil Knit Fabric for Stage Costumes",
     sku: "H2013090104",
     mainImageUrl: "/images/products/H2013090104/main/rainbow-dot-laser-foil-knit-fabric-main-1.webp",
@@ -2554,7 +2557,7 @@ export const allProducts = [
     fullDescription:
       "Rainbow dot laser foil knit fabric for stage costumes, performance outfits and colorful decorative garment panels.",
     specs: {
-      width: "150 cm / 59 in",
+      width: "59\"",
       weight: "90 GSM",
       baseMaterial: "100% Polyester",
       thickness: "",
@@ -2566,10 +2569,10 @@ export const allProducts = [
       { label: "Surface Effect", value: "Dot laser foil" },
       { label: "Base Fabric", value: "100% Polyester knit fabric" },
       { label: "Stretch", value: "Slight stretch" },
-      { label: "Width", value: "150 cm / 59 in" },
+      { label: "Width", value: "59\"" },
       { label: "Weight", value: "90 GSM" },
       { label: "Color", value: "28 colors available; custom colors on request" },
-      { label: "MOQ", value: "200 m / 219 yd" },
+      { label: "MOQ", value: "219 yd" },
       { label: "Density", value: "To be confirmed" },
       { label: "Yarn Count", value: "90S" },
       { label: "Finishing", value: "Hot-stamping foil" },
@@ -2577,7 +2580,7 @@ export const allProducts = [
       { label: "Typical Applications", value: "Stage costumes, performance wear, dancewear, costume panels" },
     ],
     b2bTable: [
-      { label: "MOQ", value: "200 m / 219 yd" },
+      { label: "MOQ", value: "219 yd" },
       { label: "Supply type", value: "28 colors available; custom colors on request" },
       { label: "Sample", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "5-7 working days after order confirmation" },
@@ -2607,9 +2610,9 @@ export const allProducts = [
       "Rainbow Dot Laser Foil",
       "Knit Construction",
       "Slight Stretch",
-      "150 cm / 59 in Width",
+      "59\" Width",
       "90 GSM Weight",
-      "MOQ 200 m / 219 yd",
+      "MOQ 219 yd",
     ],
     whyChooseHeading: "Key Features",
     whyChoose: [
@@ -2682,7 +2685,7 @@ export const allProducts = [
       {
         question: "What is the MOQ for this fabric?",
         answer:
-          "The confirmed MOQ is 200 m / 219 yd.",
+          "The confirmed MOQ is 219 yd.",
       },
       {
         question: "What is the base material?",
@@ -2756,7 +2759,7 @@ export const allProducts = [
     slug: "blue-purple-gradient-laser-foil-spandex-fabric",
     metaTitle: "Blue-Purple Gradient Foil Spandex | Nixia Fabric",
     metaDesc:
-      "Blue-purple gradient laser foil on 4-way stretch spandex for stage costumes and dancewear. Made to order, 100 m MOQ. Samples and custom colors available.",
+      "Blue-purple gradient laser foil on 4-way stretch spandex for stage costumes and dancewear. Made to order, 109 yd MOQ. Samples and custom colors available.",
     title: "Blue-Purple Gradient Laser Foil 4-Way Stretch Fabric",
     sku: "H2013120102",
     mainImageUrl: "/images/products/H2013120102/main/blue-purple-gradient-laser-foil-spandex-fabric-main-1.webp",
@@ -2799,7 +2802,7 @@ export const allProducts = [
     fullDescription:
       "Blue-purple gradient laser foil on a 4-way stretch spandex base for stage costumes, dancewear and performance apparel.",
     specs: {
-      width: "150 cm / 59 in",
+      width: "59\"",
       weight: "180 GSM",
       baseMaterial: "98% Polyester 2% Spandex",
       thickness: "",
@@ -2811,10 +2814,10 @@ export const allProducts = [
       { label: "Surface Effect", value: "Blue-purple gradient laser foil" },
       { label: "Base Fabric", value: "98% Polyester 2% Spandex" },
       { label: "Stretch", value: "4-Way Stretch" },
-      { label: "Width", value: "150 cm / 59 in" },
+      { label: "Width", value: "59\"" },
       { label: "Weight", value: "180 GSM" },
       { label: "Color", value: "1 standard color; custom color development available" },
-      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Density", value: "110T" },
       { label: "Yarn Count", value: "120D*120D" },
       { label: "Finishing", value: "Hot-stamping foil" },
@@ -2822,9 +2825,9 @@ export const allProducts = [
       { label: "Typical Applications", value: "Stage costumes, performance wear, dancewear, party wear, festival costumes" },
     ],
     b2bTable: [
-      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Supply type", value: "Foil fabric supply with custom development support" },
-      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping." },
+      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "To be confirmed according to order quantity and production requirements" },
       { label: "Port", value: "Ningbo / Shanghai" },
       { label: "OEM / ODM", value: "Custom color development available" },
@@ -2845,7 +2848,7 @@ export const allProducts = [
     colorCount: 1,
     tags: ["gradient", "laser-foil", "spandex", "4-way-stretch", "stage-costume", "performance-wear", "dancewear", "party-wear"],
     availableColors: "1 standard color; custom color development available",
-    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping.",
+    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 days. Buyer covers international shipping.",
     customizationNote: "Custom color development available",
     packaging: "Roll packing; export packing available upon quotation",
     tradeTerms: "FOB, CIF upon quotation",
@@ -2853,9 +2856,9 @@ export const allProducts = [
       "Blue-Purple Gradient",
       "Laser Foil Finish",
       "4-Way Stretch",
-      "150 cm / 59 in Width",
+      "59\" Width",
       "180 GSM Weight",
-      "MOQ 100 m / 109 yd",
+      "MOQ 109 yd",
     ],
     whyChooseHeading: "Key Features",
     whyChoose: [
@@ -2932,7 +2935,7 @@ export const allProducts = [
       {
         question: "What is the MOQ for this fabric?",
         answer:
-          "The confirmed MOQ is 100 m / 109 yd.",
+          "The confirmed MOQ is 109 yd.",
       },
       {
         question: "Does this fabric have 4-way stretch?",
@@ -2978,7 +2981,7 @@ export const allProducts = [
     slug: "holographic-snakeskin-stretch-fabric",
     metaTitle: "Holographic Snakeskin Stretch Fabric | Nixia Fabric",
     metaDesc:
-      "Holographic snakeskin stretch fabric for swimwear, leggings and dancewear. Made to order, 100 m / 109 yd MOQ. Samples and custom development available.",
+      "Holographic snakeskin stretch fabric for swimwear, leggings and dancewear. Made to order, 109 yd MOQ. Samples and custom development available.",
     title: "Laser Foil Snakeskin Stretch Fabric",
     sku: "H2013090101",
     mainImageUrl: "/images/products/H2013090101/main/holographic-snakeskin-stretch-fabric-main-1.webp",
@@ -3021,11 +3024,11 @@ export const allProducts = [
     fullDescription:
       "This laser foil snakeskin stretch fabric combines a glossy holographic surface with a flexible 92% polyester and 8% spandex base. The raised snakeskin look creates strong visual movement under light, while the slight stretch supports fitted apparel and costume applications.\n\nIt is developed for swimwear, leggings, dancewear, stage costumes and mermaid-inspired performance designs. Request a physical sample to review the surface effect, color and sewing performance before bulk production.",
     specs: {
-      width: "147 cm / 58 in",
+      width: "58\"",
       weight: "160 GSM",
       baseMaterial: "92% Polyester 8% Spandex",
       thickness: "",
-      moq: "100 m / 109 yd",
+      moq: "109 yd",
       leadTime: "To be confirmed",
     },
     specTable: [
@@ -3033,16 +3036,16 @@ export const allProducts = [
       { label: "Surface Effect", value: "Holographic laser foil snakeskin texture" },
       { label: "Base Fabric", value: "92% Polyester 8% Spandex" },
       { label: "Stretch", value: "Slight stretch" },
-      { label: "Width", value: "147 cm / 58 in" },
+      { label: "Width", value: "58\"" },
       { label: "Weight", value: "160 GSM" },
       { label: "Color", value: "70 colors available; custom colors on request" },
-      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Yarn Count", value: "90S" },
       { label: "Finishing", value: "To be confirmed" },
       { label: "Typical Applications", value: "Swimwear, leggings, dancewear, stage costumes, mermaid costumes" },
     ],
     b2bTable: [
-      { label: "MOQ", value: "100 m / 109 yd" },
+      { label: "MOQ", value: "109 yd" },
       { label: "Supply type", value: "Factory wholesale supply with OEM/ODM support" },
       { label: "Sample", value: "Availability, preparation time and shipping to be confirmed by project" },
       { label: "Bulk Lead time", value: "To be confirmed according to order quantity and production requirements" },
@@ -3065,17 +3068,17 @@ export const allProducts = [
     colorCount: 70,
     tags: ["holographic", "snakeskin", "laser-foil", "stretch", "swimwear", "leggings", "dancewear", "mermaid-costume"],
     availableColors: "70 colors available; custom colors on request",
-    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping.",
+    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 days. Buyer covers international shipping.",
     customizationNote: "OEM/ODM support; custom color details to be confirmed",
     packaging: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement",
     tradeTerms: "To be confirmed in quotation",
     heroHighlights: [
       "Holographic Snakeskin Texture",
       "Slight Stretch",
-      "147 cm / 58 in Width",
+      "58\" Width",
       "160 GSM",
       "70 Colors",
-      "MOQ 100 m / 109 yd",
+      "MOQ 109 yd",
     ],
     whyChooseHeading: "Key Features",
     whyChoose: [
@@ -3167,12 +3170,12 @@ export const allProducts = [
       {
         question: "What is the MOQ?",
         answer:
-          "The confirmed MOQ is 100 m / 109 yd.",
+          "The confirmed MOQ is 109 yd.",
       },
       {
         question: "Can I request a sample before a bulk order?",
         answer:
-          "Yes. This is a made-to-order product. A custom sample requires a customization fee and is prepared in 3-5 working days. The buyer covers international shipping. We recommend checking the surface effect, color and sewing performance before bulk approval.",
+          "Yes. This is a made-to-order product. A custom sample requires a customization fee and is prepared in 3-5 days. The buyer covers international shipping. We recommend checking the surface effect, color and sewing performance before bulk approval.",
       },
       {
         question: "Can the fabric be developed for a custom program?",
@@ -3206,7 +3209,7 @@ export const allProducts = [
     slug: "gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric",
     metaTitle: "Gold Rainbow Metallic Foil Stretch Fabric | Nixia Fabric",
     metaDesc:
-      "Gold rainbow metallic foil 4-way stretch nylon spandex for swimwear, dancewear and performance apparel. 41 stock colors, custom colors and a 200 m / 219 yd MOQ.",
+      "Gold rainbow metallic foil 4-way stretch nylon spandex for swimwear, dancewear and performance apparel. 41 stock colors, custom colors and a 219 yd MOQ.",
     title: "Gold Rainbow Gradient Metallic Foil 4-Way Stretch Fabric",
     sku: "H2015030102",
     mainImageUrl: "/images/products/H2015030102/main/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric-main-1.webp",
@@ -3249,11 +3252,11 @@ export const allProducts = [
     fullDescription:
       "Gold rainbow gradient metallic foil 4-way stretch fabric uses an 80% nylon and 20% spandex base with a reflective foil surface. The source data lists 41 stock colors or customized colors for swimwear, lingerie, dancewear, dresses, skirts and performance apparel programs.",
     specs: {
-      width: "150 cm / 59 in",
+      width: "59\"",
       weight: "200 GSM",
       baseMaterial: "80% Nylon 20% Spandex",
       thickness: "",
-      moq: "200 m / 219 yd",
+      moq: "219 yd",
       leadTime: "3-5",
     },
     specTable: [
@@ -3261,17 +3264,17 @@ export const allProducts = [
       { label: "Surface Effect", value: "Gold rainbow gradient metallic foil" },
       { label: "Base Fabric", value: "80% Nylon 20% Spandex" },
       { label: "Stretch", value: "4-Way Stretch" },
-      { label: "Width", value: "150 cm / 59 in" },
+      { label: "Width", value: "59\"" },
       { label: "Weight", value: "200 GSM" },
       { label: "Color", value: "41 stock colors or customized colors" },
-      { label: "MOQ", value: "200 m / 219 yd" },
+      { label: "MOQ", value: "219 yd" },
       { label: "Yarn Count", value: "40D*40D" },
       { label: "Finishing", value: "Foil" },
       { label: "Pattern / Construction", value: "Foil" },
       { label: "Typical Applications", value: "Swimwear, underwear, lingerie, dancewear, dresses, T-shirts, skirts, performance dress" },
     ],
     b2bTable: [
-      { label: "MOQ", value: "200 m / 219 yd" },
+      { label: "MOQ", value: "219 yd" },
       { label: "Supply type", value: "41 stock colors or customized colors" },
       { label: "Sample", value: "Free stock sample; preparation in 1-3 working days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "3-5 working days after order and stock confirmation" },
@@ -3304,7 +3307,7 @@ export const allProducts = [
       "Gold Rainbow Metallic Foil",
       "4-Way Stretch",
       "80% Nylon 20% Spandex",
-      "150 cm / 59 in Width",
+      "59\" Width",
       "200 GSM",
       "41 Stock Colors",
     ],
@@ -3394,7 +3397,7 @@ export const allProducts = [
       {
         question: "What is the MOQ?",
         answer:
-          "The confirmed MOQ is 200 m / 219 yd.",
+          "The confirmed MOQ is 219 yd.",
       },
       {
         question: "Is the fabric suitable for fitted garments?",
@@ -3427,7 +3430,7 @@ export const allProducts = [
     slug: "iridescent-mystic-metallic-foil-nylon-spandex-fabric",
     metaTitle: "Iridescent Mystic Metallic Foil Fabric | Nixia Fabric",
     metaDesc:
-      "Iridescent mystic metallic foil nylon spandex for swimwear, dancewear and apparel. 18 colors or custom options, 150 cm width, 200 GSM and a 200 m / 219 yd MOQ.",
+      "Iridescent mystic metallic foil nylon spandex for swimwear, dancewear and apparel. 18 colors or custom options, 150 cm width, 200 GSM and a 219 yd MOQ.",
     title: "Iridescent Mystic Metallic Foil Nylon Spandex Fabric",
     sku: "H2015030101",
     mainImageUrl: "/images/products/H2015030101/main/iridescent-mystic-metallic-foil-nylon-spandex-fabric-main-1.webp",
@@ -3476,11 +3479,11 @@ export const allProducts = [
     fullDescription:
       "Iridescent mystic metallic foil nylon spandex fabric uses an 80% nylon and 20% spandex base with a reflective foil surface. The source data lists 18 colors or customization for swimwear, lingerie, dancewear, dresses, skirts, T-shirts and bikini swimwear programs.",
     specs: {
-      width: "150 cm / 59 in",
+      width: "59\"",
       weight: "200 GSM",
       baseMaterial: "80% Nylon 20% Spandex",
       thickness: "",
-      moq: "200 m / 219 yd",
+      moq: "219 yd",
       leadTime: "To be confirmed",
     },
     specTable: [
@@ -3488,19 +3491,19 @@ export const allProducts = [
       { label: "Surface Effect", value: "Iridescent mystic metallic foil" },
       { label: "Base Fabric", value: "80% Nylon 20% Spandex" },
       { label: "Stretch", value: "4-Way Stretch" },
-      { label: "Width", value: "150 cm / 59 in" },
+      { label: "Width", value: "59\"" },
       { label: "Weight", value: "200 GSM" },
       { label: "Color", value: "18 colors or customization" },
-      { label: "MOQ", value: "200 m / 219 yd" },
+      { label: "MOQ", value: "219 yd" },
       { label: "Yarn Count", value: "40D*40D" },
       { label: "Finishing", value: "Foil" },
       { label: "Pattern / Construction", value: "Foil" },
       { label: "Typical Applications", value: "Swimwear, underwear, lingerie, dancewear, dresses, T-shirts, skirts, bikini swimwear" },
     ],
     b2bTable: [
-      { label: "MOQ", value: "200 m / 219 yd" },
+      { label: "MOQ", value: "219 yd" },
       { label: "Supply type", value: "18 colors or customization" },
-      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping." },
+      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "7-15 working days" },
       { label: "Available Colors", value: "18 colors or customization" },
       { label: "OEM / ODM", value: "Custom colors available by project" },
@@ -3523,7 +3526,7 @@ export const allProducts = [
     colorCount: 18,
     tags: ["metallic-foil", "iridescent", "nylon-spandex", "4-way-stretch", "swimwear", "dancewear", "lingerie", "dress"],
     availableColors: "18 colors or customization",
-    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping.",
+    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 days. Buyer covers international shipping.",
     customizationNote: "Custom colors available by project",
     packaging: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement",
     tradeTerms: "To be confirmed in quotation",
@@ -3531,7 +3534,7 @@ export const allProducts = [
       "Iridescent Mystic Metallic Foil",
       "4-Way Stretch",
       "80% Nylon 20% Spandex",
-      "150 cm / 59 in Width",
+      "59\" Width",
       "200 GSM",
       "18 Colors or Customization",
     ],
@@ -3621,7 +3624,7 @@ export const allProducts = [
       {
         question: "What is the MOQ?",
         answer:
-          "The confirmed MOQ is 200 m / 219 yd.",
+          "The confirmed MOQ is 219 yd.",
       },
       {
         question: "Is the fabric suitable for fitted garments?",
@@ -3656,7 +3659,7 @@ export const allProducts = [
     slug: "shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric",
     metaTitle: "Shattered Glass Foil Dot Stretch Fabric | Nixia Fabric",
     metaDesc:
-      "Wholesale shattered glass foil dot nylon spandex for swimwear, lingerie and dancewear. 4-way stretch, 150 cm width, 200 GSM, 22 colors and 200 m / 219 yd MOQ.",
+      "Wholesale shattered glass foil dot nylon spandex for swimwear, lingerie and dancewear. 4-way stretch, 150 cm width, 200 GSM, 22 colors and 219 yd MOQ.",
     title: "Shattered Glass Metallic Foil Dot 4-Way Stretch Nylon Spandex Fabric",
     sku: "H2015030103",
     mainImageUrl: "/images/products/H2015030103/main/shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric-main-1.webp",
@@ -3698,11 +3701,11 @@ export const allProducts = [
     fullDescription:
       "Shattered glass metallic foil dot 4-way stretch fabric uses an 80% nylon and 20% spandex base with a reflective foil surface. The source data lists 22 stock colors or customized colors for swimwear, lingerie, dancewear, dresses, skirts, T-shirts and performance dress programs.",
     specs: {
-      width: "150 cm / 59 in",
+      width: "59\"",
       weight: "200 GSM",
       baseMaterial: "80% Nylon 20% Spandex",
       thickness: "",
-      moq: "200 m / 219 yd",
+      moq: "219 yd",
       leadTime: "To be confirmed",
     },
     specTable: [
@@ -3710,19 +3713,19 @@ export const allProducts = [
       { label: "Surface Effect", value: "Shattered glass metallic foil dot" },
       { label: "Base Fabric", value: "80% Nylon 20% Spandex" },
       { label: "Stretch", value: "4-Way Stretch" },
-      { label: "Width", value: "150 cm / 59 in" },
+      { label: "Width", value: "59\"" },
       { label: "Weight", value: "200 GSM" },
       { label: "Color", value: "22 stock colors or customized colors" },
-      { label: "MOQ", value: "200 m / 219 yd" },
+      { label: "MOQ", value: "219 yd" },
       { label: "Yarn Count", value: "40D*40D" },
       { label: "Finishing", value: "Foil" },
       { label: "Pattern / Construction", value: "Foil" },
       { label: "Typical Applications", value: "Swimwear, underwear, lingerie, dancewear, dresses, T-shirts, skirts, performance dress" },
     ],
     b2bTable: [
-      { label: "MOQ", value: "200 m / 219 yd" },
+      { label: "MOQ", value: "219 yd" },
       { label: "Supply type", value: "22 stock colors or customized colors" },
-      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping." },
+      { label: "Sample", value: "Custom sample; customization fee applies; preparation in 3-5 days. Buyer covers international shipping." },
       { label: "Bulk Lead time", value: "7-15 working days" },
       { label: "Available Colors", value: "22 stock colors or customized colors" },
       { label: "OEM / ODM", value: "Custom colors available by project" },
@@ -3737,11 +3740,11 @@ export const allProducts = [
     colorCount: 22,
     tags: ["metallic-foil", "shattered-glass", "nylon-spandex", "4-way-stretch", "swimwear", "dancewear", "lingerie", "dress"],
     availableColors: "22 stock colors or customized colors",
-    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 working days. Buyer covers international shipping.",
+    sampleNote: "Custom sample; customization fee applies; preparation in 3-5 days. Buyer covers international shipping.",
     customizationNote: "Custom colors available by project",
     packaging: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement",
     tradeTerms: "To be confirmed in quotation",
-    heroHighlights: ["Shattered Glass Foil Dot", "4-Way Stretch", "80% Nylon 20% Spandex", "150 cm / 59 in Width", "200 GSM", "22 Stock Colors"],
+    heroHighlights: ["Shattered Glass Foil Dot", "4-Way Stretch", "80% Nylon 20% Spandex", "59\" Width", "200 GSM", "22 Stock Colors"],
     whyChooseHeading: "Key Features",
     whyChoose: [
       { title: "Shattered Glass Foil Dot Surface", desc: "A reflective shattered-glass dot effect creates a distinctive surface for swimwear, dancewear and performance apparel." },
@@ -3772,7 +3775,7 @@ export const allProducts = [
       { question: "What is this shattered glass foil fabric used for?", answer: "Recommended applications include swimwear, underwear, lingerie, dancewear, dresses, T-shirts, skirts and performance dress programs." },
       { question: "What is the composition?", answer: "The source data lists the base material as 80% nylon and 20% spandex." },
       { question: "How many colors are available?", answer: "The source data lists 22 stock colors, with customized colors available by project." },
-      { question: "What is the MOQ?", answer: "The confirmed MOQ is 200 m / 219 yd." },
+      { question: "What is the MOQ?", answer: "The confirmed MOQ is 219 yd." },
       { question: "Is the fabric suitable for fitted garments?", answer: "Yes. The product is listed as a 4-way-stretch fabric, making it suitable for fitted swimwear, dancewear and apparel designs." },
     ],
     skuImages: [],
@@ -3801,13 +3804,11 @@ const standardBuyerFaqs = (product) => {
   const isStock = product.inStock === true;
   const sampleAnswer = isStock
     ? "Yes. This is an in-stock product. The stock sample is free and prepared in 1-3 working days. The buyer covers international shipping."
-    : "Yes. This is a made-to-order product. A custom sample requires a customization fee and is prepared in 3-5 working days. The buyer covers international shipping.";
+    : "Yes. This is a made-to-order product. A custom sample requires a customization fee and is prepared in 3-5 days. The buyer covers international shipping.";
   const availabilityAnswer = isStock
     ? "This product is listed as in stock. Final color availability and stock quantity are confirmed before quotation."
     : "This product is made to order. Production timing and final availability are confirmed according to the quantity and customization requirements.";
-  const leadTimeAnswer = isStock
-    ? "Ready-stock dispatch is typically 3-5 working days after order and stock confirmation."
-    : "Made-to-order production is typically 7-15 working days after customization and production details are confirmed.";
+  const leadTimeAnswer = "Production lead time is 7-15 days.";
   const customizationAnswer =
     product.customizationNote ||
     "Custom color, finish or development requirements can be reviewed according to the project.";

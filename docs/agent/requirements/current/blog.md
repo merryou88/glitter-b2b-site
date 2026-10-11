@@ -141,7 +141,7 @@ status: current
 - 代码路径：`src/data/blogArticles.js`、`src/pages/blog/index.astro`、`src/pages/blog/[slug].astro`
 - 测试路径：`npm run build`、公开 Blog 数据检查
 - 最后变更编号：CHG-20261008-005-blog-content-gap-backlog
-- 待确认事项：具体写作顺序、每篇对应应用页和产品清单可在实际写作前逐篇确认
+- 待确认事项：其余四篇选题的具体写作顺序、对应应用页和产品清单可在实际写作前逐篇确认
 
 ### REQ-BLOG-015：公开 Blog 统一机构署名
 - 状态：active

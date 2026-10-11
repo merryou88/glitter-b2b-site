@@ -44,9 +44,11 @@ const productMoq = (product) =>
 const productMoqDisplay = (product) => {
   const moq = String(productMoq(product) || "").trim();
   if (!moq) return "To be confirmed";
+  const dualUnitMatch = moq.match(/\b\d+\s*m\s*\/\s*(\d+)\s*yd\b/i);
+  if (dualUnitMatch) return moq.replace(dualUnitMatch[0], `${dualUnitMatch[1]} yd`);
   if (/[a-z]/i.test(moq)) return moq;
-  const yards = Math.round(Number(moq) * 1.09361);
-  return `${moq} m / ${yards || "—"} yd`;
+  const ydQuantity = Math.round(Number(moq) * 1.09361);
+  return `${ydQuantity || moq} yd`;
 };
 
 const productFilterTags = (product) => {
@@ -152,7 +154,7 @@ const sourcingLinks = [
       </p>
       <div class="catalog-quick-facts" aria-label="Catalog purchasing facts">
         <span>{catalogProducts.length} products</span>
-        <span>MOQ from 100 m / 109 yd</span>
+        <span>MOQ from 109 yd</span>
         <span>Samples available</span>
         <span>OEM / ODM support</span>
       </div>
@@ -273,14 +275,7 @@ const sourcingLinks = [
                   <div><span>Weight</span><strong>{item.specs.weight || "To be confirmed"}</strong></div>
                   <div>
                     <span>Material</span>
-                    {item.specs.baseMaterial === "95% Polyester 5% Spandex" ? (
-                      <>
-                        <strong class="material-value--desktop">95% Polyester 5% Spandex</strong>
-                        <strong class="material-value--mobile">95% Polyester / 5% Spandex</strong>
-                      </>
-                    ) : (
-                      <strong>{item.specs.baseMaterial || "To be confirmed"}</strong>
-                    )}
+                    <strong>{item.specs.baseMaterial || "To be confirmed"}</strong>
                   </div>
                   <div><span>MOQ</span><strong>{productMoqDisplay(item)}</strong></div>
                 </div>
@@ -772,7 +767,6 @@ const sourcingLinks = [
     white-space: nowrap;
   }
 
-  .material-value--mobile,
   .product-card__swatch-note {
     display: none;
   }
@@ -1037,14 +1031,6 @@ const sourcingLinks = [
       white-space: normal;
     }
 
-    .material-value--desktop {
-      display: none;
-    }
-
-    .material-value--mobile {
-      display: block;
-    }
-
     .product-card__meta {
       grid-template-columns: auto minmax(0, 1fr);
       align-items: start;
@@ -1058,9 +1044,9 @@ const sourcingLinks = [
     .product-card__swatch-note {
       display: inline;
       color: var(--color-accent-dark);
-      font-size: 0.68rem;
-      line-height: 1.35;
-      font-weight: 600;
+      font-size: inherit;
+      line-height: inherit;
+      font-weight: inherit;
     }
   }
 </style>

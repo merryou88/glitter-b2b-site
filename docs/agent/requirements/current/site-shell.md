@@ -165,7 +165,7 @@ status: current
 
 ### REQ-SHELL-017：Products 页目录首屏与产品卡片局部优化
 - 状态：active
-- 当前规则：仅 Products 页 Hero 压缩上下内边距，并使用标题 `Foil Fabrics for Dancewear & Performance Costumes`；Hero 描述文字铺满容器可用宽度，不使用窄栏最大宽度限制；Hero 与目录筛选区之间使用紧凑间距，目录结果行与产品网格之间也减少额外留白；保留原有深蓝渐变背景和其他 Hero 文字。Buyer Guide 三卡片位于产品网格之后，卡片样式、文字和颜色保持不变。首页不修改 Hero。首页前三张 Featured Foil Fabrics 卡片在移动端保留左侧缩略图并显示 `View Details →` 辅助链接。产品目录移动端完整显示 `95% Polyester / 5% Spandex`，并在 In-Stock 标签旁显示 `✅ Free swatch card available`。
+- 当前规则：仅 Products 页 Hero 压缩上下内边距，并使用标题 `Foil Fabrics for Dancewear & Performance Costumes`；Hero 描述文字铺满容器可用宽度，不使用窄栏最大宽度限制；Hero 与目录筛选区之间使用紧凑间距，目录结果行与产品网格之间也减少额外留白；保留原有深蓝渐变背景和其他 Hero 文字。Buyer Guide 三卡片位于产品网格之后，卡片样式、文字和颜色保持不变。首页不修改 Hero。首页前三张 Featured Foil Fabrics 卡片在移动端保留左侧缩略图并显示 `View Details →` 辅助链接。产品目录移动端完整显示 `95% Polyester 5% Spandex`，并在 In-Stock 标签旁显示 `✅ Free swatch card available`。
 - 验收条件：访问 `/products/` 时，压缩后的 Hero 显示指定短标题并直接进入产品目录；滚动经过产品列表后才出现 Buyer Guide 三卡片；Products 页桌面和移动端均满足该顺序；首页 Hero、其他页面和产品卡片既有样式不受影响。
 - 影响模块：`site-shell`、`product-catalog`
 - 代码路径：`src/pages/products.astro`、`src/pages/index.astro`、`src/styles/global.css`、`public/images/products/H2013120107/main/iridescent-laser-hot-stamping-stretch-ice-silk-main-1.webp`
