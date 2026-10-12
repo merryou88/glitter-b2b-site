@@ -413,40 +413,40 @@ export const allProducts = [
   },
   {
     slug: "rainbow-iridescent-laser-foil-nylon-spandex-fabric",
-    metaTitle: "Rainbow Iridescent Laser Foil Fabric | Nixia Fabric",
+    metaTitle: "Rainbow Iridescent Foil 4-Way Stretch Spandex",
     metaDesc:
-      "Rainbow iridescent laser foil on 4-way stretch nylon-spandex for bodysuits, swimwear and stagewear. Made to order, 109 yd MOQ. Samples available.",
-    title: "Rainbow Iridescent Laser Foil Nylon-Spandex 4-Way Stretch Fabric",
+      "Rainbow iridescent foil on 4-way stretch polyester-spandex for bodysuits, swimwear and stagewear. Made to order, 109 yd MOQ. Samples available.",
+    title: "Rainbow Iridescent Foil 4-Way Stretch Spandex Fabric",
     sku: "H2013120101",
     mainImageUrl: "/images/products/H2013120101/main/rainbow-iridescent-laser-foil-nylon-spandex-fabric-main-1.webp",
     mainImageWebp: "/images/products/H2013120101/main/rainbow-iridescent-laser-foil-nylon-spandex-fabric-main-1.webp",
     mainImageAlt:
-      "Rainbow iridescent laser foil nylon spandex 4-way stretch fabric for swimwear and bodysuits",
+      "Rainbow iridescent foil polyester spandex 4-way stretch fabric for swimwear and bodysuits",
     imageList: [
       {
         src: "/images/products/H2013120101/main/rainbow-iridescent-laser-foil-nylon-spandex-fabric-main-1.webp",
         webp: "/images/products/H2013120101/main/rainbow-iridescent-laser-foil-nylon-spandex-fabric-main-1.webp",
-        alt: "Rainbow iridescent laser foil nylon spandex 4-way stretch fabric main view for bodysuits",
+        alt: "Rainbow iridescent foil polyester spandex 4-way stretch fabric main view for bodysuits",
       },
       {
         src: "/images/products/H2013120101/main/rainbow-iridescent-laser-foil-nylon-spandex-fabric-main-2.webp",
         webp: "/images/products/H2013120101/main/rainbow-iridescent-laser-foil-nylon-spandex-fabric-main-2.webp",
-        alt: "Rainbow iridescent laser foil stretch fabric drape with glossy color-shifting surface",
+        alt: "Rainbow iridescent foil stretch fabric drape with glossy color-shifting surface",
       },
       {
         src: "/images/products/H2013120101/main/rainbow-iridescent-laser-foil-nylon-spandex-fabric-main-3.webp",
         webp: "/images/products/H2013120101/main/rainbow-iridescent-laser-foil-nylon-spandex-fabric-main-3.webp",
-        alt: "Nylon spandex 4-way stretch laser foil fabric for swimwear and fitted apparel",
+        alt: "Polyester spandex 4-way stretch foil fabric for swimwear and fitted apparel",
       },
       {
         src: "/images/products/H2013120101/main/rainbow-iridescent-laser-foil-nylon-spandex-fabric-main-4.webp",
         webp: "/images/products/H2013120101/main/rainbow-iridescent-laser-foil-nylon-spandex-fabric-main-4.webp",
-        alt: "Rainbow iridescent laser foil nylon spandex fabric surface for bodysuits and dancewear",
+        alt: "Rainbow iridescent foil polyester spandex fabric surface for bodysuits and dancewear",
       },
       {
         src: "/images/products/H2013120101/main/rainbow-iridescent-laser-foil-nylon-spandex-fabric-main-5.webp",
         webp: "/images/products/H2013120101/main/rainbow-iridescent-laser-foil-nylon-spandex-fabric-main-5.webp",
-        alt: "Close-up of rainbow iridescent laser foil surface on 4-way stretch fabric",
+        alt: "Close-up of rainbow iridescent foil surface on 4-way stretch fabric",
       },
     ],
     galleryMainPath: "/images/products/H2013120101/main/",
@@ -454,9 +454,9 @@ export const allProducts = [
     detailImagePath: "/images/products/H2013120101/detail/",
     video: null,
     shortIntro:
-      "Rainbow iridescent laser foil nylon spandex fabric with 4-way stretch, available in 15 colors for bodysuits, swimwear, dancewear and stage costumes.",
+      "Rainbow iridescent foil polyester spandex fabric with 4-way stretch, available in 15 colors for bodysuits, swimwear, dancewear and stage costumes.",
     fullDescription:
-      "Rainbow iridescent laser foil on a 4-way stretch nylon-spandex base for bodysuits, swimwear and stagewear.",
+      "Rainbow iridescent foil on a 4-way stretch polyester-spandex base for bodysuits, swimwear and stagewear.",
     specs: {
       width: "59\"",
       weight: "180 GSM",
@@ -466,8 +466,8 @@ export const allProducts = [
       leadTime: "To be confirmed",
     },
     specTable: [
-      { label: "Product Type", value: "Rainbow Iridescent Laser Foil Nylon-Spandex 4-Way Stretch Fabric" },
-      { label: "Surface Effect", value: "Rainbow iridescent laser foil" },
+      { label: "Product Type", value: "Rainbow Iridescent Foil 4-Way Stretch Spandex Fabric" },
+      { label: "Surface Effect", value: "Rainbow iridescent foil" },
       { label: "Base Fabric", value: "92% Polyester 8% Spandex" },
       { label: "Stretch", value: "4-Way Stretch" },
       { label: "Width", value: "59\"" },
@@ -502,15 +502,15 @@ export const allProducts = [
     stockStatus: "Made to Order",
     badge: "15 colors",
     colorCount: 15,
-    tags: ["rainbow", "iridescent", "laser-foil", "nylon-spandex", "4-way-stretch", "bodysuit", "swimwear", "dancewear", "stage-costume"],
+    tags: ["rainbow", "iridescent", "foil", "polyester-spandex", "4-way-stretch", "bodysuit", "swimwear", "dancewear", "stage-costume"],
     availableColors: "15 colors available; custom colors on request",
     sampleNote: "Custom sample; customization fee applies; preparation in 3-5 days. Buyer covers international shipping.",
     customizationNote: "Custom colors and OEM/ODM support available",
     packaging: "Roll packing with paper tube inside, plastic bag outside; can follow customer requirement",
     tradeTerms: "To be confirmed in quotation",
     heroHighlights: [
-      "Rainbow Iridescent Laser Foil",
-      "Nylon-Spandex Blend",
+      "Rainbow Iridescent Foil",
+      "Polyester-Spandex Blend",
       "4-Way Stretch",
       "59\" Width",
       "180 GSM Weight",
@@ -519,15 +519,15 @@ export const allProducts = [
     whyChooseHeading: "Key Features",
     whyChoose: [
       {
-        title: "Iridescent Laser Foil",
-        desc: "A rainbow iridescent laser foil surface shifts with light and viewing angle for high-impact bodysuits, swimwear and stagewear.",
+        title: "Iridescent Foil",
+        desc: "A rainbow iridescent foil surface shifts with light and viewing angle for high-impact bodysuits, swimwear and stagewear.",
       },
       {
         title: "4-Way Stretch",
         desc: "The source data confirms a 4-way stretch construction for fitted apparel and movement-focused garments.",
       },
       {
-        title: "Nylon-Spandex Blend",
+        title: "Polyester-Spandex Blend",
         desc: "The source data lists a 92% polyester and 8% spandex base, suitable for stretch apparel development.",
       },
       {
@@ -540,8 +540,8 @@ export const allProducts = [
       },
     ],
     valueStory: {
-      title: "Why Choose This Rainbow Iridescent Nylon-Spandex Fabric?",
-      body: "This product combines a rainbow iridescent laser foil surface with a 4-way stretch nylon-spandex base, giving bodysuit, swimwear and stagewear buyers a reflective fabric direction with confirmed width, weight, MOQ, density, yarn count and color policy from the product data sheet.",
+      title: "Why Choose This Rainbow Iridescent Spandex Fabric?",
+      body: "This product combines a rainbow iridescent foil surface with a 4-way stretch polyester-spandex base, giving bodysuit, swimwear and stagewear buyers a reflective fabric direction with confirmed width, weight, MOQ, density, yarn count and color policy from the product data sheet.",
     },
     applicationsHeading: "Recommended Applications",
     buyerApplications: [
@@ -551,11 +551,11 @@ export const allProducts = [
       },
       {
         title: "Swimwear",
-        desc: "A stretch nylon-spandex base can be sampled for swimwear styles that need a reflective iridescent surface.",
+        desc: "A stretch polyester-spandex base can be sampled for swimwear styles that need a reflective iridescent surface.",
       },
       {
         title: "Dancewear",
-        desc: "The stretch construction and laser foil finish support dancewear with strong lighting response.",
+        desc: "The stretch construction and foil finish support dancewear with strong lighting response.",
       },
       {
         title: "Stage Costumes",
@@ -577,7 +577,7 @@ export const allProducts = [
       },
     ],
     sampleCta: {
-      title: "Need a Rainbow Iridescent Nylon-Spandex Fabric?",
+      title: "Need a Rainbow Iridescent Spandex Fabric?",
       body: "Request a sample to review the rainbow iridescent foil effect, 4-way stretch, hand-feel and sewing performance before production.",
       buttonLabel: "Request a Sample",
     },
@@ -585,7 +585,7 @@ export const allProducts = [
       "Request a sample to review the rainbow iridescent foil effect, 4-way stretch, hand-feel and sewing performance before production.",
     faqList: [
       {
-        question: "What is this rainbow iridescent laser foil fabric used for?",
+        question: "What is this rainbow iridescent foil fabric used for?",
         answer:
           "The source data recommends bodysuits, swimwear, dancewear, stage costumes and performance outfits.",
       },
@@ -612,21 +612,21 @@ export const allProducts = [
     ],
     skuImages: [],
     applicationImageAlts: {
-      "rainbow-iridescent-laser-foil-nylon-spandex-fabric-application-1.webp": "Rainbow iridescent laser foil 4-way stretch fabric application for bodysuits and swimwear design",
+      "rainbow-iridescent-laser-foil-nylon-spandex-fabric-application-1.webp": "Rainbow iridescent foil 4-way stretch fabric application for bodysuits and swimwear design",
     },
     detailImageAlts: {
-      "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-1.webp": "Close-up detail of rainbow iridescent laser foil on nylon spandex stretch fabric",
-      "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-2.webp": "Reflective rainbow laser foil fabric surface for bodysuit and swimwear sourcing",
-      "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-3.webp": "4-way stretch nylon spandex fabric with rainbow iridescent foil finish",
+      "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-1.webp": "Close-up detail of rainbow iridescent foil on polyester spandex stretch fabric",
+      "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-2.webp": "Reflective rainbow foil fabric surface for bodysuit and swimwear sourcing",
+      "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-3.webp": "4-way stretch polyester spandex fabric with rainbow iridescent foil finish",
       "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-4.webp": "Rainbow iridescent foil stretch fabric detail for dancewear and stage costumes",
-      "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-5.webp": "Color-shifting laser foil surface on stretch nylon spandex base",
-      "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-6.webp": "Rainbow iridescent laser foil fabric close-up for color and surface detail",
-      "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-7.webp": "Wholesale nylon spandex 4-way stretch laser foil fabric detail",
+      "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-5.webp": "Color-shifting foil surface on stretch polyester spandex base",
+      "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-6.webp": "Rainbow iridescent foil fabric close-up for color and surface detail",
+      "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-7.webp": "Wholesale polyester spandex 4-way stretch foil fabric detail",
       "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-8.webp": "Iridescent rainbow foil fabric texture for fitted performance garments",
-      "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-9.webp": "Laser foil nylon spandex stretch fabric surface for costume manufacturing",
+      "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-9.webp": "Foil polyester spandex stretch fabric surface for costume manufacturing",
       "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-10.webp": "Rainbow iridescent 4-way stretch fabric detail for swimwear buyers",
-      "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-11.webp": "Reflective laser foil stretch fabric texture for bodysuits and dancewear",
-      "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-12.webp": "Rainbow iridescent nylon spandex fabric detail for wholesale fabric sourcing",
+      "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-11.webp": "Reflective foil stretch fabric texture for bodysuits and dancewear",
+      "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-12.webp": "Rainbow iridescent polyester spandex fabric detail for wholesale fabric sourcing",
     },
     detailImages: [
       "rainbow-iridescent-laser-foil-nylon-spandex-fabric-detail-1.webp",

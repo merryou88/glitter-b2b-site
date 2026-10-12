@@ -15,6 +15,10 @@ const productLookup = performanceProducts.map((p) => ({
 }));
 ---
 
+<button class="rfq-floating-trigger" type="button" data-rfq-open aria-label="Request sample or quote" aria-haspopup="dialog" aria-controls="rfq-quote-modal">
+  <span aria-hidden="true">Q</span>
+</button>
+
 <div class="rfq-modal" id="rfq-quote-modal" aria-hidden="true">
   <div class="rfq-modal__backdrop" data-rfq-close></div>
 
@@ -65,6 +69,44 @@ const productLookup = performanceProducts.map((p) => ({
 </div>
 
 <style>
+  .rfq-floating-trigger {
+    display: none;
+  }
+
+  @media (max-width: 640px) {
+    .rfq-floating-trigger {
+      position: fixed;
+      left: max(16px, env(safe-area-inset-left));
+      bottom: calc(16px + env(safe-area-inset-bottom));
+      z-index: 998;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: var(--color-accent);
+      color: #fff;
+      font-family: var(--font-sans);
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1;
+      box-shadow: 0 4px 16px rgba(189, 163, 72, 0.3);
+      cursor: pointer;
+    }
+
+    .rfq-floating-trigger:focus-visible {
+      outline: 3px solid #bda348;
+      outline-offset: 3px;
+    }
+
+    .rfq-floating-trigger[hidden] {
+      display: none;
+    }
+  }
+
   .rfq-modal {
     position: fixed;
     inset: 0;
@@ -322,6 +364,7 @@ const productLookup = performanceProducts.map((p) => ({
 
 <script define:vars={{ productLookup }}>
   const modal = document.getElementById("rfq-quote-modal");
+  const floatingTrigger = document.querySelector(".rfq-floating-trigger");
   const modalWrap = modal?.querySelector(".rfq-modal__wrap");
   const openers = Array.from(document.querySelectorAll("[data-rfq-open]"));
   const closers = Array.from(document.querySelectorAll("[data-rfq-close]"));
@@ -394,6 +437,7 @@ const productLookup = performanceProducts.map((p) => ({
     lastTrigger = trigger instanceof HTMLElement ? trigger : null;
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
+    if (floatingTrigger) floatingTrigger.hidden = true;
     document.body.style.overflow = "hidden";
     const urlSku = new URLSearchParams(window.location.search).get("sku") || "";
     if (urlSku) setSelectedProduct(urlSku);
@@ -410,6 +454,7 @@ const productLookup = performanceProducts.map((p) => ({
     lastTrigger = null;
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
+    if (floatingTrigger) floatingTrigger.hidden = false;
     document.body.style.overflow = "";
     requestAnimationFrame(() => {
       if (triggerToRestore?.isConnected) triggerToRestore.focus();

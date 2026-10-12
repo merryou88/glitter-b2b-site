@@ -53,6 +53,11 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
       <span class="rfq-field__error" id="rfq-email-error"></span>
     </div>
 
+    <details class="rfq-form__optional">
+      <summary class="rfq-form__optional-toggle" aria-label="Expand or collapse optional inquiry details">
+        <span class="rfq-form__optional-icon" aria-hidden="true"></span>
+        <span>Additional details (optional)</span>
+      </summary>
     <div class="rfq-field">
       <label for="rfq-phone" class="rfq-field__label">Phone Number</label>
       <input type="tel" id="rfq-phone" name="phone" class="rfq-field__input" placeholder="+ country code (optional)" autocomplete="tel" />
@@ -85,6 +90,8 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
       <textarea id="rfq-message" name="message" rows="4" class="rfq-field__textarea" placeholder="Please share color, surface effect, customization or any other details."></textarea>
       <span class="rfq-field__error" id="rfq-message-error"></span>
     </div>
+
+    </details>
 
     <!-- Honeypot: hidden from humans, bots fill it and get rejected server-side -->
     <div class="hp-field" aria-hidden="true">
@@ -361,6 +368,56 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
   .rfq-form__inner {
     display: flex;
     flex-direction: column;
+  }
+
+  .rfq-form__optional-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0 1rem;
+    list-style: none;
+    cursor: pointer;
+    color: var(--color-primary);
+    font-size: 13px;
+  }
+
+  .rfq-form__optional-toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  .rfq-form__optional-toggle:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  .rfq-form__optional-icon {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border: 1px solid #d8dce4;
+    border-radius: 50%;
+  }
+
+  .rfq-form__optional-icon::before,
+  .rfq-form__optional-icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 2px;
+    background: currentColor;
+    transform: translate(-50%, -50%);
+  }
+
+  .rfq-form__optional-icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  .rfq-form__optional[open] .rfq-form__optional-icon::after {
+    display: none;
   }
 
   .rfq-field {

@@ -266,12 +266,12 @@ status: current
 
 ### REQ-PRODUCT-031：H2013120101 公开产品页聚焦彩虹幻彩金属箔四面弹面料
 - 状态：active
-- 当前规则：`rainbow-iridescent-laser-foil-nylon-spandex-fabric` 是 H2013120101 的公开详情页，产品事实必须以 `面料独立站产品数据.xlsx` 的 `Independent Site Product Data` sheet 中 H2013120101 行为准。H1 使用 `Rainbow Iridescent Laser Foil Nylon-Spandex 4-Way Stretch Fabric`，SEO 标题使用 `Rainbow Iridescent Laser Foil Nylon-Spandex 4-Way Stretch Fabric | Nixia Fabric`，Meta Description、应用和规格均以表格为准。产品规格只能使用已确认数据：59"、180 GSM、MOQ 109 yd、15 colors、4-way stretch、110T、75D*70D、hot-stamping foil、hot-stamping foil construction 和 92% Polyester 8% Spandex。库存、测试合规和贸易条款未在来源数据确认时保持 `To be confirmed` 或项目确认表述。
+- 当前规则：`rainbow-iridescent-laser-foil-nylon-spandex-fabric` 是 H2013120101 的公开详情页，标题及相关命名以用户 2026-10-12 的纠正为准，其余产品事实必须以 `面料独立站产品数据.xlsx` 的 `Independent Site Product Data` sheet 中 H2013120101 行为准。H1 使用 `Rainbow Iridescent Foil 4-Way Stretch Spandex Fabric`，SEO 数据标题使用 `Rainbow Iridescent Foil 4-Way Stretch Spandex`，站点自动追加品牌后缀以保持总长度不超过 60 字符，Meta Description、正文、图片 alt、标签、FAQ 和 CTA 同步去除错误的 Laser / Nylon 命名，底材使用已确认的 Polyester-Spandex；应用和规格以表格为准。保留现有 slug 和图片路径以兼容已收录链接。产品规格只能使用已确认数据：59"、180 GSM、MOQ 109 yd、15 colors、4-way stretch、110T、75D*70D、hot-stamping foil、hot-stamping foil construction 和 92% Polyester 8% Spandex。库存、测试合规和贸易条款未在来源数据确认时保持 `To be confirmed` 或项目确认表述。
 - 验收条件：详情页可生成并显示 Key Features、Recommended Applications、Why Choose、Ready Stock & Custom Development、Sample CTA 和 FAQ；主图读取 `public/images/products/H2013120101/main/a1.webp` 至 `a5.webp`；详情图连续读取 `x1.webp` 至 `x12.webp`；应用拼图独立读取 `application/1.webp`；PNG 原图归档到 `products-data/original-images/images/products/H2013120101/`，线上目录只保留 WebP 展示图；主图首张 WebP 不加水印，其余主图和详情图 WebP 添加 3 个低透明度、逆时针 45 度倾斜域名水印；应用图不加水印；`Specifications Table for B2B Buyers` 前不出现独立 `Product Description` 模块。
 - 影响模块：`product-catalog`、`content-data`、`inquiry-forms`
 - 代码路径：`src/data/allProducts.js`、`src/components/ProductDetail.astro`、`public/images/products/H2013120101/`、`products-data/original-images/images/products/H2013120101/`
 - 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/rainbow-iridescent-laser-foil-nylon-spandex-fabric/`
-- 最后变更编号：CHG-20260929-001-h2013120101-product-detail
+- 最后变更编号：CHG-20261012-001-h2013120101-title-correction
 - 待确认事项：库存状态、测试合规、贸易条款和上线后 Search Console/GA4/RFQ 归因需按项目确认
 
 ### REQ-PRODUCT-032：H2013120103 公开产品页聚焦渐变彩虹点箔针织提花面料
