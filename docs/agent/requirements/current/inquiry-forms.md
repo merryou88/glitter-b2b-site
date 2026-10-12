@@ -72,3 +72,13 @@ status: current
 - 测试路径：`npm run build`；本地折叠交互检查
 - 最后变更编号：CHG-20261012-003-rfq-optional-fields-collapse
 - 待确认事项：无
+
+### REQ-FORM-008：移除 RFQ 左侧步骤标记
+- 状态：active
+- 当前规则：蓝色侧栏不显示数字 1 和 Contact Info 步骤标记；白色表单区域保留 Contact Info 表头。移动端移除步骤占位并将蓝色区上下内边距压缩至 1.25rem / 1rem。
+- 验收条件：桌面和移动端均无左侧步骤标记，右侧表头保留；移动端蓝色内容区随内容收缩。
+- 影响模块：`inquiry-forms`
+- 代码路径：`src/components/RFQQuoteModal.astro`
+- 测试路径：`npm run build`；弹窗布局检查
+- 最后变更编号：CHG-20261012-005-rfq-sidebar-compact
+- 待确认事项：无

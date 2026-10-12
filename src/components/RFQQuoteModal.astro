@@ -3,7 +3,7 @@
  * RFQQuoteModal.astro — Modal container for the RFQ quote form
  * Two-column layout: navy sidebar (#0A2040) + white Contact Info form.
  * Opens via [data-rfq-open], closes via [data-rfq-close] / backdrop / Esc.
- * Step 1 (Contact Info) implemented; Steps 2 & 3 reserved in the stepper.
+ * Sidebar shows inquiry context; the form retains its Contact Info heading.
  */
 import RfqQuoteForm from "@components/RfqQuoteForm.astro";
 import { performanceProducts } from "@data/allProducts";
@@ -51,12 +51,6 @@ const productLookup = performanceProducts.map((p) => ({
         </div>
       </div>
 
-      <div class="rfq-modal__steps">
-        <span class="rfq-modal__step rfq-modal__step--active">
-          <span class="rfq-modal__step-num">1</span>
-          Contact Info
-        </span>
-      </div>
     </aside>
 
     <!-- Right white form area (Step 1) -->
@@ -254,49 +248,6 @@ const productLookup = performanceProducts.map((p) => ({
     font-weight: 800;
   }
 
-  .rfq-modal__steps {
-    margin-top: auto;
-    padding-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-  }
-
-  .rfq-modal__step {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: #93a0ba;
-  }
-
-  .rfq-modal__step-num {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.32);
-    color: #93a0ba;
-    font-size: 12px;
-    font-weight: 800;
-  }
-
-  .rfq-modal__step--active {
-    color: #ffffff;
-  }
-
-  .rfq-modal__step--active .rfq-modal__step-num {
-    background: var(--color-accent);
-    border-color: var(--color-accent);
-    color: #ffffff;
-  }
-
   /* ===== Right white form area ===== */
   .rfq-modal__main {
     flex: 1 1 auto;
@@ -341,7 +292,7 @@ const productLookup = performanceProducts.map((p) => ({
     .rfq-modal__side {
       flex: 0 0 auto;
       width: 100%;
-      padding: 1.5rem 1.25rem 1.25rem;
+      padding: 1.25rem 1.25rem 1rem;
     }
 
     .rfq-modal__main {
@@ -353,12 +304,6 @@ const productLookup = performanceProducts.map((p) => ({
       margin-bottom: 1.5rem;
     }
 
-    .rfq-modal__steps {
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 0.9rem 1.25rem;
-      padding-top: 1.25rem;
-    }
   }
 </style>
 
