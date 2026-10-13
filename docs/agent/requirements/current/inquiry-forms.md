@@ -82,3 +82,13 @@ status: current
 - 测试路径：`npm run build`；弹窗布局检查
 - 最后变更编号：CHG-20261012-005-rfq-sidebar-compact
 - 待确认事项：无
+
+### REQ-FORM-009：RFQ 弹窗使用当前站点 Logo
+- 状态：active
+- 当前规则：询盘弹窗左侧品牌区域使用站点当前 `/logo.png`，不再显示旧版 `NF` 文字标识；Logo 保持可见且按比例缩放，移动端尺寸统一为 52×52px，与首页 Header Logo 一致。
+- 验收条件：RFQ 弹窗品牌区域显示与 Header/Footer 一致的 Nixia Fabric Logo；不再渲染 `NF` 旧标识；表单打开、关闭和布局不受影响。
+- 影响模块：`inquiry-forms`、`site-shell`
+- 代码路径：`src/components/RFQQuoteModal.astro`、`public/logo.png`
+- 测试路径：`npm run build`；桌面和移动端打开 RFQ 弹窗检查 Logo。
+- 最后变更编号：CHG-20261014-002-rfq-current-logo
+- 待确认事项：无

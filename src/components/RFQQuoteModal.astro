@@ -33,8 +33,7 @@ const productLookup = performanceProducts.map((p) => ({
     <!-- Left navy sidebar -->
     <aside class="rfq-modal__side">
       <div class="rfq-modal__brand">
-        <span class="rfq-modal__brand-mark">NF</span>
-        <span class="rfq-modal__brand-name">Nixia&nbsp;Fabric</span>
+        <img class="rfq-modal__brand-logo" src="/logo.png" alt="Nixia Fabric" width="76" height="76" />
       </div>
 
       <h2 class="rfq-modal__title" id="rfq-modal-title">Request Sample &amp; Quote</h2>
@@ -161,30 +160,14 @@ const productLookup = performanceProducts.map((p) => ({
   .rfq-modal__brand {
     display: flex;
     align-items: center;
-    gap: 0.625rem;
     margin-bottom: 2rem;
   }
 
-  .rfq-modal__brand-mark {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    border: 1.5px solid var(--color-accent);
-    border-radius: 8px;
-    color: var(--color-accent);
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-  }
-
-  .rfq-modal__brand-name {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: #ffffff;
-    letter-spacing: 0.01em;
+  .rfq-modal__brand-logo {
+    display: block;
+    width: 76px;
+    height: 76px;
+    object-fit: contain;
   }
 
   .rfq-modal__title {
@@ -302,6 +285,11 @@ const productLookup = performanceProducts.map((p) => ({
 
     .rfq-modal__brand {
       margin-bottom: 1.5rem;
+    }
+
+    .rfq-modal__brand-logo {
+      width: 52px;
+      height: 52px;
     }
 
   }
