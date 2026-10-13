@@ -241,7 +241,7 @@ const applicationPages = [
     description:
       "Source 4-way stretch foil, iridescent spandex and holographic fabrics for dancewear, bodysuits and competition costumes. Samples and custom development.",
     intro:
-      "Dancewear fabric needs more than visual impact. Buyers should compare stretch direction, recovery, hand feel, width, sewing behavior and surface performance before approving fabric for bodysuits, leotards or competition costumes.",
+      "Source foil, iridescent and holographic stretch fabrics for dancewear, stage costumes and performance apparel. Compare the surface effect, stretch, recovery and production details, then request samples before approving a bulk order.",
     image: "/images/products/H2013120101/main/rainbow-iridescent-laser-foil-nylon-spandex-fabric-main-1.webp",
     imageAlt: "Rainbow iridescent stretch fabric shown in a dancewear application",
     productSlugs: [
@@ -260,7 +260,8 @@ const applicationPages = [
       "blue-purple-gradient-laser-foil-spandex-fabric",
     ],
     tags: [],
-    applications: ["Dancewear", "Bodysuits", "Competition costumes"],
+    applications: ["Dancewear", "Stage costumes", "Bodysuits", "Competition costumes"],
+    heroFacts: ["Foil & iridescent stretch", "Samples before bulk", "Wholesale & custom options"],
     benefits: [
       "4-way stretch and recovery options for fitted garments",
       "Foil, iridescent and holographic surface choices",
@@ -489,6 +490,7 @@ const relatedProducts = page.productSlugs?.length
   : page.tags.length === 0
     ? performanceProducts
     : performanceProducts.filter((product) => page.tags.some((tag) => product.tags.includes(tag)));
+const displayProducts = page.slug === "dancewear-fabric-supplier" ? relatedProducts.slice(0, 8) : relatedProducts;
 const shortlistProducts = page.shortlist.map((item) => ({
   ...item,
   product: performanceProducts.find((product) => product.slug === item.slug),
@@ -549,19 +551,17 @@ const faqSchema = {
   <section class="application-hero">
     <div class="container application-hero__grid">
       <div class="application-hero__copy">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Home</a>
-          <span>/</span>
-          <a href="/applications/">Applications</a>
-          <span>/</span>
-          <span aria-current="page">{page.title}</span>
-        </nav>
         <span class="eyebrow">B2B APPLICATION GUIDE</span>
         <h1>{page.title}</h1>
         <p>{page.intro}</p>
+        {page.heroFacts?.length && (
+          <ul class="application-hero__facts" aria-label="Key sourcing options">
+            {page.heroFacts.map((fact) => <li>{fact}</li>)}
+          </ul>
+        )}
         <div class="application-hero__actions">
-          <a href="/contact/" data-rfq-open class="btn btn--primary btn--lg">Request a Quote</a>
-          <a href="/products/" class="btn btn--outline btn--lg">Browse All Products</a>
+          <a href="/contact/" data-rfq-open class="btn btn--primary btn--lg">Request Samples & Quote</a>
+          <a href="#recommended-materials" class="btn btn--outline btn--lg">Compare Fabrics</a>
         </div>
       </div>
       <picture class="application-hero__image">
@@ -569,6 +569,40 @@ const faqSchema = {
       </picture>
     </div>
   </section>
+
+  {page.slug === "dancewear-fabric-supplier" && (
+    <section class="section section--alt application-featured-products" id="dancewear-fabrics">
+      <div class="container">
+        <div class="section-header section-header--left">
+          <span class="eyebrow">DANCEWEAR FABRIC OPTIONS</span>
+          <h2>Foil and iridescent fabrics for dance costumes</h2>
+          <p>Start with these suitable fabric directions for bodysuits, leotards, stage costumes and competition outfits. Open a product to review the actual composition, width, weight, stretch and MOQ.</p>
+        </div>
+        <div class="application-products application-products--featured">
+          {displayProducts.slice(0, 4).map((product) => (
+            <article class="application-product">
+              <a href={`/products/${product.slug}/`} class="application-product__image">
+                <img src={product.mainImageUrl} alt={product.mainImageAlt} width="800" height="800" loading="lazy" />
+              </a>
+              <div class="application-product__body">
+                <h3><a href={`/products/${product.slug}/`}>{product.title}</a></h3>
+                <p>{product.shortIntro}</p>
+                <div class="application-product__meta">
+                  <span>MOQ {productMoq(product)}</span>
+                  <span>{product.specs.width}</span>
+                  <span>{product.stockStatus}</span>
+                </div>
+                <a href={`/products/${product.slug}/`} class="application-product__link">View fabric details</a>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div class="application-featured-products__cta">
+          <a href="#recommended-materials" class="text-link">See all recommended dancewear fabrics ↓</a>
+        </div>
+      </div>
+    </section>
+  )}
 
   <section class="section">
     <div class="container application-content">
@@ -598,7 +632,7 @@ const faqSchema = {
     </div>
   </section>
 
-  <section class="section section--alt">
+  <section class="section section--alt" id="recommended-materials">
     <div class="container">
       <div class="section-header section-header--left">
         <span class="eyebrow">SELECTION CRITERIA</span>
@@ -678,12 +712,12 @@ const faqSchema = {
   <section class="section section--alt">
     <div class="container">
       <div class="section-header section-header--left">
-        <span class="eyebrow">RECOMMENDED MATERIALS</span>
-        <h2>Products for {page.title.replace(" | Wholesale Supplier", "")}</h2>
+        <span class="eyebrow">MORE FABRIC OPTIONS</span>
+        <h2>Compare more fabrics for your project</h2>
         <p>Review the specifications and request a sample or quotation for the material closest to your project.</p>
       </div>
       <div class="application-products">
-        {relatedProducts.map((product) => (
+        {displayProducts.map((product) => (
           <article class="application-product">
             <a href={`/products/${product.slug}/`} class="application-product__image">
               <img src={product.mainImageUrl} alt={product.mainImageAlt} width="800" height="800" loading="lazy" />
@@ -799,6 +833,26 @@ const faqSchema = {
     color: var(--color-text-secondary);
     font-size: var(--text-lg);
     line-height: 1.7;
+  }
+
+  .application-hero__facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin: var(--space-lg) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .application-hero__facts li {
+    padding: 0.5rem 0.7rem;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background: var(--color-white);
+    color: var(--color-primary);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    line-height: 1.2;
   }
 
   .application-hero__actions {
@@ -972,6 +1026,15 @@ const faqSchema = {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-lg);
+  }
+
+  .application-featured-products {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .application-featured-products__cta {
+    margin-top: var(--space-xl);
+    text-align: center;
   }
 
   .application-product {
@@ -1302,6 +1365,18 @@ const faqSchema = {
 
     .application-hero__actions {
       flex-direction: column;
+    }
+
+    .application-hero__facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .application-hero__facts li {
+      min-height: 2.8rem;
+      display: grid;
+      place-items: center;
+      text-align: center;
     }
 
     .application-hero__actions .btn {

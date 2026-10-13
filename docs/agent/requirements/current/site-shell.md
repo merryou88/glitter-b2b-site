@@ -282,3 +282,13 @@ status: current
 - 测试路径：`npm run build`；检查 `/applications/` 桌面和移动端 Hero
 - 最后变更编号：CHG-20261011-016-applications-hero-primary-color
 - 待确认事项：无
+
+### REQ-SHELL-028：浮动 Q 与 WhatsApp 点击事件
+- 状态：active
+- 当前规则：移动端浮动 Q 按钮点击发送 GA4 自定义事件 `floating_q_click`；右下角 WhatsApp 浮动入口打开联系弹窗时发送 `floating_whatsapp_click`，点击弹窗内 WhatsApp 链接时发送 `whatsapp_click`。事件通过统一的 `window.__nixiaTrack` 发送，并记录交互位置参数。
+- 验收条件：Q 按钮和 WhatsApp 浮动入口各产生对应事件；同一次点击不重复绑定；启用 GA4 调试模式时可在 DebugView 看到事件及 `interaction_location` 参数；原有弹窗和外链行为不受影响。
+- 影响模块：`site-shell`、`inquiry-forms`
+- 代码路径：`src/components/RFQQuoteModal.astro`、`src/components/FloatingContact.astro`、`src/layouts/Layout.astro`
+- 测试路径：`npm run build`；GA4 DebugView 使用 `?ga_debug=1` 手动点击验证
+- 最后变更编号：CHG-20261014-001-floating-contact-events
+- 待确认事项：GA4 中如需用于 Google Ads 转化，还需在 GA4 管理后台将相应事件标记为 Key event，并在 Google Ads 中导入。

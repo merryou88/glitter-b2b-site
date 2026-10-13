@@ -481,6 +481,9 @@
   }
 
   trigger?.addEventListener("click", () => {
+    window.__nixiaTrack?.("floating_whatsapp_click", {
+      interaction_location: "floating_whatsapp_popup",
+    });
     if (floatContact?.classList.contains("is-open")) {
       closePopup();
     } else {
@@ -490,6 +493,14 @@
 
   closeBtn?.addEventListener("click", closePopup);
   backdrop?.addEventListener("click", closePopup);
+
+  document.querySelectorAll(".float-contact__btn--whatsapp").forEach((link) => {
+    link.addEventListener("click", () => {
+      window.__nixiaTrack?.("whatsapp_click", {
+        interaction_location: "floating_whatsapp_link",
+      });
+    });
+  });
 
   // WeChat toggle
   wechatToggle?.addEventListener("click", () => {

@@ -484,3 +484,13 @@ status: current
 - 测试路径：`npm run build`；手动检查 `/products/` 移动端布局
 - 最后变更编号：CHG-20261011-035-mobile-products-hero-facts-grid
 - 待确认事项：无
+
+### REQ-PRODUCT-049：广告应用落地页突出采购意图并收敛推荐产品
+- 状态：active
+- 当前规则：`dancewear-fabric-supplier` 应用落地页首屏明确覆盖 foil、iridescent、holographic stretch fabrics 及 stage costumes 等广告相关采购意图，隐藏重复菜单作用的可视 Breadcrumb，首屏之后优先展示适合舞蹈服饰的面料产品，展示样品/批量采购/custom 选项，并提供直接的 `Request Samples & Quote` 入口；移动端推荐产品首批最多展示 8 个，避免将主要询盘入口推离首屏路径。
+- 验收条件：页面首屏可见采购范围、至少三个采购事实标签和询盘 CTA；首屏之后可直接看到至少 4 个舞蹈服饰面料产品及其详情入口；CTA 可打开现有 RFQ；推荐产品区在该页面最多展示 8 个；其他应用页现有内容结构保持可用。
+- 影响模块：`product-catalog`、`site-shell`
+- 代码路径：`src/pages/applications/[slug].astro`
+- 测试路径：`npm run build`、`git diff --check`；移动端检查首屏 CTA、采购标签和推荐产品数量。
+- 最后变更编号：CHG-20261013-001-dancewear-landing-conversion
+- 待确认事项：广告账户中的关键词、地区和预算仍需在 Google Ads 后台单独调整。

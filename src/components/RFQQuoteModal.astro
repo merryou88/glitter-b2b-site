@@ -409,6 +409,11 @@ const productLookup = performanceProducts.map((p) => ({
   openers.forEach((element) =>
     element.addEventListener("click", (event) => {
       if (element.tagName === "A") event.preventDefault();
+      if (element.classList.contains("rfq-floating-trigger")) {
+        window.__nixiaTrack?.("floating_q_click", {
+          interaction_location: "mobile_floating_q",
+        });
+      }
       setSelectedProduct(element.getAttribute("data-rfq-sku") || "");
       setInquiryType(element.getAttribute("data-rfq-intent") || "sample-and-quote");
       openModal(element);
