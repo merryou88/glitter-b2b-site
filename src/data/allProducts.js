@@ -1358,7 +1358,7 @@ export const allProducts = [
     metaTitle: "Full-Print Foil Spandex Fabric | Nixia Fabric",
     metaDesc:
       "Full-print foil spandex milk-silk with 4-way stretch for stage costumes and dancewear. Ready stock, samples and 109 yd MOQ. Custom prints available.",
-    title: "Full-Print Foil Spandex Milk-Silk Fabric",
+    title: "Metallic Foil 4-Way Stretch Fabric for Swimwear",
     sku: "P0002",
     mainImageUrl: "/images/products/H2013060101/main/full-print-hot-stamping-spandex-milk-silk-main-1.webp",
     mainImageWebp: "/images/products/H2013060101/main/full-print-hot-stamping-spandex-milk-silk-main-1.webp",
@@ -1390,19 +1390,9 @@ export const allProducts = [
         webp: "/images/products/H2013060101/main/full-print-hot-stamping-spandex-milk-silk-main-5.webp",
         alt: "Full-print metallic foil stretch fabric close-up for dancewear manufacturers",
       },
-      {
-        src: "/images/products/H2013060101/main/full-print-hot-stamping-spandex-milk-silk-main-6.webp",
-        webp: "/images/products/H2013060101/main/full-print-hot-stamping-spandex-milk-silk-main-6.webp",
-        alt: "Reflective foil print spandex fabric for festival and carnival costumes",
-      },
-      {
-        src: "/images/products/H2013060101/main/full-print-hot-stamping-spandex-milk-silk-main-7.webp",
-        webp: "/images/products/H2013060101/main/full-print-hot-stamping-spandex-milk-silk-main-7.webp",
-        alt: "Wholesale full-print foil spandex fabric color and surface display",
-      },
     ],
     galleryMainPath: "/images/products/H2013060101/main/",
-    galleryImages: ["full-print-hot-stamping-spandex-milk-silk-main-1.webp", "full-print-hot-stamping-spandex-milk-silk-main-2.webp", "full-print-hot-stamping-spandex-milk-silk-main-3.webp", "full-print-hot-stamping-spandex-milk-silk-main-4.webp", "full-print-hot-stamping-spandex-milk-silk-main-5.webp", "full-print-hot-stamping-spandex-milk-silk-main-6.webp", "full-print-hot-stamping-spandex-milk-silk-main-7.webp"],
+    galleryImages: ["full-print-hot-stamping-spandex-milk-silk-main-1.webp", "full-print-hot-stamping-spandex-milk-silk-main-2.webp", "full-print-hot-stamping-spandex-milk-silk-main-3.webp", "full-print-hot-stamping-spandex-milk-silk-main-4.webp", "full-print-hot-stamping-spandex-milk-silk-main-5.webp"],
     detailImagePath: "/images/products/H2013060101/detail/",
     video: null,
     shortIntro:
@@ -1412,14 +1402,15 @@ export const allProducts = [
     specs: {
       width: "59\"",
       weight: "160 GSM",
-      baseMaterial: "Milk-silk spandex, 4-way stretch",
+      baseMaterial: "95% Polyester, 5% Spandex",
       thickness: "0.35‑0.4mm",
       moq: "100",
       leadTime: "1-3",
     },
     specTable: [
       { label: "Product Type", value: "Full-print hot-stamping foil fabric" },
-      { label: "Base Fabric", value: "Milk-silk spandex, 4-way stretch" },
+      { label: "Composition", value: "95% Polyester, 5% Spandex" },
+      { label: "Base Fabric", value: "95% Polyester, 5% Spandex" },
       { label: "Weight", value: "160 GSM" },
       { label: "Surface Finish", value: "All-over hot-stamping foil print" },
       { label: "Hand-feel", value: "Soft, smooth, elastic recovery" },
@@ -1463,9 +1454,13 @@ export const allProducts = [
       },
     ],
     applications: [
-      "Stage costumes",
-      "Performance costumes",
+      "Swimwear",
+      "Swim caps",
       "Dancewear",
+      "Stage costumes",
+      "Costume leggings",
+      "Party slip dresses",
+      "Performance costumes",
       "Festival & carnival costumes",
     ],
     inStock: true,
@@ -1480,24 +1475,20 @@ export const allProducts = [
     tradeTerms: "FOB, CIF upon quotation",
     faqList: [
       {
-        question: "What is the MOQ for this fabric?",
-        answer:
-          "The MOQ is 109 yd per design for stock designs. Custom printed patterns start from higher quantities; send us your artwork and we will quote the exact minimum.",
+        question: "Is this fabric chlorine-resistant or UV-protective?",
+        answer: "Chlorine resistance and UV protection have not been verified for this fabric. If your swimwear requires specific performance standards, share them with us so testing requirements can be reviewed before ordering.",
       },
       {
-        question: "Can I get a sample before placing a bulk order?",
-        answer:
-          "Yes. This is an in-stock product. The stock sample is free and prepared in 1-3 working days. The buyer covers international shipping.",
+        question: "How does the foil finish perform after stretching and washing?",
+        answer: "We do not currently have verified test results for the foil finish after repeated stretching and washing. Please test a physical sample using your intended garment construction and care process before approving bulk production.",
       },
       {
-        question: "Can the print pattern and colors be customized?",
-        answer:
-          "Yes. As a factory with OEM/ODM capability, we develop custom patterns, foil colors and finishes. Send us your design or reference and we will confirm feasibility and pricing.",
+        question: "Can I approve a sample before custom bulk production?",
+        answer: "Yes. For custom orders, we provide a sample for your approval before proceeding with bulk production. Bulk production starts only after you have confirmed the sample.",
       },
       {
-        question: "Is the fabric certified for export markets?",
-        answer:
-          "The material is SGS and REACH testing can be arranged according to product and buyer requirements. Buyer-specific reports can be discussed by project.",
+        question: "How is the price quoted?",
+        answer: "Pricing is quoted according to quantity, color, customization requirements, destination and shipping method.",
       },
     ],
     skuImages: [],
@@ -3855,6 +3846,8 @@ const standardBuyerFaqs = (product) => {
 };
 
 allProducts.forEach((product) => {
+  // The pilot already covers core buying topics in its specifications and sample sections.
+  if (product.slug === "full-print-hot-stamping-spandex-milk-silk") return;
   const existingFaqs = product.faqList ?? [];
   const additions = standardBuyerFaqs(product)
     .filter((faq) => !hasFaqTopic(existingFaqs, faq.topic))

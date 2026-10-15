@@ -2,8 +2,7 @@
 /**
  * ProductDetail.astro — Single product detail UI component.
  * ---------------------------------------------------------------------------
- * Renders EVERY product using EXACTLY ONE layout: the plain-iridescent
- * reference page (nixiafabric.com/products/plain-iridescent-laser-spandex-4-way-stretch).
+ * Uses the shared product layout, with a compact Full-Print buying-details pilot.
  *
  * All variable text/images are read from the `product` prop (see allProducts.js).
  * Shared buyer guidance and section headings live here; product-specific
@@ -12,6 +11,7 @@
  * This component contains NO <head>, NO meta tags, and NO ld+json scripts;
  * those are emitted by the dynamic route page pages/products/[slug].astro.
  */
+import FullPrintBuyingDetails from "./FullPrintBuyingDetails.astro";
 import { existsSync, readdirSync } from "node:fs";
 import { performanceProducts } from "../data/allProducts";
 import { blogArticles } from "../data/blogArticles";
@@ -428,7 +428,7 @@ const heroVideo = product.video
 </div>
 
 <!-- Hero Section -->
-<section class="detail-hero">
+<section class:list={["detail-hero", { "detail-hero--full-print": isFullPrintHotStampingMilkSilk }]}>
   <div class="container">
     <div class="detail-layout">
       <div class="p-hero-gallery" id="p-hero-gallery">
@@ -559,7 +559,9 @@ const heroVideo = product.video
             {product.title}
           </h1>
         </div>
-        {showExpandedHeroDescription ? (
+        {isFullPrintHotStampingMilkSilk ? (
+          <><p class="detail-info__desc">This metallic foil stretch fabric features an all-over hot-stamped finish on a soft, smooth base made from 95% polyester and 5% spandex, weighing 160 GSM at a 59″ width. Four-way stretch provides flexibility, while the foil surface adds a reflective shine. Used by customers for swimwear, swim caps, dancewear, and stage costumes, it is also an option for costume leggings and party slip dresses. Available in 22 stock colors, with custom colors supported.</p><p class="full-print-summary">{productWidth} wide · {productWeight} · {availableColors}</p></>
+        ) : showExpandedHeroDescription ? (
           <div class="detail-info__desc detail-info__desc--expanded">
             {product.fullDescription.split("\n\n").slice(0, 2).map((para: string) => (
               <p>{para}</p>
@@ -573,16 +575,17 @@ const heroVideo = product.video
         <div class="detail-offer-grid">
           <div class="detail-offer-card detail-offer-card--moq">
             <span class="detail-offer-card__label">MOQ</span>
-            <strong class="detail-offer-card__value">{productMoq}</strong>
-            {!hasProductMoqOverride && <span class="detail-offer-card__unit">Minimum</span>}
+            <strong class="detail-offer-card__value">{isFullPrintHotStampingMilkSilk ? "109yd" : productMoq}</strong>
+            {!isFullPrintHotStampingMilkSilk && !hasProductMoqOverride && <span class="detail-offer-card__unit">Minimum</span>}
           </div>
           <div class="detail-offer-card detail-offer-card--lead">
             <span class="detail-offer-card__label">{dispatchLabel}</span>
             <strong class="detail-offer-card__value">{displayLeadTime}</strong>
-            <span class="detail-offer-card__unit">{dispatchUnit}</span>
+            {!isFullPrintHotStampingMilkSilk && <span class="detail-offer-card__unit">{dispatchUnit}</span>}
           </div>
         </div>
 
+        {!isFullPrintHotStampingMilkSilk && (<>
         <!-- B2B Buying Details -->
         <div class="detail-buying">
           <div class="detail-buying__card">
@@ -623,9 +626,11 @@ const heroVideo = product.video
           </div>
         </div>
 
+        </>)}
+        {isFullPrintHotStampingMilkSilk && <p class="full-print-inquiry-note">For a quote, share your preferred color, estimated quantity and delivery country.</p>}
         <!-- Action Buttons -->
         <div class="detail-cta">
-          <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} data-rfq-open data-rfq-sku={product.title} data-rfq-intent="sample-and-quote" class="btn detail-cta__btn detail-cta__btn--gold">
+          <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} data-rfq-open data-rfq-sku={product.title} data-rfq-intent={isFullPrintHotStampingMilkSilk ? "quote" : "sample-and-quote"} class="btn detail-cta__btn detail-cta__btn--gold">
             <svg class="detail-cta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
               <path d="M14 2v4a2 2 0 0 0 2 2h4" />
@@ -633,15 +638,15 @@ const heroVideo = product.video
               <path d="M16 13H8" />
               <path d="M16 17H8" />
             </svg>
-            Request Sample &amp; Quote
+            {isFullPrintHotStampingMilkSilk ? "Request a Quote" : "Request Sample & Quote"}
           </a>
-          <a href="/sample-policy/" data-rfq-open data-rfq-sku={product.title} data-rfq-intent="sample" class="btn detail-cta__btn detail-cta__btn--sample">
+          <a href={isFullPrintHotStampingMilkSilk ? `/contact/?sku=${encodeURIComponent(product.title)}` : "/sample-policy/"} data-rfq-open data-rfq-sku={product.title} data-rfq-intent="sample" class="btn detail-cta__btn detail-cta__btn--sample">
             <svg class="detail-cta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
               <path d="m3.3 7 8.7 5 8.7-5" />
               <path d="M12 22V12" />
             </svg>
-            Get Sample
+            {isFullPrintHotStampingMilkSilk ? "Request Samples" : "Get Sample"}
           </a>
           <a href={whatsappHref} data-product-contact="whatsapp" target="_blank" rel="noopener noreferrer" class="btn detail-cta__btn detail-cta__btn--wa">
             <svg class="detail-cta__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -686,6 +691,9 @@ const heroVideo = product.video
   </a>
 </div>
 
+{isFullPrintHotStampingMilkSilk ? (
+  <FullPrintBuyingDetails product={product} images={productDetailImages} specs={productSpecRows} buyingRows={b2bRows} sampleNote={displaySampleNote} />
+) : (<>
 <!-- Detail Body -->
 <section class="section detail-content-section--compact">
   <div class="container">
@@ -1366,6 +1374,8 @@ const heroVideo = product.video
     </div>
   </div>
 </section>
+
+</>)}
 
 {relatedBlogGuides.length > 0 && (
   <section class="section product-blog-guides" aria-label="Related buyer guides">
@@ -3369,4 +3379,12 @@ const heroVideo = product.video
     .p-hero-carousel__arrow--prev { left: 6px; }
     .p-hero-carousel__arrow--next { right: 6px; }
   }
+</style>
+
+<style>
+.detail-hero--full-print .detail-info__title { font-size:clamp(1.7rem,2.7vw,2.6rem); line-height:1.2; }
+.detail-hero--full-print .detail-info__desc { font-size:1.05rem; line-height:1.75; }
+.full-print-summary { padding:16px 0; border-block:1px solid #e2e8f0; font-weight:600; color:var(--color-primary,#0a2040); }
+.full-print-inquiry-note { color:#536174; line-height:1.6; }
+.detail-hero--full-print .detail-offer-grid { margin-block:20px; }
 </style>

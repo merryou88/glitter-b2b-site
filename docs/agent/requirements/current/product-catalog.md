@@ -494,3 +494,13 @@ status: current
 - 测试路径：`npm run build`、`git diff --check`；移动端检查首屏 CTA、采购标签和推荐产品数量。
 - 最后变更编号：CHG-20261013-001-dancewear-landing-conversion
 - 待确认事项：广告账户中的关键词、地区和预算仍需在 Google Ads 后台单独调整。
+
+### REQ-PRODUCT-050：Full-Print 产品采购详情样板
+- 状态：active
+- 当前规则：仅 `full-print-hot-stamping-spandex-milk-silk` 使用精简采购详情；产品显示标题为 `Metallic Foil 4-Way Stretch Fabric for Swimwear`，保留原slug；主图库仅保留图1至图5，已删除的图6、图7不再配置；详情图保持原配置。首屏介绍按面料与工艺、160 GSM及59英寸规格、四面弹与光泽特点、客户应用、22种现货色与定制颜色的顺序描述；规格摘要不显示SKU。首屏展示用途、幅宽、克重、颜色、MOQ与生产交期，分别提供带产品上下文的 quote/sample RFQ 入口。该产品首屏 MOQ 卡片仅显示 `MOQ` 和 `109yd`，不显示 `per design` 或 `Minimum`。该产品交期卡片仅展示 `LEAD TIME` 和 `7-15 days`，不显示 `production`。下方以原创 SVG 线条图标展示四面弹、烫金光泽、柔软手感、定制颜色，以及泳衣、泳帽、舞蹈服、舞台服和表演服饰紧身裤（Costume leggings）、派对吊带裙（Party slip dresses）用途；首屏介绍也补充Costume leggings和Party slip dresses作为可选用途，不表述为已有客户使用事实或运动健身性能承诺；用途图标区标题为 `Recommended Uses`；FAQ保留4条：抗氯/UV性能是否验证、烫金反复拉伸洗涤表现、定制样品确认、如何报价；未确认的性能明确无已验证测试结果，建议按实际成衣与护理流程测试样品；用户确认定制订单须客户确认样品后才开始大货；用途、MOQ、现货样品政策、通用定制范围、检测服务、库存和交期不重复为FAQ；该产品跳过通用FAQ自动补充，页面和FAQ结构化数据保持一致；用途图标按Swimwear、Swim caps、Dancewear、Stage costumes、Costume leggings、Party slip dresses排序，应用数据同步优先顺序，以已确认的泳装客户用途优先，不作为市场规模排名；护理采用用户确认的40°C机洗、低温滚筒烘干、低温熨烫、可干洗、不可漂白。合并重复规格和采购说明，保留详情图片、样品入口和FAQ。该产品成分由用户确认为95%涤纶、5%氨纶，首屏介绍、Fabric features及规格表的Composition和Base Material均展示此成分，Base Material不再显示Milk-silk；不得增加未确认的耐氯、UV等性能承诺。
+- 验收条件：该产品出现三个图标分区和单一规格采购表；quote/sample 分别打开现有 RFQ 并带产品名；护理描述不再与旧版冷洗/自然晾干说明混用；移动端分区堆叠；其他产品继续原布局。
+- 影响模块：`product-catalog`
+- 代码路径：`src/components/ProductDetail.astro`、`src/components/FullPrintBuyingDetails.astro`、`src/data/allProducts.js`
+- 测试路径：`npm run build`、`npm run validate:seo`、本地预览。
+- 最后变更编号：CHG-20261015-016-full-print-buyer-faq
+- 待确认事项：工作区缺少产品数据工作簿，本次以当前代码及用户明确确认的泳衣/泳帽用途和护理要求为依据，不编造参数。

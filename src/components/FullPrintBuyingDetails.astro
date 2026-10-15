@@ -1,0 +1,68 @@
+---
+// Single-product pilot; existing product images remain supplied by ProductDetail.
+const { product, images, specs, buyingRows, sampleNote } = Astro.props;
+const features = [
+  { label: 'Four-way stretch', path: 'M12 3v18M3 12h18M9 6l3-3 3 3M9 18l3 3 3-3M6 9l-3 3 3 3M18 9l3 3-3 3' },
+  { label: 'Metallic foil finish', path: 'm12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5ZM19 3v4M17 5h4' },
+  { label: 'Soft hand-feel', path: 'M4 6c4-4 12 4 16 0v12c-4 4-12-4-16 0ZM7 10c3-2 7 2 10 0M7 14c3-2 7 2 10 0' },
+  { label: 'Custom foil colors', path: 'M12 3a9 9 0 1 0 0 18h1a2 2 0 0 0 1-4 2 2 0 0 1 1-4h3a3 3 0 0 0 3-3c0-4-5-7-9-7ZM7 8h.01M12 6h.01M17 8h.01M6 13h.01' },
+];
+const uses = [
+  { label: 'Swimwear', path: 'M8 3h2c0 4 4 4 4 0h2l2 8-3 4-1 6h-4l-1-6-3-4Z' },
+  { label: 'Swim caps', path: 'M3 15a9 9 0 0 1 18 0v3H3ZM7 14c0-4 2-7 5-8M3 18h18' },
+  { label: 'Dancewear', path: 'M8 3h2c0 3 4 3 4 0h2l1 9 4 6c-6 4-12 4-18 0l4-6ZM7 12h10M9 14l-2 5M15 14l2 5' },
+  { label: 'Stage costumes', path: 'm8 3-5 4 3 5 2-2v11h8V10l2 2 3-5-5-4-4 3Z' },
+  { label: 'Costume leggings', path: 'M7 3h10l2 18h-5l-2-12-2 12H5ZM7 6h10' },
+  { label: 'Party slip dresses', path: 'M8 3v5l-4 13h16L16 8V3M8 8c2 2 6 2 8 0M8 3h1M15 3h1' },
+];
+const care = [
+  { label: 'Machine wash warm (40°C / 104°F)', path: 'm3 5 3 15h12l3-15M5 9c2-3 4 3 7 0s4 3 7 0', temp: true },
+  { label: 'Tumble dry, low heat', path: 'M3 3h18v18H3ZM12 5a7 7 0 1 0 0 14 7 7 0 0 0 0-14ZM12 12h.01' },
+  { label: 'Iron, low temperature', path: 'M4 8h14l3 11H3l4-7h12M12 16h.01' },
+  { label: 'Dry clean', path: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z' },
+  { label: 'Do not bleach', path: 'm12 3 10 18H2ZM3 4l18 17M21 4 3 21' },
+];
+const omitted = ['Product Name / SKU', 'MOQ', 'Supply Type', 'Wash Care', 'Surface / Pilling', 'Availability'];
+const rows = [{ label: 'Composition', value: product.specs.baseMaterial }, ...specs, ...buyingRows.filter(row => !omitted.includes(row.label))];
+const faqs = product.faqList;
+---
+<section class="buying-details container">
+  <div class="overview">
+    <section aria-labelledby="fabric-features">
+      <h2 id="fabric-features">Fabric features</h2>
+      <p>Composition: {product.specs.baseMaterial}<br />Width: 59″<br />Weight: 160 GSM<br />Origin: China</p>
+      <div class="icon-grid">
+        {features.map(item => <div class="icon-item"><span class="icon-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d={item.path} /></svg></span><span>{item.label}</span></div>)}
+      </div>
+    </section>
+    <section aria-labelledby="material-use">
+      <h2 id="material-use">Recommended Uses</h2>
+      <div class="icon-grid">
+        {uses.map(item => <div class="icon-item"><span class="icon-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d={item.path} /></svg></span><span>{item.label}</span></div>)}
+      </div>
+    </section>
+    <section aria-labelledby="care-instructions">
+      <h2 id="care-instructions">Care instructions</h2>
+      <div class="icon-grid care-grid">
+        {care.map(item => <div class="icon-item care-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d={item.path} />{item.temp && <text x="8" y="16" stroke="none" fill="currentColor" font-size="5">40°</text>}</svg><span>{item.label}</span></div>)}
+      </div>
+    </section>
+  </div>
+  <section class="block" aria-labelledby="ordering">
+    <h2 id="ordering">Specifications &amp; ordering information</h2>
+    <p>Stock colors are subject to confirmation. Production orders take 7–15 days; shipping time is quoted separately.</p>
+    <table><tbody>{rows.map(row => <tr><th scope="row">{row.label}</th><td>{row.value}</td></tr>)}</tbody></table>
+  </section>
+  {images.length > 0 && <section class="block" id="product-details"><h2>Product Details</h2><div class="detail-images">{images.map((img, index) => <picture class:list={{wide:index === 0}}>{img.webp && <source srcset={img.webp} type="image/webp" />}<img src={img.src} alt={img.alt} width="1200" height="1200" loading="lazy" decoding="async" /></picture>)}</div></section>}
+  <section class="block sample-section">
+    <h2>Start with a fabric sample</h2>
+    <p>{sampleNote}</p>
+    <p>Share your preferred color, quantity and end product. Review the sample’s appearance, stretch and sewing performance before confirming a bulk order.</p>
+    <a class="sample-button" href={`/contact/?sku=${encodeURIComponent(product.title)}`} data-rfq-open data-rfq-sku={product.title} data-rfq-intent="sample">Request Samples</a>
+  </section>
+  <section class="block"><h2>Frequently asked questions</h2>{faqs.map(item => <details><summary>{item.question}</summary><p>{item.answer}</p></details>)}</section>
+  <p class="color-note">Lighting and screens can affect the appearance of color and metallic shine. Please approve a physical sample before bulk production.</p>
+</section>
+<style>
+.buying-details{padding-block:40px 64px;color:#475569;line-height:1.7}.overview{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;border-block:1px solid #e2e8f0;padding-block:32px}h2{font-size:1.35rem;color:var(--color-primary,#0a2040);margin:0 0 24px;font-weight:700}.icon-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 14px}.icon-item{display:flex;align-items:center;flex-direction:column;gap:12px;text-align:center;font-size:.9rem;color:var(--color-primary,#0a2040)}.icon-circle{display:grid;place-items:center;border:1px solid #94a3b8;border-radius:50%;width:72px;height:72px}svg{width:38px;height:38px;fill:none;stroke:currentColor;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}.care-item{border:1px solid #e2e8f0;padding:16px 8px;justify-content:flex-start}.block{margin-top:48px}table{width:100%;border-collapse:collapse;font-size:.95rem}th,td{text-align:left;padding:14px 18px;border-bottom:1px solid #e2e8f0;overflow-wrap:anywhere}th{width:30%;font-weight:600;color:#0a2040}tr:nth-child(odd){background:#f8fafc}.detail-images{display:grid;grid-template-columns:1fr 1fr;gap:20px}.detail-images .wide{grid-column:1/-1}.detail-images img{width:100%;height:auto;display:block}.sample-section{background:#f8fafc;padding:28px;border-radius:12px}.sample-button{display:inline-block;background:var(--color-accent,#d4af37);color:#0a2040;padding:13px 26px;border-radius:6px;font-weight:700;text-decoration:none}details{border-bottom:1px solid #e2e8f0;padding:18px 0}summary{cursor:pointer;font-weight:600;color:#0a2040}.color-note{font-size:.9rem;margin-top:32px}a:focus-visible,summary:focus-visible{outline:3px solid #b78d22;outline-offset:4px}@media(max-width:900px){.overview{gap:28px;grid-template-columns:1fr 1fr}.overview>section:last-child{grid-column:1/-1}.care-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:600px){.overview{grid-template-columns:1fr;gap:32px}.overview>section:last-child{grid-column:auto}.care-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.buying-details{padding-block:24px 40px}.block{margin-top:32px}th,td{padding:12px 8px}th{width:36%}.sample-section{padding:20px}.detail-images{gap:12px}}
+</style>

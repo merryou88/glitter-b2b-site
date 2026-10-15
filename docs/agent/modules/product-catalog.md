@@ -41,7 +41,7 @@ requirement_docs:
 ## 关键调用关系
 - 列表页从 `allProducts` 生成卡片与筛选条件
 - 详情页用 `getStaticPaths()` 为每个产品生成静态页面
-- `ProductDetail` 统一承载产品正文、图库、FAQ 和 CTA
+- `ProductDetail` 统一承载产品正文、图库、FAQ 和 CTA；Full-Print 样板正文由 `FullPrintBuyingDetails.astro` 渲染，其他产品保留原布局
 
 ## 数据与状态
 - 当前产品数据数：18；`/products/` 当前展示 `performanceProducts` 中的 18 个产品
