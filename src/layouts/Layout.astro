@@ -326,11 +326,15 @@ const allStructuredData = structuredData
           window.addEventListener(eventName, loadAnalyticsOnInteraction, { once: true, passive: true });
         });
         window.addEventListener("load", function () {
-          if ("requestIdleCallback" in window) {
-            window.requestIdleCallback(loadAnalytics, { timeout: 10000 });
-          } else {
-            window.setTimeout(loadAnalytics, 10000);
-          }
+          // requestIdleCallback's timeout is a deadline, not a minimum delay.
+          // Wait first so the tag cannot compete with a slow mobile LCP image.
+          window.setTimeout(function () {
+            if ("requestIdleCallback" in window) {
+              window.requestIdleCallback(loadAnalytics, { timeout: 2000 });
+            } else {
+              loadAnalytics();
+            }
+          }, 10000);
         }, { once: true });
       })();
     </script>

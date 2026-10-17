@@ -292,3 +292,12 @@ status: current
 - 测试路径：`npm run build`；GA4 DebugView 使用 `?ga_debug=1` 手动点击验证
 - 最后变更编号：CHG-20261014-001-floating-contact-events
 - 待确认事项：GA4 中如需用于 Google Ads 转化，还需在 GA4 管理后台将相应事件标记为 Key event，并在 Google Ads 中导入。
+
+### REQ-SHELL-029：首页加载关键路径
+- 状态：active
+- 当前规则：生产构建将首页引用的本地 Astro CSS 内联到首页 HTML，消除首页样式阻塞网络往返；其他页面保留外部样式缓存。Analytics 在首次交互时加载，或在 load 事件后至少等待 10 秒再进入空闲调度，保留原有事件队列和归因。
+- 验收条件：首页生产 HTML 不含外部 stylesheet 请求，首屏图片预加载保留；无交互时 Analytics 不得在 10 秒延迟前加载；构建及产品/SEO 校验通过。
+- 代码路径：`scripts/inline-home-styles.mjs`、`package.json`、`src/layouts/Layout.astro`
+- 测试路径：`npm run build`；构建产物检查和统计脚本调度检查
+- 最后变更编号：CHG-20261017-001-mobile-loading-critical-path
+- 待确认事项：部署后需在相同 Lighthouse 手机节流条件下复测 LCP；本地构建结果不能替代线上性能结果。

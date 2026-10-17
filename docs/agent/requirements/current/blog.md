@@ -172,3 +172,15 @@ status: current
 - 测试路径：`npm run build`；手动检查桌面端和移动端任一 Blog 详情页
 - 最后变更编号：CHG-20261011-036-blog-detail-hero-spacing
 - 待确认事项：无
+
+
+### REQ-BLOG-018：布泳帽面料采购指南
+- 状态：active
+- 当前规则：公开博客包含 `How to Choose Fabric for Swim Caps: A Sourcing Guide`，限定为 sewn fabric/textile swim caps，区分硅胶、乳胶成型泳帽；覆盖底布规格、拉伸回复、接缝与帽口、样帽确认、水用与护理测试、批量放行记录和 RFQ。不得把烫金外观或应用推荐描述为防水、耐氯或 UV 性能证明。
+- 验收条件：`/blog/how-to-choose-fabric-for-swim-caps/` 与列表 Applications 入口可生成；正文含 3 张真实产品配图及准确图注、3 张采购表格、段落相关内链；推荐 2 款真实产品并分别说明泳帽打样与配套泳衣比较用途，不把后者描述为已验证泳帽用料；应用入口优先泳装；含 3 篇指定 Related Buyer Guides、FAQ、检查表及询盘入口。
+- 影响模块：`blog-knowledge`、`content-data`
+- 代码路径：`src/data/blogArticles.js`、`src/pages/blog/index.astro`、`src/pages/blog/[slug].astro`
+- 测试路径：`npm run build`；检查生成文章、列表、产品链接与 Article Schema
+- 内容表达：全文采用自然、直接的美式商务英语；产品事实仅依据当前产品资料，建议检查项不得描述为实测结果；不得编造性能、认证、客户案例或制造工艺结论。
+- 最后变更编号：CHG-20261017-004-swim-cap-illustrated-guide
+- 待确认事项：产品具体水用性能须以买家约定测试结果为准

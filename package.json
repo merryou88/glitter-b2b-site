@@ -5,7 +5,7 @@
   "description": "Nixia Fabric - China Stage and Performance Fabric Manufacturer B2B Website",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && npm run validate:products && npm run validate:seo",
+    "build": "astro build && node scripts/inline-home-styles.mjs && npm run validate:products && npm run validate:seo",
     "preview": "astro preview",
     "astro": "astro",
     "validate:products": "node scripts/validate-products.mjs",

@@ -27,7 +27,7 @@ const relatedProducts = article.focusProducts
   .map((slug) => performanceProducts.find((product) => product.slug === slug))
   .filter(Boolean)
   .slice(0, 4);
-const relatedGuides = blogArticles
+const automaticRelatedGuides = blogArticles
   .filter((item) => item.slug !== article.slug)
   .map((item) => {
     const sharedTags = item.tags.filter((tag) => article.tags.includes(tag)).length;
@@ -39,6 +39,12 @@ const relatedGuides = blogArticles
   .sort((a, b) => b.score - a.score)
   .slice(0, 3)
   .map((item) => item.article);
+const relatedGuides = article.relatedGuideSlugs
+  ? article.relatedGuideSlugs
+      .map((slug) => blogArticles.find((guide) => guide.slug === slug && guide.slug !== article.slug))
+      .filter(Boolean)
+      .slice(0, 3)
+  : automaticRelatedGuides;
 const applicationLinks = [
   {
     slug: "custom-foil-fabric-development",
@@ -90,6 +96,7 @@ const applicationLinks = [
   },
 ];
 const primaryApplicationByArticle = {
+  "how-to-choose-fabric-for-swim-caps": "swimwear-fabric-supplier",
   "nylon-spandex-vs-polyester-spandex-foil-fabric": "foil-fabric-for-stage-costumes",
   "holographic-fabric-for-dancewear-what-buyers-should-check": "holographic-fabric-wholesale",
   "iridescent-vs-metallic-fabric-for-stage-costumes": "foil-fabric-for-stage-costumes",
@@ -253,7 +260,7 @@ const faqSchema = {
               <h2>{sectionNav[index].label}</h2>
             </div>
             {section.image && (
-              <figure class="article-section__figure">
+              <figure class:list={["article-section__figure", { "article-section__figure--contain": section.imageFit === "contain" }]}>
                 <picture>
                   {section.imageWebp && <source srcset={section.imageWebp} type="image/webp" />}
                   <img src={section.image} alt={section.imageAlt ?? section.heading} loading="lazy" width="1200" height="900" />
@@ -282,6 +289,16 @@ const faqSchema = {
               </div>
             )}
             {section.callout && <div class="article-callout">{section.callout}</div>}
+            {section.links?.length > 0 && (
+              <ul class="article-section__links" aria-label="Related resources">
+                {section.links.map((link) => (
+                  <li>
+                    <a href={link.href}>{link.label}</a>
+                    {link.description && <span>{link.description}</span>}
+                  </li>
+                ))}
+              </ul>
+            )}
           </section>
         ))}
 
@@ -355,6 +372,7 @@ const faqSchema = {
                 <span class="related-product__body">
                   <strong>{product.title}</strong>
                   <small>{product.specs.width} · MOQ {productMoq(product)} · {product.stockStatus}</small>
+                  {article.productNotes?.[product.slug] && <span>{article.productNotes[product.slug]}</span>}
                 </span>
               </a>
             ))}
@@ -721,6 +739,37 @@ const faqSchema = {
     border-top: 1px solid var(--color-border);
     color: var(--color-text-muted);
     font-size: var(--text-sm);
+  }
+
+  .article-section__figure--contain img {
+    height: auto;
+    max-height: 560px;
+    aspect-ratio: auto;
+    object-fit: contain;
+  }
+
+  .article-section__links {
+    display: grid;
+    gap: var(--space-md);
+    margin: var(--space-lg) 0;
+    padding: var(--space-md) var(--space-lg);
+    border-left: 3px solid var(--color-accent);
+    background: var(--color-bg-alt);
+    list-style: none;
+  }
+
+  .article-section__links a {
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+  }
+
+  .article-section__links span {
+    display: block;
+    margin-top: var(--space-xs);
+    color: var(--color-text-secondary);
   }
 
   .article-section__bullets {

@@ -40,10 +40,13 @@ requirement_docs:
 - 详情页把 `focusProducts` 映射到产品数据，生成推荐产品卡，并按文章分类、标签和关联产品生成 Related Buyer Guides
 
 ## 数据与状态
-- 当前公开文章数：13
+- 当前公开文章数：23
 - 当前公开分类数：4
 - `buyerSummary` 只有部分文章有
 - `sectionNav` 由文章 headings 派生，不是手写目录
+- 可选 `sections[].links` 渲染段落相关资源链接，`imageFit: contain` 保留配图完整比例；既有图片裁剪默认不变
+- 可选 `relatedGuideSlugs` 明确指定最多 3 篇相关文章，未配置时继续自动匹配
+- 可选 `productNotes` 按产品 slug 在推荐卡展示选样用途说明
 
 ## 外部依赖
 - `Intl.DateTimeFormat`
