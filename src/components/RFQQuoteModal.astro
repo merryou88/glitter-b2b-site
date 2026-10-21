@@ -8,6 +8,11 @@
 import RfqQuoteForm from "@components/RfqQuoteForm.astro";
 import { performanceProducts } from "@data/allProducts";
 
+interface Props {
+  floatingOnly?: boolean;
+}
+const { floatingOnly = false } = Astro.props;
+
 const productLookup = performanceProducts.map((p) => ({
   name: p.title,
   weight: p.specs.weight,
@@ -15,8 +20,11 @@ const productLookup = performanceProducts.map((p) => ({
 }));
 ---
 
-<button class="rfq-floating-trigger" type="button" data-rfq-open aria-label="Request sample or quote" aria-haspopup="dialog" aria-controls="rfq-quote-modal">
-  <span aria-hidden="true">Q</span>
+<button class="rfq-floating-trigger" type="button" data-rfq-open aria-label="Open inquiry form" title="Open inquiry form" aria-haspopup="dialog" aria-controls="rfq-quote-modal">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <path d="M14 2H5a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+    <path d="M7 7h5M7 11h3M7 17v-3l9.5-9.5a2.12 2.12 0 0 1 3 3L10 17H7ZM15 6l3 3" />
+  </svg>
 </button>
 
 <div class="rfq-modal" id="rfq-quote-modal" aria-hidden="true">
@@ -82,10 +90,6 @@ const productLookup = performanceProducts.map((p) => ({
       border-radius: 50%;
       background: var(--color-accent);
       color: #fff;
-      font-family: var(--font-sans);
-      font-size: 26px;
-      font-weight: 700;
-      line-height: 1;
       box-shadow: 0 4px 16px rgba(189, 163, 72, 0.3);
       cursor: pointer;
     }
@@ -295,11 +299,11 @@ const productLookup = performanceProducts.map((p) => ({
   }
 </style>
 
-<script define:vars={{ productLookup }}>
+<script define:vars={{ productLookup, floatingOnly }}>
   const modal = document.getElementById("rfq-quote-modal");
   const floatingTrigger = document.querySelector(".rfq-floating-trigger");
   const modalWrap = modal?.querySelector(".rfq-modal__wrap");
-  const openers = Array.from(document.querySelectorAll("[data-rfq-open]"));
+  const openers = Array.from(document.querySelectorAll(floatingOnly ? ".rfq-floating-trigger" : "[data-rfq-open]"));
   const closers = Array.from(document.querySelectorAll("[data-rfq-close]"));
   const focusableSelector = [
     "a[href]",

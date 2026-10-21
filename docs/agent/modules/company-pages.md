@@ -44,7 +44,7 @@ requirement_docs:
 ## 关键调用关系
 - 所有页面都通过 `Layout` 包装
 - 多数页面共用 `CTAButton`
-- `thank-you` 是前端表单成功后的落地页
+- `thank-you` 是前端表单成功后的落地页；head 中注册 Google 转化事件，共享统计配置后立即发送，遵循统计 opt-out。
 
 ## 数据与状态
 - `privacy.astro` 有固定的 `lastUpdated = "August 2026"`

@@ -1,6 +1,7 @@
 ---
 change_id: CHG-20261011-033-unify-custom-project-moq-copy
-status: active
+status: superseded
+superseded_by: CHG-20261021-007-sitewide-stock-custom-moq
 ---
 
 # 统一 B2B 表格的 Custom projects MOQ 文案

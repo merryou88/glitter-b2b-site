@@ -1,7 +1,8 @@
 ---
 change_id: CHG-20261011-031-product-moq-yd-abbreviation
 date: 2026-10-11
-status: implemented
+status: superseded
+superseded_by: CHG-20261021-007-sitewide-stock-custom-moq
 requirements:
   - REQ-PRODUCT-042
 modules:

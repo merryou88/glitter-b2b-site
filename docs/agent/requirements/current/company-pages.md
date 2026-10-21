@@ -142,3 +142,11 @@ status: current
 - 测试路径：`npm run build`；检查 375px 和 768px `/about/` 视口
 - 最后变更编号：CHG-20261011-017-about-mobile-stats-grid
 - 待确认事项：无
+
+### REQ-COMPANY-015：感谢页 Google 转化事件
+- 状态：active
+- 当前规则：感谢页通过 head 插槽在 </head> 前放置用户指定的 ads_conversion__https_nixiafabric_com__1 事件；等待共享 gtag config 入队后每次页面加载发送一次。保留 noindex, follow。不增加 send_to 或未经提供的广告账号 ID。刷新或直接访问感谢页也会发送此页面事件。
+- 验收条件：构建通过；事件仅存在于感谢页 head，config 先于 event，opt-out 不发送事件。
+- 代码路径：`src/layouts/Layout.astro`、`src/pages/thank-you.astro`
+- 测试路径：`npm run build`；产物检查及脚本模拟
+- 最后变更编号：CHG-20261020-001-thank-you-google-conversion

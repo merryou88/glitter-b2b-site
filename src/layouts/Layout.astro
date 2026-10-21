@@ -39,6 +39,7 @@ export interface Props {
     fetchpriority?: string;
   }>;
   footerFocus?: "default" | "foil";
+  loadAnalyticsImmediately?: boolean;
 }
 
 const {
@@ -52,6 +53,7 @@ const {
   robots = "index, follow",
   preloadImages = [],
   footerFocus = "default",
+  loadAnalyticsImmediately = false,
 } = Astro.props;
 
 const siteName = "Nixia Fabric";
@@ -220,6 +222,7 @@ const allStructuredData = structuredData
 
     <!-- Astro view transitions (optional) -->
     <meta name="view-transition" content="same-origin" />
+    <slot name="head" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to content</a>
@@ -228,7 +231,7 @@ const allStructuredData = structuredData
       <slot />
     </main>
     <Footer focus={footerFocus} />
-    {!isHomePage && <RFQQuoteModal />}
+    <RFQQuoteModal floatingOnly={isHomePage} />
     <FloatingContact />
 
     <style>
@@ -248,8 +251,8 @@ const allStructuredData = structuredData
         top: 0;
       }
     </style>
-    <!-- Google tag (gtag.js), delayed until after first render -->
-    <script is:inline>
+    <!-- Google tag (gtag.js), delayed by default; conversion pages can load immediately -->
+    <script is:inline data-load-immediately={loadAnalyticsImmediately ? "true" : undefined}>
       (function () {
         window.dataLayer = window.dataLayer || [];
         window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
@@ -313,6 +316,11 @@ const allStructuredData = structuredData
           window.__nixiaAnalyticsReadyCallbacks.splice(0).forEach(function (callback) {
             callback();
           });
+        }
+
+        if (document.currentScript.getAttribute("data-load-immediately") === "true") {
+          loadAnalytics();
+          return;
         }
 
         var analyticsInteractionEvents = ["pointerdown", "keydown", "touchstart"];

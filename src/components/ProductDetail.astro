@@ -245,15 +245,7 @@ const findRowValue = (
   return rows.find((row) => aliases.has(normalizeLabel(row.label)))?.value ?? "";
 };
 
-const formatMoqYd = (value = "") => {
-  const moq = String(value).trim();
-  if (!moq) return "";
-  const dualUnitMatch = moq.match(/\b\d+\s*m\s*\/\s*(\d+)\s*yd\b/i);
-  if (dualUnitMatch) return moq.replace(dualUnitMatch[0], `${dualUnitMatch[1]} yd`);
-  if (/[a-z]/i.test(moq)) return moq;
-  const ydQuantity = Math.round(Number(moq) * 1.09361);
-  return `${ydQuantity || moq} yd`;
-};
+const formatMoq = (value = "") => String(value).trim();
 
 // Product Specifications follows the buyer's technical review order.
 const productSpecRows = [
@@ -276,7 +268,7 @@ const productSpecRows = [
   },
   { label: "Stretch", value: findRowValue(product.specTable, ["Stretch"]) },
   { label: "Color", value: findRowValue(product.specTable, ["Color"]) },
-  { label: "MOQ", value: formatMoqYd(findRowValue(product.specTable, ["MOQ"])) },
+  { label: "MOQ", value: formatMoq(findRowValue(product.specTable, ["MOQ"])) },
   { label: "Supply Type", value: findRowValue(product.specTable, ["Supply Type"]) },
   { label: "Yarn Count", value: findRowValue(product.specTable, ["Yarn Count"]) },
   { label: "Finishing", value: findRowValue(product.specTable, ["Finishing"]) },
@@ -292,10 +284,9 @@ const productSpecRows = [
 const b2bValue = (labels: string[]) => findRowValue(product.b2bTable, labels);
 const productWidth = findRowValue(product.specTable, ["Width"]) || product.specs.width;
 const productWeight = findRowValue(product.specTable, ["Weight"]) || product.specs.weight;
-const productMoq = formatMoqYd(
+const productMoq = formatMoq(
   findRowValue(product.specTable, ["MOQ"]) || b2bValue(["MOQ"]) || product.specs.moq,
 );
-const hasProductMoqOverride = product.slug === "iridescent-laser-hot-stamping-stretch-ice-silk";
 const productMaterial =
   findRowValue(product.specTable, ["Material", "Base Material", "Base Fabric"]) ||
   product.specs.baseMaterial;
@@ -333,7 +324,7 @@ const buyerConfirmationItems = [
   { title: "Hand-feel", value: productHandFeel },
   { title: "Width & Weight", value: `${productWidth}, ${productWeight}` },
   { title: "Color Options", value: availableColors },
-  { title: "MOQ", value: hasProductMoqOverride ? productMoq : `${productMoq} minimum` },
+  { title: "MOQ", value: productMoq },
   { title: "Sample Route", value: productSampleInfo },
   { title: "Availability", value: productAvailability },
   { title: "Roll Length", value: "50 m per standard roll" },
@@ -365,7 +356,7 @@ const referenceWhatsappMessage = [
 ].join("\n");
 const referenceWhatsappHref = `https://wa.me/8613616899303?text=${encodeURIComponent(referenceWhatsappMessage)}`;
 const relatedMoq = (rel: (typeof performanceProducts)[number]) =>
-  formatMoqYd(findRowValue(rel.specTable, ["MOQ"]) || findRowValue(rel.b2bTable, ["MOQ"]) || rel.specs.moq);
+  rel.inStock ? "50m" : "200m";
 
 // B2B Specifications follows the buyer's quote, approval and shipment order.
 const b2bRows = [
@@ -376,7 +367,7 @@ const b2bRows = [
   { label: "Availability", value: productAvailability },
   {
     label: "MOQ",
-    value: `Standard products: ${productMoq} minimum. Custom projects: MOQ to be confirmed based on customization requirements.`,
+    value: productMoq,
   },
   { label: "Supply Type", value: b2bValue(["Supply type", "Supply Type"]) },
   {
@@ -575,8 +566,7 @@ const heroVideo = product.video
         <div class="detail-offer-grid">
           <div class="detail-offer-card detail-offer-card--moq">
             <span class="detail-offer-card__label">MOQ</span>
-            <strong class="detail-offer-card__value">{isFullPrintHotStampingMilkSilk ? "109yd" : productMoq}</strong>
-            {!isFullPrintHotStampingMilkSilk && !hasProductMoqOverride && <span class="detail-offer-card__unit">Minimum</span>}
+            <strong class="detail-offer-card__value">{productMoq}</strong>
           </div>
           <div class="detail-offer-card detail-offer-card--lead">
             <span class="detail-offer-card__label">{dispatchLabel}</span>
@@ -1164,7 +1154,7 @@ const heroVideo = product.video
                 </span>
                 <h3>Order Planning</h3>
               </div>
-              <p>MOQ starts from {productMoq} with stock dispatch timing shown above.</p>
+              <p>MOQ: {productMoq}. See the dispatch timing above.</p>
             </div>
           </div>
         </div>

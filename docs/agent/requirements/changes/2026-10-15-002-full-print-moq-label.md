@@ -1,7 +1,8 @@
 ---
 change_id: CHG-20261015-002-full-print-moq-label
 date: 2026-10-15
-status: implemented
+status: superseded
+superseded_by: CHG-20261021-007-sitewide-stock-custom-moq
 requirements:
   - REQ-PRODUCT-050
 modules:

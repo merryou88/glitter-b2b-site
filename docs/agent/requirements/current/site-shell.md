@@ -165,12 +165,12 @@ status: current
 
 ### REQ-SHELL-017：Products 页目录首屏与产品卡片局部优化
 - 状态：active
-- 当前规则：仅 Products 页 Hero 压缩上下内边距，并使用标题 `Foil Fabrics for Dancewear & Performance Costumes`；Hero 描述文字铺满容器可用宽度，不使用窄栏最大宽度限制；Hero 与目录筛选区之间使用紧凑间距，目录结果行与产品网格之间也减少额外留白；保留原有深蓝渐变背景和其他 Hero 文字。Buyer Guide 三卡片位于产品网格之后，卡片样式、文字和颜色保持不变。首页不修改 Hero。首页前三张 Featured Foil Fabrics 卡片在移动端保留左侧缩略图并显示 `View Details →` 辅助链接。产品目录移动端完整显示 `95% Polyester 5% Spandex`，并在 In-Stock 标签旁显示 `✅ Free swatch card available`。
+- 当前规则：仅 Products 页 Hero 压缩上下内边距，桌面端顶部为 1rem（原 2rem），底部保持 1.5rem；移动端（≤768px）顶部内边距为 0.75rem（原 1.5rem），使 Performance Fabric Catalog 靠近导航栏，底部内边距保持 1rem；并使用标题 `Foil Fabrics for Dancewear & Performance Costumes`；标题下方在桌面和移动端均增加用户指定文案 `Direct factory pricing. Save up to 50% compared to US local retail. Free A4 swatches available for all styles.`，保留现有描述；Hero 四个特点按顺序显示 `Factory Direct Pricing`、`Free Swatches Available`、`MOQ: 50m Stock / 200m Custom`、`Custom Gradient & OEM Support`，桌面与移动端同步；Hero 描述文字铺满容器可用宽度，不使用窄栏最大宽度限制；产品目录不显示 Showing N products 数量提示，全端移除 Grid / List 切换及其操作行占位，固定网格展示；保留筛选、排序和空结果提示，Clear filters 置于桌面筛选栏内；桌面 Hero 与目录筛选框外边框直接贴齐，catalog 顶部 padding 为 0；移动端保留原标签栏顶部间距，目录结果行与产品网格之间也减少额外留白；移除整个 catalog-summary 操作容器，避免空容器占位，分类标签与首张产品卡之间仅保留标签栏底部 0.75rem 间距；保留原有深蓝渐变背景和其他 Hero 文字。Buyer Guide 三卡片位于产品网格之后，卡片样式、文字和颜色保持不变。首页不修改 Hero。首页前三张 Featured Foil Fabrics 卡片在移动端保留左侧缩略图并显示 `View Details →` 辅助链接。产品目录移动端完整显示 `95% Polyester 5% Spandex`，并在 In-Stock 标签旁显示 `✅ Free swatch card available`。
 - 验收条件：访问 `/products/` 时，压缩后的 Hero 显示指定短标题并直接进入产品目录；滚动经过产品列表后才出现 Buyer Guide 三卡片；Products 页桌面和移动端均满足该顺序；首页 Hero、其他页面和产品卡片既有样式不受影响。
 - 影响模块：`site-shell`、`product-catalog`
 - 代码路径：`src/pages/products.astro`、`src/pages/index.astro`、`src/styles/global.css`、`public/images/products/H2013120107/main/iridescent-laser-hot-stamping-stretch-ice-silk-main-1.webp`
 - 测试路径：`npm run build`；桌面与 375px/768px 视口手动检查首页和 `/products/`
-- 最后变更编号：CHG-20261011-009-products-catalog-compact-spacing
+- 最后变更编号：CHG-20261021-013-catalog-toolbar-flush-top
 - 待确认事项：当前源码未发现字面量 `<h2>Products</h2>`，因此仅保留可恢复的 CSS 选择器，不添加或删除该标题。
 
 ### REQ-SHELL-018：首页热销产品卡片移动端单列展示
@@ -295,9 +295,17 @@ status: current
 
 ### REQ-SHELL-029：首页加载关键路径
 - 状态：active
-- 当前规则：生产构建将首页引用的本地 Astro CSS 内联到首页 HTML，消除首页样式阻塞网络往返；其他页面保留外部样式缓存。Analytics 在首次交互时加载，或在 load 事件后至少等待 10 秒再进入空闲调度，保留原有事件队列和归因。
+- 当前规则：生产构建将首页引用的本地 Astro CSS 内联到首页 HTML，消除首页样式阻塞网络往返；其他页面保留外部样式缓存。Analytics 默认在首次交互时加载（感谢页按 REQ-SHELL-030 立即加载），或在 load 事件后至少等待 10 秒再进入空闲调度，保留原有事件队列和归因。
 - 验收条件：首页生产 HTML 不含外部 stylesheet 请求，首屏图片预加载保留；无交互时 Analytics 不得在 10 秒延迟前加载；构建及产品/SEO 校验通过。
 - 代码路径：`scripts/inline-home-styles.mjs`、`package.json`、`src/layouts/Layout.astro`
 - 测试路径：`npm run build`；构建产物检查和统计脚本调度检查
 - 最后变更编号：CHG-20261017-001-mobile-loading-critical-path
 - 待确认事项：部署后需在相同 Lighthouse 手机节流条件下复测 LCP；本地构建结果不能替代线上性能结果。
+
+### REQ-SHELL-030：页面 head 插槽与立即加载统计
+- 状态：active
+- 当前规则：Layout 提供 head 命名插槽和默认 false 的 loadAnalyticsImmediately 属性；感谢页设为 true，在共享统计脚本执行时立即配置 Google tag 并执行 ready callbacks；其他页面保留原延迟加载策略。nixia_ga_optout=true 时仍跳过加载及回调。
+- 验收条件：构建通过；事件仅存在于感谢页 head，config 先于 event，opt-out 不发送事件。
+- 代码路径：`src/layouts/Layout.astro`、`src/pages/thank-you.astro`
+- 测试路径：`npm run build`；产物检查及脚本模拟
+- 最后变更编号：CHG-20261020-001-thank-you-google-conversion

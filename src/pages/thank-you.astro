@@ -23,7 +23,18 @@ const breadcrumbData = {
   canonical="https://nixiafabric.com/thank-you/"
   robots="noindex, follow"
   structuredData={[breadcrumbData]}
+  loadAnalyticsImmediately={true}
 >
+  <script slot="head" is:inline>
+    // Queue the event until the shared Google tag has been configured.
+    window.__nixiaAnalyticsReadyCallbacks = window.__nixiaAnalyticsReadyCallbacks || [];
+    window.__nixiaAnalyticsReadyCallbacks.push(function () {
+      // Google tag (gtag.js) event
+      gtag('event', 'ads_conversion__https_nixiafabric_com__1', {
+        // <event_parameters>
+      });
+    });
+  </script>
   <section class="thank-you-page">
     <div class="container">
       <div class="thank-you-card">

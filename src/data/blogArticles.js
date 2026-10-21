@@ -376,7 +376,7 @@ const allBlogArticles = [
         { label: "Reference Specs", value: "59\" width, 160 GSM, 0.35-0.40mm thickness" },
         { label: "Stretch", value: "4-way stretch base for fitted performance garments" },
         { label: "Best Applications", value: "Dancewear, stage costumes, performance costumes and party/festival costumes" },
-        { label: "MOQ", value: "109 yd per stock design" },
+        { label: "MOQ", value: "50m" },
         { label: "Color Review", value: "22 stock colors; request color card or samples before bulk order" },
       ],
     },
@@ -431,7 +431,7 @@ const allBlogArticles = [
             ["Width", "59\"", "Affects cutting layout and material usage."],
             ["Weight", "160 GSM", "Helps estimate garment feel and bulk handling."],
             ["Thickness", "0.35-0.40mm", "Helps buyers judge sewing, layering and drape."],
-            ["MOQ", "109 yd per stock design", "Useful for sample-to-bulk planning."],
+            ["MOQ", "50m", "Useful for sample-to-bulk planning."],
             ["Sample", "Free sample; buyer covers international freight", "Lets buyers approve color, stretch and surface effect first."],
             ["Bulk Lead Time", "1-3 working days after payment and stock confirmation for orders <= 500 m / 547 yd; 7-15 working days when production is required", "Helps buyers plan launch dates and production windows."],
           ],
@@ -469,7 +469,7 @@ const allBlogArticles = [
           rows: [
             ["End product", "Shows how much stretch and shine the garment needs.", "Dance leotard, stage costume, festival outfit"],
             ["Target color", "Speeds up stock color matching or custom foil discussion.", "Silver, blue, pink, reference image"],
-            ["Estimated quantity", "Decides stock quote versus production quote.", "109 yd trial order or 500 m / 547 yd team costume order"],
+            ["Estimated quantity", "Decides stock quote versus production quote.", "50m trial order or 500 m / 547 yd team costume order"],
             ["Sample need", "Helps arrange color card or fabric sample first.", "Need sample before bulk order"],
             ["Destination", "Supports shipping and documentation planning.", "United States, EU, Middle East"],
             ["Timeline", "Shows whether stock dispatch or production scheduling is needed.", "Sample this week, bulk order next month"],
@@ -557,7 +557,7 @@ const allBlogArticles = [
         { label: "Search Intent", value: "Wholesale holographic fabric for stage costumes" },
         { label: "Best Fit", value: "Dancewear, stage costumes, fitted performance outfits" },
         { label: "Reference Width", value: "59\" on key stretch options" },
-        { label: "MOQ", value: "109 yd for many stock options" },
+        { label: "MOQ", value: "50m for many stock options" },
       ],
     },
     sections: [
@@ -574,7 +574,7 @@ const allBlogArticles = [
       {
         heading: "3. Confirm width, MOQ and stock status",
         body:
-          "For wholesale buying, width and MOQ directly affect costing. A 59\" fabric can improve cutting efficiency for many costume panels. MOQ such as 109 yd is also important when planning a first trial order or team costume production.\n\nStock fabric is the fastest route for urgent events, while custom colors or surface effects need more approval time.",
+          "For wholesale buying, width and MOQ directly affect costing. A 59\" fabric can improve cutting efficiency for many costume panels. MOQ such as 50m is also important when planning a first trial order or team costume production.\n\nStock fabric is the fastest route for urgent events, while custom colors or surface effects need more approval time.",
       },
       {
         heading: "4. Request samples before bulk order",
@@ -639,7 +639,7 @@ const allBlogArticles = [
         { label: "Plain Holographic", value: "Uniform reflective look for bold stage impact" },
         { label: "Iridescent Laser", value: "Multi-color shift that changes with viewing angle" },
         { label: "Gradient Foil", value: "Flowing color effect across the fabric surface" },
-        { label: "Common MOQ", value: "109 yd on many stock options" },
+        { label: "Common MOQ", value: "50m on many stock options" },
       ],
     },
     sections: [
@@ -713,14 +713,14 @@ const allBlogArticles = [
     intro:
       "Bodysuit buyers need fabric that stretches in both directions, recovers after movement and keeps the surface effect stable after sewing. The answer depends on whether the order uses stock material, custom color, custom pattern or a special backing. A clear sample-to-bulk plan helps buyers avoid delays and compare supplier quotes more fairly.",
     takeaways: [
-      "For many stock foil stretch fabrics, MOQ can start from 109 yd.",
+      "For many stock foil stretch fabrics, MOQ can start from 50m.",
       "Custom colors, print patterns or backing changes may require a higher project minimum.",
       "Samples should be approved before bulk production, especially for reflective surface effects.",
     ],
     buyerSummary: {
       heading: "Order planning basics",
       items: [
-        { label: "Stock MOQ", value: "Often starts from 109 yd" },
+        { label: "Stock MOQ", value: "Often starts from 50m" },
         { label: "Sample", value: "Used to confirm color, stretch and foil effect" },
         { label: "Custom Route", value: "MOQ depends on color, pattern, width and backing" },
         { label: "Best For", value: "Dancewear, stage costumes and performance outfits" },
@@ -740,7 +740,7 @@ const allBlogArticles = [
       {
         heading: "3. Confirm commercial details early",
         body:
-          "Ask for MOQ, available width, stock color options, sample timing, packing and estimated bulk lead time. For example, a buyer may compare 109 yd trial order options before committing to larger team costume production.",
+          "Ask for MOQ, available width, stock color options, sample timing, packing and estimated bulk lead time. For example, a buyer may compare 50m trial order options before committing to larger team costume production.",
       },
       {
         heading: "4. Give suppliers enough RFQ context",
@@ -750,7 +750,7 @@ const allBlogArticles = [
     ],
     decisionChecklist: [
       "Ask whether the fabric is stock or custom",
-      "Confirm MOQ in yd and share any internal meter conversion separately",
+      "Confirm MOQ in meters and include any yard conversion your team needs",
       "Approve a physical sample before bulk production",
       "Share application, quantity, color target and delivery timing in the first RFQ",
     ],
@@ -761,7 +761,7 @@ const allBlogArticles = [
       {
         question: "What is the MOQ for foil spandex fabric?",
         answer:
-          "Many stock options start around 109 yd, while custom projects may require a higher minimum depending on the requirement.",
+          "In-stock products have a 50m MOQ; made-to-order and custom products have a 200m MOQ.",
       },
       {
         question: "Should I approve a sample before ordering bulk fabric?",
@@ -806,7 +806,7 @@ const allBlogArticles = [
       items: [
         { label: "End Product", value: "Leotard, skirt panel, team outfit or stage costume" },
         { label: "Key Spec", value: "Stretch, recovery, width, weight and surface effect" },
-        { label: "MOQ", value: "Use 109 yd as a common stock-order reference" },
+        { label: "MOQ", value: "Use 50m as a common stock-order reference" },
         { label: "Sample Review", value: "Color, hand feel, sewing and stage lighting" },
       ],
     },
@@ -819,7 +819,7 @@ const allBlogArticles = [
       {
         heading: "2. Ask for technical details",
         body:
-          "A useful quotation should include width, weight, base material, stretch, MOQ, stock status and sample timing. For US buyers, dual units such as 59\" and 109 yd make internal planning easier.",
+          "A useful quotation should include width, weight, base material, stretch, MOQ, stock status and sample timing. For US buyers, specifications such as 59\" width and a 50m stock MOQ make internal planning easier.",
       },
       {
         heading: "3. Compare stock and custom options",
@@ -1085,7 +1085,7 @@ const allBlogArticles = [
       "Learn how to calculate fabric MOQ in yards and meters, convert common quantities and plan trial orders for wholesale fabric sourcing.",
     metaTitle: "Fabric MOQ: Yards and Meters | Nixia Fabric",
     metaDesc:
-      "Calculate fabric MOQ in yards and meters for wholesale sourcing. Includes 109 yd and 500 m / 547 yd planning examples.",
+      "Calculate fabric MOQ in yards and meters for wholesale sourcing. Includes 50m and 500 m / 547 yd planning examples.",
     focusProducts: [
       "full-print-hot-stamping-spandex-milk-silk",
       "iridescent-laser-hot-stamping-stretch-ice-silk",
@@ -1182,7 +1182,7 @@ const allBlogArticles = [
     takeaways: [
       "Gradient direction and garment panel placement should be reviewed before bulk cutting.",
       "4-way stretch is useful for fitted performance apparel and movement-based designs.",
-      "The confirmed reference MOQ is 109 yd for the current product data.",
+      "The confirmed reference MOQ is 200m for the current product data.",
     ],
     buyerSummary: {
       heading: "Product sourcing notes",
@@ -1190,7 +1190,7 @@ const allBlogArticles = [
         { label: "Surface", value: "Blue-purple gradient laser foil" },
         { label: "Base", value: "98% Polyester 2% Spandex" },
         { label: "Width", value: "59\"" },
-        { label: "MOQ", value: "109 yd" },
+        { label: "MOQ", value: "200m" },
       ],
     },
     sections: [
@@ -1207,7 +1207,7 @@ const allBlogArticles = [
       {
         heading: "3. Review specifications before quotation",
         body:
-          "Key confirmed details include 59\" width, 180 GSM weight and 109 yd MOQ. If the project needs custom color development, confirm timing and minimums before sampling.",
+          "Key confirmed details include 59\" width, 180 GSM weight and 200m MOQ. If the project needs custom color development, confirm timing and minimums before sampling.",
       },
       {
         heading: "4. Use samples for final approval",
@@ -1218,7 +1218,7 @@ const allBlogArticles = [
     decisionChecklist: [
       "Confirm gradient direction and garment panel use",
       "Check 4-way stretch and recovery from a physical sample",
-      "Use 59\" width and 109 yd MOQ for initial planning",
+      "Use 59\" width and 200m MOQ for initial planning",
       "Ask about custom color development if the blue-purple tone needs adjustment",
     ],
     ctaHeading: "Need to request fabric samples from China?",
@@ -1228,7 +1228,7 @@ const allBlogArticles = [
       {
         question: "What is the MOQ for this blue-purple gradient foil fabric?",
         answer:
-          "The confirmed MOQ in the current product data is 109 yd.",
+          "The confirmed MOQ in the current product data is 200m.",
       },
       {
         question: "Does this fabric have 4-way stretch?",
@@ -1274,7 +1274,7 @@ const allBlogArticles = [
         { label: "Common Width", value: "59\"" },
         { label: "Alternate Width", value: "57\" on selected foil knit" },
         { label: "Weight Range", value: "130-180 GSM across current examples" },
-        { label: "MOQ Planning", value: "109 yd for many stock items" },
+        { label: "MOQ Planning", value: "50m for many stock items" },
       ],
     },
     sections: [
@@ -1513,7 +1513,7 @@ const allBlogArticles = [
       items: [
         { label: "Ready Stock", value: "Faster sampling and simpler trial orders" },
         { label: "Custom", value: "Better control over color, pattern, width or backing" },
-        { label: "MOQ", value: "Stock can start from 109 yd on many items" },
+        { label: "MOQ", value: "Stock can start from 50m on many items" },
         { label: "Risk Control", value: "Physical approval sample before bulk order" },
       ],
     },
@@ -1531,7 +1531,7 @@ const allBlogArticles = [
       {
         heading: "3. Compare MOQ and timing",
         body:
-          "Stock orders may allow a lower starting MOQ such as 109 yd. Custom projects can require higher minimums and longer sampling because the supplier needs to test color, base and finish before bulk production.",
+          "Stock orders may allow a lower starting MOQ such as 50m. Custom projects have a 200m MOQ and can require longer sampling because the supplier needs to test color, base and finish before bulk production.",
       },
       {
         heading: "4. Keep sample approval clear",
@@ -1587,7 +1587,7 @@ const allBlogArticles = [
       "A clear RFQ helps suppliers respond faster and recommend the right foil fabric. US buyers often need both metric and familiar units, a clear application, sample request and delivery timeline. The more complete the first message is, the fewer rounds are needed before quotation.",
     takeaways: [
       "Include end product, quantity, color target, destination and target delivery date.",
-      "Ask for width and MOQ in dual units such as 59\" and 109 yd.",
+      "Ask for specifications such as 59\" width and a 50m stock MOQ.",
       "State whether you need stock fabric, custom development, samples or testing support.",
     ],
     buyerSummary: {
@@ -1608,7 +1608,7 @@ const allBlogArticles = [
       {
         heading: "2. Share quantity and units clearly",
         body:
-          "Write the estimated quantity in a way both teams understand. For example, 109 yd trial order or 500 m / 547 yd bulk order gives a clearer planning reference than a vague small order.",
+          "Write the estimated quantity in a way both teams understand. For example, 50m trial order or 500 m / 547 yd bulk order gives a clearer planning reference than a vague small order.",
       },
       {
         heading: "3. Include color and sample needs",
@@ -1753,7 +1753,7 @@ const allBlogArticles = [
         { label: "Material Route", value: "Sparkle glitter surface on PET + PU leather texture" },
         { label: "Reference Specs", value: "55\" width, 200 GSM weight, about 0.6mm thickness" },
         { label: "Best Applications", value: "Bags, shoes, notebook covers, DIY materials, decoration and accessories" },
-        { label: "MOQ", value: "109 yd for this item" },
+        { label: "MOQ", value: "50m for this item" },
         { label: "Sample Review", value: "Check color, cutting edge, backing feel, surface shedding and bonding route" },
         { label: "RFQ Basics", value: "Application, quantity, color target, destination, timing and testing needs" },
       ],
@@ -1798,7 +1798,7 @@ const allBlogArticles = [
             ["Thickness", "About 0.6mm", "Affects folding, stitching, gluing and edge finishing."],
             ["Texture", "PET + PU leather", "Confirms this is a structured glitter leather route, not a stretch fabric."],
             ["Technology", "Dusting powder", "Creates the sparkle surface and should be sample-checked for shedding and consistency."],
-            ["MOQ", "109 yd", "Useful for sample-to-bulk planning and first purchase decisions."],
+            ["MOQ", "50m", "Useful for sample-to-bulk planning and first purchase decisions."],
           ],
         },
       },
@@ -1858,7 +1858,7 @@ const allBlogArticles = [
           headers: ["RFQ Detail", "Why It Helps", "Example"],
           rows: [
             ["Application", "Lets the factory judge whether glitter leather is suitable.", "Notebook cover, shoe upper, bag panel, hair bow"],
-            ["Quantity", "Decides stock quote versus production quote.", "109 yd trial order or 500 m / 547 yd bulk order"],
+            ["Quantity", "Decides stock quote versus production quote.", "50m trial order or 500 m / 547 yd bulk order"],
             ["Color target", "Speeds up stock matching or custom color discussion.", "Pink glitter, gold glitter, black glitter, reference photo"],
             ["Destination", "Helps discuss shipping and possible documentation needs.", "United States, EU, Middle East"],
             ["Timing", "Shows whether stock dispatch or production scheduling is required.", "Sample this week, bulk order next month"],
@@ -2212,7 +2212,7 @@ const allBlogArticles = [
       "A practical RFQ checklist for US buyers sourcing foil stretch fabric from China, including samples, MOQ, units, shipping and approval details.",
     metaTitle: "China Foil Fabric Supplier for US Buyers | Nixia Fabric",
     metaDesc:
-      "RFQ checklist for US buyers sourcing foil fabric from China: sample terms, yd MOQ, width, lead time, shipping and custom options.",
+      "RFQ checklist for US buyers sourcing foil fabric from China: sample terms, MOQ in meters, width, lead time, shipping and custom options.",
     focusProducts: [
       "rainbow-iridescent-laser-foil-nylon-spandex-fabric",
       "plain-iridescent-laser-spandex-4-way-stretch",
@@ -2225,7 +2225,7 @@ const allBlogArticles = [
     intro:
       "US buyers sourcing foil fabric from China can save time by sending the commercial details a factory needs in the first message. A clear RFQ helps separate ready-stock options from custom production and makes sample, shipping and quotation terms easier to compare.",
     takeaways: [
-      "Use yd MOQ consistently when discussing product minimums with US purchasing teams.",
+      "Plan for 50m on in-stock products and 200m on made-to-order or custom products.",
       "Separate product price, sample cost, international freight and destination charges.",
       "Request a physical sample before approving a bulk color or surface effect.",
       "Include the destination, quantity and timeline so the factory can quote a practical route.",
@@ -2239,7 +2239,7 @@ const allBlogArticles = [
       {
         heading: "2. Ask for the same units your team uses",
         body:
-          "Many textile suppliers quote in meters while US buyers may plan in yards. For Nixia Fabric product pages, MOQ is shown in yd, such as 109 yd, so quotation review stays consistent. If your internal purchasing sheet uses meters, share that conversion separately in the RFQ.",
+          "Many textile suppliers quote in meters while US buyers may plan in yards. Nixia Fabric lists MOQ in meters: 50m for in-stock products and 200m for made-to-order or custom products. If your team plans in yards, include the converted quantity in your RFQ alongside the meter quantity.",
       },
       {
         heading: "3. Clarify samples, freight and timing",
@@ -3433,7 +3433,7 @@ const allBlogArticles = [
       },
       {
         "heading": "8. Confirm sample availability and order terms",
-        "body": "Nixia’s full-print foil stretch fabric is listed with a 95% polyester and 5% spandex base, a weight of 160 GSM, four-way stretch, and 22 stock colors. The product page includes swimwear and swim caps among its listed applications. Suitability for your cap still needs to be confirmed through sample evaluation and any required testing.\n\nThe listed minimum order quantity is 109 yards per design. Stock samples are listed as free, with preparation in 1–3 business days; the buyer pays international shipping. Confirm current color availability, sample dimensions, shipping charges, and order terms before proceeding. Sample preparation time does not include transit time.\n\nIf you plan to use the fabric for a matching swimsuit and cap, evaluate each item separately and compare the finished samples together. Base the fabric order on the approved cutting layout, size mix, and allowances for cutting waste, sampling, and testing.\n\nFor the swimsuit in a coordinated collection, you can also compare the gold rainbow gradient metallic foil fabric listed below. Its product specifications are 80% nylon and 20% spandex, 200 GSM, and a 219-yard minimum order quantity. It is listed for swimwear; the listing does not confirm suitability for swim caps. Evaluate each fabric for its own intended application.",
+        "body": "Nixia’s full-print foil stretch fabric is listed with a 95% polyester and 5% spandex base, a weight of 160 GSM, four-way stretch, and 22 stock colors. The product page includes swimwear and swim caps among its listed applications. Suitability for your cap still needs to be confirmed through sample evaluation and any required testing.\n\nThe listed minimum order quantity is 50m Stock / 200m Custom. Stock samples are listed as free, with preparation in 1–3 business days; the buyer pays international shipping. Confirm current color availability, sample dimensions, shipping charges, and order terms before proceeding. Sample preparation time does not include transit time.\n\nIf you plan to use the fabric for a matching swimsuit and cap, evaluate each item separately and compare the finished samples together. Base the fabric order on the approved cutting layout, size mix, and allowances for cutting waste, sampling, and testing.\n\nFor the swimsuit in a coordinated collection, you can also compare the gold rainbow gradient metallic foil fabric listed below. Its product specifications are 80% nylon and 20% spandex, 200 GSM, and a minimum order quantity of 50m Stock / 200m Custom. It is listed for swimwear; the listing does not confirm suitability for swim caps. Evaluate each fabric for its own intended application.",
         "image": "/images/products/H2013060101/main/full-print-hot-stamping-spandex-milk-silk-main-3.webp",
         "imageWebp": "/images/products/H2013060101/main/full-print-hot-stamping-spandex-milk-silk-main-3.webp",
         "imageAlt": "Labeled color samples of full-print metallic foil stretch fabric",
@@ -3468,8 +3468,8 @@ const allBlogArticles = [
             ],
             [
               "Minimum order quantity",
-              "109 yd per design",
-              "219 yd"
+              "50m Stock / 200m Custom",
+              "50m Stock / 200m Custom"
             ],
             [
               "Approval required",

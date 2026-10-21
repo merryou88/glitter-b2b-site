@@ -177,7 +177,7 @@ status: current
 ### REQ-PRODUCT-022：产品列表页采用 B2B 采购型目录布局
 - 状态：active
 - 当前规则：`/products/` 以美国面料采购商的比较需求组织信息，首屏展示采购摘要，目录区提供关键词搜索、Finish、Stretch、Application、Stock、排序控件和 Grid/List 视图切换；产品卡片必须直接展示宽幅、克重、底材、MOQ、库存状态、颜色数量和主要应用场景。
-- 验收条件：采购商无需进入详情页即可比较核心规格；搜索和筛选能联动更新结果数量；Grid 视图继续使用 1:1 产品图，List 视图可横向比较规格；询盘按钮文案为 `Request Sample / Quote`；页面不新增价格或虚构规格。
+- 验收条件：采购商无需进入详情页即可比较核心规格；搜索和筛选能联动更新结果数量；产品固定网格展示并使用 1:1 产品图，不再提供 List 视图；询盘按钮文案为 `Request Sample / Quote`；页面不新增价格或虚构规格。
 - 影响模块：`product-catalog`
 - 代码路径：`src/pages/products.astro`
 - 测试路径：`npm run build`；手动检查 `/products/` 搜索、筛选、排序和移动端布局
@@ -266,13 +266,13 @@ status: current
 
 ### REQ-PRODUCT-031：H2013120101 公开产品页聚焦彩虹幻彩金属箔四面弹面料
 - 状态：active
-- 当前规则：`rainbow-iridescent-laser-foil-nylon-spandex-fabric` 是 H2013120101 的公开详情页，标题及相关命名以用户 2026-10-12 的纠正为准，其余产品事实必须以 `面料独立站产品数据.xlsx` 的 `Independent Site Product Data` sheet 中 H2013120101 行为准。H1 使用 `Rainbow Iridescent Foil 4-Way Stretch Spandex Fabric`，SEO 数据标题使用 `Rainbow Iridescent Foil 4-Way Stretch Spandex`，站点自动追加品牌后缀以保持总长度不超过 60 字符，Meta Description、正文、图片 alt、标签、FAQ 和 CTA 同步去除错误的 Laser / Nylon 命名，底材使用已确认的 Polyester-Spandex；应用和规格以表格为准。保留现有 slug 和图片路径以兼容已收录链接。产品规格只能使用已确认数据：59"、180 GSM、MOQ 109 yd、15 colors、4-way stretch、110T、75D*70D、hot-stamping foil、hot-stamping foil construction 和 92% Polyester 8% Spandex。库存、测试合规和贸易条款未在来源数据确认时保持 `To be confirmed` 或项目确认表述。
+- 当前规则：`rainbow-iridescent-laser-foil-nylon-spandex-fabric` 是 H2013120101 的公开详情页，标题及相关命名以用户 2026-10-12 的纠正为准，其余产品事实必须以 `面料独立站产品数据.xlsx` 的 `Independent Site Product Data` sheet 中 H2013120101 行为准。H1 使用 `Rainbow Iridescent Foil 4-Way Stretch Spandex Fabric`，SEO 数据标题使用 `Rainbow Iridescent Foil 4-Way Stretch Spandex`，站点自动追加品牌后缀以保持总长度不超过 60 字符，Meta Description、正文、图片 alt、标签、FAQ 和 CTA 同步去除错误的 Laser / Nylon 命名，底材使用已确认的 Polyester-Spandex；应用和规格以表格为准。保留现有 slug 和图片路径以兼容已收录链接。产品规格只能使用已确认数据：59"、180 GSM、MOQ 50m Stock / 200m Custom、15 colors、4-way stretch、110T、75D*70D、hot-stamping foil、hot-stamping foil construction 和 92% Polyester 8% Spandex。库存以用户 2026-10-21 确认为有现货（inStock: true，In-Stock），采用免费现货样品政策；不将 15 色全部视为已确认库存色。测试合规和贸易条款未在来源数据确认时保持 `To be confirmed` 或项目确认表述。
 - 验收条件：详情页可生成并显示 Key Features、Recommended Applications、Why Choose、Ready Stock & Custom Development、Sample CTA 和 FAQ；主图读取 `public/images/products/H2013120101/main/a1.webp` 至 `a5.webp`；详情图连续读取 `x1.webp` 至 `x12.webp`；应用拼图独立读取 `application/1.webp`；PNG 原图归档到 `products-data/original-images/images/products/H2013120101/`，线上目录只保留 WebP 展示图；主图首张 WebP 不加水印，其余主图和详情图 WebP 添加 3 个低透明度、逆时针 45 度倾斜域名水印；应用图不加水印；`Specifications Table for B2B Buyers` 前不出现独立 `Product Description` 模块。
 - 影响模块：`product-catalog`、`content-data`、`inquiry-forms`
 - 代码路径：`src/data/allProducts.js`、`src/components/ProductDetail.astro`、`public/images/products/H2013120101/`、`products-data/original-images/images/products/H2013120101/`
 - 测试路径：`npm run validate:products`、`npm run build`，手动检查 `/products/rainbow-iridescent-laser-foil-nylon-spandex-fabric/`
-- 最后变更编号：CHG-20261012-001-h2013120101-title-correction
-- 待确认事项：库存状态、测试合规、贸易条款和上线后 Search Console/GA4/RFQ 归因需按项目确认
+- 最后变更编号：CHG-20261021-008-h2013120101-in-stock
+- 待确认事项：测试合规、贸易条款和上线后 Search Console/GA4/RFQ 归因需按项目确认
 
 ### REQ-PRODUCT-032：H2013120103 公开产品页聚焦渐变彩虹点箔针织提花面料
 - 状态：active
@@ -397,12 +397,12 @@ status: current
 
 ### REQ-PRODUCT-040：移动端产品目录使用应用标签过滤
 - 状态：active
-- 当前规则：`/products/` 在 `max-width: 768px` 下隐藏关键词搜索、Finish、Stretch、Application、Stock、Sort 控件以及 Grid/List 视图切换；移动端直接显示四个应用标签 `Dancewear`、`Stage Costumes`、`Performance Apparel`、`Swimwear`，点击标签过滤产品卡片。移动端产品卡固定使用网格卡片布局；桌面端现有搜索、筛选、排序和 Grid/List 能力保持不变。
+- 当前规则：`/products/` 在 `max-width: 768px` 下隐藏关键词搜索、Finish、Stretch、Application、Stock、Sort 控件以及 Grid/List 视图切换；移动端直接显示四个应用标签 `Dancewear`、`Stage Costumes`、`Performance Apparel`、`Swimwear`，首次进入移动端默认选中 Dancewear（金色高亮，aria-pressed=true），并实际过滤 Dancewear 产品；点击其他标签切换过滤，点击当前标签可取消筛选。跨越断点进入桌面时清除移动标签筛选，回到移动端默认选中 Dancewear。移动端产品卡固定使用网格卡片布局；桌面端保留搜索、筛选和排序，全端移除 Grid/List 切换并固定网格展示。
 - 验收条件：375px、390px 和 768px 视口下不显示搜索框、下拉筛选或 Grid/List 切换；四个应用标签可点击并更新产品数量和卡片结果；再次点击当前标签可恢复全部产品；产品卡保持网格展示。
 - 影响模块：`product-catalog`
 - 代码路径：`src/pages/products.astro`
 - 测试路径：`npm run build`；手动检查 `/products/` 在 375px、390px、768px 和桌面视口下的筛选与卡片布局
-- 最后变更编号：CHG-20261011-014-mobile-products-application-tabs
+- 最后变更编号：CHG-20261021-010-mobile-default-dancewear
 - 待确认事项：Performance Apparel 标签覆盖产品数据中的 `Performance Wear`、`Performance Outfits`、`Performance Apparel` 和 `Performance Dress` 应用名称。
 
 ### REQ-PRODUCT-041：公开产品 Weight 单位统一使用 GSM
@@ -415,14 +415,14 @@ status: current
 - 最后变更编号：CHG-20261011-024-product-weight-gsm-unit
 - 待确认事项：历史备份文件和站外 outreach 计划文档不属于当前公开页面展示链路，暂不要求同步。
 
-### REQ-PRODUCT-042：公开产品 MOQ 统一使用 yd 展示
+### REQ-PRODUCT-042：全站 MOQ 按库存状态使用米数
 - 状态：active
-- 当前规则：公开产品的 MOQ 对外只使用 `yd` 缩写展示，例如 `109 yd`、`219 yd`；不再在产品列表、产品详情页、首页产品精选、规格表、FAQ、产品摘要、相关产品卡、公开博客产品参考或旧版产品摘要数据中展示 `100 m / 109 yd`、`200 m / 219 yd` 等双单位 MOQ，也不使用长写法。产品宽幅、卷长、交期条件或非 MOQ 数量说明不属于本规则范围。
-- 验收条件：公开产品数据、旧版产品摘要数据、首页产品精选、产品目录页、产品详情页和公开博客产品参考中不再出现 MOQ 双单位写法；纯数字 MOQ 会在页面渲染时按米数换算为 `yd` 展示；长写法统一为 `109 yd` 这类 `yd` 格式；颜色或设计维度的限定可保留为 `per colorway`、`per design`。
+- 当前规则：以现有 inStock 状态为准：有现货产品起订量为 `50m`，详情页参数、描述、FAQ 与 SEO 中统一为 `50m Stock / 200m Custom`；无现货产品统一为 `200m`。首页、列表和相关产品卡显示现货 `50m`、无现货 `200m`。博客产品引用、旧版摘要与询盘示例同步；不改变库存状态，不再自动换算为 yd。最新用户指令覆盖原始产品表的旧 MOQ，原始表不修改。
+- 验收条件：18 款产品中 9 款现货、9 款无现货；参数、描述、B2B 表、FAQ、元数据及推荐内容无旧 MOQ 冲突；非 MOQ 的宽度、卷长和数量换算不受影响。
 - 影响模块：`product-catalog`、`content-data`
 - 代码路径：`src/data/allProducts.js`、`src/data/products.json`、`src/data/productDecisionGuides.js`、`src/data/blogArticles.js`、`src/pages/index.astro`、`src/pages/products.astro`、`src/components/ProductDetail.astro`、`src/components/ContactForm.astro`、`src/components/RfqQuoteForm.astro`
 - 测试路径：定向文本扫描、`npm run validate:products`、`npm run build`
-- 最后变更编号：CHG-20261011-031-product-moq-yd-abbreviation
+- 最后变更编号：CHG-20261021-007-sitewide-stock-custom-moq
 - 待确认事项：无
 
 ### REQ-PRODUCT-043：公开产品 Width 只使用 inch 写法
@@ -455,14 +455,14 @@ status: current
 - 最后变更编号：CHG-20261011-032-composition-format-no-slash
 - 待确认事项：无
 
-### REQ-PRODUCT-046：B2B 表格 Custom projects MOQ 统一文案
+### REQ-PRODUCT-046：B2B MOQ 与库存规则一致
 - 状态：active
-- 当前规则：所有公开产品详情页 `Specifications Table for B2B Buyers` 的 MOQ 行，`Custom projects` 部分统一显示为 `MOQ to be confirmed based on customization requirements.`，不再使用具体产品自定义 MOQ 数值。
-- 验收条件：所有公开产品详情页 B2B 表格的 MOQ 行均包含统一的 `Custom projects: MOQ to be confirmed based on customization requirements.` 文案；标准产品 MOQ 数值保持不变。
+- 当前规则：所有产品详情页 B2B Specifications Table 的 MOQ 行与产品规格一致：有现货 `50m Stock / 200m Custom`，无现货 `200m`；不再用定制 MOQ 待确认文案覆盖已确认门槛。
+- 验收条件：18 个详情页的 B2B MOQ 与产品参数一致。
 - 影响模块：`product-catalog`
 - 代码路径：`src/components/ProductDetail.astro`
 - 测试路径：`npm run validate:products`、`npm run build`，检查生成的产品详情页 HTML
-- 最后变更编号：CHG-20261011-033-unify-custom-project-moq-copy
+- 最后变更编号：CHG-20261021-007-sitewide-stock-custom-moq
 - 待确认事项：无
 
 ### REQ-PRODUCT-047：移动端产品卡片库存提示样式统一
@@ -497,10 +497,26 @@ status: current
 
 ### REQ-PRODUCT-050：Full-Print 产品采购详情样板
 - 状态：active
-- 当前规则：仅 `full-print-hot-stamping-spandex-milk-silk` 使用精简采购详情；产品显示标题为 `Metallic Foil 4-Way Stretch Fabric for Swimwear`，保留原slug；主图库仅保留图1至图5，已删除的图6、图7不再配置；详情图保持原配置。首屏介绍按面料与工艺、160 GSM及59英寸规格、四面弹与光泽特点、客户应用、22种现货色与定制颜色的顺序描述；规格摘要不显示SKU。首屏展示用途、幅宽、克重、颜色、MOQ与生产交期，分别提供带产品上下文的 quote/sample RFQ 入口。该产品首屏 MOQ 卡片仅显示 `MOQ` 和 `109yd`，不显示 `per design` 或 `Minimum`。该产品交期卡片仅展示 `LEAD TIME` 和 `7-15 days`，不显示 `production`。下方以原创 SVG 线条图标展示四面弹、烫金光泽、柔软手感、定制颜色，以及泳衣、泳帽、舞蹈服、舞台服和表演服饰紧身裤（Costume leggings）、派对吊带裙（Party slip dresses）用途；首屏介绍也补充Costume leggings和Party slip dresses作为可选用途，不表述为已有客户使用事实或运动健身性能承诺；用途图标区标题为 `Recommended Uses`；FAQ保留4条：抗氯/UV性能是否验证、烫金反复拉伸洗涤表现、定制样品确认、如何报价；未确认的性能明确无已验证测试结果，建议按实际成衣与护理流程测试样品；用户确认定制订单须客户确认样品后才开始大货；用途、MOQ、现货样品政策、通用定制范围、检测服务、库存和交期不重复为FAQ；该产品跳过通用FAQ自动补充，页面和FAQ结构化数据保持一致；用途图标按Swimwear、Swim caps、Dancewear、Stage costumes、Costume leggings、Party slip dresses排序，应用数据同步优先顺序，以已确认的泳装客户用途优先，不作为市场规模排名；护理采用用户确认的40°C机洗、低温滚筒烘干、低温熨烫、可干洗、不可漂白。合并重复规格和采购说明，保留详情图片、样品入口和FAQ。该产品成分由用户确认为95%涤纶、5%氨纶，首屏介绍、Fabric features及规格表的Composition和Base Material均展示此成分，Base Material不再显示Milk-silk；不得增加未确认的耐氯、UV等性能承诺。
+- 当前规则：仅 `full-print-hot-stamping-spandex-milk-silk` 使用精简采购详情；产品显示标题为 `Metallic Foil 4-Way Stretch Fabric for Swimwear`，保留原slug；主图库仅保留图1至图5，已删除的图6、图7不再配置；详情图保持原配置。首屏介绍按面料与工艺、160 GSM及59英寸规格、四面弹与光泽特点、客户应用、22种现货色与定制颜色的顺序描述；规格摘要不显示SKU。首屏展示用途、幅宽、克重、颜色、MOQ与生产交期，分别提供带产品上下文的 quote/sample RFQ 入口。该产品首屏 MOQ 卡片仅显示 `MOQ` 和 `50m Stock / 200m Custom`，不显示 `per design` 或 `Minimum`。该产品交期卡片仅展示 `LEAD TIME` 和 `7-15 days`，不显示 `production`。下方以原创 SVG 线条图标展示四面弹、烫金光泽、柔软手感、定制颜色，以及泳衣、泳帽、舞蹈服、舞台服和表演服饰紧身裤（Costume leggings）、派对吊带裙（Party slip dresses）用途；首屏介绍也补充Costume leggings和Party slip dresses作为可选用途，不表述为已有客户使用事实或运动健身性能承诺；用途图标区标题为 `Recommended Uses`；FAQ保留4条：抗氯/UV性能是否验证、烫金反复拉伸洗涤表现、定制样品确认、如何报价；未确认的性能明确无已验证测试结果，建议按实际成衣与护理流程测试样品；用户确认定制订单须客户确认样品后才开始大货；用途、MOQ、现货样品政策、通用定制范围、检测服务、库存和交期不重复为FAQ；该产品跳过通用FAQ自动补充，页面和FAQ结构化数据保持一致；用途图标按Swimwear、Swim caps、Dancewear、Stage costumes、Costume leggings、Party slip dresses排序，应用数据同步优先顺序，以已确认的泳装客户用途优先，不作为市场规模排名；护理采用用户确认的40°C机洗、低温滚筒烘干、低温熨烫、可干洗、不可漂白。合并重复规格和采购说明，保留详情图片、样品入口和FAQ。该产品成分由用户确认为95%涤纶、5%氨纶，首屏介绍、Fabric features及规格表的Composition和Base Material均展示此成分，Base Material不再显示Milk-silk；不得增加未确认的耐氯、UV等性能承诺。
 - 验收条件：该产品出现三个图标分区和单一规格采购表；quote/sample 分别打开现有 RFQ 并带产品名；护理描述不再与旧版冷洗/自然晾干说明混用；移动端分区堆叠；其他产品继续原布局。
 - 影响模块：`product-catalog`
 - 代码路径：`src/components/ProductDetail.astro`、`src/components/FullPrintBuyingDetails.astro`、`src/data/allProducts.js`
 - 测试路径：`npm run build`、`npm run validate:seo`、本地预览。
 - 最后变更编号：CHG-20261015-016-full-print-buyer-faq
 - 待确认事项：工作区缺少产品数据工作簿，本次以当前代码及用户明确确认的泳衣/泳帽用途和护理要求为依据，不编造参数。
+
+### REQ-PRODUCT-051：产品目录首位推荐产品
+- 状态：active
+- 当前规则：`/products/` 默认推荐排序第一位为 `iridescent-gradient-laser-ice-silk`（Iridescent Gradient Foil Stretch Fabric for Dancewear & Costumes），原首位产品顺延至第二位，其余相对顺序保留。桌面和移动端一致。
+- 验收条件：生成的产品网格首卡为指定产品，手动选择其他排序方式仍使用原有逻辑。
+- 代码路径：`src/pages/products.astro`
+- 测试路径：`npm run build`；产物首卡检查
+- 最后变更编号：CHG-20261021-006-gradient-product-first
+
+### REQ-PRODUCT-052：移除目录视图切换及空操作行
+- 状态：active
+- 当前规则：全端移除 Grid/List 按钮和 catalog-summary 容器，固定网格展示，不再读取 catalogView 历史偏好；Clear filters 放入桌面筛选控件区。桌面缩小 Hero 顶部内边距至 1rem，移动端保持 0.75rem。
+- 验收条件：筛选栏下方无独立视图操作行；移动端 Dancewear 默认筛选、桌面筛选和排序仍可用。
+- 代码路径：src/pages/products.astro
+- 测试路径：npm run build；页面交互模拟检查
+- 最后变更编号：CHG-20261021-012-desktop-hero-gap-remove-view-switch

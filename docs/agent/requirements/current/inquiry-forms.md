@@ -55,12 +55,12 @@ status: current
 
 ### REQ-FORM-006：移动端左下方浮动询盘入口
 - 状态：active
-- 当前规则：挂载 RFQQuoteModal 的页面在视口宽度不超过 640px 时显示左下方固定大写 Q 询盘图标，背景复用 CTA 黄色变量，触控区域 50px，避让设备安全区。点击复用现有 RFQ 表单，默认 General fabric inquiry；保留已有 URL sku 上下文规则。弹窗打开时隐藏图标，关闭后恢复并返回触发按钮焦点。桌面端不显示；首页现有内联表单不受影响。
+- 当前规则：首页及其他挂载 RFQQuoteModal 的页面在视口宽度不超过 640px 时显示左下方固定的纸张加笔 SVG 表单填写图标，背景复用 CTA 黄色变量，触控区域 50px，避让设备安全区。点击复用现有 RFQ 表单，默认 General fabric inquiry；保留已有 URL sku 上下文规则。弹窗打开时隐藏图标，关闭后恢复并返回触发按钮焦点。桌面端不显示；首页仅绑定浮动表单图标入口，现有 CTA 链接和内联表单行为保留。
 - 验收条件：移动端点击图标可打开、关闭现有表单；不遮挡右侧联系方式；桌面端无该入口。
 - 影响模块：`inquiry-forms`
 - 代码路径：`src/components/RFQQuoteModal.astro`
 - 测试路径：`npm run build`；本地移动端与桌面端浏览检查
-- 最后变更编号：CHG-20261012-004-floating-rfq-q-icon
+- 最后变更编号：CHG-20261020-003-floating-inquiry-form-icon
 - 待确认事项：无
 
 ### REQ-FORM-007：RFQ 前四项展开，后续选填项折叠

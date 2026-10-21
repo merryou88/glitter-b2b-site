@@ -10,7 +10,7 @@ export const productDecisionGuides = {
   ],
   "rainbow-iridescent-laser-foil-nylon-spandex-fabric": [
     { title: "Choose the nylon-spandex route for fitted swimwear", desc: "The nylon-spandex base is the closer comparison when a buyer is developing bodysuits, swimwear or other close-fitting garments." },
-    { title: "Balance color range against MOQ", desc: "The 15-color range supports color selection, while the 109 yd MOQ should be checked against the planned size run." },
+    { title: "Balance color range against MOQ", desc: "The 15-color range supports color selection, while the 50m Stock / 200m Custom MOQ should be checked against the planned size run." },
   ],
   "gradient-rainbow-dot-foil-knit-fabric": [
     { title: "Choose for a lightweight dot effect", desc: "Its lightweight knit direction suits costume surfaces where a visible dot effect is needed without moving to a heavier structured fabric." },

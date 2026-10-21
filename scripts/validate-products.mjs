@@ -38,6 +38,18 @@ const slugs = new Set();
 const titles = new Set();
 
 for (const product of performanceProducts) {
+  const expectedMoq = product.inStock ? "50m Stock / 200m Custom" : "200m";
+  for (const [label, value] of [
+    ["specs", product.specs.moq],
+    ["specTable", product.specTable.find((row) => row.label === "MOQ")?.value],
+    ["b2bTable", product.b2bTable.find((row) => row.label === "MOQ")?.value],
+  ]) {
+    if (value !== expectedMoq) errors.push(`${product.slug}: ${label} MOQ must be ${expectedMoq}`);
+  }
+  if (/\b(?:109|219)\s*(?:yd|yards)\b/i.test(JSON.stringify(product))) {
+    errors.push(`${product.slug}: obsolete MOQ in product content`);
+  }
+
   if (slugs.has(product.slug)) errors.push(`${product.slug}: duplicate slug`);
   if (titles.has(product.title)) errors.push(`${product.slug}: duplicate title`);
   slugs.add(product.slug);
