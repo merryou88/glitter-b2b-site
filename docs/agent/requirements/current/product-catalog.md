@@ -176,12 +176,12 @@ status: current
 
 ### REQ-PRODUCT-022：产品列表页采用 B2B 采购型目录布局
 - 状态：active
-- 当前规则：`/products/` 以美国面料采购商的比较需求组织信息，首屏展示采购摘要，目录区提供关键词搜索、Finish、Stretch、Application、Stock、排序控件和 Grid/List 视图切换；产品卡片必须直接展示宽幅、克重、底材、MOQ、库存状态、颜色数量和主要应用场景。
+- 当前规则：`/products/` 以美国面料采购商的比较需求组织信息，首屏展示采购摘要和 quote/sample 询盘入口；≥1201px 宽桌面目录工具栏将搜索、Finish、Stretch、Application、Stock 和排序控件排在同一行，窄桌面搜索独占一行、控件按可用宽度自适应排列；固定网格展示，不提供 Grid/List 视图切换；移动端沿用 REQ-PRODUCT-040 的应用标签；产品卡片必须直接展示宽幅、克重、底材、MOQ、库存状态、颜色数量和主要应用场景。
 - 验收条件：采购商无需进入详情页即可比较核心规格；搜索和筛选能联动更新结果数量；产品固定网格展示并使用 1:1 产品图，不再提供 List 视图；询盘按钮文案为 `Request Sample / Quote`；页面不新增价格或虚构规格。
 - 影响模块：`product-catalog`
 - 代码路径：`src/pages/products.astro`
 - 测试路径：`npm run build`；手动检查 `/products/` 搜索、筛选、排序和移动端布局
-- 最后变更编号：CHG-20260916-010-products-b2b-catalog-layout
+- 最后变更编号：CHG-20261022-001-products-b2b-landing
 - 待确认事项：无
 
 ### REQ-PRODUCT-023：产品列表 List 视图图片与内容不得重叠
@@ -520,3 +520,13 @@ status: current
 - 代码路径：src/pages/products.astro
 - 测试路径：npm run build；页面交互模拟检查
 - 最后变更编号：CHG-20261021-012-desktop-hero-gap-remove-view-switch
+
+### REQ-PRODUCT-053：Products 广告落地页突出批发采购与准确样品条件
+- 状态：active
+- 当前规则：仅 `/products/` 首屏使用 `Wholesale Metallic Fabrics for Dance & Stage Costumes` 作为 H1，以一条简短描述表达工厂直供 foil/弹力面料，面向 costume manufacturers 和 dancewear brands；不承诺全部产品为四面弹。首屏不展示重复 eyebrow、价格促销段落或长样品说明，优先露出产品；四项采购事实为 `Stock MOQ from 50m`、`Custom MOQ from 200m`、`Sample Options`、`OEM Support`；产品网格之后的底部 CTA 区说明免费现货色卡、买家承担运费、定制样品可能收费；移除省 50% 和所有款式免费 A4 样品的笼统承诺。首屏分别提供 `Request Bulk Quote` 与 `Request Samples`，通过现有 `data-rfq-intent` 打开 quote/sample RFQ，不新增提交链路。桌面标题为 32px、移动为 24px；移动按钮并排且至少 48px 高，采购事实保持两列。≥1201px 宽桌面首行排列搜索与五个筛选/排序控件；桌面搜索提示简洁完整可见。
+- 验收条件：桌面及移动端首屏标题、采购条件和 CTA 完整可读；375px/390px 手机宽度下，首张产品图顶部在页面 450px 以内；1440px 桌面宽度下在 410px 以内，1024px 宽度下在 620px 以内；两个 CTA 分别选中 quote/sample 意图；桌面下拉筛选的默认及已选值、搜索提示不截断；筛选值和匹配逻辑、产品集合、默认排序、移动端 Dancewear 默认筛选保持不变；首页及其他页面源码不修改。
+- 影响模块：`product-catalog`、`site-shell`
+- 代码路径：`src/pages/products.astro`
+- 测试路径：`npm run build`、`git diff --check`；375px、390px、768px、1024px、1440px 视口检查与 RFQ、筛选交互检查。
+- 最后变更编号：CHG-20261022-001-products-b2b-landing
+- 待确认事项：线上发布和真实邮件/广告转化不属于本次本地页面验证。

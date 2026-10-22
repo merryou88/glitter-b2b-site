@@ -133,18 +133,19 @@ const sourcingLinks = [
   <!-- Page Hero (compact catalog header) -->
   <section class="page-hero">
     <div class="container">
-      <span class="eyebrow">Performance Fabric Catalog</span>
-      <h1>Foil Fabrics for Dancewear & Performance Costumes</h1>
-      <p class="page-hero__offer">Direct factory pricing. Save up to 50% compared to US local retail. Free A4 swatches available for all styles.</p>
+      <h1>Wholesale Metallic Fabrics <span>for Dance &amp; Stage Costumes</span></h1>
       <p class="page-hero__desc">
-        Source wholesale foil fabric, holographic stretch fabric and iridescent spandex fabric
-        for dancewear, stage costumes and performance apparel. Compare samples, MOQ and custom options.
+        Factory-direct foil and stretch fabrics for costume manufacturers and dancewear brands.
       </p>
       <div class="catalog-quick-facts" aria-label="Catalog purchasing facts">
-        <span>Factory Direct Pricing</span>
-        <span>Free Swatches Available</span>
-        <span>MOQ: 50m Stock / 200m Custom</span>
-        <span>Custom Gradient &amp; OEM Support</span>
+        <span>Stock MOQ from 50m</span>
+        <span>Custom MOQ from 200m</span>
+        <span>Sample Options</span>
+        <span>OEM Support</span>
+      </div>
+      <div class="page-hero__actions btn-group">
+        <a href="/contact/" data-rfq-open data-rfq-intent="quote" class="btn btn--primary" aria-haspopup="dialog" aria-controls="rfq-quote-modal">Request Bulk Quote</a>
+        <a href="/sample-policy/" data-rfq-open data-rfq-intent="sample" class="btn btn--outline" aria-haspopup="dialog" aria-controls="rfq-quote-modal">Request Samples</a>
       </div>
     </div>
   </section>
@@ -156,7 +157,7 @@ const sourcingLinks = [
         <label class="catalog-search">
           <span class="sr-only">Search fabrics</span>
           <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
-          <input id="catalog-search" type="search" placeholder="Search fabric name, finish or application" autocomplete="off" />
+          <input id="catalog-search" type="search" placeholder="Search fabrics" autocomplete="off" />
         </label>
         <div class="catalog-controls">
           <label class="catalog-filter">
@@ -169,23 +170,23 @@ const sourcingLinks = [
           <label class="catalog-filter">
             <span>Stretch</span>
             <select id="stretch-filter">
-              <option value="all">All stretch types</option>
+              <option value="all">All types</option>
               {stretchOptions.map((option) => <option value={option}>{option}</option>)}
             </select>
           </label>
           <label class="catalog-filter">
             <span>Application</span>
             <select id="application-filter">
-              <option value="all">All applications</option>
+              <option value="all">All uses</option>
               {applicationOptions.map((option) => <option value={option}>{option}</option>)}
             </select>
           </label>
           <label class="catalog-filter">
             <span>Stock</span>
             <select id="stock-filter">
-              <option value="all">All stock status</option>
+              <option value="all">All availability</option>
               <option value="in-stock">In stock</option>
-              <option value="in-stock-color-options">In stock color options</option>
+              <option value="in-stock-color-options">Stock colors</option>
               <option value="made-to-order">Made to Order</option>
             </select>
           </label>
@@ -305,6 +306,7 @@ const sourcingLinks = [
         Send your fabric sample, photo or design reference. We can help match the foil effect
         and recommend a suitable fabric for your production.
       </p>
+      <p class="catalog-sample-note">Free stock swatches available; buyer pays shipping. Custom samples may incur a fee.</p>
       <div class="btn-group" style="justify-content:center">
         <a href="/sample-policy/" data-rfq-open class="btn btn--primary">Request Sample</a>
         <a href="/contact/" data-rfq-open class="btn btn--outline">Request a Quote</a>
@@ -335,7 +337,13 @@ const sourcingLinks = [
   .page-hero .container { position: relative; z-index: 1; }
 
   .page-hero .eyebrow { color: var(--color-accent-light); }
-  .page-hero h1 { color: var(--color-white); margin-bottom: var(--space-md); }
+  .page-hero h1 {
+    color: var(--color-white);
+    margin-bottom: var(--space-sm);
+    font-size: 32px;
+    line-height: 1.2;
+  }
+  .page-hero h1 span { display: inline; }
 
   .page-hero__desc {
     color: rgba(255, 255, 255, 0.75);
@@ -343,18 +351,32 @@ const sourcingLinks = [
     width: 100%;
   }
 
-  .page-hero__offer {
+  .page-hero__actions {
+    margin-top: var(--space-sm);
+  }
+
+  .page-hero__actions .btn--outline {
     color: var(--color-white);
-    font-size: var(--text-base);
-    font-weight: 600;
-    margin-bottom: var(--space-sm);
+    border-color: rgba(255, 255, 255, 0.65);
+  }
+
+  .page-hero__actions .btn--outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-white);
+  }
+
+  .catalog-sample-note {
+    margin: 0 0 var(--space-md);
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    line-height: 1.5;
   }
 
   .catalog-quick-facts {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem 1.25rem;
-    margin-top: var(--space-lg);
+    margin-top: var(--space-sm);
     color: rgba(255, 255, 255, 0.82);
     font-size: var(--text-sm);
     font-weight: 600;
@@ -431,7 +453,7 @@ const sourcingLinks = [
 
   .catalog-toolbar {
     display: grid;
-    grid-template-columns: minmax(280px, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-md);
     align-items: center;
     padding: var(--space-md);
@@ -482,15 +504,16 @@ const sourcingLinks = [
   }
 
   .catalog-controls {
-    display: flex;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
     gap: 0.65rem;
-    justify-content: flex-end;
+    align-items: end;
   }
 
   .catalog-filter,
   .catalog-sort {
     display: grid;
+    min-width: 0;
     gap: 0.25rem;
     color: var(--color-text-muted);
     font-size: var(--text-xs);
@@ -500,7 +523,7 @@ const sourcingLinks = [
   .catalog-filter select,
   .catalog-sort__select {
     min-height: 38px;
-    width: 136px;
+    width: 100%;
     min-width: 0;
     padding: 0.45rem 1.9rem 0.45rem 0.65rem;
     border: 1px solid var(--color-border);
@@ -513,11 +536,9 @@ const sourcingLinks = [
     cursor: pointer;
   }
 
-  .catalog-sort__select {
-    width: 128px;
-  }
-
   .catalog-reset {
+    min-height: 38px;
+    justify-self: start;
     border: 0;
     background: transparent;
     color: var(--color-accent-dark);
@@ -871,14 +892,6 @@ const sourcingLinks = [
   @media (max-width: 968px) {
     .product-grid { grid-template-columns: repeat(2, 1fr); }
     .sourcing-paths { grid-template-columns: 1fr; }
-    .catalog-toolbar {
-      grid-template-columns: 1fr;
-      align-items: stretch;
-    }
-    .catalog-controls {
-      justify-content: flex-start;
-      flex-wrap: wrap;
-    }
     .product-grid.is-list .product-card {
       grid-template-columns: 150px minmax(0, 1fr);
     }
@@ -907,7 +920,21 @@ const sourcingLinks = [
     .product-card__body { padding: var(--space-md); }
 
     .page-hero { padding-block: var(--space-sm) var(--space-md); }
-    .page-hero__desc { font-size: var(--text-base); }
+    .page-hero h1 { font-size: 24px; }
+    .page-hero h1 span { display: block; }
+    .page-hero__desc { font-size: var(--text-sm); }
+    .page-hero__actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-sm);
+    }
+    .page-hero__actions .btn {
+      min-width: 0;
+      min-height: 48px;
+      padding-inline: 0.65rem;
+      text-align: center;
+      font-size: var(--text-sm);
+    }
     #catalog { padding-top: var(--space-sm); }
     .catalog-toolbar { display: none; }
     .catalog-mobile-filters {
@@ -946,7 +973,8 @@ const sourcingLinks = [
     .catalog-quick-facts {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.55rem 0.8rem;
+      gap: 0.35rem 0.65rem;
+      font-size: var(--text-xs);
     }
     .product-grid.is-list .product-card { grid-template-columns: 1fr; }
     .product-grid.is-list .product-card__image-wrap { min-height: auto; }
@@ -974,6 +1002,18 @@ const sourcingLinks = [
       font-size: inherit;
       line-height: inherit;
       font-weight: inherit;
+    }
+  }
+
+  @media (min-width: 1201px) {
+    .catalog-toolbar {
+      grid-template-columns: minmax(130px, 0.85fr) minmax(0, 4.15fr);
+      gap: 0.75rem;
+    }
+
+    .catalog-controls {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.5rem;
     }
   }
 </style>

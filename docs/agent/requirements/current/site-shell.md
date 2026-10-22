@@ -165,12 +165,12 @@ status: current
 
 ### REQ-SHELL-017：Products 页目录首屏与产品卡片局部优化
 - 状态：active
-- 当前规则：仅 Products 页 Hero 压缩上下内边距，桌面端顶部为 1rem（原 2rem），底部保持 1.5rem；移动端（≤768px）顶部内边距为 0.75rem（原 1.5rem），使 Performance Fabric Catalog 靠近导航栏，底部内边距保持 1rem；并使用标题 `Foil Fabrics for Dancewear & Performance Costumes`；标题下方在桌面和移动端均增加用户指定文案 `Direct factory pricing. Save up to 50% compared to US local retail. Free A4 swatches available for all styles.`，保留现有描述；Hero 四个特点按顺序显示 `Factory Direct Pricing`、`Free Swatches Available`、`MOQ: 50m Stock / 200m Custom`、`Custom Gradient & OEM Support`，桌面与移动端同步；Hero 描述文字铺满容器可用宽度，不使用窄栏最大宽度限制；产品目录不显示 Showing N products 数量提示，全端移除 Grid / List 切换及其操作行占位，固定网格展示；保留筛选、排序和空结果提示，Clear filters 置于桌面筛选栏内；桌面 Hero 与目录筛选框外边框直接贴齐，catalog 顶部 padding 为 0；移动端保留原标签栏顶部间距，目录结果行与产品网格之间也减少额外留白；移除整个 catalog-summary 操作容器，避免空容器占位，分类标签与首张产品卡之间仅保留标签栏底部 0.75rem 间距；保留原有深蓝渐变背景和其他 Hero 文字。Buyer Guide 三卡片位于产品网格之后，卡片样式、文字和颜色保持不变。首页不修改 Hero。首页前三张 Featured Foil Fabrics 卡片在移动端保留左侧缩略图并显示 `View Details →` 辅助链接。产品目录移动端完整显示 `95% Polyester 5% Spandex`，并在 In-Stock 标签旁显示 `✅ Free swatch card available`。
-- 验收条件：访问 `/products/` 时，压缩后的 Hero 显示指定短标题并直接进入产品目录；滚动经过产品列表后才出现 Buyer Guide 三卡片；Products 页桌面和移动端均满足该顺序；首页 Hero、其他页面和产品卡片既有样式不受影响。
+- 当前规则：仅 Products 页 Hero 压缩上下内边距，桌面端顶部为 1rem，底部保持 1.5rem；移动端（≤768px）顶部内边距为 0.75rem，底部为 1rem。首屏采用短 H1 `Wholesale Metallic Fabrics for Dance & Stage Costumes`、一条 B2B 介绍、四项采购事实及 quote/sample 双入口，不展示重复 eyebrow 与长促销段落；样品运费及定制费用说明放在产品网格后的底部 CTA，具体按 REQ-PRODUCT-053 展示；Hero 描述文字铺满容器可用宽度，不使用窄栏最大宽度限制。产品目录不显示 Showing N products 数量提示，全端移除 Grid / List 切换及其操作行占位，固定网格展示；保留筛选、排序和空结果提示，Clear filters 置于桌面筛选栏内；桌面 Hero 与目录筛选框外边框直接贴齐，catalog 顶部 padding 为 0；移动端保留原标签栏顶部间距，分类标签与首张产品卡之间仅保留标签栏底部 0.75rem 间距。保留原有深蓝渐变背景；Buyer Guide 三卡片位于产品网格之后，卡片样式、文字和颜色保持不变。首页 Hero 不修改；首页前三张 Featured Foil Fabrics 卡片保留既有移动端缩略图与辅助链接规则。产品目录移动端完整显示 `95% Polyester 5% Spandex`，并在 In-Stock 标签旁显示 `✅ Free swatch card available`。
+- 验收条件：访问 `/products/` 时，Hero 显示 REQ-PRODUCT-053 的采购标题、条件和双 CTA 后直接进入产品目录；滚动经过产品列表后才出现 Buyer Guide 三卡片；Products 页桌面和移动端均满足该顺序；首页 Hero、其他页面和产品卡片既有样式不受影响。
 - 影响模块：`site-shell`、`product-catalog`
 - 代码路径：`src/pages/products.astro`、`src/pages/index.astro`、`src/styles/global.css`、`public/images/products/H2013120107/main/iridescent-laser-hot-stamping-stretch-ice-silk-main-1.webp`
 - 测试路径：`npm run build`；桌面与 375px/768px 视口手动检查首页和 `/products/`
-- 最后变更编号：CHG-20261021-013-catalog-toolbar-flush-top
+- 最后变更编号：CHG-20261022-001-products-b2b-landing
 - 待确认事项：当前源码未发现字面量 `<h2>Products</h2>`，因此仅保留可恢复的 CSS 选择器，不添加或删除该标题。
 
 ### REQ-SHELL-018：首页热销产品卡片移动端单列展示
