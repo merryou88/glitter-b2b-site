@@ -1,0 +1,127 @@
+{
+  "passed": true,
+  "viewports": [
+    390,
+    1350
+  ],
+  "checks": [
+    "all 59 HTML documents inline local stylesheets",
+    "all nine optimized galleries: every image and return to first",
+    "home responsive first image and carousel next/previous",
+    "mobile menu open/close",
+    "RFQ modal open/close",
+    "application/article responsive heroes",
+    "no horizontal overflow",
+    "no missing local requests"
+  ],
+  "galleryResults": [
+    {
+      "slug": "iridescent-laser-hot-stamping-stretch-ice-silk",
+      "width": 390,
+      "galleryImages": 5,
+      "firstImage": "http://127.0.0.1:52859/_astro/iridescent-laser-hot-stamping-stretch-ice-silk-main-1.P8owCMaU_ZQHmaF.webp"
+    },
+    {
+      "slug": "rainbow-iridescent-laser-foil-nylon-spandex-fabric",
+      "width": 390,
+      "galleryImages": 5,
+      "firstImage": "http://127.0.0.1:52859/_astro/rainbow-iridescent-laser-foil-nylon-spandex-fabric-main-1.D_d1E8xb_Z2dEI6n.webp"
+    },
+    {
+      "slug": "holographic-mermaid-scale-milk-silk-stretch-fabric",
+      "width": 390,
+      "galleryImages": 5,
+      "firstImage": "http://127.0.0.1:52859/_astro/holographic-mermaid-scale-milk-silk-stretch-fabric-main-1.C_EGcO-1_2aNaJx.webp"
+    },
+    {
+      "slug": "holographic-snakeskin-stretch-fabric",
+      "width": 390,
+      "galleryImages": 5,
+      "firstImage": "http://127.0.0.1:52859/_astro/holographic-snakeskin-stretch-fabric-main-1.w9oXu8aw_Nh776.webp"
+    },
+    {
+      "slug": "iridescent-gradient-laser-ice-silk",
+      "width": 390,
+      "galleryImages": 5,
+      "firstImage": "http://127.0.0.1:52859/_astro/iridescent-gradient-laser-ice-silk-main-1.BvoTjEV4_Z2nyVl8.webp"
+    },
+    {
+      "slug": "plain-iridescent-laser-spandex-4-way-stretch",
+      "width": 390,
+      "galleryImages": 4,
+      "firstImage": "http://127.0.0.1:52859/_astro/plain-iridescent-laser-spandex-4-way-stretch-main-1.BTqWmu60_Z1tavxk.webp"
+    },
+    {
+      "slug": "rainbow-dot-laser-foil-knit-fabric",
+      "width": 390,
+      "galleryImages": 5,
+      "firstImage": "http://127.0.0.1:52859/_astro/rainbow-dot-laser-foil-knit-fabric-main-1.CngbGf19_1dzaFH.webp"
+    },
+    {
+      "slug": "rainbow-stripe-foil-4-way-stretch-fabric",
+      "width": 390,
+      "galleryImages": 5,
+      "firstImage": "http://127.0.0.1:52859/_astro/rainbow-stripe-foil-4-way-stretch-fabric-main-1.BgB52oQJ_Z1XjnXH.webp"
+    },
+    {
+      "slug": "shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric",
+      "width": 390,
+      "galleryImages": 4,
+      "firstImage": "http://127.0.0.1:52859/_astro/shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric-main-1.Da2CDQkP_ZnTQE6.webp"
+    },
+    {
+      "slug": "iridescent-laser-hot-stamping-stretch-ice-silk",
+      "width": 1350,
+      "galleryImages": 5,
+      "firstImage": "http://127.0.0.1:52859/_astro/iridescent-laser-hot-stamping-stretch-ice-silk-main-1.P8owCMaU_ZQHmaF.webp"
+    },
+    {
+      "slug": "rainbow-iridescent-laser-foil-nylon-spandex-fabric",
+      "width": 1350,
+      "galleryImages": 5,
+      "firstImage": "http://127.0.0.1:52859/_astro/rainbow-iridescent-laser-foil-nylon-spandex-fabric-main-1.D_d1E8xb_Z2dEI6n.webp"
+    },
+    {
+      "slug": "holographic-mermaid-scale-milk-silk-stretch-fabric",
+      "width": 1350,
+      "galleryImages": 5,
+      "firstImage": "http://127.0.0.1:52859/_astro/holographic-mermaid-scale-milk-silk-stretch-fabric-main-1.C_EGcO-1_2aNaJx.webp"
+    },
+    {
+      "slug": "holographic-snakeskin-stretch-fabric",
+      "width": 1350,
+      "galleryImages": 5,
+      "firstImage": "http://127.0.0.1:52859/_astro/holographic-snakeskin-stretch-fabric-main-1.w9oXu8aw_Nh776.webp"
+    },
+    {
+      "slug": "iridescent-gradient-laser-ice-silk",
+      "width": 1350,
+      "galleryImages": 5,
+      "firstImage": "http://127.0.0.1:52859/_astro/iridescent-gradient-laser-ice-silk-main-1.BvoTjEV4_Z2nyVl8.webp"
+    },
+    {
+      "slug": "plain-iridescent-laser-spandex-4-way-stretch",
+      "width": 1350,
+      "galleryImages": 4,
+      "firstImage": "http://127.0.0.1:52859/_astro/plain-iridescent-laser-spandex-4-way-stretch-main-1.BTqWmu60_Z1tavxk.webp"
+    },
+    {
+      "slug": "rainbow-dot-laser-foil-knit-fabric",
+      "width": 1350,
+      "galleryImages": 5,
+      "firstImage": "http://127.0.0.1:52859/_astro/rainbow-dot-laser-foil-knit-fabric-main-1.CngbGf19_1dzaFH.webp"
+    },
+    {
+      "slug": "rainbow-stripe-foil-4-way-stretch-fabric",
+      "width": 1350,
+      "galleryImages": 5,
+      "firstImage": "http://127.0.0.1:52859/_astro/rainbow-stripe-foil-4-way-stretch-fabric-main-1.BgB52oQJ_Z1XjnXH.webp"
+    },
+    {
+      "slug": "shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric",
+      "width": 1350,
+      "galleryImages": 4,
+      "firstImage": "http://127.0.0.1:52859/_astro/shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric-main-1.Da2CDQkP_ZnTQE6.webp"
+    }
+  ]
+}

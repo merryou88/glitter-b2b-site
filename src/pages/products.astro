@@ -173,8 +173,8 @@ const sourcingLinks = [
         <span>OEM Support</span>
       </div>
       <div class="page-hero__actions btn-group">
-        <a href="/contact/" data-rfq-open data-rfq-intent="quote" class="btn btn--primary" aria-haspopup="dialog" aria-controls="rfq-quote-modal">Request Bulk Quote</a>
-        <a href="/sample-policy/" data-rfq-open data-rfq-intent="sample" class="btn btn--outline" aria-haspopup="dialog" aria-controls="rfq-quote-modal">Request Samples</a>
+        <a href="/sample-policy/" data-rfq-open data-rfq-intent="sample" class="btn btn--primary" aria-haspopup="dialog" aria-controls="rfq-quote-modal">Request Samples</a>
+        <a href="/contact/" data-rfq-open data-rfq-intent="quote" class="btn btn--outline" aria-haspopup="dialog" aria-controls="rfq-quote-modal">Request Bulk Quote</a>
       </div>
     </div>
   </section>
@@ -311,8 +311,8 @@ const sourcingLinks = [
                 <p class="product-card__applications"><strong>Applications:</strong> {(item.applications || []).slice(0, 4).join(" · ")}</p>
 
                 <div class="product-card__actions">
-                  <a href={`/products/${item.slug}/`} class="product-card__btn product-card__btn--outline">View Details</a>
                   <a href={`/contact/?sku=${encodeURIComponent(item.title)}`} data-rfq-open data-rfq-sku={item.title} class="product-card__btn product-card__btn--primary">Request Sample / Quote</a>
+                  <a href={`/products/${item.slug}/`} class="product-card__details-link">View Details</a>
                 </div>
               </div>
             </div>
@@ -850,15 +850,17 @@ const sourcingLinks = [
     min-height: 40px;
   }
 
-  .product-card__btn--outline {
-    border: 1.5px solid var(--color-border);
+  .product-card__details-link {
+    align-self: center;
+    justify-self: center;
     color: var(--color-primary);
-    background: var(--color-white);
+    font-size: var(--text-sm);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
   }
 
-  .product-card__btn--outline:hover {
-    border-color: var(--color-primary);
-    background: rgba(22, 41, 77, 0.03);
+  .product-card__details-link:hover {
+    color: var(--color-accent-dark);
   }
 
   .product-card__btn--primary {

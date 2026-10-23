@@ -66,3 +66,6 @@ requirement_docs:
 - 分类按钮值和文章分类不一致
 - 推荐产品 slug 失效
 - 标题层级变化导致目录锚点坏掉
+
+## 首屏图片性能
+文章首图通过 src/lib/responsive-image.ts 在构建时生成响应式 WebP，候选不超过源图宽度；head 预加载与图片 srcset/sizes 匹配，保留原图片语义、alt 和 OG/schema 引用。全站逐页检测遵循 REQ-SHELL-032。

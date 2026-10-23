@@ -1,7 +1,7 @@
 ---
 change_id: CHG-20261020-002-home-mobile-floating-q
 date: 2026-10-20
-status: implemented
+status: superseded
 requirements:
   - REQ-FORM-006
 modules:
@@ -10,6 +10,8 @@ modules:
 ---
 
 # 首页移动端增加浮动 Q
+
+> 首页仅绑定浮动入口的规则由 CHG-20261023-006-home-hero-rfq-modal 替代；浮动图标视觉由 CHG-20261020-003-floating-inquiry-form-icon 替代。其余首页挂载与移动端显示规则保留。
 
 ## 变更原因
 用户要求移动端首页添加产品列表页相同的 Q 图标。

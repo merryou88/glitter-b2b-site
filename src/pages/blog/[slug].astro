@@ -7,6 +7,7 @@ import Layout from "@layouts/Layout.astro";
 import CTAButton from "@components/CTAButton.astro";
 import { blogArticles } from "@data/blogArticles";
 import { performanceProducts } from "@data/allProducts";
+import { responsiveImage } from "../../lib/responsive-image";
 
 const formatDate = (value: string) =>
   new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(
@@ -21,6 +22,8 @@ export function getStaticPaths() {
 }
 
 const { article } = Astro.props;
+const heroImage = await responsiveImage(article.imageWebp || article.image);
+const heroSizes = "(max-width: 640px) calc(100vw - 32px), (max-width: 900px) calc(100vw - 48px), (max-width: 1280px) calc(52.5vw - 58.8px), 613.2px";
 const modifiedDate = article.updatedDate ?? article.date;
 const showUpdatedDate = modifiedDate !== article.date;
 const relatedProducts = article.focusProducts
@@ -179,6 +182,7 @@ const faqSchema = {
   ogType="article"
   structuredData={[articleSchema, breadcrumbData, faqSchema]}
 >
+  <link slot="head" rel="preload" as="image" href={heroImage.src} imagesrcset={heroImage.srcSet.attribute} imagesizes={heroSizes} type="image/webp" fetchpriority="high" />
   <article class="article-page">
     <header class="article-hero">
       <div class="container article-hero__grid">
@@ -204,8 +208,8 @@ const faqSchema = {
           </div>
         </div>
         <picture class="article-hero__image">
-          <source srcset={article.imageWebp} type="image/webp" />
-          <img src={article.image} alt={article.imageAlt} width="1600" height="900" />
+          <source srcset={heroImage.srcSet.attribute} sizes={heroSizes} type="image/webp" />
+          <img src={heroImage.src} srcset={heroImage.srcSet.attribute} sizes={heroSizes} alt={article.imageAlt} width="1600" height="900" fetchpriority="high" />
         </picture>
       </div>
     </header>

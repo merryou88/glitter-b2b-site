@@ -1,0 +1,664 @@
+{
+  "date": "2026-10-23",
+  "strategy": "desktop",
+  "threshold": 93,
+  "requestedTool": "Google PageSpeed Insights",
+  "status": "blocked",
+  "pages": [
+    {
+      "path": "/",
+      "url": "https://nixiafabric.com/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/404.html",
+      "url": "https://nixiafabric.com/404.html",
+      "noindex": true,
+      "expected404": true,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/about/",
+      "url": "https://nixiafabric.com/about/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/applications/",
+      "url": "https://nixiafabric.com/applications/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/applications/cheerleading-performance-costume-fabric/",
+      "url": "https://nixiafabric.com/applications/cheerleading-performance-costume-fabric/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/applications/custom-foil-fabric-development/",
+      "url": "https://nixiafabric.com/applications/custom-foil-fabric-development/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/applications/dancewear-fabric-supplier/",
+      "url": "https://nixiafabric.com/applications/dancewear-fabric-supplier/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/applications/foil-fabric-for-stage-costumes/",
+      "url": "https://nixiafabric.com/applications/foil-fabric-for-stage-costumes/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/applications/holographic-fabric-wholesale/",
+      "url": "https://nixiafabric.com/applications/holographic-fabric-wholesale/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/applications/swimwear-fabric-supplier/",
+      "url": "https://nixiafabric.com/applications/swimwear-fabric-supplier/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/",
+      "url": "https://nixiafabric.com/blog/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/best-fabric-for-cheerleading-and-performance-costumes/",
+      "url": "https://nixiafabric.com/blog/best-fabric-for-cheerleading-and-performance-costumes/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/best-foil-fabric-for-swimwear-and-bikinis/",
+      "url": "https://nixiafabric.com/blog/best-foil-fabric-for-swimwear-and-bikinis/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/china-foil-fabric-supplier-us-buyers-rfq-checklist/",
+      "url": "https://nixiafabric.com/blog/china-foil-fabric-supplier-us-buyers-rfq-checklist/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/compare-foil-fabric-samples-from-different-suppliers/",
+      "url": "https://nixiafabric.com/blog/compare-foil-fabric-samples-from-different-suppliers/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/custom-foil-fabric-development-stock-vs-custom/",
+      "url": "https://nixiafabric.com/blog/custom-foil-fabric-development-stock-vs-custom/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/evaluate-foil-adhesion-before-bulk-production/",
+      "url": "https://nixiafabric.com/blog/evaluate-foil-adhesion-before-bulk-production/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/fabric-gsm-vs-ounces-buyer-conversion-guide/",
+      "url": "https://nixiafabric.com/blog/fabric-gsm-vs-ounces-buyer-conversion-guide/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/holographic-fabric-for-dancewear-what-buyers-should-check/",
+      "url": "https://nixiafabric.com/blog/holographic-fabric-for-dancewear-what-buyers-should-check/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/hot-stamping-foil-finish-guide/",
+      "url": "https://nixiafabric.com/blog/hot-stamping-foil-finish-guide/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/how-to-calculate-fabric-moq-yards-meters/",
+      "url": "https://nixiafabric.com/blog/how-to-calculate-fabric-moq-yards-meters/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/how-to-choose-4-way-stretch-fabric-for-bodysuits/",
+      "url": "https://nixiafabric.com/blog/how-to-choose-4-way-stretch-fabric-for-bodysuits/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/how-to-choose-fabric-for-swim-caps/",
+      "url": "https://nixiafabric.com/blog/how-to-choose-fabric-for-swim-caps/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/how-to-choose-hot-stamping-spandex-fabric-for-dancewear-stage-costumes/",
+      "url": "https://nixiafabric.com/blog/how-to-choose-hot-stamping-spandex-fabric-for-dancewear-stage-costumes/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/how-to-request-fabric-sample-from-china-supplier/",
+      "url": "https://nixiafabric.com/blog/how-to-request-fabric-sample-from-china-supplier/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/iridescent-vs-metallic-fabric-for-stage-costumes/",
+      "url": "https://nixiafabric.com/blog/iridescent-vs-metallic-fabric-for-stage-costumes/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/metallic-vs-iridescent-vs-holographic-fabric/",
+      "url": "https://nixiafabric.com/blog/metallic-vs-iridescent-vs-holographic-fabric/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/nylon-spandex-vs-polyester-spandex-foil-fabric/",
+      "url": "https://nixiafabric.com/blog/nylon-spandex-vs-polyester-spandex-foil-fabric/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/pre-shipment-quality-control-checklist-foil-stretch-fabric/",
+      "url": "https://nixiafabric.com/blog/pre-shipment-quality-control-checklist-foil-stretch-fabric/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/sgs-reach-compliance-guide/",
+      "url": "https://nixiafabric.com/blog/sgs-reach-compliance-guide/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/stretch-recovery-vs-stretch-amount-fabric-buyers/",
+      "url": "https://nixiafabric.com/blog/stretch-recovery-vs-stretch-amount-fabric-buyers/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/what-is-foil-fabric-wholesale-buyer-guide/",
+      "url": "https://nixiafabric.com/blog/what-is-foil-fabric-wholesale-buyer-guide/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/what-to-include-in-a-custom-fabric-rfq/",
+      "url": "https://nixiafabric.com/blog/what-to-include-in-a-custom-fabric-rfq/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/blog/wholesale-foil-fabric-supplier-dancewear-stage-costumes/",
+      "url": "https://nixiafabric.com/blog/wholesale-foil-fabric-supplier-dancewear-stage-costumes/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/certifications/",
+      "url": "https://nixiafabric.com/certifications/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/contact/",
+      "url": "https://nixiafabric.com/contact/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/factory/",
+      "url": "https://nixiafabric.com/factory/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/privacy/",
+      "url": "https://nixiafabric.com/privacy/",
+      "noindex": true,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/products/",
+      "url": "https://nixiafabric.com/products/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/products/blue-purple-gradient-laser-foil-spandex-fabric/",
+      "url": "https://nixiafabric.com/products/blue-purple-gradient-laser-foil-spandex-fabric/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/products/dense-dot-foil-suede-look-fabric/",
+      "url": "https://nixiafabric.com/products/dense-dot-foil-suede-look-fabric/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/products/double-layer-pleated-foil-knit-fabric/",
+      "url": "https://nixiafabric.com/products/double-layer-pleated-foil-knit-fabric/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/products/full-print-hot-stamping-spandex-milk-silk/",
+      "url": "https://nixiafabric.com/products/full-print-hot-stamping-spandex-milk-silk/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/products/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric/",
+      "url": "https://nixiafabric.com/products/gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/products/gradient-rainbow-dot-foil-knit-fabric/",
+      "url": "https://nixiafabric.com/products/gradient-rainbow-dot-foil-knit-fabric/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/products/holographic-mermaid-scale-milk-silk-stretch-fabric/",
+      "url": "https://nixiafabric.com/products/holographic-mermaid-scale-milk-silk-stretch-fabric/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/products/holographic-snakeskin-stretch-fabric/",
+      "url": "https://nixiafabric.com/products/holographic-snakeskin-stretch-fabric/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/products/iridescent-gradient-laser-ice-silk/",
+      "url": "https://nixiafabric.com/products/iridescent-gradient-laser-ice-silk/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/products/iridescent-laser-hot-stamping-stretch-ice-silk/",
+      "url": "https://nixiafabric.com/products/iridescent-laser-hot-stamping-stretch-ice-silk/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/products/iridescent-mystic-metallic-foil-nylon-spandex-fabric/",
+      "url": "https://nixiafabric.com/products/iridescent-mystic-metallic-foil-nylon-spandex-fabric/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/products/plain-iridescent-laser-spandex-4-way-stretch/",
+      "url": "https://nixiafabric.com/products/plain-iridescent-laser-spandex-4-way-stretch/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/products/rainbow-dot-laser-foil-knit-fabric/",
+      "url": "https://nixiafabric.com/products/rainbow-dot-laser-foil-knit-fabric/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/products/rainbow-fingerprint-dot-foil-ice-silk-fabric/",
+      "url": "https://nixiafabric.com/products/rainbow-fingerprint-dot-foil-ice-silk-fabric/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/products/rainbow-iridescent-laser-foil-nylon-spandex-fabric/",
+      "url": "https://nixiafabric.com/products/rainbow-iridescent-laser-foil-nylon-spandex-fabric/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/products/rainbow-stripe-foil-4-way-stretch-fabric/",
+      "url": "https://nixiafabric.com/products/rainbow-stripe-foil-4-way-stretch-fabric/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/products/shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric/",
+      "url": "https://nixiafabric.com/products/shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/products/shiny-foil-4-way-stretch-knit-fabric/",
+      "url": "https://nixiafabric.com/products/shiny-foil-4-way-stretch-knit-fabric/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/sample-policy/",
+      "url": "https://nixiafabric.com/sample-policy/",
+      "noindex": false,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    },
+    {
+      "path": "/thank-you/",
+      "url": "https://nixiafabric.com/thank-you/",
+      "noindex": true,
+      "expected404": false,
+      "status": "blocked",
+      "score": null,
+      "issues": [
+        "Google PageSpeed online service unavailable (HTTP 429 / API timeout)"
+      ]
+    }
+  ],
+  "reason": "Provided Google report ID nkqj6qkvw0 no longer exists. Fresh PageSpeed report backend returned HTTP 429; official API requests timed out. No Google-hosted scores obtained.",
+  "fallbackReports": [
+    "2026-10-23-lighthouse-desktop-live.json",
+    "2026-10-23-lighthouse-desktop-local.json"
+  ],
+  "errorPageNote": "Direct /404.html redirects to /404 and serves HTTP 200 in production; audit its performance as a reachable HTML document. This does not test HTTP status for arbitrary missing URLs."
+}

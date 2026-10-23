@@ -303,14 +303,24 @@ status: current
 - 最后变更编号：CHG-20261014-001-floating-contact-events
 - 待确认事项：GA4 中如需用于 Google Ads 转化，还需在 GA4 管理后台将相应事件标记为 Key event，并在 Google Ads 中导入。
 
-### REQ-SHELL-029：首页与产品目录加载关键路径
+### REQ-SHELL-029：全站加载关键路径
 - 状态：active
-- 当前规则：生产构建将首页和 `/products/` 引用的本地 Astro CSS 内联到各自 HTML，消除样式阻塞网络往返；REQ-PRODUCT-055/056 指定的 H2013120107/H2013120101 详情页也内联本地 CSS，其他页面保留外部样式缓存。Analytics 默认在首次交互时加载（感谢页按 REQ-SHELL-030 立即加载），或在 load 事件后至少等待 10 秒再进入空闲调度，保留原有事件队列和归因。
-- 验收条件：首页、产品目录及这两个详情页生产 HTML 不含外部 stylesheet 请求，首屏图片预加载保留；无交互时 Analytics 不得在 10 秒延迟前加载；构建及产品/SEO 校验通过。
+- 当前规则：生产构建将全部静态 HTML 引用的本地 Astro CSS 内联，消除首次访问的样式阻塞往返，包括 noindex 页面。共享导航和页脚 Logo 使用适配 2 倍像素密度的构建期 WebP，favicon 使用 48px PNG；Organization schema 保留原 Logo。首页桌面首图、应用页及文章页首图生成不超过源尺寸的响应式 WebP，预加载候选和实际图片一致。Analytics 默认在首次交互时加载（感谢页按 REQ-SHELL-030 立即加载），或在 load 事件后至少等待 10 秒再进入空闲调度，保留原有事件队列和归因。
+- 验收条件：全部生产 HTML 不含本地外部 stylesheet 请求；首屏预加载匹配 srcset/sizes；图片、轮播、菜单和询盘交互正常；无交互时 Analytics 不得在 10 秒延迟前加载；构建及产品/SEO 校验通过。
 - 代码路径：`scripts/inline-home-styles.mjs`、`package.json`、`src/layouts/Layout.astro`
 - 测试路径：`npm run build`；构建产物检查和统计脚本调度检查
-- 最后变更编号：CHG-20261023-005-rainbow-nylon-mobile-loading
+- 最后变更编号：CHG-20261023-009-site-performance-audit
 - 待确认事项：部署后需在相同 Lighthouse 手机节流条件下复测 LCP；本地构建结果不能替代线上性能结果。
+
+### REQ-SHELL-032：全站逐页性能验收
+- 状态：active
+- 当前规则：按用户提供的 PageSpeed 桌面报告口径，HTML 页以 Performance ≥ 93 为目标；覆盖所有生成页面，包括 privacy/thank-you 和可直接访问的错误页文档；真正返回非 2xx 状态、无法评分时明确记录失败，不伪造分数。每页保存分数、环境、时间和诊断，未成功检测的页面不得算通过。Google 在线服务不可用时可用官方 Lighthouse 桌面预设诊断，但必须区分 Google PageSpeed、本机测试线上站点与本地构建测试，禁止将本地通过描述为线上通过。404 页短内容区域立即布局，避免通用 720px 延迟渲染占位引起页脚跳动。
+- 验收条件：页面清单与构建一致；低分页有优化记录；构建后逐页复测；发布后在 Google PageSpeed 补验，服务或发布未完成时明确标记待验收。
+- 影响模块：site-shell、product-catalog、blog-knowledge、company-pages
+- 代码路径：scripts/audit-performance.mjs、docs/agent/audits/、src/lib/responsive-image.ts、共享壳层与首屏图片组件
+- 测试路径：npm run build；官方 Lighthouse 13.5.0 desktop 逐页检测；生产 PageSpeed 桌面补验
+- 最后变更编号：CHG-20261023-009-site-performance-audit
+- 待确认事项：原 PageSpeed 报告失效，重新检测遭遇 Google HTTP 429；优化代码发布和 Google 在线复测后才能确认线上达标。
 
 ### REQ-SHELL-030：页面 head 插槽与立即加载统计
 - 状态：active

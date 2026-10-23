@@ -6,6 +6,11 @@
  * Inspired by ecowoodplate.com carousel style
  */
 
+import { getImage } from "astro:assets";
+import firstSlide from "../../public/images/home/slide1.webp";
+const firstDesktopImage = await getImage({ src: firstSlide, widths: [960, 1280, firstSlide.width], width: 1280, format: "webp", quality: 80 });
+const desktopImageSizes = "(max-width: 1280px) calc(100vw - 48px), 1232px";
+
 interface Slide {
   image: string;
   video?: string;
@@ -116,7 +121,7 @@ const PLACEHOLDER_IMAGE =
             {idx === 0 ? (
               <>
                 <source srcset={toMobile(slide.image)} media="(max-width: 768px)" type="image/webp" />
-                <source srcset={toWebp(slide.image)} type="image/webp" />
+                <source srcset={firstDesktopImage.srcSet.attribute} sizes={desktopImageSizes} type="image/webp" />
               </>
             ) : (
               <>
@@ -158,6 +163,7 @@ const PLACEHOLDER_IMAGE =
                 {slide.buttons.map((btn) => (
                   <a
                     href={btn.href}
+                    data-rfq-home-open={idx === 0 && btn.label === "Request Sample & Quote" ? true : undefined}
                     data-rfq-open={btn.label === "Request Sample & Quote" || btn.label === "Send Your Reference" || btn.label === "Request a Quote" ? true : undefined}
                     class:list={[
                       "hero-carousel__btn",

@@ -26,6 +26,13 @@ const optimizedGalleryImages = import.meta.glob<{ default: ImageMetadata }>(
   [
     "/public/images/products/H2013120107/main/*-main-[1-5].webp",
     "/public/images/products/H2013120101/main/*-main-[1-5].webp",
+    "/public/images/products/H2013120105/main/*-main-[1-5].webp",
+    "/public/images/products/H2013090101/main/*-main-[1-5].webp",
+    "/public/images/products/H2013120106/main/*-main-[1-5].webp",
+    "/public/images/products/H2013090102/main/*-main-[1-5].webp",
+    "/public/images/products/H2013090104/main/*-main-[1-5].webp",
+    "/public/images/products/H2013060102/main/*-main-[1-5].webp",
+    "/public/images/products/H2015030103/main/*-main-[1-5].webp",
   ],
   { eager: true },
 );
@@ -66,6 +73,13 @@ const gallerySizes = "(max-width: 592px) calc(100vw - 32px), (max-width: 968px) 
 const optimizedGallery = [
   "iridescent-laser-hot-stamping-stretch-ice-silk",
   "rainbow-iridescent-laser-foil-nylon-spandex-fabric",
+  "holographic-mermaid-scale-milk-silk-stretch-fabric",
+  "holographic-snakeskin-stretch-fabric",
+  "iridescent-gradient-laser-ice-silk",
+  "plain-iridescent-laser-spandex-4-way-stretch",
+  "rainbow-dot-laser-foil-knit-fabric",
+  "rainbow-stripe-foil-4-way-stretch-fabric",
+  "shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric",
 ].includes(product.slug)
   ? await Promise.all(product.galleryImages.slice(0, 8).map(async (file) => {
       const source = optimizedGalleryImages[`/public${product.galleryMainPath}${file}`]?.default;

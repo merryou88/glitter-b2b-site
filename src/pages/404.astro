@@ -31,7 +31,7 @@ const notFoundData = {
     </div>
   </section>
 
-  <section class="section section--alt">
+  <section class="section section--alt nf-recovery">
     <div class="container">
       <div class="nf-actions">
         <a class="btn btn--primary btn--lg" href="/">Back to Homepage</a>
@@ -45,6 +45,13 @@ const notFoundData = {
   </section>
 
   <style>
+    /* This short section is already near the first viewport. The generic
+       720px offscreen placeholder otherwise moves the visible footer. */
+    .nf-recovery {
+      content-visibility: visible;
+      contain-intrinsic-size: none;
+    }
+
     .nf-actions {
       display: flex;
       flex-wrap: wrap;

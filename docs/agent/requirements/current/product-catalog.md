@@ -176,12 +176,12 @@ status: current
 
 ### REQ-PRODUCT-022：产品列表页采用 B2B 采购型目录布局
 - 状态：active
-- 当前规则：`/products/` 以美国面料采购商的比较需求组织信息，首屏展示采购摘要和 quote/sample 询盘入口；≥1201px 宽桌面目录工具栏将搜索、Finish、Stretch、Application、Stock 和排序控件排在同一行，窄桌面搜索独占一行、控件按可用宽度自适应排列；固定网格展示，不提供 Grid/List 视图切换；移动端沿用 REQ-PRODUCT-040 的应用标签；产品卡片必须直接展示宽幅、克重、底材、MOQ、库存状态、颜色数量和主要应用场景。
-- 验收条件：采购商无需进入详情页即可比较核心规格；搜索和筛选能联动更新结果数量；产品固定网格展示并使用 1:1 产品图，不再提供 List 视图；询盘按钮文案为 `Request Sample / Quote`；页面不新增价格或虚构规格。
+- 当前规则：`/products/` 以美国面料采购商的比较需求组织信息，首屏展示采购摘要和 quote/sample 询盘入口；≥1201px 宽桌面目录工具栏将搜索、Finish、Stretch、Application、Stock 和排序控件排在同一行，窄桌面搜索独占一行、控件按可用宽度自适应排列；固定网格展示，不提供 Grid/List 视图切换；移动端沿用 REQ-PRODUCT-040 的应用标签；产品卡片必须直接展示宽幅、克重、底材、MOQ、库存状态、颜色数量和主要应用场景；卡片操作区先显示金色 `Request Sample / Quote` 按钮，再显示带下划线的 `View Details` 文字超链接，详情链接不使用按钮边框、背景或按钮内边距。
+- 验收条件：采购商无需进入详情页即可比较核心规格；搜索和筛选能联动更新结果数量；产品固定网格展示并使用 1:1 产品图，不再提供 List 视图；询盘按钮文案为 `Request Sample / Quote`；桌面与移动端询盘入口均在详情链接之前，详情链接保留正确产品路径，询盘保留产品上下文和现有 RFQ 弹窗；页面不新增价格或虚构规格。
 - 影响模块：`product-catalog`
 - 代码路径：`src/pages/products.astro`
 - 测试路径：`npm run build`；手动检查 `/products/` 搜索、筛选、排序和移动端布局
-- 最后变更编号：CHG-20261022-001-products-b2b-landing
+- 最后变更编号：CHG-20261023-008-products-card-cta-priority
 - 待确认事项：无
 
 ### REQ-PRODUCT-023：产品列表 List 视图图片与内容不得重叠
@@ -523,12 +523,12 @@ status: current
 
 ### REQ-PRODUCT-053：Products 广告落地页突出批发采购与准确样品条件
 - 状态：active
-- 当前规则：仅 `/products/` 首屏使用 `Wholesale Metallic Fabrics for Dance & Stage Costumes` 作为 H1，以一条简短描述表达工厂直供 foil/弹力面料，面向 costume manufacturers 和 dancewear brands；不承诺全部产品为四面弹。首屏不展示重复 eyebrow、价格促销段落或长样品说明，优先露出产品；四项采购事实为 `Stock MOQ from 50m`、`Custom MOQ from 200m`、`Sample Options`、`OEM Support`；产品网格之后的底部 CTA 区说明免费现货色卡、买家承担运费、定制样品可能收费；移除省 50% 和所有款式免费 A4 样品的笼统承诺。首屏分别提供 `Request Bulk Quote` 与 `Request Samples`，通过现有 `data-rfq-intent` 打开 quote/sample RFQ，不新增提交链路。桌面标题为 32px、移动为 24px；移动按钮并排且至少 48px 高，采购事实保持两列。≥1201px 宽桌面首行排列搜索与五个筛选/排序控件；桌面搜索提示简洁完整可见。
-- 验收条件：桌面及移动端首屏标题、采购条件和 CTA 完整可读；375px/390px 手机宽度下，首张产品图顶部在页面 450px 以内；1440px 桌面宽度下在 410px 以内，1024px 宽度下在 620px 以内；两个 CTA 分别选中 quote/sample 意图；桌面下拉筛选的默认及已选值、搜索提示不截断；筛选值和匹配逻辑、产品集合、默认排序、移动端 Dancewear 默认筛选保持不变；首页及其他页面源码不修改。
+- 当前规则：仅 `/products/` 首屏使用 `Wholesale Metallic Fabrics for Dance & Stage Costumes` 作为 H1，以一条简短描述表达工厂直供 foil/弹力面料，面向 costume manufacturers 和 dancewear brands；不承诺全部产品为四面弹。首屏不展示重复 eyebrow、价格促销段落或长样品说明，优先露出产品；四项采购事实为 `Stock MOQ from 50m`、`Custom MOQ from 200m`、`Sample Options`、`OEM Support`；产品网格之后的底部 CTA 区说明免费现货色卡、买家承担运费、定制样品可能收费；移除省 50% 和所有款式免费 A4 样品的笼统承诺。首屏左侧为金色实心 `Request Samples`，右侧为白色描边 `Request Bulk Quote`，桌面和移动端顺序一致；通过现有 `data-rfq-intent` 打开 quote/sample RFQ，不新增提交链路。桌面标题为 32px、移动为 24px；移动按钮并排且至少 48px 高，采购事实保持两列。≥1201px 宽桌面首行排列搜索与五个筛选/排序控件；桌面搜索提示简洁完整可见。
+- 验收条件：桌面及移动端首屏标题、采购条件和 CTA 完整可读；375px/390px 手机宽度下，首张产品图顶部在页面 450px 以内；1440px 桌面宽度下在 410px 以内，1024px 宽度下在 620px 以内；Samples 按钮在左且使用金色实心样式，Quote 按钮在右且使用白色描边样式，两个 CTA 分别选中 sample/quote 意图；桌面下拉筛选的默认及已选值、搜索提示不截断；筛选值和匹配逻辑、产品集合、默认排序、移动端 Dancewear 默认筛选保持不变；首页及其他页面源码不修改。
 - 影响模块：`product-catalog`、`site-shell`
 - 代码路径：`src/pages/products.astro`
 - 测试路径：`npm run build`、`git diff --check`；375px、390px、768px、1024px、1440px 视口检查与 RFQ、筛选交互检查。
-- 最后变更编号：CHG-20261022-001-products-b2b-landing
+- 最后变更编号：CHG-20261023-007-products-hero-sample-primary
 - 待确认事项：线上发布和真实邮件/广告转化不属于本次本地页面验证。
 
 ### REQ-PRODUCT-054：产品目录移动端加载速度
@@ -543,7 +543,7 @@ status: current
 
 ### REQ-PRODUCT-055：H2013120107 详情页移动端加载速度
 - 状态：active
-- 当前规则：仅 `/products/iridescent-laser-hot-stamping-stretch-ice-silk/` 的五张画廊图使用构建期响应式 WebP（480/720/1080/1440px，最大不超过源图宽度，质量 76），按手机/桌面画廊实际宽度选图。画廊缩略图使用 160px、质量 70 的 WebP，视频 poster 复用第一张缩略图，视频仍为 `preload="none"`。head 的响应式预加载与首图候选及 sizes 完全匹配，移除旧原图预加载。生产构建内联该页本地 CSS。保留图片顺序、产品内容、SEO、详情原图和 RFQ 流程；H2013120101 另按 REQ-PRODUCT-056 启用优化，未启用优化的其他详情页图片路径与样式加载策略保持原样。共享图库切换 source 时同步响应式候选与 sizes，修复原先调用不存在的 `HTMLImageElement.load()` 的错误。
+- 当前规则：仅 `/products/iridescent-laser-hot-stamping-stretch-ice-silk/` 的五张画廊图使用构建期响应式 WebP（480/720/1080/1440px，最大不超过源图宽度，质量 76），按手机/桌面画廊实际宽度选图。画廊缩略图使用 160px、质量 70 的 WebP，视频 poster 复用第一张缩略图，视频仍为 `preload="none"`。head 的响应式预加载与首图候选及 sizes 完全匹配，移除旧原图预加载。生产构建内联该页本地 CSS。保留图片顺序、产品内容、SEO、详情原图和 RFQ 流程；H2013120101 另按 REQ-PRODUCT-056 启用优化，其他新增低分页按 REQ-PRODUCT-057 启用；全部页面样式按 REQ-SHELL-029 内联。共享图库切换 source 时同步响应式候选与 sizes，修复原先调用不存在的 `HTMLImageElement.load()` 的错误。
 - 验收条件：移动初始画廊请求不再下载五张完整原图，首图无重复下载；五个缩略图和视频入口均可切换，返回首图正常；不主动下载视频；375/390/768/1024/1440px 无横向溢出，quote/sample RFQ 正常；另一产品画廊切换回归通过；构建、产品与 SEO 校验通过。
 - 影响模块：`product-catalog`、`site-shell`
 - 代码路径：`src/pages/products/[slug].astro`、`src/components/ProductDetail.astro`、`scripts/inline-home-styles.mjs`
@@ -553,10 +553,19 @@ status: current
 
 ### REQ-PRODUCT-056：H2013120101 详情页移动端加载速度
 - 状态：active
-- 当前规则：`/products/rainbow-iridescent-laser-foil-nylon-spandex-fabric/` 复用 REQ-PRODUCT-055 的画廊优化流程，五张 800px 源图生成 480/720/800px、质量 76 的响应式 WebP 和 160px、质量 70 的缩略图。首图使用与实际画廊一致的响应式预加载；生产构建内联该页 CSS。保持产品文案、规格、图片顺序、详情图片、SEO 和询盘流程不变，不新增视频。H2013120107 已有优化保留，未启用优化的其他详情页仍使用原图和外部 CSS。
+- 当前规则：`/products/rainbow-iridescent-laser-foil-nylon-spandex-fabric/` 复用 REQ-PRODUCT-055 的画廊优化流程，五张 800px 源图生成 480/720/800px、质量 76 的响应式 WebP 和 160px、质量 70 的缩略图。首图使用与实际画廊一致的响应式预加载；生产构建内联该页 CSS。保持产品文案、规格、图片顺序、详情图片、SEO 和询盘流程不变，不新增视频。H2013120107 已有优化保留，其他新增低分页按 REQ-PRODUCT-057 启用；全部页面样式按 REQ-SHELL-029 内联。
 - 验收条件：首次加载不下载五张完整画廊原图，首图无重复请求；五张图片可切换并返回首图，无脚本错误；375/390/768/1024/1440px 无横向溢出，quote/sample 弹窗正常；图片候选宽度不超过原图且与实际输出匹配；原有优化及其他产品图库回归通过；构建及产品/SEO 校验通过。
 - 影响模块：`product-catalog`、`site-shell`
 - 代码路径：`src/pages/products/[slug].astro`、`scripts/inline-home-styles.mjs`；复用 `src/components/ProductDetail.astro`。
 - 测试路径：`npm run build`、`git diff --check`；同条件浏览器慢网对比、响应式图库和询盘交互检查。
 - 最后变更编号：CHG-20261023-005-rainbow-nylon-mobile-loading
 - 待确认事项：尚未部署，本机模拟结果不能替代线上目标地区手机实测。
+
+### REQ-PRODUCT-057：低分产品详情页画廊优化
+- 状态：active
+- 当前规则：对桌面逐页基线低于 93 的 H2013120105、H2013090101、H2013120106、H2013090102、H2013090104、H2013060102、H2015030103 复用 REQ-PRODUCT-055 的响应式画廊/160px 缩略图流程，候选宽度不超过源图；首图预加载与候选一致。此前两个产品优化保留，其他产品画廊保持原图。全部详情页本地 CSS 按 REQ-SHELL-029 内联。
+- 验收条件：九个启用优化的图库在手机和桌面均可切换并返回首图；首图无重复下载，不主动下载视频，无横向溢出，RFQ 正常；逐页实测记录与本地/线上环境明确区分。
+- 代码路径：src/pages/products/[slug].astro；复用 src/components/ProductDetail.astro
+- 测试路径：npm run build；官方 Lighthouse desktop 逐页复测；390/1350px 图库与 RFQ 检查
+- 最后变更编号：CHG-20261023-009-site-performance-audit
+- 待确认事项：发布后补做 Google PageSpeed 线上验收。

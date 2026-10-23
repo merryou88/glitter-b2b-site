@@ -303,7 +303,7 @@ const productLookup = performanceProducts.map((p) => ({
   const modal = document.getElementById("rfq-quote-modal");
   const floatingTrigger = document.querySelector(".rfq-floating-trigger");
   const modalWrap = modal?.querySelector(".rfq-modal__wrap");
-  const openers = Array.from(document.querySelectorAll(floatingOnly ? ".rfq-floating-trigger" : "[data-rfq-open]"));
+  const openers = Array.from(document.querySelectorAll(floatingOnly ? ".rfq-floating-trigger, [data-rfq-home-open]" : "[data-rfq-open]"));
   const closers = Array.from(document.querySelectorAll("[data-rfq-close]"));
   const focusableSelector = [
     "a[href]",

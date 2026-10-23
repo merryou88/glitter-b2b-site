@@ -6,6 +6,7 @@
 import Layout from "@layouts/Layout.astro";
 import { performanceProducts } from "@data/allProducts";
 import { blogArticles } from "@data/blogArticles";
+import { responsiveImage } from "../../lib/responsive-image";
 
 const applicationPages = [
   {
@@ -483,6 +484,8 @@ export function getStaticPaths() {
 
 const page = applicationPages.find((item) => item.slug === Astro.params.slug);
 if (!page) throw new Error(`Unknown application page: ${Astro.params.slug}`);
+const heroImage = await responsiveImage(page.image);
+const heroSizes = "(max-width: 640px) calc(100vw - 32px), (max-width: 728px) calc(100vw - 48px), (max-width: 900px) 680px, (max-width: 1280px) calc(46vw - 51.52px), 537.28px";
 const relatedProducts = page.productSlugs?.length
   ? page.productSlugs
       .map((slug) => performanceProducts.find((product) => product.slug === slug))
@@ -548,6 +551,7 @@ const faqSchema = {
   structuredData={[breadcrumbData, pageSchema, faqSchema]}
   footerFocus="foil"
 >
+  <link slot="head" rel="preload" as="image" href={heroImage.src} imagesrcset={heroImage.srcSet.attribute} imagesizes={heroSizes} type="image/webp" fetchpriority="high" />
   <section class="application-hero">
     <div class="container application-hero__grid">
       <div class="application-hero__copy">
@@ -565,7 +569,7 @@ const faqSchema = {
         </div>
       </div>
       <picture class="application-hero__image">
-        <img src={page.image} alt={page.imageAlt} width="1200" height="800" fetchpriority="high" />
+        <img src={heroImage.src} srcset={heroImage.srcSet.attribute} sizes={heroSizes} alt={page.imageAlt} width="1200" height="800" fetchpriority="high" />
       </picture>
     </div>
   </section>

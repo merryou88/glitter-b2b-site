@@ -3,6 +3,9 @@
  * Footer.astro — EcoWoodPlate-style 4-column footer
  * Brand | Products | Company | Contact
  */
+import { getImage } from 'astro:assets';
+import logo from '../../public/logo.png';
+const footerLogo = await getImage({ src: logo, width: 152, format: 'webp', quality: 85 });
 const year = new Date().getFullYear();
 
 interface Props {
@@ -19,7 +22,7 @@ const isFoilFocus = focus === "foil";
       <!-- Column 1: Brand -->
       <div class="footer__col footer__brand">
         <a href="/" class="footer__logo">
-          <img class="footer__logo-image" src="/logo.png" alt="Nixia Fabric" width="76" height="76" />
+          <img class="footer__logo-image" src={footerLogo.src} alt="Nixia Fabric" width="76" height="76" loading="lazy" decoding="async" />
         </a>
         <p class="footer__tagline">
           {isFoilFocus

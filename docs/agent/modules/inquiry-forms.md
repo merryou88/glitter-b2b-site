@@ -39,7 +39,7 @@ requirement_docs:
 ## 关键调用关系
 - `ContactForm` 和 `RfqQuoteForm` 都用 `FormData` 组装 JSON 后 `fetch()` 到 Worker
 - 首页和产品卡片上的 `data-rfq-open` 会打开 `RFQQuoteModal`
-- `RFQQuoteModal` 提供移动端左下方浮动询盘按钮，复用 `data-rfq-open`；首页也挂载该弹窗，但通过 floatingOnly 仅绑定浮动表单图标入口，保留现有 CTA 链接与内联表单。
+- `RFQQuoteModal` 提供移动端左下方浮动询盘按钮，复用 `data-rfq-open`；首页也挂载该弹窗，但通过 floatingOnly 绑定浮动表单图标及首屏 `Request Sample & Quote`（`data-rfq-home-open`）入口，其他 CTA 链接与内联表单保留原行为。
 - 成功后将一次性 GA4 lead 上下文写入 sessionStorage，并统一跳转到 `/thank-you/`；感谢页在 Analytics 就绪后发送 `generate_lead`，避免跳转取消事件请求。
 
 ## 数据与状态
