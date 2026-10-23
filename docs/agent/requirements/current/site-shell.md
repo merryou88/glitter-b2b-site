@@ -305,11 +305,11 @@ status: current
 
 ### REQ-SHELL-029：首页与产品目录加载关键路径
 - 状态：active
-- 当前规则：生产构建将首页和 `/products/` 引用的本地 Astro CSS 内联到各自 HTML，消除样式阻塞网络往返；REQ-PRODUCT-055 指定的 H2013120107 详情页也内联本地 CSS，其他页面保留外部样式缓存。Analytics 默认在首次交互时加载（感谢页按 REQ-SHELL-030 立即加载），或在 load 事件后至少等待 10 秒再进入空闲调度，保留原有事件队列和归因。
-- 验收条件：首页和产品目录生产 HTML 不含外部 stylesheet 请求，首屏图片预加载保留；无交互时 Analytics 不得在 10 秒延迟前加载；构建及产品/SEO 校验通过。
+- 当前规则：生产构建将首页和 `/products/` 引用的本地 Astro CSS 内联到各自 HTML，消除样式阻塞网络往返；REQ-PRODUCT-055/056 指定的 H2013120107/H2013120101 详情页也内联本地 CSS，其他页面保留外部样式缓存。Analytics 默认在首次交互时加载（感谢页按 REQ-SHELL-030 立即加载），或在 load 事件后至少等待 10 秒再进入空闲调度，保留原有事件队列和归因。
+- 验收条件：首页、产品目录及这两个详情页生产 HTML 不含外部 stylesheet 请求，首屏图片预加载保留；无交互时 Analytics 不得在 10 秒延迟前加载；构建及产品/SEO 校验通过。
 - 代码路径：`scripts/inline-home-styles.mjs`、`package.json`、`src/layouts/Layout.astro`
 - 测试路径：`npm run build`；构建产物检查和统计脚本调度检查
-- 最后变更编号：CHG-20261023-004-ice-silk-mobile-loading
+- 最后变更编号：CHG-20261023-005-rainbow-nylon-mobile-loading
 - 待确认事项：部署后需在相同 Lighthouse 手机节流条件下复测 LCP；本地构建结果不能替代线上性能结果。
 
 ### REQ-SHELL-030：页面 head 插槽与立即加载统计

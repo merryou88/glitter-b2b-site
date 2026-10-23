@@ -21,9 +21,12 @@ import { performanceProducts } from "@data/allProducts";
 import { getImage } from "astro:assets";
 import type { ImageMetadata } from "astro";
 
-// Optimize this product's gallery without importing unrelated product assets.
-const iceSilkImages = import.meta.glob<{ default: ImageMetadata }>(
-  "/public/images/products/H2013120107/main/*-main-[1-5].webp",
+// Optimize selected galleries without importing unrelated product assets.
+const optimizedGalleryImages = import.meta.glob<{ default: ImageMetadata }>(
+  [
+    "/public/images/products/H2013120107/main/*-main-[1-5].webp",
+    "/public/images/products/H2013120101/main/*-main-[1-5].webp",
+  ],
   { eager: true },
 );
 
@@ -60,9 +63,12 @@ const heroWebp = heroImage.replace(/\.(png|jpe?g)$/i, ".webp");
 const hero = existsSync(`public${heroWebp}`) ? heroWebp : heroImage;
 
 const gallerySizes = "(max-width: 592px) calc(100vw - 32px), (max-width: 968px) 560px, (max-width: 1240px) calc(47vw - 22.56px), 560px";
-const optimizedGallery = product.slug === "iridescent-laser-hot-stamping-stretch-ice-silk"
+const optimizedGallery = [
+  "iridescent-laser-hot-stamping-stretch-ice-silk",
+  "rainbow-iridescent-laser-foil-nylon-spandex-fabric",
+].includes(product.slug)
   ? await Promise.all(product.galleryImages.slice(0, 8).map(async (file) => {
-      const source = iceSilkImages[`/public${product.galleryMainPath}${file}`]?.default;
+      const source = optimizedGalleryImages[`/public${product.galleryMainPath}${file}`]?.default;
       if (!source) throw new Error(`Missing optimized gallery source: ${file}`);
       const [main, thumbnail] = await Promise.all([
         getImage({

@@ -543,10 +543,20 @@ status: current
 
 ### REQ-PRODUCT-055：H2013120107 详情页移动端加载速度
 - 状态：active
-- 当前规则：仅 `/products/iridescent-laser-hot-stamping-stretch-ice-silk/` 的五张画廊图使用构建期响应式 WebP（480/720/1080/1440px，最大不超过源图宽度，质量 76），按手机/桌面画廊实际宽度选图。画廊缩略图使用 160px、质量 70 的 WebP，视频 poster 复用第一张缩略图，视频仍为 `preload="none"`。head 的响应式预加载与首图候选及 sizes 完全匹配，移除旧原图预加载。生产构建内联该页本地 CSS。保留图片顺序、产品内容、SEO、详情原图和 RFQ 流程；其他详情页图片路径与样式加载策略保持原样。共享图库切换 source 时同步响应式候选与 sizes，修复原先调用不存在的 `HTMLImageElement.load()` 的错误。
+- 当前规则：仅 `/products/iridescent-laser-hot-stamping-stretch-ice-silk/` 的五张画廊图使用构建期响应式 WebP（480/720/1080/1440px，最大不超过源图宽度，质量 76），按手机/桌面画廊实际宽度选图。画廊缩略图使用 160px、质量 70 的 WebP，视频 poster 复用第一张缩略图，视频仍为 `preload="none"`。head 的响应式预加载与首图候选及 sizes 完全匹配，移除旧原图预加载。生产构建内联该页本地 CSS。保留图片顺序、产品内容、SEO、详情原图和 RFQ 流程；H2013120101 另按 REQ-PRODUCT-056 启用优化，未启用优化的其他详情页图片路径与样式加载策略保持原样。共享图库切换 source 时同步响应式候选与 sizes，修复原先调用不存在的 `HTMLImageElement.load()` 的错误。
 - 验收条件：移动初始画廊请求不再下载五张完整原图，首图无重复下载；五个缩略图和视频入口均可切换，返回首图正常；不主动下载视频；375/390/768/1024/1440px 无横向溢出，quote/sample RFQ 正常；另一产品画廊切换回归通过；构建、产品与 SEO 校验通过。
 - 影响模块：`product-catalog`、`site-shell`
 - 代码路径：`src/pages/products/[slug].astro`、`src/components/ProductDetail.astro`、`scripts/inline-home-styles.mjs`
 - 测试路径：`npm run build`、`git diff --check`；浏览器同条件慢网模拟与图库/RFQ 交互检查。
 - 最后变更编号：CHG-20261023-004-ice-silk-mobile-loading
 - 待确认事项：尚未部署，本机慢网结果不能替代线上目标地区实测。
+
+### REQ-PRODUCT-056：H2013120101 详情页移动端加载速度
+- 状态：active
+- 当前规则：`/products/rainbow-iridescent-laser-foil-nylon-spandex-fabric/` 复用 REQ-PRODUCT-055 的画廊优化流程，五张 800px 源图生成 480/720/800px、质量 76 的响应式 WebP 和 160px、质量 70 的缩略图。首图使用与实际画廊一致的响应式预加载；生产构建内联该页 CSS。保持产品文案、规格、图片顺序、详情图片、SEO 和询盘流程不变，不新增视频。H2013120107 已有优化保留，未启用优化的其他详情页仍使用原图和外部 CSS。
+- 验收条件：首次加载不下载五张完整画廊原图，首图无重复请求；五张图片可切换并返回首图，无脚本错误；375/390/768/1024/1440px 无横向溢出，quote/sample 弹窗正常；图片候选宽度不超过原图且与实际输出匹配；原有优化及其他产品图库回归通过；构建及产品/SEO 校验通过。
+- 影响模块：`product-catalog`、`site-shell`
+- 代码路径：`src/pages/products/[slug].astro`、`scripts/inline-home-styles.mjs`；复用 `src/components/ProductDetail.astro`。
+- 测试路径：`npm run build`、`git diff --check`；同条件浏览器慢网对比、响应式图库和询盘交互检查。
+- 最后变更编号：CHG-20261023-005-rainbow-nylon-mobile-loading
+- 待确认事项：尚未部署，本机模拟结果不能替代线上目标地区手机实测。
