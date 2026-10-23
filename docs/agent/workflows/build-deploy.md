@@ -6,9 +6,10 @@
 ## 调用顺序
 1. 根目录 `npm run build`。
 2. Astro 输出静态站点。
-3. `npm run validate:products` 检查产品数据。
-4. Cloudflare Pages 部署静态产物。
-5. 需要询盘后端时，进入 `rfq-worker/` 独立部署 Worker。
+3. `scripts/inline-home-styles.mjs` 内联首页及产品目录页的本地 CSS；目录图片由 Astro 构建期生成响应式 WebP。
+4. `npm run validate:products` 检查产品数据，`npm run validate:seo` 检查 SEO 与内部链接。
+5. Cloudflare Pages 部署静态产物。
+6. 需要询盘后端时，进入 `rfq-worker/` 独立部署 Worker。
 
 ## 涉及模块
 - `site-shell`

@@ -530,3 +530,13 @@ status: current
 - 测试路径：`npm run build`、`git diff --check`；375px、390px、768px、1024px、1440px 视口检查与 RFQ、筛选交互检查。
 - 最后变更编号：CHG-20261022-001-products-b2b-landing
 - 待确认事项：线上发布和真实邮件/广告转化不属于本次本地页面验证。
+
+### REQ-PRODUCT-054：产品目录移动端加载速度
+- 状态：active
+- 当前规则：`/products/` 使用 Astro 构建期图片优化，将符合 `main/*-main-1.webp` 命名的目录主图生成 360/540/720px、质量 72 的 WebP，按实际容器宽度通过 `srcset/sizes` 供浏览器选择；不改产品详情原图。不符合命名约定的图片保留原图回退和加载失败占位。默认推荐首卡图片在 head 使用匹配的 `imagesrcset/imagesizes` 预加载，并使用 `loading="eager"` 和 `fetchpriority="high"`，其余卡片懒加载。生产构建内联目录本地样式。产品文案、集合、推荐排序、移动端 Dancewear 默认筛选和 RFQ 逻辑保持不变。
+- 验收条件：18 张目录图片均有响应式输出，首卡预加载与最终图片候选一致，不重复下载原图；生产 HTML 无本地外部 stylesheet；375/390/768/1024/1440px 无横向溢出，移动应用筛选、桌面搜索/排序和 quote/sample 弹窗正常；构建与产品/SEO 校验通过。
+- 影响模块：`product-catalog`、`site-shell`
+- 代码路径：`src/pages/products.astro`、`scripts/inline-home-styles.mjs`
+- 测试路径：`npm run build`、`git diff --check`；浏览器慢速网络模拟及响应式交互检查。
+- 最后变更编号：CHG-20261023-001-products-mobile-loading
+- 待确认事项：本地网络模拟不等于线上手机体验，发布后应在用户目标地区复测。

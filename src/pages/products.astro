@@ -6,6 +6,17 @@
  */
 import Layout from "@layouts/Layout.astro";
 import { performanceProducts } from "@data/allProducts";
+import { Image, getImage } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+// Import catalog sources at build time so Astro can emit responsive, cached
+// thumbnails without changing the original images used by product details.
+// Match the catalog's first main-image convention, not every gallery asset.
+const catalogImages = import.meta.glob<{ default: ImageMetadata }>(
+  "/public/images/products/**/main/*-main-1.webp",
+  { eager: true },
+);
+const catalogImageSizes = "(max-width: 640px) calc(100vw - 34px), (max-width: 768px) calc(100vw - 50px), (max-width: 968px) calc((100vw - 74px) / 2), (max-width: 1280px) calc((100vw - 100px) / 3), 394px";
 
 const catalogProducts = performanceProducts;
 
@@ -32,6 +43,19 @@ const sortedProducts = [...catalogProducts].sort((a, b) => {
   if (aOrder !== bOrder) return aOrder - bOrder;
   return catalogProducts.indexOf(a) - catalogProducts.indexOf(b);
 });
+
+const catalogImageOptions = (source: ImageMetadata) => ({
+  // Keep descriptors honest for the one source smaller than 720px.
+  widths: [...new Set([360, 540, 720].map((width) => Math.min(width, source.width)))],
+  sizes: catalogImageSizes,
+  width: Math.min(720, source.width),
+  format: "webp" as const,
+  quality: 72,
+});
+const firstImageSource = catalogImages[`/public${sortedProducts[0]?.mainImageWebp || sortedProducts[0]?.mainImageUrl}`]?.default;
+const firstImage = firstImageSource
+  ? await getImage({ src: firstImageSource, ...catalogImageOptions(firstImageSource) })
+  : null;
 
 const findRowValue = (rows, labels) =>
   rows?.find((row) => labels.includes(row.label))?.value;
@@ -130,6 +154,11 @@ const sourcingLinks = [
   structuredData={[breadcrumbData, collectionPageData]}
   footerFocus="foil"
 >
+  {firstImage && (
+    <link slot="head" rel="preload" as="image" href={firstImage.src}
+      imagesrcset={firstImage.srcSet.attribute} imagesizes={catalogImageSizes}
+      type="image/webp" fetchpriority="high" />
+  )}
   <!-- Page Hero (compact catalog header) -->
   <section class="page-hero">
     <div class="container">
@@ -212,7 +241,7 @@ const sourcingLinks = [
 
       <div class="product-grid" id="product-grid">
         {
-          sortedProducts.map((item) => (
+          sortedProducts.map((item, index) => (
             <div
               class="product-card"
               data-id={item.slug}
@@ -225,7 +254,18 @@ const sourcingLinks = [
             >
               <a href={`/products/${item.slug}/`} class="product-card__link" aria-label={`View ${item.title}`}>
                 <div class="product-card__image-wrap">
-                  {item.mainImageUrl ? (
+                  {catalogImages[`/public${item.mainImageWebp || item.mainImageUrl}`] ? (
+                    <Image
+                      src={catalogImages[`/public${item.mainImageWebp || item.mainImageUrl}`].default}
+                      alt={item.title}
+                      class="product-card__image"
+                      {...catalogImageOptions(catalogImages[`/public${item.mainImageWebp || item.mainImageUrl}`].default)}
+                      loading={index === 0 ? "eager" : "lazy"}
+                      fetchpriority={index === 0 ? "high" : "auto"}
+                      decoding="async"
+                      onerror="this.style.display='none';this.closest('.product-card__image-wrap').querySelector('.product-card__placeholder').style.display='flex'"
+                    />
+                  ) : item.mainImageUrl ? (
                     <picture>
                       {item.mainImageWebp && <source srcset={item.mainImageWebp} type="image/webp" />}
                       <img src={item.mainImageUrl} alt={item.title} class="product-card__image" loading="lazy" width="1200" height="1200" decoding="async" onerror="this.style.display='none';this.closest('.product-card__image-wrap').querySelector('.product-card__placeholder').style.display='flex'" />

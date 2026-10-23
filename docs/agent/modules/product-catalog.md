@@ -40,6 +40,7 @@ requirement_docs:
 
 ## 关键调用关系
 - 列表页从 `allProducts` 生成卡片与筛选条件
+- 目录主图按 `main/*-main-1.webp` 命名约定通过 `astro:assets` 在构建时生成 360/540/720px WebP，通过 `srcset/sizes` 适配屏幕；非约定命名回退原图。首卡以匹配的响应式预加载及 eager/high 优先获取，其余卡片保持懒加载；产品详情原图不变。生产构建内联目录 CSS，移除阻塞样式请求。
 - 列表页首屏以短标题、一条 B2B 介绍、MOQ 等四项事实和双 CTA 面向舞蹈/舞台服饰批发采购，优先露出产品；quote/sample 双 CTA 复用 `RFQQuoteModal` 的 `data-rfq-intent`，无 JavaScript 时分别回退到联系页与样品政策页；不将全部目录产品统一称为四面弹，长样品条件置于底部 CTA。
 - 桌面搜索框独占一行，筛选/排序下拉控件使用自适应网格；移动端仍使用既有应用标签和 Dancewear 默认筛选。
 - 详情页用 `getStaticPaths()` 为每个产品生成静态页面

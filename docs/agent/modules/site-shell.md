@@ -48,7 +48,7 @@ requirement_docs:
 ## 数据与状态
 - `siteUrl` 固定为 `https://nixiafabric.com`
 - 默认 `description`、`keywords`、`og:image`、`robots`
-- 首页会预加载首屏 hero 图；生产构建通过 `scripts/inline-home-styles.mjs` 内联首页本地样式，其他页面保留外部 CSS。Analytics 无交互时在 load 后等待至少 10 秒再调度。
+- 首页会预加载首屏 hero 图；生产构建通过 `scripts/inline-home-styles.mjs` 内联首页和产品目录页本地样式，其他页面保留外部 CSS。产品目录使用 head 插槽预加载首卡响应式图片。Analytics 无交互时在 load 后等待至少 10 秒再调度。
 - 移动菜单和桌面菜单共享同一组路由语义
 
 ## 外部依赖

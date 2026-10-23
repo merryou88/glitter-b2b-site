@@ -1,7 +1,8 @@
 ---
 change_id: CHG-20261017-001-mobile-loading-critical-path
 date: 2026-10-17
-status: implemented
+status: superseded
+superseded_by: CHG-20261023-001-products-mobile-loading
 requirements:
   - REQ-SHELL-029
 modules:
