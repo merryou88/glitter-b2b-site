@@ -143,10 +143,10 @@ status: current
 - 最后变更编号：CHG-20261011-017-about-mobile-stats-grid
 - 待确认事项：无
 
-### REQ-COMPANY-015：感谢页 Google 转化事件
+### REQ-COMPANY-015：感谢页只记录真实成功询盘
 - 状态：active
-- 当前规则：感谢页通过 head 插槽在 </head> 前放置用户指定的 ads_conversion__https_nixiafabric_com__1 事件；等待共享 gtag config 入队后每次页面加载发送一次。保留 noindex, follow。不增加 send_to 或未经提供的广告账号 ID。刷新或直接访问感谢页也会发送此页面事件。
-- 验收条件：构建通过；事件仅存在于感谢页 head，config 先于 event，opt-out 不发送事件。
-- 代码路径：`src/layouts/Layout.astro`、`src/pages/thank-you.astro`
-- 测试路径：`npm run build`；产物检查及脚本模拟
-- 最后变更编号：CHG-20261020-001-thank-you-google-conversion
+- 当前规则：感谢页仅在会话中存在一次性成功询盘标记时发送 GA4 `generate_lead`，发送后立即删除标记。不得发送页面加载型 `ads_conversion__https_nixiafabric_com__1` 事件，以防直接访问或刷新感谢页造成重复转化。感谢页继续保持 `noindex, follow`。
+- 验收条件：成功提交表单后感谢页发送一条 `generate_lead`；直接访问或刷新感谢页不发送 lead；页面不包含 `ads_conversion__https_nixiafabric_com__1`。
+- 代码路径：`src/pages/thank-you.astro`、`src/layouts/Layout.astro`
+- 测试路径：`npm run build`；产物检查；发布后通过 Tag Assistant 完成一次表单提交并刷新感谢页验证。
+- 最后变更编号：CHG-20261023-004-remove-page-load-conversion

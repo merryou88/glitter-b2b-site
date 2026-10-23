@@ -8,5 +8,5 @@
 | 博客知识中心 | `current/blog.md` | `REQ-BLOG-001~018` | CHG-20261017-004-swim-cap-illustrated-guide | `src/pages/blog/index.astro`、`src/pages/blog/[slug].astro`、`src/data/blogArticles.js`、`src/components/ProductDetail.astro` |
 | 联系 / RFQ 表单 | `current/inquiry-forms.md` | `REQ-FORM-001~010` | CHG-20261023-002-reliable-lead-tracking | `src/components/ContactForm.astro`、`src/components/RfqQuoteForm.astro`、`src/components/RFQQuoteModal.astro`、`src/pages/index.astro`、`src/pages/thank-you.astro` |
 | Cloudflare Worker | `current/cloudflare-worker.md` | `REQ-WORKER-001~004` | 待确认 | `rfq-worker/src/index.ts`、`rfq-worker/wrangler.toml` |
-| 公司 / 政策页 | `current/company-pages.md` | `REQ-COMPANY-001~015` | CHG-20261020-001-thank-you-google-conversion | `src/pages/about.astro`、`src/pages/factory.astro`、`src/pages/certifications.astro`、`src/pages/sample-policy.astro`、`src/pages/privacy.astro`、`src/pages/thank-you.astro`、`src/pages/404.astro` |
+| 公司 / 政策页 | `current/company-pages.md` | `REQ-COMPANY-001~015` | CHG-20261023-004-remove-page-load-conversion | `src/pages/about.astro`、`src/pages/factory.astro`、`src/pages/certifications.astro`、`src/pages/sample-policy.astro`、`src/pages/privacy.astro`、`src/pages/thank-you.astro`、`src/pages/404.astro` |
 | 旧 Resend 端点 | `current/legacy-resend-api.md` | `REQ-LEGACY-001~002` | CHG-20260930-004-retire-legacy-rfq-submit | 已废弃，当前无代码入口 |
