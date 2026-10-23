@@ -92,3 +92,13 @@ status: current
 - 测试路径：`npm run build`；桌面和移动端打开 RFQ 弹窗检查 Logo。
 - 最后变更编号：CHG-20261014-002-rfq-current-logo
 - 待确认事项：无
+
+### REQ-FORM-010：成功询盘必须可靠记录 GA4 潜在客户事件
+- 状态：active
+- 当前规则：联系表单、RFQ 弹窗和首页内联询盘表单仅在 Worker 返回成功后，将本次询盘的最小上下文保存到当前浏览器会话，并跳转 `/thank-you/`。感谢页在 Google tag 已配置后读取并立即删除该一次性标记，再发送一次 GA4 `generate_lead`。直接访问或刷新感谢页不得生成该事件。
+- 验收条件：每个成功入口在 GA4 DebugView 中产生且只产生一次 `generate_lead`；提交失败和直接访问感谢页不产生该事件；原有 Google Ads 感谢页转化事件继续发送。
+- 影响模块：`inquiry-forms`、`site-shell`、`company-pages`
+- 代码路径：`src/components/ContactForm.astro`、`src/components/RfqQuoteForm.astro`、`src/pages/index.astro`、`src/pages/thank-you.astro`
+- 测试路径：提交三个入口各一次并在 GA4 DebugView 验证；刷新感谢页验证不重复计数。
+- 最后变更编号：CHG-20261023-002-reliable-lead-tracking
+- 待确认事项：发布后需在正式站点验证 Google Ads 从同一 GA4 资源导入的 `generate_lead` 状态。

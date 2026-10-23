@@ -2,9 +2,13 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { resolve, sep } from 'node:path';
 
 // Keep shared styles cacheable on other pages, while removing the extra
-// render-blocking round trips from the home and catalog landing pages.
+// render-blocking round trips from the home, catalog and optimized detail page.
 const dist = resolve('dist');
-for (const entry of ['index.html', 'products/index.html']) {
+for (const entry of [
+  'index.html',
+  'products/index.html',
+  'products/iridescent-laser-hot-stamping-stretch-ice-silk/index.html',
+]) {
   const page = resolve(dist, entry);
   let html = await readFile(page, 'utf8');
   const links = [...html.matchAll(/<link\b[^>]*rel="stylesheet"[^>]*>/g)];

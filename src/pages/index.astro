@@ -2368,6 +2368,17 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     if (errorEl) errorEl.hidden = true;
   }
 
+  function redirectAfterSuccessfulLead() {
+    try {
+      window.sessionStorage.setItem("nixia_pending_generate_lead", JSON.stringify({
+        form: "home_inline",
+        product_path: window.location.pathname,
+        lead_method: "home_inline",
+      }));
+    } catch (err) {}
+    window.location.href = "/thank-you/";
+  }
+
   function updateSubmitState() {
     if (!submitBtn) return;
     var data = new FormData(form);
@@ -2415,7 +2426,7 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
         body: JSON.stringify({ name: name, email: email, message: message, website: website }),
       });
       if (resp.ok) {
-        window.location.href = "/thank-you/";
+        redirectAfterSuccessfulLead();
       } else {
         var errData = await resp.json().catch(function() { return {}; });
         showError(errData.message || "Submission failed. Please try again later.");

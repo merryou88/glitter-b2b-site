@@ -265,6 +265,74 @@ const allStructuredData = structuredData
           window.gtag("event", eventName, eventParams);
         };
 
+        function describeCta(element) {
+          var label = (element.getAttribute("aria-label") || element.textContent || "").replace(/\s+/g, " ").trim();
+          return label.slice(0, 100) || "unnamed_cta";
+        }
+
+        function ctaLocation(element) {
+          var explicitLocation = element.getAttribute("data-cta-location");
+          if (explicitLocation) return explicitLocation;
+          if (element.closest(".header")) return "header";
+          if (element.closest(".footer")) return "footer";
+          if (element.closest(".rfq-modal")) return "rfq_modal";
+          if (element.closest(".float-contact")) return "floating_contact";
+          if (element.closest(".detail-cta, .policy-cta")) return "product_detail";
+          if (element.closest(".product-card")) return "product_catalog";
+          if (element.closest(".thank-you-page")) return "thank_you";
+          return "page_content";
+        }
+
+        function ctaPosition(element, location) {
+          var allCtas = Array.prototype.slice.call(document.querySelectorAll([
+            "a.btn",
+            "button.btn",
+            "a.product-card__btn",
+            "a.sample-button",
+            "a.buyer-resource-button",
+            "a.thank-you-card__btn",
+            ".float-contact__btn",
+            ".rfq-floating-trigger",
+            ".rfq-form__submit",
+            ".form-submit",
+            ".rfq-inline-form__submit"
+          ].join(",")));
+          var sameLocation = allCtas.filter(function (item) { return ctaLocation(item) === location; });
+          return sameLocation.indexOf(element) + 1;
+        }
+
+        document.addEventListener("click", function (event) {
+          var target = event.target;
+          if (!(target instanceof Element)) return;
+          var cta = target.closest([
+            "a.btn",
+            "button.btn",
+            "a.product-card__btn",
+            "a.sample-button",
+            "a.buyer-resource-button",
+            "a.thank-you-card__btn",
+            ".float-contact__btn",
+            ".rfq-floating-trigger",
+            ".rfq-form__submit",
+            ".form-submit",
+            ".rfq-inline-form__submit"
+          ].join(","));
+          if (!cta || cta.hasAttribute("disabled") || cta.getAttribute("aria-disabled") === "true") return;
+
+          var location = ctaLocation(cta);
+          var label = describeCta(cta);
+          var position = ctaPosition(cta, location);
+          window.__nixiaTrack("cta_click", {
+            cta_id: [window.location.pathname, location, position, label].join("|"),
+            cta_label: label,
+            cta_destination: cta instanceof HTMLAnchorElement ? cta.href : "",
+            cta_location: location,
+            cta_position: position,
+            page_path: window.location.pathname,
+            transport_type: "beacon",
+          });
+        });
+
         try {
           var params = new URLSearchParams(window.location.search);
           var debugParam = params.get("ga_debug");

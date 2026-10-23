@@ -163,6 +163,16 @@ status: current
 - 最后变更编号：CHG-20261003-001-mobile-pagespeed-followup
 - 待确认事项：需用真实手机网络和 Lighthouse/Chrome DevTools 采集优化前后指标
 
+### REQ-SHELL-031：全站行动按钮点击事件
+- 状态：active
+- 当前规则：Layout 统一监听可见行动按钮的点击，包括通用 CTA、产品卡片行动按钮、样品入口、浮动询盘与联系入口、表单提交按钮及感谢页行动按钮。每次有效点击发送 GA4 `cta_click`，包含稳定定位用的 `cta_id`、按钮文案、目标链接、页面路径、模块位置及该模块内序号；不替代既有 `rfq_open`、`whatsapp_click`、`product_cta_click` 或 `generate_lead` 等细分事件。
+- 验收条件：在 Tag Assistant/GA4 DebugView 点击任一覆盖范围内的行动按钮时，可看到一条带 `cta_id`、`cta_location`、`cta_position` 的 `cta_click`；已禁用按钮不发送；同一次点击仍保留适用的细分事件。
+- 影响模块：`site-shell`、`inquiry-forms`、`product-catalog`、`company-pages`
+- 代码路径：`src/layouts/Layout.astro`
+- 测试路径：`npm run build`；使用 Tag Assistant 点击通用 CTA、产品询盘按钮、WhatsApp 和表单提交按钮。
+- 最后变更编号：CHG-20261023-003-global-cta-tracking
+- 待确认事项：发布后在 GA4 将 `cta_click` 注册为自定义事件维度时，可按 `cta_id`、`cta_location`、`cta_position`、`cta_label` 和 `cta_destination` 做探索报告。
+
 ### REQ-SHELL-017：Products 页目录首屏与产品卡片局部优化
 - 状态：active
 - 当前规则：仅 Products 页 Hero 压缩上下内边距，桌面端顶部为 1rem，底部保持 1.5rem；移动端（≤768px）顶部内边距为 0.75rem，底部为 1rem。首屏采用短 H1 `Wholesale Metallic Fabrics for Dance & Stage Costumes`、一条 B2B 介绍、四项采购事实及 quote/sample 双入口，不展示重复 eyebrow 与长促销段落；样品运费及定制费用说明放在产品网格后的底部 CTA，具体按 REQ-PRODUCT-053 展示；Hero 描述文字铺满容器可用宽度，不使用窄栏最大宽度限制。产品目录不显示 Showing N products 数量提示，全端移除 Grid / List 切换及其操作行占位，固定网格展示；保留筛选、排序和空结果提示，Clear filters 置于桌面筛选栏内；桌面 Hero 与目录筛选框外边框直接贴齐，catalog 顶部 padding 为 0；移动端保留原标签栏顶部间距，分类标签与首张产品卡之间仅保留标签栏底部 0.75rem 间距。保留原有深蓝渐变背景；Buyer Guide 三卡片位于产品网格之后，卡片样式、文字和颜色保持不变。首页 Hero 不修改；首页前三张 Featured Foil Fabrics 卡片保留既有移动端缩略图与辅助链接规则。产品目录移动端完整显示 `95% Polyester 5% Spandex`，并在 In-Stock 标签旁显示 `✅ Free swatch card available`。
@@ -295,11 +305,11 @@ status: current
 
 ### REQ-SHELL-029：首页与产品目录加载关键路径
 - 状态：active
-- 当前规则：生产构建将首页和 `/products/` 引用的本地 Astro CSS 内联到各自 HTML，消除样式阻塞网络往返；其他页面保留外部样式缓存。Analytics 默认在首次交互时加载（感谢页按 REQ-SHELL-030 立即加载），或在 load 事件后至少等待 10 秒再进入空闲调度，保留原有事件队列和归因。
+- 当前规则：生产构建将首页和 `/products/` 引用的本地 Astro CSS 内联到各自 HTML，消除样式阻塞网络往返；REQ-PRODUCT-055 指定的 H2013120107 详情页也内联本地 CSS，其他页面保留外部样式缓存。Analytics 默认在首次交互时加载（感谢页按 REQ-SHELL-030 立即加载），或在 load 事件后至少等待 10 秒再进入空闲调度，保留原有事件队列和归因。
 - 验收条件：首页和产品目录生产 HTML 不含外部 stylesheet 请求，首屏图片预加载保留；无交互时 Analytics 不得在 10 秒延迟前加载；构建及产品/SEO 校验通过。
 - 代码路径：`scripts/inline-home-styles.mjs`、`package.json`、`src/layouts/Layout.astro`
 - 测试路径：`npm run build`；构建产物检查和统计脚本调度检查
-- 最后变更编号：CHG-20261023-001-products-mobile-loading
+- 最后变更编号：CHG-20261023-004-ice-silk-mobile-loading
 - 待确认事项：部署后需在相同 Lighthouse 手机节流条件下复测 LCP；本地构建结果不能替代线上性能结果。
 
 ### REQ-SHELL-030：页面 head 插槽与立即加载统计

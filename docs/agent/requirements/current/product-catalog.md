@@ -540,3 +540,13 @@ status: current
 - 测试路径：`npm run build`、`git diff --check`；浏览器慢速网络模拟及响应式交互检查。
 - 最后变更编号：CHG-20261023-001-products-mobile-loading
 - 待确认事项：本地网络模拟不等于线上手机体验，发布后应在用户目标地区复测。
+
+### REQ-PRODUCT-055：H2013120107 详情页移动端加载速度
+- 状态：active
+- 当前规则：仅 `/products/iridescent-laser-hot-stamping-stretch-ice-silk/` 的五张画廊图使用构建期响应式 WebP（480/720/1080/1440px，最大不超过源图宽度，质量 76），按手机/桌面画廊实际宽度选图。画廊缩略图使用 160px、质量 70 的 WebP，视频 poster 复用第一张缩略图，视频仍为 `preload="none"`。head 的响应式预加载与首图候选及 sizes 完全匹配，移除旧原图预加载。生产构建内联该页本地 CSS。保留图片顺序、产品内容、SEO、详情原图和 RFQ 流程；其他详情页图片路径与样式加载策略保持原样。共享图库切换 source 时同步响应式候选与 sizes，修复原先调用不存在的 `HTMLImageElement.load()` 的错误。
+- 验收条件：移动初始画廊请求不再下载五张完整原图，首图无重复下载；五个缩略图和视频入口均可切换，返回首图正常；不主动下载视频；375/390/768/1024/1440px 无横向溢出，quote/sample RFQ 正常；另一产品画廊切换回归通过；构建、产品与 SEO 校验通过。
+- 影响模块：`product-catalog`、`site-shell`
+- 代码路径：`src/pages/products/[slug].astro`、`src/components/ProductDetail.astro`、`scripts/inline-home-styles.mjs`
+- 测试路径：`npm run build`、`git diff --check`；浏览器同条件慢网模拟与图库/RFQ 交互检查。
+- 最后变更编号：CHG-20261023-004-ice-silk-mobile-loading
+- 待确认事项：尚未部署，本机慢网结果不能替代线上目标地区实测。

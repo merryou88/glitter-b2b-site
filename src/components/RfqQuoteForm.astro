@@ -151,6 +151,13 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
     });
   }
 
+  function redirectAfterSuccessfulLead(params) {
+    try {
+      window.sessionStorage.setItem("nixia_pending_generate_lead", JSON.stringify(params));
+    } catch (error) {}
+    window.location.href = "/thank-you/";
+  }
+
   function markFormStarted() {
     if (formStarted) return;
     formStarted = true;
@@ -328,12 +335,12 @@ const RFQ_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/rfq` : "https://nixia-fabri
       }
 
       if (res.ok && data.success) {
-        track("generate_lead", {
+        redirectAfterSuccessfulLead({
           product: selectedName,
+          product_path: window.location.pathname,
           inquiry_type: payload.inquiryType,
           lead_method: "rfq",
         });
-        window.location.href = "/thank-you/";
       } else {
         track("rfq_submit_error", {
           status: res.status,

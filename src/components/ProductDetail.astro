@@ -19,6 +19,14 @@ import { getApplicationClustersForProduct } from "../data/applicationClusters";
 import { productDecisionGuides } from "../data/productDecisionGuides";
 
 export interface Props {
+  optimizedGallery?: Array<{
+    src: string;
+    srcset: string;
+    sizes: string;
+    width: number;
+    height: number;
+    thumbnail: string;
+  }>;
   product: {
     slug: string;
     title: string;
@@ -71,7 +79,7 @@ export interface Props {
   };
 }
 
-const { product } = Astro.props;
+const { product, optimizedGallery = [] } = Astro.props;
 const isInquiryFocusedProduct = product.slug === "plain-iridescent-laser-spandex-4-way-stretch";
 const showExpandedHeroDescription = [
   "plain-iridescent-laser-spandex-4-way-stretch",
@@ -205,13 +213,14 @@ const getImageMimeType = (src = "") => {
 const galleryMainPath = product.galleryMainPath ?? "";
 const galleryImages = (product.galleryImages ?? [])
   .slice(0, 8)
-  .map((f: string) => {
+  .map((f: string, index: number) => {
     const src = galleryMainPath + f;
     const webp = src.replace(/\.(png|jpe?g)$/i, ".webp");
     const configuredImage = product.imageList.find((image) => image.src === src || image.webp === src);
     return {
-      src,
-      webp: existsSync("public" + webp) ? webp : null,
+      src: optimizedGallery[index]?.src ?? src,
+      webp: optimizedGallery[index]?.src ?? (existsSync("public" + webp) ? webp : null),
+      optimized: optimizedGallery[index],
       alt: configuredImage?.alt ?? product.mainImageAlt,
     };
   });
@@ -437,7 +446,7 @@ const heroVideo = product.video
           <picture>
             {
               galleryImages[0]?.webp && (
-                <source id="p-hero-img-webp" srcset={galleryImages[0].webp} type="image/webp" />
+                <source id="p-hero-img-webp" srcset={galleryImages[0].optimized?.srcset ?? galleryImages[0].webp} sizes={galleryImages[0].optimized?.sizes} type="image/webp" />
               )
             }
             <source srcset={galleryImages[0]?.src} type={getImageMimeType(galleryImages[0]?.src)} />
@@ -445,8 +454,8 @@ const heroVideo = product.video
               id="p-hero-img"
               src={galleryImages[0]?.src}
               alt={galleryImages[0]?.alt ?? product.mainImageAlt}
-              width="800"
-              height="800"
+              width={galleryImages[0]?.optimized?.width ?? 800}
+              height={galleryImages[0]?.optimized?.height ?? 800}
               loading="eager"
               fetchpriority="high"
               decoding="async"
@@ -454,7 +463,7 @@ const heroVideo = product.video
           </picture>
           {
             heroVideo && (
-              <video id="p-hero-video" controls preload="none" muted playsinline poster={heroVideo.poster} style="display:none">
+              <video id="p-hero-video" controls preload="none" muted playsinline poster={optimizedGallery[0]?.thumbnail ?? heroVideo.poster} style="display:none">
                 <source src={heroVideo.src} type="video/mp4" />
               </video>
             )
@@ -466,17 +475,19 @@ const heroVideo = product.video
             data-type="image"
             data-src={galleryImages[0]?.src}
             data-webp={galleryImages[0]?.webp ?? ""}
+            data-srcset={galleryImages[0]?.optimized?.srcset}
+            data-sizes={galleryImages[0]?.optimized?.sizes}
             data-alt={galleryImages[0]?.alt ?? product.mainImageAlt}
             aria-label="View main image"
           >
             <picture>
               {
                 galleryImages[0]?.webp && (
-                  <source srcset={galleryImages[0].webp} type="image/webp" />
+                  <source srcset={galleryImages[0].optimized?.thumbnail ?? galleryImages[0].webp} type="image/webp" />
                 )
               }
               <img
-                src={galleryImages[0]?.src}
+                src={galleryImages[0]?.optimized?.thumbnail ?? galleryImages[0]?.src}
                 alt={galleryImages[0]?.alt ?? product.mainImageAlt}
                 width="120"
                 height="80"
@@ -491,12 +502,14 @@ const heroVideo = product.video
               data-type="image"
               data-src={img.src}
               data-webp={img.webp ?? ""}
+              data-srcset={img.optimized?.srcset}
+              data-sizes={img.optimized?.sizes}
               data-alt={img.alt}
               aria-label="View detail image"
             >
               <picture>
-                {img.webp && <source srcset={img.webp} type="image/webp" />}
-                <img src={img.src} alt={img.alt} width="120" height="80" loading="lazy" decoding="async" />
+                {img.webp && <source srcset={img.optimized?.thumbnail ?? img.webp} type="image/webp" />}
+                <img src={img.optimized?.thumbnail ?? img.src} alt={img.alt} width="120" height="80" loading="lazy" decoding="async" />
               </picture>
             </button>
           ))}
@@ -505,7 +518,7 @@ const heroVideo = product.video
               <button class="p-hero-gallery__thumb" data-type="video" aria-label="View product video">
                 <picture>
                   <img
-                    src={galleryImages[0]?.src}
+                    src={galleryImages[0]?.optimized?.thumbnail ?? galleryImages[0]?.src}
                     alt={galleryImages[0]?.alt ?? product.mainImageAlt}
                     width="120"
                     height="80"
@@ -1464,14 +1477,15 @@ const heroVideo = product.video
           heroImg.style.display = 'block';
           if (heroWebp) {
             if (thumb.dataset.webp) {
-              heroWebp.setAttribute('srcset', thumb.dataset.webp);
+              heroWebp.setAttribute('srcset', thumb.dataset.srcset || thumb.dataset.webp);
+              if (thumb.dataset.sizes) heroWebp.setAttribute('sizes', thumb.dataset.sizes);
+              else heroWebp.removeAttribute('sizes');
             } else {
               heroWebp.removeAttribute('srcset');
             }
           }
           heroImg.src = thumb.dataset.src;
           if (thumb.dataset.alt) heroImg.alt = thumb.dataset.alt;
-          heroImg.load();
         }
       });
     });

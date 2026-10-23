@@ -29,6 +29,16 @@ const breadcrumbData = {
     // Queue the event until the shared Google tag has been configured.
     window.__nixiaAnalyticsReadyCallbacks = window.__nixiaAnalyticsReadyCallbacks || [];
     window.__nixiaAnalyticsReadyCallbacks.push(function () {
+      var pendingLead = null;
+      try {
+        pendingLead = JSON.parse(window.sessionStorage.getItem("nixia_pending_generate_lead") || "null");
+        window.sessionStorage.removeItem("nixia_pending_generate_lead");
+      } catch (error) {}
+
+      if (pendingLead) {
+        gtag("event", "generate_lead", pendingLead);
+      }
+
       // Google tag (gtag.js) event
       gtag('event', 'ads_conversion__https_nixiafabric_com__1', {
         // <event_parameters>

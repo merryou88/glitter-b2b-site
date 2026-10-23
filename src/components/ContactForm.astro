@@ -126,6 +126,13 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
     });
   }
 
+  function redirectAfterSuccessfulLead(params) {
+    try {
+      window.sessionStorage.setItem("nixia_pending_generate_lead", JSON.stringify(params));
+    } catch (error) {}
+    window.location.href = "/thank-you/";
+  }
+
   function markFormStarted() {
     if (formStarted) return;
     formStarted = true;
@@ -255,8 +262,12 @@ const CONTACT_ENDPOINT = WORKER_URL ? `${WORKER_URL}/api/contact` : "https://nix
       }
 
       if (res.ok && data.success) {
-        track("generate_lead", { lead_method: "contact" });
-        window.location.href = "/thank-you/";
+        redirectAfterSuccessfulLead({
+          form: "contact",
+          product: payload.productSku,
+          product_path: window.location.pathname,
+          lead_method: "contact",
+        });
       } else {
         track("contact_submit_error", { status: res.status });
         showError(data.message || "Submission failed. Please try again or contact us at info@nixiafabric.com.");
