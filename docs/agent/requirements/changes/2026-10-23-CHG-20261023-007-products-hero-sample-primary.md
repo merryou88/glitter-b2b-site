@@ -1,7 +1,7 @@
 ---
 change_id: CHG-20261023-007-products-hero-sample-primary
 date: 2026-10-23
-status: implemented
+status: superseded
 requirements:
   - REQ-PRODUCT-053
 modules:
@@ -28,3 +28,6 @@ src/pages/products.astro 的 page-hero__actions。
 `npm run build` 通过（59 个页面、18 个产品、56 个 sitemap URL 及 SEO/内链校验）。生成的产品列表 HTML 检查通过：Samples 在前并使用 btn--primary / sample，Quote 在后并使用 btn--outline / quote，两者回退链接及 RFQ 标记保留。`git diff --check` 通过。未做浏览器视觉检查或真实表单提交。
 ## 来源
 用户当前要求与产品列表页截图。
+
+## 后续变更
+CHG-20261024-001-product-led-catalog 更新首屏定位、卡片和筛选规则；原 RFQ 与卡片 CTA 顺序继续保留。

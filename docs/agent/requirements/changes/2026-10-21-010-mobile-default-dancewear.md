@@ -1,7 +1,7 @@
 ---
 change_id: CHG-20261021-010-mobile-default-dancewear
 date: 2026-10-21
-status: implemented
+status: superseded
 requirements:
   - REQ-PRODUCT-040
 modules:
@@ -16,3 +16,6 @@ modules:
 
 实现：src/pages/products.astro。验收：移动初始高亮与结果一致；标签切换/取消可用；桌面默认全部。
 验证：npm run build 通过（18 产品、59 页面及 SEO/内链）；执行页面脚本的模拟 DOM 检查，移动默认、切换、取消、桌面初始状态及断点重置均通过。
+
+## 后续变更
+CHG-20261024-001-product-led-catalog 更新首屏定位、卡片和筛选规则；原 RFQ 与卡片 CTA 顺序继续保留。

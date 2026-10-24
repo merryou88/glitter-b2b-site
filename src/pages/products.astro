@@ -1,7 +1,7 @@
 ---
 /**
  * Products Listing Page — /products
- * Catalog-style layout with desktop controls and mobile application tabs.
+ * Product-led catalog with responsive purchasing controls and finish shortcuts.
  * Filtering and sorting are implemented client-side on the static-rendered grid.
  */
 import Layout from "@layouts/Layout.astro";
@@ -16,7 +16,7 @@ const catalogImages = import.meta.glob<{ default: ImageMetadata }>(
   "/public/images/products/**/main/*-main-1.webp",
   { eager: true },
 );
-const catalogImageSizes = "(max-width: 640px) calc(100vw - 34px), (max-width: 768px) calc(100vw - 50px), (max-width: 968px) calc((100vw - 74px) / 2), (max-width: 1280px) calc((100vw - 100px) / 3), 394px";
+const catalogImageSizes = "(max-width: 640px) calc(100vw - 34px), (max-width: 768px) calc(100vw - 50px), (max-width: 968px) calc((100vw - 74px) / 2), (max-width: 1279px) calc((100vw - 100px) / 3), 232px";
 
 const catalogProducts = performanceProducts;
 
@@ -62,52 +62,17 @@ const findRowValue = (rows, labels) =>
 
 const productMoqDisplay = (product) => product.inStock ? "50m" : "200m";
 
-const productFilterTags = (product) => {
-  const searchable = [
-    product.title,
-    product.shortIntro,
-    product.specs.baseMaterial,
-    ...(product.tags || []),
-  ]
-    .join(" ")
-    .toLowerCase();
-  const stretch =
-    searchable.includes("4-way") || searchable.includes("four-way")
-      ? "4-way stretch"
-      : searchable.includes("high stretch") || searchable.includes("highly elastic")
-        ? "high stretch"
-        : searchable.includes("stretch") || searchable.includes("elastic")
-          ? "stretch / knit"
-          : "structured";
-  const finish =
-    searchable.includes("laser") || searchable.includes("iridescent") || searchable.includes("holographic")
-      ? "laser / iridescent"
-      : searchable.includes("printed") || searchable.includes("print")
-        ? "printed foil"
-        : searchable.includes("suede") || searchable.includes("texture") || searchable.includes("emboss")
-          ? "textured foil"
-          : "foil";
-
-  return { stretch, finish };
-};
-
-const finishOptions = ["laser / iridescent", "printed foil", "textured foil", "foil"];
-const stretchOptions = ["4-way stretch", "high stretch", "stretch / knit", "structured"];
-const applicationOptions = [
-  "stage costumes",
-  "dancewear",
-  "performance wear",
-  "party wear",
-  "performance props",
-  "backdrops",
+const effectOptions = [
+  { value: "all", label: "All Fabrics" },
+  { value: "foil", label: "Foil" },
+  { value: "metallic", label: "Metallic" },
+  { value: "holographic", label: "Holographic" },
+  { value: "iridescent", label: "Iridescent" },
 ];
 
-const mobileApplicationOptions = [
-  { value: "dancewear", label: "Dancewear" },
-  { value: "stage costumes", label: "Stage Costumes" },
-  { value: "performance apparel", label: "Performance Apparel" },
-  { value: "swimwear", label: "Swimwear" },
-];
+const catalogTitle = (product) => product.title.split(/ for /i)[0];
+const catalogStretch = (product) =>
+  findRowValue(product.specTable, ["Stretch", "Elasticity"]) || "Check sample";
 
 const breadcrumbData = {
   "@context": "https://schema.org",
@@ -162,15 +127,15 @@ const sourcingLinks = [
   <!-- Page Hero (compact catalog header) -->
   <section class="page-hero">
     <div class="container">
-      <h1>Wholesale Metallic Fabrics <span>for Dance &amp; Stage Costumes</span></h1>
+      <h1>Wholesale Foil &amp; Metallic Fabrics</h1>
       <p class="page-hero__desc">
-        Factory-direct foil and stretch fabrics for costume manufacturers and dancewear brands.
+        Explore holographic, iridescent and foil stretch fabrics for costume and apparel production. Custom colors available for bulk orders.
       </p>
       <div class="catalog-quick-facts" aria-label="Catalog purchasing facts">
         <span>Stock MOQ from 50m</span>
         <span>Custom MOQ from 200m</span>
-        <span>Sample Options</span>
-        <span>OEM Support</span>
+        <span>Fabric Swatches Available</span>
+        <span>Custom Colors Available</span>
       </div>
       <div class="page-hero__actions btn-group">
         <a href="/sample-policy/" data-rfq-open data-rfq-intent="sample" class="btn btn--primary" aria-haspopup="dialog" aria-controls="rfq-quote-modal">Request Samples</a>
@@ -179,7 +144,7 @@ const sourcingLinks = [
     </div>
   </section>
 
-  <!-- Catalog: filter + sort + grid -->
+  <!-- Catalog: search, effect shortcuts and product grid -->
   <section class="section" id="catalog">
     <div class="container">
       <div class="catalog-toolbar">
@@ -188,57 +153,19 @@ const sourcingLinks = [
           <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
           <input id="catalog-search" type="search" placeholder="Search fabrics" autocomplete="off" />
         </label>
-        <div class="catalog-controls">
-          <label class="catalog-filter">
-            <span>Finish</span>
-            <select id="finish-filter">
-              <option value="all">All finishes</option>
-              {finishOptions.map((option) => <option value={option}>{option}</option>)}
-            </select>
-          </label>
-          <label class="catalog-filter">
-            <span>Stretch</span>
-            <select id="stretch-filter">
-              <option value="all">All types</option>
-              {stretchOptions.map((option) => <option value={option}>{option}</option>)}
-            </select>
-          </label>
-          <label class="catalog-filter">
-            <span>Application</span>
-            <select id="application-filter">
-              <option value="all">All uses</option>
-              {applicationOptions.map((option) => <option value={option}>{option}</option>)}
-            </select>
-          </label>
-          <label class="catalog-filter">
-            <span>Stock</span>
-            <select id="stock-filter">
-              <option value="all">All availability</option>
-              <option value="in-stock">In stock</option>
-              <option value="in-stock-color-options">Stock colors</option>
-              <option value="made-to-order">Made to Order</option>
-            </select>
-          </label>
-          <label class="catalog-sort">
-            <span>Sort</span>
-            <select id="catalog-sort" class="catalog-sort__select">
-              <option value="default">Recommended</option>
-              <option value="az">Name A–Z</option>
-              <option value="colors">Most Colors</option>
-            </select>
-          </label>
-          <button type="button" id="catalog-reset" class="catalog-reset" hidden>Clear filters</button>
-        </div>
-      </div>
-
-      <div class="catalog-mobile-filters" aria-label="Filter products by application">
-        {mobileApplicationOptions.map((option) => (
-          <button type="button" class="catalog-mobile-filter" data-mobile-application={option.value} aria-pressed="false">
+      <div class="catalog-effect-filters" aria-label="Filter fabrics by effect">
+        {effectOptions.map((option) => (
+          <button type="button" class="catalog-effect-filter" data-effect={option.value} aria-pressed={option.value === "all" ? "true" : "false"}>
             {option.label}
           </button>
         ))}
       </div>
+        <button type="button" id="catalog-reset" class="catalog-reset" hidden>Clear filters</button>
+      </div>
 
+
+
+      <p id="catalog-result-status" class="sr-only" role="status" aria-live="polite">{sortedProducts.length} fabrics found</p>
       <div class="product-grid" id="product-grid">
         {
           sortedProducts.map((item, index) => (
@@ -246,11 +173,6 @@ const sourcingLinks = [
               class="product-card"
               data-id={item.slug}
               data-search={[item.title, item.shortIntro, item.specs.baseMaterial, ...(item.tags || []), ...(item.applications || [])].join(" ").toLowerCase()}
-              data-filter-tags={JSON.stringify(productFilterTags(item))}
-              data-applications={(item.applications || []).join("|").toLowerCase()}
-              data-stock={(item.stockStatus || "").toLowerCase().replace(/\s+/g, "-")}
-              data-colors={item.colorCount ?? item.imageList.length}
-              data-title={item.title}
             >
               <a href={`/products/${item.slug}/`} class="product-card__link" aria-label={`View ${item.title}`}>
                 <div class="product-card__image-wrap">
@@ -285,17 +207,17 @@ const sourcingLinks = [
 
               <div class="product-card__body">
                 <a href={`/products/${item.slug}/`} class="product-card__title-link">
-                  <h2 class="product-card__title">{item.title}</h2>
+                  <h2 class="product-card__title" title={catalogTitle(item)}>{catalogTitle(item)}</h2>
                 </a>
-                <p class="product-card__desc">{item.shortIntro}</p>
 
                 <div class="product-card__spec-grid" aria-label="Key product specifications">
                   <div><span>Width</span><strong>{item.specs.width || "To be confirmed"}</strong></div>
                   <div><span>Weight</span><strong>{item.specs.weight || "To be confirmed"}</strong></div>
                   <div>
-                    <span>Material</span>
+                    <span>Composition / Base</span>
                     <strong>{item.specs.baseMaterial || "To be confirmed"}</strong>
                   </div>
+                  <div><span>Stretch</span><strong>{catalogStretch(item)}</strong></div>
                   <div><span>MOQ</span><strong>{productMoqDisplay(item)}</strong></div>
                 </div>
 
@@ -492,24 +414,22 @@ const sourcingLinks = [
   }
 
   .catalog-toolbar {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    display: flex;
     gap: var(--space-md);
     align-items: center;
     padding: var(--space-md);
+    margin-bottom: 0.75rem;
     border: 1px solid var(--color-border);
     border-radius: 8px;
     background: var(--color-white);
     box-shadow: 0 4px 16px rgba(22, 41, 77, 0.05);
   }
 
-  .catalog-mobile-filters {
-    display: none;
-  }
-
   .catalog-search {
     position: relative;
     display: block;
+    flex: 0 0 240px;
+    min-width: 0;
   }
 
   .catalog-search svg {
@@ -535,45 +455,10 @@ const sourcingLinks = [
     font-size: var(--text-sm);
   }
 
-  .catalog-search input:focus,
-  .catalog-filter select:focus,
-  .catalog-sort__select:focus {
+  .catalog-search input:focus {
     outline: 2px solid rgba(196, 160, 53, 0.3);
     outline-offset: 1px;
     border-color: var(--color-accent);
-  }
-
-  .catalog-controls {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
-    gap: 0.65rem;
-    align-items: end;
-  }
-
-  .catalog-filter,
-  .catalog-sort {
-    display: grid;
-    min-width: 0;
-    gap: 0.25rem;
-    color: var(--color-text-muted);
-    font-size: var(--text-xs);
-    font-weight: 700;
-  }
-
-  .catalog-filter select,
-  .catalog-sort__select {
-    min-height: 38px;
-    width: 100%;
-    min-width: 0;
-    padding: 0.45rem 1.9rem 0.45rem 0.65rem;
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
-    background: var(--color-white);
-    color: var(--color-primary);
-    font: inherit;
-    font-size: var(--text-sm);
-    font-weight: 600;
-    cursor: pointer;
   }
 
   .catalog-reset {
@@ -651,7 +536,7 @@ const sourcingLinks = [
 
   .product-card__image-wrap {
     position: relative;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 16 / 10;
     background: var(--color-bg);
     overflow: hidden;
   }
@@ -710,15 +595,14 @@ const sourcingLinks = [
   .product-card__title-link { text-decoration: none; }
 
   .product-card__title {
-    font-size: var(--text-base);
+    font-size: 14px;
     font-weight: 700;
     color: var(--color-primary);
     margin: 0;
-    line-height: 1.3;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    line-height: 1.4;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .product-card__desc {
@@ -757,12 +641,11 @@ const sourcingLinks = [
 
   .product-card__spec-grid strong {
     display: block;
-    overflow: hidden;
     color: var(--color-primary);
     font-size: var(--text-xs);
     line-height: 1.35;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow-wrap: anywhere;
+    white-space: normal;
   }
 
   .product-card__swatch-note {
@@ -886,7 +769,7 @@ const sourcingLinks = [
 
   .product-grid.is-list .product-card__image-wrap {
     width: 100%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 16 / 10;
     height: 100%;
     min-height: 180px;
   }
@@ -978,39 +861,7 @@ const sourcingLinks = [
       font-size: var(--text-sm);
     }
     #catalog { padding-top: var(--space-sm); }
-    .catalog-toolbar { display: none; }
-    .catalog-mobile-filters {
-      display: flex;
-      gap: 0.5rem;
-      overflow-x: auto;
-      padding: 0.25rem 0 0.75rem;
-      scrollbar-width: none;
-    }
-
-    .catalog-mobile-filters::-webkit-scrollbar {
-      display: none;
-    }
-
-    .catalog-mobile-filter {
-      flex: 0 0 auto;
-      min-height: 38px;
-      padding: 0.45rem 0.8rem;
-      border: 1px solid var(--color-border);
-      border-radius: 999px;
-      background: var(--color-white);
-      color: var(--color-primary);
-      font: inherit;
-      font-size: var(--text-xs);
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .catalog-mobile-filter.is-active {
-      border-color: var(--color-accent);
-      background: var(--color-accent);
-      color: var(--color-white);
-    }
-
+    .catalog-toolbar { gap: 0.65rem; padding: 0.65rem; }
     /* Mobile products hero: keep the four purchasing facts in two rows. */
     .catalog-quick-facts {
       display: grid;
@@ -1047,152 +898,78 @@ const sourcingLinks = [
     }
   }
 
-  @media (min-width: 1201px) {
-    .catalog-toolbar {
-      grid-template-columns: minmax(130px, 0.85fr) minmax(0, 4.15fr);
-      gap: 0.75rem;
-    }
-
-    .catalog-controls {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 0.5rem;
-    }
+  .catalog-effect-filters { display: flex; flex: 1 1 0; min-width: 0; gap: 0.5rem; overflow-x: auto; align-items: center; }
+  .catalog-effect-filter {
+    flex: 0 0 auto; white-space: nowrap;
+    min-height: 44px; padding: 0.45rem 0.8rem; border: 1px solid var(--color-border);
+    border-radius: 999px; background: var(--color-white); color: var(--color-primary);
+    font: inherit; font-size: var(--text-xs); font-weight: 700; cursor: pointer;
   }
+  .catalog-effect-filter[aria-pressed="true"] {
+    background: var(--color-primary); color: white; border-color: var(--color-primary);
+  }
+  .product-card__actions { margin-top: auto; }
+  @media (max-width: 768px) {
+    .catalog-search { flex-basis: 140px; }
+    .catalog-search input { padding-right: 0.4rem; font-size: 12px; }
+    .catalog-reset { flex: 0 0 45px; font-size: 12px; line-height: 1.2; }
+    .catalog-effect-filters { flex-wrap: nowrap; overflow-x: auto; }
+    .catalog-effect-filter { flex: 0 0 auto; }
+    .product-card__image-wrap { aspect-ratio: 16 / 9; }
+  }
+
+  @media (min-width: 1280px) {
+    .product-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; }
+    .product-card__body { padding: 0.75rem; }
+    .product-card__title { font-size: 13px; }
+    .product-card__actions { grid-template-columns: 1fr; }
+    .product-card__btn { padding-inline: 0.4rem; font-size: 12px; }
+    .product-card__details-link { font-size: 12px; }
+  }
+
 </style>
 
 <script>
   (function () {
-    var grid = document.getElementById("product-grid");
-    var searchInput = document.getElementById("catalog-search");
-    var finishFilter = document.getElementById("finish-filter");
-    var stretchFilter = document.getElementById("stretch-filter");
-    var applicationFilter = document.getElementById("application-filter");
-    var stockFilter = document.getElementById("stock-filter");
-    var sortSelect = document.getElementById("catalog-sort");
-    var emptyEl = document.getElementById("catalog-empty");
-    var resetButton = document.getElementById("catalog-reset");
-    var mobileApplicationButtons = Array.prototype.slice.call(document.querySelectorAll(".catalog-mobile-filter"));
+    const grid = document.getElementById("product-grid");
+    const searchInput = document.getElementById("catalog-search") as HTMLInputElement;
+    const resetButton = document.getElementById("catalog-reset");
+    const emptyEl = document.getElementById("catalog-empty");
+    const resultStatus = document.getElementById("catalog-result-status");
+    const effectButtons = Array.from(document.querySelectorAll(".catalog-effect-filter"));
     if (!grid) return;
-
-    var cards = Array.prototype.slice.call(grid.querySelectorAll(".product-card"));
-    var filterControls = [searchInput, finishFilter, stretchFilter, applicationFilter, stockFilter];
-    var mobileViewport = window.matchMedia("(max-width: 768px)");
-    var mobileApplicationValue = mobileViewport.matches ? "dancewear" : "all";
-
-    function hasApplication(card, value) {
-      if (value === "all") return true;
-      return (card.getAttribute("data-applications") || "").split("|").some(function (application) {
-        return application === value;
-      });
-    }
-
-    function hasMobileApplication(card, value) {
-      if (value === "all") return true;
-      var aliases = {
-        dancewear: ["dancewear"],
-        "stage costumes": ["stage costumes"],
-        "performance apparel": ["performance wear", "performance outfits", "performance apparel", "performance dress"],
-        swimwear: ["swimwear", "bikini swimwear"],
-      };
-      var applications = (card.getAttribute("data-applications") || "").split("|");
-      return (aliases[value] || []).some(function (alias) {
-        return applications.indexOf(alias) !== -1;
-      });
-    }
+    const cards = Array.from(grid.querySelectorAll(".product-card"));
+    let effectValue = "all";
 
     function applyFilters() {
-      var search = (searchInput && searchInput.value || "").trim().toLowerCase();
-      var finish = finishFilter ? finishFilter.value : "all";
-      var stretch = stretchFilter ? stretchFilter.value : "all";
-      var application = applicationFilter ? applicationFilter.value : "all";
-      var stock = stockFilter ? stockFilter.value : "all";
-      var visible = 0;
-
-      cards.forEach(function (card) {
-        var tags = {};
-        try { tags = JSON.parse(card.getAttribute("data-filter-tags") || "{}"); } catch (error) {}
-        var cardStock = card.getAttribute("data-stock") || "";
-        var show =
-          (!search || (card.getAttribute("data-search") || "").indexOf(search) !== -1) &&
-          (finish === "all" || tags.finish === finish) &&
-          (stretch === "all" || tags.stretch === stretch) &&
-          hasApplication(card, application) &&
-          hasMobileApplication(card, mobileApplicationValue) &&
-          (stock === "all" || cardStock === stock);
+      const search = (searchInput?.value || "").trim().toLowerCase();
+      let visible = 0;
+      cards.forEach((card) => {
+        const text = card.getAttribute("data-search") || "";
+        const show = (!search || text.includes(search)) && (effectValue === "all" || text.includes(effectValue));
         card.classList.toggle("is-hidden", !show);
         if (show) visible++;
       });
       if (emptyEl) emptyEl.hidden = visible !== 0;
-      if (resetButton) {
-        resetButton.hidden = !search && finish === "all" && stretch === "all" && application === "all" && stock === "all";
-      }
-    }
-
-    function applySort(mode) {
-      var sorted = cards.slice().sort(function (a, b) {
-        if (mode === "az") {
-          return (a.getAttribute("data-title") || "").localeCompare(b.getAttribute("data-title") || "");
-        }
-        if (mode === "colors") {
-          return parseInt(b.getAttribute("data-colors") || "0", 10) - parseInt(a.getAttribute("data-colors") || "0", 10);
-        }
-        return parseInt(a.getAttribute("data-order") || "0", 10) - parseInt(b.getAttribute("data-order") || "0", 10);
-      });
-      sorted.forEach(function (card) { grid.appendChild(card); });
-    }
-
-    // Preserve original order for "Recommended"
-    cards.forEach(function (card, i) { card.setAttribute("data-order", String(i)); });
-
-    function syncMobileApplicationButtons() {
-      mobileApplicationButtons.forEach(function (item) {
-        var active = item.getAttribute("data-mobile-application") === mobileApplicationValue;
-        item.classList.toggle("is-active", active);
-        item.setAttribute("aria-pressed", active ? "true" : "false");
+      if (resultStatus) resultStatus.textContent = visible + " fabrics found";
+      if (resetButton) resetButton.hidden = !search && effectValue === "all";
+      effectButtons.forEach((button) => {
+        button.setAttribute("aria-pressed", button.getAttribute("data-effect") === effectValue ? "true" : "false");
       });
     }
 
-    mobileViewport.addEventListener("change", function () {
-      mobileApplicationValue = mobileViewport.matches ? "dancewear" : "all";
-      syncMobileApplicationButtons();
+    effectButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        effectValue = button.getAttribute("data-effect") || "all";
+        applyFilters();
+      });
+    });
+    searchInput?.addEventListener("input", applyFilters);
+    resetButton?.addEventListener("click", () => {
+      if (searchInput) searchInput.value = "";
+      effectValue = "all";
       applyFilters();
     });
-
-    mobileApplicationButtons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        var nextValue = button.getAttribute("data-mobile-application") || "all";
-        mobileApplicationValue = mobileApplicationValue === nextValue ? "all" : nextValue;
-        syncMobileApplicationButtons();
-        applyFilters();
-      });
-    });
-
-    filterControls.forEach(function (control) {
-      if (control) control.addEventListener("input", applyFilters);
-      if (control && control.tagName === "SELECT") control.addEventListener("change", applyFilters);
-    });
-
-    if (sortSelect) {
-      sortSelect.addEventListener("change", function () {
-        applySort(sortSelect.value);
-      });
-    }
-
-    if (resetButton) {
-      resetButton.addEventListener("click", function () {
-        if (searchInput) searchInput.value = "";
-        [finishFilter, stretchFilter, applicationFilter, stockFilter].forEach(function (control) {
-          if (control) control.value = "all";
-        });
-        if (sortSelect) sortSelect.value = "default";
-        mobileApplicationValue = "all";
-        syncMobileApplicationButtons();
-        applySort("default");
-        applyFilters();
-      });
-    }
-
-    syncMobileApplicationButtons();
     applyFilters();
   })();
 </script>

@@ -1,7 +1,7 @@
 ---
 change_id: CHG-20261023-008-products-card-cta-priority
 date: 2026-10-23
-status: implemented
+status: superseded
 requirements:
   - REQ-PRODUCT-022
 modules:
@@ -28,3 +28,6 @@ src/pages/products.astro 的 product-card__actions、product-card__details-link�
 `npm run build` 通过：59 个页面、18 个产品和 56 个 sitemap URL 的 SEO/内链校验通过。生成 HTML 检查确认全部 18 张卡片均先询盘按钮、后文字详情链接，询盘 SKU 和产品详情地址保留。`git diff --check` 通过。未进行浏览器视觉或真实询盘提交验证。
 ## 来源
 用户当前要求与产品卡片截图。
+
+## 后续变更
+CHG-20261024-001-product-led-catalog 更新首屏定位、卡片和筛选规则；原 RFQ 与卡片 CTA 顺序继续保留。

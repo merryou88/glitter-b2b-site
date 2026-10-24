@@ -174,15 +174,15 @@ status: current
 - 最后变更编号：CHG-20260916-006-h2013090104-color-leadtime
 - 待确认事项：测试合规需按项目确认
 
-### REQ-PRODUCT-022：产品列表页采用 B2B 采购型目录布局
+### REQ-PRODUCT-022：产品列表 B2B 采购比较布局
 - 状态：active
-- 当前规则：`/products/` 以美国面料采购商的比较需求组织信息，首屏展示采购摘要和 quote/sample 询盘入口；≥1201px 宽桌面目录工具栏将搜索、Finish、Stretch、Application、Stock 和排序控件排在同一行，窄桌面搜索独占一行、控件按可用宽度自适应排列；固定网格展示，不提供 Grid/List 视图切换；移动端沿用 REQ-PRODUCT-040 的应用标签；产品卡片必须直接展示宽幅、克重、底材、MOQ、库存状态、颜色数量和主要应用场景；卡片操作区先显示金色 `Request Sample / Quote` 按钮，再显示带下划线的 `View Details` 文字超链接，详情链接不使用按钮边框、背景或按钮内边距。
-- 验收条件：采购商无需进入详情页即可比较核心规格；搜索和筛选能联动更新结果数量；产品固定网格展示并使用 1:1 产品图，不再提供 List 视图；询盘按钮文案为 `Request Sample / Quote`；桌面与移动端询盘入口均在详情链接之前，详情链接保留正确产品路径，询盘保留产品上下文和现有 RFQ 弹窗；页面不新增价格或虚构规格。
+- 当前规则：目录首屏按烫金及金属光泽产品特性定位。全端仅保留同一行的搜索、面料效果快捷标签和 Clear filters；移除 Finish/Stretch/Application/Stock/Sort 和 More filters，无 Grid/List 切换。产品卡片图片桌面 16:10、移动 16:9；宽屏≥1280px每行5张、969–1279px每行3张、769–968px每行2张、≤768px每行1张；标题宽屏13px、其他14px，单行省略并提供完整title提示；标题去除 for 后用途尾缀，省略重复简介，直接显示真实幅宽、克重、Composition / Base、Stretch、MOQ、库存、颜色及用途。材料文字可换行；弹力优先读取 specTable 的 Stretch/Elasticity，缺失时显示 Check sample。询盘按钮及详情链接顺序和现有 RFQ 上下文不变。
+- 验收条件：18 个产品默认全部可见；搜索、特性快捷入口及清除可组合操作，默认推荐顺序不变；375/390/768/1024/1440px 无横向溢出，材料与弹力可读；quote/sample 意图及产品上下文保留；既有响应式图片和预加载保留。
 - 影响模块：`product-catalog`
 - 代码路径：`src/pages/products.astro`
-- 测试路径：`npm run build`；手动检查 `/products/` 搜索、筛选、排序和移动端布局
-- 最后变更编号：CHG-20261023-008-products-card-cta-priority
-- 待确认事项：无
+- 测试路径：`npm run build`、`git diff --check`、本地浏览器响应式/筛选/RFQ 检查。
+- 最后变更编号：CHG-20261024-004-catalog-five-columns
+- 待确认事项：尚未部署；线上广告效果需发布后观察。
 
 ### REQ-PRODUCT-023：产品列表 List 视图图片与内容不得重叠
 - 状态：active
@@ -395,15 +395,15 @@ status: current
 - 最后变更编号：CHG-20261006-003-topic-cluster-buyer-decisions
 - 待确认事项：部署后观察应用页与产品页的自然搜索入口和页面路径表现
 
-### REQ-PRODUCT-040：移动端产品目录使用应用标签过滤
+### REQ-PRODUCT-040：产品目录全端特性筛选
 - 状态：active
-- 当前规则：`/products/` 在 `max-width: 768px` 下隐藏关键词搜索、Finish、Stretch、Application、Stock、Sort 控件以及 Grid/List 视图切换；移动端直接显示四个应用标签 `Dancewear`、`Stage Costumes`、`Performance Apparel`、`Swimwear`，首次进入移动端默认选中 Dancewear（金色高亮，aria-pressed=true），并实际过滤 Dancewear 产品；点击其他标签切换过滤，点击当前标签可取消筛选。跨越断点进入桌面时清除移动标签筛选，回到移动端默认选中 Dancewear。移动端产品卡固定使用网格卡片布局；桌面端保留搜索、筛选和排序，全端移除 Grid/List 切换并固定网格展示。
-- 验收条件：375px、390px 和 768px 视口下不显示搜索框、下拉筛选或 Grid/List 切换；四个应用标签可点击并更新产品数量和卡片结果；再次点击当前标签可恢复全部产品；产品卡保持网格展示。
+- 当前规则：全端默认展示全部 18 个产品，移除移动 Dancewear 默认筛选和应用标签；增加 All Fabrics/Foil/Metallic/Holographic/Iridescent 快捷入口，基于现有标题、简介、底材和标签的特性文字匹配，不编造分类或性能。搜索与效果快捷标签全端同一行展示，标签超宽时仅标签区域横向滚动，不再展示下拉筛选及排序；搜索和快捷标签可组合；Clear filters 重置两者，始终保持默认推荐排序，跨断点不重设条件。
+- 验收条件：18 个产品默认全部可见；搜索、特性快捷入口及清除可组合操作，默认推荐顺序不变；375/390/768/1024/1440px 无横向溢出，材料与弹力可读；quote/sample 意图及产品上下文保留；既有响应式图片和预加载保留。
 - 影响模块：`product-catalog`
 - 代码路径：`src/pages/products.astro`
-- 测试路径：`npm run build`；手动检查 `/products/` 在 375px、390px、768px 和桌面视口下的筛选与卡片布局
-- 最后变更编号：CHG-20261021-010-mobile-default-dancewear
-- 待确认事项：Performance Apparel 标签覆盖产品数据中的 `Performance Wear`、`Performance Outfits`、`Performance Apparel` 和 `Performance Dress` 应用名称。
+- 测试路径：`npm run build`、`git diff --check`、本地浏览器响应式/筛选/RFQ 检查。
+- 最后变更编号：CHG-20261024-004-catalog-five-columns
+- 待确认事项：尚未部署；线上广告效果需发布后观察。
 
 ### REQ-PRODUCT-041：公开产品 Weight 单位统一使用 GSM
 - 状态：active
@@ -516,25 +516,25 @@ status: current
 ### REQ-PRODUCT-052：移除目录视图切换及空操作行
 - 状态：active
 - 当前规则：全端移除 Grid/List 按钮和 catalog-summary 容器，固定网格展示，不再读取 catalogView 历史偏好；Clear filters 放入桌面筛选控件区。桌面缩小 Hero 顶部内边距至 1rem，移动端保持 0.75rem。
-- 验收条件：筛选栏下方无独立视图操作行；移动端 Dancewear 默认筛选、桌面筛选和排序仍可用。
+- 验收条件：筛选栏下方无独立视图操作行；移动端全部产品默认展示（REQ-PRODUCT-040）、桌面筛选和排序仍可用。
 - 代码路径：src/pages/products.astro
 - 测试路径：npm run build；页面交互模拟检查
 - 最后变更编号：CHG-20261021-012-desktop-hero-gap-remove-view-switch
 
-### REQ-PRODUCT-053：Products 广告落地页突出批发采购与准确样品条件
+### REQ-PRODUCT-053：Products 广告落地页以产品特性和采购服务为主
 - 状态：active
-- 当前规则：仅 `/products/` 首屏使用 `Wholesale Metallic Fabrics for Dance & Stage Costumes` 作为 H1，以一条简短描述表达工厂直供 foil/弹力面料，面向 costume manufacturers 和 dancewear brands；不承诺全部产品为四面弹。首屏不展示重复 eyebrow、价格促销段落或长样品说明，优先露出产品；四项采购事实为 `Stock MOQ from 50m`、`Custom MOQ from 200m`、`Sample Options`、`OEM Support`；产品网格之后的底部 CTA 区说明免费现货色卡、买家承担运费、定制样品可能收费；移除省 50% 和所有款式免费 A4 样品的笼统承诺。首屏左侧为金色实心 `Request Samples`，右侧为白色描边 `Request Bulk Quote`，桌面和移动端顺序一致；通过现有 `data-rfq-intent` 打开 quote/sample RFQ，不新增提交链路。桌面标题为 32px、移动为 24px；移动按钮并排且至少 48px 高，采购事实保持两列。≥1201px 宽桌面首行排列搜索与五个筛选/排序控件；桌面搜索提示简洁完整可见。
-- 验收条件：桌面及移动端首屏标题、采购条件和 CTA 完整可读；375px/390px 手机宽度下，首张产品图顶部在页面 450px 以内；1440px 桌面宽度下在 410px 以内，1024px 宽度下在 620px 以内；Samples 按钮在左且使用金色实心样式，Quote 按钮在右且使用白色描边样式，两个 CTA 分别选中 sample/quote 意图；桌面下拉筛选的默认及已选值、搜索提示不截断；筛选值和匹配逻辑、产品集合、默认排序、移动端 Dancewear 默认筛选保持不变；首页及其他页面源码不修改。
-- 影响模块：`product-catalog`、`site-shell`
+- 当前规则：仅 /products/ 使用 H1 Wholesale Foil & Metallic Fabrics；简介为 Explore holographic, iridescent and foil stretch fabrics for costume and apparel production. Custom colors available for bulk orders. 保留已确认 Stock MOQ from 50m 和 Custom MOQ from 200m，另外两项为 Fabric Swatches Available、Custom Colors Available。不统一承诺四面弹。保留金色 Request Samples 在左、描边 Request Bulk Quote 在右，继续复用现有 quote/sample RFQ。首屏下全端按特性筛选，默认不限制应用；产品卡缩短图片并提前展示真实规格。其他页面、产品原始数据、RFQ 提交流程不变。
+- 验收条件：18 个产品默认全部可见；搜索、特性快捷入口及清除可组合操作，默认推荐顺序不变；375/390/768/1024/1440px 无横向溢出，材料与弹力可读；quote/sample 意图及产品上下文保留；既有响应式图片和预加载保留。
+- 影响模块：`product-catalog`
 - 代码路径：`src/pages/products.astro`
-- 测试路径：`npm run build`、`git diff --check`；375px、390px、768px、1024px、1440px 视口检查与 RFQ、筛选交互检查。
-- 最后变更编号：CHG-20261023-007-products-hero-sample-primary
-- 待确认事项：线上发布和真实邮件/广告转化不属于本次本地页面验证。
+- 测试路径：`npm run build`、`git diff --check`、本地浏览器响应式/筛选/RFQ 检查。
+- 最后变更编号：CHG-20261024-004-catalog-five-columns
+- 待确认事项：尚未部署；线上广告效果需发布后观察。
 
 ### REQ-PRODUCT-054：产品目录移动端加载速度
 - 状态：active
-- 当前规则：`/products/` 使用 Astro 构建期图片优化，将符合 `main/*-main-1.webp` 命名的目录主图生成 360/540/720px、质量 72 的 WebP，按实际容器宽度通过 `srcset/sizes` 供浏览器选择；不改产品详情原图。不符合命名约定的图片保留原图回退和加载失败占位。默认推荐首卡图片在 head 使用匹配的 `imagesrcset/imagesizes` 预加载，并使用 `loading="eager"` 和 `fetchpriority="high"`，其余卡片懒加载。生产构建内联目录本地样式。产品文案、集合、推荐排序、移动端 Dancewear 默认筛选和 RFQ 逻辑保持不变。
-- 验收条件：18 张目录图片均有响应式输出，首卡预加载与最终图片候选一致，不重复下载原图；生产 HTML 无本地外部 stylesheet；375/390/768/1024/1440px 无横向溢出，移动应用筛选、桌面搜索/排序和 quote/sample 弹窗正常；构建与产品/SEO 校验通过。
+- 当前规则：`/products/` 使用 Astro 构建期图片优化，将符合 `main/*-main-1.webp` 命名的目录主图生成 360/540/720px、质量 72 的 WebP，按实际容器宽度通过 `srcset/sizes` 供浏览器选择；不改产品详情原图。不符合命名约定的图片保留原图回退和加载失败占位。默认推荐首卡图片在 head 使用匹配的 `imagesrcset/imagesizes` 预加载，并使用 `loading="eager"` 和 `fetchpriority="high"`，其余卡片懒加载。生产构建内联目录本地样式。性能优化保留；当前目录文案和筛选按 REQ-PRODUCT-022/040/053 展示，集合、推荐排序和 RFQ 逻辑不变。
+- 验收条件：18 张目录图片均有响应式输出，首卡预加载与最终图片候选一致，不重复下载原图；生产 HTML 无本地外部 stylesheet；375/390/768/1024/1440px 无横向溢出，全端特性筛选、搜索/排序和 quote/sample 弹窗正常；构建与产品/SEO 校验通过。
 - 影响模块：`product-catalog`、`site-shell`
 - 代码路径：`src/pages/products.astro`、`scripts/inline-home-styles.mjs`
 - 测试路径：`npm run build`、`git diff --check`；浏览器慢速网络模拟及响应式交互检查。

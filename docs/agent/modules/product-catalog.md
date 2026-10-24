@@ -41,8 +41,8 @@ requirement_docs:
 ## 关键调用关系
 - 列表页从 `allProducts` 生成卡片与筛选条件
 - 目录主图按 `main/*-main-1.webp` 命名约定通过 `astro:assets` 在构建时生成 360/540/720px WebP，通过 `srcset/sizes` 适配屏幕；非约定命名回退原图。首卡以匹配的响应式预加载及 eager/high 优先获取，其余卡片保持懒加载；产品详情原图不变。生产构建内联目录 CSS，移除阻塞样式请求。
-- 列表页首屏以短标题、一条 B2B 介绍、MOQ 等四项事实和双 CTA 面向舞蹈/舞台服饰批发采购，优先露出产品；quote/sample 双 CTA 复用 `RFQQuoteModal` 的 `data-rfq-intent`，无 JavaScript 时分别回退到联系页与样品政策页；不将全部目录产品统一称为四面弹，长样品条件置于底部 CTA。
-- 桌面搜索框独占一行，筛选/排序下拉控件使用自适应网格；移动端仍使用既有应用标签和 Dancewear 默认筛选。
+- 列表页首屏以 Wholesale Foil & Metallic Fabrics、B2B 介绍、MOQ/色卡/定制颜色四项事实和双 CTA 面向产品特性采购，优先露出产品；quote/sample 双 CTA 复用 `RFQQuoteModal` 的 `data-rfq-intent`，无 JavaScript 时分别回退到联系页与样品政策页；不将全部目录产品统一称为四面弹，长样品条件置于底部 CTA。
+- 全端默认展示全部产品；仅保留同一行搜索、产品特性快捷入口及清除；标签区域可横向滚动；不再显示下拉筛选、更多筛选和排序，默认推荐顺序不变。卡片图片桌面16:10、移动16:9，宽屏≥1280px每行5张、969–1279px每行3张、769–968px每行2张、≤768px每行1张；标题宽屏13px、其他14px，单行省略并提供完整title提示；材料和实际弹力提前展示，缺失弹力显示 Check sample。
 - 详情页用 `getStaticPaths()` 为每个产品生成静态页面
 - H2013120107、H2013120101 以及 REQ-PRODUCT-057 指定的七个低分详情页在动态路由内使用 `astro:assets` 生成 480/720/1080/1440px 响应式画廊主图（不超过源图尺寸，800px 源图使用 480/720/800px）和 160px 缩略图，通过可选 `optimizedGallery` 传给 `ProductDetail`；首图预加载与画廊候选匹配。缩略图和隐藏视频 poster 不再请求完整原图，视频仍保持 `preload="none"`；其他产品保留原图路径。图库切换更新响应式 source，不再调用图片元素不存在的 `load()` 方法。
 - `ProductDetail` 统一承载产品正文、图库、FAQ 和 CTA；Full-Print 样板正文由 `FullPrintBuyingDetails.astro` 渲染，其他产品保留原布局
