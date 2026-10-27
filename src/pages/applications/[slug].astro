@@ -4,6 +4,8 @@
  * Each page has one clear buying use case and links to relevant products.
  */
 import Layout from "@layouts/Layout.astro";
+import HolographicBuyerGuide from "@components/HolographicBuyerGuide.astro";
+import CheerleadingBuyerGuide from "@components/CheerleadingBuyerGuide.astro";
 import { performanceProducts } from "@data/allProducts";
 import { blogArticles } from "@data/blogArticles";
 import { responsiveImage } from "../../lib/responsive-image";
@@ -11,13 +13,13 @@ import { responsiveImage } from "../../lib/responsive-image";
 const applicationPages = [
   {
     slug: "foil-fabric-for-stage-costumes",
-    title: "Foil Fabric for Stage & Dancewear",
-    metaTitle: "Foil Fabric for Stage Costumes | Nixia Fabric",
+    title: "Stage Costume Fabric for Performance Wear",
+    metaTitle: "Stage Costume Fabric & Foil Stretch | Nixia Fabric",
     keywords: "stage costume fabric supplier, foil fabric for stage costumes, dancewear fabric wholesale, performance costume fabric",
     description:
-      "Hot-stamping foil and iridescent stretch fabrics for stage costumes and dancewear, with sample approval support.",
+      "Source foil, metallic and iridescent stretch fabric for stage costumes and dancewear. Compare fabric options and request samples or a wholesale quote.",
     intro:
-      "Stage and performance buyers need a strong metallic or color-shifting effect that reads under changing light while remaining practical to cut and sew. Compare foil and stretch options by costume application.",
+      "Source metallic, foil and iridescent stage costume fabric for dancewear and performance garments. Compare stretch constructions and surface effects, then request samples or a wholesale quote for your project.",
     image: "/shots/application-costume-foil.webp",
     imageAlt: "Foil fabric for stage costumes and performance outfits",
     tags: ["stage-costume"],
@@ -77,6 +79,16 @@ const applicationPages = [
       rfq: "The RFQ should identify each garment panel, target color, estimated quantity, stage-lighting reference and launch date.",
     },
     faqs: [
+      {
+        question: "How do I choose stretch fabric for performance costumes?",
+        answer:
+          "Match stretch direction and recovery to the garment pattern, then test a physical sample at the intended working tension. Review the foil surface under stage lighting and after stretching and sewing.",
+      },
+      {
+        question: "What should I include in a wholesale stage costume fabric inquiry?",
+        answer:
+          "Share the product name or code, garment use, color, estimated quantity, delivery destination and required date. MOQ, sample availability and lead time can be confirmed for the selected fabric.",
+      },
       {
         question: "Which fabric finish works best under stage lights?",
         answer:
@@ -168,7 +180,7 @@ const applicationPages = [
     description:
       "Source holographic stretch and foil fabrics for dancewear, stage costumes and performance apparel. Compare wholesale samples, MOQ and custom color options.",
     intro:
-      "Buyers searching for holographic fabric wholesale usually need a reflective or color-shifting surface that remains practical for costume production. Compare stretch, recovery, width, MOQ and sample approval before choosing a stock or custom option.",
+      "When sourcing holographic clothing material for dancewear or stage costumes, compare the visual finish and the underlying fabric as two separate decisions. Compare stretch, recovery, width, MOQ and sample approval before choosing a stock or custom option.",
     image: "/images/products/H2013090102/application/plain-iridescent-laser-spandex-4-way-stretch-application-2.webp",
     imageAlt: "Holographic stretch fabric for dancewear and stage costumes",
     productSlugs: [
@@ -185,13 +197,13 @@ const applicationPages = [
     benefits: [
       "Reflective and color-shifting finishes for performance lighting",
       "4-way stretch options for fitted costumes and dancewear",
-      "Metric and US-friendly width and MOQ specifications",
+      "Width, weight and MOQ listed by fabric code",
       "Physical samples for shine, stretch and sewing review",
     ],
     selectionCriteria: [
       { title: "Smooth or patterned effect", desc: "Smooth laser surfaces create a continuous color shift; snakeskin, scale and dot patterns create a more defined visual texture. Select by garment concept and viewing distance." },
       { title: "Stretch and recovery", desc: "Confirm stretch direction and return for the finished pattern. Fitted dancewear normally needs a different construction from loose costume panels or decorative inserts." },
-      { title: "Base and weight", desc: "Polyester-spandex, milk-silk and ice-silk bases differ in hand feel, drape and sewing response. Compare physical swatches at the target garment tension." },
+      { title: "Base and weight", desc: "Confirm the actual fiber composition: milk-silk and ice-silk are fabric trade names, not fiber percentages. Base construction and weight affect hand feel, drape and sewing response. Compare physical swatches at the target garment tension." },
       { title: "Stock, MOQ and color route", desc: "Check whether an available color can meet the launch schedule or whether a custom colorway and its MOQ should be planned into development." },
     ],
     shortlist: [
@@ -477,7 +489,6 @@ export function getStaticPaths() {
     "custom-foil-fabric-development",
     "holographic-fabric-wholesale",
     "dancewear-fabric-supplier",
-    "swimwear-fabric-supplier",
     "cheerleading-performance-costume-fabric",
   ].map((slug) => ({ params: { slug } }));
 }
@@ -565,7 +576,7 @@ const faqSchema = {
         )}
         <div class="application-hero__actions">
           <a href="/contact/" data-rfq-open class="btn btn--primary btn--lg">Request Samples & Quote</a>
-          <a href="#recommended-materials" class="btn btn--outline btn--lg">Compare Fabrics</a>
+          <a href={page.slug === "cheerleading-performance-costume-fabric" ? "#cheerleading-shortlist" : page.slug === "holographic-fabric-wholesale" ? "#holographic-effects" : "#recommended-materials"} class="btn btn--outline btn--lg">Compare Fabrics</a>
         </div>
       </div>
       <picture class="application-hero__image">
@@ -573,6 +584,29 @@ const faqSchema = {
       </picture>
     </div>
   </section>
+
+  {page.slug === "cheerleading-performance-costume-fabric" && <CheerleadingBuyerGuide />}
+  {page.slug === "holographic-fabric-wholesale" && <HolographicBuyerGuide />}
+
+  {page.slug === "foil-fabric-for-stage-costumes" && (
+    <section class="section">
+      <div class="container application-content">
+        <div>
+          <span class="eyebrow">FABRIC FOR PERFORMANCE COSTUMES</span>
+          <h2>Match the fabric to the costume</h2>
+          <p>For fitted dance costumes or bodysuits, compare stretch direction and recovery against the pattern. For flowing panels or overlays, review the weight and drape in a sewn sample. For cosplay costumes, choose the surface and color against the character reference and check that the base suits the garment.</p>
+          <p>Metallic foil, gradient and holographic effects look different under stage lights. Compare the actual swatches at the intended viewing distance, and check the surface after stretching and sewing.</p>
+          <p>Explore <a href="/applications/dancewear-fabric-supplier/">dancewear fabrics</a> and <a href="/applications/holographic-fabric-wholesale/">holographic fabric options</a> for related performance projects.</p>
+        </div>
+        <aside class="application-note">
+          <span class="eyebrow">WHOLESALE SOURCING</span>
+          <h2>Request samples or a quote</h2>
+          <p>Send the product code, intended garment, color, estimated quantity, destination and required date. Ask us to confirm sample availability, MOQ and lead time for each selection.</p>
+          <a href="/contact/" data-rfq-open class="btn btn--primary">Request Samples &amp; Quote</a>
+        </aside>
+      </div>
+    </section>
+  )}
 
   {page.slug === "dancewear-fabric-supplier" && (
     <section class="section section--alt application-featured-products" id="dancewear-fabrics">
@@ -675,6 +709,7 @@ const faqSchema = {
     </div>
   </section>
 
+  {!["cheerleading-performance-costume-fabric", "holographic-fabric-wholesale"].includes(page.slug) && (
   <section class="section">
     <div class="container">
       <div class="section-header section-header--left">
@@ -712,7 +747,9 @@ const faqSchema = {
       </div>
     </div>
   </section>
+  )}
 
+  {page.slug !== "cheerleading-performance-costume-fabric" && (
   <section class="section section--alt">
     <div class="container">
       <div class="section-header section-header--left">
@@ -741,6 +778,7 @@ const faqSchema = {
       </div>
     </div>
   </section>
+  )}
 
   <section class="section">
     <div class="container approval-grid">

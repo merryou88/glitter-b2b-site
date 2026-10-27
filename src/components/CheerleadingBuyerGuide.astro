@@ -1,0 +1,120 @@
+---
+import { performanceProducts } from "@data/allProducts";
+
+const choices = [
+  { slug: "plain-iridescent-laser-spandex-4-way-stretch", use: "Compare for fitted panels needing a smooth color-shifting finish. Exact fiber percentages need confirmation before ordering." },
+  { slug: "full-print-hot-stamping-spandex-milk-silk", use: "Compare the 160 GSM all-over foil construction for lighter panels. Confirm opacity with the intended lining and garment tension." },
+  { slug: "rainbow-stripe-foil-4-way-stretch-fabric", use: "Compare for directional stripe panels or accents. Check stripe alignment across seams before cutting." },
+  { slug: "blue-purple-gradient-laser-foil-spandex-fabric", use: "Compare for blue-purple gradient panels. Approve the gradient direction and color under the intended lighting." },
+].map((choice) => {
+  const product = performanceProducts.find((item) => item.slug === choice.slug);
+  if (!product) throw new Error(`Missing cheerleading shortlist product: ${choice.slug}`);
+  return { ...choice, product };
+});
+const field = (product, labels, fallback) => product.specTable?.find((row) => labels.includes(row.label.toLowerCase()))?.value || fallback;
+---
+
+<section class="section section--alt cheer-guide" id="cheerleading-shortlist" aria-labelledby="cheer-shortlist-title">
+  <div class="container">
+    <div class="section-header section-header--left">
+      <span class="eyebrow">COMPARE FOUR FABRIC OPTIONS</span>
+      <h2 id="cheer-shortlist-title">Shortlist fabric for your cheerleading uniform project</h2>
+      <p>These are starting points for sampling, not a guarantee of finished-uniform performance. Check recovery, opacity, seams and foil appearance in your own garment construction before bulk approval.</p>
+    </div>
+    <div class="cheer-table" role="region" aria-label="Cheerleading fabric specifications" tabindex="0">
+      <table>
+        <caption>Current catalog specifications — confirm the selected color and order details in your quotation.</caption>
+        <thead><tr><th scope="col">Fabric / code</th><th scope="col">Composition / base</th><th scope="col">Weight</th><th scope="col">Width</th><th scope="col">Stretch</th><th scope="col">MOQ</th><th scope="col">Why compare it</th></tr></thead>
+        <tbody>
+          {choices.map(({ product, use }) => (
+            <tr>
+              <th scope="row"><a href={`/products/${product.slug}/`}>{product.title}</a><small>{product.sku}</small></th>
+              <td>{field(product, ["composition", "base fabric", "material"], product.specs.baseMaterial)}</td>
+              <td>{field(product, ["weight"], product.specs.weight)}</td>
+              <td>{field(product, ["width"], product.specs.width)}</td>
+              <td>{field(product, ["stretch"], "4-way stretch (catalog product description); confirm by sample")}</td>
+              <td>{field(product, ["moq"], product.specs.moq)}</td>
+              <td>{use}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="cheer-note">All four options list a 59-inch width; confirm usable width for cutting. A four-way stretch label does not establish a measured recovery rate, opacity or wash durability.</p>
+
+    <div class="cheer-cards">
+      {choices.map(({ product }) => (
+        <article class="cheer-card">
+          <h3><a href={`/products/${product.slug}/`}>{product.title}</a></h3>
+          <p class="cheer-code">Fabric code: {product.sku}</p>
+          <div class="cheer-images">
+            <figure><a href={`/products/${product.slug}/`}><img src={product.mainImageUrl} alt={product.mainImageAlt} width="640" height="640" loading="lazy" /></a><figcaption>Catalog main view</figcaption></figure>
+            <figure><a href={`/products/${product.slug}/`}><img src={`${product.detailImagePath}${product.detailImages[0]}`} alt={product.detailImageAlts?.[product.detailImages[0]] || `${product.title} catalog detail`} width="640" height="640" loading="lazy" /></a><figcaption>Catalog detail view</figcaption></figure>
+          </div>
+          <p>{product.sampleNote}</p>
+          <div class="cheer-actions">
+            <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} data-rfq-open data-rfq-sku={product.title} data-rfq-intent="sample" data-cheer-rfq data-fabric-code={product.sku} class="btn btn--primary" aria-label={`Request a sample of ${product.sku}`}>Request this sample</a>
+            <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} data-rfq-open data-rfq-sku={product.title} data-rfq-intent="quote" data-cheer-rfq data-fabric-code={product.sku} class="btn btn--outline" aria-label={`Request bulk pricing for ${product.sku}`}>Get bulk quote</a>
+          </div>
+        </article>
+      ))}
+    </div>
+    <p class="cheer-note">These existing catalog photos show appearance only. They are not stretch-test, reverse-side, colorfastness or finished cheerleading-uniform evidence. Request reverse-side and stretched-sample views for your chosen code, and approve a physical sample.</p>
+
+    <div class="cheer-procurement">
+      <div>
+        <h3>What is listed, and what needs a quote?</h3>
+        <p>The table uses current product data. H2013090102 lists a stretch base without exact fiber percentages; confirm composition if it is required for your specification.</p>
+        <p>Stock samples are free with buyer-paid international shipping. Made-to-order samples carry a customization fee. See each option above and the <a href="/sample-policy/">sample policy</a>.</p>
+        <p>Confirm selected-color availability, quantity by color, custom-color MOQ, bulk lead time, testing requirements and shipping charges before ordering. Sample preparation time is not bulk production or US delivery time.</p>
+      </div>
+      <div>
+        <h3>Prepare a sample or bulk inquiry</h3>
+        <ul><li>Fabric code(s) and team color reference</li><li>Uniform type, panel use and lining plan</li><li>Estimated quantity, with meters or yards specified</li><li>Destination country and ZIP/postal code; include your US ZIP code for US delivery</li><li>Required arrival date and event deadline</li></ul>
+        <p>Select a fabric above to carry its name and code into the inquiry. Use “Additional details” for quantity, destination and your deadline.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  let generatedDraft = "";
+  document.querySelectorAll<HTMLElement>("[data-cheer-rfq]").forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const message = document.querySelector<HTMLTextAreaElement>("#rfq-message");
+      // Never replace a buyer's draft when switching between sample and quote.
+      if (message && (!message.value.trim() || message.value === generatedDraft)) {
+        message.value = `Application: cheerleading / performance uniform\nFabric code: ${trigger.dataset.fabricCode}\nPanel use / lining:\nTeam color reference:\nRequired arrival date / event deadline:\nZIP / postal code:`;
+        generatedDraft = message.value;
+        message.dispatchEvent(new Event("input", { bubbles: true }));
+      }
+      const details = document.querySelector<HTMLDetailsElement>("#rfq-form .rfq-form__optional");
+      if (details) details.open = true;
+    });
+  });
+</script>
+
+<style>
+  .cheer-table { overflow-x: auto; border: 1px solid var(--color-border); border-radius: 12px; }
+  table { width: 100%; border-collapse: collapse; min-width: 960px; text-align: left; font-size: 0.9rem; }
+  caption { padding: 1rem; text-align: left; color: var(--color-text-muted); background: #fff; }
+  th, td { padding: 1rem; vertical-align: top; border-bottom: 1px solid var(--color-border); }
+  thead { background: var(--color-primary); color: #fff; }
+  tbody { background: #fff; }
+  th[scope="row"] { min-width: 220px; }
+  small { display: block; margin-top: 0.5rem; color: var(--color-text-muted); }
+  .cheer-note { margin-block: 1rem 2rem; font-size: 0.9rem; color: var(--color-text-muted); }
+  .cheer-cards, .cheer-procurement { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+  .cheer-card { min-width: 0; padding: 1.5rem; background: #fff; border: 1px solid var(--color-border); border-radius: 12px; }
+  .cheer-card h3 { font-size: 1.15rem; }
+  .cheer-code { color: var(--color-text-muted); font-size: 0.9rem; }
+  .cheer-images { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin-block: 1rem; }
+  figure { margin: 0; min-width: 0; }
+  img { width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; background: #f5f5f5; border-radius: 8px; }
+  figcaption { font-size: 0.8rem; color: var(--color-text-muted); margin-top: 0.4rem; }
+  .cheer-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+  .cheer-procurement { padding: 1.5rem; background: #fff; border: 1px solid var(--color-border); border-radius: 12px; }
+  .cheer-procurement p, .cheer-procurement ul { margin-top: 0.75rem; }
+  .cheer-procurement ul { padding-left: 1.25rem; }
+  @media (max-width: 768px) { .cheer-cards, .cheer-procurement { grid-template-columns: 1fr; } .cheer-card, .cheer-procurement { padding: 1rem; } .cheer-actions .btn { max-width: 100%; white-space: normal; } }
+</style>

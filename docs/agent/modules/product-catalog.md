@@ -78,3 +78,9 @@ requirement_docs:
 - 动态路由 slug 与数据不一致
 - 图片缺少 `.webp` 回退
 - 详情页 schema 失真
+
+## 啦啦队应用页采购对比
+`CheerleadingBuyerGuide.astro` 仅在啦啦队应用页挂载，使用四款现有产品的规格与图片替代重复通用对比/产品网格。按款 sample/quote 复用 RFQ，上下文和买家草稿保留，见 REQ-PRODUCT-058。
+
+## 全息应用页效果对比
+`HolographicBuyerGuide.astro` 仅在全息应用页挂载，以四款实际目录照片和规格替代通用 shortlist，分离视觉效果与底布参数；响应式图片复用 `responsiveImage`，按款 sample 复用既有 RFQ。见 REQ-PRODUCT-059。

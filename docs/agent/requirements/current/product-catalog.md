@@ -388,7 +388,7 @@ status: current
 ### REQ-PRODUCT-039：产品页与应用页建立双向主题集群并提供差异化采购决策
 - 状态：active
 - 当前规则：应用页通过推荐材料链接到对应产品详情页；产品详情页必须根据产品用途回链到相关应用指南，形成产品与应用之间的双向主题集群。每个公开产品页同时提供至少两条针对该产品材质、表面效果、结构、用途、颜色、MOQ 或样品审批条件的独立采购决策内容，不使用所有相近产品通用的泛化卖点替代。
-- 验收条件：18 个公开产品页均包含应用指南回链和采购决策区；`/applications/swimwear-fabric-supplier/` 包含 H2015030103；应用集群链接不指向旧产品或不存在页面；采购决策内容与当前产品事实一致，不新增未经确认的性能承诺。
+- 验收条件：公开产品页的应用集群链接不指向已移除或不存在的应用页；采购决策内容与当前产品事实一致，不新增未经确认的性能承诺。
 - 影响模块：`product-catalog`、`site-shell`、`content-data`
 - 代码路径：`src/components/ProductDetail.astro`、`src/data/applicationClusters.js`、`src/data/productDecisionGuides.js`、`src/pages/applications/[slug].astro`
 - 测试路径：`npm run build`、`npm run validate:products`，检查所有产品页和应用页的互链及生成内容
@@ -569,3 +569,30 @@ status: current
 - 测试路径：npm run build；官方 Lighthouse desktop 逐页复测；390/1350px 图库与 RFQ 检查
 - 最后变更编号：CHG-20261023-009-site-performance-audit
 - 待确认事项：发布后补做 Google PageSpeed 线上验收。
+
+
+### REQ-PRODUCT-058：啦啦队应用页提供可核验的四款采购对比
+- 状态：active
+- 当前规则：仅 `cheerleading-performance-costume-fabric` 在 Hero 后展示四款采购对比、现有主图/细节图、按款 sample/quote 入口及采购确认边界，替代该页原通用 shortlist 与重复产品网格。规格动态引用现有产品数据，显示款号、成分或底材、克重、幅宽、弹力与 MOQ；未确认的成分比例明确说明待确认。现有图片不得表述为拉伸测试、逆面或真实啦啦队成衣实拍。保留标题、H1、canonical 和其他应用页。
+- 验收条件：四款产品均有有效详情链接和图片；询盘入口保留产品名，预填应用/款号/交期/邮编提示并展开现有可选信息，不覆盖买家已编辑草稿；样品费用与运输政策引用现有产品事实，不承诺未确认的性能、库存或美国交期。
+- 影响模块：product-catalog、inquiry-forms
+- 代码路径：`src/components/CheerleadingBuyerGuide.astro`、`src/pages/applications/[slug].astro`
+- 测试路径：`npm run build`；生成 HTML 检查；桌面与移动预览；RFQ 上下文检查（不发送真实表单）
+- 最后变更编号：CHG-20261024-005-cheerleading-buyer-evidence
+- 待确认事项：额外拉伸/逆面/啦啦队服装应用实拍与实测数据尚未提供；上线后观察自然搜索及真实询盘。
+
+
+### REQ-PRODUCT-059：全息应用页区分视觉效果与底布规格
+- 状态：active
+- 当前规则：仅全息应用页在 Hero 后以四款现有产品展示光面、渐变、蛇纹和鳞片效果；自然使用 holographic clothing material，不新建近似页面，保留 title/H1/canonical。照片、款号和实际规格同源，每卡分列视觉效果与底布成分、弹力、克重、幅宽和 MOQ，替代原通用 shortlist。保留其他产品入口及样品检查。
+- 验收条件：蛇纹明确为 Slight stretch；不把 holographic、milk-silk 或 ice-silk 当成成分/性能等级；未知成分比例说明待确认。现有静态照片不能声称同一样品受控角度或拉伸对比，提示按款申请相同色号的角度/拉伸视频与实物样品；不编造视频及测试结论。四款均有详情与按款样品 RFQ，图片响应式且移动端不溢出。
+- 影响模块：product-catalog
+- 代码路径：`src/components/HolographicBuyerGuide.astro`、`src/pages/applications/[slug].astro`
+- 测试路径：npm run build；桌面与移动预览、按款 RFQ 检查（不提交）
+- 最后变更编号：CHG-20261025-001-holographic-effect-comparison
+- 待确认事项：同色同样角度变化及拉伸实拍视频尚未提供。
+# REQ-PRODUCT-060 Stage costume sourcing
+
+- 当前规则：舞台服饰应用页说明金属感、烫金及幻彩面料的选材用途，提供舞蹈和全息应用内链，并提示买家按款号确认样品、MOQ 和交期。
+- 验收条件：页面保留产品对比及询盘入口，展示用途说明、相关应用链接和采购信息；不虚构产品规格或采购条件。
+

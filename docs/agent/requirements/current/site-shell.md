@@ -113,14 +113,14 @@ status: current
 - 最后变更编号：CHG-20260912-015-home-remove-glitter-content
 - 待确认事项：无
 
-### REQ-SHELL-006：公开站点聚焦表演服装市场，并保留受控的泳装应用入口
+### REQ-SHELL-006：公开站点聚焦表演服装市场
 - 状态：active
-- 当前规则：公开页面、默认 SEO、Footer、首页轮播、应用页和联系入口以舞台服装、舞蹈服、表演服、Cosplay 与 Carnival Costume 为主，同时允许一个受控的 `/applications/swimwear-fabric-supplier/` 应用页承接已有产品数据中的泳装、bikini、bodysuit 和 iridescent stretch 搜索需求。泳装是次级应用方向，不改变站点的 performance fabric 主定位；鞋材、手袋、工艺和玩具等退出行业不重新公开。没有明确同类替代页面的旧应用地址不重定向到不相关的舞台服页面，直接返回站点404。
-- 验收条件：应用索引页和首页包含泳装应用入口；泳装应用页只关联已有泳装/紧身服装相关产品，不宣称未经确认的抗氯、UV、防晒、湿态色牢度或泳装级性能；首页、公司页、工厂页和联系页仍以 performance fabric 为主；`/applications/glitter-fabric-for-shoes` 和 `/applications/glitter-fabric-for-handbags` 的带斜杠及不带斜杠地址均不匹配重定向规则并返回404。
+- 当前规则：公开页面以舞台服装、舞蹈服、表演服、Cosplay 与 Carnival Costume 为主；泳装应用页退出公开路由，相关入口移除，旧地址返回404。
+- 验收条件：首页、应用索引及其他页面不链接泳装应用页；该页面不生成，旧地址返回404。已有泳装产品和文章不受本次变更影响。
 - 影响模块：`site-shell`、`product-catalog`、`company-pages`、`blog-knowledge`
 - 代码路径：`src/layouts/Layout.astro`、`src/components/HeroCarousel.astro`、`src/components/Footer.astro`、`src/pages/index.astro`、`src/pages/applications/**`
 - 测试路径：`npm run build`；检查生成页面文本与内部链接
-- 最后变更编号：CHG-20261006-001-swimwear-application-page
+- 最后变更编号：CHG-20261027-003-retire-swimwear-application
 - 待确认事项：无
 
 ### REQ-SHELL-007：首页轮播素材与响应式变体同步
@@ -329,3 +329,8 @@ status: current
 - 代码路径：`src/layouts/Layout.astro`、`src/pages/thank-you.astro`
 - 测试路径：`npm run build`；产物检查及脚本模拟
 - 最后变更编号：CHG-20261020-001-thank-you-google-conversion
+# REQ-SHELL-033：页脚社交入口
+
+- 当前规则：共享页脚在 Facebook 旁提供 Nixia Fabric 公开 LinkedIn 公司主页入口。
+- 验收条件：LinkedIn 图标具备可访问名称并链接到 `https://www.linkedin.com/company/nixia-fabric/`。
+

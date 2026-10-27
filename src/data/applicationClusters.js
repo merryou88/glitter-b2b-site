@@ -3,7 +3,6 @@ const applicationTitles = {
   "custom-foil-fabric-development": "Custom Foil Fabric Development",
   "holographic-fabric-wholesale": "Holographic Fabric Wholesale",
   "dancewear-fabric-supplier": "Dancewear Fabric Supplier",
-  "swimwear-fabric-supplier": "Iridescent Swimwear Fabric",
   "cheerleading-performance-costume-fabric": "Cheerleading & Performance Costume Fabric",
 };
 
@@ -23,7 +22,6 @@ const productApplicationSlugs = {
   "rainbow-iridescent-laser-foil-nylon-spandex-fabric": [
     "holographic-fabric-wholesale",
     "dancewear-fabric-supplier",
-    "swimwear-fabric-supplier",
   ],
   "gradient-rainbow-dot-foil-knit-fabric": [
     "foil-fabric-for-stage-costumes",
@@ -81,12 +79,8 @@ const productApplicationSlugs = {
     "custom-foil-fabric-development",
     "holographic-fabric-wholesale",
     "dancewear-fabric-supplier",
-    "swimwear-fabric-supplier",
     "cheerleading-performance-costume-fabric",
   ],
-  "gold-rainbow-gradient-metallic-foil-4-way-stretch-fabric": ["swimwear-fabric-supplier"],
-  "iridescent-mystic-metallic-foil-nylon-spandex-fabric": ["swimwear-fabric-supplier"],
-  "shattered-glass-metallic-foil-dot-4-way-stretch-nylon-spandex-fabric": ["swimwear-fabric-supplier"],
 };
 
 export const getApplicationClustersForProduct = (productSlug) =>

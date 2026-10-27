@@ -1,0 +1,64 @@
+---
+import { performanceProducts } from "@data/allProducts";
+import { responsiveImage } from "../lib/responsive-image";
+const options = [
+  { slug: "plain-iridescent-laser-spandex-4-way-stretch", effect: "Smooth iridescent laser", note: "Compare a continuous reflective surface without a defined animal or scale motif. Check the chosen color under your intended lighting.", view: 0, detail: 1 },
+  { slug: "blue-purple-gradient-laser-foil-spandex-fabric", effect: "Blue-purple gradient", note: "Compare the blue-purple color flow and plan panel orientation before cutting. A gradient colorway and an angle-dependent color shift are different things.", view: 0, detail: 1 },
+  { slug: "holographic-snakeskin-stretch-fabric", effect: "Snakeskin pattern", note: "Compare the smaller snakeskin motif and its visibility at garment-viewing distance. This option is listed as slight stretch, not four-way stretch.", view: 0, detail: 1 },
+  { slug: "holographic-mermaid-scale-milk-silk-stretch-fabric", effect: "Mermaid-scale pattern", note: "Compare the defined scale outline for themed panels. Check scale direction and alignment across seams; approve the actual color separately.", view: 3, detail: 4 },
+];
+const field = (p, labels, fallback = "To be confirmed") => p.specTable?.find(row => labels.includes(row.label))?.value || fallback;
+const choices = await Promise.all(options.map(async option => {
+  const product = performanceProducts.find(p => p.slug === option.slug);
+  if (!product) throw new Error(`Missing holographic comparison product: ${option.slug}`);
+  const photos = await Promise.all([option.view, option.detail].map(async index => ({ ...product.imageList[index], optimized: await responsiveImage(product.imageList[index].src) })));
+  return { ...option, product, photos };
+}));
+---
+<section class="section section--alt holo-guide" id="holographic-effects" aria-labelledby="holo-effects-title">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">COMPARE THE EFFECT, THEN THE BASE</span>
+      <h2 id="holo-effects-title">Compare holographic clothing material by finish and fabric code</h2>
+      <p>Start with the look your garment needs: smooth, gradient, snakeskin or mermaid scale. Then compare the base composition, stretch and weight separately. “Holographic” describes a visual effect, not a fiber composition or a performance grade.</p>
+    </div>
+    <div class="holo-grid">
+      {choices.map(({ effect, note, product, photos }) => (
+        <article class="holo-card">
+          <header><h3>{effect}</h3><a href={`/products/${product.slug}/`}>{product.sku} · View fabric specifications</a></header>
+          <div class="holo-photos">
+            {photos.map((photo, index) => <figure><a href={`/products/${product.slug}/`}><img src={photo.optimized.src} srcset={photo.optimized.srcSet.attribute} sizes="(max-width: 700px) 45vw, 280px" {...photo.optimized.attributes} alt={photo.alt} loading="lazy" /></a><figcaption>{index === 0 ? "Catalog surface view" : "Additional catalog view / color reference"}</figcaption></figure>)}
+          </div>
+          <p>{note}</p>
+          <dl>
+            <div><dt>Visual finish</dt><dd>{field(product, ["Surface Effect", "Surface"])}</dd></div>
+            <div><dt>Base / composition</dt><dd>{field(product, ["Base Fabric", "Material"], product.specs.baseMaterial)}{product.sku === "H2013090102" && " — exact fiber percentages to be confirmed"}</dd></div>
+            <div><dt>Stretch</dt><dd>{field(product, ["Stretch"])}</dd></div>
+            <div><dt>Weight / width</dt><dd>{product.specs.weight} / {product.specs.width}</dd></div>
+            <div><dt>MOQ</dt><dd>{product.specs.moq}</dd></div>
+          </dl>
+          <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} data-rfq-open data-rfq-sku={product.title} data-rfq-intent="sample" class="btn btn--primary" aria-label={`Request a sample of ${product.sku}`}>Request {product.sku} sample</a>
+        </article>
+      ))}
+    </div>
+    <div class="holo-checks">
+      <h3>See the effect in motion before approving it</h3>
+      <p>The catalog photos above compare appearance, folds and color references. They use different arrangements or colorways; they are not a controlled same-swatch angle or stretch sequence.</p>
+      <p>For your shortlisted code and color, request a short clip of the same swatch tilted under fixed lighting, followed by a relaxed → stretched → released view in both fabric directions. Include a close-up of the foil and a reverse-side view. Confirm whether these views can be supplied with your sample request.</p>
+      <p>Approve a physical sample at the intended garment tension: inspect motif distortion, surface opening or cracking, recovery and a representative seam. No measured recovery, wash-durability or stretch-surface test results are provided here.</p>
+      <a href="/sample-policy/">Review sample costs and shipping policy</a>
+    </div>
+  </div>
+</section>
+<style>
+  .holo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-xl)}
+  .holo-card{min-width:0;padding:var(--space-lg);border:1px solid var(--color-border);border-radius:12px;background:var(--color-bg,#fff)}
+  .holo-card header a,.holo-checks a{color:var(--color-accent-dark);font-weight:700}
+  .holo-photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-block:var(--space-lg)}
+  figure{margin:0;min-width:0}figure img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:8px}
+  figcaption{font-size:var(--text-xs);color:var(--color-text-secondary);margin-top:8px}
+  .holo-card p,.holo-checks p{color:var(--color-text-secondary);line-height:1.7}
+  dl{margin-block:var(--space-lg)}dl div{display:grid;grid-template-columns:140px minmax(0,1fr);gap:12px;padding:10px 0;border-top:1px solid var(--color-border)}dt{font-weight:700}dd{margin:0;overflow-wrap:anywhere}
+  .holo-checks{margin-top:var(--space-xl);padding:var(--space-lg);border-left:3px solid var(--color-accent);background:var(--color-bg,#fff)}
+  @media(max-width:700px){.holo-grid{grid-template-columns:1fr}dl div{grid-template-columns:110px minmax(0,1fr)}.holo-card .btn{width:100%}}
+</style>
