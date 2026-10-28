@@ -1358,7 +1358,7 @@ export const allProducts = [
     metaTitle: "Full-Print Foil Spandex Fabric | Nixia Fabric",
     metaDesc:
       "Full-print foil spandex milk-silk with 4-way stretch for stage costumes and dancewear. Ready stock, samples and 50m Stock / 200m Custom MOQ.",
-    title: "Metallic Foil 4-Way Stretch Fabric for Swimwear",
+    title: "Full-Print Metallic Foil 4-Way Stretch Fabric for Stage Costumes",
     sku: "P0002",
     mainImageUrl: "/images/products/H2013060101/main/full-print-hot-stamping-spandex-milk-silk-main-1.webp",
     mainImageWebp: "/images/products/H2013060101/main/full-print-hot-stamping-spandex-milk-silk-main-1.webp",
@@ -1412,6 +1412,7 @@ export const allProducts = [
       { label: "Composition", value: "95% Polyester, 5% Spandex" },
       { label: "Base Fabric", value: "95% Polyester, 5% Spandex" },
       { label: "Weight", value: "160 GSM" },
+      { label: "Stretch", value: "4-Way Stretch" },
       { label: "Surface Finish", value: "All-over hot-stamping foil print" },
       { label: "Hand-feel", value: "Soft, smooth, elastic recovery" },
       { label: "MOQ", value: "50m Stock / 200m Custom" },

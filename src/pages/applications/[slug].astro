@@ -576,7 +576,7 @@ const faqSchema = {
         )}
         <div class="application-hero__actions">
           <a href="/contact/" data-rfq-open class="btn btn--primary btn--lg">Request Samples & Quote</a>
-          <a href={page.slug === "cheerleading-performance-costume-fabric" ? "#cheerleading-shortlist" : page.slug === "holographic-fabric-wholesale" ? "#holographic-effects" : "#recommended-materials"} class="btn btn--outline btn--lg">Compare Fabrics</a>
+          <a href={page.slug === "cheerleading-performance-costume-fabric" ? "#cheerleading-shortlist" : page.slug === "holographic-fabric-wholesale" ? "#holographic-effects" : page.slug === "foil-fabric-for-stage-costumes" ? "#stage-costume-fabric-comparison" : "#recommended-materials"} class="btn btn--outline btn--lg">Compare Fabrics</a>
         </div>
       </div>
       <picture class="application-hero__image">
@@ -587,6 +587,72 @@ const faqSchema = {
 
   {page.slug === "cheerleading-performance-costume-fabric" && <CheerleadingBuyerGuide />}
   {page.slug === "holographic-fabric-wholesale" && <HolographicBuyerGuide />}
+
+  {page.slug === "foil-fabric-for-stage-costumes" && (
+    <section class="section stage-shortlist" id="stage-costume-fabric-comparison">
+      <div class="container">
+        <div class="section-header section-header--left">
+          <span class="eyebrow">STAGE COSTUME FABRIC SHORTLIST</span>
+          <h2>Compare stage costume fabrics</h2>
+          <p>Review key specifications, then request a physical sample to check the finish, stretch and sewing behavior for your costume.</p>
+        </div>
+        <div class="stage-product-grid">
+          {shortlistProducts.map(({ product, fit }) => (
+            <article class="stage-product-card">
+              <a href={`/products/${product.slug}/`} class="stage-product-card__image">
+                <img src={product.mainImageUrl} alt={product.mainImageAlt} width="800" height="800" loading="lazy" />
+              </a>
+              <div class="stage-product-card__body">
+                <h3><a href={`/products/${product.slug}/`}>{product.title}</a></h3>
+                <p>{fit}</p>
+                <dl class="stage-product-card__specs">
+                  <div><dt>Surface</dt><dd>{productField(product, ["Surface Effect", "Surface Finish", "Surface"])}</dd></div>
+                  <div><dt>Base</dt><dd>{productField(product, ["Base Fabric", "Base Material", "Material"], product.specs.baseMaterial || "Confirm by sample")}</dd></div>
+                  <div><dt>Stretch</dt><dd>{productField(product, ["Stretch"])}</dd></div>
+                  <div><dt>Weight</dt><dd>{productField(product, ["Weight"], product.specs.weight || "Confirm by sample")}</dd></div>
+                  <div><dt>MOQ</dt><dd>{productMoq(product)}</dd></div>
+                </dl>
+                <div class="stage-product-card__actions">
+                  <a href={`/products/${product.slug}/`} class="text-link">View specifications</a>
+                  <a href={`/contact/?sku=${encodeURIComponent(product.title)}`} data-rfq-open data-rfq-sku={product.title} data-rfq-intent="sample-and-quote" class="btn btn--primary">Request sample / quote</a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      <div class="comparison-table stage-product-table" tabindex="0" role="region" aria-label={`Product comparison for ${page.title}`}>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Surface</th>
+              <th scope="col">Base</th>
+              <th scope="col">Stretch</th>
+              <th scope="col">Weight</th>
+              <th scope="col">MOQ</th>
+              <th scope="col">Why shortlist it</th>
+              <th scope="col">Next step</th>
+            </tr>
+          </thead>
+          <tbody>
+            {shortlistProducts.map(({ product, fit }) => (
+              <tr>
+                <th scope="row"><a href={`/products/${product.slug}/`}>{product.title}</a></th>
+                <td>{productField(product, ["Surface Effect", "Surface Finish", "Surface"])}</td>
+                <td>{productField(product, ["Base Fabric", "Base Material", "Material"], product.specs.baseMaterial || "Confirm by sample")}</td>
+                <td>{productField(product, ["Stretch"])}</td>
+                <td>{productField(product, ["Weight"], product.specs.weight || "Confirm by sample")}</td>
+                <td>{productMoq(product)}</td>
+                <td>{fit}</td>
+                <td><a href={`/contact/?sku=${encodeURIComponent(product.title)}`} data-rfq-open data-rfq-sku={product.title} data-rfq-intent="sample-and-quote" class="text-link">Request sample / quote</a></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </section>
+  )}
 
   {page.slug === "foil-fabric-for-stage-costumes" && (
     <section class="section">
@@ -709,12 +775,12 @@ const faqSchema = {
     </div>
   </section>
 
-  {!["cheerleading-performance-costume-fabric", "holographic-fabric-wholesale"].includes(page.slug) && (
-  <section class="section">
+  {!["cheerleading-performance-costume-fabric", "holographic-fabric-wholesale", "foil-fabric-for-stage-costumes"].includes(page.slug) && (
+  <section class="section" >
     <div class="container">
       <div class="section-header section-header--left">
         <span class="eyebrow">BUYER SHORTLIST</span>
-        <h2>Compare practical starting points</h2>
+        <h2>{page.slug === "foil-fabric-for-stage-costumes" ? "Compare stage costume fabrics" : "Compare practical starting points"}</h2>
         <p>These products represent different surface and construction routes. Final approval should be based on a physical sample and the requirements of your project.</p>
       </div>
       <div class="comparison-table" tabindex="0" role="region" aria-label={`Product comparison for ${page.title}`}>
@@ -1015,6 +1081,90 @@ const faqSchema = {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     background: var(--color-white);
+  }
+
+  .stage-product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .stage-product-card {
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+  }
+
+  .stage-product-card__image {
+    display: block;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--color-bg-alt);
+  }
+
+  .stage-product-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .stage-product-card__body {
+    padding: var(--space-lg);
+  }
+
+  .stage-product-card h3 {
+    margin: 0 0 var(--space-sm);
+    color: var(--color-primary);
+    font-size: var(--text-lg);
+    line-height: 1.35;
+  }
+
+  .stage-product-card h3 a {
+    color: inherit;
+  }
+
+  .stage-product-card__body > p {
+    margin: 0 0 var(--space-md);
+    color: var(--color-text-secondary);
+    line-height: 1.55;
+  }
+
+  .stage-product-card__specs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-sm) var(--space-md);
+    margin: 0;
+  }
+
+  .stage-product-card__specs div {
+    min-width: 0;
+  }
+
+  .stage-product-card__specs dt {
+    color: var(--color-text-secondary);
+    font-size: var(--text-xs);
+  }
+
+  .stage-product-card__specs dd {
+    margin: 0.15rem 0 0;
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    overflow-wrap: anywhere;
+  }
+
+  .stage-product-card__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+
+  .stage-product-card__actions .btn {
+    min-height: 44px;
   }
 
   .comparison-table:focus-visible {
@@ -1395,6 +1545,14 @@ const faqSchema = {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .stage-shortlist .stage-product-grid {
+      display: grid;
+    }
+
+    .stage-shortlist .stage-product-table {
+      display: none;
+    }
+
     .guide-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -1427,6 +1585,19 @@ const faqSchema = {
 
     .application-products {
       grid-template-columns: 1fr;
+    }
+
+    .stage-product-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stage-product-card__actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .stage-product-card__actions .btn {
+      width: 100%;
     }
 
     .criteria-grid,
